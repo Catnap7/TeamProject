@@ -5,8 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="../../css/default.css" rel="stylesheet" type="text/css">
-<link href="../../css/admin.css" rel="stylesheet" type="text/css">
+<link href="./css/default.css" rel="stylesheet" type="text/css">
+<link href="./css/admin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -28,7 +28,7 @@
 <div class="admin-search-container">
 	<form action="admin_review_list_search.jsp">
 		<input type="text" placeholder="Search.." name="search">
-		<button type="submit" class="searchBtn"><img src="../../images/search.png" width="20px" height="20px"></button>
+		<button type="submit" class="searchBtn"><img src="./images/search.png" width="20px" height="20px"></button>
 	</form>
 </div>
 
