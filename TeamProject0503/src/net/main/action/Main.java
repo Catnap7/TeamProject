@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.admin.manage.db.MovieBean;
 import net.favorite.db.FavoriteBean;
 import net.favorite.db.FavoriteDAO;
 
@@ -23,9 +24,7 @@ public class Main implements Action{
 			return forward;
 		}
 		FavoriteDAO fdao = new FavoriteDAO();
-		List <FavoriteBean>favoritelist = fdao.getFavoritelist(id);
-		System.out.println("결과는 "+favoritelist);
-		
+		List <MovieBean>favoritelist = fdao.randomFavoriteList(id);		
 		request.setAttribute("id", id);
 		request.setAttribute("favoritelist", favoritelist);
 		
