@@ -16,7 +16,6 @@ public class MemberLoginAction implements Action{
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
 
-		ActionForward forward= new ActionForward();
 		HttpSession session = request.getSession();
 		
 		MemberDAO mdao = new MemberDAO();
@@ -28,10 +27,18 @@ public class MemberLoginAction implements Action{
 		memberbean.setM_id(request.getParameter("m_id"));
 		memberbean.setM_pass(request.getParameter("m_pass"));
 		
+		if(request.getParameter("m_id").equals("admin")) {
+			ActionForward forward= new ActionForward();			
+			forward.setRedirect(true);
+			forward.setPath("./AdminManageList.am");
+			return forward;
+		}
+		
 		response.setContentType("text/html;	charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		int check=mdao.userCheck(memberbean.getM_id(),memberbean.getM_pass());
 		int Echeck=mdao.EmailChecked(memberbean.getM_id());
+		
 		
 		if(check==0) {
 			out.println("<script>");
@@ -51,17 +58,18 @@ public class MemberLoginAction implements Action{
 				out.println("alert('이메일 인증을 완료해주세요');");
 				out.println("history.back()");
 				out.println("</script>");
-			}
-		else {
+			}else {
 			session.setAttribute("m_id",memberbean.getM_id());
 			session.setAttribute("m_name",memberbean.getM_name());
 			
+			ActionForward forward= new ActionForward();			
 			forward.setRedirect(true);
 			forward.setPath("./Main.me");
+			return forward;
 			}
 	
 	}
-		return forward;
+		return null;
 		
 	}
 
