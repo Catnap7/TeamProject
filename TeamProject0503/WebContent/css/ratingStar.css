@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+ 
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+/*@@@@@@float를 지우면 별5개가 전부 좌측 배열 되요.  */
+.rating { 
+  border: none;
+  float: left; 
+}
+
+.rating > input { display: none; } 
+
+/*@@@@@@@ 별점 이미지 바꿀때 사용  */
+.rating > label:before { 
+  margin: 5px;
+/*   font-size: 1.25em; */
+   font-size: 2em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+/*@@@@@@@ float 지우면 별점 css가 반대로 먹혀요. */
+.rating > label { 
+  color: #ddd; 
+  float: right;
+}
+
+/*@@@@@@@@@@ 별점 줄때 색이 변하는 css  */
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
