@@ -16,7 +16,7 @@
 
 <nav id="menu_bar">
 	<ul>
-		<li><a href="../admin_manage_list.jsp">DB</a></li>
+		<li><a href="./AdminManageList.am">DB</a></li>
 		<li><a href="../notice/admin_notice_list.jsp">공지</a></li>
 		<li><a href="#">채팅</a></li>
 	</ul>
