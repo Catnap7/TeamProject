@@ -21,7 +21,8 @@
  
 </head>
 <body>
-<%	
+<%
+
 int mv_num =Integer.parseInt(request.getParameter("mv_num"));
 MovieBean moviebean =(MovieBean)request.getAttribute("moviebean");
 
