@@ -47,9 +47,9 @@
 
 		<div class="search_type">
 			<select>
-				<option>ID</option>
-				<option>닉네임</option>
-				<option>등급</option>
+				<option value="1">ID</option>
+				<option value="2">닉네임</option>
+				<option value="3">등급</option>
 			</select>
 		</div>
 
@@ -63,7 +63,9 @@
 		</div>
 
 		<div class="orderby">
-			<a href="./AdminMemberSort.am?sort=1">이름순</a> | <a href="./AdminMemberSort.am?sort=2">등급순</a> | <a href="./AdminMemberSort.am?sort=3">가입순</a>
+			<a href="./AdminMemberSort.am?sort=1">이름순</a> | <a
+				href="./AdminMemberSort.am?sort=2">등급순</a> | <a
+				href="./AdminMemberSort.am?sort=3">가입순</a>
 		</div>
 
 		<table class="db_list">

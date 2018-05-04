@@ -63,7 +63,9 @@
 		</div>
 
 		<div class="orderby">
-			<a href="./AdminMemberSort.am?sort=1">이름순</a> | <a href="./AdminMemberSort.am?sort=2">등급순</a> | <a href="./AdminMemberSort.am?sort=3">가입순</a>
+			<a href="./AdminMemberSort.am?sort=1">이름순</a> | <a
+				href="./AdminMemberSort.am?sort=2">등급순</a> | <a
+				href="./AdminMemberSort.am?sort=3">가입순</a>
 		</div>
 
 		<table class="db_list">
