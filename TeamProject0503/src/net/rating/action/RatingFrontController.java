@@ -44,8 +44,7 @@ public class RatingFrontController extends HttpServlet{
 		}
 		
 		
-			
-		
+					
 		
 		
 		//이동(주소비교에서 이동방식, 이동할곳 정보를 찾아올것)

@@ -12,7 +12,6 @@ public class FindPassAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		
 		ActionForward forward= new ActionForward();
 		MemberBean memberbean= new MemberBean();
 		HttpSession session = request.getSession();
@@ -20,18 +19,11 @@ public class FindPassAction implements Action{
 		MemberDAO memberdao = new MemberDAO();
 		String m_id = request.getParameter("m_id");
 		memberbean.setM_id(request.getParameter("m_id"));
-		memberbean.setM_pass(request.getParameter("m_pass"));
 		
+		memberdao.connectEmail(m_id);
 		
-		// 위에서 작성한 java파일 객체 생성
-		EmailConfirm emailconfirm = new EmailConfirm();
-		String authNum=emailconfirm.connectEmail(m_id);
-		
-		
-		
-		
-		
-		
+		forward.setRedirect(false);
+		forward.setPath("./member/find_password_send.jsp");
 		return forward;
 	}
 

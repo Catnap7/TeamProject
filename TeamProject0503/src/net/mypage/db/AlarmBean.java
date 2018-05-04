@@ -8,8 +8,17 @@ public class AlarmBean {
 	int a_alarm_name;
 	String a_end_day;
 	String a_movie_name;
+	String a_start_day;
 	
 	
+	
+	
+	public String getA_start_day() {
+		return a_start_day;
+	}
+	public void setA_start_day(String a_start_day) {
+		this.a_start_day = a_start_day;
+	}
 	public String getA_movie_name() {
 		return a_movie_name;
 	}
