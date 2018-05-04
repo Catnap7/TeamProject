@@ -1,3 +1,7 @@
+<%@page import="java.util.List"%>
+<%@page import="net.admin.manage.db.MovieDAO"%>
+<%@page import="net.admin.manage.db.MovieBean"%>
+<%@page import="net.favorite.db.FavoriteBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -233,7 +237,11 @@ $(document).ready(function(){
 
 
 <body>
-
+<%
+String id = (String)request.getAttribute("id");
+List<FavoriteBean> favoritelist = (List)request.getAttribute("favoritelist");
+MovieDAO mdao = new MovieDAO();
+%>
 
 
 
@@ -321,8 +329,8 @@ $(document).ready(function(){
     	</div><!-- slider -->
 	</div><!-- container -->
 		<div>
-			<div class="prev2 button" data-btn="0"><img src="../images/arrow_left.png" width="60px" height="60px"></div>
-			<div class="next2 button" data-btn="1"><img src="../images/arrow_right.png" width="60px" height="60px"></div>
+			<div class="prev2 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>
+			<div class="next2 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->
 	
 		
@@ -360,47 +368,71 @@ $(document).ready(function(){
     	</div><!-- slider -->
 	</div><!-- container -->
 		<div>
-			<div class="prev3 button" data-btn="0"><img src="../images/arrow_left.png" width="60px" height="60px"></div>
-			<div class="next3 button" data-btn="1"><img src="../images/arrow_right.png" width="60px" height="60px"></div>
+			<div class="prev3 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>
+			<div class="next3 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->	
 	
 
 
 <!-- 회원님이 보고싶은 영화 (즐겨찾기)-->
   	<div class="container">  <!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  		
-  		<h2>보관함에 담긴 영화</h2>
+  		<h2>즐겨찾기에 담긴 영화</h2>
 		<div class="slider wannaWatch">
 			<!--for문으로 반복 하시면 됩니다-->
-			<a href="#"><div class="mv">
-						<img src="../images/sf/ghostintheshell_s1.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-						<span class="mv_title"><%="공각기동대:고스트 인 더 쉘" %></span><!-- DB에서 가져온 한글제목으로 대체해 주세요 --> 
-						<span class="mv_year"><%="2017"%></span><!-- 년도 -->
-						<span class="mv_grade"><%="15"%></span><!-- 등급 -->
-						<span class="mv_time"><%="107"%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
-						</div>
-			</a>
+		<%for(FavoriteBean fb : favoritelist){
+		  MovieBean moviebean= mdao.getMovie(fb.getF_num());
+		
+
+		/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/
+		String img_genre= "";
+		if(moviebean.getMv_genre().equals("animation")){
+			img_genre="animation";
+		}else if(moviebean.getMv_genre().equals("comedy")){
+			img_genre="comedy";
+		}else if(moviebean.getMv_genre().equals("indie")){
+			img_genre="indie";
+		}else if(moviebean.getMv_genre().equals("sf")){
+			img_genre="sf";
+		}else if(moviebean.getMv_genre().equals("action")){
+			img_genre="action";
+		}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
+			img_genre="thriller";
+		}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
+			img_genre="romance";
+		}
+		
+
+		String age = "";
+		if(moviebean.getMv_age()==0){
+			age = "전체이용가";
+		}else if(moviebean.getMv_age()==12){
+			age = "12세이용가";
+		}else if(moviebean.getMv_age()==15){
+			age="15세이용가";
+		}else if(moviebean.getMv_age()==19){
+			age="청소년이용불가";
+		}
+		
+		
+		String moviename = moviebean.getMv_eng_title();
+		String imgname = moviename.replaceAll(" " , "");
+ 		imgname = imgname.replaceAll("\\p{Z}", "");%>
+ 			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><div class="mv">
+							<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+							<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
+							<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
+							<span class="mv_grade"><%=age%></span><!-- 등급 -->
+							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+							</div> -->
+			</a> 
+		<%} %> 
 			<!--for문 여기까지 -->
-			
-			<!-- ↓↓↓↓↓디자인 예시를 위해 만든 코드. for문 결과를 확인하고 지워도 무방 ↓↓↓↓↓-->
-			<div class="mv"><img src="../images/sf/the6thday_s2.jpg"><span class="mv_title">6번째 날</span></div>
-			<div class="mv"><img src="../images/sf/prometheus_s2.jpg"><span class="mv_title">프로메테우스</span></div>
-			<div class="mv"><img src="../images/sf/robotandfrank_s2.jpg"><span class="mv_title">로봇 앤 프랭크</span></div>
-			<div class="mv"><img src="../images/sf/pixel_s1.jpg"><span class="mv_title">픽셀</span></div> 
-			<div class="mv"><img src="../images/sf/snowpiercer_s1.jpg"><span class="mv_title">설국열차</span></div>
-			<div class="mv"><img src="../images/sf/thegiver_s1.jpg"></div>
-			<div class="mv"><img src="../images/sf/equals_s1.jpg"></div>
-			<div class="mv"><img src="../images/sf/hollowman_s1.jpg"></div>
-			<div class="mv"><img src="../images/sf/inception_s1.jpg"></div>
-			<div class="mv"><img src="../images/sf/interstellar_s2.jpg"></div>
-			<div class="mv"><img src="../images/sf/minorityreport_s2.jpg"></div>
-			<div class="mv"><img src="../images/sf/pandorum_s1.jpg"></div> 
-			<!-- ↑↑↑↑↑디자인 예시를 위해 만든 코드. for문 결과를 확인하고 지워도 무방↑↑↑↑↑-->
-			
+						
     	</div><!-- slider -->
 	</div><!-- container -->
 		<div>
-			<div class="prev4 button" data-btn="0"><img src="../images/arrow_left.png" width="60px" height="60px"></div>
-			<div class="next4 button" data-btn="1"><img src="../images/arrow_right.png" width="60px" height="60px"></div>
+			<div class="prev4 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>
+			<div class="next4 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->
 		
 			
@@ -410,6 +442,8 @@ $(document).ready(function(){
   		<h2>왓츄 영화 전문가 PICK!</h2>
 		<div class="slider adminPick">
 			<!--for문으로 반복 하시면 됩니다-->
+		
+		
 			<a href="#"><div class="mv">
 						<img src="../images/sf/pixel_s2.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
 						<span class="mv_title"><%="픽셀"%></span><!-- DB에서 가져온 한글제목으로 대체해 주세요 --> 
@@ -438,8 +472,8 @@ $(document).ready(function(){
     	</div><!-- slider -->
 	</div><!-- container -->
 		<div>
-			<div class="prev5 button" data-btn="0"><img src="../images/arrow_left.png" width="60px" height="60px"></div>
-			<div class="next5 button" data-btn="1"><img src="../images/arrow_right.png" width="60px" height="60px"></div>
+			<div class="prev5 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>
+			<div class="next5 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->
 
 	
