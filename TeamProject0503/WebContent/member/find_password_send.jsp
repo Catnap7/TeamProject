@@ -1,7 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
-    <title> 이메일 인증메일 발송</title>
+    <title> 임시비밀번호 발송</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- 부트스트랩 CSS 추가하기 -->
@@ -33,7 +35,8 @@
     </nav>
 	<div class="container">
 	    <div class="alert alert-success mt-4" role="alert">
-		  이메일 주소 인증 메일이 전송되었습니다. 이메일에 들어가셔서 인증해주세요.
+		  임시비밀번호가 발송되었습니다! <br>
+		   임시비밀번호를 통해 로그인을 진행해주세요.<br>
 		</div>
     </div>
     <footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFFF;">
