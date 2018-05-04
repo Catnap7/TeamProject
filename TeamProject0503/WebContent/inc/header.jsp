@@ -4,7 +4,7 @@
 <!-- 헤더 영역 -->
 <header>
 	<div class="title_logo">
-		<a href="./Main.me"><img src="./images/watchu_logo.png" width="250px" height="50px"></a>
+		<a href="./Main.ma"><img src="./images/watchu_logo.png" width="250px" height="50px"></a>
 	</div>
 	
 <div class="clear"></div>
@@ -14,10 +14,10 @@
 			<a href="../pay/payment.jsp">이용권구매</a>
 		</div><!--이용권구매 -->
 		
-		<%String m_id=(String)session.getAttribute("m_id");%>
+		<%String m_name=(String)session.getAttribute("m_name");%>
 
 		<div class="myinfo">
-  			<button class="dropbtn1"><%=m_id %></button>
+  			<button class="dropbtn1"><%=m_name %></button>
 				  <div class="dropdown-content1">
 				    <a href="../member/mypage.jsp">내정보보기</a>
 				    <a href="./Coupon.my">쿠폰함</a>

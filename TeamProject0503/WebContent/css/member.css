@@ -11,7 +11,7 @@ div.m_cover {
 	background-image: url("../images/m_cover.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
-	opacity: 0.3;
+	opacity: 0.7;
 }
 
 div.logo img {
@@ -47,6 +47,7 @@ div.nav_r a {
 .div_02 {
 	padding: 5px;
 	margin-bottom: 20px;
+	color:#000;
 }
 .div_02 span, .div_02 a, p {
 	padding: 5px;
@@ -84,8 +85,46 @@ p {
 	letter-spacing: 0.2px;
 	width: 270px;
 }
+fieldset{ width:500px;
+			  height:250px;
+			   padding-top:30px;
+			  box-sizing:border-box;
+			  padding-left:20px;
+			  background-color: #fff;
+	}
+	fieldset input #submit{
+		color:#69f;
+		font-size: 20px;
+		padding:2px;
+		left:150px;
+		top:30px;
+		margin:0 5px;
+	}
+	
+	legend{ color:#36a;
+		text-align: center;
+	
+	}
+	label{
+	display:inline-block;
+	width:100px;
+	color:#36a;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: right;	/*  오른쪽정렬 */
+	padding:0.5em 0.8em;
+	
+	}
 
+
+/* 
 #submit {
 	background-color: #50d4aa;
 	border-radius: 40px;
+	  padding:2px;
+	  width:150px; height:40px;
+	  margin:0 5px;
+	  border-radius: 10px;
+	  border: 1px solid #999;
 }
+ */

@@ -11,9 +11,9 @@ public class MemberLogoutAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		session.invalidate();
-		ActionForward forward= new ActionForward();
 		
-		forward.setRedirect(false);
+		ActionForward forward= new ActionForward();
+		forward.setRedirect(true);
 		forward.setPath("./start.st");
 		
 		return forward;
