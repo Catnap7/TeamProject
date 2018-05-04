@@ -77,10 +77,7 @@ public class Alarm implements Action{
 					alarmlist= adao.getAlarms(id, startRow, pageSize);			
 				}
 				
-				Calendar cal= new GregorianCalendar();				
-				cal.clear(Calendar.MILLISECOND);
-				SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
-				String a_end_day=date.format(cal.getTime()).toString();
+				
 				
 				request.setAttribute("pageNum", pageNum);
 				request.setAttribute("alarmlist", alarmlist);
@@ -89,7 +86,7 @@ public class Alarm implements Action{
 				request.setAttribute("startPage", startPage);
 				request.setAttribute("endPage", endPage);
 				request.setAttribute("count", count);
-				request.setAttribute("a_end_day", a_end_day);
+				
 				
 				forward=new ActionForward();
 				forward.setRedirect(false);

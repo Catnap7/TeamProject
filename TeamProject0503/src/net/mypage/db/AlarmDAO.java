@@ -90,6 +90,7 @@ public class AlarmDAO {
 					ab.setA_id(rs.getString("a_id"));
 					ab.setA_num(rs.getInt("a_num"));					
 					ab.setA_end_day(rs.getString("a_end_day"));
+					ab.setA_start_day(rs.getString("a_start_day"));
 					ab.setA_alarm_name(rs.getInt("a_alarm_name"));
 					ab.setA_movie_name(rs.getString("a_movie_name"));
 					alarmlist.add(ab);
@@ -185,13 +186,14 @@ public class AlarmDAO {
 		PreparedStatement pstmt=null;
 		try{ //예외가 발생할 것 같은 명령, 	필수적으로 외부파일접근, 디비접근
 			 con = getConnection();
-			 sql="insert into alarm (a_id,a_alarm_name,a_end_day,a_movie_name) values(?,?,?,?)";
+			 sql="insert into alarm (a_id,a_alarm_name,a_end_day,a_start_day,a_movie_name) values(?,?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, ab.getA_id()); 
 			pstmt.setInt(2, ab.getA_alarm_name()); 
 			pstmt.setString(3, ab.getA_end_day()); 
-			pstmt.setString(4, ab.getA_movie_name()); 
+			pstmt.setString(4, ab.getA_start_day());
+			pstmt.setString(5, ab.getA_movie_name()); 
 			
 			pstmt.executeUpdate();
 		} catch(Exception e) {
