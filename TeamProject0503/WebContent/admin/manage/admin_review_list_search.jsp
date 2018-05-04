@@ -17,7 +17,7 @@
 <nav id="menu_bar">
 	<ul>
 		<li><a href="./AdminManageList.am">DB</a></li>
-		<li><a href="../notice/admin_notice_list.jsp">공지</a></li>
+		<li><a href="./AdminNoticeList.an">공지</a></li>
 		<li><a href="#">채팅</a></li>
 	</ul>
 </nav>
@@ -28,7 +28,7 @@
 <div class="admin-search-container">
 	<form action="admin_review_list_search.jsp">
 		<input type="text" placeholder="Search.." name="search">
-		<button type="submit" class="searchBtn"><img src="../../images/search.png" width="20px" height="20px"></button>
+		<button type="submit" class="searchBtn"><img src="./images/search.png" width="20px" height="20px"></button>
 	</form>
 </div>
 

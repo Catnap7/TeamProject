@@ -5,8 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="../../css/default.css" rel="stylesheet" type="text/css">
-<link href="../../css/admin.css" rel="stylesheet" type="text/css">
+<link href="./css/default.css" rel="stylesheet" type="text/css">
+<link href="./css/admin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -16,8 +16,8 @@
 
 <nav id="menu_bar">
 	<ul>
-		<li><a href="../admin_manage_list.jsp">DB</a></li>
-		<li><a href="admin_notice_list.jsp">공지</a></li>
+		<li><a href="./AdminManageList.am">DB</a></li>
+		<li><a href="./AdminNoticeList.an">공지</a></li>
 		<li><a href="#">채팅</a></li>
 	</ul>
 </nav>
