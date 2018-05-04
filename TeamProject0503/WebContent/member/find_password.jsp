@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="../css/member.css" rel="stylesheet" type="text/css">
+<link href="./css/member.css" rel="stylesheet" type="text/css">
 <script src="../script/script.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
@@ -16,7 +16,7 @@ session.invalidate();
 %>
 <div class="m_cover">
 <div class="logo">
-<a href="./MemberLogin.me"><img src="../images/watchu_logo.png" alt="logo"></a>
+<a href="./MemberLogin.me"><img src="./images/watchu_logo.png" alt="logo"></a>
 </div>
 
 <div class="nav_r">
@@ -32,7 +32,7 @@ session.invalidate();
 	<div>
 		<form action="./FindPassAction.me" id="join" method="post">
 			<label>
-			<input type="text" name="m_id" placeholder="이메일 (example@gmail.com)">
+			<input type="text" name="m_id" placeholder="이메일 (example@gmail.com)" class="text">
 			</label><br>
 			<p>
 			기존에 가입하신 이메일 주소를 입력해주시면<br>

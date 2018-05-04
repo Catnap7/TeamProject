@@ -33,7 +33,7 @@ function fun2(){
 <body>
 <div class="m_cover">
 <div class="logo">
-<a href="./MemberLogin.me"><img src="../images/watchu_logo.png" alt="logo"></a>
+<a href="./MemberLogin.me"><img src="./images/watchu_logo.png" alt="logo"></a>
 </div>
 
 <div class="nav_r">
@@ -49,19 +49,19 @@ function fun2(){
 	<div>
 		<form action="./MemberJoinAction.me" id="join" method="post" name="fr" onsubmit="return check1()">
 			<label>
-			<input type="text" name="m_name" id="id" placeholder="이름 (김와츄)" >
+			<input type="text" name="m_name" id="id" placeholder="이름 (김와츄)" class="text">
 			</label><br>
 			<label>
-			<input type="text" name="m_id" placeholder="이메일 (example@gmail.com)">
+			<input type="text" name="m_id" placeholder="이메일 (example@gmail.com)" class="text">
 			</label><br>
 			<label>
-			<input type="text" name="m_pass" placeholder="비밀번호 (6자 이상)">
+			<input type="text" name="m_pass" placeholder="비밀번호 (6자 이상)" class="text">
 			</label><br>
 			<label>
-			<input type="text" name="m_num1" placeholder="주민등록번호 앞자리" onkeyup="fun2()" maxlength="6">
+			<input type="text" name="m_num1" placeholder="주민등록번호 앞자리"  class="text" onkeyup="fun2()" maxlength="6">
 			</label><br>
 			<label>
-			<input type="text" name="m_num2" placeholder="주민등록번호 뒷자리" maxlength="1">
+			<input type="text" name="m_num2" placeholder="주민등록번호 뒷자리" class="text" maxlength="1">
 			</label><br>
 		<div>
 			<input type="submit" value="회원가입">

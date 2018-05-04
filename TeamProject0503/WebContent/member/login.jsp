@@ -5,12 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="./css/member.css" rel="stylesheet" type="`text/css">
+<link href="./css/member.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="m_cover">
 <div class="logo">
-<a href="login.jsp"><img src="../images/watchu_logo.png" alt="logo"></a>
+<a href="login.jsp"><img src="./images/watchu_logo.png" alt="logo"></a>
 </div>
 
 <div class="nav_r">
@@ -27,10 +27,10 @@
 	<div>
 		<form action="./MemberLoginAction.me" id="join" method="post">
 			<label>
-			<input type="text"  name="m_id" placeholder="이메일 (example@gmail.com)">
+			<input type="text"  name="m_id" placeholder="이메일 (example@gmail.com)" class="text">
 			</label><br>
 			<label>
-			<input type="text" name="m_pass" placeholder="비밀번호 (6자 이상)">
+			<input type="text" name="m_pass" placeholder="비밀번호 (6자 이상)" class="text">
 			</label>
 		<div>
 			<input type="submit" value="로그인" id="submit">

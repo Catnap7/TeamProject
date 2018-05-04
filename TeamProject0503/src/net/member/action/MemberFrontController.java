@@ -49,7 +49,7 @@ public class MemberFrontController extends HttpServlet {
 				forward.setRedirect(false);
 				forward.setPath("./main/main.jsp");
 	}
-	else if(command.equals("/MemberLogoutAction.me")){
+	else if(command.equals("/MemberLogout.me")){
 		action = new MemberLogoutAction();
 		try {
 			forward = action.execute(request, response);
