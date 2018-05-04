@@ -172,7 +172,7 @@ public class AdminMemberDAO {
 		ResultSet rs = null;
 		try {
 			con = getConnection();
-			sql = "select * from member order by ? asc";
+			sql = "select * from member order by ? desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, sort);
 			rs = pstmt.executeQuery();

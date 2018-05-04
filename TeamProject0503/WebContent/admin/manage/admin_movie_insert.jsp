@@ -26,7 +26,7 @@
 
 	<div id="content">
 		<h1>영화DB 입력폼</h1>
-		
+
 		<form action="./AdminMovieJoinAction.am" method="post">
 			<table border="0" class="db_list_insert">
 				<tr>
