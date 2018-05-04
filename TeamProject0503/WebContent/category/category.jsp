@@ -41,7 +41,7 @@
 <!-- 크롬 기준 -->
 <%List CategoryList= (List)request.getAttribute("CategoryList");
 //가상주소 연결 완료시 주석 해제
-/* String mv_genre="";
+String mv_genre="";
 String mv_genre_request=request.getParameter("mv_genre");
 if(mv_genre_request.equals("animation")){
 	mv_genre="애니메이션";
@@ -57,9 +57,9 @@ if(mv_genre_request.equals("animation")){
 	mv_genre="공포/스릴러";
 }else if(mv_genre_request.equals("romance") || mv_genre_request.equals("drama")){
 	mv_genre="로맨스/드라마";
-} */
+} 
 %>
-<h2 id="categoryTitle"><%=/* mv_genre */"?"%><%=" 카테고리 검색 결과"%></h2> <!-- Sf부분에 카테고리 이름 넣어주세요. '카테고리 검색 결과'는 지우지 말 것 -->
+<h2 id="categoryTitle"><%=mv_genre%><%=" 카테고리 검색 결과"%></h2> <!-- Sf부분에 카테고리 이름 넣어주세요. '카테고리 검색 결과'는 지우지 말 것 -->
 
 <!-- 아티클 -->
 <article>
