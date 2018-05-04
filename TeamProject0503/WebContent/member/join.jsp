@@ -6,11 +6,34 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="./css/member.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+
+function check1(){
+	   if(document.getElementById("id").value ==""){
+			alert("아이디를 입력하세요");
+			document.fr.id.focus();
+			return false;
+	   }if(document.fr.id.value.length<4 || document.fr.id.value.length>9){
+			alert("아이디는 4자 이상 9자 이하입니다 ")
+			document.fr.id.focus();
+		   return false;
+	   }
+
+
+
+}
+function fun2(){
+	if(document.fr.m_num1.value.length==6){
+		document.fr.m_num2.focus();
+	}
+}
+
+</script>
 </head>
 <body>
 <div class="m_cover">
 <div class="logo">
-<a href="./intro.st"><img src="./images/watchu_logo.png" alt="logo"></a>
+<a href="./MemberLogin.me"><img src="../images/watchu_logo.png" alt="logo"></a>
 </div>
 
 <div class="nav_r">
@@ -24,27 +47,24 @@
 			<span>회원가입</span>
 		</div>
 	<div>
-		<form action="./MemberJoinAction.me" id="join" method="post">
-	<label>
-			<input type="text" name="m_name" placeholder="이름 (김와츄)" class="text">
+		<form action="./MemberJoinAction.me" id="join" method="post" name="fr" onsubmit="return check1()">
+			<label>
+			<input type="text" name="m_name" id="id" placeholder="이름 (김와츄)" >
 			</label><br>
 			<label>
-			<input type="text" name="m_id" placeholder="이메일 (example@gmail.com)" class="text">
-			</label><br>
-			<label> 
-			<input type="text" name="m_pass" placeholder="비밀번호 (6자 이상)"class="text">
+			<input type="text" name="m_id" placeholder="이메일 (example@gmail.com)">
 			</label><br>
 			<label>
-			<input type="text" name="m_num1" placeholder="주민등록번호 앞자리" onkeyup="fun2" maxlength="6" class="text">
+			<input type="text" name="m_pass" placeholder="비밀번호 (6자 이상)">
 			</label><br>
 			<label>
-			<input type="text" name="m_num2" placeholder="주민등록번호 뒷자리" maxlength="1" class="text">
+			<input type="text" name="m_num1" placeholder="주민등록번호 앞자리" onkeyup="fun2()" maxlength="6">
 			</label><br>
-			<input type="radio" class="check" id="all_agree"> <label for="all_agree">전체 약관에 동의 합니다.</label><br>
-			<input type="radio" class="check" id="use_agree"> <label for="use_agree"><a href="#" class="use">이용약관</a>에 동의 합니다.</label><br>
-			<input type="radio" class="check" id="p_agree"> <label for="p_agree"><a href="#" class="use">개인정보 취급 방침</a>에 동의 합니다.</label>
+			<label>
+			<input type="text" name="m_num2" placeholder="주민등록번호 뒷자리" maxlength="1">
+			</label><br>
 		<div>
-			<input type="submit" value="회원가입" id="submit" class="text">
+			<input type="submit" value="회원가입">
 		</div>
 		</form>
 	</div>
