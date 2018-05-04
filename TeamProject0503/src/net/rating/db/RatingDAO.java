@@ -37,9 +37,9 @@ public class RatingDAO {
 			con=getConnection();
 			//평가하지 않은 영화를 불러올것
 			////////////////////////////////////db완성되면 꼭 수정해야 하는곳[아이디 생성되고 세션값받을때]
-//			sql="select mv_num from movie where mv_num not in (select mv_num from rating where ra_id=? and mv_num is not null)"
-//					+ "order by mv_num desc";
-			sql="select mv_num from movie order by mv_num desc";
+			sql="select mv_num from movie where mv_num not in (select mv_num from rating where ra_id=? and mv_num is not null)"
+					+ "order by mv_num desc";
+			//sql="select mv_num from movie order by mv_num desc";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			//영화 마지막 번호 들고오기

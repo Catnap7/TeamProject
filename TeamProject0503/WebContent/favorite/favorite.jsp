@@ -33,7 +33,7 @@
 
 <body>
 <%
-String id = (String)session.getAttribute("id");
+String id = (String)session.getAttribute("m_id");
 List<FavoriteBean> favoritelist = (List)request.getAttribute("favoritelist");
 MovieDAO mdao = new MovieDAO();
 %>
@@ -93,7 +93,7 @@ MovieDAO mdao = new MovieDAO();
 		String moviename = moviebean.getMv_eng_title();
 		String imgname = moviename.replaceAll(" " , "");
 		imgname = imgname.replaceAll("\\p{Z}", "");%>
-			<a href="#"><div class="mv">
+			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><div class="mv">
 							<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
 							<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
 							<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->

@@ -23,7 +23,15 @@ public class MainFrontController extends HttpServlet{
 		
 		
 		//주소 비교
-		
+		if(command.equals("/Main.ma")){
+			action = new Main();
+			try{
+			forward=action.execute(request, response);
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 		
 			
 		
