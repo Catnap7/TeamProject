@@ -239,7 +239,7 @@ $(document).ready(function(){
 <body>
 <%
 String id = (String)request.getAttribute("id");
-List<FavoriteBean> favoritelist = (List)request.getAttribute("favoritelist");
+List<MovieBean> favoritelist = (List)request.getAttribute("favoritelist");
 MovieDAO mdao = new MovieDAO();
 %>
 
@@ -379,10 +379,8 @@ MovieDAO mdao = new MovieDAO();
   		<h2>즐겨찾기에 담긴 영화</h2>
 		<div class="slider wannaWatch">
 			<!--for문으로 반복 하시면 됩니다-->
-		<%for(FavoriteBean fb : favoritelist){
-		  MovieBean moviebean= mdao.getMovie(fb.getF_num());
-		
-
+		<%for(MovieBean moviebean  : favoritelist){
+		  		
 		/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/
 		String img_genre= "";
 		if(moviebean.getMv_genre().equals("animation")){

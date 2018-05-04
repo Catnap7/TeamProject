@@ -4,7 +4,7 @@
 <!-- 헤더 영역 -->
 <header>
 	<div class="title_logo">
-		<a href="./Main.me"><img src="./images/watchu_logo.png" width="250px" height="50px"></a>
+		<a href="./Main.ma"><img src="./images/watchu_logo.png" width="250px" height="50px"></a>
 	</div>
 	
 <div class="clear"></div>
