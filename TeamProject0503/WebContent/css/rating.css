@@ -1,0 +1,72 @@
+@CHARSET "UTF-8";
+
+.clear {
+	clear: both;
+}
+
+/******************* 취향분석 ********************/
+
+.movie_wrap {
+/* 	border: 1px solid red; */
+	height: 1100px;
+	padding:0;
+}
+
+.movie_star {
+/* 	border: 1px solid blue; */
+	padding: 50px;
+	text-align: center;
+}
+
+.movie_star h2 {
+	text-decoration: none;
+	font-size: 30px;
+	color: #333;
+}
+
+.movie_sec {
+/* 	border: 1px solid red; */
+	margin: 0 auto;
+	position: relative;
+}
+
+.movie_sec_inner {
+/* 	border: 1px solid orange; */
+	display: inline-block;
+	text-align: center;
+	padding: 10px 40px;
+	margin-left: 35px;
+	margin-bottom: 20px;
+}
+
+.movie_sec_inner img {
+	border: 1px solid #868686;
+}
+
+.star {
+	margin-top: 15px;
+}
+
+fieldset.rating {
+/* 	border: 1px solid blue; */
+	width: 220px;
+}
+
+.checked {
+	color: orange;
+}
+
+span.star_rating {
+	font-size: 30px;
+	letter-spacing: 10px;
+}
+
+.movie_refresh a {
+/* 	border: 1px solid red; */
+	text-decoration: none;
+	font-size: 64px;
+	color: #333;
+	margin-left: 950px;
+	margin-bottom: 50px;
+}
+
