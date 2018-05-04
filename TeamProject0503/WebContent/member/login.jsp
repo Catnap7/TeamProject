@@ -21,22 +21,21 @@
 
 <div class="div_01">
 		<div class="div_02">
-			<span>로그인</span>
+		
 			<a href="./FindPass.me" class="find_pass">비밀번호 찾기</a>
 		</div>
-	<div>
+		<fieldset>
+			<legend>로그인</legend>
 		<form action="./MemberLoginAction.me" id="join" method="post">
 			<label>
-			<input type="text"  name="m_id" placeholder="이메일 (example@gmail.com)">
+			<input type="text"  name="m_id" placeholder="이메일 (example@gmail.com)" class="text">
 			</label><br>
 			<label>
-			<input type="text" name="m_pass" placeholder="비밀번호 (6자 이상)">
+			<input type="text" name="m_pass" placeholder="비밀번호 (6자 이상)" class="text">
 			</label>
-		<div>
-			<input type="submit" value="로그인" id="submit">
-		</div>
+			<input type="submit" value="로그인" id="submit" >
 		</form>
-	</div>
+		</fieldset>
 </div>
 </div>
 </body>
