@@ -20,7 +20,6 @@ int pageBlock = ((Integer)request.getAttribute("pageBlock")).intValue();
 int startPage = ((Integer)request.getAttribute("startPage")).intValue();
 int endPage = ((Integer)request.getAttribute("endPage")).intValue();
 int count = ((Integer)request.getAttribute("count")).intValue();
-String a_end_day = (String)request.getAttribute("a_end_day");
 %>
 
 <!-- 헤더영역 -->
@@ -42,13 +41,13 @@ if(count == 0){
 	for(AlarmBean alarmbean:alarmlist){			
 		int a_name = alarmbean.getA_alarm_name();		
 		switch(a_name){
-		case 0 :  name = "영화 "+alarmbean.getA_movie_name()+"의 후기가 추천받았습니다! - "+a_end_day;
+		case 0 :  name = "영화 "+alarmbean.getA_movie_name()+"의 후기가 추천받았습니다! - "+alarmbean.getA_start_day();
 		break;
-		case 1 :  name = "이용자님께서는 후기쓰기 이용을 7일간 하실 수 없습니다.(누적신고 3회) - "+a_end_day;
+		case 1 :  name = "이용자님께서는 후기쓰기 이용을 7일간 하실 수 없습니다.(누적신고 3회) - "+alarmbean.getA_start_day();
 		break;
-		case 2 :  name = "후기쓰기를 다시 이용하실 수 있습니다! - "+a_end_day;
+		case 2 :  name = "후기쓰기를 다시 이용하실 수 있습니다! - "+alarmbean.getA_start_day();
 		break;
-		case 3 :  name = "이용자님께서는 로그인 정지가 임박합니다.(누적신고 9회) - "+a_end_day;
+		case 3 :  name = "이용자님께서는 로그인 정지가 임박합니다.(누적신고 9회) - "+alarmbean.getA_start_day();
 		break;		
 		}
 %>
