@@ -5,12 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="./css/member.css" rel="stylesheet" type="`text/css">
+<link href="./css/member.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="m_cover">
 <div class="logo">
-<a href="login.jsp"><img src="../images/watchu_logo.png" alt="logo"></a>
+<a href="login.jsp"><img src="./images/watchu_logo.png" alt="logo"></a>
 </div>
 
 <div class="nav_r">

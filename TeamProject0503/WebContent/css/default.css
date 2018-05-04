@@ -286,6 +286,8 @@ div.sns img {
 
 div.use a {
 	text-decoration: none;
+	color: white;
+	cursor: pointer;
 }
 
 div.explain {
