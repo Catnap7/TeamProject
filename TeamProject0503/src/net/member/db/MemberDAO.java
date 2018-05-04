@@ -225,12 +225,8 @@ private Connection getConnection() throws Exception {
 		pstmt.setString(2,m_id);
 		pstmt.executeUpdate();			
 		}catch(Exception e) {
-			//占쎌굙占쎌뇚 占쎄문疫꿸퀡�늺 癰귨옙占쎈땾 e占쎈퓠 占쏙옙占쎌삢
-			//占쎌굙占쎌뇚�몴占� 占쎌삜占쎈툡占쎄퐣 筌ｌ꼶�봺 -> 筌롫뗄�뻻筌욑옙 �빊�뮆�젾
 			e.printStackTrace();
 			}finally{
-				//占쎌굙占쎌뇚揶쏉옙 獄쏆뮇源�占쎈릭占쎈군 筌띾Ŧ諭� 占쎄맒�꽴占쏙옙毓억옙�뵠 筌띾뜄龜�뵳�딆삂占쎈씜 => 疫꿸퀣堉뀐옙�삢占쎈꺖 占쎌젟�뵳占�
-				//揶쏆빘猿� 疫꿸퀣堉뀐옙�삢占쎈꺖 筌띾뜄龜�뵳占�
 			 if(pstmt!=null){
 				try{pstmt.close();						
 				}catch(SQLException e){
@@ -279,11 +275,11 @@ private Connection getConnection() throws Exception {
 		msg.setFrom(new InternetAddress
                       (from, MimeUtility.encodeText(fromName,"utf-8","B")));
 		msg.setRecipients(Message.RecipientType.TO, address1); // 獄쏆룆�뮉占쎄텢占쎌뿺 占쎄퐬占쎌젟
-		msg.setSubject(subject); // 占쎌젫筌뤴뫗苑뺧옙�젟
-		msg.setSentDate(new java.util.Date()); // 癰귣�沅∽옙�뮉 占쎄텊筌욑옙 占쎄퐬占쎌젟
+		msg.setSubject(subject); 
+		msg.setSentDate(new java.util.Date());
 		msg.setContent(content,"text/html; charset=utf-8"); // 占쎄땀占쎌뒠占쎄퐬占쎌젟
 		
-		Transport.send(msg); // 筌롫뗄�뵬癰귣�沅→묾占�
+		Transport.send(msg); 
 		}catch(MessagingException e){
 			e.printStackTrace();
 		}catch(Exception e){
