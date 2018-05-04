@@ -36,12 +36,12 @@
 	</label>
 	<label for="pay">
 		<div class="content_inner">
-			<a href="manage/admin_pay_list.jsp" id="pay">pay</a>
+			<a href="./AdminPayListAction.am" id="pay">pay</a>
 		</div>
 	</label>
 	<label for="review">
 		<div class="content_inner">
-			<a href="manage/admin_review_list.jsp" id="review">review</a>
+			<a href="./AdminReviewListAction.am" id="review">review</a>
 		</div>
 	</label>
 	</div>
