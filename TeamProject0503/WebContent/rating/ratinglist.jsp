@@ -7,51 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<title>Insert title here</title>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/rating.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+<link rel="stylesheet" href="./css/ratingStar.css">
 
-/*@@@@@@float를 지우면 별5개가 전부 좌측 배열 되요.  */
-.rating { 
-  border: none;
-  float: left; 
-}
-
-.rating > input { display: none; } 
-
-/*@@@@@@@ 별점 이미지 바꿀때 사용  */
-.rating > label:before { 
-  margin: 5px;
-/*   font-size: 1.25em; */
-   font-size: 2em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f005";
-}
-
-/*@@@@@@@ float 지우면 별점 css가 반대로 먹혀요. */
-.rating > label { 
-  color: #ddd; 
-  float: right;
-}
-
-/*@@@@@@@@@@ 별점 줄때 색이 변하는 css  */
-/***** CSS Magic to Highlight Stars on Hover *****/
-
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
-
-.rating > input:checked + label:hover, /* hover current star when changing rating */
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
-</style>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="./js/rating.js"></script>
