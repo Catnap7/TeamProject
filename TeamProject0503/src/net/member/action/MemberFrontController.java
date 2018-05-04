@@ -44,7 +44,7 @@ public class MemberFrontController extends HttpServlet {
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("/Main.me")) {
+			}else if(command.equals("/Main.ma")) {
 				forward=new ActionForward();
 				forward.setRedirect(false);
 				forward.setPath("./main/main.jsp");
