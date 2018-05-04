@@ -67,7 +67,7 @@ public class AdminManageFrontController extends HttpServlet{
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./admin/admin_manage_list.jsp");
-		}else if(command.equals("AdminPayListAction.am")) {
+		}else if(command.equals("/AdminPayListAction.am")) {
 			action = new AdminPayListAction();
 			try {
 				forward = action.execute(request, response);
