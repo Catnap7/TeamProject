@@ -33,7 +33,7 @@
 
 <body>
 <%
-String id = (String)session.getAttribute("m_id");
+String id = (String)session.getAttribute("id");
 List<FavoriteBean> favoritelist = (List)request.getAttribute("favoritelist");
 MovieDAO mdao = new MovieDAO();
 %>
