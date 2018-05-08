@@ -456,23 +456,7 @@ if(favoritecount>=13){
 						<span class="mv_time"><%="116"%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
 						</div>
 			</a>
-			<!--for문 여기까지 -->
-			
-			<!-- ↓↓↓↓↓디자인 예시를 위해 만든 코드. for문 결과를 확인하고 지워도 무방 ↓↓↓↓↓-->
-			<div class="mv"><img src="../images/sf/hollowman_s2.jpg"><span class="mv_title">할로우 맨</span></div>
-			<div class="mv"><img src="../images/sf/interstellar_s2.jpg"><span class="mv_title">인터스텔라</span></div>
-			<div class="mv"><img src="../images/sf/chappie_s2.jpg"><span class="mv_title">채피</span></div>
-			<div class="mv"><img src="../images/sf/inception_s1.jpg"><span class="mv_title">인셉션</span></div>
-			<div class="mv"><img src="../images/sf/interstellar_s2.jpg"><span class="mv_title">인터스텔라</span></div>
-			<div class="mv"><img src="../images/sf/pixel_s1.jpg"></div>
-			<div class="mv"><img src="../images/sf/equals_s1.jpg"></div>
-			<div class="mv"><img src="../images/sf/ghostintheshell_s1.jpg"></div>
-			<div class="mv"><img src="../images/sf/hollowman_s1.jpg"></div>
-			<div class="mv"><img src="../images/sf/minorityreport_s2.jpg"></div>
-			<div class="mv"><img src="../images/sf/pandorum_s1.jpg"></div> 
-			<div class="mv"><img src="../images/sf/pixel_s1.jpg"></div> 
-			<!-- ↑↑↑↑↑디자인 예시를 위해 만든 코드. for문 결과를 확인하고 지워도 무방↑↑↑↑↑-->
-			
+			<!--for문 여기까지 -->						
     	</div><!-- slider -->
 	</div><!-- container -->
 		<div>
