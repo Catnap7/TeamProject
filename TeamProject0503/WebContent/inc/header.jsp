@@ -11,7 +11,7 @@
 
 		
 		<div class="pay">
-			<a href="../pay/payment.jsp">이용권구매</a>
+			<a href="./pay/pay_result.jsp">이용권구매</a>
 		</div><!--이용권구매 -->
 		
 		<%String m_id=(String)session.getAttribute("m_id");%>
