@@ -21,12 +21,12 @@ public class MemberLoginAction implements Action{
 		
 		MemberDAO mdao = new MemberDAO();
 		String m_id = request.getParameter("m_id");
-		//mdao.getMember(m_id);
+		mdao.getMember(m_id);
 		MemberBean memberbean= mdao.getMember(m_id);
 		
 		
-		/*memberbean.setM_id(request.getParameter("m_id"));
-		memberbean.setM_pass(request.getParameter("m_pass"));*/
+		memberbean.setM_id(request.getParameter("m_id"));
+		memberbean.setM_pass(request.getParameter("m_pass"));
 		
 		response.setContentType("text/html;	charset=UTF-8");
 		PrintWriter out = response.getWriter();
