@@ -1,24 +1,13 @@
 package net.member.db;
 
-import java.net.PasswordAuthentication;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Properties;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-import javax.websocket.Session;
-
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.MimeUtility;
-import com.sun.xml.internal.org.jvnet.mimepull.MIMEMessage;
-
-import net.member.action.EmailConfirm;
-import sun.rmi.transport.Transport;
 public class MemberDAO {
 	
 private Connection getConnection() throws Exception {
@@ -145,10 +134,10 @@ private Connection getConnection() throws Exception {
 			if(rs.next()) {
 				memberbean = new MemberBean(); //자바빈 객체생성
 				//자바빈 멤버변수 id=rs.getString("id");
-				memberbean.setM_id(rs.getString("id"));  
-				memberbean.setM_pass(rs.getString("pass"));  
-				memberbean.setM_name(rs.getString("name"));  
-				memberbean.setM_grade(rs.getInt("grade"));  
+				memberbean.setM_id(rs.getString("m_id"));  
+				memberbean.setM_pass(rs.getString("m_pass"));  
+				memberbean.setM_name(rs.getString("m_name"));  
+				memberbean.setM_grade(rs.getInt("m_grade"));  
 				memberbean.setM_reg_date(rs.getDate("m_reg_date"));
 			}
 			

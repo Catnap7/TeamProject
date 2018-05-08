@@ -23,9 +23,43 @@ public class VipFrontController extends HttpServlet{
 		
 		
 		//주소 비교
+		if(command.equals("/Vip.vi")){
+		  	action = new Vip();
+		  try {
+	            forward = action.execute(request, response);
+	         } catch (Exception e) {
+	            e.printStackTrace();
+	         }
+		}else if(command.equals("/VipResult.vi")){
+		  	action = new VipResult();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		}else if(command.equals("/VipInsert.vi")){
+		  	action = new VipInsert();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		}else if(command.equals("/VipMovieList.vi")){
+		  	action = new VipMovieList();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		}
 		
 		
-			
+		
+		
+		
+		
+		
+		
 		
 		
 		
@@ -39,8 +73,8 @@ public class VipFrontController extends HttpServlet{
 			}
 		}
 		
-	}
 	
+		}
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -52,11 +86,5 @@ public class VipFrontController extends HttpServlet{
 		System.out.println("MemberFrontController doPost()");
 		doProcess(request, response);
 		
-	}
-	
-	
-	
-	
-	
-	
+	}	
 }
