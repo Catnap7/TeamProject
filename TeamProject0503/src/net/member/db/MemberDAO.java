@@ -189,6 +189,12 @@ private Connection getConnection() throws Exception {
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			//예외가 발생하든 말든 상관없이 마무리작업
+			//객체 기억장소 마무리
+		 if(rs!=null)try{rs.close();}catch(SQLException e){e.printStackTrace();}
+		 if(pstmt!=null)try{pstmt.close();}catch(SQLException e){e.printStackTrace();}
+		 if(con!=null)try{con.close();}catch(SQLException e){e.printStackTrace();}
 		}
 		return Echeck;
 	}

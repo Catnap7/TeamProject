@@ -240,7 +240,14 @@ $(document).ready(function(){
 <%
 String id = (String)request.getAttribute("id");
 List<MovieBean> favoritelist = (List)request.getAttribute("favoritelist");
+int favoritecount = ((Integer)request.getAttribute("favoritecount")).intValue();
 MovieDAO mdao = new MovieDAO();
+String classname = null;
+if(favoritecount>=13){
+	classname = "main1";
+}else{
+	classname = "main2";
+}
 %>
 
 
@@ -252,7 +259,7 @@ MovieDAO mdao = new MovieDAO();
 
 
 <!-- 아티클 -->
-<article>
+<article class=<%=classname%>>
 
 <!-- ***********각 슬라이드에 들어갈 영화는 13개씩 지정해놨습니다********** -->
 <!-- 크롬 기준 -->
@@ -372,8 +379,7 @@ MovieDAO mdao = new MovieDAO();
 			<div class="next3 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->	
 	
-
-
+<%if(favoritecount>=13){%>
 <!-- 회원님이 보고싶은 영화 (즐겨찾기)-->
   	<div class="container">  <!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  		
   		<h2>즐겨찾기에 담긴 영화</h2>
@@ -421,7 +427,7 @@ MovieDAO mdao = new MovieDAO();
 							<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
 							<span class="mv_grade"><%=age%></span><!-- 등급 -->
 							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
-							</div> -->
+							</div>
 			</a> 
 		<%} %> 
 			<!--for문 여기까지 -->
@@ -432,7 +438,7 @@ MovieDAO mdao = new MovieDAO();
 			<div class="prev4 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>
 			<div class="next4 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->
-		
+<%}%>		
 			
 	
 <!-- 왓츄 관리자가 추천하는 영화 -->
@@ -482,7 +488,7 @@ MovieDAO mdao = new MovieDAO();
 
 
 
-
+<div class="clear"></div>
 <!-- 푸터 영역 -->
 <jsp:include page="../inc/footer.jsp"/>
 <!-- 푸터 영역 -->

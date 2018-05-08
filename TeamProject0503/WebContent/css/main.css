@@ -1,5 +1,7 @@
 @CHARSET "UTF-8";
-
+.clear {
+	clear: both;
+}
 
 /*전체 설정*/
 *{
@@ -9,11 +11,14 @@
 }
 
 /*아티클 전체 설정*/
-article{
+article.main1{
 	height:2000px;
 	width: auto;
 }
-
+article.main2{
+	height:1500px;
+	width: auto;
+}
 
 /*슬라이더 컨테이너 설정*/
 .container{/* border:1px solid orange; */ 
