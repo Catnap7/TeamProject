@@ -16,6 +16,7 @@ public class VipInsert implements Action{
 		
 		VipBean vipbean = new VipBean();
 		
+		vipbean.setV_date(request.getParameter("v_date"));
 		vipbean.setV_kor_title(request.getParameter("v_kor_title"));
 		vipbean.setV_eng_title(request.getParameter("v_eng_title"));
 		vipbean.setV_year(Integer.parseInt(request.getParameter("v_year")));
@@ -25,15 +26,15 @@ public class VipInsert implements Action{
 		vipbean.setV_time(Integer.parseInt(request.getParameter("v_time")));
 		vipbean.setV_director(request.getParameter("v_director"));
 		vipbean.setV_actor(request.getParameter("v_actor"));
-		vipbean.setV_stroy(request.getParameter("v_story"));
+		vipbean.setV_story(request.getParameter("v_story"));
 		vipbean.setV_video(request.getParameter("v_video"));
+		
 		
 		VipDAO vipdao=new VipDAO();
 		vipdao.insertVip(vipbean);
 		
-		
 		ActionForward forward=new ActionForward();
-		forward.setRedirect(false);
+		forward.setRedirect(true);
 		forward.setPath("VipMovieList.vi");
 		return forward;
 	}
