@@ -24,13 +24,14 @@ $(document).ready(function(){
 	$('form').submit(function(){
 
 	var checked_radio = $('input:radio[name=seat]:checked').val();
+	 
 	if(checked_radio === undefined) // 선택을 하지 않았을 경우
 	{
 	    alert('옵션을 선택해주세요.');
 	    return false;
 	} else {
 	    /* alert(checked_radio + "를 선택하셨습니다."); */
-	    document.getElementById("demo").innerHTML = checked_radio;
+	    document.getElementById("demo").innerHTML = checked_radio; 
 	    return false;
 	}
 	
