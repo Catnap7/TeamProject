@@ -6,12 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import javafx.scene.input.KeyCombination.ModifierValue;
+import net.favorite.db.FavoriteBean;
 
 public class MovieDAO {
 	private Connection getConnection() throws Exception {
@@ -79,7 +81,6 @@ public class MovieDAO {
 		      }
 	      return categoryList;
 	}
-	
 	public MovieBean getMovie(int mv_num){
 		 Connection con = null;
 	      String sql = "";
@@ -108,6 +109,7 @@ public class MovieDAO {
 	        	  moviebean.setMv_actor(rs.getString("mv_actor"));
 	        	  moviebean.setMv_story(rs.getString("mv_story"));
 	        	  moviebean.setMv_video(rs.getString("mv_video"));
+	        	  
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,7 +120,59 @@ public class MovieDAO {
 		}
 		return moviebean;
 	}
-
+/*
+	public Vector getMovie(int mv_num){
+		Connection con=null;
+        PreparedStatement pstmt=null;
+        ResultSet rs=null;
+        PreparedStatement pstmt2=null;
+        ResultSet rs2=null;
+        String sql="";
+        Vector vector=new Vector();
+        List movietList=new ArrayList();
+        List favoriteList=new ArrayList();
+	      try{
+			con = getConnection();
+			sql = "select * from movie"
+					+ " where mv_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, mv_num);
+			rs = pstmt.executeQuery();
+			
+		         //Step.04 객체실행
+			if (rs.next()) {
+			 MovieBean moviebean = new MovieBean();
+				moviebean.setMv_num(mv_num);
+	        	  moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+	        	  moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
+	        	  moviebean.setMv_year(rs.getInt("mv_year"));
+	        	  moviebean.setMv_country(rs.getString("mv_country"));
+	        	  moviebean.setMv_age(rs.getInt("mv_age"));
+	        	  moviebean.setMv_genre(rs.getString("mv_genre"));
+	        	  moviebean.setMv_time(rs.getInt("mv_time"));
+	        	  moviebean.setMv_director(rs.getString("mv_director"));
+	        	  moviebean.setMv_actor(rs.getString("mv_actor"));
+	        	  moviebean.setMv_story(rs.getString("mv_story"));
+	        	  moviebean.setMv_video(rs.getString("mv_video"));
+	        	  movietList.add(moviebean);
+	        	  if(rs2.next()){
+	        		  FavoriteBean favoriteBean = new FavoriteBean();
+	        		  favoriteBean.setF_id(rs2.getString("f_id"));
+	        		  favoriteBean.setF_num(rs2.getInt("f_num"));
+	        		  favoriteList.add(favoriteBean);
+	        	  }
+			}
+			vector.add(movietList);
+			vector.add(favoriteList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+	         if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+	         if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}
+	         if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
+		}
+		return vector;
+	}*/
 	//영화 DB에 넣는 폼
 	public void insertMovie(MovieBean mob){
 

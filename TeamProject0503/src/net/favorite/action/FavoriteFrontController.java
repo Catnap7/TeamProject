@@ -31,8 +31,15 @@ public class FavoriteFrontController extends HttpServlet{
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-		}
+		}else if(command.equals("/FavoriteAction.fa")){
+			action = new FavoriteAction();
+			try{
+			forward=action.execute(request, response);
 			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 		
 		
 		
