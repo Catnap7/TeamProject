@@ -98,6 +98,10 @@ $(document).ready(function(){
 	</form>
 </div>
 
+
+<input type="checkbox"  name="seat1" id="field1" class="mycheckbox" value=<%=""%>  onclick="check()" disabled>
+<label for="field1" class="mycheckbox-label">&nbsp&nbsp&nbsp</label>
+<label><input type="checkbox" class="mycheckbox"  name="seat"  value=<%=""%> id="check" ><span>&nbsp&nbsp&nbsp</span></label>
 <div id="content">
 <table border="1">
 	<tr>

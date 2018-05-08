@@ -1,13 +1,16 @@
 package net.mypage.action;
 
 import java.util.List;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import net.admin.manage.db.MovieBean;
 import net.mypage.db.CouponDAO;
-import net.mypage.db.RatingBean;
-import net.mypage.db.RatingDAO;
+import net.rating.db.RatingBean;
+import net.rating.db.RatingDAO;
 
 public class Myrating implements Action{
 	ActionForward forward;
@@ -18,8 +21,11 @@ public class Myrating implements Action{
 				System.out.println("Myrating execute()");
 				//한글처리
 				request.setCharacterEncoding("utf-8");				
-				RatingBean rb = new RatingBean();
+				RatingBean ratingbean = new RatingBean();
 				RatingDAO rdao = new RatingDAO();
+				
+				
+				
 				HttpSession session=request.getSession();		
 				String id = (String)session.getAttribute("m_id");				
 				int count = rdao.getRatingCount(id);	 				 
@@ -37,6 +43,10 @@ public class Myrating implements Action{
 				int currentPage=Integer.parseInt(pageNum);
 				// 1페이지 10 => 1  2페이지 10 => 11  3페이지 10 => 21
 				int startRow=(currentPage-1)*pageSize+1;
+				
+				
+				Vector vector= new Vector();
+				List<MovieBean> movielist=null;
 				List<RatingBean> ratinglist=null;
 
 				// 마지막행 구하기
@@ -64,12 +74,18 @@ public class Myrating implements Action{
 					if(pageCount<endPage){
 						endPage=pageCount;
 					}
-					ratinglist= rdao.getRatingList(id, startRow, pageSize);						
+					
+					vector= rdao.getRatingList(id, startRow, pageSize);	
+					ratinglist=(List)vector.get(0);
+					movielist=(List)vector.get(1);
 				}
 			
 				
-				request.setAttribute("pageNum", pageNum);
+
 				request.setAttribute("ratinglist", ratinglist);
+				request.setAttribute("movielist", movielist);
+				
+				request.setAttribute("pageNum", pageNum);				
 				request.setAttribute("pageCount", pageCount);
 				request.setAttribute("pageBlock", pageBlock);
 				request.setAttribute("startPage", startPage);

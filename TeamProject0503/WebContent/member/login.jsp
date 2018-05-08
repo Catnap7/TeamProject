@@ -24,8 +24,7 @@
 		
 			<a href="./FindPass.me" class="find_pass">비밀번호 찾기</a>
 		</div>
-		<fieldset>
-			<legend>로그인</legend>
+		
 		<form action="./MemberLoginAction.me" id="join" method="post">
 			<label>
 			<input type="text"  name="m_id" placeholder="이메일 (example@gmail.com)" class="text">
@@ -35,7 +34,7 @@
 			</label>
 			<input type="submit" value="로그인" id="submit" >
 		</form>
-		</fieldset>
+	
 </div>
 </div>
 </body>

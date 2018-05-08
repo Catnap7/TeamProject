@@ -24,9 +24,12 @@ public class Main implements Action{
 			return forward;
 		}
 		FavoriteDAO fdao = new FavoriteDAO();
-		List <MovieBean>favoritelist = fdao.randomFavoriteList(id);		
+		List <MovieBean>favoritelist = fdao.randomFavoriteList(id);	
+		int favoritecount = fdao.getFavoriteCount(id);
+		
 		request.setAttribute("id", id);
 		request.setAttribute("favoritelist", favoritelist);
+		request.setAttribute("favoritecount", favoritecount);
 		
 		forward=new ActionForward();
 		forward.setRedirect(false);

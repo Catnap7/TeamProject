@@ -15,7 +15,7 @@ public class MemberLoginAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
-
+		System.out.println("MemberLoginAction execute");
 		ActionForward forward= new ActionForward();
 		HttpSession session = request.getSession();
 		
@@ -51,8 +51,7 @@ public class MemberLoginAction implements Action{
 				out.println("alert('이메일 인증을 완료해주세요');");
 				out.println("history.back()");
 				out.println("</script>");
-			}
-		else {
+			}else {		
 			session.setAttribute("m_id",memberbean.getM_id());
 			session.setAttribute("m_name",memberbean.getM_name());
 			
