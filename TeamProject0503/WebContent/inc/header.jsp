@@ -9,9 +9,9 @@
 	
 <div class="clear"></div>
 
-		
+
 		<div class="pay">
-			<a href="../pay/payment.jsp">이용권구매</a>
+			<a href="./pay/pay_result.jsp">이용권구매</a>
 		</div><!--이용권구매 -->
 		
 		<%String m_name=(String)session.getAttribute("m_name");%>
@@ -54,5 +54,4 @@
 			</div><!-- 검색창 -->
 		</div><!--메인메뉴 -->
 </header>
-
 <!-- 헤더 영역 -->
