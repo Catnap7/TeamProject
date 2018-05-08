@@ -18,7 +18,7 @@ public class Favorite implements Action{
 		request.setCharacterEncoding("utf-8");								
 		FavoriteDAO fdao = new FavoriteDAO();						
 		HttpSession session=request.getSession();		
-		String id = (String)session.getAttribute("id");
+		String id = (String)session.getAttribute("m_id");
 		
 		if(id==null){
 			forward=new ActionForward();

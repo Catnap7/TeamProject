@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.favorite.action.Favorite;
+
 public class CenterFrontController extends HttpServlet{
 
 
@@ -23,7 +25,23 @@ public class CenterFrontController extends HttpServlet{
 		
 		
 		//주소 비교
-		
+		if(command.equals("/Ceter.ce")){
+			action = new Center();
+			try{
+			forward=action.execute(request, response);
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}else if(command.equals("/AccessTerms.ce")) {
+			action = new AccessTerms();
+			try{
+				forward=action.execute(request, response);
+				
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+		}
 		
 			
 		

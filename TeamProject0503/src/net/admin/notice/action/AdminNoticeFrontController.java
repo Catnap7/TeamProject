@@ -23,7 +23,14 @@ public class AdminNoticeFrontController extends HttpServlet{
 		
 		
 		//주소 비교
-		
+		if(command.equals("/AdminNoticeList.an")) {
+			action = new AdminNoticeList();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 			
 		

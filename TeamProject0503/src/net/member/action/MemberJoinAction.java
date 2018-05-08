@@ -1,16 +1,25 @@
 package net.member.action;
 
+import java.io.PrintWriter;
 import java.sql.Date;
-import java.sql.Timestamp;
+import java.util.Properties;
 
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.sun.org.apache.xml.internal.utils.SystemIDResolver;
 
 import net.member.db.MemberBean;
 import net.member.db.MemberDAO;
+import util.Gmail;
 
 public  class MemberJoinAction implements Action{
 
@@ -26,6 +35,7 @@ public  class MemberJoinAction implements Action{
 		memberbean.setM_name(request.getParameter("m_name"));
 		memberbean.setM_id_num1(Integer.parseInt(request.getParameter("m_num1")));
 		memberbean.setM_id_num2(Integer.parseInt(request.getParameter("m_num2")));
+		memberbean.setM_grade(0);
 		memberbean.setM_reg_date(new Date(System.currentTimeMillis()));
 		MemberDAO memberdao = new MemberDAO();
 		memberdao.insertMember(memberbean);
@@ -34,12 +44,66 @@ public  class MemberJoinAction implements Action{
 		HttpSession session = request.getSession();
 		session.setAttribute("m_id", m_id);
 		
-		
-		//이동 ActionForward forward 객체생성
+	
+	int Echeck = memberdao.EmailChecked(m_id);
+	if(Echeck==1) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('이미 인증 된 회원입니다.');");
+		script.println("location.href = './Main.me'");
+		script.println("</script>");
+		script.close();		
+		return null;
+	}
+	// 사용자에게 보낼 메시지를 기입합니다.
+	String host = "http://localhost:8080/TimProject/EmailCheckAction.me";
+	String from = "wkdwodn22@gmail.com";
+	String fromname = "와츄";
+	String to = m_id;
+	String subject = " 이메일 확인 메일입니다.";
+	String content = "다음 링크에 접속하여 이메일 확인을 진행하세요." +
+		"<a href='" + host +"?m_id="+m_id + "'>이메일 인증하기</a>";
+		// SMTP에 접속하기 위한 정보를 기입합니다.
+	Properties p = new Properties();
+	p.put("mail.smtp.user", from);
+	p.put("mail.smtp.host", "smtp.googlemail.com");
+	p.put("mail.smtp.port", "465");
+	p.put("mail.smtp.starttls.enable", "true");
+	p.put("mail.smtp.auth", "true");
+	p.put("mail.smtp.debug", "true");
+	p.put("mail.smtp.socketFactory.port", "465");
+	p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+	p.put("mail.smtp.socketFactory.fallback", "false");
+	try{
+	    Authenticator auth = new Gmail();
+	    Session ses = Session.getInstance(p, auth);
+	    ses.setDebug(true);
+	    MimeMessage msg = new MimeMessage(ses); 
+	    msg.setSubject(subject);
+	    //Address fromAddr = new InternetAddress(from);
+	    
+	    msg.setFrom(new InternetAddress
+                (from, MimeUtility.encodeText(fromname,"utf-8","B")));
+	    
+	    Address toAddr = new InternetAddress(to);
+	    msg.addRecipient(Message.RecipientType.TO, toAddr);
+	    msg.setContent(content, "text/html;charset=UTF-8");
+	    Transport.send(msg);
+	} catch(Exception e){
+	    e.printStackTrace();
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('오류가 발생했습니다..');");
+		script.println("history.back();");
+		script.println("</script>");
+		script.close();	
+		return null;
+	}
+
 		ActionForward forward= new ActionForward();
-		//방식, 경로 저장 "./MemberLogin.me" 저장
+		
 		forward.setRedirect(false);
-		forward.setPath("./EmailCheck.me");
+		forward.setPath("./EmailSend.me");
 		
 		return forward;
 	}

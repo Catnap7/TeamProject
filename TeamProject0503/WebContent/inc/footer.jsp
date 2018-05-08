@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script type="text/javascript">
 
+  function terms() {
+	window.open("./AccessTerms.ce", "", "width=750,height=900,left=620,top=50,scrollbars=yes");
+}
+</script>
 
 <footer>
 <hr>
@@ -10,8 +15,8 @@
 </div>
 
 <div class="use">
-	<a href="#">왓츄 서비스 이용약관</a> | 
-	<a href="#">고객센터</a>
+	<a onclick="terms()">왓츄 서비스 이용약관</a> | 
+	<a href="./Ceter.ce">고객센터</a>
 </div>
 
 <div class="clear"></div>

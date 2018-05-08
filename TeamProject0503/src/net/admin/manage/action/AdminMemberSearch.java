@@ -16,7 +16,7 @@ public class AdminMemberSearch implements Action {
 		request.setCharacterEncoding("UTF-8");
 		
 		AdminMemberDAO amdao = new AdminMemberDAO();
-		int search = Integer.parseInt(request.getParameter("search"));
+		String search = request.getParameter("search");
 		int count = amdao.getAdminMemberCount(search);
 		int pageSize = 10;
 		String pageNum = request.getParameter("pageNum");

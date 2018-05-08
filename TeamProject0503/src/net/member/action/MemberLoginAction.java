@@ -57,7 +57,7 @@ public class MemberLoginAction implements Action{
 			session.setAttribute("m_name",memberbean.getM_name());
 			
 			forward.setRedirect(true);
-			forward.setPath("./Main.me");
+			forward.setPath("./Main.ma");
 			}
 	
 	}

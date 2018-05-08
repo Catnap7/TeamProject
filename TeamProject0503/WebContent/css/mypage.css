@@ -281,30 +281,46 @@ span.star_rating {
 	width: 200px;
 }
 
-.mypage_alram {border:1px solid #a0a0a0;
+.mypage_alram {border:1px solid #a0a0a0;	 
 	border-radius:30px;
 	margin: 80px auto 5px auto;
 	padding: 50px;
 	position: relative;
 	left: 0px;
-	top: 100px; 
-	width:300px;
+	top: 50px; 
+	width:800px;
 /* 	height: 180px; */
-	height: 280px;
+	height: 300px;
 	box-shadow:5px 5px #a0a0a0;
 }
 
-.alram_info { 
-/* 	border:1px solid blue;  */
-	margin:50px auto 100px auto;
-	width: 320px;
+.mypage_alram .prev_next {
+	text-align: center;	
+}
+
+.mypage_alram .prev_next a {
+	position: relative;
+	top: 230px; 
+	text-transform: capitalize;
+	margin: 0 10px;
+	font-size: 20px;
+	text-decoration: none;
+	color: #000;
+	
+}
+
+.alram_info {
+	
+	margin:40px auto 20px auto;
+	width: 820px;
 	position: absolute;
 	left: 40px;
-	top: 60px;
+	top: 50px;
 	border-collapse: collapse;
 }
 
 .alram_info th {
+	
 	height: 50px;
 	letter-spacing: 0.5px;
 	background-color: #50d4aa;
@@ -314,15 +330,14 @@ span.star_rating {
 }
 
 .alram_info td {
-	background-color: #e8e8e8;
-	padding: 20px;
+	background-color: #e8e8e8;						
+	padding: 8px;
 	color: #333;
-	font-size: 18px;
+	font-size: 17px;
 	font-weight: bold;
 	letter-spacing: 1px;
 	text-align: center;
-	height: 90px;
-	border-radius: 0 0 20px 20px;
+	height: 12px;	
 	border: 1px solid #333;
 }
 
@@ -362,7 +377,7 @@ span.star_rating {
 	background-color: #e8e8e8;
 	padding: 20px;
 	color: #333;
-	font-size: 18px;
+	font-size: 17px;
 	font-weight: bold;
 	letter-spacing: 1px;
 	text-align: center;

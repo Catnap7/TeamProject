@@ -1,7 +1,5 @@
 package net.member.action;
 
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,9 +11,11 @@ public class MemberLogoutAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		session.invalidate();
+		
 		ActionForward forward= new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./MemberLogin.me");
+		forward.setRedirect(true);
+		forward.setPath("./start.st");
+		
 		return forward;
 	}
 	

@@ -7,18 +7,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="./css/default.css" rel="stylesheet" type="text/css">
+<link href="./css/mypage.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <%
 List<CouponBean> couponlist = (List)request.getAttribute("couponlist");
+String pageNum_s= (String)request.getAttribute("pageNum");
+int pageNum = Integer.parseInt(pageNum_s);
+int pageCount = ((Integer)request.getAttribute("pageCount")).intValue();
+int pageBlock = ((Integer)request.getAttribute("pageBlock")).intValue();
+int startPage = ((Integer)request.getAttribute("startPage")).intValue();
+int endPage = ((Integer)request.getAttribute("endPage")).intValue();
+int count = ((Integer)request.getAttribute("endPage")).intValue();
 %>
-<h1>나의 쿠폰함</h1>
-<table border="1">
+
+<!-- 헤더영역 -->
+<jsp:include page="../inc/header.jsp"/>
+<!-- 헤더영역 -->
+
+<div class="mypage_">
+	<div class="mypage_coupon">
+<h2>나의 쿠폰함</h2>
+<table border="1" class="coupon_info">
 <tr><th>번호</th><th>쿠폰명</th><th>만료일자</th></tr>
 <%
-if(couponlist == null){
+if(count == 0){
 %>
+<!-- 원래 들어가야하는 문장 -->
 <tr><td colspan="3">쿠폰이 없습니다.</td></tr>
+<!-- 원래 들어가야하는 문장 -->
 <% 
 }else{
 	String name=null;
@@ -41,5 +59,35 @@ if(couponlist == null){
 }
 %>
 </table>
+	
+	</div>
+<%-- <%
+if(couponlist != null){
+%>	
+	 <div class="prev_next">
+		<%
+		if(startPage>pageBlock){			
+			%><a href="./Coupon.my?pageNum=<%=startPage-pageBlock%>">prev</a><%
+		}
+		for(int i=startPage;i<=endPage;i++) {
+			%><a href="./Coupon.my?pageNum=<%=i%>"><%=i%></a><%
+		}
+		if(pageCount>endPage){
+			%><a href="./Coupon.my?pageNum=<%=startPage+pageBlock%>">next</a><%
+		}
+		%>
+	</div>
+<%
+}
+%>	 --%>
+</div>
+
+
+	
+<div class="clear"></div>
+<!-- 푸터 영역 -->
+<jsp:include page="../inc/footer.jsp"/>
+<!-- 푸터 영역 -->
+
 </body>
 </html>
