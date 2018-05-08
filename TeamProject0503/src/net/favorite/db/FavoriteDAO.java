@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.sql.DriverManager;
 
 import javax.naming.Context;
@@ -164,6 +165,82 @@ public class FavoriteDAO {
 	         if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
 		}
 		return favoriteBean;
+}
+
+	public List randomFavoriteList(String id){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		List favoriteList=new ArrayList();
+		int[]randomNum=new int[13];
+		int check=0;
+		try {
+			con=getConnection();
+			//해당 아이디의 즐겨찾기 내역 들고오기
+			////////////////////////////////////db완성되면 꼭 수정해야 하는곳[아이디 생성되고 세션값받을때]
+			sql="select f_num from favorite where f_id=? order by f_num desc";
+					
+			//sql="select mv_num from movie order by mv_num desc";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			rs=pstmt.executeQuery();
+			//영화 마지막 번호 들고오기
+			int lastNum=0;
+			if(rs.next()){
+				lastNum=rs.getInt("f_num");
+			}
+
+			for(int i=0; i<randomNum.length;i++){
+				Random r= new Random();
+				//randomNum[인덱스]=랜덤한 숫자 하나 넣을것.
+				randomNum[i]=r.nextInt(lastNum);
+
+				//인덱스에 저장된 넘버가 디비에 있는지 확인
+				sql="select * from movie where mv_num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, randomNum[i]);
+				rs=pstmt.executeQuery();
+				if(rs.next()){
+					//이러면 패스.
+					//중복 제거
+					for(int j=0;j<i; j++){
+						if(randomNum[i]==randomNum[j]){
+							check=-1;
+						}
+					}
+				}else{
+					check=-1;
+					//다시 랜덤생성. 
+				}
+				
+				//중복이 없을때, db에도 있는 번호일때, 되돌려줄 moviebean저장
+				if(check!=-1){
+					MovieBean moviebean= new MovieBean();
+					moviebean.setMv_num(randomNum[i]);
+					moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
+					moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+					moviebean.setMv_genre(rs.getString("mv_genre"));
+					moviebean.setMv_year(rs.getInt("mv_year"));
+					favoriteList.add(moviebean);
+				}else{
+					check=0;
+					i--;
+				}
+			}
+//			무비리스트에 다 다른 주소가 저장되었는지 확인			
+//			for (int j = 0; j < 10; j++) {
+//				System.out.println(movieList.get(j));
+//			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		return favoriteList;
 	}
 	
 }

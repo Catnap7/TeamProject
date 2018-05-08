@@ -34,8 +34,8 @@
 
 	<nav id="menu_bar">
 	<ul>
-		<li><a href="../admin_manage_list.jsp">DB</a></li>
-		<li><a href="../notice/admin_notice_list.jsp">공지</a></li>
+		<li><a href="./AdminManageList.am">DB</a></li>
+		<li><a href="./AdminNoticeList.an">공지</a></li>
 		<li><a href="#">채팅</a></li>
 	</ul>
 	</nav>
@@ -47,9 +47,9 @@
 
 		<div class="search_type">
 			<select>
-				<option>ID</option>
-				<option>닉네임</option>
-				<option>등급</option>
+				<option value="1">ID</option>
+				<option value="2">닉네임</option>
+				<option value="3">등급</option>
 			</select>
 		</div>
 
@@ -63,7 +63,9 @@
 		</div>
 
 		<div class="orderby">
-			<a href="./AdminMemberSort.am?sort=1">이름순</a> | <a href="./AdminMemberSort.am?sort=2">등급순</a> | <a href="./AdminMemberSort.am?sort=3">가입순</a>
+			<a href="./AdminMemberSort.am?sort=1">이름순</a> | <a
+				href="./AdminMemberSort.am?sort=2">등급순</a> | <a
+				href="./AdminMemberSort.am?sort=3">가입순</a>
 		</div>
 
 		<table class="db_list">

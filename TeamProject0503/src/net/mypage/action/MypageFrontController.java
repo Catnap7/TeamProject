@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 public class MypageFrontController extends HttpServlet{
 
 
-
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("MypageFrontController doProcess()");
 		String requestURI=request.getRequestURI();

@@ -1,24 +1,24 @@
 package net.member.db;
 
-import java.net.PasswordAuthentication;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-import javax.websocket.Session;
 
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.MimeUtility;
-import com.sun.xml.internal.org.jvnet.mimepull.MIMEMessage;
 
-import net.member.action.EmailConfirm;
-import sun.rmi.transport.Transport;
 public class MemberDAO {
 	
 private Connection getConnection() throws Exception {
@@ -37,7 +37,7 @@ private Connection getConnection() throws Exception {
 	 try {
 		con=getConnection();
 		
-		sql = "insert into member(m_id, m_pass, m_name,m_id_num1,m_id_num2,m_pay,m_reg_date) values(?,?,?,?,?,?,?)";
+		sql = "insert into member(m_id, m_pass, m_name,m_id_num1,m_id_num2,m_pay,m_grade, m_reg_date) values(?,?,?,?,?,?,?,?)";
 		 pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, memberbean.getM_id());			
 		pstmt.setString(2, memberbean.getM_pass());		
@@ -45,10 +45,9 @@ private Connection getConnection() throws Exception {
 		pstmt.setInt(4, memberbean.getM_id_num1());	
 		pstmt.setInt(5, memberbean.getM_id_num2());	
 		pstmt.setInt(6, 0);	//pay
-		pstmt.setDate(7, memberbean.getM_reg_date());
-		
+		pstmt.setInt(7, 0); //grade	
+		pstmt.setDate(8, memberbean.getM_reg_date());
 		pstmt.executeUpdate();
-		
 	}catch(Exception e) {
 		//예외를 잡아서 처리 --> 메세지 출력 
 		e.printStackTrace();
@@ -103,7 +102,7 @@ private Connection getConnection() throws Exception {
 		try {
 			con=getConnection();
 			
-		sql="select * from member where m_id = ?";
+		sql="select * from member where m_id=?";
 		 pstmt= con.prepareStatement(sql);
 		pstmt.setString(1, m_id);
 		 rs= pstmt.executeQuery();
@@ -144,11 +143,10 @@ private Connection getConnection() throws Exception {
 			
 			if(rs.next()) {
 				memberbean = new MemberBean(); //자바빈 객체생성
-				//자바빈 멤버변수 id=rs.getString("id");
-				memberbean.setM_id(rs.getString("id"));  
-				memberbean.setM_pass(rs.getString("pass"));  
-				memberbean.setM_name(rs.getString("name"));  
-				memberbean.setM_grade(rs.getInt("grade"));  
+				memberbean.setM_id(rs.getString("m_id"));  
+				memberbean.setM_pass(rs.getString("m_pass"));  
+				memberbean.setM_name(rs.getString("m_name"));  
+				memberbean.setM_grade(rs.getInt("m_grade"));  
 				memberbean.setM_reg_date(rs.getDate("m_reg_date"));
 			}
 			
@@ -161,8 +159,11 @@ private Connection getConnection() throws Exception {
 			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
 			if(rs!=null)try {rs.close();}catch(SQLException ex) {};
 		}
+		
 		return memberbean;
+	
 	}
+	
 	public int EmailChecked(String m_id){
 		PreparedStatement pstmt = null;
 		ResultSet rs =null;
@@ -212,8 +213,7 @@ private Connection getConnection() throws Exception {
 			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
 		}
 	}
-}
-/*
+
 	public void passUpdateMember(String m_pass,String m_id){			
 		Connection con=null;
 		String sql="";
@@ -225,12 +225,8 @@ private Connection getConnection() throws Exception {
 		pstmt.setString(2,m_id);
 		pstmt.executeUpdate();			
 		}catch(Exception e) {
-			//占쎌굙占쎌뇚 占쎄문疫꿸퀡�늺 癰귨옙占쎈땾 e占쎈퓠 占쏙옙占쎌삢
-			//占쎌굙占쎌뇚�몴占� 占쎌삜占쎈툡占쎄퐣 筌ｌ꼶�봺 -> 筌롫뗄�뻻筌욑옙 �빊�뮆�젾
 			e.printStackTrace();
 			}finally{
-				//占쎌굙占쎌뇚揶쏉옙 獄쏆뮇源�占쎈릭占쎈군 筌띾Ŧ諭� 占쎄맒�꽴占쏙옙毓억옙�뵠 筌띾뜄龜�뵳�딆삂占쎈씜 => 疫꿸퀣堉뀐옙�삢占쎈꺖 占쎌젟�뵳占�
-				//揶쏆빘猿� 疫꿸퀣堉뀐옙�삢占쎈꺖 筌띾뜄龜�뵳占�
 			 if(pstmt!=null){
 				try{pstmt.close();						
 				}catch(SQLException e){
@@ -243,15 +239,15 @@ private Connection getConnection() throws Exception {
 						e.printStackTrace();
 					 }
 					}				
-			}*/
-	//end updateMember
-/*	public String connectEmail(String m_id){
+			}
+	}//end  of passUpdateMember
+	public String connectEmail(String m_id){
 		String to1=m_id; // 
 		String host="smtp.naver.com"; // 
 		String subject="임시비밀번호 발급"; // 
 		String fromName="관리자"; // 
 		String from="lhw4417@naver.com"; 
-		String authNum=EmailConfirm.authNum(); // 
+		String authNum=authNum(); // 
 		String content="임시비밀번호 발급 ["+authNum+"]"; //         
 		try{
 			passUpdateMember(authNum,to1);
@@ -269,20 +265,21 @@ private Connection getConnection() throws Exception {
 		Session mailSession 
            = Session.getInstance(props,new javax.mail.Authenticator(){
 			    protected PasswordAuthentication getPasswordAuthentication(){
-				    return new PasswordAuthentication("lhw4417","dnjsWld53"); // naver�④쑴�젟
+				    return new PasswordAuthentication
+                                        ("lhw4417","dnjsWld53"); // naver�④쑴�젟
 			}
 		});
 		
-		Message msg = new MIMEMessage(mailSession);
+		Message msg = new MimeMessage(mailSession);
 		InternetAddress []address1 = {new InternetAddress(to1)};
 		msg.setFrom(new InternetAddress
                       (from, MimeUtility.encodeText(fromName,"utf-8","B")));
 		msg.setRecipients(Message.RecipientType.TO, address1); // 獄쏆룆�뮉占쎄텢占쎌뿺 占쎄퐬占쎌젟
-		msg.setSubject(subject); // 占쎌젫筌뤴뫗苑뺧옙�젟
-		msg.setSentDate(new java.util.Date()); // 癰귣�沅∽옙�뮉 占쎄텊筌욑옙 占쎄퐬占쎌젟
+		msg.setSubject(subject); 
+		msg.setSentDate(new java.util.Date());
 		msg.setContent(content,"text/html; charset=utf-8"); // 占쎄땀占쎌뒠占쎄퐬占쎌젟
 		
-		Transport.send(msg); // 筌롫뗄�뵬癰귣�沅→묾占�
+		Transport.send(msg); 
 		}catch(MessagingException e){
 			e.printStackTrace();
 		}catch(Exception e){
@@ -298,5 +295,19 @@ private Connection getConnection() throws Exception {
 			buffer.append(num);
 		}
 		return buffer.toString();
-	}
-}*/
+	} //end of authNum()
+	
+	
+}
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+

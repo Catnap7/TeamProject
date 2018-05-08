@@ -294,11 +294,11 @@ span.star_rating {
 	box-shadow:5px 5px #a0a0a0;
 }
 
-.prev_next {
+.mypage_alram .prev_next {
 	text-align: center;	
 }
 
-.prev_next a {
+.mypage_alram .prev_next a {
 	position: relative;
 	top: 230px; 
 	text-transform: capitalize;

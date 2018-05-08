@@ -1,6 +1,5 @@
 package net.member.action;
 
-import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,22 +13,18 @@ public class EmailCheckAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		MemberDAO memberdao = new MemberDAO();
-		String id= request.getParameter("m_id");
-		MemberBean memberbean = memberdao.getMember(id);
+		String m_id= request.getParameter("m_id");
+		MemberBean memberbean = memberdao.getMember(m_id);
+		System.out.println("m_id");
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
+
 		
-		if (id==null) {
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('로그인을 해주세요.');");
-			script.println("location.href = './MemberLogin.me'");
-			script.println("</script>");
-			script.close();
-			return null;
-		}
-			session.setAttribute("m_id",id);
-			memberdao.setUserEmailChecked(id);
+			
+			memberdao.setUserEmailChecked(m_id);
+			session.setAttribute("m_id",memberbean.getM_id());
+			session.setAttribute("m_name",memberbean.getM_name());
+			
 			forward.setRedirect(false);
 			forward.setPath("./Main.me");
 			return forward;

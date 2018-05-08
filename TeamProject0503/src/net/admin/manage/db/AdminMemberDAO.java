@@ -58,7 +58,7 @@ public class AdminMemberDAO {
 		return lmb;
 	}//End getAdminMemberList
 	
-	public List<MemberBean> getAdminMemberList(int startRow, int pageSize, int search) {
+	public List<MemberBean> getAdminMemberList(int startRow, int pageSize, String search) {
 		List<MemberBean> lmb = new ArrayList<MemberBean>();
 		Connection con = null;
 		String sql = "";
@@ -68,9 +68,9 @@ public class AdminMemberDAO {
 			con = getConnection();
 			sql = "select * from member where m_grade like ? OR m_id like ? OR m_name like? order by m_id desc limit ?, ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, search);
-			pstmt.setInt(2, search);
-			pstmt.setInt(3, search);
+			pstmt.setString(1, "%"+search+"%");
+			pstmt.setString(2, "%"+search+"%");
+			pstmt.setString(3, "%"+search+"%");
 			pstmt.setInt(4, startRow);
 			pstmt.setInt(5, pageSize);
 			rs = pstmt.executeQuery();
@@ -138,7 +138,7 @@ public class AdminMemberDAO {
 		return count;
 	}//End getAdminMemberCount()
 	
-	public int getAdminMemberCount(int search){
+	public int getAdminMemberCount(String search){
 		Connection con = null;
 		String sql = "";
 		PreparedStatement pstmt = null;
@@ -148,7 +148,7 @@ public class AdminMemberDAO {
 			con = getConnection();
 			sql = "select count(*) from member where m_grade = ? OR m_id = ? OR m_name = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, search);
+			pstmt.setString(1, "%"+search+"%");
 			pstmt.setString(2, "%"+search+"%");
 			pstmt.setString(3, "%"+search+"%");
 			rs = pstmt.executeQuery();
@@ -172,7 +172,7 @@ public class AdminMemberDAO {
 		ResultSet rs = null;
 		try {
 			con = getConnection();
-			sql = "select * from member order by ? asc";
+			sql = "select * from member order by ? desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, sort);
 			rs = pstmt.executeQuery();

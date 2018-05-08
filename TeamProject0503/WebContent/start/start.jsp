@@ -69,10 +69,6 @@ body{
 		font-size: 1.2em;	
 	}
 
-
-
-
-
 #pic_caption{
 	background-image:none;
 	font-weight: bold;
@@ -80,8 +76,6 @@ body{
 	right:0; bottom:0;
 	
 }
-
-
 </style>
 </head>
 <body>

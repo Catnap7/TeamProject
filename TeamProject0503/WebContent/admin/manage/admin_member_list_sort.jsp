@@ -7,19 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="../../css/default.css" rel="stylesheet" type="text/css">
-<link href="../../css/admin.css" rel="stylesheet" type="text/css">
+<link href="./css/default.css" rel="stylesheet" type="text/css">
+<link href="./css/admin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
 	<%
-		List<MemberBean> AdminMemberList = (List) request.getAttribute("AdminMemberList");
-		int count = ((Integer) request.getAttribute("count")).intValue();
-		String pageNum = (String) request.getAttribute("pageNum");
-		int pageCount = ((Integer) request.getAttribute("pageCount")).intValue();
-		int pageBlock = ((Integer) request.getAttribute("pageBlock")).intValue();
-		int startPage = ((Integer) request.getAttribute("startPage")).intValue();
-		int endPage = ((Integer) request.getAttribute("endPage")).intValue();
+		List<MemberBean> AdminMemberSort = (List) request.getAttribute("AdminMemberSort");
 	%>
 	<script type="text/javascript">
 		function del(id) {
@@ -34,15 +28,15 @@
 
 	<nav id="menu_bar">
 	<ul>
-		<li><a href="../admin_manage_list.jsp">DB</a></li>
-		<li><a href="../notice/admin_notice_list.jsp">공지</a></li>
+		<li><a href="./AdminManageList.am">DB</a></li>
+		<li><a href="./AdminNoticeList.an">공지</a></li>
 		<li><a href="#">채팅</a></li>
 	</ul>
 	</nav>
 
 	<div id="content">
 		<h1>
-			member list [<%=count%>]
+			member list []
 		</h1>
 
 		<div class="search_type">
@@ -57,13 +51,15 @@
 			<form action="./AdminMemberSearch.am">
 				<input type="text" placeholder="Search.." name="search">
 				<button type="submit" class="searchBtn">
-					<img src="../../images/search.png" width="20px" height="20px">
+					<img src="./images/search.png" width="20px" height="20px">
 				</button>
 			</form>
 		</div>
 
 		<div class="orderby">
-			<a href="./AdminMemberSort.am?sort=1">이름순</a> | <a href="./AdminMemberSort.am?sort=2">등급순</a> | <a href="./AdminMemberSort.am?sort=3">가입순</a>
+			<a href="./AdminMemberSort.am?sort=1">이름순</a> | <a
+				href="./AdminMemberSort.am?sort=2">등급순</a> | <a
+				href="./AdminMemberSort.am?sort=3">가입순</a>
 		</div>
 
 		<table class="db_list">
@@ -75,8 +71,8 @@
 				<th class="th6">내보내기</th>
 			</tr>
 			<%
-				for (int i = 0; i < AdminMemberList.size(); i++) {
-					MemberBean mb = (MemberBean) AdminMemberList.get(i);
+				for (int i = 0; i < AdminMemberSort.size(); i++) {
+					MemberBean mb = (MemberBean) AdminMemberSort.get(i);
 			%>
 			<tr>
 				<td><%=mb.getM_id()%></td>
@@ -105,31 +101,6 @@
 		</table>
 
 		<div class="prev_next">
-			<%
-				// 이전
-				if (startPage > pageBlock) {
-			%>
-			<a
-				href="./AdminMemberListAction.am?pageNum=<%=startPage - pageBlock%>">[이전]</a>
-			<%
-				}
-
-				// 1~10, 11~20, 21~30
-				for (int i = startPage; i <= endPage; i++) {
-			%>
-			<a href="./AdminMemberListAction.am?pageNum=<%=i%>">[<%=i%>페이지]
-			</a>
-			<%
-				}
-
-				// 다음
-				if (endPage < pageCount) {
-			%>
-			<a
-				href="./AdminMemberListAction.am?pageNum=<%=startPage + pageBlock%>">[다음]</a>
-			<%
-				}
-			%>
 		</div>
 	</div>
 
