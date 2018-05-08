@@ -23,7 +23,7 @@ public class Rating implements Action{
 		
 		RatingDAO rdao= new RatingDAO();
 		//List movieList=rdao.randomMovieList(ra_id);
-		List movielist=rdao.randomMovieList();
+		List movielist=rdao.randomMovieList(ra_id);
 		
 		//id넣을때, 
 		

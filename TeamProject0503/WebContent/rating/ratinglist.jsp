@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<title>Insert title here</title>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/rating.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
@@ -45,6 +46,9 @@ for(int i=0;i<movielist.size();i++){
 	MovieBean moviebean=(MovieBean)movielist.get(i);
 	int mv_num=moviebean.getMv_num();
 	
+	String imgname = moviebean.getMv_eng_title().replaceAll(" " , "");
+	imgname = imgname.replaceAll("\\p{Z}", "");
+	
 	/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/
 	String img_genre= "";
 	if(moviebean.getMv_genre().equals("animation")){
@@ -77,7 +81,7 @@ for(int i=0;i<movielist.size();i++){
 	%>
 
 		<div class="movie_sec_inner">
-			<img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replace(" ","") %>_p.jpg" width="250px" height="350px"><br>
+			<img src="./images/<%=img_genre%>/<%=imgname %>_p.jpg" width="250px" height="350px"><br>
 			<div class="star">
 				<form action="" id="starform<%=mv_num %>">
 				<input type="hidden" name="ra_p_num" value="<%=mv_num %>">
