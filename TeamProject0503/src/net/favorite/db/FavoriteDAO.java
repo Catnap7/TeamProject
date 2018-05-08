@@ -14,7 +14,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import net.admin.manage.db.MovieBean;
-import net.mypage.db.CouponBean;
+
 
 public class FavoriteDAO {
 	//디비연결 메서드
@@ -174,8 +174,16 @@ public class FavoriteDAO {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		String sql="";
-		List favoriteList=new ArrayList();
-		int[]randomNum=new int[13];
+		int[]randomNum=null;
+		int[]favorite = new int[getFavoriteCount(id)];
+		
+		if(getFavoriteCount(id)>=13){
+			randomNum=new int[13];	
+		}else{
+			randomNum=new int[getFavoriteCount(id)];		
+		}
+						
+		List favoriteList=new ArrayList();		 
 		int check=0;
 		try {
 			con=getConnection();
@@ -188,20 +196,22 @@ public class FavoriteDAO {
 			pstmt.setString(1,id);
 			rs=pstmt.executeQuery();
 			//영화 마지막 번호 들고오기
-			int lastNum=0;
-			if(rs.next()){
-				lastNum=rs.getInt("f_num");
+			int Num=0;			
+			while(rs.next()){
+				favorite[Num]=rs.getInt("f_num");
+				Num++;
 			}
 
 			for(int i=0; i<randomNum.length;i++){
 				Random r= new Random();
 				//randomNum[인덱스]=랜덤한 숫자 하나 넣을것.
-				randomNum[i]=r.nextInt(lastNum);
+				randomNum[i]=favorite[r.nextInt(favorite.length)];
 
 				//인덱스에 저장된 넘버가 디비에 있는지 확인
-				sql="select * from movie where mv_num=?";
+				sql="select * from movie join favorite on mv_num = f_num where f_num=? and f_id=?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, randomNum[i]);
+				pstmt.setString(2, id);
 				rs=pstmt.executeQuery();
 				if(rs.next()){
 					//이러면 패스.
@@ -227,7 +237,7 @@ public class FavoriteDAO {
 					favoriteList.add(moviebean);
 				}else{
 					check=0;
-					i--;
+					i--;									
 				}
 			}
 //			무비리스트에 다 다른 주소가 저장되었는지 확인			
@@ -243,6 +253,53 @@ public class FavoriteDAO {
 			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
 		}
 		return favoriteList;
-	}
+	}//end random
+	
+	public int getFavoriteCount(String id){
+		 Connection con=null;
+		 String sql="";
+		 PreparedStatement pstmt=null;
+		 ResultSet rs=null;
+		 int count = 0;
+		 try{ //예외가 발생할 것 같은 명령, 	필수적으로 외부파일접근, 디비접근
+				con = getConnection();
+				sql="select count(*) as count from favorite where f_id=?";				 				 
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()){
+					count = rs.getInt("count");
+				}
+				
+			} catch(Exception e) {
+					//예외 생기면 변수 e에 저장
+					//예외를 잡아서 처리 -> 메시지 출력
+					e.printStackTrace();
+					}finally{
+						//예외가 발생하든 말든 상관없이 마무리작업
+						//객체 기억장소 마무리
+						
+						if(rs!=null){
+							try{rs.close();
+							}catch(SQLException e){
+								e.printStackTrace();
+							 }
+							}//end if
+						if(pstmt!=null){
+							try{pstmt.close();						
+							}catch(SQLException e){
+								e.printStackTrace();
+							}
+						 }//end if
+							if(con!=null){
+								try{con.close();
+								}catch(SQLException e){
+									e.printStackTrace();
+								 }
+								}//end if
+					}
+		 return count;
+	 }//end count
 	
 }

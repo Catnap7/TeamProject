@@ -143,6 +143,7 @@ private Connection getConnection() throws Exception {
 			
 			if(rs.next()) {
 				memberbean = new MemberBean(); //자바빈 객체생성
+
 				memberbean.setM_id(rs.getString("m_id"));  
 				memberbean.setM_pass(rs.getString("m_pass"));  
 				memberbean.setM_name(rs.getString("m_name"));  
@@ -170,7 +171,6 @@ private Connection getConnection() throws Exception {
 		int Echeck=0;
 		String sql ="";
 		Connection con = null;
-		MemberBean memberbean = null;
 		try {
 			con=getConnection();
 			sql = "SELECT m_grade FROM member WHERE m_id=?";
@@ -179,7 +179,7 @@ private Connection getConnection() throws Exception {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
-						if(rs.getInt("m_grade")==1) {
+						if(rs.getInt("m_grade")==1 ||rs.getInt("m_grade")==2) {
 							Echeck=1;
 						}else {
 							Echeck=0;
@@ -189,6 +189,12 @@ private Connection getConnection() throws Exception {
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			//예외가 발생하든 말든 상관없이 마무리작업
+			//객체 기억장소 마무리
+		 if(rs!=null)try{rs.close();}catch(SQLException e){e.printStackTrace();}
+		 if(pstmt!=null)try{pstmt.close();}catch(SQLException e){e.printStackTrace();}
+		 if(con!=null)try{con.close();}catch(SQLException e){e.printStackTrace();}
 		}
 		return Echeck;
 	}
