@@ -143,6 +143,7 @@ private Connection getConnection() throws Exception {
 			
 			if(rs.next()) {
 				memberbean = new MemberBean(); //자바빈 객체생성
+
 				memberbean.setM_id(rs.getString("m_id"));  
 				memberbean.setM_pass(rs.getString("m_pass"));  
 				memberbean.setM_name(rs.getString("m_name"));  

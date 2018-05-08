@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>INTRO</title>
+<title>왓츄</title>
 <style type="text/css">
 
 
@@ -12,7 +12,7 @@
 	margin: 0;
 	padding:0;
 	box-sizing: border-box;
-	background-image: url("./images/denise-jans-563121-unsplash.jpg");
+	background-image: url("./images/intro_cover.jpg");
 	background-repeat: none;
 	background-size:cover;
 }
@@ -26,6 +26,7 @@ body{
 
 .start{
 	text-align:center;
+	margin: 0 auto;
 	position:absolute;
 	background-image:none;
 	top:30%; left:0%; bottom:0%; right:0%;
@@ -34,20 +35,21 @@ body{
 		width: 550px; height:100px;
 		background-image: none;
 		margin-bottom: 50px;
+		margin: 0 auto;
 	}
 	
 	.caption{
-		width: 1200px; height:100px;
+		width: 600px; height:100px;
 		background-image:none;
 		color: #292929;
-		margin: 0 auto;
+		margin: 50px auto;
 		font-weight:bold;
 		font-size:1.5em;
 	}
 	
 	.start #start_caption{
 		background-image:none;
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 	}
 	
 	.start #start_caption span{
@@ -69,6 +71,7 @@ body{
 	.btn{
 		display: inline-block;
 		background-image:none;
+		margin: 0 auto;
 	}
 
 	.btn a{
@@ -82,12 +85,12 @@ body{
 		margin:auto auto;
 		margin-top:50px;	
 		padding-left:20px;
-		padding-top:20px;
-		letter-spacing: 25px;
+		padding-top:25px;
+		letter-spacing: 20px;
 	}
 	
 	.btn a:LINK, .btn a:VISITED, .btn a:ACTIVE{
-		color:white;
+		color:#fffffd;
 		font-weight:bold;
 		font-size: 1.5em;	
 	}
@@ -99,7 +102,7 @@ body{
 #pic_caption{
 	background-image:none;
 	font-weight: bold;
-	position: absolute;
+	position: relative;
 	right:0; bottom:0;
 	
 }
@@ -121,7 +124,7 @@ body{
 		</div>
 	</div>
 	
-	<p id="pic_caption">Photo by Denise Jans on Unsplash</p>
+	<!-- <p id="pic_caption">Photo by Denise Jans on Unsplash</p> -->
 	
 </body>
 </html>

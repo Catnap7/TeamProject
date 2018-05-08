@@ -1,7 +1,6 @@
+<%@page import="net.rating.db.RatingBean"%>
 <%@page import="net.admin.manage.db.MovieBean"%>
 <%@page import="net.admin.manage.db.MovieDAO"%>
-<%@page import="net.mypage.db.RatingDAO"%>
-<%@page import="net.mypage.db.RatingBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -14,6 +13,15 @@
 <link href="./css/mypage.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./css/ratingStar.css">
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="./js/jquery-3.3.1.js"></script>
+<script src="./js/rating.js"></script>
+
+
+
 </head>
 <body>
 <%
@@ -25,8 +33,9 @@ int startPage = ((Integer)request.getAttribute("startPage")).intValue();
 int endPage = ((Integer)request.getAttribute("endPage")).intValue();
 int count = ((Integer)request.getAttribute("count")).intValue();
 String class_name=null;
-String id = (String)session.getAttribute("id");
+String id = (String)session.getAttribute("m_id");
 List<RatingBean> ratinglist = (List)request.getAttribute("ratinglist");
+List<MovieBean> movielist = (List)request.getAttribute("movielist");
 MovieDAO mdao = new MovieDAO();
 if(count-(pageNum-1)*10<=5){
 	class_name="movie_wrap1";
@@ -44,31 +53,114 @@ if(count-(pageNum-1)*10<=5){
 		<h2>회원님의 평점 내역</h2>
 	</div>
 	<section class="movie_sec">
+	
+	<script>
+	
+	
+	function abc(c) {
+//		alert(c);
+//c는 체크해야 하는 아이디값
+		$(document).ready(function(){
+//			alert(c);
+//			$("[id="+c+"]").attr( "checked" );
+//			$("[id=star133").prop( "checked" );
+//			$("[id=star133]").attr( "checked", "checked" );
+			$("[id="+c+"]").attr( "checked", "checked" );
+		});
+	}
+	
+/* 	
+	$(document).ready(function(){
+		//string2.jsp에
+		//파라미터값 넘겨서data:{name:"홍길동", age:21}
+		//결과 받아서 body 태그 뒷부분에 추가
+		
+		$(".rating").addClass("pp");
+
+		$(".pp").checked = false;
+		
+	});
+	 */
+	
+	//
+	
+	
+	</script>
+	
 	<%
-	for(RatingBean rb : ratinglist){
-		MovieBean mb= mdao.getMovie(rb.getRa_p_num());
-		String moviename = mb.getMv_eng_title();
+	if(ratinglist!=null&& movielist!=null){
+	for(int i=0;i<ratinglist.size();i++){
+		RatingBean ratingbean=(RatingBean)ratinglist.get(i);
+		MovieBean moviebean=(MovieBean)movielist.get(i);
+		
+		String moviename = moviebean.getMv_eng_title();
 		String imgname = moviename.replaceAll(" " , "");
 		imgname = imgname.replaceAll("\\p{Z}", "");
+//		int mv_num=moviebean.getMv_num();
+		int mv_num=ratingbean.getRa_p_num();
+		int ra_rating=ratingbean.getRa_rating();
+		
+		
+		//id= star+"ra_rating"+mv_num => checked 되도록. ;
+		//제이쿼리 사용해서 $().css()
+		//페이지가 켜지자 마자 와야하니까. 온로드? 
+		//그런데 for문에서 이름을 챙겨와야하는데. 
+		
+		
+		
+		/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/
+		String img_genre= "";
+		if(moviebean.getMv_genre().equals("animation")){
+			img_genre="animation";
+		}else if(moviebean.getMv_genre().equals("comedy")){
+			img_genre="comedy";
+		}else if(moviebean.getMv_genre().equals("indie")){
+			img_genre="indie";
+		}else if(moviebean.getMv_genre().equals("sf")){
+			img_genre="sf";
+		}else if(moviebean.getMv_genre().equals("action")){
+			img_genre="action";
+		}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
+			img_genre="thriller";
+		}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
+			img_genre="romance";
+		}
+		
+		
+		
 		
 	%>
-		<div class="movie_sec_inner">
-			<img src="./images/<%=mb.getMv_genre()%>/<%=imgname%>_p.jpg" width="250px" height="350px"><br>
+		<div class="movie_sec_inner" >
+			<img src="./images/<%=img_genre%>/<%=imgname %>_p.jpg" width="250px" height="350px"><br>
 			<div class="star">
-			<%
-			for(int i=0;i<rb.getRa_rating();i++){
-			%>
-				<span class="fa fa-star checked star_rating"></span>				
-				<%} 
-			for(int i=0;i<5-rb.getRa_rating();i++){
-			%>
-			<span class="fa fa-star star_rating"></span>
-			<%
-			}
-			%>
+				<form action="" id="starform<%=mv_num %>">
+				<input type="hidden" name="ra_p_num" value="<%=mv_num %>">
+				<!-- 별점 시작 -->
+				<script type="text/javascript">
+					abc("star"+<%=ra_rating%>+<%=mv_num%>);
+				</script>
+
+				<fieldset class="rating" id="starfield<%=mv_num %>" >
+				    <input type="radio" id="star5<%=mv_num %>" name="ra_rating" value="5" /><label class = "full" for="star5<%=mv_num %>" title="5 stars"></label>
+				    <input type="radio" id="star4<%=mv_num %>" name="ra_rating" value="4" /><label class = "full" for="star4<%=mv_num %>" title="4 stars"></label>
+				    <input type="radio" id="star3<%=mv_num %>" name="ra_rating" value="3" /><label class = "full" for="star3<%=mv_num %>" title="3 stars"></label>
+				    <input type="radio" id="star2<%=mv_num %>" name="ra_rating" value="2" /><label class = "full" for="star2<%=mv_num %>" title="2 stars"></label>
+				    <input type="radio" id="star1<%=mv_num %>" name="ra_rating" value="1" /><label class = "full" for="star1<%=mv_num %>" title="1 star"></label>
+				</fieldset>
+				<!-- 별점 끝 -->
+				</form>
+				<!-- 영화정보 -->
+				<%-- <div><%=moviebean.getMv_kor_title() %>	</div> --%>
+				<%-- <div><%=moviebean.getMv_year() %>	</div> --%>
+				<%-- <div><%=age %>	</div> --%>
 			</div>
-		</div>	
+			
+				<div><%=mv_num %>	</div>
+				<div><%=ra_rating %>	</div>
+		</div>
+		
 		<%
+	}
 	}
 		%>															
 		
