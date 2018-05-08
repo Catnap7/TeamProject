@@ -34,7 +34,6 @@ public class MovieDAO {
 	      StringBuffer sql=new StringBuffer();
 	      try{
     	  con = getConnection();
-    	  System.out.println(mv_genre);
     	  sql.append("select * from movie ");
           if(mv_genre.equals("thriller")){
         	  sql.append("where mv_genre in(?,'horror')");
@@ -81,7 +80,7 @@ public class MovieDAO {
 		      }
 	      return categoryList;
 	}
-	public MovieBean getMovie(int mv_num){
+public MovieBean getMovie(int mv_num){
 		 Connection con = null;
 	      String sql = "";
 	      PreparedStatement pstmt =null;
@@ -120,13 +119,11 @@ public class MovieDAO {
 		}
 		return moviebean;
 	}
-/*
-	public Vector getMovie(int mv_num){
+
+/*	public Vector getMovie(int mv_num){
 		Connection con=null;
         PreparedStatement pstmt=null;
         ResultSet rs=null;
-        PreparedStatement pstmt2=null;
-        ResultSet rs2=null;
         String sql="";
         Vector vector=new Vector();
         List movietList=new ArrayList();
@@ -155,13 +152,12 @@ public class MovieDAO {
 	        	  moviebean.setMv_story(rs.getString("mv_story"));
 	        	  moviebean.setMv_video(rs.getString("mv_video"));
 	        	  movietList.add(moviebean);
-	        	  if(rs2.next()){
-	        		  FavoriteBean favoriteBean = new FavoriteBean();
-	        		  favoriteBean.setF_id(rs2.getString("f_id"));
-	        		  favoriteBean.setF_num(rs2.getInt("f_num"));
-	        		  favoriteList.add(favoriteBean);
+	        		  
+	        	  FavoriteBean favoriteBean = new FavoriteBean();
+        		  favoriteBean.setF_id(rs.getString("f_id"));
+        		  favoriteBean.setF_num(rs.getInt("f_num"));
+        		  favoriteList.add(favoriteBean);
 	        	  }
-			}
 			vector.add(movietList);
 			vector.add(favoriteList);
 		} catch (Exception e) {
@@ -172,8 +168,8 @@ public class MovieDAO {
 	         if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
 		}
 		return vector;
-	}*/
-	//영화 DB에 넣는 폼
+	}
+*/	//영화 DB에 넣는 폼
 	public void insertMovie(MovieBean mob){
 
 	      Connection con = null;

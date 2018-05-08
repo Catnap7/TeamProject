@@ -147,15 +147,17 @@ public class FavoriteDAO {
 	      FavoriteBean favoriteBean =null;
 	      try{
 			con = getConnection();
-			sql = "select * from favorite where f_id =? f_num=?";
+			sql = "select * from favorite where f_id =? and f_num=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, f_id);
+			pstmt.setInt(2, f_num);
 			rs = pstmt.executeQuery();
 			
 		         //Step.04 객체실행
 			if (rs.next()) {
 				favoriteBean = new FavoriteBean();
-				favoriteBean.setF_id(f_id);
-				favoriteBean.setF_num(f_num);
+				favoriteBean.setF_id(rs.getString("f_id"));
+				favoriteBean.setF_num(rs.getInt("f_num"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

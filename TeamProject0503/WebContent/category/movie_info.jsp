@@ -1,4 +1,6 @@
 <%-- <%@page import="net.admin.manage.db.MovieBean"%> --%>
+<%@page import="net.rating.db.RatingBean"%>
+<%@page import="java.util.List"%>
 <%@page import="net.favorite.db.FavoriteBean"%>
 <%@page import="net.admin.manage.db.MovieBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -64,10 +66,12 @@
 </head>
 <body>
 <%
-
+String id = (String)session.getAttribute("m_id");
 int mv_num =Integer.parseInt(request.getParameter("mv_num"));
 MovieBean moviebean =(MovieBean)request.getAttribute("moviebean");
-//int check= ((Integer)request.getAttribute("check")).intValue();
+FavoriteBean favoritebean = (FavoriteBean)request.getAttribute("favoritebean");
+RatingBean ratingBean = (RatingBean)request.getAttribute("ratingBean");
+int ra_rating =ratingBean.getRa_rating();
 String story = moviebean.getMv_story();
 if(story != null){
 		story = story.replaceAll( "\r\n","<br>");
@@ -122,7 +126,42 @@ if(moviebean.getMv_age()==0){
 }
 	
 %>
+
+	<script>
+	
+	
+	function abc(c) {
+//		alert(c);
+//c는 체크해야 하는 아이디값
+		$(document).ready(function(){
+//			alert(c);
+//			$("[id="+c+"]").attr( "checked" );
+//			$("[id=star133").prop( "checked" );
+//			$("[id=star133]").attr( "checked", "checked" );
+			$("[id="+c+"]").attr( "checked", "checked" );
+		});
+	}
+	
+/* 	
+	$(document).ready(function(){
+		//string2.jsp에
+		//파라미터값 넘겨서data:{name:"홍길동", age:21}
+		//결과 받아서 body 태그 뒷부분에 추가
+		
+		$(".rating").addClass("pp");
+
+		$(".pp").checked = false;
+		
+	});
+	 */
+	
+	//
+	
+	
+	</script>
 <script type="text/javascript">
+
+
 
 $(document).ready(function(){
 	$('.next').click(function(){
@@ -163,6 +202,9 @@ $(document).ready(function(){
 				<td>
 					<form action="" id="starform<%=mv_num %>">
 				<input type="hidden" name="ra_p_num" value="<%=mv_num %>">
+				<script type="text/javascript">
+					abc("star"+<%=ra_rating%>+<%=mv_num%>);
+				</script>
 				<!-- 별점 시작 -->
 				<fieldset class="rating" id="starfield<%=mv_num %>" >
 				    <input type="radio" id="star5<%=mv_num %>" name="ra_rating" value="5" /><label class = "full" for="star5<%=mv_num %>" title="5 stars"></label>
@@ -189,14 +231,31 @@ $(document).ready(function(){
 				<td>[주연] <%=moviebean.getMv_actor() %></td>
 			</tr>
 		</table>
-		
 		<!--즐겨찾기  -->
+		<%
+		if(favoritebean !=null){
+		if(favoritebean.getF_id()!=null && favoritebean.getF_num()==mv_num)
+		{
+	%>		
 		<form action="" id="starform<%=mv_num %>">
 				<input type="hidden" name="f_num" value="<%=mv_num %>">
 				<fieldset class="rating" id="starfield<%=mv_num %>" >
-				    <input type="checkbox" id="favorite" name="fa_favorite" /><label class = "full" for="favorite" title="1 star"></label>
+				    <input type="checkbox" id="favorite" name="fa_favorite" checked="checked"/><label class = "full" for="favorite" title="1 star"></label>
 				</fieldset>
-				</form>
+		</form>
+	<%		
+		}
+		}else{
+	%>
+		<form action="" id="starform<%=mv_num %>">
+			<input type="hidden" name="f_num" value="<%=mv_num %>">
+			<fieldset class="rating" id="starfield<%=mv_num %>" >
+			    <input type="checkbox" id="favorite" name="fa_favorite" /><label class = "full" for="favorite" title="1 star"></label>
+			</fieldset>
+		</form>
+	<%
+		}
+			%>
 		  <a href="<%=moviebean.getMv_video() %>" class="fa fa-play-circle play" target="_blank"></a>
 		</div>
 	</div>
