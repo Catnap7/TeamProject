@@ -171,7 +171,6 @@ private Connection getConnection() throws Exception {
 		int Echeck=0;
 		String sql ="";
 		Connection con = null;
-		MemberBean memberbean = null;
 		try {
 			con=getConnection();
 			sql = "SELECT m_grade FROM member WHERE m_id=?";
@@ -180,7 +179,7 @@ private Connection getConnection() throws Exception {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
-						if(rs.getInt("m_grade")==1) {
+						if(rs.getInt("m_grade")==1 ||rs.getInt("m_grade")==2) {
 							Echeck=1;
 						}else {
 							Echeck=0;

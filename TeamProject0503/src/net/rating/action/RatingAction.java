@@ -19,7 +19,7 @@ public class RatingAction implements Action{
 		//섭밋으로 넘겨진 파라미터값 받아오기. 
 		//rating 테이블 인서트 or update
 		
-		
+		request.setCharacterEncoding("utf-8");	
 		//레이팅 한 사람 받아옴
 		HttpSession session= request.getSession();
 		String ra_id=(String)session.getAttribute("m_id");
