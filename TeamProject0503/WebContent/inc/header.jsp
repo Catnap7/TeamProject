@@ -9,9 +9,9 @@
 	
 <div class="clear"></div>
 
-		
+
 		<div class="pay">
-			<a href="../pay/payment.jsp">이용권구매</a>
+			<a href="./pay/pay_result.jsp">이용권구매</a>
 		</div><!--이용권구매 -->
 		
 		<%String m_name=(String)session.getAttribute("m_name");%>
@@ -44,7 +44,7 @@
 	  		</div> 
 	  		<a href="./Rating.ra">취향분석</a>
 		 	<a href="./Favorite.fa">보고 싶은 영화</a>
-		 	<a href="../vip/vip_reservation.jsp">only for vip</a>
+		 	<a href="./Vip.vi">only for vip</a>
 		
 		 	<div class="search-container">
 			    <form action="category_search.jsp">
@@ -54,5 +54,4 @@
 			</div><!-- 검색창 -->
 		</div><!--메인메뉴 -->
 </header>
-
 <!-- 헤더 영역 -->
