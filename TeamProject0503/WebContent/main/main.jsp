@@ -238,7 +238,7 @@ $(document).ready(function(){
 
 <body>
 <%
-String id = (String)request.getAttribute("id");
+String id = (String)request.getAttribute("m_id");
 List<MovieBean> favoritelist = (List)request.getAttribute("favoritelist");
 MovieDAO mdao = new MovieDAO();
 %>
