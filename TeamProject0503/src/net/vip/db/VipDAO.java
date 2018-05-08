@@ -27,22 +27,25 @@ public class VipDAO {
 	//insertVip
 		public void insertVip(VipBean vipbean){
 			Connection con = null;
-			String sql="";
+			String sql=null;
 			PreparedStatement pstmt =null;
 			ResultSet rs=null;
 			int num=0;
 			try{
 				con=getConnection();
 				
-				sql="select max(num) from vip_cinema_prev";
+				sql="select max(v_num) from vip_cinema_prev";
 				pstmt=con.prepareStatement(sql);
 				rs=pstmt.executeQuery();
-				if(rs.next()){
-					num=rs.getInt(1)+1;
-				}else{
-					num=1;
-				}
-				sql="insert into vip_cinema_prev (v_num, v_kor_title, v_eng_title, v_year, v_country, v_age, v_genre, v_time, v_director, v_actor, v_story, v_video) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+				
+					if(rs.next()){
+						num=rs.getInt(1)+1;
+					}else{
+						num=1;
+					}
+					
+				sql="insert into vip_cinema_prev (v_num, v_kor_title, v_eng_title, v_year, v_country, v_age, v_genre, v_time, v_director, v_actor, v_story, v_video, v_date) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, num);
 				pstmt.setString(2, vipbean.getV_kor_title());
 				pstmt.setString(3, vipbean.getV_eng_title());
@@ -53,21 +56,24 @@ public class VipDAO {
 				pstmt.setInt(8, vipbean.getV_time());
 				pstmt.setString(9, vipbean.getV_director());
 				pstmt.setString(10, vipbean.getV_actor());
-				pstmt.setString(11, vipbean.getV_stroy());
+				pstmt.setString(11, vipbean.getV_story());
 				pstmt.setString(12, vipbean.getV_video());;
+				pstmt.setString(13, vipbean.getV_date());;
+				
 				
 				pstmt.executeUpdate();
 				
 			}catch(Exception e) {
 				e.printStackTrace();	
-			}finally {
-				if(rs!=null)try{rs.close();}catch(SQLException ex){}
-				if(con!=null)try {con.close();}catch(SQLException ex) {};
-				if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
+			}finally{
+				if(rs!=null)try{rs.close();}catch(SQLException ex){};
+				if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){};
+				if(con!=null)try{con.close();}catch(SQLException ex){};
 			}
 		}//insertVip
 	
 	
+		
 	//getVipMovieList
 	public List getVipMovieList(){
 		List vipMovieList=new ArrayList();
@@ -84,6 +90,7 @@ public class VipDAO {
 			while(rs.next()){
 				VipBean vipbean = new VipBean();
 				
+				vipbean.setV_num(rs.getInt("v_num"));
 				vipbean.setV_kor_title(rs.getString("v_kor_title"));
 				vipbean.setV_eng_title(rs.getString("v_eng_title"));
 				vipbean.setV_year(rs.getInt("v_year"));
@@ -93,8 +100,9 @@ public class VipDAO {
 				vipbean.setV_time(rs.getInt("v_time"));
 				vipbean.setV_director(rs.getString("v_director"));
 				vipbean.setV_actor(rs.getString("v_actor"));
-				vipbean.setV_stroy(rs.getString("v_story"));
+				vipbean.setV_story(rs.getString("v_story"));
 				vipbean.setV_video(rs.getString("v_video"));
+				vipbean.setV_date(rs.getString("v_date"));
 				
 				vipMovieList.add(vipbean);
 			}
@@ -113,44 +121,59 @@ public class VipDAO {
 		
 		
 	//getVipMovie
-		/*public VipBean getVipMovie(String id){
-			VipBean mb=null;
+		public VipBean getVipMovie(){
 			Connection con=null;
-			String sql="";
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
+			String sql=null;
+			VipBean vipbean=null;
+			int max=0;
 			
 			try{
 				con=getConnection();
-				sql="select max(num) as num from vip_cinema_prev"
+				
+				sql="select max(v_num) as max from vip_cinema_prev";
 				pstmt=con.prepareStatement(sql);
-				pstmt.setString(1,id);
+				rs=pstmt.executeQuery();
+				
+				
+				if(rs.next()){
+					max=rs.getInt("max");	
+				}
+
+				sql="select * from vip_cinema_prev where v_num=?";
+				
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, max);
+				
 				
 				rs=pstmt.executeQuery();
 				
 				if(rs.next()){
-					mb=new VipBean();
-					mb.setId(rs.getString("id"));
-					mb.setPass(rs.getString("pass"));
-					mb.setName(rs.getString("name"));
-					mb.setEmail(rs.getString("email"));
-					mb.setAddress(rs.getString("address"));
-					mb.setMobile(rs.getString("mobile"));
+					vipbean=new VipBean();
+					vipbean.setV_kor_title(rs.getString("v_kor_title"));
+					vipbean.setV_eng_title(rs.getString("v_eng_title"));
+					vipbean.setV_year(rs.getInt("v_year"));
+					vipbean.setV_country(rs.getString("v_country"));
+					vipbean.setV_age(rs.getInt("v_age"));
+					vipbean.setV_genre(rs.getString("v_genre"));
+					vipbean.setV_time(rs.getInt("v_time"));
+					vipbean.setV_director(rs.getString("v_director"));
+					vipbean.setV_actor(rs.getString("v_actor"));
+					vipbean.setV_story(rs.getString("v_story"));
+					vipbean.setV_video(rs.getString("v_video"));
+					vipbean.setV_date(rs.getString("v_date"));
+					
 				}	
-			}catch(Exception e){
+			}catch (Exception e) {
 				e.printStackTrace();
 			}finally{
-				if(pstmt!=null){
-					try{pstmt.close();
-					}catch(SQLException ex){}
-				}
-				if(con!=null){
-					try{con.close();
-					}catch(SQLException ex){}
-				}
+				if(rs!=null)try{rs.close();}catch(SQLException ex){}
+				if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+				if(con!=null)try{con.close();}catch(SQLException ex){}
 			}
-			return mb;
-		}*/
+			return vipbean;
+		}
 	
 	
 }
