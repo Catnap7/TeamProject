@@ -11,8 +11,9 @@ public class VipBean {
 	int v_time;
 	String v_director;
 	String v_actor;
-	String v_stroy;
+	String v_story;
 	String v_video;
+	String v_date;
 	
 	
 	public int getV_num() {
@@ -75,11 +76,12 @@ public class VipBean {
 	public void setV_actor(String v_actor) {
 		this.v_actor = v_actor;
 	}
-	public String getV_stroy() {
-		return v_stroy;
+		
+	public String getV_story() {
+		return v_story;
 	}
-	public void setV_stroy(String v_stroy) {
-		this.v_stroy = v_stroy;
+	public void setV_story(String v_story) {
+		this.v_story = v_story;
 	}
 	public String getV_video() {
 		return v_video;
@@ -87,6 +89,13 @@ public class VipBean {
 	public void setV_video(String v_video) {
 		this.v_video = v_video;
 	}
+	public String getV_date() {
+		return v_date;
+	}
+	public void setV_date(String v_date) {
+		this.v_date = v_date;
+	}
+	
 	
 	
 }
