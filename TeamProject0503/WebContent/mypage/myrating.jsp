@@ -155,8 +155,6 @@ if(count-(pageNum-1)*10<=5){
 				<%-- <div><%=age %>	</div> --%>
 			</div>
 			
-				<div><%=mv_num %>	</div>
-				<div><%=ra_rating %>	</div>
 		</div>
 		
 		<%
