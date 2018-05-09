@@ -1,4 +1,5 @@
 <%-- <%@page import="net.admin.manage.db.MovieBean"%> --%>
+<%@page import="net.member.db.MemberBean"%>
 <%@page import="net.rating.db.RatingBean"%>
 <%@page import="java.util.List"%>
 <%@page import="net.favorite.db.FavoriteBean"%>
@@ -71,6 +72,9 @@ int mv_num =Integer.parseInt(request.getParameter("mv_num"));
 MovieBean moviebean =(MovieBean)request.getAttribute("moviebean");
 FavoriteBean favoritebean = (FavoriteBean)request.getAttribute("favoritebean");
 RatingBean ratingBean = (RatingBean)request.getAttribute("ratingBean");
+float avg = (float)request.getAttribute("avg");
+MemberBean memberBean = (MemberBean)request.getAttribute("memberbean");
+
 int ra_rating =ratingBean.getRa_rating();
 String story = moviebean.getMv_story();
 if(story != null){
@@ -134,10 +138,7 @@ if(moviebean.getMv_age()==0){
 //		alert(c);
 //c는 체크해야 하는 아이디값
 		$(document).ready(function(){
-//			alert(c);
-//			$("[id="+c+"]").attr( "checked" );
-//			$("[id=star133").prop( "checked" );
-//			$("[id=star133]").attr( "checked", "checked" );
+				
 			$("[id="+c+"]").attr( "checked", "checked" );
 		});
 	}
@@ -215,7 +216,7 @@ $(document).ready(function(){
 				</fieldset>
 				<!-- 별점 끝 -->
 				</form>
-					평균 평점 5 / 5
+					평균 평점 <%=avg %> / 5
 				</td>
 			</tr>
 			<tr>
@@ -256,7 +257,26 @@ $(document).ready(function(){
 	<%
 		}
 			%>
-		  <a href="<%=moviebean.getMv_video() %>" class="fa fa-play-circle play" target="_blank"></a>
+			
+		<%if(memberBean.getM_id_num1()<=19990101){
+			
+			 %>
+			  <script type="text/javascript">
+				$(document).ready(function(){
+					$('.fa fa-play-circle play').click(function(){
+						$('a.fa fa-play-circle play').attr("href","<%=moviebean.getMv_video() %>")
+						});
+					
+				});			  
+			  </script>
+			  <%-- <a href="<%=moviebean.getMv_video() %>" class="fa fa-play-circle play" target="_blank"></a> --%>
+			  <a href="" class="fa fa-play-circle play" target="_blank"></a>
+			  <button class="hr"> 이동</button>
+			  <%
+		}else if (memberBean.getM_id_num1()>=19990101){
+			
+		}	
+		%>
 		</div>
 	</div>
 	</div>

@@ -147,7 +147,8 @@ private Connection getConnection() throws Exception {
 				memberbean.setM_id(rs.getString("m_id"));  
 				memberbean.setM_pass(rs.getString("m_pass"));  
 				memberbean.setM_name(rs.getString("m_name"));  
-				memberbean.setM_grade(rs.getInt("m_grade"));  
+				memberbean.setM_grade(rs.getInt("m_grade"));
+				memberbean.setM_id_num1(rs.getInt("m_id_num1"));
 				memberbean.setM_reg_date(rs.getDate("m_reg_date"));
 			}
 			
