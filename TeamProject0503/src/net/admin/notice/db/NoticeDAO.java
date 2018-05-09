@@ -26,7 +26,7 @@ public class NoticeDAO {
 		PreparedStatement pstmt = null;
 		try {
 			con = getConnection();
-			sql = "insert into notice(n_subject, n_content, n_date, n_image, n_file) valeus(?, ?, ?, ?, ?)";
+			sql = "insert into notice(n_num, n_subject, n_content, n_date, n_image, n_file) values(0, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, nb.getN_subject());
 			pstmt.setString(2, nb.getN_content());

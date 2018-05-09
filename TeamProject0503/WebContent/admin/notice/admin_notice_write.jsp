@@ -12,11 +12,9 @@
 <!--  notice/writeForm.jsp -->
 </head>
 <body>
-<%
-
-String id = request.getParameter("id");
-
-%>
+	<%
+		String id = request.getParameter("id");
+	%>
 	<!-- 헤더영역 -->
 	<jsp:include page="../header.jsp" />
 	<!-- 헤더영역 -->
@@ -35,19 +33,23 @@ String id = request.getParameter("id");
 		<form action="./AdminNoticeWriteAction.an" method="post">
 			<table border="0" class="db_list_insert">
 				<tr>
-					<td>글쓴이</td>
-					<td><input type="text" name="name" value="<%=id%>" readonly></td>
-				</tr>
-				<tr>
 					<td>제목</td>
-					<td><input type="text" name="subject"></td>
+					<td><input type="text" name="n_subject"></td>
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea cols="20" rows="10" name="content"></textarea></td>
+					<td><textarea cols="20" rows="10" name="n_content"></textarea></td>
 				</tr>
 				<tr>
-				<td><input type="submit" value="등록"></td>
+					<td>사진</td>
+					<td><input type="file" name="n_image"></td>
+				</tr>
+				<tr>
+					<td>첨부파일</td>
+					<td><input type="file" name="n_file"></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="등록"></td>
 				</tr>
 			</table>
 		</form>
