@@ -24,7 +24,7 @@ public class AdminManageFrontController extends HttpServlet{
 
 
 		//주소 비교
-		if(command.equals("/AdminMovieJoin.am")){		      
+		if(command.equals("/AdminMovieJoin.am")){
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./admin/manage/admin_movie_insert.jsp");

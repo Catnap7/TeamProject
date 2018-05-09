@@ -1,4 +1,8 @@
 <%-- <%@page import="net.admin.manage.db.MovieBean"%> --%>
+<%@page import="net.member.db.MemberBean"%>
+<%@page import="net.rating.db.RatingBean"%>
+<%@page import="java.util.List"%>
+<%@page import="net.favorite.db.FavoriteBean"%>
 <%@page import="net.admin.manage.db.MovieBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -17,14 +21,61 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<style>
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
- 
+/*@@@@@@float를 지우면 별5개가 전부 좌측 배열 되요.  */
+.rating { 
+  border: none;
+  float: left; 
+}
+
+.rating > input { display: none; } 
+
+/*@@@@@@@ 별점 이미지 바꿀때 사용  */
+.rating > label:before { 
+  margin: 5px;
+/*   font-size: 1.25em; */
+   font-size: 2em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+/*@@@@@@@ float 지우면 별점 css가 반대로 먹혀요. */
+.rating > label { 
+  color: #ddd; 
+  float: right;
+}
+
+/*@@@@@@@@@@ 별점 줄때 색이 변하는 css  */
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+</style>
+ <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="./js/jquery-3.3.1.js"></script>
+<script src="./js/rating.js"></script>
+<script src="./js/favorite.js"></script>
 </head>
 <body>
-<%	
+<%
+String id = (String)session.getAttribute("m_id");
 int mv_num =Integer.parseInt(request.getParameter("mv_num"));
 MovieBean moviebean =(MovieBean)request.getAttribute("moviebean");
+FavoriteBean favoritebean = (FavoriteBean)request.getAttribute("favoritebean");
+RatingBean ratingBean = (RatingBean)request.getAttribute("ratingBean");
+float avg = (float)request.getAttribute("avg");
+MemberBean memberBean = (MemberBean)request.getAttribute("memberbean");
 
+int ra_rating =ratingBean.getRa_rating();
 String story = moviebean.getMv_story();
 if(story != null){
 		story = story.replaceAll( "\r\n","<br>");
@@ -79,25 +130,55 @@ if(moviebean.getMv_age()==0){
 }
 	
 %>
+
+	<script>
+	
+	
+	function abc(c) {
+//		alert(c);
+//c는 체크해야 하는 아이디값
+		$(document).ready(function(){
+				
+			$("[id="+c+"]").attr( "checked", "checked" );
+		});
+	}
+	
+/* 	
+	$(document).ready(function(){
+		//string2.jsp에
+		//파라미터값 넘겨서data:{name:"홍길동", age:21}
+		//결과 받아서 body 태그 뒷부분에 추가
+		
+		$(".rating").addClass("pp");
+
+		$(".pp").checked = false;
+		
+	});
+	 */
+	
+	//
+	
+	
+	</script>
 <script type="text/javascript">
 
+
+
 $(document).ready(function(){
-	
 	$('.next').click(function(){
 		$('.steelcut').attr('src',"./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>"+"_s2.jpg"); // 스틸컷 2번째 이미지 소스
 		$(this).css('display','none');
 		$('.prev').css('display','block');
 		return false;
 	});
-	
 	$('.prev').click(function(){
 		$('.steelcut').attr('src', "./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>"+"_s.jpg"); // 스틸컷 1번째 이미지 소스
 		$(this).css('display','none');
 		$('.next').css('display','block');
 		return false;
 	});
-	
 });
+
 </script>
 <!-- 헤더영역 -->
 <jsp:include page="../inc/header.jsp"/>
@@ -120,14 +201,22 @@ $(document).ready(function(){
 			</tr>
 			<tr>
 				<td>
-					<div class="star">
-						<span class="fa fa-star checked star_rating"></span>
-						<span class="fa fa-star checked star_rating"></span>
-						<span class="fa fa-star checked star_rating"></span>
-						<span class="fa fa-star checked star_rating"></span>
-						<span class="fa fa-star checked star_rating"></span>
-					</div>
-					평균 평점 5 / 5
+					<form action="" id="starform<%=mv_num %>">
+				<input type="hidden" name="ra_p_num" value="<%=mv_num %>">
+				<script type="text/javascript">
+					abc("star"+<%=ra_rating%>+<%=mv_num%>);
+				</script>
+				<!-- 별점 시작 -->
+				<fieldset class="rating" id="starfield<%=mv_num %>" >
+				    <input type="radio" id="star5<%=mv_num %>" name="ra_rating" value="5" /><label class = "full" for="star5<%=mv_num %>" title="5 stars"></label>
+				    <input type="radio" id="star4<%=mv_num %>" name="ra_rating" value="4" /><label class = "full" for="star4<%=mv_num %>" title="4 stars"></label>
+				    <input type="radio" id="star3<%=mv_num %>" name="ra_rating" value="3" /><label class = "full" for="star3<%=mv_num %>" title="3 stars"></label>
+				    <input type="radio" id="star2<%=mv_num %>" name="ra_rating" value="2" /><label class = "full" for="star2<%=mv_num %>" title="2 stars"></label>
+				    <input type="radio" id="star1<%=mv_num %>" name="ra_rating" value="1" /><label class = "full" for="star1<%=mv_num %>" title="1 star"></label>
+				</fieldset>
+				<!-- 별점 끝 -->
+				</form>
+					평균 평점 <%=avg %> / 5
 				</td>
 			</tr>
 			<tr>
@@ -143,8 +232,51 @@ $(document).ready(function(){
 				<td>[주연] <%=moviebean.getMv_actor() %></td>
 			</tr>
 		</table>
-		 <span class="fa fa-heart checked-like like"></span><!-- checked-like 있으면 빨간색하트 -->
-		  <a href="<%=moviebean.getMv_video() %>" class="fa fa-play-circle play" target="_blank"></a>
+		<!--즐겨찾기  -->
+		<%
+		if(favoritebean !=null){
+		if(favoritebean.getF_id()!=null && favoritebean.getF_num()==mv_num)
+		{
+	%>		
+		<form action="" id="starform<%=mv_num %>">
+				<input type="hidden" name="f_num" value="<%=mv_num %>">
+				<fieldset class="rating" id="starfield<%=mv_num %>" >
+				    <input type="checkbox" id="favorite" name="fa_favorite" checked="checked"/><label class = "full" for="favorite" title="1 star"></label>
+				</fieldset>
+		</form>
+	<%		
+		}
+		}else{
+	%>
+		<form action="" id="starform<%=mv_num %>">
+			<input type="hidden" name="f_num" value="<%=mv_num %>">
+			<fieldset class="rating" id="starfield<%=mv_num %>" >
+			    <input type="checkbox" id="favorite" name="fa_favorite" /><label class = "full" for="favorite" title="1 star"></label>
+			</fieldset>
+		</form>
+	<%
+		}
+			%>
+			
+		<%if(memberBean.getM_id_num1()<=19990101){
+			
+			 %>
+			  <script type="text/javascript">
+				$(document).ready(function(){
+					$('.fa fa-play-circle play').click(function(){
+						$('a.fa fa-play-circle play').attr("href","<%=moviebean.getMv_video() %>")
+						});
+					
+				});			  
+			  </script>
+			  <%-- <a href="<%=moviebean.getMv_video() %>" class="fa fa-play-circle play" target="_blank"></a> --%>
+			  <a href="" class="fa fa-play-circle play" target="_blank"></a>
+			  <button class="hr"> 이동</button>
+			  <%
+		}else if (memberBean.getM_id_num1()>=19990101){
+			
+		}	
+		%>
 		</div>
 	</div>
 	</div>
