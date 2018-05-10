@@ -65,10 +65,24 @@ public class CategoryFrontController extends HttpServlet{
 			         } catch (Exception e) {
 			            e.printStackTrace();
 			         }
+		  }else if(command.equals("/RecommendAction.ca")){
+			  	action = new RecommendAction();
+				  try {
+			            forward = action.execute(request, response);
+			         } catch (Exception e) {
+			            e.printStackTrace();
+			         }
+		  }else if(command.equals("/ReportAction.ca")){
+			  	action = new ReportAction();
+				  try {
+			            forward = action.execute(request, response);
+			         } catch (Exception e) {
+			            e.printStackTrace();
+			         }
 		  }
 		  
 			
-		
+		  
 		
 		  
 		//이동(주소비교에서 이동방식, 이동할곳 정보를 찾아올것)

@@ -384,7 +384,10 @@ $(document).ready(function(){
 				}else {
 					%>
 					<tr>
- 			          <td><a href="#">추천</a> | <a href="#">신고</a></td>
+ 			          <td>
+ 			          <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">추천</a> | 
+ 			          <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">신고</a>
+ 			          </td>
  			    	</tr>
 					<%
 				}
