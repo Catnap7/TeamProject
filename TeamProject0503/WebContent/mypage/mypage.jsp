@@ -43,8 +43,8 @@ case 2 : grade = "VIP회원"; break;
 			</tr>
 		</table>
 		
-		<input type="button" value="정보 수정" class="update_btn" onclick="location.href='updatecheck.jsp'">
-		<input type="button" value="서비스 탈퇴" class="delete_btn" onclick="location.href='deletecheck.jsp'">
+		<input type="button" value="정보 수정" class="update_btn" onclick="location.href='./UpdateCheck.my'">
+		<input type="button" value="서비스 탈퇴" class="delete_btn" onclick="location.href='./DeleteCheck.my'">
 	</div>
 	
 	
