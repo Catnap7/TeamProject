@@ -14,9 +14,12 @@ public class VipInsert implements Action{
 		System.out.println("VipInsert execute");
 		request.setCharacterEncoding("utf-8");
 		
+		
+		//vip 영화 넣기
 		VipBean vipbean = new VipBean();
 		
 		vipbean.setV_date(request.getParameter("v_date"));
+		vipbean.setV_when(request.getParameter("v_when"));
 		vipbean.setV_kor_title(request.getParameter("v_kor_title"));
 		vipbean.setV_eng_title(request.getParameter("v_eng_title"));
 		vipbean.setV_year(Integer.parseInt(request.getParameter("v_year")));
@@ -32,6 +35,12 @@ public class VipInsert implements Action{
 		
 		VipDAO vipdao=new VipDAO();
 		vipdao.insertVip(vipbean);
+		
+		
+		//시사회 좌석 테이블 리셋
+		vipdao.resetVipSeat();
+		
+		
 		
 		ActionForward forward=new ActionForward();
 		forward.setRedirect(true);
