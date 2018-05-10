@@ -15,7 +15,6 @@ public class MemberLoginAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
-		System.out.println("MemberLoginAction execute");
 		ActionForward forward= new ActionForward();
 		HttpSession session = request.getSession();
 		
@@ -55,6 +54,9 @@ public class MemberLoginAction implements Action{
 			session.setAttribute("m_id",memberbean.getM_id());
 			session.setAttribute("m_name",memberbean.getM_name());
 			
+			DeleteAlarm dr= new DeleteAlarm();
+			
+			DeleteAlarm ar= new DeleteAlarm();
 			forward.setRedirect(true);
 			forward.setPath("./Main.ma");
 			}
