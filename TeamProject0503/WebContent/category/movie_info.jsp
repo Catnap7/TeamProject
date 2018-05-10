@@ -339,9 +339,22 @@ $(document).ready(function(){
  			      <td><%=reviewbean.getR_date() %></td>
  			    </tr>
 <!--  			    본인이면  (수정 삭제) 보이기 본인이 아니면 (추천 신고) 보이기  -->
- 			    <tr>
- 			      <td><a href="#">수정</a> | <a href="#">삭제</a></td>
- 			    </tr>
+				<%
+				if(reviewbean.getR_id().equals(id)) {
+					%>
+					<tr>
+ 			      	  <td><a href="#">수정</a> | <a href="#">삭제</a></td>
+ 			    	</tr>
+					<%
+				}else {
+					%>
+					<tr>
+ 			          <td><a href="#">추천</a> | <a href="#">신고</a></td>
+ 			    	</tr>
+					<%
+				}
+				%>
+ 			    
  			  </table>
  			  <hr class="coment_sec">
  			  <%
