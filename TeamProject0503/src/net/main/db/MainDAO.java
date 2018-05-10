@@ -30,12 +30,13 @@ public class MainDAO {
 	
 	//사용자가 가장 많은수의 평가(별점)을 남긴 장르
 	//수정해서 쓸것
-	public String mostCountGenre(String id){
+	public List mostCountGenre(String id){		
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		String sql="";
 		String mostCountGenre="";
+		List movieList=null;
 		try {
 			con=getConnection();
 
@@ -43,9 +44,29 @@ public class MainDAO {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
-			if(rs.next()){
-				rs.getString("mv_genre");
+			
+			if(rs.next()){				
+				mostCountGenre=rs.getString("mv_genre");
+				movieList= new ArrayList<MovieBean>();
+			}						
+			
+			sql="select * from movie where mv_genre=? order by rand() limit 13";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, mostCountGenre);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+				MovieBean moviebean= new MovieBean();
+				moviebean.setMv_num(rs.getInt("mv_num"));
+				moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
+				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+				moviebean.setMv_genre(rs.getString("mv_genre"));
+				moviebean.setMv_year(rs.getInt("mv_year"));
+				moviebean.setMv_age(rs.getInt("mv_age"));
+				moviebean.setMv_time(rs.getInt("mv_time"));
+				movieList.add(moviebean);
 			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,19 +75,20 @@ public class MainDAO {
 			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
 			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
 		}
-		return mostCountGenre;
+		return movieList;
 	}
 	
 	
 	
-	//사용자가 가장 많은수의 평가(별점)을 남긴 장르
+	//사용자가 가장 높은 수의 평가(별점)을 남긴 장르
 	//수정해서 쓸것
-	public String mostAvgGenre(String id){
+	public List mostAvgGenre(String id){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		String sql="";
 		String mostAvgGenre="";
+		List movieList=null;
 		try {
 			con=getConnection();
 
@@ -75,8 +97,27 @@ public class MainDAO {
 			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
 			if(rs.next()){
-				rs.getString("mv_genre");
+				mostAvgGenre=rs.getString("mv_genre");
+				movieList= new ArrayList<MovieBean>();
+			}			
+			
+			sql="select * from movie where mv_genre=? order by rand() limit 13";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, mostAvgGenre);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+				MovieBean moviebean= new MovieBean();
+				moviebean.setMv_num(rs.getInt("mv_num"));
+				moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
+				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+				moviebean.setMv_genre(rs.getString("mv_genre"));
+				moviebean.setMv_year(rs.getInt("mv_year"));
+				moviebean.setMv_age(rs.getInt("mv_age"));
+				moviebean.setMv_time(rs.getInt("mv_time"));
+				movieList.add(moviebean);
 			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,7 +126,53 @@ public class MainDAO {
 			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
 			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
 		}
-		return mostAvgGenre;
+		return movieList;
 	}
+	
+	public List bestMovie(){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";		
+		List movieList=new ArrayList<MovieBean>();
+		List RandomList = new ArrayList<MovieBean>();
+		try {
+			con=getConnection();
 
+			sql="select * from movie join rating on mv_num = ra_p_num group by mv_num order by avg(ra_rating) desc limit 13";
+			pstmt=con.prepareStatement(sql);			
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+ 				MovieBean moviebean= new MovieBean();
+				moviebean.setMv_num(rs.getInt("mv_num"));
+				moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
+				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+				moviebean.setMv_genre(rs.getString("mv_genre"));
+				moviebean.setMv_year(rs.getInt("mv_year"));
+				moviebean.setMv_age(rs.getInt("mv_age"));
+				moviebean.setMv_time(rs.getInt("mv_time"));
+				movieList.add(moviebean);				
+			}			
+			
+			Random r = new Random();
+			int size = 13;
+			for(int i=0;i<13;i++){
+				int index = r.nextInt(size);
+				RandomList.add(i, movieList.get(index));
+				movieList.remove(index);
+				size--;
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		return RandomList;
+	}
+	
 }

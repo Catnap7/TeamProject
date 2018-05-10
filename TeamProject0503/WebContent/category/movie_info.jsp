@@ -1,4 +1,5 @@
 <%-- <%@page import="net.admin.manage.db.MovieBean"%> --%>
+<%@page import="net.category.db.ReviewBean"%>
 <%@page import="net.member.db.MemberBean"%>
 <%@page import="net.rating.db.RatingBean"%>
 <%@page import="java.util.List"%>
@@ -342,107 +343,55 @@ $(document).ready(function(){
 	<div class="coment">
 	<hr>
 	  <!--댓글 쓰는 란  -->
-	  <form action="" method="get" class="coment_write">
-	    <textarea cols="90" rows="7" value placeholder="영화를 어떻게 보셨나요?"></textarea>
+	  <form action="./InsertReview.ca" class="coment_write">
+	    <textarea cols="90" rows="7" value placeholder="영화를 어떻게 보셨나요?" name="r_content"></textarea>
+	    <input type="hidden" name="mv_num" value="<%=moviebean.getMv_num() %>">
 	    <input type="submit" value="등록">
 	  </form>
 	  <!-- 댓글 리스트 -->
-	  
-	  <table>
-	    <tr>
-	      <td class="c_name">홍길동</td>
-	    </tr>
-	    <tr>
-	      <td>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻ<br>ㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄹ</td>
-	    </tr>
-	    <tr>
-	      <td>추천 22 / 신고 1</td>
-	    </tr>
-	    <tr>
-	      <td>18-05-03</td>
-	    </tr>
-	    <!-- 본인이면  (수정 삭제) 보이기 본인이 아니면 (추천 신고) 보이기 -->
-	    <tr>
-	      <td><a href="#">수정</a> | <a href="#">삭제</a></td>
-	    </tr>
-	  </table>
-	  <hr class="coment_sec">
-	  
-	  <table>
-	    <tr>
-	      <td class="c_name">이순신</td>
-	    </tr>
-	    <tr>
-	      <td>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻ<br>ㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄹ</td>
-	    </tr>
-	    <tr>
-	      <td>추천 0 / 신고 0</td>
-	    </tr>
-	    <tr>
-	      <td>18-05-03</td>
-	    </tr>
-	    <tr>
-	      <td><a href="#">추천</a> | <a href="#">신고</a></td>
-	    </tr>
-	  </table>
-	  <hr class="coment_sec">
-	  
-	  <table>
-	    <tr>
-	      <td class="c_name">이순신</td>
-	    </tr>
-	    <tr>
-	      <td>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻ<br>ㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄹ</td>
-	    </tr>
-	    <tr>
-	      <td>추천 0 / 신고 0</td>
-	    </tr>
-	    <tr>
-	      <td>18-05-03</td>
-	    </tr>
-	    <tr>
-	      <td><a href="#">추천</a> | <a href="#">신고</a></td>
-	    </tr>
-	  </table>
-	  <hr class="coment_sec">
-	  
-	  <table>
-	    <tr>
-	      <td class="c_name">이순신</td>
-	    </tr>
-	    <tr>
-	      <td>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻ<br>ㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄹ</td>
-	    </tr>
-	    <tr>
-	      <td>추천 0 / 신고 0</td>
-	    </tr>
-	    <tr>
-	      <td>18-05-03</td>
-	    </tr>
-	    <tr>
-	      <td><a href="#">추천</a> | <a href="#">신고</a></td>
-	    </tr>
-	  </table>
-	  <hr class="coment_sec">
-	  
-	  <table>
-	    <tr>
-	      <td class="c_name">이순신</td>
-	    </tr>
-	    <tr>
-	      <td>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻ<br>ㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄹ</td>
-	    </tr>
-	    <tr>
-	      <td>추천 0 / 신고 0</td>
-	    </tr>
-	    <tr>
-	      <td>18-05-03</td>
-	    </tr>
-	    <tr>
-	      <td><a href="#">추천</a> | <a href="#">신고</a></td>
-	    </tr>
-	  </table>
-	  <hr class="coment_sec">
+ 	 <%
+ 	 List reviewList = (List)request.getAttribute("reviewList");
+ 	 
+ 	 for(int i=0; i<reviewList.size(); i++) {
+ 		 ReviewBean reviewbean = (ReviewBean)reviewList.get(i);
+ 		 if(moviebean.getMv_num()==reviewbean.getR_p_num()) {
+ 			 %>
+ 			 <table> 
+ 			    <tr>
+ 			      <td class="c_name"><%=reviewbean.getR_id() %></td>
+ 			    </tr>
+ 			    <tr>
+ 			      <td><%=reviewbean.getR_content() %></td>
+ 			    </tr>
+ 			    <tr>
+ 			      <td>추천 <%=reviewbean.getR_recommand() %> / 신고 <%=reviewbean.getR_report() %></td>
+ 			    </tr>
+ 			    <tr>
+ 			      <td><%=reviewbean.getR_date() %></td>
+ 			    </tr>
+<!--  			    본인이면  (수정 삭제) 보이기 본인이 아니면 (추천 신고) 보이기  -->
+				<%
+				if(reviewbean.getR_id().equals(id)) {
+					%>
+					<tr>
+ 			      	  <td><a href="#">수정</a> | <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">삭제</a></td>
+ 			    	</tr>
+					<%
+				}else {
+					%>
+					<tr>
+ 			          <td><a href="#">추천</a> | <a href="#">신고</a></td>
+ 			    	</tr>
+					<%
+				}
+				%>
+ 			    
+ 			  </table>
+ 			  <hr class="coment_sec">
+ 			  <%
+ 		 }
+ 	 }
+ 	 %>
 	  
 	<div class="prev_next">
 	  <a href="#">prev</a>

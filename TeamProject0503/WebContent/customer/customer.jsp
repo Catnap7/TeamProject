@@ -124,7 +124,7 @@ $(document).ready(function(){
     
     <!------------- 채팅---------------->
     <div class="chat">
-        <input type="button" value="1:1 문의">
+        <input type="button" value="1:1 문의" onclick="location.href='./UserChatClient.ac'">
     </div>
     <!------------- 채팅---------------->
     

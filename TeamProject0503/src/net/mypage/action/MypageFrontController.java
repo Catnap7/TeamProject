@@ -22,7 +22,7 @@ public class MypageFrontController extends HttpServlet{
 				
 		//주소 비교
 		if(command.equals("/Mypage.my")){
-			//action = new Mypage();
+			action = new Mypage();
 			try{
 			forward=action.execute(request, response);
 			

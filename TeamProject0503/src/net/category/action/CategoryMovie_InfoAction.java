@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import net.admin.manage.db.MovieBean;
 import net.admin.manage.db.MovieDAO;
+import net.category.db.ReviewDAO;
 import net.favorite.db.FavoriteBean;
 import net.favorite.db.FavoriteDAO;
 import net.member.db.MemberBean;
@@ -62,6 +63,13 @@ public class CategoryMovie_InfoAction implements Action{
 		request.setAttribute("ratingBean", ratingBean);
 		request.setAttribute("avg", avg);
 		request.setAttribute("memberbean", memberbean);
+		
+		// 리뷰
+		ReviewDAO reviewdao = new ReviewDAO();
+		List reviewList = reviewdao.getReview(mv_num);
+				
+		request.setAttribute("reviewList", reviewList);
+		// 리뷰
 		
 		
 		ActionForward forward = new ActionForward();
