@@ -45,7 +45,7 @@
 	  		</div> 
 	  		<a href="./Rating.ra">취향분석</a>
 		 	<a href="./Favorite.fa">보고 싶은 영화</a>
-		 	<a href="./Vip.vi">only for vip</a>
+		 	<a href="./VipInfo.vi">watchu vip</a>
 		
 		 	<div class="search-container">
 			    <form action="category_search.jsp">
