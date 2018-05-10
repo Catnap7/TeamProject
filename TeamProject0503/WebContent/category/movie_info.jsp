@@ -343,7 +343,7 @@ $(document).ready(function(){
 				if(reviewbean.getR_id().equals(id)) {
 					%>
 					<tr>
- 			      	  <td><a href="#">수정</a> | <a href="#">삭제</a></td>
+ 			      	  <td><a href="#">수정</a> | <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">삭제</a></td>
  			    	</tr>
 					<%
 				}else {

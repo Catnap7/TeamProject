@@ -62,7 +62,7 @@ public class ReviewDAO {
 			if(pstmt!=null)try{pstmt.close();}catch(SQLException e){};
 			if(con!=null)try{con.close();}catch(SQLException e){};
 		}
-	}
+	}	// 댓글 입력
 	
 	public List getReview(int mv_num) {
 		
@@ -101,8 +101,29 @@ public class ReviewDAO {
 		}
 		
 		return reviewList;
-	}
+	}	// 댓글 리스트
 	
+	public void deleteReview(int r_num) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		String sql="";
+		
+		try {
+			con = getConnection();
+			
+			sql = "delete from review where r_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, r_num);
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally{
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+	}	// 댓글 삭제
 
 	
 }
