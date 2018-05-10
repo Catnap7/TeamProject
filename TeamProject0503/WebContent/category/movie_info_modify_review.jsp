@@ -75,6 +75,7 @@ FavoriteBean favoritebean = (FavoriteBean)request.getAttribute("favoritebean");
 RatingBean ratingBean = (RatingBean)request.getAttribute("ratingBean");
 float avg = (float)request.getAttribute("avg");
 MemberBean memberBean = (MemberBean)request.getAttribute("memberbean");
+List reviewList = (List)request.getAttribute("reviewList");
 
 int ra_rating =ratingBean.getRa_rating();
 String story = moviebean.getMv_story();
@@ -307,24 +308,26 @@ $(document).ready(function(){
 		<a href="#" class="next"><img alt="다음 이미지" src="./images/info_arrow_right.png" class="next"></a>
 	  </div>
 	</div>
-				
-	<!--댓글   -->
-	<div class="coment">
-	<hr>
-	  <!--댓글 쓰는 란  -->
-	  <form action="./InsertReview.ca" class="coment_write">
-	    <textarea cols="90" rows="7" value placeholder="영화를 어떻게 보셨나요?" name="r_content"></textarea>
-	    <input type="hidden" name="mv_num" value="<%=moviebean.getMv_num() %>">
-	    <input type="submit" value="등록">
-	  </form>
-	  <!-- 댓글 리스트 -->
- 	 <%
- 	 List reviewList = (List)request.getAttribute("reviewList");
+	
+	 <%
+ 	 
  	 
  	 for(int i=0; i<reviewList.size(); i++) {
  		 ReviewBean reviewbean = (ReviewBean)reviewList.get(i);
  		 if(moviebean.getMv_num()==reviewbean.getR_p_num()) {
  			 %>
+ 			 			
+	<!--댓글   -->
+	<div class="coment">
+	<hr>
+	  <!--댓글 쓰는 란  -->
+	  <form action="./ModifyReviewAction.ca" class="coment_write">
+	    <textarea cols="90" rows="7" value placeholder="영화를 어떻게 보셨나요?" name="r_content"><%=reviewbean.getR_content() %></textarea>
+	    <input type="hidden" name="mv_num" value="<%=moviebean.getMv_num() %>">
+	    <input type="submit" value="수정">
+	  </form>
+	  <!-- 댓글 리스트 -->
+ 	
  			 <table> 
  			    <tr>
  			      <td class="c_name"><%=reviewbean.getR_id() %></td>
@@ -343,7 +346,7 @@ $(document).ready(function(){
 				if(reviewbean.getR_id().equals(id)) {
 					%>
 					<tr>
- 			      	  <td><a href="./ModifyReview.ca?mv_num=<%=moviebean.getMv_num() %>">수정</a> | <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">삭제</a></td>
+ 			      	  <td><a href="#">수정</a> | <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">삭제</a></td>
  			    	</tr>
 					<%
 				}else {
