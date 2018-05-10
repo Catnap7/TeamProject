@@ -37,8 +37,22 @@ public class CategoryFrontController extends HttpServlet{
 			         } catch (Exception e) {
 			            e.printStackTrace();
 			         }
+		  }else if(command.equals("/InsertReview.ca")){
+			  	action = new InsertReview();
+				  try {
+			            forward = action.execute(request, response);
+			         } catch (Exception e) {
+			            e.printStackTrace();
+			         }
+		  }else if(command.equals("/DeleteReview.ca")){
+			  	action = new DeleteReview();
+				  try {
+			            forward = action.execute(request, response);
+			         } catch (Exception e) {
+			            e.printStackTrace();
+			         }
 		  }
-		
+		  
 			
 		
 		

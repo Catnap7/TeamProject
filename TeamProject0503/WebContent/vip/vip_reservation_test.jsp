@@ -1,3 +1,6 @@
+
+<%@page import="net.vip.db.VipBean"%>
+<%@page import="net.vip.db.VipDAO"%>
 <%@page import="net.member.db.MemberBean"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -64,6 +67,8 @@ if(id==null){
 MemberBean memberbean=(MemberBean)request.getAttribute("memberbean");
 String name=memberbean.getM_name();
 
+VipDAO vipdao = new VipDAO();
+VipBean vipbean=vipdao.getVipMovie();
 
 %>
 
@@ -74,11 +79,11 @@ String name=memberbean.getM_name();
 	<div id="content">
 		<table border="1">
 			<tr><td>이번달의 영화</td></tr>
-			<tr><td><%=""%></td></tr>
-			<tr><td><%=""%></td></tr>				
+			<tr><td><%=vipbean.getV_kor_title()%></td></tr>
+			<tr><td><%=vipbean.getV_eng_title()%></td></tr>				
 		</table>
-		<img src="./images/vip/InTheMoodForLove_p.jpg" width="300px" height="500px">
-		
+		<img src="./images/vip/<%=vipbean.getV_eng_title()+"_p.jpg"%>">
+		<%-- <img src="./images/<%=genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")+"_s2.jpg"%>"> --%>
 		<table border="1">	
 			<tr><td>2015년작</td></tr>
 			<tr><td>크리스 콜럼버스 감독</td></tr>
@@ -137,4 +142,5 @@ String name=memberbean.getM_name();
 <!-- 푸터 영역 -->
 
 </body>
+
 </html>

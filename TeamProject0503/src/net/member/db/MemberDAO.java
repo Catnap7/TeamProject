@@ -135,7 +135,7 @@ private Connection getConnection() throws Exception {
 		try {
 			con=getConnection();
 			
-			sql = "select * from member where m_id=?"; 
+			sql = "select m_id,m_pass,m_name,m_grade,lpad(m_id_num1,6,0) as m_id_num1,m_id_num2,m_reg_date from member where m_id=?"; 
 			 pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, m_id);
 			
@@ -147,7 +147,9 @@ private Connection getConnection() throws Exception {
 				memberbean.setM_id(rs.getString("m_id"));  
 				memberbean.setM_pass(rs.getString("m_pass"));  
 				memberbean.setM_name(rs.getString("m_name"));  
-				memberbean.setM_grade(rs.getInt("m_grade"));  
+				memberbean.setM_grade(rs.getInt("m_grade"));
+				memberbean.setM_id_num1(rs.getInt("m_id_num1"));
+				memberbean.setM_id_num2(rs.getInt("m_id_num2"));
 				memberbean.setM_reg_date(rs.getDate("m_reg_date"));
 			}
 			
@@ -249,12 +251,12 @@ private Connection getConnection() throws Exception {
 	}//end  of passUpdateMember
 	public String connectEmail(String m_id){
 		String to1=m_id; // 
-		String host="smtp.naver.com"; // 
-		String subject="임시비밀번호 발급"; // 
+		String host="smtp.googlemail.com"; // 
+		String subject="와츄 임시비밀번호 발급"; // 
 		String fromName="관리자"; // 
-		String from="lhw4417@naver.com"; 
+		String from="wkdwodn22@gmail.com"; 
 		String authNum=authNum(); // 
-		String content="임시비밀번호 발급 ["+authNum+"]"; //         
+		String content="임시비밀번호 ["+authNum+"]"; //         
 		try{
 			passUpdateMember(authNum,to1);
 		Properties props=new Properties();
@@ -272,7 +274,7 @@ private Connection getConnection() throws Exception {
            = Session.getInstance(props,new javax.mail.Authenticator(){
 			    protected PasswordAuthentication getPasswordAuthentication(){
 				    return new PasswordAuthentication
-                                        ("lhw4417","dnjsWld53"); // naver�④쑴�젟
+                                        ("wkdwodn22","s8949005"); // naver�④쑴�젟
 			}
 		});
 		
@@ -302,6 +304,41 @@ private Connection getConnection() throws Exception {
 		}
 		return buffer.toString();
 	} //end of authNum()
+	
+	public boolean duplicateIdCheck(String m_name) {
+	
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		boolean x= false;
+		String sql =null;
+		try {
+			
+			sql="SELECT m_name FROM MEMBER WHERE m_name=?";
+						
+			conn = getConnection();
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, m_name);
+			rs = pstm.executeQuery();
+			
+			if(rs.next())  x= true; 
+			
+			return x;
+			
+		} catch (Exception sqle) {
+			throw new RuntimeException(sqle.getMessage());
+		} finally {
+			try{
+				if ( pstm != null ){ pstm.close(); pstm=null; }
+				if ( conn != null ){ conn.close(); conn=null;	}
+			}catch(Exception e){
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+	} // end duplicateIdCheck()
+	
+	
+	
 	
 	
 }

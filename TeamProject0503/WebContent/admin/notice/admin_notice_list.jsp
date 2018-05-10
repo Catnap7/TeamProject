@@ -42,7 +42,7 @@
 		</table>
 
 		<div class="admin-notice-write">
-			<form action="admin_notice_write.jsp">
+			<form action="./AdminNoticeWrite.an">
 				<button type="submit" class="wirtebtn">글쓰기</button>
 			</form>
 		</div>

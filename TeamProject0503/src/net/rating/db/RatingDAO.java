@@ -301,7 +301,67 @@ public class RatingDAO {
 		 return vector;
 	 }//end list
 	
-	
-	
+	public RatingBean getRating(String id, int mv_num){ 
+	 Connection con=null;
+	 String sql="";
+	 PreparedStatement pstmt=null;
+	 ResultSet rs=null;
+	 RatingBean ratingBean = new RatingBean();
+	 try{ //예외가 발생할 것 같은 명령, 	필수적으로 외부파일접근, 디비접근
+			con = getConnection();
+			sql="select * from rating where ra_id =? and ra_p_num=?";				 				 
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, mv_num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				ratingBean.setRa_id(rs.getString("ra_id"));
+				ratingBean.setRa_rating(rs.getInt("ra_rating")); //
+			}
+			
+		} catch(Exception e) {
+				//예외 생기면 변수 e에 저장
+				//예외를 잡아서 처리 -> 메시지 출력
+				e.printStackTrace();
+				}finally{
+					//예외가 발생하든 말든 상관없이 마무리작업
+					//객체 기억장소 마무리
+					if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+					if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+					if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+				}
+	 return ratingBean;
+}
+	public float avgRating(int mv_num){
+		 Connection con=null;
+		 String sql="";
+		 PreparedStatement pstmt=null;
+		 ResultSet rs=null;
+		 float avg = 0;
+		 try{ //예외가 발생할 것 같은 명령, 	필수적으로 외부파일접근, 디비접근
+				con = getConnection();
+				sql="select avg(ra_rating) as avg from rating where ra_p_num=?";				 				 
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, mv_num);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()){
+					avg=rs.getInt("avg");
+				}
+				
+			} catch(Exception e) {
+					//예외 생기면 변수 e에 저장
+					//예외를 잡아서 처리 -> 메시지 출력
+					e.printStackTrace();
+					}finally{
+						//예외가 발생하든 말든 상관없이 마무리작업
+						//객체 기억장소 마무리
+						if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+						if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+						if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+					}
+		 return avg;
+	}
 	
 }

@@ -21,10 +21,6 @@
 <script type="text/javascript">
 
 
-
-
-
-
 $(document).ready(function(){
 	
 	/***변수선언***/
@@ -287,6 +283,10 @@ if(favoritecount>=13){
 }else{
 	classname = "main2";
 }
+
+List<MovieBean>Mostcount = (List)request.getAttribute("Mostcount");
+List<MovieBean>Bestrating = (List)request.getAttribute("Bestrating");
+List<MovieBean>Bestmovie = (List)request.getAttribute("Bestmovie");
 %>
 
 
@@ -320,31 +320,53 @@ if(favoritecount>=13){
   		<h2>이번 달 인기 영화</h2>
 		<div class="slider trending">
 			 <!--for문으로 반복 하시면 됩니다-->
-			<a href="#"><div class="mv">
-						<img src="./images/sf/Arrival_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-						<span class="mv_title"><%="컨택트"%></span><!-- 한글제목 --> 
-						<span class="mv_year"><%="2016"%></span><!-- 년도 -->
-						<span class="mv_grade"><%="12"%></span><!-- 등급 -->
-						<span class="mv_time"><%="116"%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
-						</div>
-			</a>
-			<!--for문 여기까지 -->
-			
-			<!-- ↓↓↓↓↓디자인 예시를 위해 만든 코드. for문 결과를 확인하고 지워도 무방 ↓↓↓↓↓-->
-			<a href="#"><div class="mv"><img src="./images/sf/AI_s.jpg"><span class="mv_title">A.I</span><span class="mv_year">2001</span><span class="mv_grade"><%="12"%></span><span class="mv_time"><%="116"%><%="분"%></span><span class="mv_icon"><%="116"%><%="분"%></span></div></a>
-			<a href="#"><div class="mv"><img src="./images/sf/Ender'sGame_s2.jpg"><span class="mv_title">앤더스 게임</span></div></a>
-			<a href="#"><div class="mv"><img src="./images/sf/Chappie_s.jpg"><span class="mv_title">채피</span></div></a>
-			<a href="#"><div class="mv"><img src="./images/sf/Equals_s.jpg"><span class="mv_title">이퀄스</span></div></a>
-			<a href="#"><div class="mv"><img src="./images/sf/GhostInTheShell_s.jpg"><span class="mv_title">고스트 인 더 쉘</span></div></a>
-			<a href="#"><div class="mv"><img src="./images/sf/Hollowman_s.jpg"><span class="mv_title">할로우 맨</span></div></a>
-			<a href="#"><div class="mv"><img src="./images/sf/Inception_s.jpg"><span class="mv_title">인셉션</span></div></a>
-			<a href="#"><div class="mv"><img src="./images/sf/AI_s.jpg"><span class="mv_title">A.I</span><span class="mv_year">2001</span><span class="mv_grade"><%="12"%></span><span class="mv_time"><%="116"%><%="분"%></span><span class="mv_icon"><%="116"%><%="분"%></span></div></a>
-			<a href="#"><div class="mv"><img src="./images/sf/AI_s.jpg"><span class="mv_title">A.I</span><span class="mv_year">2001</span><span class="mv_grade"><%="12"%></span><span class="mv_time"><%="116"%><%="분"%></span><span class="mv_icon"><%="116"%><%="분"%></span></div></a>
-			<a href="#"><div class="mv"><img src="./images/sf/AI_s.jpg"><span class="mv_title">A.I</span><span class="mv_year">2001</span><span class="mv_grade"><%="12"%></span><span class="mv_time"><%="116"%><%="분"%></span><span class="mv_icon"><%="116"%><%="분"%></span></div></a>
-			<a href="#"><div class="mv"><img src="./images/sf/AI_s.jpg"><span class="mv_title">A.I</span><span class="mv_year">2001</span><span class="mv_grade"><%="12"%></span><span class="mv_time"><%="116"%><%="분"%></span><span class="mv_icon"><%="116"%><%="분"%></span></div></a>
-	 		<a href="#"><div class="mv"><img src="./images/sf/Ender'sGame_s2.jpg"><span class="mv_title">앤더스 게임</span></div></a>
-	 		<!-- ↑↑↑↑↑디자인 예시를 위해 만든 코드. for문 결과를 확인하고 지워도 무방↑↑↑↑↑-->
-	 		
+		<%for(MovieBean moviebean  : Bestmovie){
+		  		
+		/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/
+		String img_genre= "";
+		if(moviebean.getMv_genre().equals("animation")){
+			img_genre="animation";
+		}else if(moviebean.getMv_genre().equals("comedy")){
+			img_genre="comedy";
+		}else if(moviebean.getMv_genre().equals("indie")){
+			img_genre="indie";
+		}else if(moviebean.getMv_genre().equals("sf")){
+			img_genre="sf";
+		}else if(moviebean.getMv_genre().equals("action")){
+			img_genre="action";
+		}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
+			img_genre="thriller";
+		}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
+			img_genre="romance";
+		}
+		
+
+		String age = "";
+		if(moviebean.getMv_age()==0){
+			age = "전체이용가";
+		}else if(moviebean.getMv_age()==12){
+			age = "12세이용가";
+		}else if(moviebean.getMv_age()==15){
+			age="15세이용가";
+		}else if(moviebean.getMv_age()==19){
+			age="청소년이용불가";
+		}
+		
+		
+		String moviename = moviebean.getMv_eng_title();
+		String imgname = moviename.replaceAll(" " , "");
+ 		imgname = imgname.replaceAll("\\p{Z}", "");%>
+ 			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><div class="mv">
+							<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+							<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
+							<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
+							<span class="mv_grade"><%=age%></span><!-- 등급 -->
+							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+							</div>
+			</a> 
+		<%} %> 
+			<!--for문 여기까지 -->			
+				 		
     	</div><!-- slider -->
 	</div><!-- container -->
 		<div>
@@ -353,75 +375,119 @@ if(favoritecount>=13){
 		</div><!-- button -->
 		
 	
-	
+<%if(Bestrating!=null){ %>	
 <!-- 회원님이 별점을 높게 준 영화와 비슷한 영화 -->
   	<div class="container">  <!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  		
   		<h2>회원님이 별점을 높게 준 영화와 비슷한 영화</h2>
 		<div class="slider recommendRating">
 			 <!--for문으로 반복 하시면 됩니다-->
-			<a href="#"><div class="mv">
-						<img src="../images/sf/arrivla_s2.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-						<span class="mv_title"><%="컨택트"%></span><!-- DB에서 가져온 한글제목으로 대체해 주세요 --> 
-						<span class="mv_year"><%="2016"%></span><!-- 년도 -->
-						<span class="mv_grade"><%="12"%></span><!-- 등급 -->
-						<span class="mv_time"><%="116"%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
-						</div>
-			</a>
+			<%for(MovieBean moviebean  : Bestrating){
+		  		
+		/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/
+		String img_genre= "";
+		if(moviebean.getMv_genre().equals("animation")){
+			img_genre="animation";
+		}else if(moviebean.getMv_genre().equals("comedy")){
+			img_genre="comedy";
+		}else if(moviebean.getMv_genre().equals("indie")){
+			img_genre="indie";
+		}else if(moviebean.getMv_genre().equals("sf")){
+			img_genre="sf";
+		}else if(moviebean.getMv_genre().equals("action")){
+			img_genre="action";
+		}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
+			img_genre="thriller";
+		}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
+			img_genre="romance";
+		}
+		
+
+		String age = "";
+		if(moviebean.getMv_age()==0){
+			age = "전체이용가";
+		}else if(moviebean.getMv_age()==12){
+			age = "12세이용가";
+		}else if(moviebean.getMv_age()==15){
+			age="15세이용가";
+		}else if(moviebean.getMv_age()==19){
+			age="청소년이용불가";
+		}
+		
+		
+		String moviename = moviebean.getMv_eng_title();
+		String imgname = moviename.replaceAll(" " , "");
+ 		imgname = imgname.replaceAll("\\p{Z}", "");%>
+ 			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><div class="mv">
+							<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+							<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
+							<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
+							<span class="mv_grade"><%=age%></span><!-- 등급 -->
+							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+							</div>
+			</a> 
+		<%} %> 
 			<!--for문 여기까지 -->
-			
-			<!-- ↓↓↓↓↓디자인 예시를 위해 만든 코드. for문 결과를 확인하고 지워도 무방 ↓↓↓↓↓-->
-			<div class="mv"><img src="../images/sf/ai_s2.jpg"><span class="mv_title">A.I</span></div>
-			<div class="mv"><img src="../images/sf/andersgame_s1.jpg"><span class="mv_title">앤더스 게임</span></div>
-			<div class="mv"><img src="../images/sf/chappie_s2.jpg"><span class="mv_title">채피</span></div>
-			<div class="mv"><img src="../images/sf/cloudatlas_s1.jpg"><span class="mv_title">클라우드 아틀라스</span></div>
-			<div class="mv"><img src="../images/sf/equals_s2.jpg"><span class="mv_title">이퀄스</span></div>
-			<div class="mv"><img src="../images/sf/ghostintheshell_s2.jpg"><span class="mv_title">고스트 인 더 쉘</span></div>
-			<div class="mv"><img src="../images/sf/hollowman_s2.jpg"></div>
-			<div class="mv"><img src="../images/sf/inception_s2.jpg"></div>
-			<div class="mv"><img src="../images/sf/interstellar_s1.jpg"></div>
-			<div class="mv"><img src="../images/sf/minorityreport_s1.jpg"></div>
-			<div class="mv"><img src="../images/sf/pandorum_s2.jpg"></div> 
-			<div class="mv"><img src="../images/sf/pixel_s1.jpg"></div> 
-			<!-- ↑↑↑↑↑디자인 예시를 위해 만든 코드. for문 결과를 확인하고 지워도 무방↑↑↑↑↑-->
-			
+												
     	</div><!-- slider -->
 	</div><!-- container -->
 		<div>
 			<div class="prev2 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>
 			<div class="next2 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->
-	
+<%} %>
 		
-		
+<%if(Mostcount!=null){ %>		
 <!-- 회원님이 많이 본 영화와 비슷한 영화 -->
   	<div class="container">  <!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  		
   		<h2>회원님이 좋아하는 영화가 될 것 같아요</h2>
 		<div class="slider recommendMany">
 			<!--for문으로 반복 하시면 됩니다-->
-			<a href="#"><div class="mv">
-						<img src="../images/sf/prometheus_s1.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-						<span class="mv_title"><%="프로메테우스" %></span><!-- DB에서 가져온 한글제목으로 대체해 주세요 --> 
-						<span class="mv_year"><%="2012"%></span><!-- 년도 -->
-						<span class="mv_grade"><%="19"%></span><!-- 등급 -->
-						<span class="mv_time"><%="123"%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
-						</div>
-			</a>
+				<%for(MovieBean moviebean  : Mostcount){
+		  		
+		/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/
+		String img_genre= "";
+		if(moviebean.getMv_genre().equals("animation")){
+			img_genre="animation";
+		}else if(moviebean.getMv_genre().equals("comedy")){
+			img_genre="comedy";
+		}else if(moviebean.getMv_genre().equals("indie")){
+			img_genre="indie";
+		}else if(moviebean.getMv_genre().equals("sf")){
+			img_genre="sf";
+		}else if(moviebean.getMv_genre().equals("action")){
+			img_genre="action";
+		}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
+			img_genre="thriller";
+		}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
+			img_genre="romance";
+		}
+		
+
+		String age = "";
+		if(moviebean.getMv_age()==0){
+			age = "전체이용가";
+		}else if(moviebean.getMv_age()==12){
+			age = "12세이용가";
+		}else if(moviebean.getMv_age()==15){
+			age="15세이용가";
+		}else if(moviebean.getMv_age()==19){
+			age="청소년이용불가";
+		}
+		
+		
+		String moviename = moviebean.getMv_eng_title();
+		String imgname = moviename.replaceAll(" " , "");
+ 		imgname = imgname.replaceAll("\\p{Z}", "");%>
+ 			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><div class="mv">
+							<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+							<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
+							<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
+							<span class="mv_grade"><%=age%></span><!-- 등급 -->
+							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+							</div>
+			</a> 
+		<%} %> 
 			<!--for문 여기까지 -->
-			
-			<!-- ↓↓↓↓↓디자인 예시를 위해 만든 코드. for문 결과를 확인하고 지워도 무방 ↓↓↓↓↓-->
-			<div class="mv"><img src="../images/sf/robotandfrank_s1.jpg"><span class="mv_title">로봇 앤 프랭크</span></div>
-			<div class="mv"><img src="../images/sf/snowpiercer_s2.jpg"><span class="mv_title">설국열차</span></div>
-			<div class="mv"><img src="../images/sf/the6thday_s1.jpg"><span class="mv_title">6번째 날</span></div>
-			<div class="mv"><img src="../images/sf/thegiver_s2.jpg"><span class="mv_title">더 기버:기억전달자</span></div>
-			<div class="mv"><img src="../images/sf/theisland_s1.jpg"><span class="mv_title">아일랜드</span></div>
-			<div class="mv"><img src="../images/sf/themartian_s1.jpg"></div>
-			<div class="mv"><img src="../images/sf/hollowman_s1.jpg"></div>
-			<div class="mv"><img src="../images/sf/inception_s1.jpg"></div>
-			<div class="mv"><img src="../images/sf/interstellar_s2.jpg"></div>
-			<div class="mv"><img src="../images/sf/minorityreport_s2.jpg"></div>
-			<div class="mv"><img src="../images/sf/pandorum_s1.jpg"></div> 
-			<div class="mv"><img src="../images/sf/pixel_s1.jpg"></div> 
-			<!-- ↑↑↑↑↑디자인 예시를 위해 만든 코드. for문 결과를 확인하고 지워도 무방↑↑↑↑↑-->
 			
     	</div><!-- slider -->
 	</div><!-- container -->
@@ -429,6 +495,7 @@ if(favoritecount>=13){
 			<div class="prev3 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>
 			<div class="next3 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->	
+<%} %>
 	
 <%if(favoritecount>=13){%>
 <!-- 회원님이 보고싶은 영화 (즐겨찾기)-->
