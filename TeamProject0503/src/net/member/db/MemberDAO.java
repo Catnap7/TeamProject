@@ -127,7 +127,7 @@ private Connection getConnection() throws Exception {
 	}
 	
 	public MemberBean getMember(String m_id) {
-		MemberBean memberbean = null;
+		MemberBean memberbean = new MemberBean();
 		String sql =null;
 		PreparedStatement pstmt = null;
 		ResultSet rs =null;
@@ -141,9 +141,7 @@ private Connection getConnection() throws Exception {
 			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				memberbean = new MemberBean(); //자바빈 객체생성
-
+			if(rs.next()) {				
 				memberbean.setM_id(rs.getString("m_id"));  
 				memberbean.setM_pass(rs.getString("m_pass"));  
 				memberbean.setM_name(rs.getString("m_name"));  
@@ -340,6 +338,75 @@ private Connection getConnection() throws Exception {
 	
 	
 	
+	public void updateMember(MemberBean mb){			
+		Connection con=null;
+		String sql="";
+		PreparedStatement pstmt=null;
+		try{con = getConnection();
+	
+		sql="update member set m_name=?, m_pass=? where m_id =?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, mb.getM_name()); 
+		pstmt.setString(2, mb.getM_pass());		
+		pstmt.setString(3, mb.getM_id());
+		pstmt.executeUpdate();
+		
+		}catch(Exception e) {
+			//예외 생기면 변수 e에 저장
+			//예외를 잡아서 처리 -> 메시지 출력
+			e.printStackTrace();
+			}finally{
+				//예외가 발생하든 말든 상관없이 마무리작업 => 기억장소 정리
+				//객체 기억장소 마무리
+			 if(pstmt!=null){
+				try{pstmt.close();						
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			 }
+				if(con!=null){
+					try{con.close();
+					}catch(SQLException e){
+						e.printStackTrace();
+					 }
+					}
+				
+			}		
+	}//end updateMember
+	
+	public void deleteMember(String id){
+		Connection con=null;
+		String sql="";
+		PreparedStatement pstmt=null;
+		try{con = getConnection();
+		//3단계 연결정보를  이용해서 sql 구문을 만들고 실행할 객체 생성
+//			내장객체 Statement, PreparedStatement, CallableStatement
+		//String sql="insert into member values('"+id+"','"+pass+"','"+name+"','"+reg_date+"')";
+		sql="delete from member where m_id=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id); // ? 첫번째 물음표, 아이디값
+		pstmt.executeUpdate();
+		}catch(Exception e) {
+			//예외 생기면 변수 e에 저장
+			//예외를 잡아서 처리 -> 메시지 출력
+			e.printStackTrace();
+			}finally{
+				//예외가 발생하든 말든 상관없이 마무리작업 => 기억장소 정리
+				//객체 기억장소 마무리
+			 if(pstmt!=null){
+				try{pstmt.close();						
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			 }
+				if(con!=null){
+					try{con.close();
+					}catch(SQLException e){
+						e.printStackTrace();
+					 }
+					}
+	}
+	}//end deleteMember
 	
 }
 
