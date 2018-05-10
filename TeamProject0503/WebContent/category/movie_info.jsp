@@ -1,4 +1,5 @@
 <%-- <%@page import="net.admin.manage.db.MovieBean"%> --%>
+<%@page import="net.category.db.RecChkBean"%>
 <%@page import="net.category.db.ReviewBean"%>
 <%@page import="net.member.db.MemberBean"%>
 <%@page import="net.rating.db.RatingBean"%>
@@ -385,8 +386,8 @@ $(document).ready(function(){
 					%>
 					<tr>
  			          <td>
- 			          <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">추천</a> | 
- 			          <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">신고</a>
+ 			          <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">추천</a> | 
+ 			          <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">신고</a>
  			          </td>
  			    	</tr>
 					<%
