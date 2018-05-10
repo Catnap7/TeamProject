@@ -17,8 +17,10 @@ public class AdminNoticeWriteAction implements Action {
 		
 		NoticeBean nb = new NoticeBean();
 		nb.setN_content(request.getParameter("n_content"));
-		nb.setN_date(new Date(System.currentTimeMillis()));
 		nb.setN_subject(request.getParameter("n_subject"));
+		nb.setN_image(request.getParameter("n_image"));
+		nb.setN_file(request.getParameter("n_file"));
+		nb.setN_date(new Date(System.currentTimeMillis()));
 		
 		
 		NoticeDAO ndao = new NoticeDAO();
