@@ -42,17 +42,9 @@ case 2 : grade = "VIP회원"; break;
 				<td class="content"><%=grade%></td>
 			</tr>
 		</table>
-	</div>
-	
-	<div class="mypage_btn">
-	<div class="mypage_inner">
-		<div class="mypage_btn_inner">
-			<a href="update_PWcheck.jsp">정보 수정</a>
-		</div>
-		<div class="mypage_btn_inner2">
-			<a href="delete_PWcheck.jsp">서비스 탈퇴</a>
-		</div>
-	</div>
+		
+		<input type="button" value="정보 수정" class="update_btn" onclick="location.href='updatecheck.jsp'">
+		<input type="button" value="서비스 탈퇴" class="delete_btn" onclick="location.href='deletecheck.jsp'">
 	</div>
 	
 	<div class="clear"></div>
