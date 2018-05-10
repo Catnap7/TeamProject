@@ -271,6 +271,31 @@ $(document).ready(function(){
 			</script>
 		<%	
 		}else if(memberBean.getM_grade()==1){
+			if(memberBean.getM_id_num1()<=991231 && moviebean.getMv_age()==19 ){
+				
+				 %>
+				  <script type="text/javascript">
+				  var url = $('hr').attr('href','<%=moviebean.getMv_video()%>');
+					$(document).ready(function(){
+						$('.hr').click(function(){
+							 window.open('<%=moviebean.getMv_video()%>','_blank')
+							});
+						
+					});			  
+				  </script>
+				  <%
+			}else if (memberBean.getM_id_num1()>=000101 && moviebean.getMv_age()==19){
+				%>
+					<script type="text/javascript">
+					$(document).ready(function(){
+						$('.hr').click(function(){
+							alert("19세 미만은 사용하실 수 없습니다.");
+							return attributes;
+							});
+					});		
+					</script>
+				<%	
+				}
 			 %>
 			  <script type="text/javascript">
 				$(document).ready(function(){
@@ -282,30 +307,7 @@ $(document).ready(function(){
 			  </script>
 			  <%
 		}
-		if(memberBean.getM_id_num1()>=990101 && moviebean.getMv_age()==19 ){
-			
-			 %>
-			  <script type="text/javascript">
-			  var url = $('hr').attr('href','<%=moviebean.getMv_video()%>');
-				$(document).ready(function(){
-					$('.hr').click(function(){
-						 window.open('<%=moviebean.getMv_video()%>','_blank')
-						});
-					
-				});			  
-			  </script>
-			  <%
-		}else if (memberBean.getM_id_num1()<=000101 && moviebean.getMv_age()==19){
-			%>
-				<script type="text/javascript">
-				$(document).ready(function(){
-					$('.hr').click(function(){
-						alert("19세 미만은 사용하실 수 없습니다.");
-						});
-				});		
-				</script>
-			<%	
-		}
+		
 		%>
 			  <button class="hr"> 이동</button>
 		</div>
