@@ -375,7 +375,10 @@ $(document).ready(function(){
 				if(reviewbean.getR_id().equals(id)) {
 					%>
 					<tr>
- 			      	  <td><a href="./ModifyReview.ca?mv_num=<%=moviebean.getMv_num() %>">수정</a> | <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">삭제</a></td>
+ 			      	  <td>
+ 			      	  <a href="./ModifyReview.ca?mv_num=<%=moviebean.getMv_num() %>">수정</a> | 
+ 			      	  <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">삭제</a>
+ 			      	  </td>
  			    	</tr>
 					<%
 				}else {
