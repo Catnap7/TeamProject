@@ -20,8 +20,8 @@
 	<div class="mypage_profile2">
 		<h2 class="pw_check">비밀번호를 입력해 주세요</h2>
 		
-		<form action="updateform.jsp" method="get" name="fr">
-			<input type="password" value placeholder="비밀번호 입력" class="mypage_check"><br>
+		<form action="./Update.my" method="get" name="fr">
+			<input type="password" value placeholder="비밀번호 입력" class="mypage_check" name="pass"><br>
 			<input type="submit" value="확인" class="check_text">
 		</form>
 	</div>

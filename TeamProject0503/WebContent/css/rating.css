@@ -8,7 +8,7 @@
 
 .movie_wrap {
 /* 	border: 1px solid red; */
-	height: 1100px;
+/* 	height: 1100px; */
 	padding:0;
 }
 
@@ -61,12 +61,19 @@ span.star_rating {
 	letter-spacing: 10px;
 }
 
+.movie_refresh {
+	width: 150px;
+	margin: 20px auto;
+	text-align: center;
+}
+
 .movie_refresh a {
-/* 	border: 1px solid red; */
 	text-decoration: none;
 	font-size: 64px;
 	color: #333;
-	margin-left: 950px;
-	margin-bottom: 50px;
+}
+
+.movie_refresh a:HOVER {
+	color: #ff8000;
 }
 

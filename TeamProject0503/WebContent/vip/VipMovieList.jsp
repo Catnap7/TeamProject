@@ -20,7 +20,7 @@
 	<table border="1">
 		<tr>
 			<th>번호</th><th>한글제목</th><th>영문제목</th><th>년도</th><th>국가</th>
-			<th>관람등급</th><th>장르</th><th>감독</th><th>주연</th><th>상영회예상날짜</th>
+			<th>관람등급</th><th>장르</th><th>감독</th><th>주연</th><th>상영회예상날짜</th><th>상영회예상날짜</th>
 		</tr>
 		
 		<%for(int i=0;i<vipMovieList.size();i++){
@@ -31,6 +31,7 @@
 			<td><%=vipbean.getV_country()%></td><td><%=vipbean.getV_age()%></td>
 			<td><%=vipbean.getV_genre()%></td><td><%=vipbean.getV_director()%></td>
 			<td><%=vipbean.getV_actor()%></td><td><%=vipbean.getV_date()%></td>
+			<td><%=vipbean.getV_when()%></td>
 		</tr>
 		<%} %>
 	</table>
