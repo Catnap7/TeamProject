@@ -47,7 +47,7 @@ case 2 : grade = "VIP회원"; break;
 	<div class="mypage_btn">
 	<div class="mypage_inner">
 		<div class="mypage_btn_inner">
-			<a href="update_PWcheck.jsp">정보 수정</a>
+			<a href="./UpdateCheck.my">정보 수정</a>
 		</div>
 		<div class="mypage_btn_inner2">
 			<a href="delete_PWcheck.jsp">서비스 탈퇴</a>

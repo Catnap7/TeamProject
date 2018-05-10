@@ -30,7 +30,7 @@ public class MypageFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/UpdateCheck.my")){
-			//action = new UpdateCheck();
+			action = new UpdateCheck();
 			try{
 			forward=action.execute(request, response);
 			
