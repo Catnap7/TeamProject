@@ -1,3 +1,4 @@
+<%@page import="net.member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -5,11 +6,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="../css/default.css" rel="stylesheet" type="text/css">
-<link href="../css/mypage.css" rel="stylesheet" type="text/css">
+<link href="./css/default.css" rel="stylesheet" type="text/css">
+<link href="./css/mypage.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+<%
+MemberBean memberbean = (MemberBean)request.getAttribute("mb");
+String grade=null;
+switch(memberbean.getM_grade()){
+case 1 : grade = "정회원"; break;
+case 2 : grade = "VIP회원"; break;
+}
+%>
 <!-- 헤더영역 -->
 <jsp:include page="../inc/header.jsp"/>
 <!-- 헤더영역 -->
@@ -22,16 +30,16 @@
 		
 		<table class="mypage_info">
 			<tr>
-				<td>이메일</td>
-				<td class="content">aaaa@watchu.com</td>
+				<td>아이디</td>
+				<td class="content"><%=memberbean.getM_id()%></td>
 			</tr>
 			<tr>
-				<td>이름</td>
-				<td class="content">홍길동</td>
+				<td>닉네임</td>
+				<td class="content"><%=memberbean.getM_name()%></td>
 			</tr>
 			<tr>
 				<td>등급</td>
-				<td class="content">VIP</td>
+				<td class="content"><%=grade%></td>
 			</tr>
 		</table>
 	</div>

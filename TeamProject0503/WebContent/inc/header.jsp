@@ -19,7 +19,7 @@
 		<div class="myinfo">
   			<button class="dropbtn1"><%=m_name %></button>
 				  <div class="dropdown-content1">
-				    <a href="../member/mypage.jsp">내정보보기</a>
+				    <a href="./Mypage.my">내정보보기</a>
 				    <a href="./Coupon.my">쿠폰함</a>
 				    <a href="./Alarm.my">알림창</a>
 				    <a href="./Myrating.my">평점내역</a>
