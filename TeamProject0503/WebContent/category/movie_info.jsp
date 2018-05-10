@@ -259,25 +259,57 @@ $(document).ready(function(){
 		}
 			%>
 			
-		<%if(memberBean.getM_id_num1()<=19990101){
-			
+		<%
+		if(memberBean.getM_grade()==0){
+			%>
+			<script type="text/javascript">
+			$(document).ready(function(){
+				$('.hr').click(function(){
+					alert("결제 후 이용 가능합니다.");
+					});
+			});		
+			</script>
+		<%	
+		}else if(memberBean.getM_grade()==1){
+			if(memberBean.getM_id_num1()<=991231 && moviebean.getMv_age()==19 ){
+				
+				 %>
+				  <script type="text/javascript">
+				  var url = $('hr').attr('href','<%=moviebean.getMv_video()%>');
+					$(document).ready(function(){
+						$('.hr').click(function(){
+							 window.open('<%=moviebean.getMv_video()%>','_blank')
+							});
+						
+					});			  
+				  </script>
+				  <%
+			}else if (memberBean.getM_id_num1()>=000101 && moviebean.getMv_age()==19){
+				%>
+					<script type="text/javascript">
+					$(document).ready(function(){
+						$('.hr').click(function(){
+							alert("19세 미만은 사용하실 수 없습니다.");
+							return attributes;
+							});
+					});		
+					</script>
+				<%	
+				}
 			 %>
 			  <script type="text/javascript">
 				$(document).ready(function(){
-					$('.fa fa-play-circle play').click(function(){
-						$('a.fa fa-play-circle play').attr("href","<%=moviebean.getMv_video() %>")
+					$('.hr').click(function(){
+						 window.open('<%=moviebean.getMv_video()%>','_blank') 
 						});
 					
 				});			  
 			  </script>
-			  <%-- <a href="<%=moviebean.getMv_video() %>" class="fa fa-play-circle play" target="_blank"></a> --%>
-			  <a href="" class="fa fa-play-circle play" target="_blank"></a>
-			  <button class="hr"> 이동</button>
 			  <%
-		}else if (memberBean.getM_id_num1()>=19990101){
-			
-		}	
+		}
+		
 		%>
+			  <button class="hr"> 이동</button>
 		</div>
 	</div>
 	</div>
@@ -295,7 +327,7 @@ $(document).ready(function(){
 	<!--예고편  -->
 	<div class="movie_preview">
 	  <div>
-		<iframe src=<%=moviebean.getMv_video() %>></iframe><br>
+		<iframe src=<%=moviebean.getMv_video()%>></iframe><br>
 	  </div>
 	</div>
 	
@@ -343,13 +375,19 @@ $(document).ready(function(){
 				if(reviewbean.getR_id().equals(id)) {
 					%>
 					<tr>
- 			      	  <td><a href="#">수정</a> | <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">삭제</a></td>
+ 			      	  <td>
+ 			      	  <a href="./ModifyReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">수정</a> | 
+ 			      	  <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">삭제</a>
+ 			      	  </td>
  			    	</tr>
 					<%
 				}else {
 					%>
 					<tr>
- 			          <td><a href="#">추천</a> | <a href="#">신고</a></td>
+ 			          <td>
+ 			          <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">추천</a> | 
+ 			          <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">신고</a>
+ 			          </td>
  			    	</tr>
 					<%
 				}

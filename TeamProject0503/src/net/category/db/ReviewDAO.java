@@ -125,6 +125,8 @@ public class ReviewDAO {
 		}
 	}	// 댓글 삭제
 	
+	
+	
 	public void updateReview(ReviewBean reviewbean) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -149,6 +151,54 @@ public class ReviewDAO {
 			if(con!=null)try{con.close();}catch(SQLException ex){}
 		}
 	}	// 댓글 수정
+	
+	public void recommandReview(int r_num) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		String sql="";
+		ResultSet rs=null;
+		
+		try {
+			con = getConnection();
+			
+			sql = "update review set r_recommand = r_recommand+1 where r_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, r_num);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally{
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+	}	// 댓글 추천
+	
+	public void reportReview(int r_num) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		String sql="";
+		ResultSet rs=null;
+		
+		try {
+			con = getConnection();
+			
+			sql = "update review set r_report = r_report+1 where r_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, r_num);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally{
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+	}	// 댓글 신고
 
 	
 }
