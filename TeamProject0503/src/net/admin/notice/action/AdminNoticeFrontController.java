@@ -30,6 +30,17 @@ public class AdminNoticeFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/AdminNoticeWrite.an")) {
+			forward = new ActionForward();
+			forward.setPath("./admin/notice/admin_notice_write.jsp");
+			forward.setRedirect(false);
+		}else if(command.equals("/AdminNoticeWriteAction.an")) {
+			action = new AdminNoticeWriteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 			

@@ -22,7 +22,7 @@ public class MypageFrontController extends HttpServlet{
 				
 		//주소 비교
 		if(command.equals("/Mypage.my")){
-			//action = new Mypage();
+			action = new Mypage();
 			try{
 			forward=action.execute(request, response);
 			
@@ -30,7 +30,7 @@ public class MypageFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/UpdateCheck.my")){
-			//action = new UpdateCheck();
+			action = new UpdateCheck();
 			try{
 			forward=action.execute(request, response);
 			
@@ -38,7 +38,7 @@ public class MypageFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/Update.my")){
-			//action = new Update();
+			action = new Update();
 			try{
 			forward=action.execute(request, response);
 			
@@ -46,7 +46,7 @@ public class MypageFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/UpdateAction.my")){
-			//action = new UpdateAction();
+			action = new UpdateAction();
 			try{
 			forward=action.execute(request, response);
 			
@@ -54,7 +54,7 @@ public class MypageFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/DeleteCheck.my")){
-			//action = new DeleteCheck();
+			action = new DeleteCheck();
 			try{
 			forward=action.execute(request, response);
 			
@@ -62,7 +62,7 @@ public class MypageFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/DeleteAction.my")){
-			//action = new DeleteAction();
+			action = new DeleteAction();
 			try{
 			forward=action.execute(request, response);
 			

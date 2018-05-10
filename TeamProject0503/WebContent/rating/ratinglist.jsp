@@ -106,11 +106,10 @@ for(int i=0;i<movielist.size();i++){
 }
 }
 %>
+		<div class="movie_refresh">
+			<a class="fa fa-refresh" href="./Rating.ra"></a>
+		</div>
 	</section>
-	
-	<div class="movie_refresh">
-		<a class="fa fa-refresh" href="./Rating.ra"></a>
-	</div>
 	
 </div>
 </article>

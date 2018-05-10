@@ -1,16 +1,16 @@
-package net.category.db;
+package net.admin.manage.db;
 
 import java.sql.Date;
 
-public class ReviewBean {
+public class AdminReviewBean {
 	
-	private int r_num;
-	private String r_id; // member id
-	private int r_p_num; // movie num
-	private int r_recommand; //	default 0 추천
-	private int r_report; // 신고수
-	private String r_content; // 내용
-	private Date r_date;	// 댓글 단 날
+	int r_num;
+	String r_id;
+	int r_p_num;
+	int r_recommand;
+	String r_content;
+	int r_report;
+	Date r_date;
 	
 	public int getR_num() {
 		return r_num;
@@ -36,23 +36,23 @@ public class ReviewBean {
 	public void setR_recommand(int r_recommand) {
 		this.r_recommand = r_recommand;
 	}
+	public String getContent() {
+		return r_content;
+	}
+	public void setContent(String content) {
+		this.r_content = content;
+	}
 	public int getR_report() {
 		return r_report;
 	}
 	public void setR_report(int r_report) {
 		this.r_report = r_report;
 	}
-	public String getR_content() {
-		return r_content;
-	}
-	public void setR_content(String r_content) {
-		this.r_content = r_content;
-	}
 	public Date getR_date() {
 		return r_date;
 	}
 	public void setR_date(Date r_date) {
 		this.r_date = r_date;
-	}
-	
+	}	
+
 }

@@ -42,7 +42,7 @@
 
 	<div id="content">
 		<h1>
-			member list [<%=count%>]
+			member list [<%=count %>]
 		</h1>
 
 		<div class="search_type">

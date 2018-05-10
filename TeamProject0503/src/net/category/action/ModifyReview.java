@@ -1,8 +1,6 @@
 package net.category.action;
 
-
 import java.util.List;
-import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,22 +16,15 @@ import net.member.db.MemberDAO;
 import net.rating.db.RatingBean;
 import net.rating.db.RatingDAO;
 
-public class CategoryMovie_InfoAction implements Action{
+public class ModifyReview implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		/*int mv_num = Integer.parseInt(request.getParameter("mv_num"));
-		Vector vector = new Vector();
-		MovieDAO moviedao = new MovieDAO();
-		List movietList =null;
-		List favoriteList =null;
+
+		System.out.println("ModifyReview execute()");
 		
-		vector= moviedao.getMovie(mv_num);
-		movietList = (List)vector.get(0);
-		favoriteList = (List)vector.get(1);
-		request.setAttribute("movietList", movietList);
-		request.setAttribute("favoriteList", favoriteList);*/
+		request.setCharacterEncoding("utf-8");
+		
 		HttpSession session= request.getSession();
 		String id=(String)session.getAttribute("m_id");
 		if(id==null){
@@ -71,9 +62,8 @@ public class CategoryMovie_InfoAction implements Action{
 		request.setAttribute("reviewList", reviewList);
 		// 리뷰
 		
-		
 		ActionForward forward = new ActionForward();
-	  	forward.setPath("./category/movie_info.jsp");
+	  	forward.setPath("./category/movie_info_modify_review.jsp");
 	  	forward.setRedirect(false);
       	return forward;
 	}
