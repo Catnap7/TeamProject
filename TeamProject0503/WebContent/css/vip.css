@@ -1,5 +1,9 @@
 @CHARSET "UTF-8";
 
+
+*{
+	font-family: 'Nanum Gothic', sans-serif;
+}
 .clear {
 	clear: both;
 }
@@ -10,34 +14,86 @@ body{
 
 
 
-/***상단 이미지***/
+/***vip예약페이지 상단 이미지***/
 .pic_frame{
-	border:1px solid red;   
+	/* border:1px solid red; */   
 	position:relative;
 	margin:0px auto;
 	width:2000px;
-	height:700px;
+	height:780px;
 	overflow: hidden;
 }
 
 #pic_src {
-	border:1px solid blue; 
+	/* border:1px solid blue;  */
 	margin:0px auto;
-	width:1800px;
-	height:700px;
-	position: relative;
-	
+	width:2000px;
+	height:780px;
+	position: relative;	
 }
 .vip_name{
-	border:1px solid red;
-	width:160px; height:50px;
+	/* border:1px solid red; */
+	width:140px; height:50px;
 	color:white;
+	text-align:center;
 	display:inline-block;
 	font-weight: bold;
 	font-size: 2em;
 	position: absolute;
-	top: 100px; left:110px;
+	top: 570px; left:890px;
 }
+
+
+/***vip안내 페이지 상단 이미지***/
+.pic_frame_info{   
+	position:relative;
+	margin:0px auto;
+	width:1900px;
+	height:650px;
+	overflow: hidden;
+}
+
+#pic_src_info {
+	margin:0px auto;
+	width:1900px;
+	height:650px;
+	position: relative;	
+}
+
+
+/**등급정보***/
+.gradeInfo{
+	/* border:1px solid red; */
+	padding: 10px;
+	width:300px; height:100px;
+	text-align: center;
+	margin:0 auto;
+	font-size: 1.2em;
+}
+
+.gradeInfo span{
+	font-weight: bold;
+	color: #400080;
+}
+
+.gradeInfo a{
+	text-decoration: none;
+}
+
+.gradeInfo p:nth-of-type(2){
+	/* border:1px solid blue; */
+	display:inline-block;
+	paddin:10px;
+	margin: 20px auto;
+}
+
+.gradeInfo a:LINK, .gradeInfo a:VISITED{
+	text-decoration: none;
+	color:#400080;
+	font-weight: bold;
+}
+
+
 
 
 

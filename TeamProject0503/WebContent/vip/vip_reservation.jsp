@@ -117,6 +117,8 @@ int v_num=vipbean.getV_num();
 		</table>
 	</div>
 
+<a href="./VipAdmin.vi">vipadmin</a>
+
 <span id="seet">원하시는 좌석을 선택 해 주세요</span>
 
 
