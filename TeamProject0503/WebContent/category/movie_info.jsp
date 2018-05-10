@@ -68,6 +68,7 @@
 </head>
 <body>
 <%
+String id = (String)session.getAttribute("m_id");
 int mv_num =Integer.parseInt(request.getParameter("mv_num"));
 MovieBean moviebean =(MovieBean)request.getAttribute("moviebean");
 FavoriteBean favoritebean = (FavoriteBean)request.getAttribute("favoritebean");
@@ -306,8 +307,6 @@ $(document).ready(function(){
 			<%	
 		}
 		%>
-			  <%-- <a href="<%=moviebean.getMv_video() %>" class="fa fa-play-circle play" target="_blank"></a> --%>
-			  <!--  <a class="fa fa-play-circle play"></a> -->
 			  <button class="hr"> 이동</button>
 		</div>
 	</div>
