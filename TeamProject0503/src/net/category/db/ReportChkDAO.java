@@ -22,6 +22,47 @@ public class ReportChkDAO {
 		return con;
 	}
 	
+	public int reportCheck(int r_num, String id) {
+		
+		int check = 1;
+		
+		Connection con=null;
+		String sql="";
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		try {
+			con = getConnection();
+			
+			sql = "select * from report_chk where rp_num = ? && rp_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, r_num);
+			pstmt.setString(2, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				check = 0;	// 신고 한번 했을때
+			}else {
+				sql = "insert into report_chk(rp_num,rp_id) values(?,?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, r_num);
+				pstmt.setString(2, id);
+				pstmt.executeUpdate();
+				
+				check = 1;	// 신고 안했을때
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			if(rs!=null)try{rs.close();}catch(SQLException e){};
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException e){};
+			if(con!=null)try{con.close();}catch(SQLException e){};
+		}
+		return check;
+	}
+	
 
 	
 }
