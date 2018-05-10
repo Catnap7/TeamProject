@@ -58,6 +58,13 @@ public class CategoryFrontController extends HttpServlet{
 			         } catch (Exception e) {
 			            e.printStackTrace();
 			         }
+		  }else if(command.equals("/ModifyReviewAction.ca")){
+			  	action = new ModifyReviewAction();
+				  try {
+			            forward = action.execute(request, response);
+			         } catch (Exception e) {
+			            e.printStackTrace();
+			         }
 		  }
 		  
 			

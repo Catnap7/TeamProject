@@ -309,23 +309,17 @@ $(document).ready(function(){
 	  </div>
 	</div>
 	
-	 <%
- 	 
- 	 
- 	 for(int i=0; i<reviewList.size(); i++) {
- 		 ReviewBean reviewbean = (ReviewBean)reviewList.get(i);
- 		 if(moviebean.getMv_num()==reviewbean.getR_p_num()) {
- 			 %>
+
  			 			
 	<!--댓글   -->
 	<div class="coment">
 	<hr>
-	  <!--댓글 쓰는 란  -->
-	  <form action="./ModifyReviewAction.ca" class="coment_write">
-	    <textarea cols="90" rows="7" value placeholder="영화를 어떻게 보셨나요?" name="r_content"><%=reviewbean.getR_content() %></textarea>
-	    <input type="hidden" name="mv_num" value="<%=moviebean.getMv_num() %>">
-	    <input type="submit" value="수정">
-	  </form>
+
+	<%
+ 	 for(int i=0; i<reviewList.size(); i++) {
+ 		 ReviewBean reviewbean = (ReviewBean)reviewList.get(i);
+ 		 if(moviebean.getMv_num()==reviewbean.getR_p_num()) {
+ 			 %>
 	  <!-- 댓글 리스트 -->
  	
  			 <table> 
@@ -347,7 +341,7 @@ $(document).ready(function(){
 					%>
 					<tr>
  			      	  <td>
- 			      	  <a href="#">수정</a> | 
+ 			      	  <a href="./ModifyReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">수정</a> | 
  			      	  <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">삭제</a>
  			      	  </td>
  			    	</tr>
@@ -365,8 +359,24 @@ $(document).ready(function(){
  			  <hr class="coment_sec">
  			  <%
  		 }
- 	 }
+ 	 
  	 %>
+	<%
+	if(reviewbean.getR_id().equals(id)){
+		%>
+	  <!--댓글 쓰는 란  -->
+	  <form action="./ModifyReviewAction.ca" class="coment_write">
+	    <textarea cols="90" rows="7" name="r_content" autofocus><%=reviewbean.getR_content() %></textarea>
+	    <input type="hidden" name="mv_num" value="<%=moviebean.getMv_num() %>">
+	    <input type="hidden" name="r_num" value="<%=reviewbean.getR_num() %>">
+	    <input type="submit" value="수정">
+	  </form>		
+		<%
+	}
+ 	 }
+	%>
+
+	
 	  
 	<div class="prev_next">
 	  <a href="#">prev</a>
