@@ -16,7 +16,7 @@ public class AdminReviewListAction implements Action {
 		AdminReviewDAO ardao = new AdminReviewDAO();
 
 		int count = ardao.getAdminReviewCount();
-		int pageSize = 2;
+		int pageSize = 10;
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum == null) {
 			pageNum = "1";
