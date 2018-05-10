@@ -96,7 +96,7 @@ int v_num=vipbean.getV_num();
 	
 	<div id="content">
 		<table border="1">
-			<tr><td>이번달의 영화<%=vipbean.getV_num() %></td></tr>
+			<tr><td>이번달의 영화</td></tr>
 			<tr><td><%=vipbean.getV_kor_title()%></td></tr>
 			<tr><td><%=vipbean.getV_eng_title()%></td></tr>				
 		</table>
@@ -116,6 +116,8 @@ int v_num=vipbean.getV_num();
 			<tr><td><%=vipbean.getV_when()%></td></tr>
 		</table>
 	</div>
+
+<a href="./VipAdmin.vi">vipadmin</a>
 
 <span id="seet">원하시는 좌석을 선택 해 주세요</span>
 
