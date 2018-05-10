@@ -95,6 +95,20 @@
 			document.fr.m_num2.focus();
 		}
 	}
+	function openNameChk(){
+		
+		window.name = "parentForm";
+		window.open("member/IdCheckForm.jsp",
+				"chkForm", "width=500, height=300, resizable = no, scrollbars = no");	
+	}
+
+	// 아이디 입력창에 값 입력시 hidden에 idUncheck를 세팅한다.
+	// 이렇게 하는 이유는 중복체크 후 다시 아이디 창이 새로운 아이디를 입력했을 때
+	// 다시 중복체크를 하도록 한다.
+	function inputNameChk(){
+		document.userInfo.idDuplication.value ="idUncheck";
+	}
+	
 </script>
 </head>
 <body>
@@ -118,11 +132,15 @@
 				<form action="./MemberJoinAction.me" id="join" method="post"
 					name="fr" onsubmit="return check1()">
 					<label> <input type="text" name="m_name" id="name"
-						placeholder="이름 (김와츄)" class="text">
-					</label><br> <label> <input type="text" name="m_id" id="id"
+						placeholder="닉네임 (김와츄)" class="text" onkeydown="inputNameChk()">
+					</label> <label> <input type="button" value="닉네임 중복체크"
+						onclick="openNameChk()"> <input type="hidden"
+						name="idDuplication" value="idUncheck">
+					</label><br> <label> <input type="email" name="m_id" id="id"
 						placeholder="이메일 (example@gmail.com)" class="text">
-					</label><br> <label> <input type="text" name="m_pass" id="pwd"
-						placeholder="비밀번호 (6자 이상)" class="text" onkeyup="chkPwd(pwd)">
+					</label><br> <label> <input type="password" name="m_pass"
+						id="pwd" placeholder="비밀번호 (6자 이상)" class="text"
+						onkeyup="chkPwd(pwd)">
 					</label><br> <label> <input type="text" name="m_num1"
 						placeholder="주민등록번호 앞자리" class="text" onkeyup="fun2()"
 						maxlength="6">

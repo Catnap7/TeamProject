@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AdminFrontController extends HttpServlet{
 
-
-
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String requestURI=request.getRequestURI();
@@ -22,7 +20,9 @@ public class AdminFrontController extends HttpServlet{
 		Action action=null;
 		
 		
-		//주소 비교
+		
+		
+		
 		
 		
 			

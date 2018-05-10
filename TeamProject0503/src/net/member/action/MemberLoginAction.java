@@ -63,6 +63,9 @@ public class MemberLoginAction implements Action{
 			session.setAttribute("m_id",memberbean.getM_id());
 			session.setAttribute("m_name",memberbean.getM_name());
 			
+			DeleteAlarm dr= new DeleteAlarm();
+			
+			DeleteAlarm ar= new DeleteAlarm();
 			ActionForward forward= new ActionForward();			
 			forward.setRedirect(true);
 			forward.setPath("./Main.ma");
