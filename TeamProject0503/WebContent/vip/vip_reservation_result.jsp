@@ -8,5 +8,14 @@
 </head>
 <body>
 
+예매 결과
+예약 완료 되었습니다.
+
+<%
+String selectedSeat=request.getParameter("seat");
+
+%>
+
+<%=selectedSeat%>
 </body>
 </html>

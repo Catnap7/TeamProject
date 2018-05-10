@@ -125,6 +125,8 @@ public class ReviewDAO {
 		}
 	}	// 댓글 삭제
 	
+	
+	
 	public void updateReview(ReviewBean reviewbean) {
 		Connection con=null;
 		PreparedStatement pstmt=null;

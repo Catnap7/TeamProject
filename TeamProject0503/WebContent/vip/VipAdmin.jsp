@@ -4,11 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>왓츄 : VIP 예매안내</title>
+<title>Vip 관리 페이지</title>
 </head>
 <body>
 
+<a href="./VipModify.vi">vip영화 입력 및 수정</a>
 
+리스트
+vip회원목록
+vip시사회 영화 내역  / 삭제
+
+화면
+이번달 영화
+vip시사회 좌석현황 
+vip시사회 예매현황 
 
 </body>
 </html>

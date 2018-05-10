@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 public class PopupFrontController extends HttpServlet{
 
 
-
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String requestURI=request.getRequestURI();

@@ -13,15 +13,12 @@
   
 <!-- js -->
 <script src="./js/jquery-3.3.1.js"></script>
-
+<script type="text/javascript" src="./js/jquery.ulslide.js"></script>
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/main.css" rel="stylesheet" type="text/css" media="screen"> 
-  
-
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <script type="text/javascript">
-
 
 
 $(document).ready(function(){
@@ -229,6 +226,44 @@ $(document).ready(function(){
 
 });	
 
+//팝업 스크립트
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+    }
+    return "";
+}
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+function couponClose(){
+    if($("input[name='chkbox']").is(":checked") ==true){
+        setCookie("close","Y",1);
+    }
+    $("#popp27").hide();
+}
+$(document).ready(function(){
+    cookiedata = document.cookie;
+    if(cookiedata.indexOf("close=Y")<0){
+        $("#popp27").show();
+    }else{
+        $("#popp27").hide();
+    }
+    $("#close").click(function(){
+        couponClose();
+    });
+});
+
+//end of popup
 </script> 
 </head>
 
@@ -260,6 +295,18 @@ List<MovieBean>Bestmovie = (List)request.getAttribute("Bestmovie");
 <jsp:include page="../inc/header.jsp"/>
 <!-- 헤더 영역 -->
 
+<!-- 팝업 -->
+<div id="popp27">
+ <div class="cont">
+  <img src="./images/popup3.png" alt="할인쿠폰광고 " border="0" width="400px" height="400px"></div>
+ <div class="close">
+  <form method="post" action="" name="pop_form">
+   <span id="check"><input type="checkbox" value="checkbox" name="chkbox" id="chkday"/><label for="chkday">오늘 하루동안 보지 않기</label></span>
+   <span id="close">닫기</span>
+  </form>
+ </div>
+</div>
+<!--  end of popup -->
 
 
 <!-- 아티클 -->
