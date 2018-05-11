@@ -14,11 +14,12 @@
 
 <!-- JQuery -->
 <script src="../js/jquery-3.3.1.js"></script>
-
   
-<!-- 웹 폰트 : 나눔고딕 / Abril Fatface -->
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+<!-- 웹 폰트 : 나눔고딕 / Do Hyeon/ Abril Fatface -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Do+Hyeon|Abril+Fatface" rel="stylesheet">
+
+<!-- icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <%
@@ -79,7 +80,10 @@ if(m_grade==1 || m_grade==0){
 
 <section class="whoIsVip">
 		<p>who is watchu vip?</p>
-		<p>한달에 한번! 가장 많은 리뷰추천을 받은 유저 10명 선정!</p>
+		<p>한달에 한번!<br>
+			가장 많은 <span>WHACHU 리뷰추천</span>을 받은<br>
+			유저 <span>10명</span>선정해<br>
+			특별한 혜택을 드립니다</p>
 </section>
 
 
@@ -87,21 +91,37 @@ if(m_grade==1 || m_grade==0){
 	
 	<p>왓츄 <span>VIP</span>의 놀라운 혜택</p>
 	
-		<div class="cinemaPrev">
-			무료 프리미엄 시사회
-		</div>
 		<div class="event">
-			이벤트 초대
+			<div>
+			<h3>이벤트 참여</h3>
+				<p>VIP만 참여 가능한 게릴라 이벤트</p>
+				<p>가입시 작성한 이메일로<br>
+					이벤트 참여 코드 발송</p>
+			</div>
+		</div>
+		<div class="cinemaPrev">
+			<div>
+			<h3>VIP 시사회</h3>
+				<p>VIP로 선정된 유저들만을 위한<br>
+					최고의 영화, 최고의 영화관</p>
+				<p>매달 평론가와 왓츄가 선정한<br>
+					프리미엄 시사회</p>
+			</div>
 		</div>
 		<div class="coupon">
-			할인 쿠폰
+			<div>
+			<h3>다양한 쿠폰</h3>
+				<p>VIP전용 쿠폰</p>
+				<p>쿠폰의 종류는 매달 달라 질 수 있습니다</p>
+			</div>
 		</div>
 
 </section>
 
 
-
-
+<section class="ChallengeVip">
+		<p><i class="fa fa-diamond" style="font-size:36px"></i>  활발한 리뷰 활동으로 왓츄VIP에 도전해보세요!  <i class="fa fa-diamond" style="font-size:36px"></i></p>
+</section>
 
 
 </article>
