@@ -25,7 +25,7 @@ public class CenterFrontController extends HttpServlet{
 		
 		
 		//주소 비교
-		if(command.equals("/Ceter.ce")){
+		if(command.equals("/Center.ce")){
 			action = new Center();
 			try{
 			forward=action.execute(request, response);
