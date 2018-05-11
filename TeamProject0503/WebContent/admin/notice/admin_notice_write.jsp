@@ -38,7 +38,7 @@
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea cols="20" rows="10" name="n_content"></textarea></td>
+					<td><textarea cols="100" rows="30" name="n_content"></textarea></td>
 				</tr>
 				<tr>
 					<td>사진</td>
