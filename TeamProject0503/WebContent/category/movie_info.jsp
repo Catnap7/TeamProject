@@ -353,14 +353,16 @@ $(document).ready(function(){
 	  <!-- 댓글 리스트 -->
  	 <%
  	 List reviewList = (List)request.getAttribute("reviewList");
+ 	 List memberName = (List)request.getAttribute("memberName");
  	 
  	 for(int i=0; i<reviewList.size(); i++) {
  		 ReviewBean reviewbean = (ReviewBean)reviewList.get(i);
+ 		 MemberBean memberbean = (MemberBean)memberName.get(i);
  		 if(moviebean.getMv_num()==reviewbean.getR_p_num()) {
  			 %>
  			 <table> 
  			    <tr>
- 			      <td class="c_name"><%=reviewbean.getR_id() %></td>
+ 			      <td class="c_name"><%=memberbean.getM_name() %></td>
  			    </tr>
  			    <tr>
  			      <td><%=reviewbean.getR_content() %></td>

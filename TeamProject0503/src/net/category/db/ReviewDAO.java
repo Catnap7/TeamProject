@@ -6,11 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import java.sql.DriverManager;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import net.member.db.MemberBean;
 
 public class ReviewDAO {
 	//디비연결 메서드
@@ -64,18 +67,21 @@ public class ReviewDAO {
 		}
 	}	// 댓글 입력
 	
-	public List getReview(int mv_num) {
+	public Vector getReview(int mv_num) {
 		
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		String sql="";
 		ResultSet rs=null;
 		
+		Vector vector=new Vector();//////////////////////
 		List reviewList = new ArrayList();
+		List memberName = new ArrayList();//////////////
 		try {
 			con=getConnection();
 			
-			sql = "select * from review where r_p_num=?";
+			//sql = "select * from review where r_p_num=?";
+			sql = "select * from review rev join member mem on rev.r_id = mem.m_id where r_p_num= ?;";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, mv_num);
 			rs = pstmt.executeQuery();
@@ -89,8 +95,13 @@ public class ReviewDAO {
 				reviewbean.setR_report(rs.getInt("r_report"));
 				reviewbean.setR_content(rs.getString("r_content"));
 				reviewbean.setR_date(rs.getDate("r_date"));
-				
 				reviewList.add(reviewbean);
+				MemberBean memberbean = new MemberBean();///////////
+				memberbean.setM_name(rs.getString("m_name"));///////////
+				memberName.add(memberbean);
+				
+				vector.add(reviewList);
+				vector.add(memberName);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,7 +111,7 @@ public class ReviewDAO {
 			if(con!=null)try{con.close();}catch(SQLException ex){}
 		}
 		
-		return reviewList;
+		return vector;
 	}	// 댓글 리스트
 	
 	public void deleteReview(int r_num) {

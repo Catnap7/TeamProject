@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+
+
+*{
+	font-family: 'Nanum Gothic', sans-serif;
+}
+.clear {
+	clear: both;
+}
+
+body{
+	background-image: url("../images/vip_done.png");
+	background-position: center;
+}
+
+/***예매완료****/
+
+
+.vip_done{
+	border:1px solid green;
+	background-color:#ececec;
+	width: 1500px;
+	margin: 50px auto;
+}
+.ticket{
+	/* border:1px solid red; */   
+	position:relative;
+	margin:0px auto;
+}
+
+#pic_ticket {
+	/* border:1px solid blue;  */
+	margin:0px auto;
+	position: relative;	
+}
+
+.vipMvTitle, .vipMvDate,.vipMvWhen,.vipSeat{
+	position: absolute;
+}
