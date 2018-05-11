@@ -41,6 +41,14 @@ public class CenterFrontController extends HttpServlet{
 				}catch(Exception e){
 					e.printStackTrace();
 				}
+		}else if(command.equals("/PrivacyPolicy.ce")) {
+			action = new Privacy_Policy();
+			try{
+				forward=action.execute(request, response);
+				
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 		}
 		
 			
