@@ -25,7 +25,7 @@ public class CenterFrontController extends HttpServlet{
 		
 		
 		//주소 비교
-		if(command.equals("/Ceter.ce")){
+		if(command.equals("/Center.ce")){
 			action = new Center();
 			try{
 			forward=action.execute(request, response);
@@ -35,6 +35,14 @@ public class CenterFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/AccessTerms.ce")) {
 			action = new AccessTerms();
+			try{
+				forward=action.execute(request, response);
+				
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+		}else if(command.equals("/PrivacyPolicy.ce")) {
+			action = new Privacy_Policy();
 			try{
 				forward=action.execute(request, response);
 				

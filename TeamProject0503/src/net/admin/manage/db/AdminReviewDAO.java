@@ -55,7 +55,7 @@ public class AdminReviewDAO {
 			con = getConnection();
 			sql = "select * from review order by r_num desc limit ?, ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, startRow);
+			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
 			rs = pstmt.executeQuery();
 
@@ -78,6 +78,24 @@ public class AdminReviewDAO {
 			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
 		}
 		return lrb;
-	}//End getAdminReviewList(int startRow, int pageSize, String search)
+	}//End getAdminReviewList(int startRow, int pageSize)
+	
+	public void AdminReviewDelete(int r_num) {
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			sql = "delete from review where r_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, r_num);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}	
+		}
+	}//End AdminReviewDelete
 
 }

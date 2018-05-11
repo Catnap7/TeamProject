@@ -20,6 +20,13 @@
 		int startPage = ((Integer) request.getAttribute("startPage")).intValue();
 		int endPage = ((Integer) request.getAttribute("endPage")).intValue();
 	%>
+	<script type="text/javascript">
+		function del(r_num) {
+			if (confirm("정말로 삭제하시겠습니까?") == true) {
+				location.href = "./AdminReviewDelete.am?r_num="+r_num;
+			}
+		}
+	</script>
 
 	<!-- 헤더영역 -->
 	<jsp:include page="../header.jsp" />
@@ -65,7 +72,7 @@
 				<td><%=arb.getContent() %></td>
 				<td><%=arb.getR_report() %></td>
 				<td><%=arb.getR_date() %></td>
-				<td><a href="#">삭제</a></td>
+				<td><a href="javascript:del('<%=arb.getR_num() %>')">삭제</a></td>
 			</tr>
 
 			<%

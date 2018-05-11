@@ -201,7 +201,13 @@ $(function(){ //전체선택 체크박스 클릭
 	function inputNameChk(){
 		document.userInfo.idDuplication.value ="idUncheck";
 	}
-	
+	//이용약관
+	function terms() {
+		window.open("./AccessTerms.ce", "", "width=750,height=900,left=620,top=50,scrollbars=yes");
+	}
+	function Privacy() {
+		window.open("./PrivacyPolicy.ce", "", "width=750,height=900,left=620,top=50,scrollbars=yes");
+	}
 </script>
 </head>
 <body>
@@ -231,8 +237,8 @@ $(function(){ //전체선택 체크박스 클릭
             <label> <input type="text" name="m_num1" placeholder="주민등록번호 앞자리" class="text"  maxlength="6"></label><br> 
             <label> <input type="text" name="m_num2" placeholder="주민등록번호 뒷자리" class="text" maxlength="1"></label><br>
             <input type="checkbox" class="check" id="all_agree" name="checkagree"> <label for="all_agree">전체 약관에 동의 합니다.</label><br>  
-			<input type="checkbox" class="check" id="use_agree" name="checkagree"> <label for="use_agree"><a href="#" class="use">이용약관</a>에 동의 합니다.</label><br>  
-			<input type="checkbox" class="check" id="p_agree" name="checkagree"> <label for="p_agree"><a href="#" class="use">개인정보 취급 방침</a>에 동의 합니다.</label> 
+			<input type="checkbox" class="check" id="use_agree" name="checkagree"> <label for="use_agree"><a onclick="terms()" class="use">이용약관</a>에 동의 합니다.</label><br>  
+			<input type="checkbox" class="check" id="p_agree" name="checkagree"> <label for="p_agree"><a onclick="Privacy()" class="use">개인정보 취급 방침</a>에 동의 합니다.</label> 
             
                <div>
                  <input type="submit" value="회원가입" id="submit"> 

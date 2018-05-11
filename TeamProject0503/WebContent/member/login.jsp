@@ -91,7 +91,7 @@ function getCookie(cookieName) {
 			<input type="password" name="m_pass" placeholder="비밀번호 (6자 이상)" class="text">
 			</label>
 			<input type="checkbox" id="idSaveCheck"> 아이디 저장 <br>
-			<input type="submit" value="로그인" id="submit" >
+			<input type="submit" value="로그인" id="submit">
 		</form>
 	
 </div>

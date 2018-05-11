@@ -26,6 +26,37 @@ public class ReviewDAO {
 		return con;
 	}
 	
+public int getReviewCount(int mv_num) {
+		
+		Connection con=null;
+		String sql="";
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int count = 0;
+		
+		try {
+			con = getConnection();
+			sql = "select count(*) as count from review where r_p_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, mv_num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt("count");
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			if(rs!=null)try{rs.close();}catch(SQLException e){};
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException e){};
+			if(con!=null)try{con.close();}catch(SQLException e){};
+		}
+		
+		return count;
+	}	// 댓글수
+	
 	public void insertReview(ReviewBean reviewbean) {
 		
 		Connection con=null;
@@ -67,7 +98,7 @@ public class ReviewDAO {
 		}
 	}	// 댓글 입력
 	
-	public Vector getReview(int mv_num) {
+	public Vector getReview(int mv_num, int startRow, int pageSize) {
 		
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -81,9 +112,11 @@ public class ReviewDAO {
 			con=getConnection();
 			
 			//sql = "select * from review where r_p_num=?";
-			sql = "select * from review rev join member mem on rev.r_id = mem.m_id where r_p_num= ?;";
+			sql = "select * from review rev join member mem on rev.r_id = mem.m_id where r_p_num= ? order by r_recommand desc limit ?,?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, mv_num);
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){

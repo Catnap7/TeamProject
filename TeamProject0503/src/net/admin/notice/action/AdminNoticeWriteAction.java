@@ -5,6 +5,10 @@ import java.sql.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import javafx.application.Application;
 import net.admin.notice.db.NoticeBean;
 import net.admin.notice.db.NoticeDAO;
 
@@ -14,12 +18,16 @@ public class AdminNoticeWriteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("AdminNoticeWrite execute()");
 		request.setCharacterEncoding("UTF-8");
+		   String realpath = request.getRealPath("/upload");
+		   System.out.println("upload폴더의 물리적 경로:" + realpath);
+		   int maxSize = 10 * 1024 * 1024;
+		   MultipartRequest multi = new MultipartRequest(request, realpath, maxSize, "utf-8", new DefaultFileRenamePolicy());
 		
 		NoticeBean nb = new NoticeBean();
-		nb.setN_content(request.getParameter("n_content"));
-		nb.setN_subject(request.getParameter("n_subject"));
-		nb.setN_image(request.getParameter("n_image"));
-		nb.setN_file(request.getParameter("n_file"));
+		nb.setN_content(multi.getParameter("n_content"));
+		nb.setN_subject(multi.getParameter("n_subject"));
+		nb.setN_image(multi.getParameter("n_image"));
+		nb.setN_file(multi.getParameter("n_file"));
 		nb.setN_date(new Date(System.currentTimeMillis()));
 		
 		

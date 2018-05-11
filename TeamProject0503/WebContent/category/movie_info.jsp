@@ -354,7 +354,24 @@ $(document).ready(function(){
  	 <%
  	 List reviewList = (List)request.getAttribute("reviewList");
  	 List memberName = (List)request.getAttribute("memberName");
+ 	 String pageNum_s= (String)request.getAttribute("pageNum");
+ 	 int pageNum = Integer.parseInt(pageNum_s);
+ 	 int pageCount = ((Integer)request.getAttribute("pageCount")).intValue();
+ 	 int pageBlock = ((Integer)request.getAttribute("pageBlock")).intValue();
+ 	 int startPage = ((Integer)request.getAttribute("startPage")).intValue();
+ 	 int endPage = ((Integer)request.getAttribute("endPage")).intValue();
+ 	 int count = ((Integer)request.getAttribute("count")).intValue();
  	 
+ 	 if(reviewList == null) {
+ 		 %>
+ 		  <table>
+ 		    <tr>
+ 		      <td>아직 등록된 리뷰가 없어요.</td>
+ 		    </tr>
+ 		  </table>
+ 		  <%
+ 	 }else {
+
  	 for(int i=0; i<reviewList.size(); i++) {
  		 ReviewBean reviewbean = (ReviewBean)reviewList.get(i);
  		 MemberBean memberbean = (MemberBean)memberName.get(i);
@@ -401,18 +418,31 @@ $(document).ready(function(){
  			  <%
  		 }
  	 }
+}
  	 %>
+
+	  <%
 	  
+	  if(count != 0) {
+	  %>
 	<div class="prev_next">
-	  <a href="#">prev</a>
-	  <a href="#">1</a>
-	  <a href="#">2</a>
-	  <a href="#">3</a>
-	  <a href="#">next</a>
+	  <%
+		if(startPage>pageBlock){			
+			%><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num() %>&pageNum=<%=startPage-pageBlock%>">prev</a><%
+		}
+		for(int i=startPage;i<=endPage;i++) {
+			%><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num() %>&pageNum=<%=i%>"><%=i%></a><%
+		}
+		if(pageCount>endPage){
+			%><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num() %>&pageNum=<%=startPage+pageBlock%>">next</a><%
+		}
+		%>
+	</div>
+	<%
+	}
+	%>
 	</div>
 
-	</div>
-						
 	</section>
 </article>
 

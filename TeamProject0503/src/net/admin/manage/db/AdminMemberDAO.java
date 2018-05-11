@@ -32,7 +32,7 @@ public class AdminMemberDAO {
 			con = getConnection();
 			sql = "select * from member order by m_id desc limit ?, ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, startRow);
+			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
 			rs = pstmt.executeQuery();
 
