@@ -12,7 +12,7 @@
 
 리스트
 vip회원목록
-vip시사회 영화 내역  / 삭제
+<a href="./VipMovieList.vi">vip시사회 영화 내역  / 삭제</a>
 
 화면
 이번달 영화

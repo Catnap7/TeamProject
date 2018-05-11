@@ -66,9 +66,16 @@ public class CategoryMovie_InfoAction implements Action{
 		
 		// 리뷰
 		ReviewDAO reviewdao = new ReviewDAO();
-		List reviewList = reviewdao.getReview(mv_num);
-				
+//		List reviewList = reviewdao.getReview(mv_num);
+//				
+//		request.setAttribute("reviewList", reviewList);
+		
+		Vector vector = reviewdao.getReview(mv_num);
+		List reviewList = (List)vector.get(0);
+		List memberName = (List)vector.get(1);
+		
 		request.setAttribute("reviewList", reviewList);
+		request.setAttribute("memberName", memberName);
 		// 리뷰
 		
 		

@@ -18,15 +18,10 @@
   
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-
+<!-- 웹 폰트 : 나눔명조 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
 </head>
 <body>
-
-
-<!-- 헤더 영역 -->
-<jsp:include page="../inc/header.jsp"/>
-<!-- 헤더 영역 -->
-
 
 
 
@@ -45,20 +40,52 @@ int m_grade=memberbean.getM_grade();
 
 String grade="";
 
+%>
+
+
+<!-- 헤더 영역 -->
+<jsp:include page="../inc/header.jsp"/>
+<!-- 헤더 영역 -->
+
+ 	<div class="pic_frame_info">
+		<div class="pic_info">
+ 			<img id="pic_src_info" src="./images/vip1.png">
+ 		</div>
+	</div> 
+	
+	
+
+<%
 if(m_grade==1 || m_grade==0){
 	grade="준회원";
 }else if(m_grade==2){
 	grade="VIP";
 	%>
-	<a href="./Vip.vi">VIP페이지로 가기</a>
+	
+	<div class="gradeInfo">
+		<p><%="회원님의 등급은 "%><span><%=grade%></span><%="입니다"%></p><br>
+		<p><a href="./Vip.vi">VIP페이지로 가기</a></p>
+	</div>
 <%} %>
 
 
+	<h3>왓츄 VIP의 놀라운 혜택</h3>
+	
+	<section>
+		<div>
+			무료 프리미엄 시사회
+		</div>
+		<div>
+			이벤트 초대
+		</div>
+		<div>
+			할인 쿠폰
+		</div>
+
+	</section>
 
 
-vipinfo
 
-<%="회원님의 등급은 "+grade+"입니다"%>
 
 
 

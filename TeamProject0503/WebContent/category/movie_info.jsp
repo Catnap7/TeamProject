@@ -1,4 +1,5 @@
 <%-- <%@page import="net.admin.manage.db.MovieBean"%> --%>
+<%@page import="net.category.db.RecChkBean"%>
 <%@page import="net.category.db.ReviewBean"%>
 <%@page import="net.member.db.MemberBean"%>
 <%@page import="net.rating.db.RatingBean"%>
@@ -21,7 +22,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <style>
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
@@ -352,14 +353,16 @@ $(document).ready(function(){
 	  <!-- 댓글 리스트 -->
  	 <%
  	 List reviewList = (List)request.getAttribute("reviewList");
+ 	 List memberName = (List)request.getAttribute("memberName");
  	 
  	 for(int i=0; i<reviewList.size(); i++) {
  		 ReviewBean reviewbean = (ReviewBean)reviewList.get(i);
+ 		 MemberBean memberbean = (MemberBean)memberName.get(i);
  		 if(moviebean.getMv_num()==reviewbean.getR_p_num()) {
  			 %>
  			 <table> 
  			    <tr>
- 			      <td class="c_name"><%=reviewbean.getR_id() %></td>
+ 			      <td class="c_name"><%=memberbean.getM_name() %></td>
  			    </tr>
  			    <tr>
  			      <td><%=reviewbean.getR_content() %></td>
@@ -385,8 +388,8 @@ $(document).ready(function(){
 					%>
 					<tr>
  			          <td>
- 			          <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">추천</a> | 
- 			          <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">신고</a>
+ 			          <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">추천</a> | 
+ 			          <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">신고</a>
  			          </td>
  			    	</tr>
 					<%
