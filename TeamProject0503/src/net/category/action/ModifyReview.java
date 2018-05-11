@@ -1,6 +1,7 @@
 package net.category.action;
 
 import java.util.List;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +25,17 @@ public class ModifyReview implements Action {
 		System.out.println("ModifyReview execute()");
 		
 		request.setCharacterEncoding("utf-8");
+		/*int mv_num = Integer.parseInt(request.getParameter("mv_num"));
+		Vector vector = new Vector();
+		MovieDAO moviedao = new MovieDAO();
+		List movietList =null;
+		List favoriteList =null;
 		
+		vector= moviedao.getMovie(mv_num);
+		movietList = (List)vector.get(0);
+		favoriteList = (List)vector.get(1);
+		request.setAttribute("movietList", movietList);
+		request.setAttribute("favoriteList", favoriteList);*/
 		HttpSession session= request.getSession();
 		String id=(String)session.getAttribute("m_id");
 		if(id==null){
@@ -57,9 +68,55 @@ public class ModifyReview implements Action {
 		
 		// 리뷰
 		ReviewDAO reviewdao = new ReviewDAO();
-		List reviewList = reviewdao.getReview(mv_num);
-				
+//		List reviewList = reviewdao.getReview(mv_num);
+//				
+//		request.setAttribute("reviewList", reviewList);
+		
+		int count = reviewdao.getReviewCount(mv_num);
+		int pageSize = 10;
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null) {
+			pageNum = "1";
+		}
+		
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1)*pageSize+1;
+		
+		Vector vector = null;
+		List reviewList = null;
+		List memberName = null;
+		
+		int endRow = pageSize * currentPage;
+		int pageCount = 0;
+		int pageBlock=5;
+		int startPage=0;
+		int endPage=0;
+		
+		if(count!=0){
+			
+			pageCount = count/pageSize;
+			pageCount= (count%pageSize)!=0?  pageCount+1:pageCount;
+			
+			startPage=((currentPage-1)/pageBlock)*pageBlock+1;		
+			
+			endPage=startPage+pageBlock-1;
+			
+			if(pageCount<endPage){
+				endPage=pageCount;
+			}
+			vector = reviewdao.getReview(mv_num, startRow, pageSize);
+			reviewList = (List)vector.get(0);
+			memberName = (List)vector.get(1);
+		}
+		
 		request.setAttribute("reviewList", reviewList);
+		request.setAttribute("memberName", memberName);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("pageCount", pageCount);
+		request.setAttribute("pageBlock", pageBlock);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("count", count);
 		// 리뷰
 		
 		ActionForward forward = new ActionForward();
