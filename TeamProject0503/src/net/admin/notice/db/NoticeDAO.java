@@ -134,6 +134,38 @@ public class NoticeDAO {
 		return lnb;
 	}//End getAdminNoticeList
 	
+	public NoticeBean getAdminNoticeContent(int n_num) {
+		NoticeBean noticebean = new NoticeBean();
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;		
+		try {
+			con = getConnection();
+			sql = "select * from notice where n_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, n_num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				noticebean.setN_content(rs.getString("n_content"));
+				noticebean.setN_date(rs.getDate("n_date"));
+				noticebean.setN_file(rs.getString("n_file"));
+				noticebean.setN_image(rs.getString("n_image"));
+				noticebean.setN_num(rs.getInt("n_num"));
+				noticebean.setN_readcount(rs.getInt("n_readcount"));
+				noticebean.setN_subject(rs.getString("n_subject"));	
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+		}
+		return noticebean;
+	}//End getAdminNoticeContent
+	
 
 
 	
