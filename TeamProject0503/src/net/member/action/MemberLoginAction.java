@@ -2,6 +2,7 @@ package net.member.action;
 
 import java.io.PrintWriter;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,9 +19,18 @@ public class MemberLoginAction implements Action{
 		
 		HttpSession session = request.getSession();
 		
+		
 		MemberDAO mdao = new MemberDAO();
 		String m_id = request.getParameter("m_id");
-		System.out.println(m_id);
+		String m_pass = request.getParameter("m_pass");
+		Cookie idCookie = new Cookie("id",m_id);
+		idCookie.setMaxAge(60*60*24);
+		Cookie passCookie = new Cookie("pass",m_pass);
+		
+		response.addCookie(idCookie);
+		response.addCookie(passCookie);
+		
+		
 		//mdao.getMember(m_id);
 		MemberBean memberbean= mdao.getMember(m_id);
 		
