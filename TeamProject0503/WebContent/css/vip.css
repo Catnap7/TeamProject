@@ -1,18 +1,153 @@
 @CHARSET "UTF-8";
 
 
-*{
-	font-family: 'Nanum Gothic', sans-serif;
-}
-.clear {
-	clear: both;
-}
+*{font-family: 'Nanum Gothic', sans-serif;}
 
-body{
-	/* background-color: #000; */
-}
+.clear {clear: both;}
 
 
+
+
+
+/******@@@@@@@---vip안내 페이지---@@@@@@@********/
+
+/***vip안내 페이지 상단 이미지***/
+.pic_frame_info{   
+	position:relative;
+	margin:0px auto;
+	width:1900px;
+	height:650px;
+	overflow: hidden;
+	
+}
+
+#pic_src_info {
+	margin:0px auto;
+	width:1900px;
+	height:650px;
+	position: relative;	
+	
+}
+
+
+/**등급정보***/
+.gradeInfo{
+	border: 1px solid #c3c3c3;
+	color:white;
+	border-radius:10px;
+	padding: 15px;
+	width:180px; height:90px;
+	text-align: center;
+	margin:0 auto;
+	font-size: 1em;
+	background-color: #333;
+	position:fixed;
+	top:150px; right:20px;
+	box-sizing:border-box;
+}
+
+
+.gradeInfo span{
+	font-size:1.2em;
+	font-weight: bold;
+	color: #50d4aa;
+	font-family: 'Abril Fatface', cursive;
+}
+
+.gradeInfo a{
+	text-decoration: none;
+	/* font-family: 'Abril Fatface', cursive; */
+}
+
+.gradeInfo a:LINK, .gradeInfo a:VISITED {
+	 color:#333;
+	 font-weight:bold;
+	 animation-name:animate;
+	 animation-duration: 3s;
+	 animation-iteration-count: infinite;
+	 opacity: 1;
+	 background-color: #50d4aa;
+}
+
+@keyframes animate {
+	0% {opacity: 1;}
+	30% {opacity: 0.2;}
+	50% {opacity: 1;}
+	80%{opacity: 0.2;}
+	100% {opacity: 1;}
+}
+
+.gradeInfo a:HOVER{
+	color:white;
+	background-color: #ff8000;
+	
+}
+
+
+
+
+/***혜택안내***/
+
+.crown{
+	text-align: center;
+	margin:0;
+	padding-top: 20px;
+}
+.whoIsVip{
+	width:1800px; height:300px;
+	background-image:url("./images/red.jpg");
+	margin:20px auto;
+}
+.whoIsVip>p:nth-of-type(1){
+	text-transform:uppercase;
+	word-spacing:10px;
+	border-bottom:5px solid white;
+	background-color: #333;
+	text-align: center;
+	font-family: 'Abril Fatface', cursive;
+	padding-bottom:-100px;
+	/* margin:20px; */
+	color: white;
+	font-size: 3em;
+	width: 1800px; height: 50px;
+	
+}
+
+
+.info{
+	border:2px solid #50d4aa;
+	border-radius:20px;
+	width: 1400px;
+	margin:0 auto;
+	padding:30px 40px 60x 40px;
+	box-sizing:border-box;
+}
+
+.info>p{
+	border-bottom:2px dotted #333;
+	margin:5px auto;
+	text-align: center;
+	font-size:1.6em;
+	font-weight: bold;
+	padding: 30px;
+}
+
+.info>p>span{
+	font-size:2em;
+	font-family: 'Abril Fatface', cursive;
+}
+.info div{
+	border: 1px solid green;
+	float: left;
+	width: 400px; height: 500px;
+	margin: 5px;
+}
+
+.info:after { content:""; clear:both; display:block; }
+
+
+
+/******@@@@@@@---vip예약 페이지---@@@@@@@********/
 
 /***vip예약페이지 상단 이미지***/
 .pic_frame{
@@ -44,54 +179,7 @@ body{
 }
 
 
-/***vip안내 페이지 상단 이미지***/
-.pic_frame_info{   
-	position:relative;
-	margin:0px auto;
-	width:1900px;
-	height:650px;
-	overflow: hidden;
-}
 
-#pic_src_info {
-	margin:0px auto;
-	width:1900px;
-	height:650px;
-	position: relative;	
-}
-
-
-/**등급정보***/
-.gradeInfo{
-	/* border:1px solid red; */
-	padding: 10px;
-	width:300px; height:100px;
-	text-align: center;
-	margin:0 auto;
-	font-size: 1.2em;
-}
-
-.gradeInfo span{
-	font-weight: bold;
-	color: #400080;
-}
-
-.gradeInfo a{
-	text-decoration: none;
-}
-
-.gradeInfo p:nth-of-type(2){
-	/* border:1px solid blue; */
-	display:inline-block;
-	paddin:10px;
-	margin: 20px auto;
-}
-
-.gradeInfo a:LINK, .gradeInfo a:VISITED{
-	text-decoration: none;
-	color:#400080;
-	font-weight: bold;
-}
 
 
 

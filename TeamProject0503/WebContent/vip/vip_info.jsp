@@ -16,18 +16,11 @@
 <script src="../js/jquery-3.3.1.js"></script>
 
   
-<!-- 웹 폰트 : 나눔고딕 -->
+<!-- 웹 폰트 : 나눔고딕 / Abril Fatface -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-<!-- 웹 폰트 : 나눔명조 -->
-<link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 </head>
 <body>
-
-
-
-<!-- 아티클 영역 -->
-<article>
-
 <%
 String id=(String)session.getAttribute("m_id");
 
@@ -47,42 +40,64 @@ String grade="";
 <jsp:include page="../inc/header.jsp"/>
 <!-- 헤더 영역 -->
 
+
+
+
+
+<!-- 아티클 영역 -->
+<article>
+
+
  	<div class="pic_frame_info">
 		<div class="pic_info">
  			<img id="pic_src_info" src="./images/vip1.png">
  		</div>
 	</div> 
 	
-	
 
 <%
 if(m_grade==1 || m_grade==0){
 	grade="준회원";
-}else if(m_grade==2){
+	%>
+	<div class="gradeInfo">
+		<p><%="회원님의 등급은 "%><span><%=grade%></span><%="입니다"%><br><br>
+		<span><a href=".info">VIP혜택을 알아보세요</a></span></p>
+	</div>
+<%}else if(m_grade==2){
 	grade="VIP";
 	%>
-	
 	<div class="gradeInfo">
-		<p><%="회원님의 등급은 "%><span><%=grade%></span><%="입니다"%></p><br>
-		<p><a href="./Vip.vi">VIP페이지로 가기</a></p>
+		<p><%="회원님의 등급은 "%><br>
+		<span><%=grade%></span><br>
+		<%="입니다"%><br><br>
+		<a href="./Vip.vi">VIP시사회 예매하기</a></p>
 	</div>
 <%} %>
 
 
-	<h3>왓츄 VIP의 놀라운 혜택</h3>
+<div class="crown"><img src="./images/crown.png" width="80px" height="70px"></div>
+
+<section class="whoIsVip">
+		<p>who is watchu vip?</p>
+		<p>한달에 한번! 가장 많은 리뷰추천을 받은 유저 10명 선정!</p>
+</section>
+
+
+<section class="info">
 	
-	<section>
-		<div>
+	<p>왓츄 <span>VIP</span>의 놀라운 혜택</p>
+	
+		<div class="cinemaPrev">
 			무료 프리미엄 시사회
 		</div>
-		<div>
+		<div class="event">
 			이벤트 초대
 		</div>
-		<div>
+		<div class="coupon">
 			할인 쿠폰
 		</div>
 
-	</section>
+</section>
 
 
 
