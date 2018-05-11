@@ -1,5 +1,9 @@
 @CHARSET "UTF-8";
 
+
+*{
+	font-family: 'Nanum Gothic', sans-serif;
+}
 .clear {
 	clear: both;
 }
@@ -8,33 +12,116 @@ body{
 	/* background-color: #000; */
 }
 
+
+
+/***vip예약페이지 상단 이미지***/
 .pic_frame{
-	/* border:1px solid red;   */
-	background-image:url("../images/vip4_1.png");
-	background-repeat:no-repeat;
-	background-position:center;
-	background-size:cover;
-	position: relative;
+	/* border:1px solid red; */   
+	position:relative;
 	margin:0px auto;
-	height:700px;
-	margin: 0px auto;
+	width:2000px;
+	height:780px;
+	overflow: hidden;
 }
 
+#pic_src {
+	/* border:1px solid blue;  */
+	margin:0px auto;
+	width:2000px;
+	height:780px;
+	position: relative;	
+}
 .vip_name{
-	position: absolute;
+	/* border:1px solid red; */
+	width:140px; height:50px;
 	color:white;
+	text-align:center;
+	display:inline-block;
 	font-weight: bold;
 	font-size: 2em;
-	top:525px; left:850px;
+	position: absolute;
+	top: 570px; left:890px;
 }
 
-.vip_li{
+
+/***vip안내 페이지 상단 이미지***/
+.pic_frame_info{   
+	position:relative;
+	margin:0px auto;
+	width:1900px;
+	height:650px;
+	overflow: hidden;
+}
+
+#pic_src_info {
+	margin:0px auto;
+	width:1900px;
+	height:650px;
+	position: relative;	
+}
+
+
+/**등급정보***/
+.gradeInfo{
+	/* border:1px solid red; */
+	padding: 10px;
+	width:300px; height:100px;
 	text-align: center;
+	margin:0 auto;
+	font-size: 1.2em;
 }
 
+.gradeInfo span{
+	font-weight: bold;
+	color: #400080;
+}
+
+.gradeInfo a{
+	text-decoration: none;
+}
+
+.gradeInfo p:nth-of-type(2){
+	/* border:1px solid blue; */
+	display:inline-block;
+	paddin:10px;
+	margin: 20px auto;
+}
+
+.gradeInfo a:LINK, .gradeInfo a:VISITED{
+	text-decoration: none;
+	color:#400080;
+	font-weight: bold;
+}
+
+
+
+
+
+/***영화 정보***/
+
+
+
+
+
+
+/***좌석 선택***/
+
+td .seatUnselected{
+	background-color: red;
+}
+td .seatSelected{
+	background-color:blue;
+}
+
+td .seatNumDisabled{
+	color:#c0c0c0;
+}
+.seatTable{
+	border: 1px solid #333;
+}
 
 .radio {
-	display: none;
+	display: none; 
 }
 
 input:checked + span{ 
@@ -42,3 +129,12 @@ input:checked + span{
 	color: #000000;
 	font-weight: bold;
 } 
+
+
+
+
+
+
+
+
+

@@ -15,16 +15,17 @@ public class MemberLoginAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
-
+		
 		HttpSession session = request.getSession();
 		
 		MemberDAO mdao = new MemberDAO();
 		String m_id = request.getParameter("m_id");
-		mdao.getMember(m_id);
+		System.out.println(m_id);
+		//mdao.getMember(m_id);
 		MemberBean memberbean= mdao.getMember(m_id);
 		
 		
-		memberbean.setM_id(request.getParameter("m_id"));
+		memberbean.setM_id(request.getParameter("m_id"));		
 		memberbean.setM_pass(request.getParameter("m_pass"));
 		
 		if(request.getParameter("m_id").equals("admin")) {
@@ -62,6 +63,9 @@ public class MemberLoginAction implements Action{
 			session.setAttribute("m_id",memberbean.getM_id());
 			session.setAttribute("m_name",memberbean.getM_name());
 			
+			DeleteAlarm dr= new DeleteAlarm();
+			
+			DeleteAlarm ar= new DeleteAlarm();
 			ActionForward forward= new ActionForward();			
 			forward.setRedirect(true);
 			forward.setPath("./Main.ma");

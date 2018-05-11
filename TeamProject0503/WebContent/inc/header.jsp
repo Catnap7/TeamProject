@@ -6,7 +6,8 @@
 	<div class="title_logo">
 		<a href="./Main.ma"><img src="./images/watchu_logo.png" width="250px" height="50px"></a>
 	</div>
-	
+	<link rel="shortcut icon" href="./images/watchu_logo.ico" type="image/x-icon">
+
 <div class="clear"></div>
 
 
@@ -19,7 +20,7 @@
 		<div class="myinfo">
   			<button class="dropbtn1"><%=m_name %></button>
 				  <div class="dropdown-content1">
-				    <a href="../member/mypage.jsp">내정보보기</a>
+				    <a href="./Mypage.my">내정보보기</a>
 				    <a href="./Coupon.my">쿠폰함</a>
 				    <a href="./Alarm.my">알림창</a>
 				    <a href="./Myrating.my">평점내역</a>
@@ -44,7 +45,7 @@
 	  		</div> 
 	  		<a href="./Rating.ra">취향분석</a>
 		 	<a href="./Favorite.fa">보고 싶은 영화</a>
-		 	<a href="./Vip.vi">only for vip</a>
+		 	<a href="./VipInfo.vi">watchu vip</a>
 		
 		 	<div class="search-container">
 			    <form action="category_search.jsp">

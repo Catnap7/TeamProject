@@ -6,11 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import java.sql.DriverManager;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import net.member.db.MemberBean;
 
 public class ReviewDAO {
 	//디비연결 메서드
@@ -62,20 +65,23 @@ public class ReviewDAO {
 			if(pstmt!=null)try{pstmt.close();}catch(SQLException e){};
 			if(con!=null)try{con.close();}catch(SQLException e){};
 		}
-	}
+	}	// 댓글 입력
 	
-	public List getReview(int mv_num) {
+	public Vector getReview(int mv_num) {
 		
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		String sql="";
 		ResultSet rs=null;
 		
+		Vector vector=new Vector();//////////////////////
 		List reviewList = new ArrayList();
+		List memberName = new ArrayList();//////////////
 		try {
 			con=getConnection();
 			
-			sql = "select * from review where r_p_num=?";
+			//sql = "select * from review where r_p_num=?";
+			sql = "select * from review rev join member mem on rev.r_id = mem.m_id where r_p_num= ?;";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, mv_num);
 			rs = pstmt.executeQuery();
@@ -89,8 +95,13 @@ public class ReviewDAO {
 				reviewbean.setR_report(rs.getInt("r_report"));
 				reviewbean.setR_content(rs.getString("r_content"));
 				reviewbean.setR_date(rs.getDate("r_date"));
-				
 				reviewList.add(reviewbean);
+				MemberBean memberbean = new MemberBean();///////////
+				memberbean.setM_name(rs.getString("m_name"));///////////
+				memberName.add(memberbean);
+				
+				vector.add(reviewList);
+				vector.add(memberName);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,9 +111,105 @@ public class ReviewDAO {
 			if(con!=null)try{con.close();}catch(SQLException ex){}
 		}
 		
-		return reviewList;
-	}
+		return vector;
+	}	// 댓글 리스트
 	
+	public void deleteReview(int r_num) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		String sql="";
+		
+		try {
+			con = getConnection();
+			
+			sql = "delete from review where r_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, r_num);
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally{
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+	}	// 댓글 삭제
+	
+	
+	
+	public void updateReview(ReviewBean reviewbean) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		String sql="";
+		ResultSet rs=null;
+		
+		try {
+			con = getConnection();
+			
+			sql = "update review set r_content = ? where r_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, reviewbean.getR_content());
+			pstmt.setInt(2, reviewbean.getR_num());
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally{
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+	}	// 댓글 수정
+	
+	public void recommandReview(int r_num) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		String sql="";
+		ResultSet rs=null;
+		
+		try {
+			con = getConnection();
+			
+			sql = "update review set r_recommand = r_recommand+1 where r_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, r_num);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally{
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+	}	// 댓글 추천
+	
+	public void reportReview(int r_num) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		String sql="";
+		ResultSet rs=null;
+		
+		try {
+			con = getConnection();
+			
+			sql = "update review set r_report = r_report+1 where r_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, r_num);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally{
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+	}	// 댓글 신고
 
 	
 }

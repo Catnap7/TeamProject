@@ -234,6 +234,8 @@ public class FavoriteDAO {
 					moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
 					moviebean.setMv_genre(rs.getString("mv_genre"));
 					moviebean.setMv_year(rs.getInt("mv_year"));
+					moviebean.setMv_age(rs.getInt("mv_age"));
+					moviebean.setMv_time(rs.getInt("mv_time"));
 					favoriteList.add(moviebean);
 				}else{
 					check=0;

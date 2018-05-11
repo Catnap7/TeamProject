@@ -1,4 +1,5 @@
 <%-- <%@page import="net.admin.manage.db.MovieBean"%> --%>
+<%@page import="net.category.db.RecChkBean"%>
 <%@page import="net.category.db.ReviewBean"%>
 <%@page import="net.member.db.MemberBean"%>
 <%@page import="net.rating.db.RatingBean"%>
@@ -259,25 +260,57 @@ $(document).ready(function(){
 		}
 			%>
 			
-		<%if(memberBean.getM_id_num1()<=19990101){
-			
+		<%
+		if(memberBean.getM_grade()==0){
+			%>
+			<script type="text/javascript">
+			$(document).ready(function(){
+				$('.hr').click(function(){
+					alert("결제 후 이용 가능합니다.");
+					});
+			});		
+			</script>
+		<%	
+		}else if(memberBean.getM_grade()==1){
+			if(memberBean.getM_id_num1()<=991231 && moviebean.getMv_age()==19 ){
+				
+				 %>
+				  <script type="text/javascript">
+				  var url = $('hr').attr('href','<%=moviebean.getMv_video()%>');
+					$(document).ready(function(){
+						$('.hr').click(function(){
+							 window.open('<%=moviebean.getMv_video()%>','_blank')
+							});
+						
+					});			  
+				  </script>
+				  <%
+			}else if (memberBean.getM_id_num1()>=000101 && moviebean.getMv_age()==19){
+				%>
+					<script type="text/javascript">
+					$(document).ready(function(){
+						$('.hr').click(function(){
+							alert("19세 미만은 사용하실 수 없습니다.");
+							return attributes;
+							});
+					});		
+					</script>
+				<%	
+				}
 			 %>
 			  <script type="text/javascript">
 				$(document).ready(function(){
-					$('.fa fa-play-circle play').click(function(){
-						$('a.fa fa-play-circle play').attr("href","<%=moviebean.getMv_video() %>")
+					$('.hr').click(function(){
+						 window.open('<%=moviebean.getMv_video()%>','_blank') 
 						});
 					
 				});			  
 			  </script>
-			  <%-- <a href="<%=moviebean.getMv_video() %>" class="fa fa-play-circle play" target="_blank"></a> --%>
-			  <a href="" class="fa fa-play-circle play" target="_blank"></a>
-			  <button class="hr"> 이동</button>
 			  <%
-		}else if (memberBean.getM_id_num1()>=19990101){
-			
-		}	
+		}
+		
 		%>
+			  <button class="hr"> 이동</button>
 		</div>
 	</div>
 	</div>
@@ -295,7 +328,7 @@ $(document).ready(function(){
 	<!--예고편  -->
 	<div class="movie_preview">
 	  <div>
-		<iframe src=<%=moviebean.getMv_video() %>></iframe><br>
+		<iframe src=<%=moviebean.getMv_video()%>></iframe><br>
 	  </div>
 	</div>
 	
@@ -320,14 +353,16 @@ $(document).ready(function(){
 	  <!-- 댓글 리스트 -->
  	 <%
  	 List reviewList = (List)request.getAttribute("reviewList");
+ 	 List memberName = (List)request.getAttribute("memberName");
  	 
  	 for(int i=0; i<reviewList.size(); i++) {
  		 ReviewBean reviewbean = (ReviewBean)reviewList.get(i);
+ 		 MemberBean memberbean = (MemberBean)memberName.get(i);
  		 if(moviebean.getMv_num()==reviewbean.getR_p_num()) {
  			 %>
  			 <table> 
  			    <tr>
- 			      <td class="c_name"><%=reviewbean.getR_id() %></td>
+ 			      <td class="c_name"><%=memberbean.getM_name() %></td>
  			    </tr>
  			    <tr>
  			      <td><%=reviewbean.getR_content() %></td>
@@ -339,9 +374,28 @@ $(document).ready(function(){
  			      <td><%=reviewbean.getR_date() %></td>
  			    </tr>
 <!--  			    본인이면  (수정 삭제) 보이기 본인이 아니면 (추천 신고) 보이기  -->
- 			    <tr>
- 			      <td><a href="#">수정</a> | <a href="#">삭제</a></td>
- 			    </tr>
+				<%
+				if(reviewbean.getR_id().equals(id)) {
+					%>
+					<tr>
+ 			      	  <td>
+ 			      	  <a href="./ModifyReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">수정</a> | 
+ 			      	  <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">삭제</a>
+ 			      	  </td>
+ 			    	</tr>
+					<%
+				}else {
+					%>
+					<tr>
+ 			          <td>
+ 			          <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">추천</a> | 
+ 			          <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">신고</a>
+ 			          </td>
+ 			    	</tr>
+					<%
+				}
+				%>
+ 			    
  			  </table>
  			  <hr class="coment_sec">
  			  <%
