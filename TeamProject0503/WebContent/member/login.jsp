@@ -27,6 +27,17 @@ $(document).ready(function(){
             deleteCookie("userInputId");
         }
     });
+    $("#AutoLoginCheck").change(function(){ // 체크박스에 변화가 있다면,
+        if($("#AutoLoginCheck").is(":checked")){ // 자동로그인 체크했을 때,
+            var id = $("input[name='m_id']").val();
+            var pass = $("input[name='m_pass']").val();
+            setCookie("m_id", id, 7); // 7일 동안 쿠키 보관
+            setCookie("m_pass", pass, 7); // 7일 동안 쿠키 보관
+        }else{ // ID 저장하기 체크 해제 시,
+            deleteCookie("m_id");
+            deleteCookie("m_pass");
+        }
+    });
      
     // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
     $("input[name='m_id']").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
@@ -68,7 +79,7 @@ function getCookie(cookieName) {
 <body>
 <div class="m_cover">
 <div class="logo">
-<a href="login.jsp"><img src="./images/watchu_logo.png" alt="logo"></a>
+<a href="./intro.st"><img src="./images/watchu_logo.png" alt="logo"></a>
 </div>
 
 <div class="nav_r">
@@ -91,6 +102,7 @@ function getCookie(cookieName) {
 			<input type="password" name="m_pass" placeholder="비밀번호 (6자 이상)" class="text">
 			</label>
 			<input type="checkbox" id="idSaveCheck"> 아이디 저장 <br>
+			<input type="checkbox" id="AutoLoginCheck"> 로그인 상태 유지 <br>
 			<input type="submit" value="로그인" id="submit" >
 		</form>
 	

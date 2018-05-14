@@ -19,16 +19,14 @@ public class MemberLoginAction implements Action{
 		
 		HttpSession session = request.getSession();
 		
-		
+		Cookie[] cookies = request.getCookies();
 		MemberDAO mdao = new MemberDAO();
 		String m_id = request.getParameter("m_id");
 		String m_pass = request.getParameter("m_pass");
-		Cookie idCookie = new Cookie("id",m_id);
-		idCookie.setMaxAge(60*60*24);
+		/*Cookie idCookie = new Cookie("id",m_id);
 		Cookie passCookie = new Cookie("pass",m_pass);
-		
-		response.addCookie(idCookie);
-		response.addCookie(passCookie);
+		idCookie.setMaxAge(60*60*24);
+		passCookie.setMaxAge(60*60*24);*/
 		
 		
 		//mdao.getMember(m_id);
@@ -72,9 +70,28 @@ public class MemberLoginAction implements Action{
 			}else {
 			session.setAttribute("m_id",memberbean.getM_id());
 			session.setAttribute("m_name",memberbean.getM_name());
+/*	
+			response.addCookie(idCookie);
+			response.addCookie(passCookie);
+			*/
+			if(cookies!=null) {
+				for(int i=0; i<cookies.length; i++) {
+					if(cookies[i].getName().equals("m_id")) {
+						m_id = cookies[i].getValue();
+						System.out.println("쿠키id값은"+m_id);
+						//response.addCookie(m_id);
+					}
+					if(cookies[i].getName().equals("m_pass")){
+						m_pass=cookies[i].getValue();
+						System.out.println("쿠키pass값은"+m_pass);
+					}
+				}
+			}
+			
+			
 			
 			DeleteAlarm dr= new DeleteAlarm();
-			
+			System.out.println("");
 			DeleteAlarm ar= new DeleteAlarm();
 			ActionForward forward= new ActionForward();			
 			forward.setRedirect(true);
