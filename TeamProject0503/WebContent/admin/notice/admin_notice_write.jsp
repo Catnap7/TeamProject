@@ -30,7 +30,7 @@
 	<div id="content">
 		<h1>Notice Write Form</h1>
 
-		<form action="./AdminNoticeWriteAction.an" method="post">
+		<form action="./AdminNoticeWriteAction.an" method="post" enctype="multipart/form-data">
 			<table border="0" class="db_list_insert">
 				<tr>
 					<td>제목</td>
@@ -38,7 +38,7 @@
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea cols="20" rows="10" name="n_content"></textarea></td>
+					<td><textarea cols="100" rows="30" name="n_content"></textarea></td>
 				</tr>
 				<tr>
 					<td>사진</td>
