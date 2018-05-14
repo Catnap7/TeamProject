@@ -244,7 +244,7 @@ $(function(){ //전체선택 체크박스 클릭
 				
 			},
 			success:function(data){
-				if(data==1){
+				if(data=="suc"){
 					alert("사용가능한 아이디입니다")
 
 				}else {
