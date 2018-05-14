@@ -31,7 +31,7 @@
 	<div id="content">
 		<h1>Notice Write Form</h1>
 
-		<form action="./AdminNoticeWriteAction.an" method="post">
+		<form action="./AdminNoticeWriteAction.an" method="post" enctype="multipart/form-data">
 			<table border="0" class="db_list_insert">
 				<tr>
 					<td>제목</td>

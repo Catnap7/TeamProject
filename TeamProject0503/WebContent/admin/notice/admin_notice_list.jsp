@@ -55,7 +55,7 @@
 
 			<tr>
 				<td><%=nb.getN_num() %></td>
-				<td><a href="#"><%=nb.getN_subject() %></a></td>
+				<td><a href="./AdminNoticeContent.an?n_num=<%=nb.getN_num() %>"><%=nb.getN_subject() %></a></td>
 				<td><%=name %></td>
 				<td>1</td>
 				<td><%=nb.getN_date() %></td>

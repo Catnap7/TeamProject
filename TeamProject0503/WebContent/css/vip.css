@@ -1,18 +1,269 @@
 @CHARSET "UTF-8";
 
 
-*{
-	font-family: 'Nanum Gothic', sans-serif;
-}
-.clear {
-	clear: both;
-}
+*{font-family: 'Nanum Gothic', sans-serif;}
 
-body{
-	/* background-color: #000; */
-}
+.clear {clear: both;}
 
 
+
+
+/******@@@@@@@---vip안내 페이지---@@@@@@@********/
+/******@@@@@@@---vip안내 페이지---@@@@@@@********/
+
+/***vip안내 페이지 상단 이미지***/
+.pic_frame_info{   
+	position:relative;
+	margin:0px auto;
+	width:1900px;
+	height:650px;
+	overflow: hidden;
+	
+}
+
+#pic_src_info {
+	margin:0px auto;
+	width:1900px;
+	height:650px;
+	position: relative;	
+	
+}
+
+
+/**등급정보***/
+.gradeInfo{
+	border: 1px solid #c3c3c3;
+	color:white;
+	border-radius:10px;
+	padding:10px 15px 15px 15px;
+	width:180px; height:90px;
+	text-align: center;
+	margin:0 auto;
+	font-size: 1em;
+	background-color: #333;
+	position:fixed;
+	top:150px; right:20px;
+	box-sizing:border-box;
+}
+
+
+.gradeInfo span{
+	font-size:1.2em;
+	font-weight: bold;
+	color: #50d4aa;
+	font-family: 'Abril Fatface', cursive;
+}
+
+.gradeInfo a{
+	text-decoration: none;
+	/* font-family: 'Abril Fatface', cursive; */
+}
+
+.gradeInfo a:LINK, .gradeInfo a:VISITED {
+	 color:#333;
+	 font-weight:bold;
+	 animation-name:animate;
+	 animation-duration: 3s;
+	 animation-iteration-count: infinite;
+	 opacity: 1;
+	 background-color: #50d4aa;
+}
+
+@keyframes animate {
+	0% {opacity: 1;}
+	30% {opacity: 0.2;}
+	50% {opacity: 1;}
+	80%{opacity: 0.2;}
+	100% {opacity: 1;}
+}
+
+.gradeInfo a:HOVER{
+	color:white;
+	background-color: #ff8000;
+	
+}
+
+
+
+
+/***vip선정안내***/
+
+.crown{
+	text-align: center;
+	margin:0;
+	padding-top: 20px;
+}
+
+.whoIsVip{
+	width:1400px; height:300px;
+	background-color: #333;
+	margin:20px auto;
+}
+
+.whoIsVip>p:nth-of-type(1){
+	text-transform:uppercase;
+	word-spacing:10px;
+	border-bottom:5px solid white;
+	text-align: center;
+	font-family: 'Abril Fatface', cursive;
+	padding-bottom:-100px;
+	/* margin:20px; */
+	color: white;
+	font-size: 3em;
+	width: 1400px; height: 50px;	
+}
+
+.whoIsVip>p:nth-of-type(2){
+	border-bottom:5px solid white;
+	text-align: center;
+	font-size: 2em;
+	color: #333;
+	font-weight:lighter;
+	line-height: 1.4em;
+	padding-top:20px;
+	padding-bottom:30px;
+	/* background: linear-gradient(0deg,skyblue,pink); */
+	background-color:#cfcfcf;
+	font-family: 'Do Hyeon', sans-serif;
+}
+
+
+
+/***vip혜택안내***/
+.info{
+	border:2px solid #333;
+	border-radius:20px;
+	width: 1400px;
+	margin:50px auto;
+	padding:30px 40px 60x 40px;
+	box-sizing:border-box;
+}
+
+.info>p{
+	border-bottom:2px dotted #333;
+	margin:5px auto;
+	text-align: center;
+	font-size:1.6em;
+	font-weight: bold;
+	padding: 30px;
+}
+
+.info>p>span{
+	font-size:2em;
+	font-family: 'Abril Fatface', cursive;
+}
+
+.info div{
+	/* border-bottom: 3px dashed #333; */
+	/* border:1px solid green; */
+	/* float: left; */
+	width: 1000px; height: 300px;
+	margin: 50px auto;
+	box-sizing:border-box;
+}
+
+.event{
+	background-image: url("../images/event.jpg");
+	background-size: cover;
+	background-position:top;
+	overflow: hidden;
+	color:white;
+	position: relative;
+}
+
+.event div{
+	position:absolute;
+	top:-50px; right:0;
+	height: 300px; width: 1000px;
+	box-sizing:border-box;
+	background: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,0.8), rgba(0,0,0,1));  
+	text-align: left;
+	padding:50px 100px 70px 100px;
+	line-height: 2.5em;
+	font-style: italic;
+}
+
+.event>div h3{
+	font-size: 2.5em;
+	margin-bottom: 20px;
+}
+
+.cinemaPrev{
+	background-image: url("../images/theater.jpg");
+	background-size: cover;
+	background-position:bottom;
+	overflow: hidden;
+	color:white;
+	position: relative;
+}
+
+.cinemaPrev div{
+	position:absolute;
+	top:-50px; right:0;
+	height: 300px; width: 1000px;
+	box-sizing:border-box;
+	background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.8), rgba(0,0,0,1)); 
+	text-align: right;
+	padding:40px 100px 70px 100px;
+	line-height: 2.5em;
+	font-style: italic;
+}
+
+.cinemaPrev>div h3{
+	font-size: 2.5em;
+	margin-bottom: 20px;
+}
+
+.coupon{
+	background-image: url("../images/event.jpg");
+	background-size: cover;
+	background-position:center;
+	overflow: hidden;
+	color:white;
+	position: relative;
+}
+
+.coupon>div{
+	position:absolute;
+	top:-50px; right:0;
+	height: 300px; width: 1000px;
+	box-sizing:border-box;
+	background: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,0.8), rgba(0,0,0,1));  
+	text-align: left;
+	padding:70px 100px 70px 100px;
+	line-height: 2.5em;
+	font-style: italic;
+}
+
+.coupon>div h3{
+	font-size: 2.5em;
+	margin-bottom: 20px;
+}
+
+.info:after { content:""; clear:both; display:block; }
+
+.ChallengeVip{
+	width:1400px; height:100px;
+	background-color: #333;
+	margin:20px auto 200px auto;
+	font-family: 'Do Hyeon', sans-serif;
+	color:white;
+	text-align: center;
+	font-size: 1.2em;
+	box-sizing:border-box;
+}
+.ChallengeVip>p{
+	padding-top: 30px;
+}
+
+
+
+
+
+
+
+/******@@@@@@@---vip예약 페이지---@@@@@@@********/
+/******@@@@@@@---vip예약 페이지---@@@@@@@********/
 
 /***vip예약페이지 상단 이미지***/
 .pic_frame{
@@ -44,54 +295,7 @@ body{
 }
 
 
-/***vip안내 페이지 상단 이미지***/
-.pic_frame_info{   
-	position:relative;
-	margin:0px auto;
-	width:1900px;
-	height:650px;
-	overflow: hidden;
-}
 
-#pic_src_info {
-	margin:0px auto;
-	width:1900px;
-	height:650px;
-	position: relative;	
-}
-
-
-/**등급정보***/
-.gradeInfo{
-	/* border:1px solid red; */
-	padding: 10px;
-	width:300px; height:100px;
-	text-align: center;
-	margin:0 auto;
-	font-size: 1.2em;
-}
-
-.gradeInfo span{
-	font-weight: bold;
-	color: #400080;
-}
-
-.gradeInfo a{
-	text-decoration: none;
-}
-
-.gradeInfo p:nth-of-type(2){
-	/* border:1px solid blue; */
-	display:inline-block;
-	paddin:10px;
-	margin: 20px auto;
-}
-
-.gradeInfo a:LINK, .gradeInfo a:VISITED{
-	text-decoration: none;
-	color:#400080;
-	font-weight: bold;
-}
 
 
 
