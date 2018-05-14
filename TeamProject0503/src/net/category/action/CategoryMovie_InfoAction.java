@@ -70,12 +70,51 @@ public class CategoryMovie_InfoAction implements Action{
 //				
 //		request.setAttribute("reviewList", reviewList);
 		
-		Vector vector = reviewdao.getReview(mv_num);
-		List reviewList = (List)vector.get(0);
-		List memberName = (List)vector.get(1);
+		int count = reviewdao.getReviewCount(mv_num);
+		int pageSize = 10;
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null) {
+			pageNum = "1";
+		}
+		
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1)*pageSize+1;
+		
+		Vector vector = null;
+		List reviewList = null;
+		List memberName = null;
+		
+		int endRow = pageSize * currentPage;
+		int pageCount = 0;
+		int pageBlock=5;
+		int startPage=0;
+		int endPage=0;
+		
+		if(count!=0){
+			
+			pageCount = count/pageSize;
+			pageCount= (count%pageSize)!=0?  pageCount+1:pageCount;
+			
+			startPage=((currentPage-1)/pageBlock)*pageBlock+1;		
+			
+			endPage=startPage+pageBlock-1;
+			
+			if(pageCount<endPage){
+				endPage=pageCount;
+			}
+			vector = reviewdao.getReview(mv_num, startRow, pageSize);
+			reviewList = (List)vector.get(0);
+			memberName = (List)vector.get(1);
+		}
 		
 		request.setAttribute("reviewList", reviewList);
 		request.setAttribute("memberName", memberName);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("pageCount", pageCount);
+		request.setAttribute("pageBlock", pageBlock);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("count", count);
 		// 리뷰
 		
 		

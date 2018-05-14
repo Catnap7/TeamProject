@@ -1,7 +1,12 @@
 package net.center.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import net.admin.notice.db.NoticeBean;
+import net.admin.notice.db.NoticeDAO;
 
 
 
@@ -10,11 +15,17 @@ public class Center implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("Center execute()");
-		
+
+		NoticeDAO ndao = new NoticeDAO();
+
+		List<NoticeBean> AdminNoticeList = null;
+
+		AdminNoticeList = ndao.getAdminNoticeList();
+		request.setAttribute("AdminNoticeList", AdminNoticeList);
+
 		forward=new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("./customer/customer.jsp");						
-			
+		forward.setPath("./customer/customer.jsp");	
+		forward.setRedirect(false);						
 		return forward;
 	}
 
