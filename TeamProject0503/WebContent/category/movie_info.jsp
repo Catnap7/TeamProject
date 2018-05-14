@@ -418,7 +418,6 @@ $(document).ready(function(){
             <%
         }
      }
-
 }
      %>
 

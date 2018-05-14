@@ -21,23 +21,22 @@ public class MemberNameDup implements Action{
 		int check = memberdao.namedup(name);
 		System.out.println(check);
 		if(check==0) {
-			int data= 0;
 			out.println("<script>");
 			out.println("alert('사용중인 이름입니다.');");
 			out.println("</script>");
 		}else if(check==1){
-			int data= 1;
 			out.println("<script>");
 			out.println("alert('사용가능한 이름입니다.');");
 			out.println("</script>");
 		}
 
 		//포워드로 처리시 포워딩 됐는데 왜 한번더 시도 하냐고 오류메시지가뜸
-	/*	ActionFosetPath("./Main.me");
-		forward.setRedirect(false);rward forward = new ActionForward();
-		forward.
-		*/
-		return null;
+		ActionForward forward = new ActionForward();
+	  	forward.setPath("./Main.me");
+	  	forward.setRedirect(false);
+      	return forward;
+		
+		//return null;
 	}
 
 }
