@@ -23,8 +23,6 @@ System.out.println("FavoriteAction execute()");
 		HttpSession session= request.getSession();
 		String f_id=(String)session.getAttribute("m_id");
 		int f_num=Integer.parseInt(request.getParameter("f_num"));
-		System.out.println(f_id);
-		System.out.println(f_num);
 		if(f_id==null){
 			ActionForward forward= new ActionForward();
 			forward.setPath("./MemberLogin.me");
