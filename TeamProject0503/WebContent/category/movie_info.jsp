@@ -372,6 +372,7 @@ $(document).ready(function(){
          <%
      }else {
 
+<<<<<<< HEAD
      for(int i=0; i<reviewList.size(); i++) {
         ReviewBean reviewbean = (ReviewBean)reviewList.get(i);
         MemberBean memberbean = (MemberBean)memberName.get(i);
@@ -418,6 +419,52 @@ $(document).ready(function(){
             <%
         }
      }
+ 	 for(int i=0; i<reviewList.size(); i++) {
+ 		 ReviewBean reviewbean = (ReviewBean)reviewList.get(i);
+ 		 MemberBean memberbean = (MemberBean)memberName.get(i);
+ 		 if(moviebean.getMv_num()==reviewbean.getR_p_num()) {
+ 			 %>
+ 			 <table> 
+ 			    <tr>
+ 			      <td class="c_name"><%=memberbean.getM_name() %></td>
+ 			    </tr>
+ 			    <tr>
+ 			      <td><%=reviewbean.getR_content() %></td>
+ 			    </tr>
+ 			    <tr>
+ 			      <td>추천 <%=reviewbean.getR_recommand() %> / 신고 <%=reviewbean.getR_report() %></td>
+ 			    </tr>
+ 			    <tr>
+ 			      <td><%=reviewbean.getR_date() %></td>
+ 			    </tr>
+<!--  			    본인이면  (수정 삭제) 보이기 본인이 아니면 (추천 신고) 보이기  -->
+				<%
+				if(reviewbean.getR_id().equals(id)) {
+					%>
+					<tr>
+ 			      	  <td>
+ 			      	  <a href="./ModifyReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">수정</a> | 
+ 			      	  <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">삭제</a>
+ 			      	  </td>
+ 			    	</tr>
+					<%
+				}else {
+					%>
+					<tr>
+ 			          <td>
+ 			          <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>&r_id=<%=reviewbean.getR_id() %>">추천</a> | 
+ 			          <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">신고</a>
+ 			          </td>
+ 			    	</tr>
+					<%
+				}
+				%>
+ 			    
+ 			  </table>
+ 			  <hr class="coment_sec">
+ 			  <%
+ 		 }
+ 	 }
 }
      %>
 
