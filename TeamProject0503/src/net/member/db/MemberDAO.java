@@ -92,6 +92,36 @@ private Connection getConnection() throws Exception {
 			
 		}return check;
 	}
+	public int namecheck(String m_name) {
+		int check =0;
+		Connection con=null;
+		String sql =null;
+		PreparedStatement pstmt =null;
+		ResultSet rs =null;
+		try {
+			con=getConnection();
+			
+		sql="select m_name from member where m_name = ?";
+		 pstmt= con.prepareStatement(sql);
+		pstmt.setString(1, m_name);
+		 rs= pstmt.executeQuery();
+		if(rs.next()){
+				check=1;
+			}else {
+				check=0;
+			}
+		
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();}catch(SQLException ex) {};
+			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
+			if(con!=null)try {con.close();}catch(SQLException ex) {};
+			
+		}return check;
+	}
+	
 	
 	public int userCheck(String m_id,String m_pass) {
 		int check =3;

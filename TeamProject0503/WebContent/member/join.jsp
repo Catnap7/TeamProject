@@ -6,7 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="./css/member.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+<script src="./js/jquery-3.3.1.js"></script>
+<script type="./js/namecheck.js"></script>
+<script src="http://code.jquery.com/jquery-3.1.0.js"></script>
+
 <script type="text/javascript">
 $(function(){ //전체선택 체크박스 클릭 
 	$("#all_agree").click(function(){ 
@@ -188,7 +192,7 @@ $(function(){ //전체선택 체크박스 클릭
 	document.fr.submit();
 
 }
-	function openNameChk(){
+/* 	function openNameChk(){
 		
 		window.name = "parentForm";
 		window.open("member/IdCheckForm.jsp",
@@ -200,7 +204,7 @@ $(function(){ //전체선택 체크박스 클릭
 	// 다시 중복체크를 하도록 한다.
 	function inputNameChk(){
 		document.userInfo.idDuplication.value ="idUncheck";
-	}
+	}  */
 	//이용약관
 	function terms() {
 		window.open("./AccessTerms.ce", "", "width=750,height=900,left=620,top=50,scrollbars=yes");
@@ -208,6 +212,39 @@ $(function(){ //전체선택 체크박스 클릭
 	function Privacy() {
 		window.open("./PrivacyPolicy.ce", "", "width=750,height=900,left=620,top=50,scrollbars=yes");
 	}
+	
+ 	$(document).ready(function() {
+		//아이디 중복 체크 실행 여부(0:중복체크X 1:중복체크O)
+		
+		$('#name_ck').click(function() {
+			  if (document.fr.m_name.value == "") {
+					alert("이름을 입력하지 않았습니다.");
+					document.fr.m_name.focus()
+					return;
+				}  
+		var m_name =$('#name').val();
+		alert(m_name);
+		$.ajax({
+			type:"post",
+			url:"./MemeberNameCk.me",
+			data:{
+				"m_name":m_name
+				
+			},
+			success:function(data){
+				if(data==1){
+					alert("사용가능한 이름입니다")
+
+				}else {
+					alert("사용불가능한 이름입니다.")
+				}
+			}
+		}); 
+	});
+	}); 
+
+
+
 </script>
 </head>
 <body>
@@ -230,8 +267,8 @@ $(function(){ //전체선택 체크박스 클릭
          <div>
             <form action="./MemberJoinAction.me" id="join" method="post" name="fr" onsubmit="return validate();">
             <label> <input type="text" name="m_name" id="name" placeholder="닉네임 (김와츄)" class="text"> </label> 
-            <label> <input type="button" value="닉네임 중복체크" onclick="openNameChk()"> 
-            <input type="hidden" name="idDuplication" value="idUncheck"> </label><br> 
+            <label> <input type="button" value="닉네임 중복체크" id ="name_ck" >
+            <!-- <input type="hidden" name="idDuplication" value="idUncheck"> --> </label><br> 
             <label> <input type="text" name="m_id" id="id" placeholder="이메일 (example@gmail.com)" class="text"></label><br> 
             <label> <input type="password" name="m_pass" id="pwd" placeholder="비밀번호 (6자 이상)" class="text" ></label><br>
             <label> <input type="text" name="m_num1" placeholder="주민등록번호 앞자리" class="text"  maxlength="6"></label><br> 

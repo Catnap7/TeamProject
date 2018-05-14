@@ -79,6 +79,14 @@ public class MemberFrontController extends HttpServlet {
 			forward.setRedirect(false);
 			forward.setPath("./member/emailsendaction.jsp");
 			
+		}else if(command.equals("/MemeberNameCk.me")){
+			action = new MemberNameCh();
+			try {
+			forward = action.execute(request, response);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		}
 			
 			
