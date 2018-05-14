@@ -14,14 +14,9 @@
 <jsp:include page="../inc/header.jsp"/>
 <!-- 헤더영역 -->
 
-<nav id="menu_bar">
-	<ul>
-		<li><a href="./AdminManageList.am">DB</a></li>
-		<li><a href="./AdminNoticeList.an">공지</a></li>
-		<li><a href="./AdminChatServer.ac">채팅</a></li>
-		<li><a href="./VipAdmin.vi">VIP관리</a></li>
-	</ul>
-</nav>
+<!-- 어드민 서브메뉴 -->
+<jsp:include page="../inc/admin_sub.jsp"/>
+<!-- 어드민 서브메뉴 -->
 
 <div id="content">
 	<div class="content_position">
