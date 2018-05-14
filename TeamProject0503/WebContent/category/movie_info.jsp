@@ -372,7 +372,6 @@ $(document).ready(function(){
          <%
      }else {
 
-<<<<<<< HEAD
      for(int i=0; i<reviewList.size(); i++) {
         ReviewBean reviewbean = (ReviewBean)reviewList.get(i);
         MemberBean memberbean = (MemberBean)memberName.get(i);
