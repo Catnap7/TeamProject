@@ -313,7 +313,7 @@
 /***영화 정보***/
 
 .content{
-	border:1px solid green; 
+	/* border:1px solid green; */ 
 	width: 1500px;
 	margin:0 auto;
 	padding:10px;
@@ -326,10 +326,10 @@
 	line-height: 1.7em;
 	color:white;
 	margin: 20px auto;
-	padding: 3px 0px;
+	padding: 10px 0px 3px 10px;
 }
 .movie_title p{
-	padding-left:20px;
+	padding-left:50px;
 	font-family: 'Song Myung', serif;
 }
 
@@ -337,7 +337,7 @@
 	border:1px solid #333;
 	width:370px;
 	position:relative;
-	top:10px; left:350px;
+	top:30px; left:350px;
 	box-shadow:2px 2px #333;
 }
 
@@ -349,7 +349,7 @@
 	line-height: 1.5em;	
 	width:500px; height:200px;
 	position:relative;
-	top:-470px; left:750px;
+	top:-450px; left:750px;
 }
 .movie_info p:nth-of-type(1){
 	font-size: 1.6em; color:white;
@@ -357,7 +357,7 @@
 	font-family: 'Song Myung', serif;
 }
 .movie_info p:nth-of-type(6){
-	padding-top:20px;
+	padding-top:30px;
 	font-size: 0.8em;
 }
 
@@ -366,6 +366,23 @@
 	width:1040px; height:"760px";
 }
 
+.critic {border:1px solid red;
+	margin:20px auto;
+	height:300px;
+	padding:10px;
+	padding-left:110px;
+}
+
+.critic div{border:1px solid green;
+	width:600px; height:300px;
+	float:left;
+	padding:10px;
+	margin:0 30px;
+	box-sizing:border-box;
+	/* background-image: url("../images/critic_w.jpg");
+	background-size:cover;
+	background-position: center; */
+}
 
 
 /***좌석 선택***/

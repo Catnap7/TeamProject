@@ -107,8 +107,18 @@ int v_num=vipbean.getV_num();
 		<p><%=vipbean.getV_story()%></p>
 	</div>
 	
-	<div class="ment">
+	<div class="movie_title"><p>이 달의 영화 PICK! REVIEWS</p></div>
+	<div class="critic">
+			<div id="critic1">
+				<p><%=vipbean.getV_critic_1_by()%></p>
+				<p><%=vipbean.getV_critic_1()%></p>
+			</div>
+			<div id="critic2">
+				<p><%=vipbean.getV_critic_2_by()%></p>
+				<p><%=vipbean.getV_critic_2()%></p>
+			</div>
 	</div>
+	<div class="clear"></div>
 	
 	<div class="frame">
 		<iframe width="1040px" height="760px" src="<%=vipbean.getV_video()%>" allowfullscreen frameborder="0" scrolling="no"></iframe>
