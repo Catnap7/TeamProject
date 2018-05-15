@@ -137,11 +137,9 @@ private Connection getConnection() throws Exception {
 		 rs= pstmt.executeQuery();
 		if(rs.next()){
 			check=1;
-			return check;
-			}else {
-				check=0;
-				return check;
-			}
+		}else {
+			check=0;
+		}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {

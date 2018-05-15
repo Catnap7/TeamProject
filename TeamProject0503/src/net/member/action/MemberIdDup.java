@@ -17,15 +17,8 @@ public class MemberIdDup implements Action{
 		response.setContentType("text/html;	charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		int check = memberdao.iddup(id);
-		if(check==0) {
-			out.println("<script>");
-			out.println("alert('사용중인 이름입니다.');");
-			out.println("</script>");
-		}else if(check==1){
-			out.println("<script>");
-			out.println("alert('사용가능한 이름입니다.');");
-			out.println("</script>");
-		}
+		out.println(check);
+		out.close();
 
 		//포워드로 처리시 포워딩 됐는데 왜 한번더 시도 하냐고 오류메시지가뜸
 	/*	ActionFosetPath("./Main.me");
