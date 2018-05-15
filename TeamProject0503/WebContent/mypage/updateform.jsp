@@ -9,6 +9,7 @@
 <link href="./css/mypage.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<script src="../script/jquery-3.3.1.js"></script>
 <script>
 function check(){
 	if (document.fr.pass.value=="") {
@@ -25,11 +26,48 @@ function check(){
 		alert("비밀번호를 같게 입력하세요");
 		return false;
 	}			
+	if (document.fr.name.value.length==0) {
+		alert("닉네임을 입력하세요");
+		document.fr.name.focus();
+		return false;
+ 	} 
 }
 function check2(){
 	alert("아이디는 수정할 수 없습니다");
 	document.fr.pass.focus();
 }
+
+
+$(document).ready(function(){
+	//string2.jsp에
+	//파라미터값 넘겨서data:{name:"홍길동", age:21}
+	//결과 받아서 body 태그 뒷부분에 추가
+	
+	$('#idch').blur(function(){
+		alert("테스트");
+	 	
+		
+// 		만약, 체크값이 -1 인증안한거, 
+// 		0 중복된 아이디
+// 		1 통과;
+		
+		 /* $.ajax('idcheck2.jsp',{
+			data:{id: $("input[name=id]").val()},
+			success:function(appe){	
+//				$('#idch').after(appe);
+				if(appe==1){
+					$('#resultCH').val("1");
+					$('#resultDIV').html("<span>선택한 아이디는 사용가능합니다.</span>");
+				}else if(appe==0){
+					$('#resultCH').val("0");
+					$('#resultDIV').html("<span>중복된 아이디입니다</span>");
+				}
+				
+			}
+		});*/
+	}); 
+});
+
 </script>
 <!-- 헤더영역 -->
 <jsp:include page="../inc/header.jsp"/>
@@ -48,7 +86,7 @@ String name = (String)request.getAttribute("name");
 			<input type="text" value placeholder="<%=id%>" class="update" readonly name="id" onkeypress="check2()"><br>
 			<input type="password" value placeholder="변경 할 비밀번호 입력" class="update" name="pass"><br>
 			<input type="password" value placeholder="변경 할 비밀번호 재입력" class="update" name="pass2"><br>
-			<input type="text" value="<%=name%>" class="update" name="name"><br>
+			<input type="text" value="<%=name%>" class="update" name="name" id="idch"><br>
 			<input type="submit" value="확인" class="update_text">
 			<input type="reset" value="다시쓰기" class="update_text2">
 		</form>
