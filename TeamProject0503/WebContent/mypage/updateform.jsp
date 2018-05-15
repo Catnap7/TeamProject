@@ -94,7 +94,7 @@ String name = (String)request.getAttribute("name");
 			<input type="text" value placeholder="<%=id%>" class="update" readonly name="id" onkeypress="check2()"><br>
 			<input type="password" value placeholder="변경 할 비밀번호 입력" class="update" name="pass"><br>
 			<input type="password" value placeholder="변경 할 비밀번호 재입력" class="update" name="pass2"><br>
-			<input type="text" value="<%=name%>" class="update" name="name" ><br>
+			<input type="text" value="<%=name%>" class="update" name="name"  id="name"><br>
 			<input type="submit" value="확인" class="update_text">
 			<input type="reset" value="다시쓰기" class="update_text2">
 		</form>
