@@ -60,6 +60,38 @@
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+/* 좋아요  */
+.like > input { display: none; } 
+
+/*@@@@@@@ 별점 이미지 바꿀때 사용  */
+.like > label:before { 
+/*   margin: 5px; */
+/*   font-size: 1.25em; */
+   font-size: 2em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f004";
+}
+
+/*@@@@@@@ float 지우면 별점 css가 반대로 먹혀요. */
+.like > label { 
+  color: #ddd; 
+  float: right;
+}
+
+/*@@@@@@@@@@ 별점 줄때 색이 변하는 css  */
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.like > input:checked ~ label, /* show gold star when clicked */
+.like:not(:checked) > label:hover, /* hover current star */
+.like:not(:checked) > label:hover ~ label { color: red;  } /* hover previous stars in list */
+
+.like > input:checked + label:hover, /* hover current star when changing rating */
+.like > input:checked ~ label:hover,
+.like > label:hover ~ input:checked ~ label, /* lighten current selection */
+.like > input:checked ~ label:hover ~ label { color: red;  } 
+/* 좋아요  */
 </style>
  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="./js/jquery-3.3.1.js"></script>
@@ -241,8 +273,8 @@ $(document).ready(function(){
 	%>		
 		<form action="" id="starform<%=mv_num %>">
 				<input type="hidden" name="f_num" value="<%=mv_num %>">
-				<fieldset class="rating" id="starfield<%=mv_num %>" >
-				    <input type="checkbox" id="favorite" name="fa_favorite" checked="checked"/><label class = "full" for="favorite" title="1 star"></label>
+				<fieldset class="like" id="starfield<%=mv_num %>" >
+				    <input type="checkbox" id="favorite" name="fa_favorite" checked="checked"/><label class = "full" for="favorite" title="좋아요"></label>
 				</fieldset>
 		</form>
 	<%		
@@ -251,8 +283,8 @@ $(document).ready(function(){
 	%>
 		<form action="" id="starform<%=mv_num %>">
 			<input type="hidden" name="f_num" value="<%=mv_num %>">
-			<fieldset class="rating" id="starfield<%=mv_num %>" >
-			    <input type="checkbox" id="favorite" name="fa_favorite" /><label class = "full" for="favorite" title="1 star"></label>
+			<fieldset class="like" id="starfield<%=mv_num %>" >
+			    <input type="checkbox" id="favorite" name="fa_favorite" /><label class = "full" for="favorite" title="좋아요"></label>
 			</fieldset>
 		</form>
 	<%
@@ -270,14 +302,13 @@ $(document).ready(function(){
 					
 				});			  
 			  </script>
-			  <%-- <a href="<%=moviebean.getMv_video() %>" class="fa fa-play-circle play" target="_blank"></a> --%>
-			  <a href="" class="fa fa-play-circle play" target="_blank"></a>
-			  <button class="hr"> 이동</button>
+			 
 			  <%
 		}else if (memberBean.getM_id_num1()>=19990101){
 			
 		}	
 		%>
+			<a class="fa fa-play-circle play hr" title="보러가기"></a>
 		</div>
 	</div>
 	</div>
@@ -324,6 +355,7 @@ $(document).ready(function(){
  	 int startPage = ((Integer)request.getAttribute("startPage")).intValue();
  	 int endPage = ((Integer)request.getAttribute("endPage")).intValue();
  	 int count = ((Integer)request.getAttribute("count")).intValue();
+ 	 int r_num = ((Integer)request.getAttribute("r_num")).intValue();
  	 
  	 if(reviewList == null) {
  		 %>
@@ -368,7 +400,7 @@ $(document).ready(function(){
 					%>
 					<tr>
  			          <td>
- 			          <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">추천</a> | 
+ 			          <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>&r_id=<%=reviewbean.getR_id() %>">추천</a> | 
  			          <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">신고</a>
  			          </td>
  			    	</tr>
@@ -380,7 +412,7 @@ $(document).ready(function(){
  			  <hr class="coment_sec">
  			  <%
  		 }
- 		if(reviewbean.getR_id().equals(id)){
+ 		if(reviewbean.getR_id().equals(id) && reviewbean.getR_num() == r_num){
  			%>
  		  <!--댓글 수정 란  -->
  		  <form action="./ModifyReviewAction.ca" class="coment_write">
