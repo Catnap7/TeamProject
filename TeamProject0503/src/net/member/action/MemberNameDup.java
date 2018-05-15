@@ -14,29 +14,19 @@ public class MemberNameDup implements Action{
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		String name = request.getParameter("m_name");
-		System.out.println(name);
 		MemberDAO memberdao = new MemberDAO();
 		response.setContentType("text/html;	charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		int check = memberdao.namedup(name);
-		System.out.println(check);
-		if(check==0) {
-			out.println("<script>");
-			out.println("alert('사용중인 이름입니다.');");
-			out.println("</script>");
-		}else if(check==1){
-			out.println("<script>");
-			out.println("alert('사용가능한 이름입니다.');");
-			out.println("</script>");
-		}
-
+		out.println(check);
+		out.close();
 		//포워드로 처리시 포워딩 됐는데 왜 한번더 시도 하냐고 오류메시지가뜸
-		ActionForward forward = new ActionForward();
+		/*ActionForward forward = new ActionForward();
 	  	forward.setPath("./Main.me");
 	  	forward.setRedirect(false);
-      	return forward;
+      	return forward;*/
 		
-		//return null;
+		return null;
 	}
 
 }
