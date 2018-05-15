@@ -17,8 +17,9 @@ public class CookieLogin implements Action{
 		HttpSession session = request.getSession();
 		String m_id = null;
 		String m_pass = null;
+		String m_name = null;
 		Cookie[] cookies = request.getCookies();
-		System.out.println("쿠키로그인"); 
+		System.out.println("쿠키로그인시도"); 
 	
 		if(cookies!=null) {
 			for(int i=0; i<cookies.length; i++) {
@@ -37,9 +38,11 @@ public class CookieLogin implements Action{
 			MemberDAO mdao = new MemberDAO();
 			MemberBean memberbean= mdao.getMember(m_id);
 			memberbean.setM_id(m_id);		
+			//memberbean.setM_name(m_name);		
 			memberbean.setM_pass(m_pass);
 			session.setAttribute("m_id",memberbean.getM_id());
 			session.setAttribute("m_name",memberbean.getM_name());
+			System.out.println("m_name==="+memberbean.getM_name());
 			ActionForward forward= new ActionForward();			
 			forward.setRedirect(true);
 			forward.setPath("./Main.ma");

@@ -12,6 +12,7 @@ import net.member.db.MemberDAO;
 
 
 public class MemberLoginAction implements Action{
+	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
