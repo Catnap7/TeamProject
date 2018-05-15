@@ -8,7 +8,6 @@
 <link href="./css/member.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <script src="./js/jquery-3.3.1.js"></script>
-<script type="./js/namecheck.js"></script>
 <script src="http://code.jquery.com/jquery-3.1.0.js"></script>
 
 <script type="text/javascript">
@@ -44,7 +43,7 @@ $(function(){ //전체선택 체크박스 클릭
 	}
 	if (document.fr.m_name.value.length <= 2 
 			|| document.fr.m_name.value.length >= 9) {
-		alert("이름을 2자 이상 8자이하 입력해주십시오.");
+		alert("이름을 3자 이상 8자이하 입력해주십시오.");
 		document.fr.m_name.focus()
 		return false;
 	}
@@ -59,9 +58,17 @@ $(function(){ //전체선택 체크박스 클릭
 		document.fr.m_name.focus();
 		return false;
 	} 
+	if (document.fr.dup_name_check.value==-1) {
+		alert("이름 중복체크하세요.")
+		return false;	
+	}
+	if (document.fr.dup_name_check.value==1) {
+		alert("중복된 이름은 사용하실 수 없습니다.")
+		return false;	
+	}
 	
-	//아이디
-	if(regex.test(document.fr.m_id.value) ==false){
+	 //아이디
+	 if(regex.test(document.fr.m_id.value) ==false){
 		alert("아이디는 이메일 형식으로 입력 바랍니다.");
 		document.fr.m_id.focus();
 		return false;
@@ -82,6 +89,14 @@ $(function(){ //전체선택 체크박스 클릭
 		alert("아이디에 공백을 사용할 수 없습니다.");
 		document.fr.m_id.focus()
 		return false;
+	}
+	if (document.fr.dup_id_check.value==-1) {
+		alert("아이디 중복체크하세요.")
+		return false;	
+	}
+	if (document.fr.dup_id_check.value==1) {
+		alert("중복된 아이디는 사용하실 수 없습니다.")
+		return false;	
 	}
 
 	//비밀번호 입력여부 체크
@@ -189,7 +204,7 @@ $(function(){ //전체선택 체크박스 클릭
 		alert("개인정보 동의를 체크하세요");
 		document.fr.checkagree[2].focus()
 		return false;
-	}
+	} 
 	document.fr.submit();
 
 }
@@ -203,13 +218,32 @@ $(function(){ //전체선택 체크박스 클릭
 		window.open("./PrivacyPolicy.ce", "", "width=750,height=900,left=620,top=50,scrollbars=yes");
 	}
 	// 이름 중복체크
- 	$(document).ready(function() {
+ 	 $(document).ready(function() {
+ 		var a_check=/[~!@#$%^&*()_+|<>?:{}]/;
+ 		var space_check=/[\s]/g;
 		$('#name_dup').click(function() {
 		  if (document.fr.m_name.value == "") {
 				alert("이름을 입력하지 않았습니다.");
 				document.fr.m_name.focus()
-				return;
-		}  
+				return false;
+		}
+		  if (document.fr.m_name.value.length <= 2 
+					|| document.fr.m_name.value.length >= 9) {
+				alert("이름을 3자 이상 8자이하 입력해주십시오.");
+				document.fr.m_name.focus()
+				return false;
+			}
+			
+			if(space_check.test(document.fr.m_name.value)){
+				alert("이름엔 공백은 들어 갈 수 없습니다.")
+				document.fr.m_name.focus();
+				return false;
+			}
+			if(a_check.test(document.fr.m_name.value)){
+				alert("이름엔 특수문자는 들어 갈 수 없습니다.")
+				document.fr.m_name.focus();
+				return false;
+			}  
 		var m_name =$('#name').val();
 		$.ajax({
 			type:'post',
@@ -218,10 +252,12 @@ $(function(){ //전체선택 체크박스 클릭
 				'm_name':m_name
 			},
 			success:function(data){
-				if(data=="1"){
-					alert("중복")
-				}else{
-					alert("가능")
+				if(data==1){
+					$('#dup_name_check').val('1');
+					alert("중복된 이름입니다.")
+				}else if(data==0){
+					$('#dup_name_check').val('0');
+					alert("사용가능한 이름입니다.")
 				}
 			}
 		}); 
@@ -229,35 +265,55 @@ $(function(){ //전체선택 체크박스 클릭
 	}); 
 	//아이디중복체크	
  	$(document).ready(function() {
+ 		var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+ 		var space_check=/[\s]/g;
 		$('#id_dup').click(function() {
 		  if (document.fr.m_id.value == "") {
-				alert("이름을 입력하지 않았습니다.");
+				alert("아이디를 입력하지 않았습니다.");
 				document.fr.m_id.focus()
-				return;
-		}  
+				return false;
+		}
+		  if(regex.test(document.fr.m_id.value) ==false){
+				alert("아이디는 이메일 형식으로 입력 바랍니다.");
+				document.fr.m_id.focus();
+				return false;
+			}
+			if (document.fr.m_id.value == "") {
+				alert("아이디를 입력하세요.");
+				document.fr.m_id.focus();
+				return false;
+			}
+			if (document.fr.m_id.value.length <= 8 
+					|| document.fr.m_id.value.length >= 21) {
+				alert("아이디는 8자 이상 20자 이하 입력 바랍니다.");
+				document.fr.m_id.focus();
+				return false;
+			}
+
+			if (space_check.test(document.fr.m_id.value)) {
+				alert("아이디에 공백을 사용할 수 없습니다.");
+				document.fr.m_id.focus()
+				return false;
+			}
 		var m_id =$('#id').val();
 		$.ajax({
 			type:"post",
 			url:"./MemeberIdDup.me",
 			data:{
 				"m_id":m_id
-				
 			},
 			success:function(data){
-				if(data=="suc"){
-					alert("사용가능한 아이디입니다")
-
+				if(data==1){
+					$('#dup_id_check').val('1');
+					alert("중복된 아이디입니다")
 				}else {
-					alert("사용불가능한 아이디입니다.")
+					$('#dup_id_check').val('0');
+					alert("사용가능한 아이디입니다.")
 				}
 			}
 		}); 
 	});
 	}); 
-
-
-
-
 </script>
 </head>
 <body>
@@ -280,9 +336,11 @@ $(function(){ //전체선택 체크박스 클릭
          <div>
             <form action="./MemberJoinAction.me" id="join" method="post" name="fr" onsubmit="return validate();">
             <label> <input type="text" name="m_name" id="name" placeholder="닉네임 (김와츄)" class="text"> </label> 
-            <label> <input type="button" value="닉네임 중복체크" id ="name_dup" ></label><br> 
+            <label> <input type="button" value="닉네임 중복체크" id ="name_dup" ></label><br>
+            		<input type="hidden" value="-1" id="dup_name_check"> 
             <label> <input type="text" name="m_id" id="id" placeholder="이메일 (example@gmail.com)" class="text">
-            		<input type="button" id="id_dup" value="아이디 중복체크">  
+            		<input type="button" id="id_dup" value="아이디 중복체크">
+            		<input type="hidden" value="-1" id="dup_id_check">   
             </label><br> 
             <label> <input type="password" name="m_pass" id="pwd" placeholder="비밀번호 (6자 이상)" class="text" ></label><br>
             <label> <input type="text" name="m_num1" placeholder="주민등록번호 앞자리" class="text"  maxlength="6"></label><br> 

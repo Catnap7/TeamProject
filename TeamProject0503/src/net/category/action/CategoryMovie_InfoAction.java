@@ -23,17 +23,6 @@ public class CategoryMovie_InfoAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		/*int mv_num = Integer.parseInt(request.getParameter("mv_num"));
-		Vector vector = new Vector();
-		MovieDAO moviedao = new MovieDAO();
-		List movietList =null;
-		List favoriteList =null;
-		
-		vector= moviedao.getMovie(mv_num);
-		movietList = (List)vector.get(0);
-		favoriteList = (List)vector.get(1);
-		request.setAttribute("movietList", movietList);
-		request.setAttribute("favoriteList", favoriteList);*/
 		HttpSession session= request.getSession();
 		String id=(String)session.getAttribute("m_id");
 		if(id==null){
