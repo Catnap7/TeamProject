@@ -72,6 +72,7 @@ public class RecommendAction implements Action {
 			out.println("history.back()");
 			out.println("</script>");
 			out.close();
+			return null;
 		}
 		
 		ActionForward forward = new ActionForward();

@@ -92,7 +92,37 @@ private Connection getConnection() throws Exception {
 			
 		}return check;
 	}
-	public int namecheck(String m_name) {
+	public int iddup(String m_id) {
+		int check =0;
+		Connection con=null;
+		String sql =null;
+		PreparedStatement pstmt =null;
+		ResultSet rs =null;
+		try {
+			con=getConnection();
+			
+		sql="select m_id from member where m_id = ?";
+		 pstmt= con.prepareStatement(sql);
+		pstmt.setString(1, m_id);
+		 rs= pstmt.executeQuery();
+		if(rs.next()){
+				check=1;
+			}else {
+				check=0;
+			}
+		
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();}catch(SQLException ex) {};
+			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
+			if(con!=null)try {con.close();}catch(SQLException ex) {};
+			
+		}return check;
+	}
+	//중복체크 
+	public int namedup(String m_name) {
 		int check =0;
 		Connection con=null;
 		String sql =null;
@@ -106,12 +136,10 @@ private Connection getConnection() throws Exception {
 		pstmt.setString(1, m_name);
 		 rs= pstmt.executeQuery();
 		if(rs.next()){
-				check=1;
-			}else {
-				check=0;
-			}
-		
-
+			check=1;
+		}else {
+			check=0;
+		}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
