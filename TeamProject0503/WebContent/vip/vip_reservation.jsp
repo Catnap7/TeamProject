@@ -1,4 +1,5 @@
 
+<%@page import="net.admin.manage.db.MovieBean"%>
 <%@page import="net.vip.db.VipResBean"%>
 <%@page import="java.util.List"%>
 <%@page import="net.vip.db.VipResDAO"%>
@@ -21,6 +22,8 @@
 <!-- JQuery -->
 <script src="../js/jquery-3.3.1.js"></script>
 
+<!-- 웹폰트 -->
+<link href="https://fonts.googleapis.com/css?family=Song+Myung" rel="stylesheet">
 
 <script type="text/javascript">
 /* 
@@ -54,12 +57,6 @@ $(document).ready(function(){
 
 </head>
 <body>
-
-
-
-<!-- 아티클 영역 -->
-<article>
-
 <%
 
 String id=(String)session.getAttribute("m_id");
@@ -84,32 +81,48 @@ int v_num=vipbean.getV_num();
 
 %>
 
- 	<div class="pic_frame">
+
+<!-- 아티클 영역 -->
+<article class="vip_res">
+
+ 	<section class="pic_frame">
 		<div class="pic">
  			<img id="pic_src" src="./images/vip4_1.png">
- 			<div class="vip_name"><%=name%><%="님"%></div>
+ 			<div class="vip_name"><%=name%><span><%="님"%></span></div>
  		</div>
-	</div> 
+	</section> 
 	
 	
-	
-	
-	<div id="content">
-		<table border="1">
-			<tr><td>이번달의 영화</td></tr>
-			<tr><td><%=vipbean.getV_kor_title()%></td></tr>
-			<tr><td><%=vipbean.getV_eng_title()%></td></tr>				
-		</table>
-		<img src="./images/vip/<%=vipbean.getV_eng_title().replaceAll(" ","")+"_p.jpg"%>" width="300" height="400">
-		<%-- <img src="./images/<%=genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")+"_s2.jpg"%>"> --%>
-		<table border="1">	
-			<tr><td><%=vipbean.getV_director()%></td></tr>
-			<tr><td><%=vipbean.getV_actor().replaceAll(","," , ")%></td></tr>
-			<tr>
-				<td><%=vipbean.getV_story()%></td>
-			</tr>
-		</table>
+<section class="content">	
+	<div class="movie_title"><p>이 달의 영화</p></div>
 		
+	<div class="poster"><img src="./images/vip/<%=vipbean.getV_eng_title().replaceAll(" ","")+"_p.jpg"%>" width="370" height="500"></div>
+	
+	<div class="movie_info">
+		<P><%=vipbean.getV_kor_title()%></P>
+		<p><%=vipbean.getV_director()%><%="  감독"%></p>
+		<p><%=vipbean.getV_year()%><%="년도 개봉" %></p>
+		<p><%=vipbean.getV_genre()%></p>
+		<p><%=vipbean.getV_actor().replaceAll(","," , ")%></p>
+		<p><%=vipbean.getV_story()%></p>
+	</div>
+	
+	<div class="movie_title"><p>이 달의 영화 PICK! REVIEWS</p></div>
+	<div class="critic">
+			<div id="critic1">
+				<p><%=vipbean.getV_critic_1_by()%></p>
+				<p><%=vipbean.getV_critic_1()%></p>
+			</div>
+			<div id="critic2">
+				<p><%=vipbean.getV_critic_2_by()%></p>
+				<p><%=vipbean.getV_critic_2()%></p>
+			</div>
+	</div>
+	<div class="clear"></div>
+	
+	<div class="frame">
+		<iframe width="1040px" height="760px" src="<%=vipbean.getV_video()%>" allowfullscreen frameborder="0" scrolling="no"></iframe>
+	</div>
 		<table>
 			<tr><td>시사회 날짜</td></tr>
 			<tr><td><%=vipbean.getV_date()%></td></tr>
@@ -117,13 +130,7 @@ int v_num=vipbean.getV_num();
 		</table>
 	</div>
 
-<a href="./VipAdmin.vi">vipadmin</a>
-
 <span id="seet">원하시는 좌석을 선택 해 주세요</span>
-
-
-
-
 
 
 <div class="seatTable">
@@ -225,38 +232,7 @@ int v_num=vipbean.getV_num();
 				function seat<%=vipresbean.getV_seatNum()%>() {document.getElementById("selectedSeat").innerHTML = "<%=vipresbean.getV_seatNum()%>";}
 		</script>
 	
-	
-
-<%--  	<table border="1">
-		<tr>
-			<th>좌석 번호</th><th>예약여부</th>
-		</tr>
-		
-		 <% for(int i=0;i<VipSeatTakenList.size();i++){
-			VipResBean vipresbean =(VipResBean)VipSeatTakenList.get(i);%>
-		<tr>
-			<td><label><input type="radio" class="radio"  name="seat"  onclick="seat<%=i+1%>()" value="<%=i+1%>"><span><%=vipresbean.getV_seatNum()%></span></label></td>
-			<td><%=vipresbean.getV_seatSelected()%></td>
-		</tr>
-		<script>
-				function seat<%=i+1%>() {document.getElementById("selectedSeat").innerHTML = "<%=i+1%>";}
-		</script>
-		<%} %>
-	</table> 	 --%> 
-	
-		
-		
-
-<%-- 		<%
-		
-		for(int i=1; i<=10; i++){ %>
-			<label><input type="radio" class="radio"  name="seat"  onclick="seat<%=i%>()" value="<%=i%>"><span><%=i%></span></label>
-	
-			<script>
-				function seat<%=i%>() {document.getElementById("selectedSeat").innerHTML = "<%=i%>";}
-			</script>
-		<%} %> 
-		 --%>
+		 
 		<div class="selected">
 		<p>선택하신 좌석</p>
 		<p id="selectedSeat"></p>
@@ -269,12 +245,23 @@ int v_num=vipbean.getV_num();
 
 <div class="clear"></div>
 </div>
+
+</section>
+
 </article>
 <!-- 아티클 영역 -->
+
+
+
+
+
 
 <!-- 푸터 영역 -->
 <jsp:include page="../inc/footer.jsp"/>
 <!-- 푸터 영역 -->
+
+
+
 
 </body>
 
