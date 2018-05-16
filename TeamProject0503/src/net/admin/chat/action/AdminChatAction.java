@@ -19,8 +19,7 @@ import javax.websocket.server.ServerEndpoint;
 public class AdminChatAction{ 
  
  
-   private static Set<Session> clients = Collections 
-         .synchronizedSet(new HashSet<Session>()); 
+   private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>()); 
 
    @OnMessage 
     public void onMessage(String message, Session session) throws IOException { 
@@ -36,18 +35,14 @@ public class AdminChatAction{
        } 
     } 
  
- 
     @OnOpen 
-    public void onOpen(Session session) { 
-       // Add session to the connected sessions set 
+    public void onOpen(Session session) {
        System.out.println(session); 
        clients.add(session); 
     } 
  
- 
     @OnClose 
-    public void onClose(Session session) { 
-       // Remove session from the connected sessions set 
+    public void onClose(Session session) {
        clients.remove(session); 
     }
  } 

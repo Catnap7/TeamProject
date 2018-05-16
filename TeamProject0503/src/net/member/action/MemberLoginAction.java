@@ -2,6 +2,7 @@ package net.member.action;
 
 import java.io.PrintWriter;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import net.member.db.MemberDAO;
 
 
 public class MemberLoginAction implements Action{
+	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
@@ -20,8 +22,7 @@ public class MemberLoginAction implements Action{
 		
 		MemberDAO mdao = new MemberDAO();
 		String m_id = request.getParameter("m_id");
-		System.out.println(m_id);
-		//mdao.getMember(m_id);
+		
 		MemberBean memberbean= mdao.getMember(m_id);
 		
 		
@@ -64,10 +65,12 @@ public class MemberLoginAction implements Action{
 			}else {
 			session.setAttribute("m_id",memberbean.getM_id());
 			session.setAttribute("m_name",memberbean.getM_name());
-			
 			DeleteAlarm dr= new DeleteAlarm();
 			
+			System.out.println("");
+			
 			DeleteAlarm ar= new DeleteAlarm();
+			
 			ActionForward forward= new ActionForward();			
 			forward.setRedirect(true);
 			forward.setPath("./Main.ma");
