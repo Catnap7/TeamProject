@@ -14,11 +14,10 @@ public class FindPassAction implements Action{
 
 		ActionForward forward= new ActionForward();
 		MemberBean memberbean= new MemberBean();
-		HttpSession session = request.getSession();
 		
 		MemberDAO memberdao = new MemberDAO();
 		String m_id = request.getParameter("m_id");
-		memberbean.setM_id(request.getParameter("m_id"));
+		memberbean.setM_id(m_id);
 		
 		memberdao.connectEmail(m_id);
 		

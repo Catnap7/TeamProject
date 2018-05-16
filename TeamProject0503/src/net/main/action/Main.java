@@ -16,7 +16,10 @@ public class Main implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("Main execute");
-		HttpSession session=request.getSession();		
+		HttpSession session=request.getSession();
+		
+		
+		
 		String id = (String)session.getAttribute("m_id");
 		
 		if(id==null){

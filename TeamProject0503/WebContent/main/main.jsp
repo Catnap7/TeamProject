@@ -244,7 +244,7 @@ function setCookie(cname, cvalue, exdays) {
     var expires = "expires="+d.toUTCString();
     document.cookie = cname + "=" + cvalue + "; " + expires;
 }
-
+ /*하루동안 보지않기  exdays*24*60*60*1000) */
 function couponClose(){
     if($("input[name='chkbox']").is(":checked") ==true){
         setCookie("close","Y",1);
@@ -273,7 +273,12 @@ $(document).ready(function(){
 
 <body>
 <%
-String id = (String)request.getAttribute("m_id");
+
+		String id = (String)request.getAttribute("m_id");
+
+	
+	
+
 List<MovieBean> favoritelist = (List)request.getAttribute("favoritelist");
 int favoritecount = ((Integer)request.getAttribute("favoritecount")).intValue();
 MovieDAO mdao = new MovieDAO();
