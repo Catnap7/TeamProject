@@ -271,6 +271,7 @@
 	width:1900px;
 	background-image: url("../images/vip_done.png");
 	background-size:100%;
+	margin:0 auto;
 }
 
 /***vip예약페이지 상단 이미지***/
@@ -385,6 +386,7 @@
 	height:300px;
 	padding:10px;
 	padding-left:110px;
+	margin-bottom: 350px;
 }
 
 .critic div{/* border:1px solid green; */
@@ -440,20 +442,52 @@
 
 /***좌석 선택***/
 
-.seatTable{
+.seatRes{
 	border: 1px solid #333;
 	color:white;
+	padding:30px;
+	width: 1200px; height:500px;
+	margin:0 auto;
+	margin-bottom:300px;
 }
 
-td .seatUnselected{
-	background-color: red;
+#seat{
+	font-size: 1.1em;
+	position: relative;
+	top:50px; left:330px;	
+}
+
+#screen{
+	color:#000;
+	background-color: #eee;
+	width: 600px; height:18px;
+	text-align:center;
+	font-weight:bold;
+	letter-spacing:15px;
+	display: inline-block;
+	position: relative;
+	top:100px; left:-90px;	
+}
+
+
+
+/**좌석선택**/
+
+.seatTable{
+	/* border-collapse: collapse; */
+	text-align: center;
+	font-size: 1.2em;
+	display: inline-block;
+}
+.seatTable td{
+	width: 30px; height: 30px;
+}
+.seatUnselected>label{
+	background-color: white;
+	color:black;
 }
 td .seatSelected{
-	background-color:blue;
-}
-
-td .seatNumDisabled{
-	color:#c0c0c0;
+	background-color:gray;
 }
 
 
@@ -462,12 +496,71 @@ td .seatNumDisabled{
 }
 
 input:checked + span{ 
-	background-color:#ff8000;
+	background-color:red;
 	color: #000000;
 	font-weight: bold;
 } 
 
 
+
+
+
+
+.prev_date{
+	border-top:1px solid #333; 
+	width:300px; height:140px;
+	padding:20px;
+	font-size:1.3em;
+	text-align: center;
+	line-height: 1.5em;
+	font-family: 'Nanum Myeongjo', serif;
+	padding-bottom: 50px;	
+	position: relative;	
+	top:-220px; left:800px;
+}
+
+#selectedSeat{
+	/* border:1px solid red; */
+	font-size: 1.3em;
+	width: 300px; height:30px;
+	text-align: center;
+	position: relative;
+	top:-260px; left:800px;
+	color:#ff8000;
+}
+
+.prev_date tr td{
+	border-bottom:2px dotted #333;
+	font-family: 'Nanum Myeongjo', serif;	
+	padding:3px;
+}
+
+
+.button{
+	/* border:1px solid red; */
+	border-radius:10px;
+	width: 100px; height:30px;
+	position: relative;
+	top:-230px; left:905px;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+.button:HOVER{color: #ff8000;}
+
+
+
+
+.up a{
+	font-size:2em;
+	position:relative;
+	text-decoration: none;
+	display: block;
+	color:white;
+	margin:20px auto;
+	text-align: center;
+}
+.up a:LINK, .up a:visited {color:#ffffff;}
+.up a:HOVER{color:#ff8000;}
 
 
 
