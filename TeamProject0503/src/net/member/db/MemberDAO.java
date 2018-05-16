@@ -199,7 +199,8 @@ private Connection getConnection() throws Exception {
 			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {				
+			if(rs.next()) {		
+				memberbean = new MemberBean();
 				memberbean.setM_id(rs.getString("m_id"));  
 				memberbean.setM_pass(rs.getString("m_pass"));  
 				memberbean.setM_name(rs.getString("m_name"));  
@@ -207,6 +208,7 @@ private Connection getConnection() throws Exception {
 				memberbean.setM_id_num1(rs.getInt("m_id_num1"));
 				memberbean.setM_id_num2(rs.getInt("m_id_num2"));
 				memberbean.setM_reg_date(rs.getDate("m_reg_date"));
+				
 			}
 			
 		}catch(Exception e){
