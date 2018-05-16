@@ -22,6 +22,10 @@
 		감독(한글) : <input type="text" name="v_director" placeholder="예)왕가위"><br>
 		배우(주연만) : <input type="text" name="v_actor" placeholder="예)양조위,장만옥"><br>
 		줄거리: <input type="text" name="v_story"><br>
+		리뷰 1 출처 : <input type="text" name="v_critic_1_by" placeholder="예)가디언지"><br>
+		리뷰 1: <input type="text" name="v_critic_1"><br>
+		리뷰 2 출처 : <input type="text" name="v_critic_2_by" placeholder="예)가디언지"><br>
+		리뷰 2: <input type="text" name="v_critic_2"><br>
 		예고편 소스 : <input type="text" name="v_video"><br>
 		
 		<input type="submit" value="입력">

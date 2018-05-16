@@ -73,6 +73,7 @@ public class ModifyReview implements Action {
 //		request.setAttribute("reviewList", reviewList);
 		
 		int count = reviewdao.getReviewCount(mv_num);
+		int r_num = Integer.parseInt(request.getParameter("r_num")); 
 		int pageSize = 10;
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum == null) {
@@ -117,6 +118,7 @@ public class ModifyReview implements Action {
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("count", count);
+		request.setAttribute("r_num", r_num);
 		// 리뷰
 		
 		ActionForward forward = new ActionForward();

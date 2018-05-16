@@ -15,6 +15,10 @@ public class VipBean {
 	String v_video;
 	String v_date;
 	String v_when;
+	String v_critic_1_by;
+	String v_critic_1;
+	String v_critic_2_by;
+	String v_critic_2;
 	
 	
 	public int getV_num() {
@@ -101,6 +105,30 @@ public class VipBean {
 	}
 	public void setV_when(String v_when) {
 		this.v_when = v_when;
+	}
+	public String getV_critic_1_by() {
+		return v_critic_1_by;
+	}
+	public void setV_critic_1_by(String v_critic_1_by) {
+		this.v_critic_1_by = v_critic_1_by;
+	}
+	public String getV_critic_1() {
+		return v_critic_1;
+	}
+	public void setV_critic_1(String v_critic_1) {
+		this.v_critic_1 = v_critic_1;
+	}
+	public String getV_critic_2_by() {
+		return v_critic_2_by;
+	}
+	public void setV_critic_2_by(String v_critic_2_by) {
+		this.v_critic_2_by = v_critic_2_by;
+	}
+	public String getV_critic_2() {
+		return v_critic_2;
+	}
+	public void setV_critic_2(String v_critic_2) {
+		this.v_critic_2 = v_critic_2;
 	}
 	
 	

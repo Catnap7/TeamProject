@@ -177,7 +177,7 @@ $(function(){ //전체선택 체크박스 클릭
 	}
 	 if(document.fr.m_num2.value<1 
 			 || document.fr.m_num2.value>4){
-		alert("주민번호 뒷자리는 1~4 숫자로먼 입력바랍니다.");
+		alert("주민번호 뒷자리는 1~4 숫자로만 입력바랍니다.");
 		document.fr.m_num2.focus()
 		return false;
 	} 

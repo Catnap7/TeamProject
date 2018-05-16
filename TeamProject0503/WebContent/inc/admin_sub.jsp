@@ -5,7 +5,7 @@
 	<ul>
 		<li><a href="./AdminManageList.am">DB</a></li>
 		<li><a href="./AdminNoticeList.an">공지</a></li>
-		<li><a href="./AdminChatServer.ac">채팅</a></li>
+		<li><a href="./AdminChat.ac">채팅</a></li>
 		<li><a href="./VipAdmin.vi">VIP관리</a></li>
 	</ul>
 </nav>

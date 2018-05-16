@@ -152,6 +152,7 @@ if(moviebean.getMv_genre().equals("animation")){
    genre="드라마";
 }
 
+
 String age = "";
 if(moviebean.getMv_age()==0){
    age = "전체이용가";
@@ -275,7 +276,7 @@ $(document).ready(function(){
 		<form action="" id="starform<%=mv_num %>">
 				<input type="hidden" name="f_num" value="<%=mv_num %>">
 				<fieldset class="like" id="starfield<%=mv_num %>" >
-				    <input type="checkbox" id="favorite" name="fa_favorite" checked="checked"/><label class = "full" for="favorite" title="1 star"></label>
+				    <input type="checkbox" id="favorite" name="fa_favorite" checked="checked"/><label class = "full" for="favorite" title="좋아요"></label>
 				</fieldset>
 		</form>
 	<%		
@@ -285,7 +286,7 @@ $(document).ready(function(){
 		<form action="" id="starform<%=mv_num %>">
 			<input type="hidden" name="f_num" value="<%=mv_num %>">
 			<fieldset class="like" id="starfield<%=mv_num %>" >
-			    <input type="checkbox" id="favorite" name="fa_favorite" /><label class = "full" for="favorite" title="1 star"></label>
+			    <input type="checkbox" id="favorite" name="fa_favorite" /><label class = "full" for="favorite" title="좋아요"></label>
 			</fieldset>
 		</form>
    <%
@@ -437,7 +438,7 @@ $(document).ready(function(){
                %>
                <tr>
                     <td>
-                    <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">추천</a> | 
+                    <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>&r_id=<%=reviewbean.getR_id() %>">추천</a> | 
                     <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">신고</a>
                     </td>
                  </tr>
