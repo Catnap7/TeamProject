@@ -152,6 +152,7 @@ if(moviebean.getMv_genre().equals("animation")){
    genre="드라마";
 }
 
+
 String age = "";
 if(moviebean.getMv_age()==0){
    age = "전체이용가";
