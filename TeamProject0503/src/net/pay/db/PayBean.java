@@ -9,6 +9,7 @@ public class PayBean {
 	Date p_end_day;
 	String p_auto;
 	int p_charge;
+	
 	public int getP_num() {
 		return p_num;
 	}
@@ -45,7 +46,5 @@ public class PayBean {
 	public void setP_charge(int p_charge) {
 		this.p_charge = p_charge;
 	}
-
-
 
 }
