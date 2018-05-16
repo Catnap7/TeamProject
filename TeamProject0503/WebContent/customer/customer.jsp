@@ -65,7 +65,7 @@
 		</div>
 		<div class="chat">
 			<input type="button" value="1:1 문의"
-				onclick="location.href='./UserChatClient.ac'">
+				onclick="location.href='./AdminChat.ac'">
 		</div>
 
 	</div>
