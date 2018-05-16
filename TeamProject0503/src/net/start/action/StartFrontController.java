@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.member.action.ActionForward;
 
 public class StartFrontController extends HttpServlet{
 
@@ -29,9 +28,12 @@ public class StartFrontController extends HttpServlet{
 			forward.setRedirect(false);
 			forward.setPath("./start/intro.jsp");
 		}else if(command.equals("/start.st")) {
-			forward=new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./start/start.jsp");
+			action= new CookieLogin();
+			try {
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		//주소 비교

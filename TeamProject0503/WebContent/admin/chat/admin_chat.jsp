@@ -92,7 +92,8 @@ Date now = new Date();
 </body>
      <script type="text/javascript">
          var textarea = document.getElementById("messageWindow"); 
-         var webSocket = new WebSocket('ws://localhost:8080/TeamProject0503/AdminChatAction'); 
+         //서버 컴퓨터의 경로를 설정해주어야함
+         var webSocket = new WebSocket('ws://192.168.2.12:8080/TeamProject0503/AdminChatAction'); 
          var inputMessage = document.getElementById('inputMessage'); 
      webSocket.onerror = function(event) { 
        onError(event) 
@@ -107,7 +108,7 @@ Date now = new Date();
      }; 
   
      function onMessage(event) { 
-    	 textarea.value += "상대 : " + event.data + "\n"; 
+    	 textarea.value += "상대 : " + event.data + "\n";
      } 
   
      function onOpen(event) { 
