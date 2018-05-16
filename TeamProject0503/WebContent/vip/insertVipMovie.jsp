@@ -11,6 +11,7 @@
 	<p>이번달 vip이벤트 영화 입력해 주십시오</p>
 	<form action="./VipInsert.vi" method="post" name="fr">
 		상영회 예정 날짜(YY.MM.DD) :<input type="text" name="v_date"><br>
+		상영회 예정 시간(HH:mm ~ HH:mm) :<input type="text" name="v_when"><br> 
 		한글제목 : <input type="text" name="v_kor_title" placeholder="예)화양연화"><br>
 		영어제목(대문자허용/띄워쓰기 없이) : <input type="text" name="v_eng_title" placeholder="예)InTheMoodForLove"><br>
 		년도(숫자만) : <input type="text" name="v_year" placeholder="예)2000"><br>

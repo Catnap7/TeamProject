@@ -9,7 +9,14 @@ public class NoticeBean {
 	String n_image;
 	String n_file;
 	Date n_date;
+	int n_readcount;
 	
+	public int getN_readcount() {
+		return n_readcount;
+	}
+	public void setN_readcount(int n_readcount) {
+		this.n_readcount = n_readcount;
+	}
 	public int getN_num() {
 		return n_num;
 	}

@@ -19,18 +19,14 @@
 	<jsp:include page="../header.jsp" />
 	<!-- 헤더영역 -->
 
-	<nav id="menu_bar">
-	<ul>
-		<li><a href="./AdminManageList.am">DB</a></li>
-		<li><a href="./AdminNoticeList.an">공지</a></li>
-		<li><a href="#">채팅</a></li>
-	</ul>
-	</nav>
+<!-- 어드민 서브메뉴 -->
+<jsp:include page="../admin_sub.jsp"/>
+<!-- 어드민 서브메뉴 -->
 
 	<div id="content">
 		<h1>Notice Write Form</h1>
 
-		<form action="./AdminNoticeWriteAction.an" method="post">
+		<form action="./AdminNoticeWriteAction.an" method="post" enctype="multipart/form-data">
 			<table border="0" class="db_list_insert">
 				<tr>
 					<td>제목</td>
@@ -38,7 +34,7 @@
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea cols="20" rows="10" name="n_content"></textarea></td>
+					<td><textarea cols="100" rows="30" name="n_content"></textarea></td>
 				</tr>
 				<tr>
 					<td>사진</td>

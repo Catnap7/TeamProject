@@ -9,7 +9,6 @@
 <link href="./css/mypage.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<script src="../script/jquery-3.3.1.js"></script>
 <script>
 function check(){
 	if (document.fr.pass.value=="") {

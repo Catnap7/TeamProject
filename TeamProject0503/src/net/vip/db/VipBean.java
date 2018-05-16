@@ -14,6 +14,7 @@ public class VipBean {
 	String v_story;
 	String v_video;
 	String v_date;
+	String v_when;
 	
 	
 	public int getV_num() {
@@ -95,6 +96,15 @@ public class VipBean {
 	public void setV_date(String v_date) {
 		this.v_date = v_date;
 	}
+	public String getV_when() {
+		return v_when;
+	}
+	public void setV_when(String v_when) {
+		this.v_when = v_when;
+	}
+	
+	
+	
 	
 	
 	

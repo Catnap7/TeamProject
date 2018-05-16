@@ -6,11 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import java.sql.DriverManager;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import net.member.db.MemberBean;
 
 public class ReviewDAO {
 	//디비연결 메서드
@@ -22,6 +25,37 @@ public class ReviewDAO {
 		
 		return con;
 	}
+	
+public int getReviewCount(int mv_num) {
+		
+		Connection con=null;
+		String sql="";
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int count = 0;
+		
+		try {
+			con = getConnection();
+			sql = "select count(*) as count from review where r_p_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, mv_num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt("count");
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			if(rs!=null)try{rs.close();}catch(SQLException e){};
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException e){};
+			if(con!=null)try{con.close();}catch(SQLException e){};
+		}
+		
+		return count;
+	}	// 댓글수
 	
 	public void insertReview(ReviewBean reviewbean) {
 		
@@ -64,20 +98,25 @@ public class ReviewDAO {
 		}
 	}	// 댓글 입력
 	
-	public List getReview(int mv_num) {
+	public Vector getReview(int mv_num, int startRow, int pageSize) {
 		
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		String sql="";
 		ResultSet rs=null;
 		
+		Vector vector=new Vector();//////////////////////
 		List reviewList = new ArrayList();
+		List memberName = new ArrayList();//////////////
 		try {
 			con=getConnection();
 			
-			sql = "select * from review where r_p_num=?";
+			//sql = "select * from review where r_p_num=?";
+			sql = "select * from review rev join member mem on rev.r_id = mem.m_id where r_p_num= ? order by r_recommand desc limit ?,?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, mv_num);
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
@@ -89,8 +128,13 @@ public class ReviewDAO {
 				reviewbean.setR_report(rs.getInt("r_report"));
 				reviewbean.setR_content(rs.getString("r_content"));
 				reviewbean.setR_date(rs.getDate("r_date"));
-				
 				reviewList.add(reviewbean);
+				MemberBean memberbean = new MemberBean();///////////
+				memberbean.setM_name(rs.getString("m_name"));///////////
+				memberName.add(memberbean);
+				
+				vector.add(reviewList);
+				vector.add(memberName);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,7 +144,7 @@ public class ReviewDAO {
 			if(con!=null)try{con.close();}catch(SQLException ex){}
 		}
 		
-		return reviewList;
+		return vector;
 	}	// 댓글 리스트
 	
 	public void deleteReview(int r_num) {
