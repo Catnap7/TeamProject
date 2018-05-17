@@ -17,7 +17,7 @@ public class UpdateAction implements Action{
 		// 자바빈 MemberBean mb 객체생성
 		MemberBean mb = new MemberBean();		
 		mb.setM_pass(request.getParameter("pass"));
-		mb.setM_name(request.getParameter("name"));		
+		mb.setM_name(request.getParameter("m_name"));		
 		// 자바빈 멤버변수 <= 폼파라미터 가져와서 저장
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("m_id");

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
  		var a_check=/[~!@#$%^&*()_+|<>?:{}]/;
  		var space_check=/[\s]/g;
 		$('#name_dup').click(function() {
@@ -42,4 +42,38 @@ $(document).ready(function() {
 			}
 		}); 
 	});
-	}); 
+	}); */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
