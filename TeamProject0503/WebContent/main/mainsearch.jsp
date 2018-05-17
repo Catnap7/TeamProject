@@ -366,7 +366,7 @@ List actorsearchList =(List)request.getAttribute("actorsearchList");
     	</div><!-- slider -->
 	</div><!-- container -->
 	<%=titlesearchList.size() %>
-	<%if(titlesearchList.size()>=5){
+	<%if(titlesearchList.size()>5){
 		%>
 		<div>
 			<div class="prev1 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>

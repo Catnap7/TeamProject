@@ -26,7 +26,15 @@ function check(){
 	if(document.fr.pass.value!=document.fr.pass2.value){
 		alert("비밀번호를 같게 입력하세요");
 		return false;
-	}			
+	}
+	if (document.fr.dup_name_check.value==-1) {
+		alert("이름 중복체크하세요.")
+		return false;	
+	}
+	if (document.fr.dup_name_check.value==1) {
+		alert("중복된 이름은 사용하실 수 없습니다.")
+		return false;	
+	}
 }
 function check2(){
 	alert("아이디는 수정할 수 없습니다");
