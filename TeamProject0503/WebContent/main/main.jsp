@@ -281,7 +281,6 @@ $(document).ready(function(){
 
 List<MovieBean> favoritelist = (List)request.getAttribute("favoritelist");
 int favoritecount = ((Integer)request.getAttribute("favoritecount")).intValue();
-MovieDAO mdao = new MovieDAO();
 String classname = null;
 if(favoritecount>=13){
 	classname = "main1";

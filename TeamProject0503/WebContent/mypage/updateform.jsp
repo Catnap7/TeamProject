@@ -25,57 +25,48 @@ function check(){
 		alert("비밀번호를 같게 입력하세요");
 		return false;
 	}			
+	if (document.fr.name.value.length==0) {
+		alert("닉네임을 입력하세요");
+		document.fr.name.focus();
+		return false;
+ 	} 
 }
 function check2(){
 	alert("아이디는 수정할 수 없습니다");
 	document.fr.pass.focus();
 }
 
-$(document).ready(function() {
-		var a_check=/[~!@#$%^&*()_+|<>?:{}]/;
-		var space_check=/[\s]/g;
-	$('#name_dup').click(function() {
-	  if (document.fr.m_name.value == "") {
-			alert("이름을 입력하지 않았습니다.");
-			document.fr.m_name.focus()
-			return false;
-	}
-	  if (document.fr.m_name.value.length <= 2 
-				|| document.fr.m_name.value.length >= 9) {
-			alert("이름을 3자 이상 8자이하 입력해주십시오.");
-			document.fr.m_name.focus()
-			return false;
-		}
+
+$(document).ready(function(){
+	//string2.jsp에
+	//파라미터값 넘겨서data:{name:"홍길동", age:21}
+	//결과 받아서 body 태그 뒷부분에 추가
+	
+	$('#idch').blur(function(){
+		alert("테스트");
+	 	
 		
-		if(space_check.test(document.fr.m_name.value)){
-			alert("이름엔 공백은 들어 갈 수 없습니다.")
-			document.fr.m_name.focus();
-			return false;
-		}
-		if(a_check.test(document.fr.m_name.value)){
-			alert("이름엔 특수문자는 들어 갈 수 없습니다.")
-			document.fr.m_name.focus();
-			return false;
-		}  
-	var m_name =$('#name').val();
-	$.ajax({
-		type:'post',
-		url:'./MemeberNameDup.me',
-		data:{
-			'm_name':m_name
-		},
-		success:function(data){
-			if(data==1){
-				$('#dup_name_check').val('1');
-				alert("중복된 이름입니다.")
-			}else if(data==0){
-				$('#dup_name_check').val('0');
-				alert("사용가능한 이름입니다.")
+// 		만약, 체크값이 -1 인증안한거, 
+// 		0 중복된 아이디
+// 		1 통과;
+		
+		 /* $.ajax('idcheck2.jsp',{
+			data:{id: $("input[name=id]").val()},
+			success:function(appe){	
+//				$('#idch').after(appe);
+				if(appe==1){
+					$('#resultCH').val("1");
+					$('#resultDIV').html("<span>선택한 아이디는 사용가능합니다.</span>");
+				}else if(appe==0){
+					$('#resultCH').val("0");
+					$('#resultDIV').html("<span>중복된 아이디입니다</span>");
+				}
+				
 			}
-		}
+		});*/
 	}); 
 });
-}); 
+
 </script>
 <!-- 헤더영역 -->
 <jsp:include page="../inc/header.jsp"/>
@@ -94,7 +85,7 @@ String name = (String)request.getAttribute("name");
 			<input type="text" value placeholder="<%=id%>" class="update" readonly name="id" onkeypress="check2()"><br>
 			<input type="password" value placeholder="변경 할 비밀번호 입력" class="update" name="pass"><br>
 			<input type="password" value placeholder="변경 할 비밀번호 재입력" class="update" name="pass2"><br>
-			<input type="text" value="<%=name%>" class="update" name="name" ><br>
+			<input type="text" value="<%=name%>" class="update" name="name" id="idch"><br>
 			<input type="submit" value="확인" class="update_text">
 			<input type="reset" value="다시쓰기" class="update_text2">
 		</form>
