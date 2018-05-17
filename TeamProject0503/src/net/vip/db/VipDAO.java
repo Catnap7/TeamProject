@@ -204,6 +204,37 @@ public class VipDAO {
 				if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){};
 				if(con!=null)try{con.close();}catch(SQLException ex){};
 			}
-		}//insertVipSeatTaken
-	
-}
+		}
+
+		//AutoselectVIP
+		public void AutoselectVip(){
+			Connection con = null;
+			String sql=null;
+			PreparedStatement pstmt =null;
+			ResultSet rs=null;
+			try{
+				con=getConnection();
+				sql="update member m join review r "
+						+ "on m.m_id = r.r_id"
+						+ "set m.m_grade=2"
+						+ "where m.m_grade in("
+						+ "select * from ("
+						+ "select distinct m_grade "
+						+ "from review join member"
+						+ "on review.r_id = member.m_id"
+						+ "group by r_id"
+						+ "order by r_recommand desc limit 10) as lim"
+						+ ")";
+				pstmt=con.prepareStatement(sql);
+				pstmt.executeQuery();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally{
+				if(rs!=null)try{rs.close();}catch(SQLException ex){}
+				if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+				if(con!=null)try{con.close();}catch(SQLException ex){}
+			}
+		}
+		//AutoselectVIPend
+		}
