@@ -31,7 +31,10 @@ public class VipInsert implements Action{
 		vipbean.setV_actor(request.getParameter("v_actor"));
 		vipbean.setV_story(request.getParameter("v_story"));
 		vipbean.setV_video(request.getParameter("v_video"));
-		
+		vipbean.setV_critic_1_by(request.getParameter("v_critic_1_by"));
+		vipbean.setV_critic_1(request.getParameter("v_critic_1"));
+		vipbean.setV_critic_2_by(request.getParameter("v_critic_2_by"));
+		vipbean.setV_critic_2(request.getParameter("v_critic_2"));
 		
 		VipDAO vipdao=new VipDAO();
 		vipdao.insertVip(vipbean);

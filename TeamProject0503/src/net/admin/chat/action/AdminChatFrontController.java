@@ -21,26 +21,13 @@ public class AdminChatFrontController extends HttpServlet{
 		ActionForward forward=null;
 		Action action=null;
 		
-		
-		//주소 비교
-		if(command.equals("/AdminChatServer.ac")) {
-			action = new ChatServer();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(command.equals("/UserChatClient.ac")) {
-			action = new ChatClient();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		if(command.equals("/AdminChat.ac")) {
+			forward = new ActionForward();
+			forward.setPath("./admin/chat/admin_chat.jsp");
+			forward.setRedirect(false);
 		}
 		
 		
-			
 		
 		
 		

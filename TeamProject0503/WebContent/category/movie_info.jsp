@@ -15,6 +15,7 @@
 <title>Insert title here</title>
 <!-- jQuery -->
 <script src="./js/jquery-3.3.1.js"></script>
+<script src="http://code.jquery.com/jquery-3.1.0.js"></script>
 
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/movie_info.css" rel="stylesheet" type="text/css">
@@ -23,6 +24,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
+
+
 <style>
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
@@ -275,7 +279,7 @@ $(document).ready(function(){
 		<form action="" id="starform<%=mv_num %>">
 				<input type="hidden" name="f_num" value="<%=mv_num %>">
 				<fieldset class="like" id="starfield<%=mv_num %>" >
-				    <input type="checkbox" id="favorite" name="fa_favorite" checked="checked"/><label class = "full" for="favorite" title="1 star"></label>
+				    <input type="checkbox" id="favorite" name="fa_favorite" checked="checked"/><label class = "full" for="favorite" title="좋아요"></label>
 				</fieldset>
 		</form>
 	<%		
@@ -285,7 +289,7 @@ $(document).ready(function(){
 		<form action="" id="starform<%=mv_num %>">
 			<input type="hidden" name="f_num" value="<%=mv_num %>">
 			<fieldset class="like" id="starfield<%=mv_num %>" >
-			    <input type="checkbox" id="favorite" name="fa_favorite" /><label class = "full" for="favorite" title="1 star"></label>
+			    <input type="checkbox" id="favorite" name="fa_favorite" /><label class = "full" for="favorite" title="좋아요"></label>
 			</fieldset>
 		</form>
    <%
@@ -376,6 +380,7 @@ $(document).ready(function(){
    <!--댓글   -->
    <div class="coment">
    <hr>
+   <a>추천순</a> | <a class="date_sort">최신순</a>
      <!--댓글 쓰는 란  -->
      <form action="./InsertReview.ca" class="coment_write">
        <textarea cols="90" rows="7" value placeholder="영화를 어떻게 보셨나요?" name="r_content"></textarea>
@@ -437,8 +442,82 @@ $(document).ready(function(){
                %>
                <tr>
                     <td>
-                    <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">추천</a> | 
-                    <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">신고</a>
+<%--                     <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>&r_id=<%=reviewbean.getR_id() %>">추천</a> |  --%>
+					
+                    <a id="recommend<%=reviewbean.getR_num() %>">추천</a> |
+                    <a id="report<%=reviewbean.getR_num() %>">신고</a>
+<%--                     <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">신고</a> --%>
+                    
+                    <input type="hidden" id="r_num<%=reviewbean.getR_num() %>" value="<%=reviewbean.getR_num() %>">
+					<input type="hidden" id="mv_num<%=reviewbean.getR_num() %>" value="<%=moviebean.getMv_num() %>">
+					<input type="hidden" id="id<%=reviewbean.getR_num() %>" value="<%=id %>">
+					<input type="hidden" id="r_id<%=reviewbean.getR_num() %>" value="<%=reviewbean.getR_id() %>">
+
+					<script type="text/javascript">
+						$(document).ready(function() {
+							
+							$('#recommend<%=reviewbean.getR_num() %>').click(function(){
+								var r_num = $('#r_num<%=reviewbean.getR_num() %>').val();
+								var mv_num = $('#mv_num<%=reviewbean.getR_num() %>').val();
+								var id = $('#id<%=reviewbean.getR_num() %>').val();
+								var r_id = $('#r_id<%=reviewbean.getR_num() %>').val();
+								
+<%-- 								alert($('#r_num<%=reviewbean.getR_num() %>').val()); --%>
+<%-- 								alert($('#mv_num<%=reviewbean.getR_num() %>').val()); --%>
+<%-- 								alert($('#id<%=reviewbean.getR_num() %>').val()); --%>
+<%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
+								
+									$.ajax({
+										type: "get",
+										url: "./RecommendAction.ca",
+										dataType: "html",
+										data: {
+											"r_num": r_num,
+											"mv_num": mv_num,
+											"id": id,
+											"r_id": r_id
+										},
+										success:function(data){
+											if(data==0) {
+												alert("이미 추천을 준 리뷰 입니다");
+											}
+											location.reload();
+										}
+									});
+							});
+							
+							$('#report<%=reviewbean.getR_num() %>').click(function(){
+								var r_num = $('#r_num<%=reviewbean.getR_num() %>').val();
+								var mv_num = $('#mv_num<%=reviewbean.getR_num() %>').val();
+								var id = $('#id<%=reviewbean.getR_num() %>').val();
+								var r_id = $('#r_id<%=reviewbean.getR_num() %>').val();
+								
+<%-- 								alert($('#r_num<%=reviewbean.getR_num() %>').val()); --%>
+<%-- 								alert($('#mv_num<%=reviewbean.getR_num() %>').val()); --%>
+<%-- 								alert($('#id<%=reviewbean.getR_num() %>').val()); --%>
+<%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
+								
+									$.ajax({
+										type: "get",
+										url: "./ReportAction.ca",
+										dataType: "html",
+										data: {
+											"r_num": r_num,
+											"mv_num": mv_num,
+											"id": id,
+											"r_id": r_id
+										},
+										success:function(data){
+											if(data==0) {
+												alert("이미 신고한 리뷰 입니다");
+											}
+											location.reload();
+										}
+									});
+							});
+					});
+					</script>
+					
                     </td>
                  </tr>
                <%
@@ -450,6 +529,7 @@ $(document).ready(function(){
             <%
         }
      }
+     
 }
      %>
 

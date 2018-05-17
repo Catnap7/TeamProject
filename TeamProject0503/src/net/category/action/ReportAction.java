@@ -31,21 +31,30 @@ public class ReportAction implements Action {
 		
 		if(check == 1) {
 			reviewdao.reportReview(r_num);
+			
+			response.setContentType("text/html;	charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			
+			out.println(check);
+			out.close();
+			return null;
 		}else {
 			response.setContentType("text/html;	charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			
-			out.println("<script>");
-			out.println("alert('이미 신고한 리뷰 입니다')");
-			out.println("history.back()");
-			out.println("</script>");
+//			out.println("<script>");
+//			out.println("alert('이미 신고한 리뷰 입니다')");
+//			out.println("history.back()");
+//			out.println("</script>");
+			out.println(check);
 			out.close();
+			return null;
 		}
 		
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(true);
-		forward.setPath("./CategoryMovie.ca?mv_num="+r_p_num);
-		return forward;
+//		ActionForward forward = new ActionForward();
+//		forward.setRedirect(true);
+//		forward.setPath("./CategoryMovie.ca?mv_num="+r_p_num);
+//		return forward;
 	}
 
 }

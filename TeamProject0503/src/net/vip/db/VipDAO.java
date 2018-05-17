@@ -44,7 +44,8 @@ public class VipDAO {
 						num=1;
 					}
 					
-				sql="insert into vip_cinema_prev (v_num, v_kor_title, v_eng_title, v_year, v_country, v_age, v_genre, v_time, v_director, v_actor, v_story, v_video, v_date, v_when) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				sql="insert into vip_cinema_prev (v_num, v_kor_title, v_eng_title, v_year, v_country, v_age, v_genre, v_time, v_director, v_actor, v_story, v_video, v_date, v_when) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, num);
 				pstmt.setString(2, vipbean.getV_kor_title());
@@ -57,9 +58,15 @@ public class VipDAO {
 				pstmt.setString(9, vipbean.getV_director());
 				pstmt.setString(10, vipbean.getV_actor());
 				pstmt.setString(11, vipbean.getV_story());
-				pstmt.setString(12, vipbean.getV_video());;
-				pstmt.setString(13, vipbean.getV_date());;
-				pstmt.setString(14, vipbean.getV_when());;
+				pstmt.setString(12, vipbean.getV_video());
+				pstmt.setString(13, vipbean.getV_date());
+				pstmt.setString(14, vipbean.getV_when());
+				
+				pstmt.setString(15, vipbean.getV_critic_1_by());
+				pstmt.setString(16, vipbean.getV_critic_1());
+				pstmt.setString(17, vipbean.getV_critic_2_by());
+				pstmt.setString(18, vipbean.getV_critic_2());
+			
 				
 				pstmt.executeUpdate();
 				
@@ -104,6 +111,10 @@ public class VipDAO {
 				vipbean.setV_video(rs.getString("v_video"));
 				vipbean.setV_date(rs.getString("v_date"));
 				vipbean.setV_when(rs.getString("v_when"));
+				vipbean.setV_critic_1_by(rs.getString("v_critic_1_by"));
+				vipbean.setV_critic_1(rs.getString("v_critic_1"));
+				vipbean.setV_critic_2_by(rs.getString("v_critic_2_by"));
+				vipbean.setV_critic_2(rs.getString("v_critic_2"));
 				
 				vipMovieList.add(vipbean);
 			}
@@ -166,6 +177,11 @@ public class VipDAO {
 					vipbean.setV_video(rs.getString("v_video"));
 					vipbean.setV_date(rs.getString("v_date"));
 					vipbean.setV_when(rs.getString("v_when"));
+					
+					vipbean.setV_critic_1_by(rs.getString("v_critic_1_by"));
+					vipbean.setV_critic_1(rs.getString("v_critic_1"));
+					vipbean.setV_critic_2_by(rs.getString("v_critic_2_by"));
+					vipbean.setV_critic_2(rs.getString("v_critic_2"));
 					
 				}	
 			}catch (Exception e) {

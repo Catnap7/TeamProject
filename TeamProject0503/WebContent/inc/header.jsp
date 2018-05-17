@@ -1,3 +1,4 @@
+<%@page import="net.member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -15,8 +16,14 @@
 			<a href="./pay/pay_result.jsp">이용권구매</a>
 		</div><!--이용권구매 -->
 		
-		<%String m_name=(String)session.getAttribute("m_name");%>
-
+		<%
+				String m_name="";
+				 if(request.getAttribute("m_name")!=null){
+					 m_name=(String)request.getAttribute("m_name");
+				 }else{
+					 m_name=(String)session.getAttribute("m_name");
+				 }
+		%>
 		<div class="myinfo">
   			<button class="dropbtn1"><%=m_name %></button>
 				  <div class="dropdown-content1">

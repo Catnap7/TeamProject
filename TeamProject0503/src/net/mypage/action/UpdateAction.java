@@ -21,6 +21,7 @@ public class UpdateAction implements Action{
 		// 자바빈 멤버변수 <= 폼파라미터 가져와서 저장
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("m_id");
+		session.setAttribute("m_name", request.getParameter("name"));
 		mb.setM_id(id);
 		// MemberDAO mdao 객체생성
 		MemberDAO mdao = new MemberDAO();		
