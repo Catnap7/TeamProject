@@ -55,7 +55,7 @@
 		 	<a href="./VipInfo.vi">watchu vip</a>
 		
 		 	<div class="search-container">
-			    <form action="category_search.jsp">
+			    <form action="./MainSearch.ma" method="get">
 			      <input type="text" placeholder="Search.." name="search">
 			      <button type="submit" class="searchBtn"><img src="./images/search.png" width="20px" height="20px"></button>
 			    </form>

@@ -175,4 +175,121 @@ public class MainDAO {
 		return RandomList;
 	}
 	
+	//search
+	public List titlesearch(String search){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		String mostAvgGenre="";
+		List titlesearchList= new ArrayList();
+		try {
+			con=getConnection();
+
+			sql="select * from movie where mv_kor_title like ? or mv_eng_title like ?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,"%"+search+"%");
+			pstmt.setString(2,"%"+search+"%");
+			rs=pstmt.executeQuery();
+			System.out.println(search);
+			while(rs.next()){
+				MovieBean moviebean= new MovieBean();
+				moviebean.setMv_num(rs.getInt("mv_num"));
+				moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
+				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+				moviebean.setMv_genre(rs.getString("mv_genre"));
+				moviebean.setMv_year(rs.getInt("mv_year"));
+				moviebean.setMv_age(rs.getInt("mv_age"));
+				moviebean.setMv_time(rs.getInt("mv_time"));
+				titlesearchList.add(moviebean);
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		return titlesearchList;
+	}
+	public List directorsearch(String search){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		String mostAvgGenre="";
+		List directorsearchList= new ArrayList();
+		try {
+			con=getConnection();
+
+			sql="select * from movie where mv_director like ?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,"%"+search+"%");
+			rs=pstmt.executeQuery();
+			System.out.println(search);
+			while(rs.next()){
+				MovieBean moviebean= new MovieBean();
+				moviebean.setMv_num(rs.getInt("mv_num"));
+				moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
+				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+				moviebean.setMv_genre(rs.getString("mv_genre"));
+				moviebean.setMv_director(rs.getString("mv_director"));
+				moviebean.setMv_year(rs.getInt("mv_year"));
+				moviebean.setMv_age(rs.getInt("mv_age"));
+				moviebean.setMv_time(rs.getInt("mv_time"));
+				directorsearchList.add(moviebean);
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		return directorsearchList;
+	}
+	public List actorsearch(String search){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		String mostAvgGenre="";
+		List actorsearchList= new ArrayList();
+		try {
+			con=getConnection();
+
+			sql="select * from movie where mv_actor like ?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,"%"+search+"%");
+			rs=pstmt.executeQuery();
+			System.out.println(search);
+			while(rs.next()){
+				MovieBean moviebean= new MovieBean();
+				moviebean.setMv_num(rs.getInt("mv_num"));
+				moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
+				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+				moviebean.setMv_genre(rs.getString("mv_genre"));
+				moviebean.setMv_actor(rs.getString("mv_actor"));
+				moviebean.setMv_year(rs.getInt("mv_year"));
+				moviebean.setMv_age(rs.getInt("mv_age"));
+				moviebean.setMv_time(rs.getInt("mv_time"));
+				actorsearchList.add(moviebean);
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		return actorsearchList;
+	}
+	
+	
 }

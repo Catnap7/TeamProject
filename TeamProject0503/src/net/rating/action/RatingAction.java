@@ -57,13 +57,8 @@ public class RatingAction implements Action{
 		}
 
 		
-//		forward값이 null, 경로가 다를때, ajax를 사용하면 원래 페이지로 돌아가나, 
-//		alert가 뜬다. 
-		
-		ActionForward forward= new ActionForward();
-		forward.setPath("./rating/ratinglist.jsp");
-		forward.setRedirect(false);
-		return forward;
+//		ajax
+		return null;
 		
 	}
 
