@@ -186,9 +186,10 @@ public class MainDAO {
 		try {
 			con=getConnection();
 
-			sql="select * from movie where mv_kor_title like ?";
+			sql="select * from movie where mv_kor_title like ? or mv_eng_title like ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,"%"+search+"%");
+			pstmt.setString(2,"%"+search+"%");
 			rs=pstmt.executeQuery();
 			System.out.println(search);
 			while(rs.next()){
