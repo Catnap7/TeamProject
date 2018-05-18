@@ -81,7 +81,7 @@ Date now = new Date();
      }; 
   
      function onMessage(event) {
-    	 textarea.value += "\n" + "상대 "+ "\n" + "\n" + event.data + "\n";
+    	 textarea.value += "\n" + "'<span>'상대'</span>'"+ "\n" + "\n" + event.data + "\n";
      }
   
      function onOpen(event) {

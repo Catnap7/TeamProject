@@ -1,57 +1,44 @@
 package net.admin.manage.action;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.admin.manage.db.AdminMemberDAO;
 import net.member.db.MemberBean;
 
-public class AdminMemberSearch implements Action {
 
-	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("AdminMemberSearch execute()");
-		request.setCharacterEncoding("UTF-8");
-		
+@WebServlet("/AdminMemberSearch")
+public class AdminMemberSearch extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		String searchValue = request.getParameter("searchValue");
+		response.getWriter().write(getJSON(searchValue));
+	}
+	
+	public String getJSON(String searchValue) {
+		if(searchValue == null) searchValue = "";
+		StringBuffer result = new StringBuffer("");
+		result.append("{\"result\":[");
 		AdminMemberDAO amdao = new AdminMemberDAO();
-		String search = request.getParameter("search");
-		int count = amdao.getAdminMemberCount(search);
-		int pageSize = 10;
-		String pageNum = request.getParameter("pageNum");
-		if(pageNum == null) {
-			pageNum = "1";
+		List<MemberBean> userList = amdao.getAdminMemberSearch(searchValue);
+		for(int i = 0; i < userList.size(); i++) {
+			result.append("[{\"value\" : \"" + userList.get(i).getM_id() + "\"},");
+			result.append("{\"value\" : \"" + userList.get(i).getM_name() + "\"},");
+			result.append("{\"value\" : \"" + userList.get(i).getM_grade() + "\"},");
+			result.append("{\"value\" : \"" + userList.get(i).getM_reg_date() + "\"}],");
 		}
+		result.append("]}");
+		return result.toString();
 		
-		int currentPage = Integer.parseInt(pageNum);
-		int startRow = (currentPage-1)*pageSize+1;
-		int endRow = currentPage*pageSize;
-		
-		List<MemberBean> AdminMemberList = null;
-		
-		if(count != 0) {
-			AdminMemberList = amdao.getAdminMemberList(startRow, pageSize, search);
-		}
-		
-		int pageCount = count/pageSize + ((count%pageSize == 0) ? 0 : 1);
-        int pageBlock = 3;
-        int startPage = (((currentPage-1)/pageBlock)*pageBlock)+1;
-        int endPage = startPage+pageBlock-1;
-        if(endPage > pageCount) {
-           endPage = pageCount;
-        }
-		request.setAttribute("AdminMemberList", AdminMemberList);
-		request.setAttribute("count", count);
-		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("pageCount", pageCount);
-		request.setAttribute("pageBlock", pageBlock);
-		request.setAttribute("startPage", startPage);
-		request.setAttribute("endPage", endPage);
-		ActionForward forward = new ActionForward();
-		forward.setPath("./admin/manage/admin_member_list_search.jsp");
-		forward.setRedirect(false);
-		return forward;
 	}
 
 }
