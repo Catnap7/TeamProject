@@ -81,4 +81,309 @@ public class PayDAO {
 	}//End getAdminMemberList
 	
 
+	
+	
+	
+	
+	
+	
+	
+
+	//결제 내역 리스트 들고오기
+	public List getPayList(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		List paylist=new ArrayList();
+		
+		try {
+			con=getConnection();
+			
+			sql="select * from payment where p_id=? order by p_start_day desc";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){	
+				PayBean paybean= new PayBean();
+				paybean.setP_id(rs.getString("p_id"));
+				paybean.setP_start_day(rs.getDate("p_start_day"));
+				paybean.setP_end_day(rs.getDate("p_end_day"));
+				paybean.setP_auto(rs.getString("p_auto"));
+				paybean.setP_charge(rs.getInt("p_charge"));
+				paylist.add(paybean);
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		return paylist;
+	}
+	
+
+	
+	//현재 이용권이 존재하는지.
+	//이용권 저장하고 동작하는지 다시 확인
+	public PayBean getCurrentPay(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		PayBean paybean=null;
+		
+		try {
+			con=getConnection();
+			
+			sql="select * from payment where p_id=? and date(p_end_day)>=CURDATE()";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()){	
+
+				paybean=new PayBean();
+				paybean.setP_id(rs.getString("p_id"));
+				paybean.setP_start_day(rs.getDate("p_start_day"));
+				paybean.setP_end_day(rs.getDate("p_end_day"));
+				paybean.setP_auto(rs.getString("p_auto"));
+				paybean.setP_charge(rs.getInt("p_charge"));
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		return paybean;
+	}
+	
+	
+	
+	//이용권 구매
+	public void insertPay(PayBean paybean) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		try {
+			con=getConnection();
+			
+			sql="insert into payment (p_id,p_start_day,p_end_day,p_auto,p_charge) values(?,CURDATE()+0,CURDATE()+100,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, paybean.getP_id());
+			pstmt.setString(2, paybean.getP_auto());
+			pstmt.setInt(3, paybean.getP_charge());
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		
+	}	
+	
+	
+	
+	//멤버의 mpay를 변경 updateMpay()
+	public void updateMpaytoOne(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		try {
+			con=getConnection();
+
+			sql="update member set m_pay=? where m_id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, "1");
+			pstmt.setString(2, id);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		
+	}	
+	
+	//멤버의 mpay를 변경 updateMpay()
+	public void updateMpaytoZero(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		try {
+			con=getConnection();
+
+			sql="update member set m_pay=? where m_id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, "0");
+			pstmt.setString(2, id);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		
+	}	
+	
+	
+	//중복결제 방지. m_pay값 들고오기
+	public String getMpay(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		String m_pay="";
+		try {
+			con=getConnection();
+
+			sql="select m_pay from member where id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery(sql);
+			
+			if(rs.next()){
+				m_pay=rs.getString("m_pay");
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		return m_pay;
+	}	
+	
+	
+	//사용한 쿠폰 삭제 //////////////////쿠폰이 중복으로 적용된다면, 수정할것.
+	public void deleteUseCoupon(String id, int c_name) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		try {
+			con=getConnection();
+
+			sql="delete coupon where c_id=? and c_name=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, c_name);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		
+	}	
+	
+	//정기결제 해지하기
+	public void payCancel(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		try {
+			con=getConnection();
+
+			sql="update payment set p_auto='해지' where p_id=? and p_end_day>=curdate() and p_auto='정기'";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//정기결제(만료 다음날00시00분에 정기결제자 전부 자동으로 결제되게 )
+	public void autoInsertPay() {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		try {
+			con=getConnection();
+			
+			sql="insert into payment (p_id,p_start_day,p_end_day,p_auto,p_charge) select p_id,CURDATE()+0 ,CURDATE()+100,p_auto,4900 from payment where p_auto='정기' and p_end_day=CURDATE()-1";
+			pstmt=con.prepareStatement(sql);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+	}
+	
+	
+	
+	
+	//한달결제 만료자, 해지하는 사람 m_pay조정
+	public void autoUpdateMpaytoZero() {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		try {
+			con=getConnection();
+			//sql구문 수정해야한다.
+			sql="update member set m_pay=0 where m_id in (select p_id from payment	where p_auto in('한달','해지') and p_end_day=CURDATE()-1)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+	}
+	
+	
+	
+
+	
 }
