@@ -23,9 +23,43 @@ public class PayFrontController extends HttpServlet{
 		
 		
 		//주소 비교
-		
+		if(command.equals("/PayList.pa")){
+			action= new PayList();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/Pay.pa")){
+			action= new Pay();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		}else if(command.equals("/PayAction.pa")){
+			action= new PayAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		}else if(command.equals("/PayCancel.pa")){
+			action= new PayCancel();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		}
 		
 			
+		
 		
 		
 		
