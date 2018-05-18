@@ -20,7 +20,6 @@
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <script type="text/javascript">
 
-
 $(document).ready(function(){
 	
 	/***변수선언***/
