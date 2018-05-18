@@ -20,6 +20,7 @@
 <%
 String id = (String)session.getAttribute("m_id");
 %>
+<input type="hidden" name="id" value="<%=id%>">
 <img src="images/roulette3.png" id="image">
 <img src="images/niddle.png" id="n_id">
 <br />

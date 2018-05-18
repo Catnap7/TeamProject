@@ -61,7 +61,7 @@ window.onload = function(){
  
     function endAnimate($n){
         var n = $n;        
-        var real_angle = n%360+20;
+        var real_angle = n%360+18;
         $('#result_id').html("<p>실제 움직인각도:" +real_angle+ "</p>");
         var part = Math.floor(real_angle/36);
      
@@ -81,7 +81,7 @@ window.onload = function(){
         
         $('#result_id4').html("<p>10프로 확률:" + ten*3 + "</p>");
         $('#result_id5').html("<p>50프로 확률:" + fif*2 + "</p>");
-        $('#result_id6').html("<p>100프로 확률:" + hun + "</p>");
+        $('#result_id6').html("<p>100프로 확률:" + hun*1 + "</p>");
         $('#result_id7').html("<p>꽝 확률:" + fail*4 + "</p>");
     } 
  
@@ -100,7 +100,7 @@ window.onload = function(){
             rotatenum = randomize(19, 54);   /* 10% 쿠폰 */         
            }
         if(rannum>fail/2+ten & rannum<=fail/2+ten+fail ){
-            rotatenum = randomize(55, 90);     /* 꽝 */      
+            rotatenum = randomize(55, 88);     /* 꽝 */      
            }
         if(rannum>fail/2+ten+fail & rannum<=fail/2+ten+fail+fif ){
             rotatenum = randomize(91, 126);   /* 50% 쿠폰 */         

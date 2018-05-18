@@ -23,7 +23,7 @@ public class rouletteDAO {
 	}
 	
 	public List<Double> getChances(String id){	
-		//System.out.println("테스트 중 : "+id);
+		System.out.println("테스트 중 : "+id);
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
