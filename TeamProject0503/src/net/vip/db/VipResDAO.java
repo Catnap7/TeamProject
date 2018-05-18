@@ -43,8 +43,8 @@ public class VipResDAO {
 		}catch(Exception e) {
 			e.printStackTrace();	
 		}finally{
-			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){};
-			if(con!=null)try{con.close();}catch(SQLException ex){};
+			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
+			if(con!=null)try {con.close();}catch(SQLException ex) {};
 		}
 	}//insertVipRes
 
@@ -176,14 +176,9 @@ public class VipResDAO {
 			}catch(Exception e){
 				e.printStackTrace();
 			}finally{
-				if(pstmt!=null){
-					try{pstmt.close();
-					}catch(SQLException ex){}
-				}
-				if(con!=null){
-					try{con.close();
-					}catch(SQLException ex){}
-				}
+				if(rs!=null)try {rs.close();}catch(SQLException ex) {};
+				if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
+				if(con!=null)try {con.close();}catch(SQLException ex) {};
 			}
 			return vipresbean;
 		}
