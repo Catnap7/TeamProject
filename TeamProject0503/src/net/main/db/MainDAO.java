@@ -175,6 +175,41 @@ public class MainDAO {
 		return RandomList;
 	}
 	
+	// 관리자 Pick
+	public List adminSelectMovie(){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";		
+		List adminSelectMovieList=new ArrayList<MovieBean>();
+		try {
+			con=getConnection();
+
+			sql="select * from movie order by rand() limit 13";
+			pstmt=con.prepareStatement(sql);			
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+ 				MovieBean moviebean= new MovieBean();
+				moviebean.setMv_num(rs.getInt("mv_num"));
+				moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
+				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+				moviebean.setMv_genre(rs.getString("mv_genre"));
+				moviebean.setMv_year(rs.getInt("mv_year"));
+				moviebean.setMv_age(rs.getInt("mv_age"));
+				moviebean.setMv_time(rs.getInt("mv_time"));
+				adminSelectMovieList.add(moviebean);				
+			}						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		return adminSelectMovieList;
+	}
+	// 관리자 PIck
+	
 	//search
 	public List titlesearch(String search){
 		Connection con=null;
