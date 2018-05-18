@@ -57,6 +57,7 @@
 .gradeInfo a{
 	text-decoration: none;
 	/* font-family: 'Abril Fatface', cursive; */
+	padding:5px;
 }
 
 .gradeInfo a:LINK, .gradeInfo a:VISITED {
@@ -268,7 +269,7 @@
 /******@@@@@@@---vip예약 페이지(vip_reservation.jsp)---@@@@@@@********/
 
 .vip_res{
-	width:1900px;
+	width:1900px; height:180%;
 	background-image: url("../images/vip_done.png");
 	background-size:100%;
 	margin:0 auto;
@@ -448,13 +449,13 @@
 	padding:30px;
 	width: 1200px; height:500px;
 	margin:0 auto;
-	margin-bottom:300px;
+	margin-bottom:1200px;
 }
 
 #seat{
 	font-size: 1.1em;
 	position: relative;
-	top:50px; left:330px;	
+	top:50px; left:280px;	
 }
 
 #screen{
@@ -482,7 +483,7 @@
 	display: inline-block;
 	padding: 30px;
 	position: relative;
-	top:0px; left:240px;
+	top:0px; left:200px;
 }
 .seatTable td{
 	border:none;
@@ -597,6 +598,33 @@ input:checked + p, .confirm_num{
 	position: relative;	
 	bottom:80px; left:820px;
 }
+
+.way{
+	border:1px solid #333;
+	margin-bottom:200px;
+	padding:30px;
+	width: 1100px; height:800px;
+	margin:0 auto;
+}
+
+#address{
+	text-align: center;
+	font-size: 1.5em;
+	line-height: 1.7em;	
+}
+#address p{font-family: 'Nanum Myeongjo', serif;}
+#address p:nth-of-type(1){font-weight: bold;font-size: 1.1em;}
+#address p:nth-of-type(2){font-size: 0.8em;}
+#address p:nth-of-type(3){font-size: 0.6em;}
+#map {
+	/* border:1px solid red; */
+    width: 60%;
+    height: 500px;
+    background-color: grey;
+    position:relative;
+    top:20px; /* left:50px;  */
+    margin:0 auto;  
+ }
 .up a{
 	font-size:2em;
 	position:relative;

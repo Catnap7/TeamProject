@@ -73,7 +73,7 @@ if(m_grade==1 || m_grade==0){
 		<p><%="회원님의 등급은 "%><br>
 		<span><%=grade%></span><br>
 		<%="입니다"%><br><br>
-		<a href="./Vip.vi">VIP시사회 예매하기</a></p>
+		<a href="./Vip.vi">VIP시사회</a></p>
 	</div>
 <%} %>
 

@@ -237,6 +237,36 @@ if(check==0){%>
 		
 	<div class="button2"><a href="VipResDelete.vi">예매취소</a></div>
 	<p id="warning">예매를 취소 하신 후 새로 예매하지 않으시면 시사회 참석이 불가합니다</p>
+	
+	
+	<!-- Google Map -->
+	
+	<div class="way">
+		<h2>오시는 길</h2>
+		<div id="address">
+			<p><%="<"%>부산 영화의 전당<%=">"%></p>
+			<p>부산 해운대구 수영강변대로 120</p>
+			<p>*주차공간이 혼잡하오니 대중교통을 이용바랍니다</p>
+		</div>
+		
+		<div id="map"></div>
+		    <script>
+		      function initMap() {
+		        var uluru = {lat: 35.171450, lng: 129.127206};
+		        var map = new google.maps.Map(document.getElementById('map'), {
+		          zoom: 17,
+		          center: uluru
+		        });
+		        var marker = new google.maps.Marker({
+		          position: uluru,
+		          map: map
+		        });
+		      }
+		    </script>
+		    <script async defer
+		    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxRlHe08HPY3WWMDA9MR5jutkGOj9OIHs&callback=initMap">
+		    </script>
+	</div>
 	<%} %>
 	
 	
