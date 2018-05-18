@@ -468,7 +468,70 @@ private Connection getConnection() throws Exception {
 	}
 	}//end deleteMember
 	
+	public int checkChance(String id){		
+		int check=0;
+		Connection con=null;
+		String sql =null;
+		PreparedStatement pstmt =null;
+		ResultSet rs =null;
+		try {
+			con=getConnection();
+			
+		sql="select m_roulette from member where m_id=?";
+		 pstmt= con.prepareStatement(sql);
+		 pstmt.setString(1, id);
+		 rs= pstmt.executeQuery();
+		if(rs.next()){
+			if(rs.getInt("m_roulette")>0){
+				downChance(id);
+				check=1;				
+			}
+		
+		}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();}catch(SQLException ex) {};
+			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
+			if(con!=null)try {con.close();}catch(SQLException ex) {};
+			
+		}return check;
+	}//end checkChance
 	
+	public void downChance(String id){
+		Connection con=null;
+		String sql="";
+		PreparedStatement pstmt=null;
+		try{con = getConnection();
+	
+		sql="update member set m_roulette=m_roulette-1 where m_id =?";
+		pstmt = con.prepareStatement(sql);						
+		pstmt.setString(1, id);
+		pstmt.executeUpdate();
+		
+		}catch(Exception e) {
+			//예외 생기면 변수 e에 저장
+			//예외를 잡아서 처리 -> 메시지 출력
+			e.printStackTrace();
+			}finally{
+				//예외가 발생하든 말든 상관없이 마무리작업 => 기억장소 정리
+				//객체 기억장소 마무리
+			 if(pstmt!=null){
+				try{pstmt.close();						
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			 }
+				if(con!=null){
+					try{con.close();
+					}catch(SQLException e){
+						e.printStackTrace();
+					 }
+					}
+				
+			}		
+	}//end down
 	
 	
 	
