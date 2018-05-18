@@ -207,6 +207,8 @@ div.star {
 
 .coment table td a {
    text-decoration: none;
+   cursor: pointer;
+   color: #333;   
 }
 
 .coment table td a:HOVER {

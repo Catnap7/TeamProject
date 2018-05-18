@@ -36,11 +36,11 @@ public class MovieDAO {
     	  con = getConnection();
     	  sql.append("select * from movie ");
           if(mv_genre.equals("thriller")){
-        	  sql.append("where mv_genre in(?,'horror')");
+        	  sql.append("where mv_genre in(?,'horror') order by rand()");
           }else if(mv_genre.equals("romance")){
-        	  sql.append("where mv_genre in(?,'drama')");
+        	  sql.append("where mv_genre in(?,'drama')order by rand()");
           }else {
-        	  sql.append("where mv_genre =?");
+        	  sql.append("where mv_genre =? order by rand()");
           }
           pstmt=con.prepareStatement(sql.toString());
           if(mv_genre.equals("thriller")){
