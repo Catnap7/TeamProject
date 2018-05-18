@@ -69,6 +69,14 @@ public class VipFrontController extends HttpServlet{
 				
 				forward.setRedirect(false);
 				forward.setPath("./vip/VipAdmin.jsp");
+				
+		}else if(command.equals("/VipResDelete.vi")){
+		  	action = new VipResDelete();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
 		}
 		
 		

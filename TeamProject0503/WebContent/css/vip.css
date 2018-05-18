@@ -35,7 +35,7 @@
 	border: 1px solid #c3c3c3;
 	color:white;
 	border-radius:10px;
-	padding:10px 15px 15px 15px;
+	padding:10px 5px 15px 5px;
 	width:180px; height:90px;
 	text-align: center;
 	margin:0 auto;
@@ -44,14 +44,14 @@
 	position:fixed;
 	top:150px; right:20px;
 	box-sizing:border-box;
+	line-height: 1.4em;
 }
-
 
 .gradeInfo span{
 	font-size:1.2em;
 	font-weight: bold;
 	color: #50d4aa;
-	font-family: 'Abril Fatface', cursive;
+	/* font-family: 'Abril Fatface', cursive; */
 }
 
 .gradeInfo a{
@@ -440,7 +440,7 @@
 
 
 
-/***좌석 선택***/
+/***예매정보***/
 
 .seatRes{
 	border: 1px solid #333;
@@ -466,7 +466,7 @@
 	letter-spacing:15px;
 	display: inline-block;
 	position: relative;
-	top:100px; left:-90px;	
+	top:100px; left:-150px;	
 }
 
 
@@ -474,28 +474,32 @@
 /**좌석선택**/
 
 .seatTable{
+	border: 2px solid #333;
 	/* border-collapse: collapse; */
+	/* height:200px; */
 	text-align: center;
 	font-size: 1.2em;
 	display: inline-block;
+	padding: 30px;
+	position: relative;
+	top:0px; left:240px;
 }
 .seatTable td{
-	width: 30px; height: 30px;
+	border:none;
+	width: 70px; height: 90px;
 }
-.seatUnselected>label{
-	background-color: white;
+/* .seatUnselected>label{
 	color:black;
-}
+} */
 td .seatSelected{
 	background-color:gray;
 }
-
 
 .radio {
 	display: none; 
 }
 
-input:checked + span{ 
+input:checked + p, .confirm_num{ 
 	background-color:red;
 	color: #000000;
 	font-weight: bold;
@@ -516,7 +520,7 @@ input:checked + span{
 	font-family: 'Nanum Myeongjo', serif;
 	padding-bottom: 50px;	
 	position: relative;	
-	top:-220px; left:800px;
+	bottom:300px; left:780px;
 }
 
 #selectedSeat{
@@ -525,7 +529,7 @@ input:checked + span{
 	width: 300px; height:30px;
 	text-align: center;
 	position: relative;
-	top:-260px; left:800px;
+	top:300px; left:785px;
 	color:#ff8000;
 }
 
@@ -541,7 +545,7 @@ input:checked + span{
 	border-radius:10px;
 	width: 100px; height:30px;
 	position: relative;
-	top:-230px; left:905px;
+	bottom:0px; right:-460px;
 	font-size: 1.1em;
 	font-weight: bold;
 }
@@ -549,7 +553,50 @@ input:checked + span{
 
 
 
+.table2{
+	position: relative;	
+	top:80px; right:0px;
+}
+.confirm{
+	position: relative;	
+	top:-150px; right:0px;	
+}
 
+#yourSeat{
+	/* border:1px solid red; */
+	font-size: 1.3em;
+	width: 300px; height:30px;
+	text-align: center;
+	position: relative;
+	top:-190px; left:780px;
+	color:#ff8000;
+}
+
+.button2{
+	border:1px solid #333; 
+	text-align:center;
+	border-radius:10px;
+	width: 100px; height:30px;
+	position: relative;
+	bottom:130px; left:880px;
+	background-color:#ff8000;
+	padding-top:10px;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+.button2 a{
+	text-decoration: none;
+}
+.button2 a:LINK, .button2 a:VISITED{
+	color:white;
+}
+.button2:HOVER{background-color: red;}
+
+#warning{
+	font-size:0.8em;
+	position: relative;	
+	bottom:80px; left:820px;
+}
 .up a{
 	font-size:2em;
 	position:relative;
