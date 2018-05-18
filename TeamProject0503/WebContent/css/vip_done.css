@@ -22,6 +22,12 @@ body{
 	width: 1500px;
 	margin: 50px auto;
 }
+
+.title{
+	border:1px solid red;
+	margin:30px auto;
+	font-size: 1.2em;
+}
 .ticket{
 	/* border:1px solid red; */   
 	position:relative;

@@ -41,7 +41,7 @@
 		  	<div class="dropdown">
 			    <button class="dropbtn">CATEGORY</button>
 			    <div class="dropdown-content">
-			     		<a href="./CategoryList.ca?mv_genre=animation">애니메이션</a>
+			     	<a href="./CategoryList.ca?mv_genre=animation">애니메이션</a>
 					<a href="./CategoryList.ca?mv_genre=thriller">공포/스릴러</a>
 					<a href="./CategoryList.ca?mv_genre=indie">독립영화</a>
 					<a href="./CategoryList.ca?mv_genre=romance">로맨스/드라마</a>

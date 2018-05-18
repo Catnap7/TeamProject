@@ -43,7 +43,7 @@ String selectedSeat=request.getParameter("seat");
 %>
 
 <div class="vip_done">
-<p>시사회 예매가 완료 되었습니다</p>
+<div class="title">시사회 예매가 완료 되었습니다</div>
 
 	<div class="ticket">
 		<div class="pic">

@@ -30,14 +30,14 @@ Date now = new Date();
                   </div>
                   <div id="chat" class="pannel-collapse collapse in">
                      <div class="portlet-body chat-widget"
-                        style="overflow-y: auto; width: auto; height: 300px;">
+                        style="overflow-y: hidden; width: auto; height: 300px;">
                         <div class="row">
                            <div class="col-lg-12">
                               <p class="text-center text-muted small"><%=now %></p>
                            </div>
                         </div>
                         <div class="row">
-                        <textarea id="messageWindow" rows="10" cols="50" readonly="true"></textarea>
+                        <textarea id="messageWindow" rows="10" cols="50" readonly="true"  style="width:100%;height:100;"></textarea>
                            <!-- 한명의 대화 공간 -->
                            <div class="col-lg-12">
                               <div class="media">
