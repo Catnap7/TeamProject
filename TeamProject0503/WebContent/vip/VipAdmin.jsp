@@ -5,19 +5,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Vip 관리 페이지</title>
+
+<!-- CSS -->
+<link href="./css/default.css" rel="stylesheet" type="text/css">
+<link href="./css/admin.css" rel="stylesheet" type="text/css">
+
+<!-- 웹 폰트 : 나눔고딕 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 </head>
 <body>
 
-<a href="./VipModify.vi">vip영화 입력 및 수정</a>
+<!-- 헤더 영역 -->
+<jsp:include page="../inc/header.jsp"/>
+<!-- 헤더 영역 -->
 
-리스트
-vip회원목록
-<a href="./VipMovieList.vi">vip시사회 영화 내역  / 삭제</a>
+<!-- vip 서브메뉴 -->
+<jsp:include page="../vip/vipAdmin_sub.jsp"/>
+<!-- vip 서브메뉴 -->
 
-화면
+
+<div id="content">
 이번달 영화
 vip시사회 좌석현황 
 vip시사회 예매현황 
+
+</div>
+
+
+
+
+<!-- 푸터 영역 -->
+<jsp:include page="../inc/footer.jsp"/>
+<!-- 푸터 영역 -->
 
 </body>
 </html>

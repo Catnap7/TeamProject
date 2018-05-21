@@ -79,19 +79,46 @@ public class VipDAO {
 			}
 		}//insertVip
 	
-	
+		
+	//getVipMovieCount	
+	public int getVipMovieCount(){
+			Connection con = null;
+			String sql = "";
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int count = 0;		
+			try {
+				con = getConnection();
+				sql = "select count(*) from vip_cinema_prev";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				rs.next();
+				count = rs.getInt("count(*)");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
+				if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+				if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}						
+			}
+			return count;
+	}//getVipMovieCount
+		
+		
 		
 	//getVipMovieList
-	public List getVipMovieList(){
-		List vipMovieList=new ArrayList();
+	public List<VipBean> getVipMovieList(int startRow, int pageSize){
+		List<VipBean> vipMovieList=new ArrayList<VipBean>();
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		String sql="";
 		ResultSet rs=null;
 		try{
 			con=getConnection();
-			sql="select*from vip_cinema_prev";
+			sql="select*from vip_cinema_prev order by v_num asc limit ?, ?";
 			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, startRow-1);
+			pstmt.setInt(2, pageSize);
 			rs=pstmt.executeQuery();
 			
 			while(rs.next()){
