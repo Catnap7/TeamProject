@@ -130,7 +130,7 @@ window.onload = function(){
             downRoulette("10% 쿠폰");            
            }
         if(rannum>fail/2+ten*2+fail*2+fif & rannum<=fail/2+ten*2+fail*3+fif ){
-            rotatenum =  randomize(199, 234);    /* 꽝 */       
+            rotatenum =  randomize(199, 233);    /* 꽝 */       
            }
         if(rannum>fail/2+ten*2+fail*3+fif & rannum<=fail/2+ten*2+fail*3+fif+hun*1 ){
             rotatenum =  randomize(235, 270);        /* 100% 쿠폰  */  
