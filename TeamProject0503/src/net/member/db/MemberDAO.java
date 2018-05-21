@@ -185,18 +185,17 @@ private Connection getConnection() throws Exception {
 	}
 	
 	public MemberBean getMember(String m_id) {
-		MemberBean memberbean = new MemberBean();
+		MemberBean memberbean = null;
 		String sql =null;
 		PreparedStatement pstmt = null;
 		ResultSet rs =null;
 		Connection con = null;
+		
 		try {
 			con=getConnection();
-			
 			sql = "select m_id,m_pass,m_name,m_grade,lpad(m_id_num1,6,0) as m_id_num1,m_id_num2,m_reg_date from member where m_id=?"; 
 			 pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, m_id);
-			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {		
@@ -208,21 +207,17 @@ private Connection getConnection() throws Exception {
 				memberbean.setM_id_num1(rs.getInt("m_id_num1"));
 				memberbean.setM_id_num2(rs.getInt("m_id_num2"));
 				memberbean.setM_reg_date(rs.getDate("m_reg_date"));
-				
 			}
 			
 		}catch(Exception e){
 			e.printStackTrace();
 			
 		}finally {
-			
-			if(con!=null)try {con.close();}catch(SQLException ex) {};
 			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
+			if(con!=null)try {con.close();}catch(SQLException ex) {};
 			if(rs!=null)try {rs.close();}catch(SQLException ex) {};
 		}
-		
 		return memberbean;
-	
 	}
 	
 	public int EmailChecked(String m_id){
@@ -396,7 +391,36 @@ private Connection getConnection() throws Exception {
 	} // end duplicateIdCheck()
 	
 	
+	public String getName(String m_id) {
+		String sql =null;
+		MemberBean memberbean = null;
+		String m_name= null;
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
+		Connection con = null;
+		try {
+			con=getConnection();
+			sql = "select m_name from member where m_id=?"; 
+			 pstmt = con.prepareStatement(sql);
+			 pstmt.setString(1, m_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {		
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			
+		}finally {
+			
+			if(con!=null)try {con.close();}catch(SQLException ex) {};
+			if(rs!=null)try {rs.close();}catch(SQLException ex) {};
+			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
+		}
+		
+		return m_name;
 	
+	}
 	
 	public void updateMember(MemberBean mb){			
 		Connection con=null;

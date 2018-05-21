@@ -9,6 +9,7 @@
 <script src="./js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 
+
 $(document).ready(function(){
 		// 쿠키값을 가져온다.
 	// 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
@@ -29,10 +30,10 @@ $(document).ready(function(){
     });
     $("#AutoLoginCheck").change(function(){ // 체크박스에 변화가 있다면,
         if($("#AutoLoginCheck").is(":checked")){ // 자동로그인 체크했을 때,
-            var id = $("input[name='m_id']").val();
-            var pass = $("input[name='m_pass']").val();
-            setCookie("m_id", id, 7); // 7일 동안 쿠키 보관
-            setCookie("m_pass", pass, 7); // 7일 동안 쿠키 보관
+            var m_id = $("input[name='m_id']").val();
+            var m_pass = $("input[name='m_pass']").val();
+            setCookie("m_id", m_id, 1); // 1일 동안 쿠키 보관
+            setCookie("m_pass", m_pass, 1); // 1일 동안 쿠키 보관
         }else{ // ID 저장하기 체크 해제 시,
             deleteCookie("m_id");
             deleteCookie("m_pass");
@@ -51,8 +52,8 @@ $(document).ready(function(){
 function setCookie(cookieName, value, exdays){
     var exdate = new Date();
     exdate.setDate(exdate.getDate() + exdays);
-    var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
-    document.cookie = cookieName + "=" + cookieValue;
+     var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+    document.cookie = cookieName + "=" + cookieValue; 
 }
  
 function deleteCookie(cookieName){
@@ -94,12 +95,12 @@ function getCookie(cookieName) {
 			<a href="./FindPass.me" class="find_pass">비밀번호 찾기</a>
 		</div>
 		
-		<form action="./MemberLoginAction.me" id="join" method="post">
+		<form action="./MemberLoginAction.me" id="join" method="post" >
 			<label>
-			<input type="text"  name="m_id" placeholder="이메일 (example@gmail.com)" class="text">
+			<input type="text"  name="m_id" placeholder="이메일 (example@gmail.com)" class="text" id = "id">
 			</label><br>
 			<label>
-			<input type="password" name="m_pass" placeholder="비밀번호 (6자 이상)" class="text">
+			<input type="password" name="m_pass" placeholder="비밀번호 (6자 이상)" class="text" id ="pass">
 			</label>
 			<input type="checkbox" id="idSaveCheck"> 아이디 저장 <br>
 			<input type="checkbox" id="AutoLoginCheck"> 로그인 상태 유지 <br>

@@ -25,7 +25,6 @@ public class MemberLoginAction implements Action{
 		
 		MemberBean memberbean= mdao.getMember(m_id);
 		
-		
 		memberbean.setM_id(request.getParameter("m_id"));		
 		memberbean.setM_pass(request.getParameter("m_pass"));
 		
@@ -66,10 +65,11 @@ public class MemberLoginAction implements Action{
 			session.setAttribute("m_id",memberbean.getM_id());
 			session.setAttribute("m_name",memberbean.getM_name());
 			DeleteAlarm dr= new DeleteAlarm();
+			dr.execute(request, response);
+			DeleteCoupon dc= new DeleteCoupon();
 			
 			System.out.println("");
 			
-			DeleteAlarm ar= new DeleteAlarm();
 			
 			ActionForward forward= new ActionForward();			
 			forward.setRedirect(true);

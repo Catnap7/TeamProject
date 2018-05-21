@@ -16,7 +16,6 @@ public class StartFrontController extends HttpServlet{
 			throws ServletException, IOException {
 		
 		String requestURI=request.getRequestURI();
-		System.out.println(requestURI);
 		String context=request.getContextPath();
 		String command=requestURI.substring(context.length());
 		ActionForward forward=null;
@@ -53,19 +52,12 @@ public class StartFrontController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("StartFrontController doGet()");	
 		doProcess(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("StartFrontController doPost()");
 		doProcess(request, response);
 		
 	}
-	
-	
-	
-	
-	
 	
 }
