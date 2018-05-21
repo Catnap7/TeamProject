@@ -98,16 +98,8 @@
 			<td colspan="5" id="needsPadding"><iframe width="1040px" height="760px" src="<%=vipbean.getV_video()%>" allowfullscreen frameborder="0" scrolling="no"></iframe></td>
 		</tr>	
 	</table>
-	
-	
-	<!-- 수정/삭제 버튼 -->
-	<div class="btn">
-		<a href="./VipMovieModify">수정</a>
-		<a href="./VipMovieDelete">삭제</a>
-	</div>
-	<!-- 수정/삭제 버튼 -->
-	
-	
+
+
 </div><!-- content -->
 
 <!-- 푸터 영역 -->

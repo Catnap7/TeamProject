@@ -269,6 +269,78 @@ public class VipDAO {
 		}//getVipMovieContent
 		
 		
+		//modifyVipMovie
+		public void modifyVipMovie(VipBean vipbean){
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			String sql="";
+			try {
+				con=getConnection();
+				
+				sql="update vip_cinema_prev set v_kor_title=?,v_eng_title=?,v_year=?,v_country=?,"
+						+ "v_age=?,v_genre=?,v_time=?,v_director=?,v_actor=?,v_story=?,"
+						+ "v_video=?,v_date=?,v_when=?"
+						+ ",v_critic_1_by=?,v_critic_1=?"
+						+ ",v_critic_2_by=?,v_critic_2=? where v_num=?";
+				
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, vipbean.getV_kor_title());
+				pstmt.setString(2, vipbean.getV_eng_title());
+				pstmt.setInt(3, vipbean.getV_year());
+				pstmt.setString(4, vipbean.getV_country());
+				pstmt.setInt(5, vipbean.getV_age());
+				
+				pstmt.setString(6, vipbean.getV_genre());
+				pstmt.setInt(7, vipbean.getV_time());
+				pstmt.setString(8, vipbean.getV_director());
+				pstmt.setString(9, vipbean.getV_country());
+				pstmt.setString(10, vipbean.getV_story());
+				
+				pstmt.setString(11, vipbean.getV_video());
+				pstmt.setString(12, vipbean.getV_date());
+				pstmt.setString(13, vipbean.getV_when());
+				pstmt.setString(14, vipbean.getV_critic_1_by());
+				pstmt.setString(15, vipbean.getV_critic_1());
+				pstmt.setString(16, vipbean.getV_critic_2_by());
+				pstmt.setString(17, vipbean.getV_critic_2());
+				pstmt.setInt(18, vipbean.getV_num());
+				
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally{
+				if(rs!=null)try{rs.close();}catch(SQLException ex){}
+				if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+				if(con!=null)try{con.close();}catch(SQLException ex){}
+			}
+		}//modifyVipMovie
+		
+		
+		//deleteVipMovie
+		public void deleteVipMovie(int v_num){
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			String sql="";
+			try {
+				//1,2 디비연결
+				con=getConnection();
+				//3 sql num해당하는 상품 삭제
+				sql="delete from vip_cinema_prev where v_num = ?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, v_num);
+				//4 실행
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally{
+				if(rs!=null)try{rs.close();}catch(SQLException ex){}
+				if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+				if(con!=null)try{con.close();}catch(SQLException ex){}
+			}
+		}//deleteVipMovie
+		
 		
 		//resetVipSeat
 		public void resetVipSeat(){
@@ -360,4 +432,4 @@ public class VipDAO {
 			}
 		}
 		//AutodeleteVIPend
-		}
+}
