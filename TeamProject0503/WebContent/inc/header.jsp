@@ -13,7 +13,7 @@
 
 
 		<div class="pay">
-			<a href="./pay/pay_result.jsp">이용권구매</a>
+			<a href="./PayList.pa">이용권구매</a>
 		</div><!--이용권구매 -->
 		
 		<%
