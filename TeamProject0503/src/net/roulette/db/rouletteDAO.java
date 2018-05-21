@@ -23,7 +23,7 @@ public class rouletteDAO {
 	}
 	
 	public List<Double> getChances(String id){	
-		System.out.println("테스트 중 : "+id);
+		//System.out.println("테스트 중 : "+id);
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -84,5 +84,40 @@ public class rouletteDAO {
 			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
 		}
 		return chancelist;
-	}
+	}//end getchances
+	
+	public void downRoulette(String id, String c_name){
+		System.out.println("down 테스트 중");
+		int count=0;
+		Connection con=null;
+		String sql =null;
+		PreparedStatement pstmt =null;
+		ResultSet rs =null;
+		try {
+			con=getConnection();
+			
+		sql="select max(ro_count) as max from roulette where ro_name=?";
+		 pstmt= con.prepareStatement(sql);
+		 pstmt.setString(1, c_name);
+		 rs= pstmt.executeQuery();
+		if(rs.next()){
+			count = rs.getInt("max")-1;		
+		}
+		
+		sql="insert into roulette(ro_name,ro_count,ro_id) values(?,?,?)";
+		pstmt= con.prepareStatement(sql);
+		pstmt.setString(1, c_name);
+		pstmt.setInt(2, count);
+		pstmt.setString(3, id);
+		pstmt.executeUpdate();
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();}catch(SQLException ex) {};
+			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
+			if(con!=null)try {con.close();}catch(SQLException ex) {};
+			
+		}
+	}//end down
 }

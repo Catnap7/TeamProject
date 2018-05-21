@@ -469,7 +469,7 @@ private Connection getConnection() throws Exception {
 	}//end deleteMember
 	
 	public int checkChance(String id){
-		System.out.println("테스트 중");
+		//System.out.println("테스트 중");
 		int check=0;
 		Connection con=null;
 		String sql =null;

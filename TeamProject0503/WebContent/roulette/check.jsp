@@ -11,9 +11,7 @@
 	
 	MemberDAO mdao= new MemberDAO();
 	rouletteDAO rdao = new rouletteDAO();
-//	int check= idcheck(id)
-//	check==1 out.println("아이디 중복")
-//	check==0 out.println("선택한 아이디는 사용가능합니다.")	
+
 	List <Double>chancelist = rdao.getChances(id);
 	int check= mdao.checkChance(id);
 

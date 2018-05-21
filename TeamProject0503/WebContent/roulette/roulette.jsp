@@ -25,13 +25,13 @@ String id = (String)session.getAttribute("m_id");
 <img src="images/niddle.png" id="n_id">
 <br />
 <input type='button' value='시작' id='start_btn'></input>
-<div id="result_id"></div>
+<!-- <div id="result_id"></div>
 <div id="result_id2"></div>
 <div id="result_id3"></div>
 <div id="result_id4"></div>
 <div id="result_id5"></div>
 <div id="result_id6"></div>
 <div id="result_id7"></div>
-<div id="result_id8"></div>
+<div id="result_id8"></div> -->
 </body>
 </html>

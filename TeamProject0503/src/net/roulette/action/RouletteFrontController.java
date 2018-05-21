@@ -36,6 +36,14 @@ protected void doProcess(HttpServletRequest request, HttpServletResponse respons
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		}else if(command.equals("/RouletteWinner.ro")){
+			action = new RouletteWinner();
+			try{
+			forward=action.execute(request, response);
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 		
 			
