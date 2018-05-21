@@ -27,6 +27,12 @@
 
 $(document).ready(function(){
 	
+//	갯수 구하는 제이쿼리
+//	alert($(".stitle>img").length); 
+//	alert($(".sdirector>img").length); 
+//	alert($(".sactor>img").length); 
+	
+	
 	var $container = 1720; 
 	/* var length=$(".searchTitle .mv").size();   */
 	var $count =13; /* 영화개수 */ 
@@ -238,7 +244,7 @@ List actorsearchList =(List)request.getAttribute("actorsearchList");
 				String imgname = moviename.replaceAll(" " , "");
 		 		imgname = imgname.replaceAll("\\p{Z}", "");%>
 		 			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>">
-		 				<div class="mv">
+		 				<div class="mv stitle">
 							<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
 							<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
 							<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
@@ -305,7 +311,7 @@ List actorsearchList =(List)request.getAttribute("actorsearchList");
 					String imgname = moviename.replaceAll(" " , "");
 			 		imgname = imgname.replaceAll("\\p{Z}", "");%>
 			 			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>">
-			 				<div class="mv">
+			 				<div class="mv sdirector">
 								<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
 								<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
 								<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
@@ -371,7 +377,7 @@ List actorsearchList =(List)request.getAttribute("actorsearchList");
 			 		imgname = imgname.replaceAll("\\p{Z}", "");%>
 			 		
  				<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>">
- 					<div class="mv">
+ 					<div class="mv sactor">
 						<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
 						<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
 						<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
