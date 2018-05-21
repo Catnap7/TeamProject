@@ -10,7 +10,7 @@
 
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
-<link href="./css/admin.css" rel="stylesheet" type="text/css">
+<link href="./css/vip_admin.css" rel="stylesheet" type="text/css">
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
@@ -37,13 +37,14 @@
 	int pageBlock = ((Integer) request.getAttribute("pageBlock")).intValue();
 	int startPage = ((Integer) request.getAttribute("startPage")).intValue();
 	int endPage = ((Integer) request.getAttribute("endPage")).intValue();	
+
 %>
+	
 
 <div id="content">
-	<h1>
-		VIP 시사회 영화 목록 [<%=count %>]
-	</h1>	
-	배우, 줄거리, 리뷰등은 목록에 나타나지 않습니다. 영화 상세 보기로 들어가야함.
+	<h1>VIP 시사회 영화 목록</h1>	
+	<p>[총 영화 개수 : <%=count %>]<br><br>
+		더 자세한 영화 정보와 수정 및 삭제는 영화 제목을 눌러 상세보기로 들어가십시오</p>
 	
 	<table class="vip_db_list">
 		<tr>
@@ -52,11 +53,23 @@
 		</tr>
 		
 		<%for(int i=0;i<vipMovieList.size();i++){
-			VipBean vipbean =(VipBean)vipMovieList.get(i);%>
+			VipBean vipbean =(VipBean)vipMovieList.get(i);
+			
+				String age = "";
+					if(vipbean.getV_age()==0){
+						age = "전체이용가";
+					}else if(vipbean.getV_age()==12){
+						age = "12세이용가";
+					}else if(vipbean.getV_age()==15){
+						age="15세이용가";
+					}else if(vipbean.getV_age()==19){
+						age="청소년이용불가";
+					}
+		%>
 		<tr>
-			<td><%=vipbean.getV_num()%></td><td><%=vipbean.getV_kor_title()%></td>
+			<td><%=vipbean.getV_num()%></td><td><a href="./VipMovieContent.vi?v_num=<%=vipbean.getV_num() %>"><%=vipbean.getV_kor_title()%></a></td>
 			<td><%=vipbean.getV_eng_title()%></td><td><%=vipbean.getV_year()%></td>
-			<td><%=vipbean.getV_country()%></td><td><%=vipbean.getV_age()%></td>
+			<td><%=vipbean.getV_country()%></td><td><%=age%></td>
 			<td><%=vipbean.getV_genre()%></td><td><%=vipbean.getV_director()%></td>
 			<td><%=vipbean.getV_actor()%></td><td><%=vipbean.getV_date()%></td>
 			<td><%=vipbean.getV_when()%></td>
@@ -64,24 +77,24 @@
 		<%} %>
 	</table>
 	
+	<!-- 페이징 -->
+			<div class="prev_next">
+				<%// 이전
+					if (startPage > pageBlock) {%>
+					<a href="./AdminNoticeList.am?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+					<%}
+						// 1~10, 11~20, 21~30
+						for (int i = startPage; i <= endPage; i++) {%>
+						<a href="./AdminNoticeList.am?pageNum=<%=i%>">[<%=i%>]</a>
+					<%}
+						// 다음
+						if (endPage < pageCount) {%>
+					<a href="./AdminNoticeList.am?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+					<%}
+					%>
+			</div>
+	<!-- 페이징 -->
 	
-	<!-- 페이징 -->
-	<div class="prev_next">
-		<%// 이전
-			if (startPage > pageBlock) {%>
-			<a href="./AdminNoticeList.am?pageNum=<%=startPage - pageBlock%>">[이전]</a>
-			<%}
-				// 1~10, 11~20, 21~30
-				for (int i = startPage; i <= endPage; i++) {%>
-				<a href="./AdminNoticeList.am?pageNum=<%=i%>">[<%=i%>]</a>
-			<%}
-				// 다음
-				if (endPage < pageCount) {%>
-			<a href="./AdminNoticeList.am?pageNum=<%=startPage + pageBlock%>">[다음]</a>
-			<%}
-			%>
-	</div>
-	<!-- 페이징 -->
 	
 	
 </div><!-- content -->

@@ -84,6 +84,13 @@ public class VipFrontController extends HttpServlet{
 		         } catch (Exception e) {
 		            e.printStackTrace();
 		         }
+		}else if(command.equals("/VipMovieContent.vi")){
+		  	action = new VipMovieContent();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
 		}
 		
 		

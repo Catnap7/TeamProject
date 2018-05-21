@@ -1,0 +1,191 @@
+@CHARSET "UTF-8";
+
+.clear {clear: both;}
+
+
+/************** 서브메뉴바 **************/
+#menu_bar {
+	/* border:1px solid red; */
+	width: 300px;
+	margin: 220px 50px 0 110px;
+	float: left;
+	font-size: 24px;
+}
+
+#menu_bar ul {
+	list-style: none;
+}
+
+#menu_bar ul li a {
+	width: 180px;
+	text-decoration: none;
+	display: block;
+	padding: 15px;
+	background-color: #50d4aa;
+	border-radius: 40px;
+	color: #000;
+	/* letter-spacing: 0.2px; */
+	margin-bottom: 60px;
+	text-align: center;
+}
+
+#menu_bar ul li a:HOVER {
+	opacity: 0.5;
+}
+
+
+
+/************** vip movie db list **************/
+div#content {
+	/* border: 1px solid orange;  */
+	margin-left: 300px;
+	margin-top: 0px;
+	width:1500px;height: 800px;
+	position: relative;
+	bottom:550px; left:150px;
+}
+
+
+div#content h1 {
+	text-align: center;
+	display: inline-block;
+	position: relative;
+	left: 0;
+	top: -20px;
+	font-size: 1.7em;
+	letter-spacing: 2px;
+	text-transform: capitalize;
+	padding-bottom: 20px;
+}
+
+.vip_db_list {
+	border-collapse: collapse;
+	position: relative;
+	top: 30px;
+	left: -20px;
+}
+
+.vip_db_list th {
+	border: 1px solid #b1b1b1;
+	height: 50px;
+	padding: 0px 20px;
+	background-color: #333;
+	/* letter-spacing: 0.3em; */
+	color: white;
+	font-size: 1.1em;
+}
+
+.vip_db_list td {
+	border: 1px solid #b1b1b1;
+	height: 50px;
+	padding: 0px 10px;
+	text-align: center;
+	font-size: 1.0em;
+}
+
+.vip_db_list td a {
+	text-decoration: none;
+	color: #808080;
+	font-weight: bold;
+}
+.vip_db_list td a:HOVER {
+	text-decoration: none;
+	color: #ff8040;
+	font-weight: bold;
+}
+
+.prev_next {
+	/* border: 1px solid red; */
+	text-align: center;
+	width:1300px;
+	margin:0 auto;
+	position: relative;
+	top: 600px; left: -110px;
+}
+
+.prev_next a {
+	text-transform: capitalize;
+	margin: 0 10px;
+	font-size: 20px;
+	text-decoration: none;
+	color: #000;
+}
+
+
+
+
+
+
+/************** vip movie content **************/
+
+div#movieContent h1 {
+	text-align: center;
+	display: inline-block;
+	position: relative;
+	left: 0;
+	top: -20px;
+	font-size: 1.7em;
+	letter-spacing: 2px;
+	text-transform: capitalize;
+	padding-bottom: 20px;
+}
+
+.movieContent {
+	width: 50%;
+	border-collapse: collapse;
+	position: relative;
+	bottom: 580px;
+	left: 500px;
+	padding: 0px;
+}
+
+.movieContent th {
+	border: 1px solid #5e5e5e;
+	height: 50px;
+	padding: 0px 20px;
+	background-color: #333;
+	letter-spacing: 0.7em; 
+	color: white;
+	font-size: 1.2em;
+	text-transform: uppercase;
+}
+
+.movieContent td {
+	border: 1px solid #333;
+	height: 50px;
+	padding: 0 10px;
+	text-align: center;
+	font-size: 1.0em;
+}
+
+#needsPadding{
+	text-align:justify;
+	padding: 20px 20px 50px 30px;
+	line-height: 1.7em;
+	
+}
+
+/************** admin notice write **************/
+
+.btn {
+	position: relative;
+	bottom:510px;
+	left:1220px;
+}
+
+.btn2 {
+	position: relative;
+	top: 200px;
+	left: 1300px;
+}
+
+.wirtebtn {
+	background-color: #50d4aa;
+	border-radius: 40px;
+	color: #000;
+	letter-spacing: 0.2px;
+	width: 130px;
+	height: 40px;
+	font-weight: bold;
+	letter-spacing: 0.2px;
+}

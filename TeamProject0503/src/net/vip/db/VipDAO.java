@@ -222,7 +222,54 @@ public class VipDAO {
 		}//getVipMovie
 		
 		
-	
+		//getVipMovieContent
+		public VipBean getVipMovieContent(int v_num) {
+			VipBean vipbean = new VipBean();
+			Connection con = null;
+			String sql = "";
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;		
+			try {
+				con = getConnection();
+				sql = "select * from vip_cinema_prev where v_num = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, v_num);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					/*vipbean=new VipBean();*/
+					vipbean.setV_num(rs.getInt("v_num"));
+					vipbean.setV_kor_title(rs.getString("v_kor_title"));
+					vipbean.setV_eng_title(rs.getString("v_eng_title"));
+					vipbean.setV_year(rs.getInt("v_year"));
+					vipbean.setV_country(rs.getString("v_country"));
+					vipbean.setV_age(rs.getInt("v_age"));
+					vipbean.setV_genre(rs.getString("v_genre"));
+					vipbean.setV_time(rs.getInt("v_time"));
+					vipbean.setV_director(rs.getString("v_director"));
+					vipbean.setV_actor(rs.getString("v_actor"));
+					vipbean.setV_story(rs.getString("v_story"));
+					vipbean.setV_video(rs.getString("v_video"));
+					vipbean.setV_date(rs.getString("v_date"));
+					vipbean.setV_when(rs.getString("v_when"));
+					
+					vipbean.setV_critic_1_by(rs.getString("v_critic_1_by"));
+					vipbean.setV_critic_1(rs.getString("v_critic_1"));
+					vipbean.setV_critic_2_by(rs.getString("v_critic_2_by"));
+					vipbean.setV_critic_2(rs.getString("v_critic_2"));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
+				if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+				if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+			}
+			return vipbean;
+		}//getVipMovieContent
+		
+		
+		
 		//resetVipSeat
 		public void resetVipSeat(){
 			Connection con = null;
