@@ -37,7 +37,7 @@ List movielist=(List)request.getAttribute("movielist");
 %>
 
 <%
-if(movielist!=null){
+if(movielist.size()!=0)
 for(int i=0;i<movielist.size();i++){
 	
 	
@@ -101,9 +101,11 @@ for(int i=0;i<movielist.size();i++){
 				<%-- <div><%=age %>	</div> --%>
 			</div>
 		</div>
-
 <%
-}
+}else{
+	%>
+	<div>더 이상 평가할 영화가 남지 않았습니다.</div>
+	<%
 }
 %>
 		<div class="movie_refresh">
