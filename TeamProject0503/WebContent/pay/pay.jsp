@@ -41,7 +41,7 @@ $(document).ready(function(){
 			$("#amount").html(amount1*0.5);
 			$("#amounth").val(amount1*0.5);
 		}else if($this.val()==0){
-			amount1=6900//그대로
+			//amount1=6900//그대로
 			$("#amount").html(amount1*0.9);
 			$("#amounth").val(amount1*0.9);
 		}else if($this.val()==-1){
