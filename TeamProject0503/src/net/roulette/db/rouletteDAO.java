@@ -120,4 +120,31 @@ public class rouletteDAO {
 			
 		}
 	}//end down
+	
+	public void rouletteReset(){
+		System.out.println("rouletteReset 테스트 중");		
+		Connection con=null;
+		String sql =null;
+		PreparedStatement pstmt =null;
+		ResultSet rs =null;
+		try {
+			con=getConnection();
+									
+		sql="delete from roulette where ro_num>3";
+		pstmt= con.prepareStatement(sql);		
+		pstmt.executeUpdate();
+		
+		sql="alter table roulette AUTO_INCREMENT=4";
+		pstmt= con.prepareStatement(sql);		
+		pstmt.executeUpdate();
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();}catch(SQLException ex) {};
+			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
+			if(con!=null)try {con.close();}catch(SQLException ex) {};
+			
+		}
+	}//end reset
 }

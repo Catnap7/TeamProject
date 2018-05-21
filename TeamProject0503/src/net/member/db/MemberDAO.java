@@ -534,8 +534,29 @@ private Connection getConnection() throws Exception {
 			}		
 	}//end down
 	
-	
-	
+	public void m_rouletteReset(){
+		System.out.println("m_rouletteReset 테스트 중");		
+		Connection con=null;
+		String sql =null;
+		PreparedStatement pstmt =null;
+		ResultSet rs =null;
+		try {
+			con=getConnection();
+									
+		sql="update member set m_roulette=3";
+		pstmt= con.prepareStatement(sql);		
+		pstmt.executeUpdate();
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();}catch(SQLException ex) {};
+			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
+			if(con!=null)try {con.close();}catch(SQLException ex) {};
+			
+		}
+	}//end reset
+		
 }
 
 	
