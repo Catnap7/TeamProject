@@ -1,4 +1,4 @@
-@CHARSET "UTF-8";
+@charset "UTF-8";
 * {
 	margin: 0;
 	padding: 0;
@@ -6,12 +6,13 @@
 .clear {
 	clear: both;
 }
-div.m_cover {
-	height: 918px;
-	background-image: url("../images/m_cover.jpg");
-	background-repeat: no-repeat;
+
+body {
+	background-color: #000;
+/* 	background-image: url("../images/m_cover.jpg"); */
+	background-image: url("../images/m_cover2.jpg");
+	background-repeat: none;
 	background-size: cover;
-	opacity: 0.7;
 }
 
 div.logo img {
@@ -21,6 +22,7 @@ div.logo img {
 	top: 2%;
 	left: 2%;
 }
+
 div.nav_r {
 	background-color: #50d4aa;
 	width: 100px;
@@ -33,77 +35,135 @@ div.nav_r {
 	line-height: 40px;
 	border-radius: 40px;
 }
+
 div.nav_r a {
 	text-decoration: none;
 	color: #000;
 	letter-spacing: 0.2px;
 }
+
 .div_01 {
 	position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    height: 300px;
 }
+
+.div_01_join {
+	position: absolute;
+    top: 50%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+    height: 520px;
+    width: 450px;
+}
+
 .div_02 {
 	padding: 5px;
-	margin-bottom: 20px;
-	color:#000;
+	margin: 20px 0;
+	color: #fff;
 }
+
 .div_02 span, .div_02 a, p {
 	padding: 5px;
 	margin-bottom: 20px;
 	font-weight: bold;
+	font-size: 18px;
+	letter-spacing: 0.5px;
 }
 .find_pass {
 	margin-left: 125px;
 	text-decoration: none;
-	color: #000;
+	color: #fff;
 	font-size: 12px;
 }
 
 form input.text {
-	width: 260px;
+	width: 300px;
 	height: 40px;
 	margin-bottom: 10px;
+	margin-left: 20px;
+}
+
+
+form input.id_save {
+	width: 30px;
+	height: 15px;
+	margin-left: 20px;
+}
+
+form input.btn {
+	border: 1px solid #999;
+	background-color: #50d4aa;
+	border-radius: 40px;
+	font-size: 14px;
+	width:110px; 
+	height:35px;
+	margin-bottom: 10px;
+/* 	margin-left: 80px; */
+	cursor: pointer;
+}
+
+form span {
+	font-size: 14px;
+/* 	font-weight: bold; */
+	color: #fff;
+	letter-spacing: 0.5px;
 }
 
 input.check {
 	margin-bottom: 14px;
-	margin-right: 5px;
+	margin-left: 20px;
 }
 
 .use {
 	text-decoration: none;
 	font-weight: bold;
-	color: #000;
+	color: #fff;
+	cursor: pointer;
+}
+
+.find_txt {
+	margin-left: 30px;
+}
+
+.find_text {
+	width: 300px;
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	margin-left: 30px;
 }
 
 p {
 	padding: 5px;
+	margin-left: 30px;
 	margin-bottom: 10px;
 	font-size: 12px;
 	letter-spacing: 0.2px;
-	width: 270px;
+	line-height: 20px;
+	width: 290px;
 }
 
-	label{
-	display:inline-block;
-	width:100px;
-	color:#36a;
-	font-weight: bold;
-	text-transform: uppercase;
-	text-align: right;	/*  오른쪽정렬 */
-	padding:0.5em 0.8em;
-	
-	}
+/* label { */
+/* 	display:inline-block; */
+/* 	width:100px; */
+/* 	color:#36a; */
+/* 	font-weight: bold; */
+/* 	text-transform: uppercase; */
+/* 	text-align: right;	 오른쪽정렬 */
+/* 	padding:0.5em 0.8em; */
+/* } */
 
 #submit {
 	background-color: #50d4aa;
 	border-radius: 40px;
-	  padding:2px;
-	  width:150px; height:40px;
-	  margin:0 5px;
-	  border-radius: 10px;
-	  border: 1px solid #999;
+	padding:2px;
+	width:250px; 
+	height:50px;
+	margin:20px 45px;
+	border: 1px solid #999;
+	cursor: pointer;
+	font-size: 18px;
 }
- 

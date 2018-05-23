@@ -24,9 +24,21 @@ case 2 : grade = "VIP회원"; break;
 
 <article>
 
-<div class="mypage_">
+<div class="mypage_follow">
 	<div class="mypage_profile">
 		<h2>profile</h2>
+		
+		<div class="follow">
+		  <div class="photo">
+		    <a href="#"><img alt="프로필사진" src="./images/m_cover.jpg" width="130px" height="130px" title="사진 변경"></a>
+		  </div>
+		  <ul class="follow_ul">
+		    <li class="follower"><a href="#">팔로워<span>999</span></a></li>
+		    <li class="follows"><a href="#">팔로우<span>999</span></a></li>
+		  </ul>
+		</div>
+		
+		<div class="clear"></div>
 		
 		<table class="mypage_info">
 			<tr>
