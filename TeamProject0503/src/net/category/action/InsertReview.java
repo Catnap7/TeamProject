@@ -1,5 +1,7 @@
 package net.category.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,11 +22,6 @@ public class InsertReview implements Action {
 		ReviewBean reviewbean = new ReviewBean();
 		ReviewDAO reviewdao = new ReviewDAO();
 		
-		int r_num = 0;
-		int r_recommand = 0;
-		int r_report = 0;
-		int r_p_num = Integer.parseInt(request.getParameter("mv_num"));
-		String r_content = request.getParameter("r_content");
 		HttpSession session = request.getSession();
 		String r_id = (String)session.getAttribute("m_id");
 		
@@ -35,14 +32,33 @@ public class InsertReview implements Action {
 			return forward;
 		}
 		
-		reviewbean.setR_num(r_num);
-		reviewbean.setR_p_num(r_p_num);
-		reviewbean.setR_id(r_id);
-		reviewbean.setR_content(r_content);
-		reviewbean.setR_recommand(r_recommand);
-		reviewbean.setR_report(r_report);
+		int r_p_num = Integer.parseInt(request.getParameter("mv_num"));
+		String r_content = request.getParameter("r_content");
 		
-		reviewdao.insertReview(reviewbean);
+		List checkList = reviewdao.checkReview(r_id, r_p_num);
+		
+		int r_num_ =(Integer)checkList.get(0);
+		int check =(Integer)checkList.get(1);
+		
+		if(check == 1) {
+			reviewbean.setR_num(r_num_);
+			reviewbean.setR_content(r_content);
+			
+			reviewdao.updateReview(reviewbean);
+		}else {
+			int r_num = 0;
+			int r_recommand = 0;
+			int r_report = 0;
+			
+			reviewbean.setR_num(r_num);
+			reviewbean.setR_p_num(r_p_num);
+			reviewbean.setR_id(r_id);
+			reviewbean.setR_content(r_content);
+			reviewbean.setR_recommand(r_recommand);
+			reviewbean.setR_report(r_report);
+			
+			reviewdao.insertReview(reviewbean);
+		}
 		
 		forward = new ActionForward();
 		forward.setRedirect(true);
