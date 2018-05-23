@@ -1,4 +1,4 @@
-<%@page import="net.admin.manage.db.AdminReviewBean"%>
+<%@page import="net.category.db.ReviewBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -12,7 +12,7 @@
 </head>
 <body>
 	<%
-		List<AdminReviewBean> AdminReviewList = (List)request.getAttribute("AdminReviewList");
+		List<ReviewBean> AdminReviewList = (List)request.getAttribute("AdminReviewList");
 		int count = ((Integer) request.getAttribute("count")).intValue();
 		String pageNum = (String) request.getAttribute("pageNum");
 		int pageCount = ((Integer) request.getAttribute("pageCount")).intValue();
@@ -59,13 +59,13 @@
 			<%
 			
 			for(int i = 0; i < AdminReviewList.size(); i++) {
-				AdminReviewBean arb = (AdminReviewBean)AdminReviewList.get(i);
+				ReviewBean arb = (ReviewBean)AdminReviewList.get(i);
 				%>
 
 
 			<tr>
 				<td><%=arb.getR_id() %></td>
-				<td><%=arb.getContent() %></td>
+				<td><%=arb.getR_content() %></td>
 				<td><%=arb.getR_report() %></td>
 				<td><%=arb.getR_date() %></td>
 				<td><a href="javascript:del('<%=arb.getR_num() %>')">삭제</a></td>

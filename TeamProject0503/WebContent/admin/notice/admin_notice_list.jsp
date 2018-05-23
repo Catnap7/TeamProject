@@ -51,7 +51,7 @@
 			<tr>
 				<td><%=nb.getN_num() %></td>
 				<td><a href="./AdminNoticeContent.an?n_num=<%=nb.getN_num() %>"><%=nb.getN_subject() %></a></td>
-				<td><%=name %></td>
+				<td>관리자</td>
 				<td>1</td>
 				<td><%=nb.getN_date() %></td>
 			</tr>
