@@ -12,7 +12,7 @@ article{/* border: solid red; */
 	
 }
 section{border: solid #c0c0c0 1px;
-	background-image: url("../images/roulette_back.jpg");			
+	background-image: url("../images/roulette_back.png");			
 }
 h1{/* border: solid red; */
 text-align: center;
@@ -37,7 +37,7 @@ color:#fff;
 
 #start_btn {
 position: absolute;
-top:920px; 
+top:890px; 
 right:875px;
 background-color: #50d4aa;
 border-radius: 40px;
