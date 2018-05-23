@@ -30,7 +30,7 @@
 	<!-- 어드민 서브메뉴 -->
 
 	<div id="content">
-		<h1>pay list [<%=count %>]</h1>
+		<h1>PAT LIST [<%=count %>]</h1>
 
 		<div class="admin-search-container">
 			<form action="admin_pay_list_search.jsp">

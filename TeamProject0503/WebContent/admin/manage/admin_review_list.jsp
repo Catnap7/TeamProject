@@ -37,7 +37,7 @@
 <!-- 어드민 서브메뉴 -->
 
 	<div id="content">
-		<h1>review list [<%=count %>]</h1>
+		<h1>REVIEW LIST [<%=count %>]</h1>
 
 		<div class="admin-search-container">
 			<form action="admin_review_list_search.jsp">
@@ -54,7 +54,7 @@
 				<th class="rv_th3">댓글 내용</th>
 				<th class="rv_th4">신고횟수</th>
 				<th class="rv_th5">작성일</th>
-				<th class="rv_th6">댓글삭제</th>
+				<th class="rv_th5">댓글삭제</th>
 			</tr>
 			<%
 			
