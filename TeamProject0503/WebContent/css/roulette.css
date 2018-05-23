@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 .clear{clear:both;}
 
-body{
+body{ /* border: solid red; */
 	
 }
 
@@ -49,14 +49,18 @@ text-align: center;
 }
 
 body section.left{
-	border: solid red 1px;
+	background-image:url("../images/left.jpg");
+	background-repeat:no-repeat;
+	/* background-color:#333; */	
 	float:left;
 	height: 851px;
 	width:599px;
 }
 
 body section.right{
-	border: solid red 1px;
+	background-image:url("../images/right.jpg");
+	background-repeat:no-repeat;
+	/* background-color:#333; */	
 	float:left;
 	height: 851px;
 	width:600px;
