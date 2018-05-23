@@ -15,7 +15,7 @@
 #image{
   margin:0px auto;z-index:10;
 }
-#n_id{position:absolute;left:940px;top:330px;z-index:20;}
+#n_id{position:absolute;left:939px;top:330px;z-index:20;}
 </style>
 </head>
 <!-- 헤더영역 -->
