@@ -17,6 +17,7 @@ public class VipMovieModify implements Action{
 		VipDAO vipdao = new VipDAO();
 		VipBean vipbean = new VipBean();
 		
+		
 		int v_num=Integer.parseInt(request.getParameter("v_num"));
 		vipbean=vipdao.getVipMovieContent(v_num);
 		

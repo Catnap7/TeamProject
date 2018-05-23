@@ -11,6 +11,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import net.member.db.MemberBean;
+
 
 
 public class VipDAO {
@@ -44,7 +46,11 @@ public class VipDAO {
 						num=1;
 					}
 					
-				sql="insert into vip_cinema_prev (v_num, v_kor_title, v_eng_title, v_year, v_country, v_age, v_genre, v_time, v_director, v_actor, v_story, v_video, v_date, v_when) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				sql="insert into vip_cinema_prev (v_num, v_kor_title, v_eng_title, v_year, v_country, "
+						+ "v_age, v_genre, v_time, v_director, v_actor, "
+						+ "v_story, v_video, v_date, v_when,"
+						+ "v_critic_1_by, v_critic_1, v_critic_2_by, v_critic_2) "
+						+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, num);
@@ -52,11 +58,13 @@ public class VipDAO {
 				pstmt.setString(3, vipbean.getV_eng_title());
 				pstmt.setInt(4, vipbean.getV_year());
 				pstmt.setString(5, vipbean.getV_country());
+				
 				pstmt.setInt(6, vipbean.getV_age());
 				pstmt.setString(7, vipbean.getV_genre());
 				pstmt.setInt(8, vipbean.getV_time());
 				pstmt.setString(9, vipbean.getV_director());
 				pstmt.setString(10, vipbean.getV_actor());
+				
 				pstmt.setString(11, vipbean.getV_story());
 				pstmt.setString(12, vipbean.getV_video());
 				pstmt.setString(13, vipbean.getV_date());
@@ -278,8 +286,8 @@ public class VipDAO {
 			try {
 				con=getConnection();
 				
-				sql="update vip_cinema_prev set v_kor_title=?,v_eng_title=?,v_year=?,v_country=?,"
-						+ "v_age=?,v_genre=?,v_time=?,v_director=?,v_actor=?,v_story=?,"
+				sql="update vip_cinema_prev set v_kor_title=?,v_eng_title=?,v_year=?,v_country=?,v_age=?,"
+						+ "v_genre=?,v_time=?,v_director=?,v_actor=?,v_story=?,"
 						+ "v_video=?,v_date=?,v_when=?"
 						+ ",v_critic_1_by=?,v_critic_1=?"
 						+ ",v_critic_2_by=?,v_critic_2=? where v_num=?";
@@ -294,12 +302,13 @@ public class VipDAO {
 				pstmt.setString(6, vipbean.getV_genre());
 				pstmt.setInt(7, vipbean.getV_time());
 				pstmt.setString(8, vipbean.getV_director());
-				pstmt.setString(9, vipbean.getV_country());
+				pstmt.setString(9, vipbean.getV_actor());
 				pstmt.setString(10, vipbean.getV_story());
 				
 				pstmt.setString(11, vipbean.getV_video());
 				pstmt.setString(12, vipbean.getV_date());
 				pstmt.setString(13, vipbean.getV_when());
+				
 				pstmt.setString(14, vipbean.getV_critic_1_by());
 				pstmt.setString(15, vipbean.getV_critic_1());
 				pstmt.setString(16, vipbean.getV_critic_2_by());
@@ -432,4 +441,46 @@ public class VipDAO {
 			}
 		}
 		//AutodeleteVIPend
+		
+		
+		//getVipMemberList
+		public List<MemberBean> getVipMemberList() {
+			List<MemberBean> vipMemberList = new ArrayList<MemberBean>();
+			Connection con = null;
+			String sql = "";
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = getConnection();
+				sql = "select * from member where m_grade=2 order by m_id";
+				pstmt = con.prepareStatement(sql);
+				
+				rs = pstmt.executeQuery();
+
+				while(rs.next()) {
+					MemberBean memberBean = new MemberBean();
+					
+					memberBean.setM_id(rs.getString("m_id"));
+					memberBean.setM_pass(rs.getString("m_pass"));
+					memberBean.setM_name(rs.getString("m_name"));
+					memberBean.setM_id_num1(rs.getInt("m_id_num1"));
+					memberBean.setM_id_num2(rs.getInt("m_id_num2"));	
+					memberBean.setM_grade(rs.getInt("m_grade"));
+					memberBean.setM_pay(rs.getInt("m_pay"));
+					memberBean.setM_reg_date(rs.getDate("m_reg_date"));
+					
+					
+					vipMemberList.add(memberBean);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
+				if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+				if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+			}
+			return vipMemberList;
+		}//getVipMemberList
+		
+		
 }

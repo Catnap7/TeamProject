@@ -44,8 +44,8 @@
 
 	<!-- 수정/삭제 버튼 -->
 	<div class="btn">
-		<a href="./VipMovieModify">수정</a>
-		<a href="./VipMovieDelete">삭제</a>
+		<a href="./VipMovieModify.vi?v_num=<%=vipbean.getV_num()%>">수정</a>
+		<a href="./VipMovieDelete.vi?v_num=<%=vipbean.getV_num()%>">삭제</a>
 	</div>
 	<!-- 수정/삭제 버튼 -->
 	

@@ -17,18 +17,28 @@ public class VipMovieModifyAction implements Action {
 		VipDAO vipdao = new VipDAO();
 		VipBean vipbean = new VipBean();
 		
-		vipbean.setCategory(request.getParameter("category"));
-		vipbean.setName(request.getParameter("name"));
-		vipbean.setPrice(Integer.parseInt(request.getParameter("price")));
-		vipbean.setColor(request.getParameter("color"));
-		vipbean.setAmount(Integer.parseInt(request.getParameter("amount")));
+		vipbean.setV_kor_title(request.getParameter("v_kor_title"));
+		vipbean.setV_eng_title(request.getParameter("v_eng_title"));
+		vipbean.setV_year(Integer.parseInt(request.getParameter("v_year")));
+		vipbean.setV_country(request.getParameter("v_country"));
+		vipbean.setV_age(Integer.parseInt(request.getParameter("v_age")));
 		
-		vipbean.setSize(request.getParameter("size"));
-		vipbean.setBest(Integer.parseInt(request.getParameter("best")));
-		vipbean.setContent(request.getParameter("content"));
-		vipbean.setNum(Integer.parseInt(request.getParameter("num")));
+		vipbean.setV_genre(request.getParameter("v_genre"));
+		vipbean.setV_time(Integer.parseInt(request.getParameter("v_time")));
+		vipbean.setV_director(request.getParameter("v_director"));
+		vipbean.setV_actor(request.getParameter("v_actor"));
+		vipbean.setV_story(request.getParameter("v_story"));
 		
-		vipdao.VipMo(vipbean);
+		vipbean.setV_video(request.getParameter("v_video"));
+		vipbean.setV_date(request.getParameter("v_date"));
+		vipbean.setV_when(request.getParameter("v_when"));
+		
+		vipbean.setV_critic_1_by(request.getParameter("v_critic_1_by"));
+		vipbean.setV_critic_1(request.getParameter("v_critic_1"));
+		vipbean.setV_critic_2_by(request.getParameter("v_critic_2_by"));
+		vipbean.setV_critic_2(request.getParameter("v_critic_2"));
+			
+		vipdao.modifyVipMovie(vipbean);
 		
 		
 		//이동

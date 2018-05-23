@@ -29,7 +29,7 @@ String id = (String)session.getAttribute("m_id");
 
 <section class="left">
 
-</section>
+</section> 
 
 <article>
 <h1>룰렛을 돌려서 쿠폰을 획득해보아요~</h1>
@@ -50,9 +50,9 @@ String id = (String)session.getAttribute("m_id");
 <div id="result_id8"></div> -->
 </article>
 
-<section class="right">
+ <section class="right">
 
-</section>
+</section> 
 
 <div class="clear"></div>
 </body>
