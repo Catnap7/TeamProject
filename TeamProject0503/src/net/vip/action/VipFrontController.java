@@ -91,7 +91,30 @@ public class VipFrontController extends HttpServlet{
 		         } catch (Exception e) {
 		            e.printStackTrace();
 		         }
+		}else if(command.equals("/VipMovieModify.vi")){
+		  	action = new VipMovieModify();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		}else if(command.equals("/VipMovieModifyAction.vi")){
+		  	action = new VipMovieModifyAction();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		}else if(command.equals("/VipMovieDelete.vi")){
+		  	action = new VipMovieDelete();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
 		}
+		
+		
 		
 		
 		

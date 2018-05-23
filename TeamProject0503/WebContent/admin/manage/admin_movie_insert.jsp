@@ -5,7 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-<title>Insert title here</title>
+<title>왓츄 영화 DB입력</title>
+
+<!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
 

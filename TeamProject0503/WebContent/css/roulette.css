@@ -2,14 +2,14 @@
 .clear{clear:both;}
 
 body{ /* border: solid red; */
-	
 }
 
 article{/* border: solid red; */
 	margin: 100px auto;
-padding:50px;
-width:600px;
-float: left;
+	padding:50px;
+	width:600px;
+	float: left;
+	
 }
 
 h1{/* border: solid red; */
@@ -48,10 +48,10 @@ letter-spacing: 23px;
 text-align: center;
 }
 
-body section.left{
+ body section.left{
 	background-image:url("../images/left.jpg");
 	background-repeat:no-repeat;
-	/* background-color:#333; */	
+	background-color:#333;	
 	float:left;
 	height: 851px;
 	width:599px;
@@ -60,8 +60,8 @@ body section.left{
 body section.right{
 	background-image:url("../images/right.jpg");
 	background-repeat:no-repeat;
-	/* background-color:#333; */	
+	background-color:#333;	
 	float:left;
 	height: 851px;
 	width:600px;
-}
+} 
