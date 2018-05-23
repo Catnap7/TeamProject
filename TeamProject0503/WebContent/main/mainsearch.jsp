@@ -35,7 +35,7 @@ $(document).ready(function(){
 	
 	var $container = 1720; 
 	/* var length=$(".searchTitle .mv").size();   */
-	var $count =13; /* 영화개수 */ 
+	var $count =20; /* 영화개수 */ 
 	/* var count =$(".mv").length; */
 	/* var $container = count*344; */
 	var $display = 5;
