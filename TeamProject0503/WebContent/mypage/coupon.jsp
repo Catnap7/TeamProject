@@ -62,9 +62,9 @@ if(count == 0){
 %>
 </table>
 	
-	</div>
-<%-- <%
-if(couponlist != null){
+	
+<%
+if(count != 0){
 %>	
 	 <div class="prev_next">
 		<%
@@ -78,10 +78,11 @@ if(couponlist != null){
 			%><a href="./Coupon.my?pageNum=<%=startPage+pageBlock%>">next</a><%
 		}
 		%>
-	</div>
+	
 <%
 }
-%>	 --%>
+%>
+	</div>	 
 </div>
 
 
