@@ -22,6 +22,7 @@ public class CategoryMovie_InfoAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("CategoryMovie_InfoAction execute()");
 		request.setCharacterEncoding("utf-8");
 		HttpSession session= request.getSession();
 		String id=(String)session.getAttribute("m_id");
@@ -58,6 +59,8 @@ public class CategoryMovie_InfoAction implements Action{
 //		List reviewList = reviewdao.getReview(mv_num);
 //				
 //		request.setAttribute("reviewList", reviewList);
+		String order = request.getParameter("order");
+		System.out.println(order);
 		
 		int count = reviewdao.getReviewCount(mv_num);
 		int pageSize = 10;
@@ -91,9 +94,21 @@ public class CategoryMovie_InfoAction implements Action{
 			if(pageCount<endPage){
 				endPage=pageCount;
 			}
-			vector = reviewdao.getReview(mv_num, startRow, pageSize);
-			reviewList = (List)vector.get(0);
-			memberName = (List)vector.get(1);
+			
+			if(order == null) {
+				vector = reviewdao.getReview(mv_num, startRow, pageSize);
+				reviewList = (List)vector.get(0);
+				memberName = (List)vector.get(1);
+			}else if(order.equals("newest")) {
+				vector = reviewdao.dateSortReview(mv_num, startRow, pageSize);
+				reviewList = (List)vector.get(0);
+				memberName = (List)vector.get(1);
+			}else if(order.equals("recommend")) {
+				vector = reviewdao.getReview(mv_num, startRow, pageSize);
+				reviewList = (List)vector.get(0);
+				memberName = (List)vector.get(1);
+			}
+			
 		}
 		
 		request.setAttribute("reviewList", reviewList);
@@ -105,7 +120,6 @@ public class CategoryMovie_InfoAction implements Action{
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("count", count);
 		// 리뷰
-		
 		
 		ActionForward forward = new ActionForward();
 	  	forward.setPath("./category/movie_info.jsp");

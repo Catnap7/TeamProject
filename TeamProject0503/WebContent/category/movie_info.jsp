@@ -376,11 +376,17 @@ $(document).ready(function(){
       <a href="#" class="next"><img alt="다음 이미지" src="./images/info_arrow_right.png" class="next"></a>
      </div>
    </div>
-            
+
    <!--댓글   -->
    <div class="coment">
    <hr>
-   <a>추천순</a> | <a class="date_sort">최신순</a>
+<!--    <a id="recommend_sort">추천순</a> | <a id="date_sort">최신순</a> -->
+		<a id="rec"></a><a id="new"></a>
+		<div class="sort_wrap">
+		<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>&order=recommend#rec" class="sort_btn">추천순</a>
+		<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>&order=newest#new" class="sort_btn">최신순</a>
+		</div>
+   
      <!--댓글 쓰는 란  -->
      <form action="./InsertReview.ca" class="coment_write">
        <textarea cols="90" rows="7" value placeholder="영화를 어떻게 보셨나요?" name="r_content"></textarea>
@@ -403,7 +409,7 @@ $(document).ready(function(){
         %>
          <table>
            <tr>
-             <td>아직 등록된 리뷰가 없어요.</td>
+             <td class="review_none">아직 등록된 리뷰가 없어요.</td>
            </tr>
          </table>
          <%
@@ -419,13 +425,13 @@ $(document).ready(function(){
                 <td class="c_name"><%=memberbean.getM_name() %></td>
               </tr>
               <tr>
-                <td><%=reviewbean.getR_content() %></td>
+                <td class="review_content"><%=reviewbean.getR_content() %></td>
               </tr>
               <tr>
-                <td>추천 <%=reviewbean.getR_recommand() %> / 신고 <%=reviewbean.getR_report() %></td>
+                <td class="review_sub">추천 <%=reviewbean.getR_recommand() %> / 신고 <%=reviewbean.getR_report() %></td>
               </tr>
               <tr>
-                <td><%=reviewbean.getR_date() %></td>
+                <td class="review_sub"><%=reviewbean.getR_date() %></td>
               </tr>
 <!--               본인이면  (수정 삭제) 보이기 본인이 아니면 (추천 신고) 보이기  -->
             <%
@@ -444,8 +450,8 @@ $(document).ready(function(){
                     <td>
 <%--                     <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>&r_id=<%=reviewbean.getR_id() %>">추천</a> |  --%>
 					
-                    <a id="recommend<%=reviewbean.getR_num() %>">추천</a> |
-                    <a id="report<%=reviewbean.getR_num() %>">신고</a>
+                    <a id="recommend<%=reviewbean.getR_num() %>"><img alt="추천" src="./images/recommend.PNG" style="width: 40px; height: 40px; border-radius: 30px;" title="추천"></a>
+                    <a id="report<%=reviewbean.getR_num() %>"><img alt="신고" src="./images/report.PNG" style="width: 40px; height: 40px; border-radius: 30px;" title="신고"></a>
 <%--                     <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">신고</a> --%>
                     
                     <input type="hidden" id="r_num<%=reviewbean.getR_num() %>" value="<%=reviewbean.getR_num() %>">

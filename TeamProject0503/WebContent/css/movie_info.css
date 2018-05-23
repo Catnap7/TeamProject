@@ -167,8 +167,25 @@ div.star {
    margin-bottom: 40px;
 }
 
+.coment .sort_wrap {
+/* 	border: 1px solid blue; */
+	width: 300px;
+	margin-left: 50px;
+	margin-bottom: 20px;
+}
+
+.coment .sort_btn {
+	border: 1px solid #c0c0c0;
+	font-size: 18px;
+	padding: 10px;
+	text-decoration: none;
+	color: #333;
+	margin-right: 5px;
+	border-radius: 5px;
+}
+
 .coment form {
-/*    border: 1px solid blue; */
+   
    width: 1100px;
    margin: 0 auto;
 }
@@ -176,6 +193,8 @@ div.star {
 .coment form textarea {
    font-size: 18px;
    margin-bottom: 20px;
+   margin-right: 10px;
+   width: 950px;
 }
 
 .coment form input {
@@ -185,6 +204,7 @@ div.star {
    background-color: #50d4aa;
    font-size: 18px;
    color: #333;
+   border-radius: 15px;
 }
 
 .coment table {
@@ -201,18 +221,37 @@ div.star {
    color: #333;
 }
 
+.coment table .review_none {
+   text-align: center;
+   font-size: 20px;
+   color: gray;
+}
+
 .coment table .c_name {
    font-weight: bold;
+}
+
+.coment table .review_content {
+	padding: 30px 5px;
+}
+
+.coment table .review_sub {
+	font-size: 16px;
 }
 
 .coment table td a {
    text-decoration: none;
    cursor: pointer;
-   color: #333;   
+   color: #333;
 }
 
 .coment table td a:HOVER {
    color: red;
+}
+
+.coment table td img {
+	border: 1px solid #c0c0c0;
+	margin-right: 10px;
 }
 
 hr.coment_sec {
