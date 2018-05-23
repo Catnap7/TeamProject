@@ -46,6 +46,7 @@
 				</tr>
 				<tr>
 					<td><input type="submit" value="등록"></td>
+					<td><button type="button" onclick="history.back()">돌아가기</button></td>
 				</tr>
 			</table>
 		</form>

@@ -38,6 +38,7 @@ public class Main implements Action{
 		List<MovieBean>Mostcount = mdao.mostCountGenre(id);
 		List<MovieBean>Bestrating = mdao.mostAvgGenre(id);
 		List<MovieBean>Bestmovie = mdao.bestMovie();
+		List<MovieBean>adminSelectMovieList = mdao.adminSelectMovie();
 		
 		request.setAttribute("id", id);
 		request.setAttribute("favoritelist", favoritelist);
@@ -45,6 +46,7 @@ public class Main implements Action{
 		request.setAttribute("Mostcount", Mostcount);
 		request.setAttribute("Bestrating", Bestrating);
 		request.setAttribute("Bestmovie", Bestmovie);
+		request.setAttribute("adminSelectMovieList", adminSelectMovieList);
 		
 //		매일 자정마다 리셋 실행시키는 메소드
 //		System.out.println("리셋 메소드 실험 시작");

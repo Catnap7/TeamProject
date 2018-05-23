@@ -49,14 +49,14 @@ public class AdminManageFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/AdminMemberSearch.am")) {
+		}/*else if(command.equals("/AdminMemberSearch.am")) {
 			action = new AdminMemberSearch();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/AdminMemberSort.am")) {
+		}*/else if(command.equals("/AdminMemberSort.am")) {
 			action = new AdminMemberSort();
 			try {
 				forward = action.execute(request, response);

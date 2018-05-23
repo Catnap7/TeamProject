@@ -6,17 +6,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<title>Insert title here</title>
+<title>당신의 모든 영화, 세상의 모든 취향 : 왓츄</title>
+
+<!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/rating.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./css/ratingStar.css">
 
+<!-- 웹 폰트 : 나눔고딕 / Do Hyeon/ Abril Fatface -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Do+Hyeon|Abril+Fatface" rel="stylesheet">
+
+<!-- JQuery -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="./js/rating.js"></script>
+
+<!-- icon -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
 
@@ -37,7 +45,7 @@ List movielist=(List)request.getAttribute("movielist");
 %>
 
 <%
-if(movielist!=null){
+if(movielist.size()!=0)
 for(int i=0;i<movielist.size();i++){
 	
 	
@@ -101,9 +109,15 @@ for(int i=0;i<movielist.size();i++){
 				<%-- <div><%=age %>	</div> --%>
 			</div>
 		</div>
-
 <%
-}
+}else{
+	%>
+	<div id="noMoreMovie"><p><i class="material-icons" style="font-size:48px;">warning</i></p><br>
+		<p>더 이상 평가할 영화가 남지 않았습니다</p><br><br><br>
+		<p>당신이 진정한 무비 매니아!</p><br><br>
+		<p><img src="./images/champ.png" width="140px" height="140px"></p>
+	</div>
+	<%
 }
 %>
 		<div class="movie_refresh">

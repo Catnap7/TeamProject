@@ -48,6 +48,27 @@ public class AdminNoticeFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/AdminNoticeDelete.an")) {
+			action = new AdminNoticeDelete();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/AdminNoticeUpdate.an")) {
+			action = new AdminNoticeUpdate();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/AdminNoticeUpdateAction.an")) {
+			action = new AdminNoticeUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 			

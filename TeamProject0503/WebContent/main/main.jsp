@@ -20,7 +20,6 @@
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <script type="text/javascript">
 
-
 $(document).ready(function(){
 	
 	/***변수선언***/
@@ -291,6 +290,7 @@ if(favoritecount>=13){
 List<MovieBean>Mostcount = (List)request.getAttribute("Mostcount");
 List<MovieBean>Bestrating = (List)request.getAttribute("Bestrating");
 List<MovieBean>Bestmovie = (List)request.getAttribute("Bestmovie");
+List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMovieList");
 %>
 
 
@@ -565,27 +565,63 @@ List<MovieBean>Bestmovie = (List)request.getAttribute("Bestmovie");
 	
 <!-- 왓츄 관리자가 추천하는 영화 -->
   	<div class="container">  <!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  		
-  		<h2>왓츄 영화 전문가 PICK!</h2>
+  		<h2>왓츄가 추천해요!</h2>
 		<div class="slider adminPick">
 			<!--for문으로 반복 하시면 됩니다-->
+		<%for(MovieBean moviebean  : adminSelectMovieList){
+		  		
+		/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/
+		String img_genre= "";
+		if(moviebean.getMv_genre().equals("animation")){
+			img_genre="animation";
+		}else if(moviebean.getMv_genre().equals("comedy")){
+			img_genre="comedy";
+		}else if(moviebean.getMv_genre().equals("indie")){
+			img_genre="indie";
+		}else if(moviebean.getMv_genre().equals("sf")){
+			img_genre="sf";
+		}else if(moviebean.getMv_genre().equals("action")){
+			img_genre="action";
+		}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
+			img_genre="thriller";
+		}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
+			img_genre="romance";
+		}
+		
+
+		String age = "";
+		if(moviebean.getMv_age()==0){
+			age = "전체이용가";
+		}else if(moviebean.getMv_age()==12){
+			age = "12세이용가";
+		}else if(moviebean.getMv_age()==15){
+			age="15세이용가";
+		}else if(moviebean.getMv_age()==19){
+			age="청소년이용불가";
+		}
 		
 		
-			<a href="#"><div class="mv">
-						<img src="../images/sf/pixel_s2.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-						<span class="mv_title"><%="픽셀"%></span><!-- DB에서 가져온 한글제목으로 대체해 주세요 --> 
-						<span class="mv_year"><%="2016"%></span><!-- 년도 -->
-						<span class="mv_grade"><%="12"%></span><!-- 등급 -->
-						<span class="mv_time"><%="116"%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
-						</div>
+		String moviename = moviebean.getMv_eng_title();
+		String imgname = moviename.replaceAll(" " , "");
+ 		imgname = imgname.replaceAll("\\p{Z}", "");%>
+		
+		
+			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><div class="mv">
+							<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+							<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
+							<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
+							<span class="mv_grade"><%=age%></span><!-- 등급 -->
+							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+							</div>
 			</a>
-			<!--for문 여기까지 -->						
+			<!--for문 여기까지 -->	
+			<%}%>						
     	</div><!-- slider -->
 	</div><!-- container -->
 		<div>
 			<div class="prev5 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>
 			<div class="next5 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->
-
 	
 </article>
 <!-- 아티클 영역 끝 -->

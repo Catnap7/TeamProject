@@ -61,8 +61,10 @@ if(m_grade==1 || m_grade==0){
 	grade="준회원";
 	%>
 	<div class="gradeInfo">
-		<p><%="회원님의 등급은 "%><span><%=grade%></span><%="입니다"%><br><br>
-		<span><a href=".info">VIP혜택을 알아보세요</a></span></p>
+		<p><%="회원님의 등급은 "%><br>
+		<span><%=grade%></span><br>
+		<%="입니다"%><br><br>
+		<a href="#whoIsVip">VIP혜택을 알아보세요</a></p>
 	</div>
 <%}else if(m_grade==2){
 	grade="VIP";
@@ -71,14 +73,14 @@ if(m_grade==1 || m_grade==0){
 		<p><%="회원님의 등급은 "%><br>
 		<span><%=grade%></span><br>
 		<%="입니다"%><br><br>
-		<a href="./Vip.vi">VIP시사회 예매하기</a></p>
+		<a href="./Vip.vi">VIP시사회</a></p>
 	</div>
 <%} %>
 
 
 <div class="crown"><img src="./images/crown.png" width="80px" height="70px"></div>
 
-<section class="whoIsVip">
+<section class="whoIsVip" id="whoIsVip">
 		<p>who is watchu vip?</p>
 		<p>한달에 한번!<br>
 			가장 많은 <span>WHACHU 리뷰추천</span>을 받은<br>

@@ -48,6 +48,10 @@ public class Vip implements Action{
 		request.setAttribute("VipSeatTakenList", VipSeatTakenList);
 		
 		
+		//VipSeatTakenListCheck
+		int check=vipresdao.VipSeatTakenListCheck(m_id);
+		
+		vipresbean=vipresdao.getYourSeat(m_id);
 		
 		//이동 
 		ActionForward forward= new ActionForward();

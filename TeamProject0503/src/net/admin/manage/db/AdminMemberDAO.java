@@ -21,7 +21,44 @@ public class AdminMemberDAO {
 		Connection con=ds.getConnection();		
 		return con;
 	}
+	
+	public List<MemberBean> getAdminMemberSearch(String searchValue) {
+		List<MemberBean> lmb = new ArrayList<MemberBean>();
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = getConnection();
+			sql = "select * from member where m_id LIKE ? or m_name LIKE ? or m_grade LIKE ? order by m_reg_date asc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchValue+"%");
+			pstmt.setString(2, "%"+searchValue+"%");
+			pstmt.setString(3, "%"+searchValue+"%");
+			rs = pstmt.executeQuery();
 
+			while(rs.next()) {
+				MemberBean memberBean = new MemberBean();
+				memberBean.setM_grade(rs.getInt("m_grade"));
+				memberBean.setM_id(rs.getString("m_id"));
+				memberBean.setM_id_num1(rs.getInt("m_id_num1"));
+				memberBean.setM_id_num2(rs.getInt("m_id_num2"));
+				memberBean.setM_name(rs.getString("m_name"));
+				memberBean.setM_pass(rs.getString("m_pass"));
+				memberBean.setM_pay(rs.getInt("m_pay"));
+				memberBean.setM_reg_date(rs.getDate("m_reg_date"));
+				lmb.add(memberBean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+		}
+		return lmb;
+	}//End getAdminMemberSearch
+	
 	public List<MemberBean> getAdminMemberList(int startRow, int pageSize) {
 		List<MemberBean> lmb = new ArrayList<MemberBean>();
 		Connection con = null;
@@ -103,7 +140,7 @@ public class AdminMemberDAO {
 		PreparedStatement pstmt = null;
 		try {
 			con = getConnection();
-			sql = "delete from member where m_id=?";
+			sql = "delete from member where m_id=? on cascade";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();

@@ -19,7 +19,7 @@ public class VipBean {
 	String v_critic_1;
 	String v_critic_2_by;
 	String v_critic_2;
-	
+	int v_readcount;
 	
 	public int getV_num() {
 		return v_num;
@@ -129,6 +129,12 @@ public class VipBean {
 	}
 	public void setV_critic_2(String v_critic_2) {
 		this.v_critic_2 = v_critic_2;
+	}
+	public int getV_readcount() {
+		return v_readcount;
+	}
+	public void setV_readcount(int v_readcount) {
+		this.v_readcount = v_readcount;
 	}
 	
 	

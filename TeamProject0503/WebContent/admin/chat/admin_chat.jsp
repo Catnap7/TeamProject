@@ -29,42 +29,17 @@ Date now = new Date();
                      <div class="clearfix"></div>
                   </div>
                   <div id="chat" class="pannel-collapse collapse in">
-                     <div class="portlet-body chat-widget"
-                        style="overflow-y: auto; width: auto; height: 300px;">
+                     <div class="portlet-body chat-widget">
+
+                        style="overflow-y: hidden; width: auto; height: auto;">
                         <div class="row">
                            <div class="col-lg-12">
                               <p class="text-center text-muted small"><%=now %></p>
                            </div>
                         </div>
-                        <div class="row">
-                        <textarea id="messageWindow" rows="10" cols="50" readonly="true"></textarea>
-                           <!-- 한명의 대화 공간 -->
-                           <div class="col-lg-12">
-                              <div class="media">
-                                 <div class="media-body">
-                                    <h4 class="media-heading">홍길동 <span class="small pull-right">오후 13:26</span></h4>
-                                 </div>
-                                 <br>
-                                 <p id="messageWindow"></p>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- 한명의 대화 공간 -->
-                        <hr>
-                        <div class="row">
-                           <!-- 한명의 대화 공간 -->
-                           <div class="col-lg-12">
-                              <div class="media">
-                                 <div class="media-body">
-                                    <h4 class="media-heading">이순신 <span class="small pull-right">오후 13:28</span></h4>
-                                 </div>
-                                 <br>
-                                 <p>네 오랜만입니다.^^ 이순신입니다.~</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                        <!-- 한명의 대화 공간 -->
+
+                        <div class="row" style="height: 500px">
+                        <textarea id="messageWindow" rows="10" cols="50" readonly="true" style="width:100%;height:100%;"></textarea>
                         <div class="portlet-footer">
                            <!-- 이름 입력창 -->
                            <div class="row">
@@ -95,32 +70,32 @@ Date now = new Date();
          //서버 컴퓨터의 경로를 설정해주어야함
          var webSocket = new WebSocket('ws://192.168.2.12:8080/TeamProject0503/AdminChatAction'); 
          var inputMessage = document.getElementById('inputMessage'); 
-     webSocket.onerror = function(event) { 
+     webSocket.onerror = function(event) {
        onError(event) 
      }; 
   
-     webSocket.onopen = function(event) { 
+     webSocket.onopen = function(event) {
        onOpen(event) 
      }; 
   
-     webSocket.onmessage = function(event) { 
-       onMessage(event) 
+     webSocket.onmessage = function(event) {
+       onMessage(event)
      }; 
   
-     function onMessage(event) { 
-    	 textarea.value += "상대 : " + event.data + "\n";
+     function onMessage(event) {
+    	 textarea.value += "\n" + "'<span>'상대'</span>'"+ "\n" + "\n" + event.data + "\n";
+     }
+  
+     function onOpen(event) {
+         textarea.value += "채팅방에 입장하였습니다.\n";
      } 
   
-     function onOpen(event) { 
-         textarea.value += "채팅방에 입장하였습니다.\n"; 
-     } 
-  
-     function onError(event) { 
+     function onError(event) {
        alert(event.data); 
-     } 
+     }
   
-     function send() { 
-    	 textarea.value += "나 : " + inputMessage.value + "\n"; 
+     function send() {
+    	 textarea.value += "\n" + "나 " + "\n" + "\n" + inputMessage.value + "\n"; 
          webSocket.send(inputMessage.value); 
          inputMessage.value = ""; 
      } 

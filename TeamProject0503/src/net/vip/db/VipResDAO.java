@@ -43,8 +43,8 @@ public class VipResDAO {
 		}catch(Exception e) {
 			e.printStackTrace();	
 		}finally{
-			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){};
-			if(con!=null)try{con.close();}catch(SQLException ex){};
+			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
+			if(con!=null)try {con.close();}catch(SQLException ex) {};
 		}
 	}//insertVipRes
 
@@ -116,7 +116,111 @@ public class VipResDAO {
 
 	
 	
+	//VipSeatTakenListCheck
+	public int VipSeatTakenListCheck(String m_id) {
+		int check =0;
+		Connection con=null;
+		String sql =null;
+		PreparedStatement pstmt =null;
+		ResultSet rs =null;
+		try {
+			con=getConnection();
+			
+		sql="select * from vip_reservation where vr_id = ?";
+		 pstmt= con.prepareStatement(sql);
+		pstmt.setString(1, m_id);
+		 rs= pstmt.executeQuery();
+		if(rs.next()){
+			if(m_id.equals(rs.getString("vr_id"))){
+				check=1;
+			}else {
+				check=0;
+			}
+		
+		}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();}catch(SQLException ex) {};
+			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
+			if(con!=null)try {con.close();}catch(SQLException ex) {};
+			
+		}return check;
+	}//VipSeatTakenListCheck
 	
+	
+	
+	//getYourSeat
+		public VipResBean getYourSeat(String m_id){
+			VipResBean vipresbean=null;
+			Connection con=null;
+			String sql="";
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			try{
+				con=getConnection();
+				sql="select*from vip_reservation where vr_id=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1,m_id);
+				
+				rs=pstmt.executeQuery();
+				
+				if(rs.next()){
+					vipresbean=new VipResBean();
+					vipresbean.setVr_id(m_id);
+					vipresbean.setVr_seat_num(rs.getString("vr_seat_num"));
+
+				}	
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				if(rs!=null)try {rs.close();}catch(SQLException ex) {};
+				if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
+				if(con!=null)try {con.close();}catch(SQLException ex) {};
+			}
+			return vipresbean;
+		}
+	
+		//deleteMember(String id,String pass)
+				public void deleteRes(String m_id, String vr_seat_num){
+					Connection con=null;
+					String sql="";
+					PreparedStatement pstmt=null;
+					try {
+						//1 드라이버로더			//2 디비연결
+						con=getConnection();
+						//3
+						sql="delete from vip_reservation where vr_id=? and vr_seat_num=?";
+						pstmt=con.prepareStatement(sql);
+						pstmt.setString(1, m_id);
+						pstmt.setString(2, vr_seat_num);
+						//4
+						pstmt.executeUpdate();
+						
+						
+						sql="update vip_seat set v_seatSelected=0, v_num=0 where v_seatNum=?";
+						pstmt=con.prepareStatement(sql);
+						pstmt.setString(1, vr_seat_num);
+						//4
+						pstmt.executeUpdate();
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}finally{
+						//예외가 발생하든말든 마무리작업 => 기억장소 정리
+						if(pstmt!=null){
+							try{ 
+								pstmt.close();
+							}catch(SQLException ex)
+							{
+								
+							}
+						}
+						if(con!=null)try{con.close();}catch(SQLException ex){};
+					}
+				}
 	
 	
 	
