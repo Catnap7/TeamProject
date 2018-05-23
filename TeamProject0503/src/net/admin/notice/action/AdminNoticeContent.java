@@ -13,7 +13,6 @@ public class AdminNoticeContent implements Action {
 		System.out.println("AdminNoticeContent execute()"); 
 		
 		int n_num = Integer.parseInt(request.getParameter("n_num"));
-		System.out.println("n_num : " +n_num);
 		NoticeDAO ndao = new NoticeDAO();
 		NoticeBean noticebean = ndao.getAdminNoticeContent(n_num);
 		

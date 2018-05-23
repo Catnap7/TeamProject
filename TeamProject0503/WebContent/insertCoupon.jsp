@@ -23,7 +23,7 @@ String c_end_day=date.format(cal.getTime()).toString();
 
 CouponBean cb = new CouponBean();
 cb.setC_id("wahchu"); //아이디값 넣기
-cb.setC_name(0); // 0 : 50%할인쿠폰, 1 : 100%할인쿠폰, 2: vip할인쿠폰
+cb.setC_name(0); // 0 : 10%할인쿠폰, 1 : 50%할인쿠폰, 2 : 100%할인쿠폰, 3 : vip할인쿠폰
 cb.setC_end_day(c_end_day);
 
 CouponDAO cdao = new CouponDAO();

@@ -153,6 +153,14 @@
     <servlet-name>AdminNoticeFrontController</servlet-name>
     <url-pattern>*.an</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>RouletteFrontController</servlet-name>
+    <servlet-class>net.roulette.action.RouletteFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RouletteFrontController</servlet-name>
+    <url-pattern>*.ro</url-pattern>
+  </servlet-mapping>
   <resource-ref>
     <description>dkd</description>
     <res-ref-name>jdbc/Mysql</res-ref-name>
