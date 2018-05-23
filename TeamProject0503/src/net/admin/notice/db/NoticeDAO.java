@@ -23,6 +23,76 @@ public class NoticeDAO {
 		return con;
 	}
 	
+	public void NoticeUpdateInsert(NoticeBean noticebean, int n_num) {
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;	
+		try {		
+			con = getConnection();
+			sql = "update notice set n_subject= ?, n_content= ?, n_file= ?, n_image= ? where n_num= ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, noticebean.getN_subject());
+			pstmt.setString(2, noticebean.getN_content());
+			pstmt.setString(3, noticebean.getN_file());
+			pstmt.setString(4, noticebean.getN_image());
+			pstmt.setInt(5, n_num);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}						
+		}
+	}
+
+	public NoticeBean NoticeUpdate(int n_num) {
+		NoticeBean noticebean = null;
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;		
+		try {
+			con = getConnection();
+			sql = "select * from notice where n_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, n_num);
+			rs = pstmt.executeQuery();
+			rs.next();
+			noticebean = new NoticeBean();
+			noticebean.setN_content(rs.getString("n_content"));
+			noticebean.setN_date(rs.getDate("n_date"));
+			noticebean.setN_file(rs.getString("n_file"));
+			noticebean.setN_image(rs.getString("n_image"));
+			noticebean.setN_num(rs.getInt("n_num"));
+			noticebean.setN_subject(rs.getString("n_subject"));				
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+		}
+		return noticebean;
+	}
+
+	public void NoticeDelete(int n_num) {
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			sql = "delete from notice where n_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, n_num);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+		}
+	}
+
 	public void NoticeInsert(NoticeBean nb) {
 		Connection con = null;
 		String sql = "";
@@ -44,7 +114,7 @@ public class NoticeDAO {
 			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}			
 		}
 	}
-	
+
 	public int getAdminNoticeCount(){
 		Connection con = null;
 		String sql = "";
@@ -67,7 +137,7 @@ public class NoticeDAO {
 		}
 		return count;
 	}//End getAdminNoticeCount()
-	
+
 	public List<NoticeBean> getAdminNoticeList(int startRow, int pageSize) {
 		List<NoticeBean> lnb = new ArrayList<NoticeBean>();
 		Connection con = null;
@@ -101,7 +171,7 @@ public class NoticeDAO {
 		}
 		return lnb;
 	}//End getAdminNoticeList
-	
+
 	public List<NoticeBean> getAdminNoticeList() {
 		List<NoticeBean> lnb = new ArrayList<NoticeBean>();
 		Connection con = null;
@@ -133,7 +203,7 @@ public class NoticeDAO {
 		}
 		return lnb;
 	}//End getAdminNoticeList
-	
+
 	public NoticeBean getAdminNoticeContent(int n_num) {
 		NoticeBean noticebean = new NoticeBean();
 		Connection con = null;
@@ -146,7 +216,7 @@ public class NoticeDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, n_num);
 			rs = pstmt.executeQuery();
-			
+
 			if(rs.next()) {
 				noticebean.setN_content(rs.getString("n_content"));
 				noticebean.setN_date(rs.getDate("n_date"));
@@ -165,8 +235,8 @@ public class NoticeDAO {
 		}
 		return noticebean;
 	}//End getAdminNoticeContent
-	
 
 
-	
+
+
 }
