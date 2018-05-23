@@ -72,7 +72,7 @@ if(count != 0){
 			%><a href="./Coupon.my?pageNum=<%=startPage-pageBlock%>">prev</a><%
 		}
 		for(int i=startPage;i<=endPage;i++) {
-			%><a href="./Coupon.my?pageNum=<%=i%>"><%=i%></a><%
+			%><a href="./Coupon.my?pageNum=<%=i%>"><span <%if(i==pageNum){%>style=color:red;<%} %>><%=i%></span></a><%
 		}
 		if(pageCount>endPage){
 			%><a href="./Coupon.my?pageNum=<%=startPage+pageBlock%>">next</a><%

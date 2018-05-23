@@ -53,7 +53,7 @@ public class Myrating implements Action{
 
 				int endRow = pageSize*currentPage;
 				int pageCount=0;
-				int pageBlock=2;
+				int pageBlock=3;
 				int startPage=0;
 				int endPage=0;
 				if(count!=0){
