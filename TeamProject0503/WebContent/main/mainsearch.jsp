@@ -34,45 +34,56 @@ $(document).ready(function(){
 	
 	
 	var $container = 1720; 
-	/* var length=$(".searchTitle .mv").size();   */
-	var $count =13; /* 영화개수 */ 
-	/* var count =$(".mv").length; */
-	/* var $container = count*344; */
 	var $display = 5;
 	var $mv = $container/$display;
-	var $mv_mv = ($container/$display)+5;	
-	var $slidebox=($mv*$count)+65; 
+	var $mv_mv = ($container/$display)+5;
+	
+	var $t_count =$(".stitle>img").length; /* 제목별 영화개수 */
+	var $d_count =$(".sdirector>img").length; /* 감독별 영화개수 */
+	var $a_count =$(".sactor>img").length; /* 제목별 영화개수 */
+	
+	var $t_slidebox=($mv_mv*$t_count);  /* 제목별 슬라이더 길이 */
+	var $d_slidebox=($mv_mv*$d_count);  /* 감독별 슬라이더 길이 */
+	var $a_slidebox=($mv_mv*$a_count);  /* 배우별 슬라이더 길이 */
 	
 	
-	
-	
-	console.log($container);
-	console.log($display);
-	console.log($mv);
-	console.log($count);
-	console.log($slidebox);
+		/*마우스 오버시 슬라이더 길이 조정*/
+		 $(".stitle>img").mouseenter(function(){ $('.searchTitle').css('width',$t_slidebox+500);});	 
+		 $(".stitle>img").mouseleave(function(){ $('.searchTitle').css('width',$t_slidebox);});
 
-	
-	/***함수설정***/
-	function init(){
-		console.log('init 함수 시작');
-		$('.container').css('width',$container);
-		$('.slider').css('width',$slidebox);
-		$('.mv').css('width',$mv);
-	 	$('.mv img').css('width',$mv*1.6);
-		$('.mv img').css('height',$mv*1.1);	 	
-	}
-	
-
-
+		 $(".sdirector>img").mouseenter(function(){ $('.searchDirector').css('width',$d_slidebox+500);});	 
+		 $(".sdirector>img").mouseleave(function(){ $('.searchDirector').css('width',$d_slidebox);});
+		 
+		 $(".sactor>img").mouseenter(function(){ $('.searchActor').css('width',$a_slidebox+500);});	 
+		 $(".sactor>img").mouseleave(function(){ $('.searchActor').css('width',$a_slidebox);});
+		 
+		 
+		 
+		 
+	 /***함수설정***/
+		function init(){
+			console.log('init 함수 시작');
+			$('.container').css('width',$container);
+			
+			$('.searchTitle').css('width',$t_slidebox);
+			$('.searchDirector').css('width',$d_slidebox);
+			$('.searchActor').css('width',$a_slidebox);
+			
+			$('.mv').css('width',$mv);
+		 	$('.mv img').css('width',$mv*1.6);
+			$('.mv img').css('height',$mv*1.1);	 	
+		}
+	 
+	 
+	 
 	/****슬라이더 1~3****/
 	function moveSlider1(){
 		var check=$(this).attr('data-btn');
 		
 		if(check==0){
-			$('.searchTitle').animate({left:'+='+$mv_mv},300,slideEnd1)
+			$('.searchTitle').animate({left:'+='+$mv_mv},500,slideEnd1)
 		}else if(check==1){
-			$('.searchTitle').animate({left:'-='+$mv_mv},300,slideEnd1)
+			$('.searchTitle').animate({left:'-='+$mv_mv},500,slideEnd1)
 		}
 	}
 	
@@ -105,7 +116,7 @@ $(document).ready(function(){
 	function slideEnd1(){
 		var nowLeft = $('.searchTitle').position().left;
 		
-		var end = -($slidebox-$container);
+		var end = -($t_slidebox-$container);
 		console.log(nowLeft);
 		console.log(end);
 		
@@ -119,7 +130,7 @@ $(document).ready(function(){
 	function slideEnd2(){
 		var nowLeft = $('.searchDirector').position().left;
 		
-		var end = -($slidebox-$container);
+		var end = -($d_slidebox-$container);
 		console.log(nowLeft);
 		console.log(end);
 		
@@ -133,7 +144,7 @@ $(document).ready(function(){
 	function slideEnd3(){
 		var nowLeft = $('.searchActor').position().left;
 		
-		var end = -($slidebox-$container);
+		var end = -($a_slidebox-$container);
 		console.log(nowLeft);
 		console.log(end);
 		

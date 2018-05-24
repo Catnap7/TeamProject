@@ -360,13 +360,14 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 		String moviename = moviebean.getMv_eng_title();
 		String imgname = moviename.replaceAll(" " , "");
  		imgname = imgname.replaceAll("\\p{Z}", "");%>
- 			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><div class="mv">
-							<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-							<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
-							<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
-							<span class="mv_grade"><%=age%></span><!-- 등급 -->
-							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
-							</div>
+ 			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>">
+ 				<div class="mv">
+					<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+					<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
+					<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
+					<span class="mv_grade"><%=age%></span><!-- 등급 -->
+					<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+				</div>
 			</a> 
 		<%} %> 
 			<!--for문 여기까지 -->			

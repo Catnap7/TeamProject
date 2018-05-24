@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -444,21 +445,25 @@ public class VipDAO {
 		
 		
 		//getVipMemberList
-		public List<MemberBean> getVipMemberList() {
+		public Vector getVipMemberList() {
 			List<MemberBean> vipMemberList = new ArrayList<MemberBean>();
+			List<VipResBean> seatList=new ArrayList<VipResBean>();
+			Vector vector=new Vector();
+			
 			Connection con = null;
 			String sql = "";
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			try {
 				con = getConnection();
-				sql = "select * from member where m_grade=2 order by m_id";
+				sql = "select * from member m join vip_reservation v on m.m_id=v.vr_id	where m_grade=2";
 				pstmt = con.prepareStatement(sql);
 				
 				rs = pstmt.executeQuery();
 
 				while(rs.next()) {
 					MemberBean memberBean = new MemberBean();
+					VipResBean vipresbean=new VipResBean();
 					
 					memberBean.setM_id(rs.getString("m_id"));
 					memberBean.setM_pass(rs.getString("m_pass"));
@@ -468,10 +473,15 @@ public class VipDAO {
 					memberBean.setM_grade(rs.getInt("m_grade"));
 					memberBean.setM_pay(rs.getInt("m_pay"));
 					memberBean.setM_reg_date(rs.getDate("m_reg_date"));
-					
+					vipresbean.setVr_seat_num(rs.getString("vr_seat_num"));
 					
 					vipMemberList.add(memberBean);
+					seatList.add(vipresbean);
 				}
+				
+				vector.add(vipMemberList);
+				vector.add(seatList);
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -479,7 +489,7 @@ public class VipDAO {
 				if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
 				if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
 			}
-			return vipMemberList;
+			return vector;
 		}//getVipMemberList
 		
 		

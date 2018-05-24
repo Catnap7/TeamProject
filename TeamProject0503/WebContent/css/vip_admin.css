@@ -35,6 +35,47 @@
 
 
 
+
+/************** vip관리자 메인 **************/
+
+
+.seatTable{
+	border: 2px solid #333;
+	/* border-collapse: collapse; */
+	/* height:200px; */
+	text-align: center;
+	font-size: 1.2em;
+	display: inline-block;
+	padding: 30px;
+	position: relative;
+	top:0px; left:200px;
+}
+.seatTable td{
+	border:none;
+	width: 70px; height: 90px;
+}
+/* .seatUnselected>label{
+	color:black;
+} */
+td .seatSelected{
+	background-color:gray;
+}
+
+.radio {
+	display: none; 
+}
+
+input:checked + p, .confirm_num{ 
+	background-color:red;
+	color: #000000;
+	font-weight: bold;
+} 
+
+
+
+
+
+
 /************** vip movie db list **************/
 div#content {
 	/* border: 1px solid orange;  */
