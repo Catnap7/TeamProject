@@ -67,8 +67,8 @@
 			<div class="dropdown">
 			    <button class="dropbtn">내 왓츄 페이지</button>
 			    <div class="dropdown-content">
-			     	<a href="">My Watchu</a>
-					<a href="">리뷰 다 보기</a>
+			     	<a href="./MyHome.fa">My Watchu</a>
+					<a href="./TimeLine.fa">리뷰 다 보기</a>
 			    </div>
 	  		</div> 
 	  		<a href="./VipInfo.vi">watchu vip</a>

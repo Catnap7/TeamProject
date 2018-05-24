@@ -7,8 +7,8 @@
 <title>왓츄: My Watchu Page</title>
 
 <!-- CSS -->
-<link href="./css/default.css" rel="stylesheet" type="text/css">
-<link href="./css/myhome.css" rel="stylesheet" type="text/css">
+<link href="../css/default.css" rel="stylesheet" type="text/css">
+<link href="../css/myhome.css" rel="stylesheet" type="text/css">
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
@@ -24,9 +24,9 @@
 <jsp:include page="../inc/header.jsp"/>
 <!-- 헤더 영역 -->
 
-<article>
+<article class="all">
 
-<section class="myInfo">
+<section class="sec myInfo">
 	<div id="profile">
 		<img src="">
 		<p><%="김와츄"%></p><p><%="등급"%></p> <!-- 이름, 등급 가져오기 -->
@@ -47,7 +47,7 @@
 </section><!-- myInfo -->
 
 
-<section class="myReview">
+<section class="sec myReview">
 	<div class="secInfo">
 		<h2><%="김와츄"%>님 의 리뷰</h2>
 		<a href=""><p>리뷰 더 보기</p></a><!-- reviewList.jsp로 가야함 -->
@@ -68,7 +68,7 @@
 	<!-- ↑↑↑↑↑↑↑↑↑↑리뷰 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↑↑↑↑↑↑↑↑↑↑-->	
 </section><!-- myReview -->
 
-<section class="myFavMovie">
+<section class="sec myFavMovie">
 	<div class="secInfo">
 		<h2><%="김와츄"%>님 이 좋아한 영화</h2>
 		<a href=""><p>더 보기</p></a><!-- reviewList.jsp로 가야함 -->
