@@ -22,51 +22,60 @@
 
 $(document).ready(function(){
 	
+	/* alert($(".sd2>img").length); */ 
+	
 	/***변수선언***/
 	var $container = 1720;
 	var $display = 5;
 	var $mv = $container/$display;
-	var $mv_mv = ($container/$display)+5;
-	var $count =13; /* 영화개수 */
-	var $slidebox=($mv*$count)+65; 
+	var $mv_mv = ($container/$display)+5;	
 
+	var $1_count =$(".sd1>img").length;
+	var $2_count =$(".sd2>img").length;
+	var $3_count =$(".sd3>img").length;
+	var $4_count =$(".sd4>img").length;
+	var $5_count =$(".sd5>img").length;
 	
-	console.log($container);
-	console.log($display);
-	console.log($mv);
-	console.log($count);
-	console.log($slidebox);
+	var $1_slidebox=($mv_mv*$1_count);  
+	var $2_slidebox=($mv_mv*$2_count);  
+	var $3_slidebox=($mv_mv*$3_count); 
+	var $4_slidebox=($mv_mv*$4_count);  
+	var $5_slidebox=($mv_mv*$5_count);  
+	
 
+	/*마우스 오버시 슬라이더 길이 조정*/
+	 $(".sd1>img").mouseenter(function(){$('.trending').css('width',$1_slidebox+500);});	 
+	 $(".sd1>img").mouseleave(function(){ $('.trending').css('width',$1_slidebox);});
+
+	 $(".sd2>img").mouseenter(function(){ $('.recommendRating').css('width',$2_slidebox+500);});	 
+	 $(".sd2>img").mouseleave(function(){ $('.recommendRating').css('width',$2_slidebox);});
+	 
+	 $(".sd3>img").mouseenter(function(){ $('.recommendMany').css('width',$3_slidebox+500);});	 
+	 $(".sd3>img").mouseleave(function(){ $('.recommendMany').css('width',$3_slidebox);});
+	 
+	 $(".sd4>img").mouseenter(function(){ $('.wannaWatch').css('width',$4_slidebox+500);});	 
+	 $(".sd4>img").mouseleave(function(){ $('.wannaWatch').css('width',$4_slidebox);});
+	 
+	 $(".sd5>img").mouseenter(function(){ $('.adminPick').css('width',$5_slidebox+500);});	 
+	 $(".sd5>img").mouseleave(function(){ $('.adminPick').css('width',$5_slidebox);});
+	
 	
 	/***함수설정***/
 	function init(){
 		console.log('init 함수 시작');
 		$('.container').css('width',$container);
-		$('.slider').css('width',$slidebox);
+		
+		$('.trending').css('width',$1_slidebox);
+		$('.recommendRating').css('width',$2_slidebox);
+		$('.recommendMany').css('width',$3_slidebox);
+		$('.wannaWatch').css('width',$4_slidebox);
+		$('.adminPick').css('width',$5_slidebox);
+		
 		$('.mv').css('width',$mv);
 	 	$('.mv img').css('width',$mv*1.6);
 		$('.mv img').css('height',$mv*1.1);	 
 	}
 	
-	
-	
-	/* $('.mv img').mouseover(function(){
-		$(this).css('width',$mv*2);
-		$(this).css('height',$mv*1.5);
-	}).mouseout(function(){
-		$(this).css('width',$mv*1.5);
-		$(this).css('height',$mv*1.1);
-	});
- */
- 
- /* $('.mv img').mouseover(function(){
-	$(this).css('width',$mv*2);
-	$(this).css('height',$mv*1.5);
-}).mouseout(function(){
-	$(this).css('width',$mv*1.5);
-	$(this).css('height',$mv*1.1);
-});
-*/
 
 	/****슬라이더 1~5****/
 	function moveSlider1(){
@@ -128,7 +137,7 @@ $(document).ready(function(){
 	function slideEnd1(){
 		var nowLeft = $('.trending').position().left;
 		
-		var end = -($slidebox-$container);
+		var end = -($1_slidebox-$container);
 		console.log(nowLeft);
 		console.log(end);
 		
@@ -142,7 +151,7 @@ $(document).ready(function(){
 	function slideEnd2(){
 		var nowLeft = $('.recommendRating').position().left;
 		
-		var end = -($slidebox-$container);
+		var end = -($2_slidebox-$container);
 		console.log(nowLeft);
 		console.log(end);
 		
@@ -156,7 +165,7 @@ $(document).ready(function(){
 	function slideEnd3(){
 		var nowLeft = $('.recommendMany').position().left;
 		
-		var end = -($slidebox-$container);
+		var end = -($3_slidebox-$container);
 		console.log(nowLeft);
 		console.log(end);
 		
@@ -170,7 +179,7 @@ $(document).ready(function(){
 	function slideEnd4(){
 		var nowLeft = $('.wannaWatch').position().left;
 		
-		var end = -($slidebox-$container);
+		var end = -($4_slidebox-$container);
 		console.log(nowLeft);
 		console.log(end);
 		
@@ -184,7 +193,7 @@ $(document).ready(function(){
 	function slideEnd5(){
 		var nowLeft = $('.adminPick').position().left;
 		
-		var end = -($slidebox-$container);
+		var end = -($5_slidebox-$container);
 		console.log(nowLeft);
 		console.log(end);
 		
@@ -272,11 +281,7 @@ $(document).ready(function(){
 
 <body>
 <%
-
-		String id = (String)request.getAttribute("m_id");
-
-	
-	
+String id = (String)request.getAttribute("m_id");
 
 List<MovieBean> favoritelist = (List)request.getAttribute("favoritelist");
 int favoritecount = ((Integer)request.getAttribute("favoritecount")).intValue();
@@ -316,7 +321,6 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 <!-- 아티클 -->
 <article class=<%=classname%>>
 
-<!-- ***********각 슬라이드에 들어갈 영화는 13개씩 지정해놨습니다********** -->
 <!-- 크롬 기준 -->
 
 <!-- 왓츄에서 인기있는 영화 -->
@@ -343,7 +347,6 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 		}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
 			img_genre="romance";
 		}
-		
 
 		String age = "";
 		if(moviebean.getMv_age()==0){
@@ -355,13 +358,12 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 		}else if(moviebean.getMv_age()==19){
 			age="청소년이용불가";
 		}
-		
-		
+			
 		String moviename = moviebean.getMv_eng_title();
 		String imgname = moviename.replaceAll(" " , "");
  		imgname = imgname.replaceAll("\\p{Z}", "");%>
  			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>">
- 				<div class="mv">
+ 				<div class="mv sd1">
 					<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
 					<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
 					<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
@@ -422,13 +424,14 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 		String moviename = moviebean.getMv_eng_title();
 		String imgname = moviename.replaceAll(" " , "");
  		imgname = imgname.replaceAll("\\p{Z}", "");%>
- 			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><div class="mv">
-							<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-							<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
-							<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
-							<span class="mv_grade"><%=age%></span><!-- 등급 -->
-							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
-							</div>
+ 			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>">
+ 				<div class="mv sd2">
+					<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+					<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
+					<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
+					<span class="mv_grade"><%=age%></span><!-- 등급 -->
+					<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+				</div>
 			</a> 
 		<%} %> 
 			<!--for문 여기까지 -->
@@ -483,13 +486,14 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 		String moviename = moviebean.getMv_eng_title();
 		String imgname = moviename.replaceAll(" " , "");
  		imgname = imgname.replaceAll("\\p{Z}", "");%>
- 			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><div class="mv">
-							<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-							<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
-							<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
-							<span class="mv_grade"><%=age%></span><!-- 등급 -->
-							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
-							</div>
+ 			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>">
+ 					<div class="mv sd3">
+						<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+						<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
+						<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
+						<span class="mv_grade"><%=age%></span><!-- 등급 -->
+						<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+					</div>
 			</a> 
 		<%} %> 
 			<!--for문 여기까지 -->
@@ -544,13 +548,14 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 		String moviename = moviebean.getMv_eng_title();
 		String imgname = moviename.replaceAll(" " , "");
  		imgname = imgname.replaceAll("\\p{Z}", "");%>
- 			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><div class="mv">
-							<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-							<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
-							<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
-							<span class="mv_grade"><%=age%></span><!-- 등급 -->
-							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
-							</div>
+ 			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>">
+ 					<div class="mv sd4">
+						<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+						<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
+						<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
+						<span class="mv_grade"><%=age%></span><!-- 등급 -->
+						<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+					</div>
 			</a> 
 		<%} %> 
 			<!--for문 여기까지 -->
@@ -607,13 +612,14 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
  		imgname = imgname.replaceAll("\\p{Z}", "");%>
 		
 		
-			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><div class="mv">
-							<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-							<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
-							<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
-							<span class="mv_grade"><%=age%></span><!-- 등급 -->
-							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
-							</div>
+			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>">
+					<div class="mv sd5">
+						<img src="./images/<%=img_genre%>/<%=imgname%>_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+						<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
+						<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
+						<span class="mv_grade"><%=age%></span><!-- 등급 -->
+						<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+					</div>
 			</a>
 			<!--for문 여기까지 -->	
 			<%}%>						
