@@ -11,6 +11,10 @@
 }
 
 /*아티클 전체 설정*/
+
+article{
+	border:1px solid red;
+}
 article.main1{
 	height:1800px;
 	width: auto;
