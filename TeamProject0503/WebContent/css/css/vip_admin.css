@@ -5,11 +5,11 @@
 
 /************** 서브메뉴바 **************/
 #menu_bar {
-	/* border:1px solid red;  */
+	/* border:1px solid red; */
 	width: 300px;
-	margin: 140px 50px 0 110px;
+	margin: 220px 50px 0 110px;
 	float: left;
-	font-size: 22px;
+	font-size: 24px;
 }
 
 #menu_bar ul {
@@ -32,138 +32,6 @@
 #menu_bar ul li a:HOVER {
 	opacity: 0.5;
 }
-
-
-
-
-/************** vip관리자 메인 **************/
-
-
-
-/***영화 정보***/
-
-.content{
-	/* border:1px solid green;  */
-	width: 1500px;
-	margin:0 auto;
-	padding:10px;
-}
-
-.movie_title{
-	border-bottom: 2px solid white;
-	font-size: 2em;
-	font-weight: bold;
-	line-height: 1.7em;
-	color:white;
-	margin: 20px auto;
-	padding: 10px 0px 3px 10px;
-}
-.movie_title p{
-	padding-left:50px;
-	font-family: 'Song Myung', serif;
-}
-
-.poster{
-	border:1px solid #333;
-	width:370px;
-	position:relative;
-	top:30px; left:350px;
-	box-shadow:2px 2px #333;
-}
-
-.movie_info{
-	/* border:1px solid white; */
-	color:#b1b1b1;
-	/* text-shadow: 1px 1px #828282; */
-	font-size: 1.2em;
-	line-height: 1.5em;	
-	width:500px; height:200px;
-	position:relative;
-	top:-450px; left:750px;
-}
-.movie_info p:nth-of-type(1){
-	font-size: 1.6em; color:white;
-	padding-bottom:20px;
-	font-family: 'Song Myung', serif;
-}
-.movie_info p:nth-of-type(7){
-	padding-top:30px;
-	font-size: 0.8em;
-}
-
-/**좌석선택**/
-
-.seatTable{
-	border: 2px solid #333;
-	/* border-collapse: collapse; */
-	/* height:200px; */
-	text-align: center;
-	font-size: 1.2em;
-	display: inline-block;
-	padding: 30px;
-	position: relative;
-	top:0px; left:200px;
-}
-.seatTable td{
-	border:none;
-	width: 70px; height: 90px;
-}
-/* .seatUnselected>label{
-	color:black;
-} */
-td .seatSelected{
-	background-color:gray;
-}
-
-.radio {
-	display: none; 
-}
-
-input:checked + p, .confirm_num{ 
-	background-color:red;
-	color: #000000;
-	font-weight: bold;
-} 
-
-
-
-
-
-
-.seatTable{
-	border: 2px solid #333;
-	/* border-collapse: collapse; */
-	/* height:200px; */
-	text-align: center;
-	font-size: 1.2em;
-	display: inline-block;
-	padding: 30px;
-	position: relative;
-	top:0px; left:200px;
-}
-.seatTable td{
-	border:none;
-	width: 70px; height: 90px;
-}
-/* .seatUnselected>label{
-	color:black;
-} */
-td .seatSelected{
-	background-color:gray;
-}
-
-.radio {
-	display: none; 
-}
-
-input:checked + p, .confirm_num{ 
-	background-color:red;
-	color: #000000;
-	font-weight: bold;
-} 
-
-
-
 
 
 
