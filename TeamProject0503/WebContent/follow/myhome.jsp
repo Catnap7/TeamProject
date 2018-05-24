@@ -48,16 +48,25 @@ if(getmember.getM_grade()==1){
 		<p><%=getmember.getM_id()%></p><p><%=grede%></p> <!-- 이름, 등급 가져오기 -->
 	</div><!-- profile -->
 	<div id="info">
-		<table>
+		<table border="1">
 			<tr>
-				<th>Following</th><td><%=followingcount%></td><th>Follower</th><td><%=followercount%></td> <!-- 팔로잉, 팔로워 수 가져오기 -->
+				<th>Following</th><th>Follower</th> 
 			</tr>
 			<tr>
-				<th>리뷰 수</th><td><%=reviewcount%></td><!-- 리뷰 수 가져오기 -->
+				<td><%=followingcount%></td><td><%=followercount%></td><!-- 팔로잉, 팔로워 수 가져오기 -->
+			</tr>
+			<tr>
+				<th colspan="2">리뷰 수</th>
+			</tr>
+			<tr>
+				<td><%=reviewcount%></td><!-- 리뷰 수 가져오기 -->
 			</tr>
 			<tr>
 			<%System.out.println(favorite.getMv_genre()); %>
-				<th>선호장르</th><td><%=favorite.getMv_genre()%></td><td><%="드라마"%></td> <!-- 선호장르 상위 2개 -->
+				<th colspan="2">선호장르</th>
+			</tr>
+			<tr>
+				<td><%=favorite.getMv_genre()%></td><td><%="드라마"%></td> <!-- 선호장르 상위 2개 -->
 			</tr>
 		</table>
 	</div><!-- info -->
@@ -67,7 +76,7 @@ if(getmember.getM_grade()==1){
 <section class="sec myReview">
 	<div class="secInfo">
 		<h2><%=getmember.getM_id()%>님 의 리뷰</h2>
-		<a href=""><p>리뷰 더 보기</p></a><!-- reviewList.jsp로 가야함 -->
+		<a href=""><p>리뷰 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->
 	</div>	
 	
 	<!-- ↓↓↓↓↓↓↓리뷰 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
@@ -86,7 +95,7 @@ if(getmember.getM_grade()==1){
 <section class="sec myFavMovie">
 	<div class="secInfo">
 		<h2><%=getmember.getM_id()%>님 이 좋아한 영화</h2>
-		<a href=""><p>더 보기</p></a><!-- reviewList.jsp로 가야함 -->	
+		<a href=""><p>영화 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->	
 	</div>	
 	
 		<!-- ↓↓↓↓↓↓↓영화 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
