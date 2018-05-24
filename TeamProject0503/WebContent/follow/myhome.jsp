@@ -7,8 +7,8 @@
 <title>왓츄: My Watchu Page</title>
 
 <!-- CSS -->
-<link href="../css/default.css" rel="stylesheet" type="text/css">
-<link href="../css/myhome.css" rel="stylesheet" type="text/css">
+<link href="./css/default.css" rel="stylesheet" type="text/css">
+<link href="./css/myhome.css" rel="stylesheet" type="text/css">
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
