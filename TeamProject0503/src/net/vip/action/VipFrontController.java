@@ -65,11 +65,57 @@ public class VipFrontController extends HttpServlet{
 				forward.setPath("./vip/insertVipMovie.jsp");
 				
 		}else if(command.equals("/VipAdmin.vi")){
-				forward=new ActionForward();
-				
-				forward.setRedirect(false);
-				forward.setPath("./vip/VipAdmin.jsp");
+				action = new VipAdmin();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		}else if(command.equals("/VipResDelete.vi")){
+		  	action = new VipResDelete();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		}else if(command.equals("/VipMemberList.vi")){
+		  	action = new VipMemberList();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		}else if(command.equals("/VipMovieContent.vi")){
+		  	action = new VipMovieContent();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		}else if(command.equals("/VipMovieModify.vi")){
+		  	action = new VipMovieModify();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		}else if(command.equals("/VipMovieModifyAction.vi")){
+		  	action = new VipMovieModifyAction();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		}else if(command.equals("/VipMovieDelete.vi")){
+		  	action = new VipMovieDelete();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
 		}
+		
+		
 		
 		
 		

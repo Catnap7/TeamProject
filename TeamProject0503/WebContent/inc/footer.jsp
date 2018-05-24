@@ -15,8 +15,7 @@
 </div>
 
 <div class="use">
-	<a onclick="terms()">왓츄 서비스 이용약관</a> | 
-	<a href="./Center.ce">고객센터</a>
+	<a onclick="terms()">왓츄 서비스 이용약관</a> | <a href="./Center.ce">고객센터</a>
 </div>
 
 <div class="clear"></div>

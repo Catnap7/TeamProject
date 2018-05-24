@@ -45,11 +45,13 @@ if(count == 0){
 		num++;
 		int c_name = couponbean.getC_name();		
 		switch(c_name){
-		case 0 :  name = "50% 쿠폰";
+		case 0 :  name = "10% 쿠폰";
 		break;
-		case 1 :  name = "100% 쿠폰";
+		case 1 :  name = "50% 쿠폰";
 		break;
-		case 2 :  name = "VIP 쿠폰";
+		case 2 :  name = "100% 쿠폰";
+		break;
+		case 3 :  name = "VIP 쿠폰";
 		break;
 		}
 %>

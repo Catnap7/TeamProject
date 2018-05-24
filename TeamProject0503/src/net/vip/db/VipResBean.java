@@ -34,14 +34,17 @@ public class VipResBean {
 	
 	
 	//VipSeatTaken
+	
+	
+	public String getV_seatSelected() {
+		return v_seatSelected;
+	}
 	public String getV_seatNum() {
 		return v_seatNum;
 	}
+	
 	public void setV_seatNum(String v_seatNum) {
 		this.v_seatNum = v_seatNum;
-	}
-	public String getV_seatSelected() {
-		return v_seatSelected;
 	}
 	public void setV_seatSelected(String v_seatSelected) {
 		this.v_seatSelected = v_seatSelected;

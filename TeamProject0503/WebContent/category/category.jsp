@@ -16,7 +16,6 @@
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/category.css" rel="stylesheet" type="text/css" media="screen"> 
   
-  
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <script type="text/javascript">

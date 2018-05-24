@@ -32,83 +32,26 @@ public class RatingDAO {
 		ResultSet rs=null;
 		String sql="";
 		List movieList=new ArrayList();
-		int[]randomNum;
-		int randomNumCount = 0;
-		int check=0;
 		try {
 			con=getConnection();
-
-			sql="select mv_num from movie order by mv_num desc";
+			
+			//랜덤하게 10개의 영화를 중복없이 movie table안에 존재하고, rating하지않은 영화불러오기
+			sql="select * from movie where mv_num not in (select ra_p_num from rating where ra_id=? and ra_p_num is not null) order by rand() limit 10";
 			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, ra_id);
 			rs=pstmt.executeQuery();
-			//영화 마지막 번호 들고오기
-			int lastNum=0;
-			if(rs.next()){
-				lastNum=rs.getInt("mv_num");
-			}
 			
-			//내가 평가하지 않은 영화가 몇개 남아 있는지,  체크
-			//평가하지 않은 영화의 카운터를 세고, 
-			//10개 이상인 경우, db확인 으로, 
-			//10개 미만인경우, 카운트만큼 배열을 만든다. 
-
-			sql="select count(mv_num) from movie where mv_num not in (select ra_p_num from rating where ra_id='wahchu' and ra_p_num is not null) order by mv_num desc";
-			pstmt=con.prepareStatement(sql);
-			rs=pstmt.executeQuery();
-			if(rs.next()){
-				if(rs.getInt("count(mv_num)")>=10){
-					randomNumCount=10;
-				}else{
-					randomNumCount=rs.getInt("count(mv_num)");
-				}
-			}
-			
-
-			randomNum=new int[randomNumCount];
-			
-			for(int i=0; i<randomNum.length;i++){
-				Random r= new Random();
-				//randomNum[인덱스]=랜덤한 숫자 하나 넣을것.
-				randomNum[i]=r.nextInt(lastNum);
-
-				//인덱스에 저장된 넘버가 디비에 있는지 확인 and 평가하지 않은 영화 불러오기
-				sql="select * from movie where mv_num=? and mv_num not in (select ra_p_num from rating where ra_id=? and ra_p_num is not null)";
+			//남이 있는 영화가 10개 이상일때는 10개 저장, 미만일때는 더 적은 숫자의 영화 저장
+			while(rs.next()){
+				MovieBean moviebean= new MovieBean();
+				moviebean.setMv_num(rs.getInt("mv_num"));
+				moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
+				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+				moviebean.setMv_genre(rs.getString("mv_genre"));
+				moviebean.setMv_year(rs.getInt("mv_year"));
+				movieList.add(moviebean);
 				
-				pstmt=con.prepareStatement(sql);
-				pstmt.setInt(1, randomNum[i]);
-				pstmt.setString(2, ra_id);
-				rs=pstmt.executeQuery();
-				if(rs.next()){
-					//이러면 패스.
-					//중복 제거
-					for(int j=0;j<i; j++){
-						if(randomNum[i]==randomNum[j]){
-							check=-1;
-						}
-					}
-				}else{
-					check=-1;
-					//다시 랜덤생성. 
-				}
-				
-				//중복이 없을때, db에도 있는 번호일때, 되돌려줄 moviebean저장
-				if(check!=-1){
-					MovieBean moviebean= new MovieBean();
-					moviebean.setMv_num(randomNum[i]);
-					moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
-					moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
-					moviebean.setMv_genre(rs.getString("mv_genre"));
-					moviebean.setMv_year(rs.getInt("mv_year"));
-					movieList.add(moviebean);
-				}else{
-					check=0;
-					i--;
-				}
 			}
-//			무비리스트에 다 다른 주소가 저장되었는지 확인			
-//			for (int j = 0; j < 10; j++) {
-//				System.out.println(movieList.get(j));
-//			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

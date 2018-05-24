@@ -9,7 +9,6 @@
 <script src="./js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 
-
 $(document).ready(function(){
 		// 쿠키값을 가져온다.
 	// 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
@@ -30,9 +29,11 @@ $(document).ready(function(){
     });
     $("#AutoLoginCheck").change(function(){ // 체크박스에 변화가 있다면,
         if($("#AutoLoginCheck").is(":checked")){ // 자동로그인 체크했을 때,
-            var m_id = $("input[name='m_id']").val();
+        	var m_id = $("input[name='m_id']").val();
             var m_pass = $("input[name='m_pass']").val();
-            setCookie("m_id", m_id, 1); // 1일 동안 쿠키 보관
+			var m_idSplit= m_id.split('@');
+            setCookie("m_id1", m_idSplit[0], 1); // 1일 동안 쿠키 보관
+            setCookie("m_id2", m_idSplit[1], 1); // 1일 동안 쿠키 보관
             setCookie("m_pass", m_pass, 1); // 1일 동안 쿠키 보관
         }else{ // ID 저장하기 체크 해제 시,
             deleteCookie("m_id");
@@ -80,7 +81,7 @@ function getCookie(cookieName) {
 <body>
 <div class="m_cover">
 <div class="logo">
-<a href="./intro.st"><img src="./images/watchu_logo.png" alt="logo"></a>
+<a href="login.jsp"><img src="./images/watchu_logo.png" alt="logo"></a>
 </div>
 
 <div class="nav_r">
@@ -91,7 +92,7 @@ function getCookie(cookieName) {
 
 <div class="div_01">
 		<div class="div_02">
-		
+			<span>로그인</span>
 			<a href="./FindPass.me" class="find_pass">비밀번호 찾기</a>
 		</div>
 		
@@ -100,11 +101,18 @@ function getCookie(cookieName) {
 			<input type="text"  name="m_id" placeholder="이메일 (example@gmail.com)" class="text" id="m_id">
 			</label><br>
 			<label>
+<!-- <<<<<<< HEAD
 			<input type="password" name="m_pass" placeholder="비밀번호 (6자 이상)" class="text" id="m_pass">
 			</label>
 			<input type="checkbox" id="idSaveCheck"> 아이디 저장 <br>
 			<input type="checkbox" id="AutoLoginCheck"> 로그인 상태 유지 <br>
 			<input type="submit" value="로그인" id="submit" >
+======= -->
+			<input type="password" name="m_pass" placeholder="비밀번호 (6자 이상)" class="text">
+			</label><br>
+			<input type="checkbox" id="idSaveCheck" class="id_save"><span><label for="idSaveCheck">아이디 저장 </label></span><br>
+			<input type="checkbox" id="AutoLoginCheck" class="id_save"><span><label for="AutoLoginCheck">로그인 상태 유지</label></span><br>
+			<input type="submit" value="로그인" id="submit">
 		</form>
 	
 </div>

@@ -14,7 +14,7 @@
 
 
 		<div class="pay">
-			<a href="./pay/pay_result.jsp">이용권구매</a>
+			<a href="./PayList.pa">이용권구매</a>
 		</div><!--이용권구매 -->
 		
 		<%		
@@ -38,7 +38,7 @@
 		  	<div class="dropdown">
 			    <button class="dropbtn">CATEGORY</button>
 			    <div class="dropdown-content">
-			     		<a href="./CategoryList.ca?mv_genre=animation">애니메이션</a>
+			     	<a href="./CategoryList.ca?mv_genre=animation">애니메이션</a>
 					<a href="./CategoryList.ca?mv_genre=thriller">공포/스릴러</a>
 					<a href="./CategoryList.ca?mv_genre=indie">독립영화</a>
 					<a href="./CategoryList.ca?mv_genre=romance">로맨스/드라마</a>
@@ -52,7 +52,7 @@
 		 	<a href="./VipInfo.vi">watchu vip</a>
 		
 		 	<div class="search-container">
-			    <form action="category_search.jsp">
+			    <form action="./MainSearch.ma" method="get">
 			      <input type="text" placeholder="Search.." name="search">
 			      <button type="submit" class="searchBtn"><img src="./images/search.png" width="20px" height="20px"></button>
 			    </form>
