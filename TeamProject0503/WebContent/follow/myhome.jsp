@@ -1,3 +1,5 @@
+<%@page import="net.admin.manage.db.MovieBean"%>
+<%@page import="net.favorite.db.FavoriteBean"%>
 <%@page import="net.member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -19,6 +21,10 @@
 <body>
 <%
 MemberBean getmember=(MemberBean)request.getAttribute("memberbean");
+int followercount=((Integer)request.getAttribute("followercount"));
+int followingcount= ((Integer)request.getAttribute("followingcount"));
+int reviewcount= ((Integer)request.getAttribute("reviewcount"));
+MovieBean favorite = (MovieBean)request.getAttribute("moviebean");
 String grede="";
 if(getmember.getM_grade()==1){
 	grede="정회원";
@@ -31,9 +37,9 @@ if(getmember.getM_grade()==1){
 <jsp:include page="../inc/header.jsp"/>
 <!-- 헤더 영역 -->
 
-<article>
+<article class="all">
 
-<section class="myInfo">
+<section class="sec myInfo">
 	<div id="profile">
 		<img src="">
 		<p><%=getmember.getM_id()%></p><p><%=grede%></p> <!-- 이름, 등급 가져오기 -->
@@ -41,20 +47,21 @@ if(getmember.getM_grade()==1){
 	<div id="info">
 		<table>
 			<tr>
-				<th>Following</th><td><%="50"%></td><th>Follower</th><td><%="100"%></td> <!-- 팔로잉, 팔로워 수 가져오기 -->
+				<th>Following</th><td><%=followingcount%></td><th>Follower</th><td><%=followercount%></td> <!-- 팔로잉, 팔로워 수 가져오기 -->
 			</tr>
 			<tr>
-				<th>리뷰 수</th><td><%="250"%></td><!-- 리뷰 수 가져오기 -->
+				<th>리뷰 수</th><td><%=reviewcount%></td><!-- 리뷰 수 가져오기 -->
 			</tr>
 			<tr>
-				<th>선호장르</th><td><%="SF"%></td><td><%="드라마"%></td> <!-- 선호장르 상위 2개 -->
+			<%System.out.println(favorite.getMv_genre()); %>
+				<th>선호장르</th><td><%=favorite.getMv_genre()%></td><td><%="드라마"%></td> <!-- 선호장르 상위 2개 -->
 			</tr>
 		</table>
 	</div><!-- info -->
 </section><!-- myInfo -->
 
 
-<section class="myReview">
+<section class="sec myReview">
 	<div class="secInfo">
 		<h2><%=getmember.getM_id()%>님 의 리뷰</h2>
 		<a href=""><p>리뷰 더 보기</p></a><!-- reviewList.jsp로 가야함 -->
@@ -75,7 +82,7 @@ if(getmember.getM_grade()==1){
 	<!-- ↑↑↑↑↑↑↑↑↑↑리뷰 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↑↑↑↑↑↑↑↑↑↑-->	
 </section><!-- myReview -->
 
-<section class="myFavMovie">
+<section class="sec myFavMovie">
 	<div class="secInfo">
 		<h2><%=getmember.getM_id()%>님 이 좋아한 영화</h2>
 		<a href=""><p>더 보기</p></a><!-- reviewList.jsp로 가야함 -->

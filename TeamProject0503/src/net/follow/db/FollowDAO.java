@@ -57,7 +57,7 @@ public class FollowDAO {
 		int followingcount = 0;		
 		try {
 			con = getConnection();
-			sql = "select count(*) from follow where fo_follwing=? ";
+			sql = "select count(*) from follow where fo_following=? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, m_id);
 			rs = pstmt.executeQuery();
