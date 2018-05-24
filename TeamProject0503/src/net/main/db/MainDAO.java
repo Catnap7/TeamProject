@@ -221,7 +221,10 @@ public class MainDAO {
 		try {
 			con=getConnection();
 
-			sql="select * from movie where mv_kor_title like ? or mv_eng_title like ?";
+			sql="select * "
+					+ "from movie "
+					+ "where mv_kor_title like ? or mv_eng_title like ?"
+					+ "order by rand()";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,"%"+search+"%");
 			pstmt.setString(2,"%"+search+"%");
@@ -259,7 +262,9 @@ public class MainDAO {
 		try {
 			con=getConnection();
 
-			sql="select * from movie where mv_director like ?";
+			sql="select * from movie "
+					+ "where mv_director like ?"
+					+ "order by rand()";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,"%"+search+"%");
 			rs=pstmt.executeQuery();
@@ -297,7 +302,9 @@ public class MainDAO {
 		try {
 			con=getConnection();
 
-			sql="select * from movie where mv_actor like ?";
+			sql="select * from movie "
+					+ "where mv_actor like ?"
+					+ "order by rand()";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,"%"+search+"%");
 			rs=pstmt.executeQuery();

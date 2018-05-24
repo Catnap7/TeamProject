@@ -428,7 +428,7 @@ public class VipDAO {
 						+ "from review join member"
 						+ "on review.r_id = member.m_id"
 						+ "group by r_id"
-						+ "order by r_recommand desc limit 10) as lim"
+						+ "order by r_recommand desc limit 10) as lim2"
 						+ ")";
 				pstmt=con.prepareStatement(sql);
 				pstmt.executeQuery();
