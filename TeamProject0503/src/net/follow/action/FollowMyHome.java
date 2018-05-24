@@ -35,7 +35,7 @@ public class FollowMyHome implements Action{
 			followingcount=0;
 		}*/
 		
-		System.out.println(followercount+"123"+followingcount);
+		System.out.println(followercount+"123"+followingcount+"sdfdsf");
 		request.setAttribute("memberbean", memberbean);
 		ActionForward forward= new ActionForward();
 		forward.setRedirect(false);
