@@ -1,4 +1,4 @@
-package net.admin.action;
+package net.roulette.action;
 
 import java.io.IOException;
 
@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AdminFrontController extends HttpServlet{
-
-	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class RouletteFrontController extends HttpServlet{
+protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String requestURI=request.getRequestURI();
 		System.out.println(requestURI);
@@ -20,10 +19,32 @@ public class AdminFrontController extends HttpServlet{
 		Action action=null;
 		
 		
-		
-		
-		
-		
+		//주소 비교
+		if(command.equals("/Roulette.ro")){
+			action = new Roulette();
+			try{
+			forward=action.execute(request, response);
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}else if(command.equals("/RouletteAction.ro")){
+			action = new RouletteAction();
+			try{
+			forward=action.execute(request, response);
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}else if(command.equals("/RouletteWinner.ro")){
+			action = new RouletteWinner();
+			try{
+			forward=action.execute(request, response);
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 		
 			
 		
@@ -44,19 +65,13 @@ public class AdminFrontController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberFrontController doGet()");	
+		System.out.println("RouletteFrontController doGet()");	
 		doProcess(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberFrontController doPost()");
+		System.out.println("RouletteFrontController doPost()");
 		doProcess(request, response);
 		
 	}
-	
-	
-	
-	
-	
-	
 }

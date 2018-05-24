@@ -1,4 +1,4 @@
-package net.admin.action;
+package net.roulette.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

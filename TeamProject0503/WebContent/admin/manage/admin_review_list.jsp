@@ -1,4 +1,4 @@
-<%@page import="net.admin.manage.db.AdminReviewBean"%>
+<%@page import="net.category.db.ReviewBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -12,7 +12,7 @@
 </head>
 <body>
 	<%
-		List<AdminReviewBean> AdminReviewList = (List)request.getAttribute("AdminReviewList");
+		List<ReviewBean> AdminReviewList = (List)request.getAttribute("AdminReviewList");
 		int count = ((Integer) request.getAttribute("count")).intValue();
 		String pageNum = (String) request.getAttribute("pageNum");
 		int pageCount = ((Integer) request.getAttribute("pageCount")).intValue();
@@ -29,15 +29,15 @@
 	</script>
 
 	<!-- 헤더영역 -->
-	<jsp:include page="../header.jsp" />
+	<jsp:include page="../../inc/header.jsp" />
 	<!-- 헤더영역 -->
 
 <!-- 어드민 서브메뉴 -->
-<jsp:include page="../admin_sub.jsp"/>
+<jsp:include page="../../inc/admin_sub.jsp"/>
 <!-- 어드민 서브메뉴 -->
 
 	<div id="content">
-		<h1>review list [<%=count %>]</h1>
+		<h1>REVIEW LIST [<%=count %>]</h1>
 
 		<div class="admin-search-container">
 			<form action="admin_review_list_search.jsp">
@@ -54,18 +54,18 @@
 				<th class="rv_th3">댓글 내용</th>
 				<th class="rv_th4">신고횟수</th>
 				<th class="rv_th5">작성일</th>
-				<th class="rv_th6">댓글삭제</th>
+				<th class="rv_th5">댓글삭제</th>
 			</tr>
 			<%
 			
 			for(int i = 0; i < AdminReviewList.size(); i++) {
-				AdminReviewBean arb = (AdminReviewBean)AdminReviewList.get(i);
+				ReviewBean arb = (ReviewBean)AdminReviewList.get(i);
 				%>
 
 
 			<tr>
 				<td><%=arb.getR_id() %></td>
-				<td><%=arb.getContent() %></td>
+				<td><%=arb.getR_content() %></td>
 				<td><%=arb.getR_report() %></td>
 				<td><%=arb.getR_date() %></td>
 				<td><a href="javascript:del('<%=arb.getR_num() %>')">삭제</a></td>
@@ -107,7 +107,7 @@
 	</div>
 
 	<!-- 푸터 영역 -->
-	<jsp:include page="../footer.jsp" />
+	<jsp:include page="../../inc/footer.jsp" />
 	<!-- 푸터 영역 -->
 
 </body>

@@ -35,6 +35,47 @@
 
 
 
+
+/************** vip관리자 메인 **************/
+
+
+.seatTable{
+	border: 2px solid #333;
+	/* border-collapse: collapse; */
+	/* height:200px; */
+	text-align: center;
+	font-size: 1.2em;
+	display: inline-block;
+	padding: 30px;
+	position: relative;
+	top:0px; left:200px;
+}
+.seatTable td{
+	border:none;
+	width: 70px; height: 90px;
+}
+/* .seatUnselected>label{
+	color:black;
+} */
+td .seatSelected{
+	background-color:gray;
+}
+
+.radio {
+	display: none; 
+}
+
+input:checked + p, .confirm_num{ 
+	background-color:red;
+	color: #000000;
+	font-weight: bold;
+} 
+
+
+
+
+
+
 /************** vip movie db list **************/
 div#content {
 	/* border: 1px solid orange;  */
@@ -131,6 +172,7 @@ div#movieContent h1 {
 }
 
 .movieContent {
+	border: 1px solid orange;
 	width: 50%;
 	border-collapse: collapse;
 	position: relative;
@@ -168,24 +210,22 @@ div#movieContent h1 {
 /************** admin notice write **************/
 
 .btn {
-	position: relative;
-	bottom:510px;
-	left:1220px;
+	width: 200px;
+    position: relative;
+    bottom: 590px;
+    left: 1520px;
 }
 
-.btn2 {
-	position: relative;
-	top: 200px;
-	left: 1300px;
+.btn a{
+	border: 1px solid #eee;
+	background-color: #eee;
+	width: 100px;
+	padding:10px;
+	maring-right:20px;
+	color:black;
+	box-shadow:2px 2px #333;
 }
 
-.wirtebtn {
-	background-color: #50d4aa;
-	border-radius: 40px;
-	color: #000;
-	letter-spacing: 0.2px;
-	width: 130px;
-	height: 40px;
-	font-weight: bold;
-	letter-spacing: 0.2px;
+.btn a:HOVER {
+	box-shadow:2px 2px #333;
 }

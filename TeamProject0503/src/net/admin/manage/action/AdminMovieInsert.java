@@ -6,7 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import net.admin.manage.db.MovieBean;
 import net.admin.manage.db.MovieDAO;
 
-public class AdminMovieJoinAction implements Action {
+
+public class AdminMovieInsert implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -30,8 +31,8 @@ public class AdminMovieJoinAction implements Action {
 		mdao.insertMovie(mob);
 		
 		  ActionForward forward = new ActionForward();
-	      forward.setPath("./AdminMovieJoin.am");
-	      forward.setRedirect(true);
+	      forward.setPath("./AdminManageList.am");
+	      forward.setRedirect(false);
 	      return forward;
 	}
 

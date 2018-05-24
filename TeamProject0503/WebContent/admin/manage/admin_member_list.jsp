@@ -48,11 +48,11 @@
 	<!-- JSP -->
 
 	<!-- Header -->
-	<jsp:include page="../header.jsp" />
+	<jsp:include page="../../inc/header.jsp" />
 	<!-- Header -->
 	
 	<!-- Sub -->
-	<jsp:include page="../admin_sub.jsp" />
+	<jsp:include page="../../inc/admin_sub.jsp" />
 	<!-- Sub -->
 	
 	<div id="content">
@@ -76,7 +76,7 @@
 	</div>
 
 	<!-- Footer -->
-	<jsp:include page="../footer.jsp" />
+	<jsp:include page="../../inc/footer.jsp" />
 	<!-- Footer -->
 	
 </body>

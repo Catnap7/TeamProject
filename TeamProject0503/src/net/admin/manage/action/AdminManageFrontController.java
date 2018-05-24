@@ -24,40 +24,12 @@ public class AdminManageFrontController extends HttpServlet{
 
 
 		//주소 비교
-		if(command.equals("/AdminMovieJoin.am")){
+		if(command.equals("/AdminMovieInsert.am")){
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./admin/manage/admin_movie_insert.jsp");
-		}else if(command.equals("/AdminMovieJoinAction.am")) {
-			action = new AdminMovieJoinAction();	         
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(command.equals("/AdminMemberListAction.am")) {
-			action = new AdminMemberListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(command.equals("/AdminMemberDeleteAction.am")) {
-			action = new AdminMemberDeleteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}/*else if(command.equals("/AdminMemberSearch.am")) {
-			action = new AdminMemberSearch();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}*/else if(command.equals("/AdminMemberSort.am")) {
-			action = new AdminMemberSort();
+		}else if(command.equals("/AdminMovieInsertAction.am")) {
+			action = new AdminMovieInsert();	         
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -88,6 +60,10 @@ public class AdminManageFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/AdminMember_List_Search.am")) {     
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./admin/manage/admin_member_list.jsp");			
 		}
 
 

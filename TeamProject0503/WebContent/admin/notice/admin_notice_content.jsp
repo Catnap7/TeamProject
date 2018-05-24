@@ -19,7 +19,7 @@
 	<!-- 헤더영역 -->
 
 	<!-- 어드민 서브메뉴 -->
-	<jsp:include page="../admin_sub.jsp" />
+	<jsp:include page="../../inc/admin_sub.jsp" />
 	<!-- 어드민 서브메뉴 -->
 
 	<div id="content">

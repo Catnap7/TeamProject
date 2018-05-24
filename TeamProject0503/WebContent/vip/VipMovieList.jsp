@@ -44,12 +44,13 @@
 <div id="content">
 	<h1>VIP 시사회 영화 목록</h1>	
 	<p>[총 영화 개수 : <%=count %>]<br><br>
-		더 자세한 영화 정보와 수정 및 삭제는 영화 제목을 눌러 상세보기로 들어가십시오</p>
+		더 자세한 영화 정보와 수정 및 삭제는 영화 제목 또는 수정 버튼을 눌러 상세보기로 들어가십시오<br></p>
 	
 	<table class="vip_db_list">
 		<tr>
 			<th>번호</th><th>한글제목</th><th>영문제목</th><th>년도</th><th>국가</th>
-			<th>관람등급</th><th>장르</th><th>감독</th><th>주연</th><th>시사회 날짜</th><th>시사회 시간</th>
+			<th>관람등급</th><th>장르</th><th>감독</th><th>시사회 날짜</th>
+			<th>시사회 시간</th><th>수정/삭제</th>
 		</tr>
 		
 		<%for(int i=0;i<vipMovieList.size();i++){
@@ -71,8 +72,8 @@
 			<td><%=vipbean.getV_eng_title()%></td><td><%=vipbean.getV_year()%></td>
 			<td><%=vipbean.getV_country()%></td><td><%=age%></td>
 			<td><%=vipbean.getV_genre()%></td><td><%=vipbean.getV_director()%></td>
-			<td><%=vipbean.getV_actor()%></td><td><%=vipbean.getV_date()%></td>
-			<td><%=vipbean.getV_when()%></td>
+			<td><%=vipbean.getV_date()%></td><td><%=vipbean.getV_when()%></td>
+			<td><a href="./VipMovieModify.vi?v_num=<%=vipbean.getV_num()%>">수정</a>/<a href="./VipMovieDelete.vi?v_num=<%=vipbean.getV_num()%>">삭제</a></td>
 		</tr>
 		<%} %>
 	</table>

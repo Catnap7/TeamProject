@@ -1,4 +1,4 @@
-package net.admin.action;
+package net.roulette.action;
 
 public class ActionForward {
 	//이동방식 저장 //약속 true response, false forward
