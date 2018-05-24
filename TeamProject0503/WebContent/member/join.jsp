@@ -79,8 +79,8 @@ $(function(){ //전체선택 체크박스 클릭
 		return false;
 	}
 	if (document.fr.m_id.value.length <= 8 
-			|| document.fr.m_id.value.length >= 21) {
-		alert("아이디는 8자 이상 20자 이하 입력 바랍니다.");
+			|| document.fr.m_id.value.length >= 30) {
+		alert("아이디는 8자 이상 25자 이하 입력 바랍니다.");
 		document.fr.m_id.focus();
 		return false;
 	}
@@ -284,8 +284,8 @@ $(function(){ //전체선택 체크박스 클릭
 				return false;
 			}
 			if (document.fr.m_id.value.length <= 8 
-					|| document.fr.m_id.value.length >= 21) {
-				alert("아이디는 8자 이상 20자 이하 입력 바랍니다.");
+					|| document.fr.m_id.value.length >= 26) {
+				alert("아이디는 8자 이상 25자 이하 입력 바랍니다.");
 				document.fr.m_id.focus();
 				return false;
 			}

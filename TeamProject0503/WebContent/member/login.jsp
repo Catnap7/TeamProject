@@ -29,10 +29,12 @@ $(document).ready(function(){
     });
     $("#AutoLoginCheck").change(function(){ // 체크박스에 변화가 있다면,
         if($("#AutoLoginCheck").is(":checked")){ // 자동로그인 체크했을 때,
-            var id = $("input[name='m_id']").val();
-            var pass = $("input[name='m_pass']").val();
-            setCookie("m_id", id, 7); // 7일 동안 쿠키 보관
-            setCookie("m_pass", pass, 7); // 7일 동안 쿠키 보관
+        	var m_id = $("input[name='m_id']").val();
+            var m_pass = $("input[name='m_pass']").val();
+			var m_idSplit= m_id.split('@');
+            setCookie("m_id1", m_idSplit[0], 1); // 1일 동안 쿠키 보관
+            setCookie("m_id2", m_idSplit[1], 1); // 1일 동안 쿠키 보관
+            setCookie("m_pass", m_pass, 1); // 1일 동안 쿠키 보관
         }else{ // ID 저장하기 체크 해제 시,
             deleteCookie("m_id");
             deleteCookie("m_pass");
@@ -51,8 +53,8 @@ $(document).ready(function(){
 function setCookie(cookieName, value, exdays){
     var exdate = new Date();
     exdate.setDate(exdate.getDate() + exdays);
-    var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
-    document.cookie = cookieName + "=" + cookieValue;
+     var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+    document.cookie = cookieName + "=" + cookieValue; 
 }
  
 function deleteCookie(cookieName){
@@ -94,9 +96,9 @@ function getCookie(cookieName) {
 			<a href="./FindPass.me" class="find_pass">비밀번호 찾기</a>
 		</div>
 		
-		<form action="./MemberLoginAction.me" id="join" method="post">
+		<form action="./MemberLoginAction.me" id="join" method="post" >
 			<label>
-			<input type="text"  name="m_id" placeholder="이메일 (example@gmail.com)" class="text">
+			<input type="text"  name="m_id" placeholder="이메일 (example@gmail.com)" class="text" id="m_id">
 			</label><br>
 			<label>
 			<input type="password" name="m_pass" placeholder="비밀번호 (6자 이상)" class="text">

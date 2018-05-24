@@ -51,7 +51,7 @@ span.like {
    color: red;
 }
 
-a.play {
+label.play {
 /*    border: 1px solid red; */
    font-size: 80px;
    margin-left: 50px;

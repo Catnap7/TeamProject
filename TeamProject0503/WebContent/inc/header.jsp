@@ -1,9 +1,13 @@
+<%@page import="net.member.db.MemberDAO"%>
 <%@page import="net.member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <!-- 헤더 영역 -->
-<%String id = (String)session.getAttribute("m_id"); %>
+<%String id = (String)session.getAttribute("m_id");
+ int followercount=((Integer)request.getAttribute("followercount"));
+int followingcount= ((Integer)request.getAttribute("followingcount"));
+%>
 <header>
 	<div class="title_logo">
 		<a href="./Main.ma"><img src="./images/watchu_logo.png" width="250px" height="50px"></a>
@@ -12,16 +16,13 @@
 
 <div class="clear"></div>
 
-
 		<div class="pay">
 			<a href="./PayList.pa">이용권구매</a>
 		</div><!--이용권구매 -->
-		
-		
 			<table id="follow">
 				<tr>
 					<!-- 팔로잉수 가져오기 -->	<!-- 팔로워수 가져오기 -->
-					<th><%="50" %></th><th><%="100" %></th>
+					<th><%=followercount %></th><th><%=followingcount %></th>
 				</tr>
 				<tr>
 					<td>팔로잉</td><td>팔로워</td>
@@ -30,11 +31,7 @@
 		
 		<%
 				String m_name="";
-				 if(request.getAttribute("m_name")!=null){
-					 m_name=(String)request.getAttribute("m_name");
-				 }else{
 					 m_name=(String)session.getAttribute("m_name");
-				 }
 		%>
 		<div class="myinfo">
   			<button class="dropbtn1"><%=m_name %></button>

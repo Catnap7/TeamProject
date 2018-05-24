@@ -1,14 +1,22 @@
 package net.member.action;
 
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.follow.db.FollowDAO;
 import net.member.db.MemberBean;
 import net.member.db.MemberDAO;
+import net.mypage.db.AlarmBean;
+import net.mypage.db.AlarmDAO;
+import net.mypage.db.CouponBean;
+import net.mypage.db.CouponDAO;
 
 
 public class MemberLoginAction implements Action{
@@ -17,7 +25,6 @@ public class MemberLoginAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
-		
 		HttpSession session = request.getSession();
 		
 		MemberDAO mdao = new MemberDAO();
@@ -25,6 +32,16 @@ public class MemberLoginAction implements Action{
 		
 		MemberBean memberbean= mdao.getMember(m_id);
 		
+		Calendar cal= new GregorianCalendar();
+		cal.clear(Calendar.MILLISECOND);
+		SimpleDateFormat date = new SimpleDateFormat("yyyyMMdd");
+		int today = Integer.parseInt(date.format(cal.getTime()).toString());
+
+		AlarmDAO adao = new AlarmDAO();
+		CouponDAO cdao = new CouponDAO();
+
+		List <CouponBean>couponlist = cdao.getCoupons(m_id);
+		List <AlarmBean>alarmlist = adao.getAlarms(m_id);//세션 아이디 넣으세요.
 		
 		memberbean.setM_id(request.getParameter("m_id"));		
 		memberbean.setM_pass(request.getParameter("m_pass"));
@@ -42,7 +59,6 @@ public class MemberLoginAction implements Action{
 		PrintWriter out = response.getWriter();
 		int check=mdao.userCheck(memberbean.getM_id(),memberbean.getM_pass());
 		int Echeck=mdao.EmailChecked(memberbean.getM_id());
-		
 		
 		if(check==0) {
 			out.println("<script>");
@@ -63,13 +79,34 @@ public class MemberLoginAction implements Action{
 				out.println("history.back()");
 				out.println("</script>");
 			}else {
+			
+			
+			if(couponlist != null){
+				for(CouponBean couponbean:couponlist){
+				 String c_array[] = couponbean.getC_end_day().split("/");  
+				 String c_day = c_array[0]+c_array[1]+c_array[2];
+				 
+				 int c_end_day = Integer.parseInt(c_day);
+				 if(today>=c_end_day){
+					cdao.deleteCoupon(couponbean.getC_num());
+					}  
+				 }//end for
+				}//end if
+			
+			if(alarmlist != null){
+				for(AlarmBean alarmbean:alarmlist){
+				 String a_array[] = alarmbean.getA_end_day().split("/");  
+				 String a_day = a_array[0]+a_array[1]+a_array[2];
+				 
+				 int c_end_day = Integer.parseInt(a_day);
+				 if(today>=c_end_day){
+					adao.deleteAlarm(alarmbean.getA_num());
+					}  
+				 }//end for
+				}//end if
+		
 			session.setAttribute("m_id",memberbean.getM_id());
 			session.setAttribute("m_name",memberbean.getM_name());
-			DeleteAlarm dr= new DeleteAlarm();
-			
-			System.out.println("");
-			
-			DeleteAlarm ar= new DeleteAlarm();
 			
 			ActionForward forward= new ActionForward();			
 			forward.setRedirect(true);
