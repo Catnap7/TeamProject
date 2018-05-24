@@ -245,7 +245,7 @@ div.star {
    color: #333;
 }
 
-.coment table td a:HOVER {
+.coment table td .a:HOVER {
    color: red;
 }
 
