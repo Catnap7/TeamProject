@@ -34,13 +34,10 @@ $(document).ready(function(){
 	
 	
 	var $container = 1720; 
-<<<<<<< HEAD
 	/* var length=$(".searchTitle .mv").size();   */
 	var $count =20; /* 영화개수 */ 
 	/* var count =$(".mv").length; */
 	/* var $container = count*344; */
-=======
->>>>>>> refs/remotes/origin/master
 	var $display = 5;
 	var $mv = $container/$display;
 	var $mv_mv = ($container/$display)+5;
