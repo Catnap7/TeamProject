@@ -34,6 +34,7 @@ private Connection getConnection() throws Exception {
 	 Connection con = null;
 	 String sql =null;
 	 PreparedStatement pstmt =null;
+	 int pic=(int)(Math.random()*10)+1;
 	 try {
 //		 
 //		 memberbean.getM_id_num1().
@@ -43,7 +44,7 @@ private Connection getConnection() throws Exception {
 		 
 		con=getConnection();
 		
-		sql = "insert into member(m_id, m_pass, m_name,m_id_num1,m_id_num2,m_pay,m_grade,m_pic, m_reg_date) values(?,?,?,?,?,?,?,?,?)";
+		sql = "insert into member(m_id, m_pass, m_name,m_id_num1,m_id_num2,m_pay,m_grade, m_reg_date,m_pic) values(?,?,?,?,?,?,?,?,?)";
 		 pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, memberbean.getM_id());			
 		pstmt.setString(2, memberbean.getM_pass());		
@@ -52,8 +53,8 @@ private Connection getConnection() throws Exception {
 		pstmt.setInt(5, memberbean.getM_id_num2());	
 		pstmt.setInt(6, 0);	//pay
 		pstmt.setInt(7, 0); //grade	
-		pstmt.setInt(8, 0); //pic	
-		pstmt.setDate(9, memberbean.getM_reg_date());
+		pstmt.setDate(8, memberbean.getM_reg_date());
+		pstmt.setInt(9, pic);
 		pstmt.executeUpdate();
 	}catch(Exception e) {
 		//예외를 잡아서 처리 --> 메세지 출력 
