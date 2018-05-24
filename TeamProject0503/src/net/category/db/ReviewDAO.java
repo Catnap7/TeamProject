@@ -56,6 +56,37 @@ public int getReviewCount(int mv_num) {
 		
 		return count;
 	}	// 댓글수
+	
+public int getReviewCount(String m_id) {
+	
+	Connection con=null;
+	String sql="";
+	PreparedStatement pstmt=null;
+	ResultSet rs=null;
+	int reviewcount = 0;
+	
+	try {
+		con = getConnection();
+		sql = "select count(*) as count from review where r_id = ?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, m_id);
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			reviewcount = rs.getInt("count");
+		}
+		
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	} finally {
+		if(rs!=null)try{rs.close();}catch(SQLException e){};
+		if(pstmt!=null)try{pstmt.close();}catch(SQLException e){};
+		if(con!=null)try{con.close();}catch(SQLException e){};
+	}
+	
+	return reviewcount;
+}	// 아이디에 따른 댓글수
 
 	public List checkReview(String r_id, int r_p_num) {
 		

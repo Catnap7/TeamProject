@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"%>
 
 <!-- 헤더 영역 -->
+<%String id = (String)session.getAttribute("m_id"); %>
 <header>
 	<div class="title_logo">
 		<a href="./Main.ma"><img src="./images/watchu_logo.png" width="250px" height="50px"></a>
@@ -61,7 +62,7 @@
 			<div class="dropdown">
 			    <button class="dropbtn">내 왓츄 페이지</button>
 			    <div class="dropdown-content">
-			     	<a href="./CategoryList.ca?mv_genre=animation">My Watchu</a>
+			     	<a href="./FollowMyHome.fo?m_id=<%=id%>">My Watchu</a>
 					<a href="./CategoryList.ca?mv_genre=thriller">리뷰 다 보기</a>
 			    </div>
 	  		</div> 

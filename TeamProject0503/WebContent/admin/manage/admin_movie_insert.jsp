@@ -25,56 +25,56 @@
 	<div id="content">
 		<h1>영화 등록</h1>
 		<form action="./AdminMovieInsertAction.am" method="post">
-			<table class="db_list">
+			<table class="db_list_mv">
 				<tr>
-					<th class="th3">제목(한글)</th>
+					<th>제목(한글)</th>
 					<td><input type="text" name="mv_kor_title"></td>
 				</tr>
 				<tr>
-					<th class="th3">제목(영문)</th>
+					<th>제목(영문)</th>
 					<td><input type="text" name="mv_eng_title"></td>
 				</tr>
 				<tr>
-					<th class="th3">개봉년도</th>
+					<th>개봉년도</th>
 					<td><input type="text" name="mv_year"></td>
 				</tr>
 				<tr>
-					<th class="th3">국내 | 해외</th>
+					<th>국내 | 해외</th>
 					<td><input type="text" name="mv_country"></td>
 				</tr>
 				<tr>
-					<th class="th3">관람등급</th>
+					<th>관람등급</th>
 					<td><input type="text" name="mv_age"></td>
 				</tr>
 				<tr>
-					<th class="th3">장르</th>
+					<th>장르</th>
 					<td><input type="text" name="mv_genre"></td>
 				</tr>
 				<tr>
-					<th class="th3">상영시간</th>
+					<th>상영시간</th>
 					<td><input type="text" name="mv_time"></td>
 				</tr>
 				<tr>
-					<th class="th3">감독</th>
+					<th>감독</th>
 					<td><input type="text" name="mv_director"></td>
 				</tr>
 				<tr>
-					<th class="th3">출연</th>
+					<th>출연</th>
 					<td><input type="text" name="mv_actor"></td>
 				</tr>
 				<tr>
-					<th class="th3">줄거리</th>
-					<td><textarea cols="40" rows="10" name="mv_story"></textarea>
+					<th>줄거리</th>
+					<td><textarea cols="35" rows="10" name="mv_story"></textarea>
 				</tr>
 				<tr>
-					<th class="th3">예고편 링크</th>
+					<th>예고편 링크</th>
 					<td><input type="text" name="mv_video"></td>
 				</tr>
-				<tr>
-					<td><input type="submit" value="글쓰기"></td>
-					<td><input type="button" value="돌아가기" onclick="history.back()"></td>
-				</tr>
 			</table>
+			<div class="mv_btn">
+			<input type="submit" value="글쓰기">
+			<input type="button" value="돌아가기" onclick="history.back()">
+			</div>
 		</form>
 	</div>
 

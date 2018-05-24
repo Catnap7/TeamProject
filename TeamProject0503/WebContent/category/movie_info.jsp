@@ -351,7 +351,8 @@ $(document).ready(function(){
       }
       
       %>
-      		  <button class="hr"> 이동</button>
+      		  <button class="hr" id="mv_play" style="display: none;">이동</button>
+      		  <label class="fa fa-play-circle play" for="mv_play" title="보러가기"></label>
            <!-- <button class="hr">이동</button> -->
       </div>
    </div>

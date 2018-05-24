@@ -7,7 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>왓츄:이용권 결제</title>
-
+<link href="./css/default.css" rel="stylesheet" type="text/css">
+<link href="./css/pay2.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 function pcancel(){
 	var a=confirm("해지하시겠습니까?");
@@ -21,6 +22,11 @@ function pcancel(){
 
 </head>
 <body>
+
+<!-- 헤더영역 -->
+<jsp:include page="../inc/header.jsp"/>
+<!-- 헤더영역 -->
+
 <%
 
 boolean couponcheck=(boolean)request.getAttribute("couponcheck");
@@ -35,15 +41,22 @@ if(couponcheck==true){
 List paylist=(List)request.getAttribute("paylist");
 PayBean currentpaybean=(PayBean)request.getAttribute("currentpaybean");
 
+String pageNum_s= (String)request.getAttribute("pageNum");
+int pageNum = Integer.parseInt(pageNum_s);
+int pageCount = ((Integer)request.getAttribute("pageCount")).intValue();
+int pageBlock = ((Integer)request.getAttribute("pageBlock")).intValue();
+int startPage = ((Integer)request.getAttribute("startPage")).intValue();
+int endPage = ((Integer)request.getAttribute("endPage")).intValue();
+int count = ((Integer)request.getAttribute("count")).intValue();
 %>
 <article>
-	<table border="1">
+	<table class="state">
 		<tr>
-			<td rowspan="2">이용권 상태</td>
+			<th rowspan="2" class="radius_lt lett_min">이용권 상태</th>
 	<%
 		if(currentpaybean!=null){
 	%>
-			<td><%=currentpaybean.getP_end_day() %>까지 이용이 가능합니다</td>
+			<td class="radius_rt"><%=currentpaybean.getP_end_day() %>까지 이용이 가능합니다</td>
 		</tr>
 		<tr>
 				<!-- //자동결제, 한달결제 -->
@@ -55,26 +68,27 @@ PayBean currentpaybean=(PayBean)request.getAttribute("currentpaybean");
 			<td><a href="./Pay.pa">이용권 구매하러 가기</a></td></tr>
 		<%} %>
 		<tr>
-			<td>쿠폰</td><td><%=couponcheckString %></td>
+			<th class="radius_lb lett_plus">&nbsp;쿠 폰</th><td class="radius_rb"><%=couponcheckString %></td>
 		</tr>
 	</table>
 	
-	<table border="1">
-		<tr><td colspan="4">결제내역</td></tr>
+	<table class="list" id="list">
+		<tr><th colspan="4" class="radius_ltrt lett_plus bold_line">결 제 내 역</th></tr>
 			<%if(paylist.size()!=0){
 				String p_auto="";%>
-		<tr><td>결제일</td><td>만료일</td><td>결제방식</td><td>결제 금액</td></tr>		
+		<tr class="bg_light"><th>결제일</th><th>만료일</th><th>결제방식</th><th>결제금액</th></tr>		
 			<%for(int i=0;i<paylist.size();i++){
 				PayBean paybean=(PayBean)paylist.get(i);
 				if(paybean.getP_auto().equals("정기")){p_auto="정기결제";}
 				else if(paybean.getP_auto().equals("해지")){p_auto="정기결제(해지)";}
 				else if(paybean.getP_auto().equals("한달")){p_auto="한달결제";}
 				%>		
-		<tr><td><%=paybean.getP_start_day() %></td><td><%=paybean.getP_end_day() %></td><td><%=p_auto%></td><td><%=paybean.getP_charge() %></td></tr>
+		<tr><td class="tb_line"><%=paybean.getP_start_day() %></td><td class="tb_line"><%=paybean.getP_end_day() %></td><td class="tb_line"><%=p_auto%></td><td class="tb_line"><%=paybean.getP_charge() %></td></tr>
 			<%}
 			}else{%>
-		<tr><td colspan="3">결제 내역이 없습니다.</td></tr>
+		<tr><td colspan="4">결제 내역이 없습니다.</td></tr>
 			<%}	%>
+		<tr><td colspan="4" class="radius_lbrb bold_line">	</td></tr>		
 	</table>
 
 <%
@@ -89,10 +103,30 @@ if(currentpaybean.getP_auto().equals("정기")){ %>
 }
 }%>
 
-
+<%
+if(count != 0){
+%>	
+	 <div class="prev_next">
+		<%
+		if(startPage>pageBlock){			
+			%><a href="./PayList.pa?pageNum=<%=startPage-pageBlock%>#list">prev</a><%
+		}
+		for(int i=startPage;i<=endPage;i++) {
+			%><a href="./PayList.pa?pageNum=<%=i%>#list"><span <%if(i==pageNum){%>style=color:red;<%} %>><%=i%></span></a><%
+		}
+		if(pageCount>endPage){
+			%><a href="./PayList.pa?pageNum=<%=startPage+pageBlock%>#list">next</a><%
+		}
+		%>
+	
+<%
+}
+%>
 </article>
 
-
+<!-- 푸터 영역 -->
+<jsp:include page="../inc/footer.jsp"/>
+<!-- 푸터 영역 -->
 
 </body>
 </html>

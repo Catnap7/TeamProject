@@ -26,6 +26,8 @@ public class FavoriteDAO {
 		
 		return con;
 	}
+
+	
 	public int favoriteCheck(String f_id, int f_num){
 		Connection con=null;
 		PreparedStatement pstmt=null;

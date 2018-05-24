@@ -17,14 +17,15 @@
 } */
 
 #categoryTitle{
-	margin-top:50px;
+	margin-top:150px;
 	margin-left:150px;
 }
-article{/* border:1px solid green; */
+article{ /* border:1px solid green; */ 
 	width:85%; 
 	/* height: calc(150/5*270px);  */
 	margin:50px auto;
 	padding-left:20px;
+	padding-bottom:300px;
 	/* box-sizing:border-box; */}
 
 
