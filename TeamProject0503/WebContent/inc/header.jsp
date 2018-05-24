@@ -7,7 +7,6 @@
 <%String id = (String)session.getAttribute("m_id");
 /* int followercount=((Integer)request.getAttribute("followercount"));
 int followingcount= ((Integer)request.getAttribute("followingcount"));  */
-
 %>
 <header>
 	<div class="title_logo">
