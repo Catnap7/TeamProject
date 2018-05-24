@@ -19,7 +19,7 @@ int pageCount = ((Integer)request.getAttribute("pageCount")).intValue();
 int pageBlock = ((Integer)request.getAttribute("pageBlock")).intValue();
 int startPage = ((Integer)request.getAttribute("startPage")).intValue();
 int endPage = ((Integer)request.getAttribute("endPage")).intValue();
-int count = ((Integer)request.getAttribute("endPage")).intValue();
+int count = ((Integer)request.getAttribute("count")).intValue();
 %>
 
 <!-- 헤더영역 -->
