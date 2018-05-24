@@ -161,6 +161,16 @@
     <servlet-name>RouletteFrontController</servlet-name>
     <url-pattern>*.ro</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>FollowFrontController</servlet-name>
+    <servlet-class>net.follow.action.FollowFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FollowFrontController</servlet-name>
+    <url-pattern>*.fo</url-pattern>
+  </servlet-mapping>  
+  
+  
   <resource-ref>
     <description>dkd</description>
     <res-ref-name>jdbc/Mysql</res-ref-name>

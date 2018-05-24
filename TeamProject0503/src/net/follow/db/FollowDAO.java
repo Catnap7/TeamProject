@@ -1,4 +1,4 @@
-package net.main.db;
+package net.follow.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 
 import net.admin.manage.db.MovieBean;
 
-public class MainDAO {
+public class FollowDAO {
 	//디비연결 메서드
 	private Connection getConnection() throws Exception {
 		Context init=new InitialContext();
@@ -221,10 +221,7 @@ public class MainDAO {
 		try {
 			con=getConnection();
 
-			sql="select * "
-					+ "from movie "
-					+ "where mv_kor_title like ? or mv_eng_title like ?"
-					+ "order by rand()";
+			sql="select * from movie where mv_kor_title like ? or mv_eng_title like ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,"%"+search+"%");
 			pstmt.setString(2,"%"+search+"%");
@@ -262,9 +259,7 @@ public class MainDAO {
 		try {
 			con=getConnection();
 
-			sql="select * from movie "
-					+ "where mv_director like ?"
-					+ "order by rand()";
+			sql="select * from movie where mv_director like ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,"%"+search+"%");
 			rs=pstmt.executeQuery();
@@ -302,9 +297,7 @@ public class MainDAO {
 		try {
 			con=getConnection();
 
-			sql="select * from movie "
-					+ "where mv_actor like ?"
-					+ "order by rand()";
+			sql="select * from movie where mv_actor like ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,"%"+search+"%");
 			rs=pstmt.executeQuery();

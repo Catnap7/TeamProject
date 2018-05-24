@@ -12,13 +12,21 @@
 
 <div class="clear"></div>
 
-
 		<div class="pay">
 			<a href="./PayList.pa">이용권구매</a>
 		</div><!--이용권구매 -->
+			<table id="follow">
+				<tr>
+					<!-- 팔로잉수 가져오기 -->	<!-- 팔로워수 가져오기 -->
+					<th><%="50" %></th><th><%="100" %></th>
+				</tr>
+				<tr>
+					<td>팔로잉</td><td>팔로워</td>
+				</tr>
+			</table>
 		
-		<%		
-		String m_name="";
+		<%
+				String m_name="";
 					 m_name=(String)session.getAttribute("m_name");
 		%>
 		<div class="myinfo">
@@ -31,6 +39,7 @@
 				    <a href="./MemberLogout.me">로그아웃</a>
 				  </div>
 		</div><!-- 유저정보 -->
+		
 				
 <div class="clear"></div>
 	
@@ -49,7 +58,14 @@
 	  		</div> 
 	  		<a href="./Rating.ra">취향분석</a>
 		 	<a href="./Favorite.fa">보고 싶은 영화</a>
-		 	<a href="./VipInfo.vi">watchu vip</a>
+			<div class="dropdown">
+			    <button class="dropbtn">내 왓츄 페이지</button>
+			    <div class="dropdown-content">
+			     	<a href="./CategoryList.ca?mv_genre=animation">My Watchu</a>
+					<a href="./CategoryList.ca?mv_genre=thriller">리뷰 다 보기</a>
+			    </div>
+	  		</div> 
+	  		<a href="./VipInfo.vi">watchu vip</a>
 		
 		 	<div class="search-container">
 			    <form action="./MainSearch.ma" method="get">

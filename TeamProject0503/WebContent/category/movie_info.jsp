@@ -258,7 +258,7 @@ $(document).ready(function(){
             </td>
          </tr>
          <tr>
-            <td><%=genre%> | <%=moviebean.getMv_country() %></td>
+            <td><%=genre%> | <%=moviebean.getMv_country() %> </td>
          </tr>
          <tr>
             <td><%=moviebean.getMv_time() %>분  | <%=age %></td>
@@ -296,8 +296,13 @@ $(document).ready(function(){
       }
          %>
          
-      <%
-      if(memberBean.getM_grade()==0){
+      <%															
+      String num1 =Integer.toString(memberBean.getM_id_num1());
+	  
+	  String str = String.format("%06d",101);
+	  //int num3=String.format("%06d",101);
+	  //System.out.print(num3);
+      if(memberBean.getM_pay()==0){
          %>
          <script type="text/javascript">
          $(document).ready(function(){
@@ -307,7 +312,7 @@ $(document).ready(function(){
          });      
          </script>
       <%   
-      }else if(memberBean.getM_grade()==1){
+      }else if(memberBean.getM_pay()==1){
          if(memberBean.getM_id_num1()<=991231 && moviebean.getMv_age()==19 ){
             
              %>
@@ -321,7 +326,7 @@ $(document).ready(function(){
                });           
               </script>
               <%
-         }else if (memberBean.getM_id_num1()>=000101 && moviebean.getMv_age()==19){
+         }else if ( memberBean.getM_id_num1()>=000101 && moviebean.getMv_age()==19){
             %>
                <script type="text/javascript">
                $(document).ready(function(){
@@ -346,7 +351,8 @@ $(document).ready(function(){
       }
       
       %>
-           <a class="fa fa-play-circle play hr" title="보러가기"></a>
+      		  <button class="hr"> 이동</button>
+           <!-- <button class="hr">이동</button> -->
       </div>
    </div>
    </div>

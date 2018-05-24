@@ -190,10 +190,9 @@ private Connection getConnection() throws Exception {
 		PreparedStatement pstmt = null;
 		ResultSet rs =null;
 		Connection con = null;
-		
 		try {
 			con=getConnection();
-			sql = "select m_id,m_pass,m_name,m_grade,lpad(m_id_num1,6,0) as m_id_num1,m_id_num2,m_reg_date from member where m_id=?"; 
+			sql = "select m_id,m_pass,m_name,m_grade,lpad(m_id_num1,6,0) as m_id_num1,m_id_num2,m_reg_date,m_pay from member where m_id=?"; 
 			 pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, m_id);
 			rs = pstmt.executeQuery();
@@ -207,8 +206,8 @@ private Connection getConnection() throws Exception {
 				memberbean.setM_id_num1(rs.getInt("m_id_num1"));
 				memberbean.setM_id_num2(rs.getInt("m_id_num2"));
 				memberbean.setM_reg_date(rs.getDate("m_reg_date"));
+				memberbean.setM_pay(rs.getInt("m_pay"));
 			}
-			
 		}catch(Exception e){
 			e.printStackTrace();
 			
