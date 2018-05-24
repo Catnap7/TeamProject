@@ -15,7 +15,7 @@
 <script type="text/javascript">
 	var request = new XMLHttpRequest();
 	function searchFunction() {
-		request.open("Post", "./AdminMemberSearch?searchValue="+encodeURIComponent(document.getElementById("searchValue").value), true);
+		request.open("Post", "./AdminMemberSearch?searchValue="+encodeURIComponent(document.getElementById("searchValue").value)+"&select="+encodeURIComponent(document.getElementById("select").value), true);
 		request.onreadystatechange = searchProcess;
 		request.send(null);
 	}
@@ -38,7 +38,6 @@
 		searchFunction();
 	}
 </script>
-
 <!-- script -->
 
 </head>
@@ -58,6 +57,12 @@
 	<div id="content_member">
 		<h1>MEMBER LIST</h1>
 		<div class="admin-search-container">
+		<select id="select">
+			<option value="m_id" selected="selected">ID</option>
+			<option value="m_name">닉네임</option>
+			<option value="m_grade">회원등급</option>
+			<option value="m_reg_date">날짜</option>		
+		</select>
 		<input type="text" onkeyup="searchFunction()" id="searchValue" placeholder="검색할 내용 입력해라.">
 		<button type="button" onclick="searchFunction();"><img src="./images/search.png" width="20px" height="20px"></button>
 		</div>

@@ -22,19 +22,30 @@ public class AdminMemberDAO {
 		return con;
 	}
 	
-	public List<MemberBean> getAdminMemberSearch(String searchValue) {
+	public List<MemberBean> getAdminMemberSearch(String searchValue, String select) {
 		List<MemberBean> lmb = new ArrayList<MemberBean>();
 		Connection con = null;
 		String sql = "";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
+		if(searchValue.equals("VIP")) {
+			searchValue = "2";
+		}else if(searchValue.equals("정회원")) {
+			searchValue = "1";
+		}else if(searchValue.equals("준회원")) {
+			searchValue = "0";
+		}else if(searchValue.equals("댓글정지")) {
+			searchValue = "-1";
+		}else if(searchValue.equals("로그인정지")) {
+			searchValue = "-2";
+		}
 		try {
 			con = getConnection();
-			sql = "select * from member where m_id LIKE ? or m_name LIKE ? or m_grade LIKE ? order by m_reg_date asc";
+			sql = "select * from member where "+select+" LIKE ? order by m_reg_date asc";
+//			sql = "select * from member where "+select+" LIKE ? or m_name LIKE ? or m_grade LIKE ? order by m_reg_date asc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchValue+"%");
-			pstmt.setString(2, "%"+searchValue+"%");
-			pstmt.setString(3, "%"+searchValue+"%");
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
