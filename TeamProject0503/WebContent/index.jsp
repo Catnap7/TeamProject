@@ -7,8 +7,6 @@
 <title>INDEX</title>
 </head>
 <body>
-<%
-response.sendRedirect("./intro.st");
-%>
+<% response.sendRedirect("./intro.st"); %>
 </body>
 </html>

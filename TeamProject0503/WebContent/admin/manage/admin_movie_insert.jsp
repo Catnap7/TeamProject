@@ -25,7 +25,7 @@
 	<div id="content">
 		<h1>영화 등록</h1>
 		<form action="./AdminMovieInsertAction.am" method="post">
-			<table border="0" class="db_list">
+			<table class="db_list">
 				<tr>
 					<th class="th3">제목(한글)</th>
 					<td><input type="text" name="mv_kor_title"></td>
