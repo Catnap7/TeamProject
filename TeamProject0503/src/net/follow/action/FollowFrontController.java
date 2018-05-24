@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.member.action.MemberJoinAction;
+
 public class FollowFrontController extends HttpServlet{
 
 
@@ -23,7 +25,14 @@ public class FollowFrontController extends HttpServlet{
 		
 		
 		//주소 비교
-		
+		if(command.equals("/FollowMyHome.fo")){
+			action= new FollowMyHome();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 			
 		
 		
