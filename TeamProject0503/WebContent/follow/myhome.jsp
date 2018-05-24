@@ -10,8 +10,8 @@
 <title>왓츄: My Watchu Page</title>
 
 <!-- CSS -->
-<link href="../css/default.css" rel="stylesheet" type="text/css">
-<link href="../css/myhome.css" rel="stylesheet" type="text/css">
+<link href="./css/default.css" rel="stylesheet" type="text/css">
+<link href="./css/myhome.css" rel="stylesheet" type="text/css">
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
@@ -44,7 +44,7 @@ if(getmember.getM_grade()==1){
 
 <section class="sec myInfo">
 	<div id="profile">
-		<img src="">
+		<img src="./images/proflie1.png" width="200px" height="200px">
 		<p><%=getmember.getM_id()%></p><p><%=grede%></p> <!-- 이름, 등급 가져오기 -->
 	</div><!-- profile -->
 	<div id="info">
@@ -71,27 +71,35 @@ if(getmember.getM_grade()==1){
 	</div>	
 	
 	<!-- ↓↓↓↓↓↓↓리뷰 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
-	<div class="rvList">
-			<%for(int i=0;i<=5;i++){ %>
-			<div id="rv">
+	<!-- <div class="rvList"> -->
+			<%for(int i=0;i<=4;i++){ %>
+			<div id="rv"> 
 				<p>영화 제목/ 리뷰 날짜/ 추천/ 신고</p>
-				<p id="rvrv">
+				<p class="rvList">
 				<%="Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has "%></p>
-			</div>
+			</div> 
 			<%} %>
-	</div>	
+	<!-- </div> -->	
 </section>
 	
 
 <section class="sec myFavMovie">
-		<div class="secInfo">
-			<h2><%=getmember.getM_id()%>님 이 좋아한 영화</h2>
-			<a href=""><p>더 보기</p></a><!-- reviewList.jsp로 가야함 -->	
-		</div>	
-		<div class="mvList">
-			<img src="">
-			<p>영화 제목</p>
+	<div class="secInfo">
+		<h2><%=getmember.getM_id()%>님 이 좋아한 영화</h2>
+		<a href=""><p>더 보기</p></a><!-- reviewList.jsp로 가야함 -->	
+	</div>	
+	
+		<!-- ↓↓↓↓↓↓↓영화 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
+	<!-- <div class="mvList" id="rv"> -->
+		<div class="mvList"> 
+			<%for(int i=0;i<=4;i++){%>
+			<div>
+				<img src="./images/animation/Zootopia_p.jpg" width="175px" height="260px">
+				<p>영화 제목</p>
+			</div>
+		<%} %>
 		</div>
+	<!-- </div> -->	
 </section>
 </div><!-- all -->
 	
