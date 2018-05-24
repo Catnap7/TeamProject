@@ -21,7 +21,7 @@ public class Main implements Action{
 		
 		
 		String id = (String)session.getAttribute("m_id");
-		
+		System.out.println(id);
 		if(id==null){
 			forward=new ActionForward();
 			forward.setRedirect(true);		

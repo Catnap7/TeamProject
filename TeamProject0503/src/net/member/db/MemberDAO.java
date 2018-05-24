@@ -390,38 +390,6 @@ private Connection getConnection() throws Exception {
 		}
 	} // end duplicateIdCheck()
 	
-	
-	public String getName(String m_id) {
-		String sql =null;
-		MemberBean memberbean = null;
-		String m_name= null;
-		PreparedStatement pstmt = null;
-		ResultSet rs =null;
-		Connection con = null;
-		try {
-			con=getConnection();
-			sql = "select m_name from member where m_id=?"; 
-			 pstmt = con.prepareStatement(sql);
-			 pstmt.setString(1, m_id);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {		
-			}
-			
-		}catch(Exception e){
-			e.printStackTrace();
-			
-		}finally {
-			
-			if(con!=null)try {con.close();}catch(SQLException ex) {};
-			if(rs!=null)try {rs.close();}catch(SQLException ex) {};
-			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
-		}
-		
-		return m_name;
-	
-	}
-	
 	public void updateMember(MemberBean mb){			
 		Connection con=null;
 		String sql="";

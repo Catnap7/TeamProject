@@ -19,29 +19,12 @@ public class DeleteAlarm implements Action{
 		
 		request.setCharacterEncoding("utf-8");
 		
-		Calendar cal= new GregorianCalendar();
-		cal.clear(Calendar.MILLISECOND);
-		SimpleDateFormat date = new SimpleDateFormat("yyyyMMdd");
-		int today = Integer.parseInt(date.format(cal.getTime()).toString());
-
-		AlarmDAO adao = new AlarmDAO();
 		
 		HttpSession session=request.getSession();		
 		String id = (String)session.getAttribute("m_id");
 		
 
-		List <AlarmBean>alarmlist = adao.getAlarms(id);//세션 아이디 넣으세요.
-		if(alarmlist != null){
-		for(AlarmBean alarmbean:alarmlist){
-		 String array[] = alarmbean.getA_end_day().split("/");  
-		 String day = array[0]+array[1]+array[2];
-		 
-		 int c_end_day = Integer.parseInt(day);
-		 if(today>=c_end_day){
-			adao.deleteAlarm(alarmbean.getA_num());
-			}  
-		 }//end for
-		}//end if
+		
 		// TODO Auto-generated method stub
 		return null;		
 	}

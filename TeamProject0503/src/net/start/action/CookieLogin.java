@@ -12,6 +12,9 @@ import net.member.db.MemberDAO;
 
 public class CookieLogin implements Action{
 	ActionForward forward;
+	
+	
+	@SuppressWarnings("deprecation")
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
@@ -24,7 +27,7 @@ public class CookieLogin implements Action{
 		if(cookies!=null) {
 			for(int i=0; i<cookies.length; i++) {
 				if(cookies[i].getName().equals("m_id")) {
-					 m_id = URLDecoder.decode(cookies[i].getValue(), "UTF-8");
+					 m_id = URLDecoder.decode(cookies[i].getValue());
 					 System.out.println(m_id);
 				}
 				if(cookies[i].getName().equals("m_pass")){
@@ -34,7 +37,6 @@ public class CookieLogin implements Action{
 		
 		}if(m_pass!=null) {
 			System.out.println("쿠키로그인시도");
-			System.out.println(m_id + m_pass);
 			MemberDAO mdao = new MemberDAO();
 			MemberBean memberbean=new MemberBean();
 			memberbean.setM_id(m_id);		

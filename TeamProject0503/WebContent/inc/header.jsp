@@ -19,11 +19,7 @@
 		
 		<%		
 		String m_name="";
-		// if(request.getAttribute("m_name")!=null){
-					// m_name=(String)request.getAttribute("m_name");
-				// }else{
 					 m_name=(String)session.getAttribute("m_name");
-				// } 
 		%>
 		<div class="myinfo">
   			<button class="dropbtn1"><%=m_name %></button>

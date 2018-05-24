@@ -22,24 +22,11 @@ public class DeleteCoupon implements Action{
 		SimpleDateFormat date = new SimpleDateFormat("yyyyMMdd");
 		int today = Integer.parseInt(date.format(cal.getTime()).toString());
 
-		CouponDAO cdao = new CouponDAO();
 	
 		HttpSession session=request.getSession();		
 		String id = (String)session.getAttribute("m_id");
 		
 
-		List <CouponBean>couponlist = cdao.getCoupons(id);
-		if(couponlist != null){
-		for(CouponBean couponbean:couponlist){
-		 String array[] = couponbean.getC_end_day().split("/");  
-		 String day = array[0]+array[1]+array[2];
-		 
-		 int c_end_day = Integer.parseInt(day);
-		 if(today>=c_end_day){
-			cdao.deleteCoupon(couponbean.getC_num());
-			}  
-		 }//end for
-		}//end if
 		
 		
 		
