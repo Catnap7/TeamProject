@@ -7,8 +7,7 @@
 <%String id = (String)session.getAttribute("m_id");
 /* int followercount=((Integer)request.getAttribute("followercount"));
 int followingcount= ((Integer)request.getAttribute("followingcount"));  */
-int pic= (int)(Math.random()*10)+1;
-System.out.print(pic);
+
 %>
 <header>
 	<div class="title_logo">
