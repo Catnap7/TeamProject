@@ -142,7 +142,7 @@ $(document).ready(function(){
 
 <div id="wrap">
 <!-- 헤더들어가는 곳 -->
-<jsp:include page="../inc/top.jsp"/>
+<jsp:include page="../inc/header.jsp"/>
 <!-- 헤더들어가는 곳 -->
 
 <!-- 본문들어가는 곳 -->
@@ -216,7 +216,7 @@ $(document).ready(function(){
 
 <div class="clear"></div>
 <!-- 푸터들어가는 곳 -->
-<jsp:include page="../inc/bottom.jsp"/>
+<jsp:include page="../inc/footer.jsp"/>
 <!-- 푸터들어가는 곳 -->
 </div>
 </body>

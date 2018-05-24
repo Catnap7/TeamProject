@@ -5,8 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.admin.manage.db.AdminReviewBean;
 import net.admin.manage.db.AdminReviewDAO;
+import net.category.db.ReviewBean;
 
 public class AdminReviewListAction implements Action {
 
@@ -26,7 +26,7 @@ public class AdminReviewListAction implements Action {
 		int startRow = (currentPage-1)*pageSize+1;
 		int endRow = currentPage*pageSize;
 
-		List<AdminReviewBean> AdminReviewList = null;
+		List<ReviewBean> AdminReviewList = null;
 
 		if(count != 0) {
 			AdminReviewList = ardao.getAdminReviewList(startRow, pageSize);

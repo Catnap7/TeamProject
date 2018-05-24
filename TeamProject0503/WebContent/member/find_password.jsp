@@ -32,13 +32,13 @@ session.invalidate();
 <div class="div_01">
 		<div class="div_02">
 
-	<fieldset>
-	<legend>비밀번호 찾기</legend>
-			<span>저런! 비밀번호를 잊어버리셨군요.</span>
+<!-- 	<fieldset> -->
+<!-- 	<legend>비밀번호 찾기</legend> -->
+			<span class="find_txt">저런! 비밀번호를 잊어버리셨군요.</span>
 		
 		<form action="./FindPassAction.me" id="join" method="post">
 			<label>
-			<input type="text" name="m_id" placeholder="이메일 (example@gmail.com)" class="text">
+			<input type="text" name="m_id" placeholder="이메일 (example@gmail.com)" class="find_text">
 			</label><br>
 			<p>
 			기존에 가입하신 이메일 주소를 입력해주시면<br>
@@ -47,7 +47,7 @@ session.invalidate();
 			</p>
 			<input type="submit" value="임시비밀번호 발급" id="submit">
 		</form>
-</fieldset>
+<!-- </fieldset> -->
 	</div>
 </div>
 </div>

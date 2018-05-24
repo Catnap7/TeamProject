@@ -22,12 +22,12 @@
 	<div class="content_position">
 	<label for="member">
 		<div class="content_inner">
-			<a href="./AdminMemberListAction.am" id="member">member</a>
+			<a href="./AdminMember_List_Search.am" id="member">member</a>
 		</div>
 	</label>
 	<label for="movie">
 		<div class="content_inner">
-			<a href="./AdminMovieJoin.am" id="movie">movie</a>
+			<a href="./AdminMovieInsert.am" id="movie">movie</a>
 		</div>
 	</label>
 	<label for="pay">
