@@ -4,7 +4,10 @@
     pageEncoding="UTF-8"%>
 
 <!-- 헤더 영역 -->
-<%String id = (String)session.getAttribute("m_id"); %>
+<%String id = (String)session.getAttribute("m_id");
+ int followercount=((Integer)request.getAttribute("followercount"));
+int followingcount= ((Integer)request.getAttribute("followingcount"));
+%>
 <header>
 	<div class="title_logo">
 		<a href="./Main.ma"><img src="./images/watchu_logo.png" width="250px" height="50px"></a>
@@ -19,7 +22,7 @@
 			<table id="follow">
 				<tr>
 					<!-- 팔로잉수 가져오기 -->	<!-- 팔로워수 가져오기 -->
-					<th><%="50" %></th><th><%="100" %></th>
+					<th><%=followercount %></th><th><%=followingcount %></th>
 				</tr>
 				<tr>
 					<td>팔로잉</td><td>팔로워</td>

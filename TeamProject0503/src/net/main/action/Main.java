@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import net.admin.manage.db.MovieBean;
 import net.favorite.db.FavoriteBean;
 import net.favorite.db.FavoriteDAO;
+import net.follow.db.FollowDAO;
 import net.main.db.MainDAO;
 
 public class Main implements Action{
@@ -39,6 +40,13 @@ public class Main implements Action{
 		List<MovieBean>Bestrating = mdao.mostAvgGenre(id);
 		List<MovieBean>Bestmovie = mdao.bestMovie();
 		List<MovieBean>adminSelectMovieList = mdao.adminSelectMovie();
+		
+		FollowDAO followdao = new FollowDAO();
+		int followercount= followdao.Followercount(id);
+		int followingcount= followdao.Followingcount(id);
+		
+		request.setAttribute("followercount", followercount);
+		request.setAttribute("followingcount", followingcount);
 		
 		request.setAttribute("id", id);
 		request.setAttribute("favoritelist", favoritelist);
