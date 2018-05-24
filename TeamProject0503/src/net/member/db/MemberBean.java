@@ -11,7 +11,6 @@ public class MemberBean {
 	private int m_grade;
 	private Date m_reg_date;
 	private int m_pay;
-	
 	public int getM_pay() {
 		return m_pay;
 	}

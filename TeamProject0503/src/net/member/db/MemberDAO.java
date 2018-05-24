@@ -208,6 +208,7 @@ private Connection getConnection() throws Exception {
 				memberbean.setM_reg_date(rs.getDate("m_reg_date"));
 				memberbean.setM_pay(rs.getInt("m_pay"));
 			}
+			
 		}catch(Exception e){
 			e.printStackTrace();
 			

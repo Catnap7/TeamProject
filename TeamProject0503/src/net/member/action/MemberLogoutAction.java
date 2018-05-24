@@ -17,7 +17,11 @@ public class MemberLogoutAction implements Action{
 		   
 		   if(cookies !=null){
 			   for(int i=0; i<cookies.length; i++){
-				   if(cookies[i].getName().equals("m_id")){
+				   if(cookies[i].getName().equals("m_id1")){
+					   cookies[i].setMaxAge(0);
+					   response.addCookie(cookies[i]);
+				   }
+				   if(cookies[i].getName().equals("m_id2")){
 					   cookies[i].setMaxAge(0);
 					   response.addCookie(cookies[i]);
 				   }
