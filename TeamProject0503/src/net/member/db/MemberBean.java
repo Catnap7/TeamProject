@@ -11,7 +11,13 @@ public class MemberBean {
 	private int m_grade;
 	private Date m_reg_date;
 	private int m_pay;
-	
+	private int m_pic;
+	public int getM_pic() {
+		return m_pic;
+	}
+	public void setM_pic(int m_pic) {
+		this.m_pic = m_pic;
+	}
 	public int getM_pay() {
 		return m_pay;
 	}

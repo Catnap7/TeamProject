@@ -1,3 +1,4 @@
+<%@page import="net.member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,7 +18,13 @@
 </head>
 <body>
 <%
-
+MemberBean getmember=(MemberBean)request.getAttribute("memberbean");
+String grede="";
+if(getmember.getM_grade()==1){
+	grede="정회원";
+}else if(getmember.getM_grade()==2){
+	grede="VIP";
+}
 %>
 
 <!-- 헤더 영역 -->
@@ -29,7 +36,7 @@
 <section class="myInfo">
 	<div id="profile">
 		<img src="">
-		<p><%="김와츄"%></p><p><%="등급"%></p> <!-- 이름, 등급 가져오기 -->
+		<p><%=getmember.getM_id()%></p><p><%=grede%></p> <!-- 이름, 등급 가져오기 -->
 	</div><!-- profile -->
 	<div id="info">
 		<table>
@@ -49,7 +56,7 @@
 
 <section class="myReview">
 	<div class="secInfo">
-		<h2><%="김와츄"%>님 의 리뷰</h2>
+		<h2><%=getmember.getM_id()%>님 의 리뷰</h2>
 		<a href=""><p>리뷰 더 보기</p></a><!-- reviewList.jsp로 가야함 -->
 	</div>	
 	
@@ -70,7 +77,7 @@
 
 <section class="myFavMovie">
 	<div class="secInfo">
-		<h2><%="김와츄"%>님 이 좋아한 영화</h2>
+		<h2><%=getmember.getM_id()%>님 이 좋아한 영화</h2>
 		<a href=""><p>더 보기</p></a><!-- reviewList.jsp로 가야함 -->
 	</div>
 	<div class="mvList">
