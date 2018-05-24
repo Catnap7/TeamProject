@@ -79,7 +79,7 @@ function getCookie(cookieName) {
 <body>
 <div class="m_cover">
 <div class="logo">
-<a href="./intro.st"><img src="./images/watchu_logo.png" alt="logo"></a>
+<a href="./MemberLogin.me"><img src="./images/watchu_logo.png" alt="logo"></a>
 </div>
 
 <div class="nav_r">
@@ -90,7 +90,7 @@ function getCookie(cookieName) {
 
 <div class="div_01">
 		<div class="div_02">
-		
+			<span>로그인</span>
 			<a href="./FindPass.me" class="find_pass">비밀번호 찾기</a>
 		</div>
 		
@@ -100,10 +100,10 @@ function getCookie(cookieName) {
 			</label><br>
 			<label>
 			<input type="password" name="m_pass" placeholder="비밀번호 (6자 이상)" class="text">
-			</label>
-			<input type="checkbox" id="idSaveCheck"> 아이디 저장 <br>
-			<input type="checkbox" id="AutoLoginCheck"> 로그인 상태 유지 <br>
-			<input type="submit" value="로그인" id="submit" >
+			</label><br>
+			<input type="checkbox" id="idSaveCheck" class="id_save"><span><label for="idSaveCheck">아이디 저장 </label></span><br>
+			<input type="checkbox" id="AutoLoginCheck" class="id_save"><span><label for="AutoLoginCheck">로그인 상태 유지</label></span><br>
+			<input type="submit" value="로그인" id="submit">
 		</form>
 	
 </div>

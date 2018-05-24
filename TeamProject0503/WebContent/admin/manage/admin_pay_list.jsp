@@ -22,15 +22,15 @@
 	%>
 
 	<!-- 헤더영역 -->
-	<jsp:include page="../header.jsp" />
+	<jsp:include page="../../inc/header.jsp" />
 	<!-- 헤더영역 -->
 
 	<!-- 어드민 서브메뉴 -->
-	<jsp:include page="../admin_sub.jsp" />
+	<jsp:include page="../../inc/admin_sub.jsp" />
 	<!-- 어드민 서브메뉴 -->
 
 	<div id="content">
-		<h1>pay list [<%=count %>]</h1>
+		<h1>PAT LIST [<%=count %>]</h1>
 
 		<div class="admin-search-container">
 			<form action="admin_pay_list_search.jsp">
@@ -101,7 +101,7 @@
 	</div>
 
 	<!-- 푸터 영역 -->
-	<jsp:include page="../footer.jsp" />
+	<jsp:include page="../../inc/footer.jsp" />
 	<!-- 푸터 영역 -->
 
 </body>

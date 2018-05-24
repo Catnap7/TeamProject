@@ -48,14 +48,14 @@
 	<!-- JSP -->
 
 	<!-- Header -->
-	<jsp:include page="../header.jsp" />
+	<jsp:include page="../../inc/header.jsp" />
 	<!-- Header -->
 	
 	<!-- Sub -->
-	<jsp:include page="../admin_sub.jsp" />
+	<jsp:include page="../../inc/admin_sub.jsp" />
 	<!-- Sub -->
 	
-	<div id="content">
+	<div id="content_member">
 		<h1>MEMBER LIST</h1>
 		<div class="admin-search-container">
 		<input type="text" onkeyup="searchFunction()" id="searchValue" placeholder="검색할 내용 입력해라.">
@@ -76,7 +76,7 @@
 	</div>
 
 	<!-- Footer -->
-	<jsp:include page="../footer.jsp" />
+	<jsp:include page="../../inc/footer.jsp" />
 	<!-- Footer -->
 	
 </body>

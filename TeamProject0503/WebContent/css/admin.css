@@ -7,8 +7,9 @@
 
 /************** 서브메뉴바 **************/
 #menu_bar {
+/* 		border: 1px solid orange; */
 	width: 300px;
-	margin: 220px 50px 0 110px;
+	margin: 220px 150px 0 110px;
 	float: left;
 	font-size: 24px;
 }
@@ -42,6 +43,7 @@ div#content {
 	margin-top: 30px;
 	height: 800px;
 	position: relative;
+/* 	overflow: auto; */
 }
 
 .search_type select {
@@ -136,7 +138,17 @@ div.content_inner:HOVER, div.content_inner:HOVER a {
 
 /************** admin db list **************/
 
-div#content h1 {
+div#content_member {
+	border: 1px solid #333;
+	margin-left: 300px;
+	margin-top: 30px;
+	height: 800px;
+	position: relative;
+	right: 150px;
+	overflow: auto;
+}
+
+div#content h1, div#content_member h1 {
 	text-align: center;
 	display: inline-block;
 	position: absolute;
@@ -194,6 +206,48 @@ div#content h1 {
 .db_list th.th6 {
 	width: 80px;
 }
+
+.db_list_mv {
+/* 	border: 1px solid red; */
+	border-collapse: collapse;
+	position: absolute;
+	top: 150px;
+	left: 300px;
+}
+
+.db_list_mv th {
+	border: 1px solid #fff;
+	height: 40px;
+	background-color: #333;
+	letter-spacing: 0.3em;
+	color: white;
+	font-size: 20px;
+}
+
+.db_list_mv td input {
+	border: 1px solid #000;
+	height: 40px;
+	background-color: #fff;
+	letter-spacing: 0.3em;
+	color: black;
+	font-size: 20px;
+}
+
+.mv_btn {
+	position: absolute;
+	bottom: 20px;
+	left: 480px;
+}
+
+.mv_btn input {
+	width: 80px;
+	height: 40px;
+	background-color: #50d4aa;
+	border: 1px solid #999;
+	cursor: pointer;
+	margin-right: 20px;
+	border-radius: 10px;
+} 
 
 .db_list td {
 	border: 1px solid #333;

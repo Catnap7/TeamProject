@@ -18,9 +18,10 @@
 
 
 /*---header---*/
-header{/* border:1px solid blue; */
-	height: 50px;
+header{ /* border:1px solid blue;   */
+	height: 100px;
 	margin: 0px;
+	margin-bottom:70px;
 	padding: 0px;
 	box-sizing:boarder-box;
 	/*float:left;*/
@@ -41,7 +42,8 @@ header{/* border:1px solid blue; */
     font-size: 16px;
     border: none;
     position: absolute;
-    right: 10px; top:10px;
+    right: 30px; top:20px;
+    font-size: 1.2em;
 }
 
 .pay>a{
@@ -69,11 +71,15 @@ header{/* border:1px solid blue; */
 }
 
 .myinfo {
+	/* border:1px solid red; */
     position: absolute;
-    right:150px; top:10px;
+    right:170px; top:20px;
     display: inline-block;
 }
 
+.myinfo button{
+	font-size: 1.2em;
+}
 .dropdown-content1 {
     display: none;
     position: absolute;
@@ -105,6 +111,35 @@ header{/* border:1px solid blue; */
 article{
 	border:none;
 }
+
+#follow{
+	border-collapse:collapse;
+	border:none;
+	/* border:1px solid #333;  */ 
+	width: 140px; height: 20px;
+	font-weight: lighter;
+	font-size: 0.8em;
+	font-family: 'Nanum Gothic', sans-serif;
+	position: relative;
+	top:35px; left:1490px;
+	line-height: 20px;	
+	text-align: center;
+}
+#follow tr th{
+	font-weight: bold;
+	font-size: 1.3em;
+	text-align: center;
+	color:#50d4aa;
+	/* padding: 2px; */
+}
+#follow tr td{
+	color:#333;
+	text-align: center;
+	/* padding: 2px; */
+	font-size: 0.8em;
+}
+
+
 
 
 /*메인Navigation*/

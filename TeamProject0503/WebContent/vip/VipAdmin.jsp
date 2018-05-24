@@ -13,8 +13,7 @@
 
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
-<link href="./css/admin.css" rel="stylesheet" type="text/css">
-<link href="./css/vip.css" rel="stylesheet" type="text/css">
+<link href="./css/vip_admin.css" rel="stylesheet" type="text/css">
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
@@ -39,7 +38,7 @@ List<VipResBean> VipSeatTakenList = (List)request.getAttribute("VipSeatTakenList
 <!-- vip 서브메뉴 -->
 
 
-<div id="content">
+<section id="movie">
 이번달 영화
 <div class="movie_title"><p>이 달의 영화</p></div>
 		<div class="poster"><img src="./images/vip/<%=vipbean.getV_eng_title().replaceAll(" ","")+"_p.jpg"%>" width="370" height="500"></div>
@@ -66,11 +65,12 @@ List<VipResBean> VipSeatTakenList = (List)request.getAttribute("VipSeatTakenList
 			<p><%=vipbean.getV_genre()%></p>
 			<p><%=vipbean.getV_actor().replaceAll(","," , ")%></p>
 		</div>
-</div>
+</section>
 		
-			
-vip시사회 좌석현황 
-
+	
+<section id="seat">		
+vip시사회 좌석 예매 현황 
+	<div id="screen">SCREEN</div>
 			<table class="seatTable">	
 				<tr>
 					 <% 
@@ -80,19 +80,8 @@ vip시사회 좌석현황
 				 	if(vipresbean.getV_seatSelected().equals("0")){%>
 						<td class="seatUnselected"><label><input type="radio" class="radio"  name="seat"  onclick="seat<%=vipresbean.getV_seatNum()%>()" value="<%=vipresbean.getV_seatNum()%>"><p><%=vipresbean.getV_seatNum()%></p></label></td>
 						
-						<%-- <td><p class="seatUnselected"><%=vipresbean.getV_seatSelected()%></p></td> --%>
-						<script>
-							function seat<%=vipresbean.getV_seatNum()%>() {document.getElementById("selectedSeat").innerHTML = "<%=vipresbean.getV_seatNum()%>";}
-						</script>
-						
-						
-						<div><p id="selectedSeat"></p></div>
-						
-					
 					<%}else if(vipresbean.getV_seatSelected().equals("1")){%>
-						<td><p class="seatSelected" name="seat"><span><%="X"%><%-- <%=vipresbean.getV_seatNum()%> --%></span></p></td>
-						<%-- <td><p class="seatSelected"><%=vipresbean.getV_seatSelected()%></p></td> --%>
-						
+						<td><p class="seatSelected" name="seat"><span><%="X"%></span></p></td>
 					<%}} %>
 				</tr>
 				<tr>
@@ -102,24 +91,13 @@ vip시사회 좌석현황
 				 	
 					 	if(vipresbean.getV_seatSelected().equals("0")){%>
 							<td class="seatUnselected"><label><input type="radio" class="radio"  name="seat"  onclick="seat<%=vipresbean.getV_seatNum()%>()" value="<%=vipresbean.getV_seatNum()%>"><p><%=vipresbean.getV_seatNum()%></p></label></td>
-							
-							<%-- <td><p class="seatUnselected"><%=vipresbean.getV_seatSelected()%></p></td> --%>
-							<script>
-								function seat<%=vipresbean.getV_seatNum()%>() {document.getElementById("selectedSeat").innerHTML = "<%=vipresbean.getV_seatNum()%>";}
-							</script>
-						
 						<%}else if(vipresbean.getV_seatSelected().equals("1")){%>
-							<td><p class="seatSelected" name="seat"><span><%="X"%><%-- <%=vipresbean.getV_seatNum()%> --%></span></p></td>
-							<%-- <td><p class="seatSelected"><%=vipresbean.getV_seatSelected()%></p></td> --%>
+							<td><p class="seatSelected" name="seat"><span><%="X"%></span></p></td>
 						<%}
 				 	}//for %>
 				</tr>
 			</table> 
-
-vip시사회 예매현황 
-
-</div>
-
+</section>
 
 
 

@@ -11,6 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import net.category.db.ReviewBean;
 import net.member.db.MemberBean;
 
 public class AdminReviewDAO {
@@ -45,8 +46,8 @@ public class AdminReviewDAO {
 		return count;
 	}//End getAdminReviewCount()
 	
-	public List<AdminReviewBean> getAdminReviewList(int startRow, int pageSize) {
-		List<AdminReviewBean> lrb = new ArrayList<AdminReviewBean>();
+	public List<ReviewBean> getAdminReviewList(int startRow, int pageSize) {
+		List<ReviewBean> lrb = new ArrayList<ReviewBean>();
 		Connection con = null;
 		String sql = "";
 		PreparedStatement pstmt = null;
@@ -60,15 +61,15 @@ public class AdminReviewDAO {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
-				AdminReviewBean adminreviewbean = new AdminReviewBean();
-				adminreviewbean.setContent(rs.getString("r_content"));
-				adminreviewbean.setR_date(rs.getDate("r_date"));
-				adminreviewbean.setR_id(rs.getString("r_id"));
-				adminreviewbean.setR_num(rs.getInt("r_num"));
-				adminreviewbean.setR_p_num(rs.getInt("r_p_num"));
-				adminreviewbean.setR_recommand(rs.getInt("r_recommand"));
-				adminreviewbean.setR_report(rs.getInt("r_report"));				
-				lrb.add(adminreviewbean);
+				ReviewBean reviewbean = new ReviewBean();
+				reviewbean.setR_content(rs.getString("r_content"));
+				reviewbean.setR_date(rs.getDate("r_date"));
+				reviewbean.setR_id(rs.getString("r_id"));
+				reviewbean.setR_num(rs.getInt("r_num"));
+				reviewbean.setR_p_num(rs.getInt("r_p_num"));
+				reviewbean.setR_recommand(rs.getInt("r_recommand"));
+				reviewbean.setR_report(rs.getInt("r_report"));				
+				lrb.add(reviewbean);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

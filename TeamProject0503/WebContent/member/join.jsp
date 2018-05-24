@@ -329,25 +329,25 @@ $(function(){ //전체선택 체크박스 클릭
 
       <div class="clear"></div>
 
-      <div class="div_01">
+      <div class="div_01_join">
          <div class="div_02">
             <span>회원가입</span>
          </div>
          <div>
             <form action="./MemberJoinAction.me" id="join" method="post" name="fr" onsubmit="return validate();">
             <label> <input type="text" name="m_name" id="name" placeholder="닉네임 (김와츄)" class="text"> </label> 
-            <label> <input type="button" value="닉네임 중복체크" id ="name_dup" ></label><br>
+            <label> <input type="button" value="닉네임 중복체크" id ="name_dup" class="btn" ></label><br>
             		<input type="hidden" value="-1" id="dup_name_check"> 
             <label> <input type="text" name="m_id" id="id" placeholder="이메일 (example@gmail.com)" class="text">
-            		<input type="button" id="id_dup" value="아이디 중복체크">
+            		<input type="button" id="id_dup" value="아이디 중복체크" class="btn">
             		<input type="hidden" value="-1" id="dup_id_check">   
             </label><br> 
             <label> <input type="password" name="m_pass" id="pwd" placeholder="비밀번호 (6자 이상)" class="text" ></label><br>
             <label> <input type="text" name="m_num1" placeholder="주민등록번호 앞자리" class="text"  maxlength="6"></label><br> 
             <label> <input type="text" name="m_num2" placeholder="주민등록번호 뒷자리" class="text" maxlength="1"></label><br>
-            <input type="checkbox" class="check" id="all_agree" name="checkagree"> <label for="all_agree">전체 약관에 동의 합니다.</label><br>  
-			<input type="checkbox" class="check" id="use_agree" name="checkagree"> <label for="use_agree"><a onclick="terms()" class="use">이용약관</a>에 동의 합니다.</label><br>  
-			<input type="checkbox" class="check" id="p_agree" name="checkagree"> <label for="p_agree"><a onclick="Privacy()" class="use">개인정보 취급 방침</a>에 동의 합니다.</label> 
+            <input type="checkbox" class="check" id="all_agree" name="checkagree"> <span><label for="all_agree">전체 약관에 동의 합니다.</label></span><br>  
+			<input type="checkbox" class="check" id="use_agree" name="checkagree"> <span><label for="use_agree"><a onclick="terms()" class="use">이용약관</a>에 동의 합니다.</label></span><br>  
+			<input type="checkbox" class="check" id="p_agree" name="checkagree"> <span><label for="p_agree"><a onclick="Privacy()" class="use">개인정보 취급 방침</a>에 동의 합니다.</label></span> 
             
                <div>
                  <input type="submit" value="회원가입" id="submit"> 

@@ -1,3 +1,4 @@
+<%@page import="net.vip.db.VipResBean"%>
 <%@page import="net.member.db.MemberBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -19,7 +20,9 @@
 <body>
 <%
 	request.setCharacterEncoding("utf-8");
-	List<MemberBean> vipMemberList = (List)request.getAttribute("vipMemberList");
+	List vipMemberList = (List)request.getAttribute("vipMemberList");
+	List<VipResBean> seatList=(List)request.getAttribute("seatList");
+	
 %>
 <!-- 헤더 영역 -->
 <jsp:include page="../inc/header.jsp"/>
@@ -34,13 +37,15 @@
 
 	<table class="vip_db_list">
 		<tr>
-			<th>아이디</th><th>이름</th><th>등급</th><th>생년월일</th><th>가입일</th>
+			<th>시사회 좌석 번호</th><th>아이디</th><th>이름</th><th>등급</th><th>생년월일</th><th>가입일</th>
 		</tr>
 		
 		<%for(int i=0;i<vipMemberList.size();i++){
-			MemberBean memberbean =(MemberBean)vipMemberList.get(i);	
+			MemberBean memberbean =(MemberBean)vipMemberList.get(i);
+			VipResBean vipresbean=(VipResBean)seatList.get(i);
 		%>
 		<tr>
+			<td><%=vipresbean.getVr_seat_num()%></td>
 			<td><%=memberbean.getM_id()%></td><td><%=memberbean.getM_name()%></td>
 			<td><%=memberbean.getM_grade()%></td><td><%=memberbean.getM_id_num1()%></td>
 			<td><%=memberbean.getM_reg_date()%></td>

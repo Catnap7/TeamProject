@@ -65,11 +65,12 @@ public class VipFrontController extends HttpServlet{
 				forward.setPath("./vip/insertVipMovie.jsp");
 				
 		}else if(command.equals("/VipAdmin.vi")){
-				forward=new ActionForward();
-				
-				forward.setRedirect(false);
-				forward.setPath("./vip/VipAdmin.jsp");
-				
+				action = new VipAdmin();
+			  try {
+		            forward = action.execute(request, response);
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
 		}else if(command.equals("/VipResDelete.vi")){
 		  	action = new VipResDelete();
 			  try {

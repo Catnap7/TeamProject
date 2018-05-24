@@ -19,7 +19,7 @@
 	<!-- 헤더영역 -->
 
 	<!-- 어드민 서브메뉴 -->
-	<jsp:include page="../admin_sub.jsp" />
+	<jsp:include page="../../inc/admin_sub.jsp" />
 	<!-- 어드민 서브메뉴 -->
 
 	<div id="content">
@@ -55,7 +55,7 @@
 			</tr>
 
 		</table>
-
+		
 		<div class="admin-notice-write">
 			<button type="submit" class="wirtebtn" onclick="location.href='./AdminNoticeList.an'">글목록</button>
 			<button type="button" class="wirtebtn" onclick="location.href='./AdminNoticeUpdate.an?n_num=<%=noticebean.getN_num() %>'">글수정</button>

@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-<title>왓츄 영화 DB입력</title>
+<title>WATCHU DB INSERT</title>
 
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
@@ -15,78 +15,72 @@
 </head>
 <body>
 	<!-- 헤더영역 -->
-	<jsp:include page="../header.jsp" />
+	<jsp:include page="../../inc/header.jsp" />
 	<!-- 헤더영역 -->
 
-<!-- 어드민 서브메뉴 -->
-<jsp:include page="../admin_sub.jsp"/>
-<!-- 어드민 서브메뉴 -->
+	<!-- 어드민 서브메뉴 -->
+	<jsp:include page="../../inc/admin_sub.jsp" />
+	<!-- 어드민 서브메뉴 -->
 
 	<div id="content">
-		<h1>영화DB 입력폼</h1>
-
-		<form action="./AdminMovieJoinAction.am" method="post">
-			<table border="0" class="db_list_insert">
+		<h1>영화 등록</h1>
+		<form action="./AdminMovieInsertAction.am" method="post">
+			<table class="db_list_mv">
 				<tr>
-					<td>제목(한글)</td>
+					<th>제목(한글)</th>
 					<td><input type="text" name="mv_kor_title"></td>
 				</tr>
 				<tr>
-					<td>제목(영제)</td>
+					<th>제목(영문)</th>
 					<td><input type="text" name="mv_eng_title"></td>
 				</tr>
 				<tr>
-					<td>개봉년도</td>
+					<th>개봉년도</th>
 					<td><input type="text" name="mv_year"></td>
 				</tr>
 				<tr>
-					<td>국내/해외</td>
+					<th>국내 | 해외</th>
 					<td><input type="text" name="mv_country"></td>
 				</tr>
 				<tr>
-					<td>관람등급</td>
+					<th>관람등급</th>
 					<td><input type="text" name="mv_age"></td>
 				</tr>
 				<tr>
-					<td>장르</td>
+					<th>장르</th>
 					<td><input type="text" name="mv_genre"></td>
 				</tr>
 				<tr>
-					<td>러닝타임</td>
+					<th>상영시간</th>
 					<td><input type="text" name="mv_time"></td>
 				</tr>
 				<tr>
-					<td>감독</td>
+					<th>감독</th>
 					<td><input type="text" name="mv_director"></td>
 				</tr>
 				<tr>
-					<td>출연</td>
+					<th>출연</th>
 					<td><input type="text" name="mv_actor"></td>
 				</tr>
 				<tr>
-					<td>시놉시스</td>
-					<td><textarea cols="40" rows="10" name="mv_story"></textarea>
+					<th>줄거리</th>
+					<td><textarea cols="35" rows="10" name="mv_story"></textarea>
 				</tr>
 				<tr>
-					<td>예고편 링크주소</td>
+					<th>예고편 링크</th>
 					<td><input type="text" name="mv_video"></td>
 				</tr>
-
-				<tr>
-					<td colspan="2"><input type="submit" value="글쓰기"> <!-- <tr><td>포스터</td>
-	<td><input type="file" name="poster"></td></tr>
-<tr><td>스틸컷1</td>
-	<td><input type="file" name="steelcut"></td></tr>
-<tr><td>스틸컷2</td>
-	<td><input type="file" name="steelcut2"></td></tr> --></td>
-				</tr>
 			</table>
+			<div class="mv_btn">
+			<input type="submit" value="글쓰기">
+			<input type="button" value="돌아가기" onclick="history.back()">
+			</div>
 		</form>
 	</div>
 
 
 	<!-- 푸터 영역 -->
-	<jsp:include page="../footer.jsp" />
+	<jsp:include page="../../inc/footer.jsp" />
 	<!-- 푸터 영역 -->
 </body>
 </html>
