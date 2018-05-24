@@ -36,6 +36,8 @@ public  class MemberJoinAction implements Action{
 		memberbean.setM_id_num1(Integer.parseInt(request.getParameter("m_num1")));
 		memberbean.setM_id_num2(Integer.parseInt(request.getParameter("m_num2")));
 		memberbean.setM_grade(0);
+		memberbean.setM_pay(0);
+		memberbean.setM_pic(0);
 		memberbean.setM_reg_date(new Date(System.currentTimeMillis()));
 		MemberDAO memberdao = new MemberDAO();
 		memberdao.insertMember(memberbean);
