@@ -22,7 +22,7 @@
 	<jsp:include page="../../inc/admin_sub.jsp" />
 	<!-- 어드민 서브메뉴 -->
 
-	<div id="content_notice">
+	<div id="content">
 		<h1>notice content</h1>
 		<table class="db_list">
 			<tr>

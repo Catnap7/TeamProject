@@ -42,7 +42,7 @@ div#content {
 	margin-top: 30px;
 	height: 800px;
 	position: relative;
-	overflow: auto;
+/* 	overflow: auto; */
 }
 
 .search_type select {
@@ -137,7 +137,16 @@ div.content_inner:HOVER, div.content_inner:HOVER a {
 
 /************** admin db list **************/
 
-div#content h1 {
+div#content_member {
+	/* 	border: 1px solid orange; */
+	margin-left: 300px;
+	margin-top: 30px;
+	height: 800px;
+	position: relative;
+	overflow: auto;
+}
+
+div#content h1, div#content_member h1 {
 	text-align: center;
 	display: inline-block;
 	position: absolute;
@@ -318,25 +327,6 @@ div#content h1 {
 }
 
 /************** admin notice write **************/
-
-div#content_notice {
-/* 	border: 1px solid orange; */
-	margin-left: 300px;
-	margin-top: 30px;
-	height: 800px;
-	position: relative;
-}
-
-div#content_notice h1 {
-	text-align: center;
-	display: inline-block;
-	position: absolute;
-	left: 300px;
-	top: 50px;
-	font-size: 44px;
-	letter-spacing: 2px;
-	text-transform: capitalize;
-}
 
 .admin-notice-write {
 	position: absolute;
