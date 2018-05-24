@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 
 
@@ -429,7 +430,10 @@ $(document).ready(function(){
            %>
            <table> 
               <tr>
-                <td class="c_name"><%=memberbean.getM_name() %></td>
+                <td class="c_name">
+                <%=memberbean.getM_name() %>
+                <a class="glyphicon glyphicon-home"></a>
+                </td>
               </tr>
               <tr>
                 <td class="review_content"><%=reviewbean.getR_content() %></td>
@@ -446,8 +450,8 @@ $(document).ready(function(){
                %>
                <tr>
                      <td>
-                     <a href="./ModifyReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">수정</a> | 
-                     <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">삭제</a>
+                     <a href="./ModifyReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">수정</a> | 
+                     <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">삭제</a>
                      </td>
                  </tr>
                <%
