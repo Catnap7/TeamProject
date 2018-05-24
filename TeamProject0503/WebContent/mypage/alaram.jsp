@@ -67,7 +67,7 @@ if(count != 0){
 			%><a href="./Alarm.my?pageNum=<%=startPage-pageBlock%>">prev</a><%
 		}
 		for(int i=startPage;i<=endPage;i++) {
-			%><a href="./Alarm.my?pageNum=<%=i%>"><%=i%></a><%
+			%><a href="./Alarm.my?pageNum=<%=i%>"><span <%if(i==pageNum){%>style=color:red;<%} %>><%=i%></span></a><%
 		}
 		if(pageCount>endPage){
 			%><a href="./Alarm.my?pageNum=<%=startPage+pageBlock%>">next</a><%

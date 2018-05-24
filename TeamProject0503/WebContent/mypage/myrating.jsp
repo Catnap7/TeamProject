@@ -168,7 +168,7 @@ if(count-(pageNum-1)*10<=5){
 			%><a href="./Myrating.my?pageNum=<%=startPage-pageBlock%>">prev</a><%
 		}
 		for(int i=startPage;i<=endPage;i++) {
-			%><a href="./Myrating.my?pageNum=<%=i%>"><%=i%></a><%
+			%><a href="./Myrating.my?pageNum=<%=i%>"><span <%if(i==pageNum){%>style=color:red;<%} %>><%=i%></span></a><%
 		}
 		if(pageCount>endPage){
 			%><a href="./Myrating.my?pageNum=<%=startPage+pageBlock%>">next</a><%
