@@ -14,7 +14,6 @@
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/vip_admin.css" rel="stylesheet" type="text/css">
-<link href="./css/vip.css" rel="stylesheet" type="text/css">
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
@@ -99,16 +98,6 @@ vip시사회 좌석 예매 현황
 				</tr>
 			</table> 
 </section>
-
-
-<section id="member">
-vip시사회 예매현황 
-
-
-
-
-</section>
-
 
 
 
