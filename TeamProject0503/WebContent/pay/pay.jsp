@@ -54,6 +54,9 @@ $(document).ready(function(){
 
 </head>
 <body>
+
+
+
 <%
 //쿠폰리스트를 받아오는데, 쿠폰이 null 이면, 
 //쿠폰없음.
@@ -111,6 +114,7 @@ List couponlist=(List)request.getAttribute("couponlist");
 </p>
 <input type="submit" value="결제하기">
 	</form><br>
+
 
 
 

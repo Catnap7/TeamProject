@@ -15,7 +15,7 @@
 #image{
   margin:0px auto;z-index:10;
 }
-#n_id{position:absolute;left:940px;top:330px;z-index:20;}
+#n_id{position:absolute;left:941px;top:330px;z-index:20;}
 </style>
 </head>
 <!-- 헤더영역 -->
@@ -27,10 +27,10 @@ String id = (String)session.getAttribute("m_id");
 %>
 
 
-<section class="left">
+<!-- <section class="left">
 
-</section> 
-
+</section>  -->
+<section>
 <article>
 <h1>룰렛을 돌려서 쿠폰을 획득해보아요~</h1>
 <div class="roulette">
@@ -49,10 +49,11 @@ String id = (String)session.getAttribute("m_id");
 <div id="result_id7"></div>
 <div id="result_id8"></div> -->
 </article>
+</section>
 
- <section class="right">
+<!--  <section class="right">
 
-</section> 
+</section>  -->
 
 <div class="clear"></div>
 </body>

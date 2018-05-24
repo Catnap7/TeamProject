@@ -19,7 +19,7 @@ int pageCount = ((Integer)request.getAttribute("pageCount")).intValue();
 int pageBlock = ((Integer)request.getAttribute("pageBlock")).intValue();
 int startPage = ((Integer)request.getAttribute("startPage")).intValue();
 int endPage = ((Integer)request.getAttribute("endPage")).intValue();
-int count = ((Integer)request.getAttribute("endPage")).intValue();
+int count = ((Integer)request.getAttribute("count")).intValue();
 %>
 
 <!-- 헤더영역 -->
@@ -62,9 +62,9 @@ if(count == 0){
 %>
 </table>
 	
-	</div>
-<%-- <%
-if(couponlist != null){
+	
+<%
+if(count != 0){
 %>	
 	 <div class="prev_next">
 		<%
@@ -72,16 +72,17 @@ if(couponlist != null){
 			%><a href="./Coupon.my?pageNum=<%=startPage-pageBlock%>">prev</a><%
 		}
 		for(int i=startPage;i<=endPage;i++) {
-			%><a href="./Coupon.my?pageNum=<%=i%>"><%=i%></a><%
+			%><a href="./Coupon.my?pageNum=<%=i%>"><span <%if(i==pageNum){%>style=color:red;<%} %>><%=i%></span></a><%
 		}
 		if(pageCount>endPage){
 			%><a href="./Coupon.my?pageNum=<%=startPage+pageBlock%>">next</a><%
 		}
 		%>
-	</div>
+	
 <%
 }
-%>	 --%>
+%>
+	</div>	 
 </div>
 
 
