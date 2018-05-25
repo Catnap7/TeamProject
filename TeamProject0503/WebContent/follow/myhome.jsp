@@ -103,10 +103,10 @@ if(favorite2.getMv_genre().equals("animation")){
 	<div id="info">
 		<table>
 			<tr>
-				<th>Following</th><td data-toggle="modal" data-target="#following"><%=followingcount%></td>
+				<th>Following</th><td data-toggle="modal" data-target="#following"><a href="#"><%=followingcount%></a></td>
 			</tr>
 			<tr>	
-				<th>Follower</th><td data-toggle="modal" data-target="#follower"><%=followercount%></td><!-- 팔로잉, 팔로워 수 가져오기 --> 
+				<th>Follower</th><td data-toggle="modal" data-target="#follower"><a href="#"><%=followercount%></a></td><!-- 팔로잉, 팔로워 수 가져오기 --> 
 			</tr>
 			<tr>
 				<th>리뷰 수</th><td><%=reviewcount%></td><td></td><!-- 리뷰 수 가져오기 -->
