@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import javafx.scene.input.KeyCombination.ModifierValue;
 import net.admin.manage.db.MovieBean;
 import net.admin.manage.db.MovieDAO;
 import net.category.db.ReviewDAO;
@@ -40,12 +41,15 @@ public class FollowMyHome implements Action{
 		
 		MovieDAO moviedao = new MovieDAO();
 		MovieBean moviebean = new MovieBean();
+		MovieBean moviebean2 = new MovieBean();
 		moviebean=moviedao.getfavorite(m_id);
+		moviebean2 =moviedao.getfavorite2(m_id);
 		request.setAttribute("memberbean", memberbean);
 		request.setAttribute("followercount", followercount);
 		request.setAttribute("followingcount", followingcount);
 		request.setAttribute("reviewcount", reviewcount);
 		request.setAttribute("moviebean", moviebean);
+		request.setAttribute("moviebean2", moviebean2);
 		
 		ActionForward forward= new ActionForward();
 		forward.setRedirect(false);
