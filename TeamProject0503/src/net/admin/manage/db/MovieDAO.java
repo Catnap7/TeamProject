@@ -48,7 +48,42 @@ public class MovieDAO {
 			if (rs.next()) {
 				movieBean =new MovieBean();
 				movieBean.setMv_genre(rs.getString("m.mv_genre"));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+	         if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+	         if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}
+	         if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
+		}
+		return movieBean;
+}
+	public MovieBean getfavorite2(String m_id){
+		
+		 Connection con = null;
+	      String sql = "";
+	      PreparedStatement pstmt =null;
+	      ResultSet rs = null;
+	      MovieBean movieBean =null;
+	      try{
+			con = getConnection();
+			sql = "select count(*),m.mv_genre "
+					+ "from favorite f join movie m "
+					+ "on f.f_num = m.mv_num "
+					+ "where f_id=? "
+					+ "group by m.mv_genre "
+					+ "order by count(*) desc limit 2;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, m_id);
+			rs = pstmt.executeQuery();
 			
+		         //Step.04 객체실행
+			if (rs.next()) {
+				rs.next();
+				movieBean =new MovieBean();
+				movieBean.setMv_genre(rs.getString("m.mv_genre"));
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -25,6 +25,7 @@ public class Mypage implements Action{
 		MemberDAO mdao = new MemberDAO();
 		// getMember(세션값) 메서드 호출()
 		mb=mdao.getMember(id);
+		
 		FollowDAO followdao = new FollowDAO();
 		int followercount= followdao.Followercount(id);
 		int followingcount= followdao.Followingcount(id);

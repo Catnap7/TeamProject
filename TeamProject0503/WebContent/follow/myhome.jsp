@@ -26,16 +26,64 @@
 <body>
 <%
 MemberBean getmember=(MemberBean)request.getAttribute("memberbean");
+
 int followercount=((Integer)request.getAttribute("followercount"));
 int followingcount= ((Integer)request.getAttribute("followingcount"));
 int reviewcount= ((Integer)request.getAttribute("reviewcount"));
 MovieBean favorite = (MovieBean)request.getAttribute("moviebean");
+MovieBean favorite2=(MovieBean)request.getAttribute("moviebean2");
 String grede="";
 if(getmember.getM_grade()==1){
 	grede="정회원";
 }else if(getmember.getM_grade()==2){
 	grede="VIP";
 }
+String genre="";
+if(favorite!=null){
+if(favorite.getMv_genre().equals("animation")){
+	   genre="애니메이션";
+	}else if(favorite.getMv_genre().equals("comedy")){
+	   genre="코미디";
+	}else if(favorite.getMv_genre().equals("indie")){
+	   genre="독립영화";
+	}else if(favorite.getMv_genre().equals("sf")){
+	   genre="sf";
+	}else if(favorite.getMv_genre().equals("action")){
+	   genre="액션";
+	}else if(favorite.getMv_genre().equals("thriller")){
+	   genre="스릴러";
+	}else if(favorite.getMv_genre().equals("romance")){
+	   genre="로맨스";
+	}else if(favorite.getMv_genre().equals("horror")){
+	   genre="공포";
+	}else if(favorite.getMv_genre().equals("drama")){
+	   genre="드라마";
+	}
+}
+String genre2="";
+if(favorite2!=null){
+if(favorite2.getMv_genre().equals("animation")){
+	   genre2="애니메이션";
+	}else if(favorite2.getMv_genre().equals("comedy")){
+	   genre2="코미디";
+	}else if(favorite2.getMv_genre().equals("indie")){
+	   genre2="독립영화";
+	}else if(favorite2.getMv_genre().equals("sf")){
+	   genre2="sf";
+	}else if(favorite2.getMv_genre().equals("action")){
+	   genre2="액션";
+	}else if(favorite2.getMv_genre().equals("thriller")){
+	   genre2="스릴러";
+	}else if(favorite2.getMv_genre().equals("romance")){
+	   genre2="로맨스";
+	}else if(favorite2.getMv_genre().equals("horror")){
+	   genre2="공포";
+	}else if(favorite2.getMv_genre().equals("drama")){
+	   genre2="드라마";
+	}
+} 
+
+
 %>
 
 <!-- 헤더 영역 -->
@@ -67,11 +115,36 @@ if(getmember.getM_grade()==1){
 				<td><%=reviewcount%></td><!-- 리뷰 수 가져오기 -->
 			</tr>
 			<tr>
-			<%System.out.println(favorite.getMv_genre()); %>
 				<th colspan="2">선호장르</th>
 			</tr>
 			<tr>
-				<td><%=favorite.getMv_genre()%></td><td><%="드라마"%></td> <!-- 선호장르 상위 2개 -->
+				<td>
+			<%if(favorite==null){
+					%>
+					<%="선호장르 없음"%>
+					<%
+				}else{
+					%>
+					<%=genre%>
+					<%
+				} 
+				
+				%>
+				</td>
+				<td>
+				 <%if(favorite2==null){
+					%>
+					<%="선호장르 없음"%>
+					<%
+				}else{
+					%>
+					<%=genre2%>
+					<%
+				}
+				
+				%>
+
+				</td> <!-- 선호장르 상위 2개 -->
 			</tr>
 		</table>
 	</div><!-- info -->
