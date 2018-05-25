@@ -20,6 +20,7 @@ article{
 	background-color:#e8e8e8;
 	border-radius:30px;
 	width: 1000px;
+/* 	width: 1100px; */
 	margin:50px auto;
 	margin-bottom:200px;
 	box-shadow: 2px 2px #9f9f9f;
@@ -69,7 +70,7 @@ article{
 	padding:5px 20px 5px 20px;
 }
 
-.secInfo{
+.secInfo {
 	font-size: 1.2em;
 	font-weight: bold;
 	position: relative;
@@ -119,9 +120,10 @@ article{
 .myFavMovie{
 	padding:10px 5px 10px 5px;
 	height: 400px;
+/* 	height: 450px; */
 }
 .mvList{
-	/* border:1px solid #333; */
+/* 	border:1px solid #333; */
 	margin:20px auto;
 	width: 900px;
 	height: 300px;;

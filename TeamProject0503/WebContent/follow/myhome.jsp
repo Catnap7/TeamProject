@@ -12,10 +12,15 @@
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/myhome.css" rel="stylesheet" type="text/css">
+<link href="./css/followList.css" rel="stylesheet" type="text/css">
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 
+<!-- 팔로우 리스트 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -53,7 +58,7 @@ if(getmember.getM_grade()==1){
 				<th>Following</th><th>Follower</th> 
 			</tr>
 			<tr>
-				<td><%=followingcount%></td><td><%=followercount%></td><!-- 팔로잉, 팔로워 수 가져오기 -->
+				<td data-toggle="modal" data-target="#following"><%=followingcount%></td><td data-toggle="modal" data-target="#follower"><%=followercount%></td><!-- 팔로잉, 팔로워 수 가져오기 -->
 			</tr>
 			<tr>
 				<th colspan="2">리뷰 수</th>
@@ -72,6 +77,127 @@ if(getmember.getM_grade()==1){
 	</div><!-- info -->
 </section><!-- myInfo -->
 
+<!----------------------------------- 팔로잉 --------------------------------------------------------->  
+    <div class="modal fade" id="following">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">팔로잉</h4>
+        </div>
+	
+		<!--         내가 팔로잉 하는 한 사람  -->
+		<div class="follow_div">
+          <div class="photo">
+		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
+		  </div>
+		  <a href="http://www.naver.com">gns@naver.com</a><br>
+		  <span>김태훈</span>
+		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
+		</div>
+		<div class="clear"></div>
+		<!--         내가 팔로잉 하는 한 사람  -->
+		
+		<!--         내가 팔로잉 하는 한 사람  -->
+		<div class="follow_div">
+          <div class="photo">
+		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
+		  </div>
+		  <a href="http://www.naver.com">gns@naver.com</a><br>
+		  <span>김태훈</span>
+		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
+		</div>
+		<div class="clear"></div>
+		<!--         내가 팔로잉 하는 한 사람  -->
+		
+		<!--         내가 팔로잉 하는 한 사람  -->
+		<div class="follow_div">
+          <div class="photo">
+		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
+		  </div>
+		  <a href="http://www.naver.com">gns@naver.com</a><br>
+		  <span>김태훈</span>
+		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
+		</div>
+		<div class="clear"></div>
+		<!--         내가 팔로잉 하는 한 사람  -->
+		
+		<!--         내가 팔로잉 하는 한 사람  -->
+		<div class="follow_div">
+          <div class="photo">
+		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
+		  </div>
+		  <a href="http://www.naver.com">gns@naver.com</a><br>
+		  <span>김태훈</span>
+		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
+		</div>
+		<div class="clear"></div>
+		<!--         내가 팔로잉 하는 한 사람  -->
+		
+		<!--         내가 팔로잉 하는 한 사람  -->
+		<div class="follow_div">
+          <div class="photo">
+		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
+		  </div>
+		  <a href="http://www.naver.com">gns@naver.com</a><br>
+		  <span>김태훈</span>
+		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
+		</div>
+		<div class="clear"></div>
+		<!--         내가 팔로잉 하는 한 사람  -->
+		
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!----------------------------------- 팔로잉 ---------------------------------------------------------> 
+
+<!----------------------------------- 팔로워 --------------------------------------------------------->
+  <div class="modal fade" id="follower">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">팔로워</h4>
+        </div>
+        
+		<!--         나를 팔로우 하는 한 사람  -->
+        <div class="follow_div">
+          <div class="photo">
+		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
+		  </div>
+		  <a href="http://www.naver.com">gns@naver.com</a><br>
+		  <span>김태훈</span>
+		  <a href="http://www.naver.com" class="follow_a">팔로잉</a>
+		</div>
+		<div class="clear"></div>
+		<!--         나를 팔로우 하는 한 사람  -->
+		
+		<!--         나를 팔로우 하는 한 사람  -->
+		<div class="follow_div">
+          <div class="photo">
+		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
+		  </div>
+		  <a href="http://www.naver.com">gns@naver.com</a><br>
+		  <span>김태훈</span>
+		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
+		</div>
+		<div class="clear"></div>
+		<!--         나를 팔로우 하는 한 사람  -->
+		  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!----------------------------------- 팔로워 --------------------------------------------------------->
 
 <section class="sec myReview">
 	<div class="secInfo">
