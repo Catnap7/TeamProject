@@ -86,14 +86,11 @@ if(mv_genre_request.equals("animation")){
 			genre="romance";
 		}
 		String age = "";
-		if(moviebean.getMv_age()==0){
-			age = "전체이용가";
-		}else if(moviebean.getMv_age()==12){
-			age = "12세이용가";
-		}else if(moviebean.getMv_age()==15){
-			age="15세이용가";
-		}else if(moviebean.getMv_age()==19){
-			age="청소년이용불가";
+		switch(moviebean.getMv_age()){
+		case 0  : age="전체이용가"; break;
+		case 12	: age="12세이용가"; break;
+		case 15	: age="15세이용가"; break;
+		case 19 : age="청소년관람불가"; break;
 		}
 			
 	%>

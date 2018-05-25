@@ -32,56 +32,40 @@ int followingcount= ((Integer)request.getAttribute("followingcount"));
 int reviewcount= ((Integer)request.getAttribute("reviewcount"));
 MovieBean favorite = (MovieBean)request.getAttribute("moviebean");
 MovieBean favorite2=(MovieBean)request.getAttribute("moviebean2");
-String grede="";
-if(getmember.getM_grade()==1){
-	grede="정회원";
-}else if(getmember.getM_grade()==2){
-	grede="VIP";
+String grade="";
+switch(getmember.getM_grade()){
+case 1 : grade = "정회원"; break;
+case 2 : grade = "VIP회원"; break;
 }
+
 String genre="";
 if(favorite!=null){
-if(favorite.getMv_genre().equals("animation")){
-	   genre="애니메이션";
-	}else if(favorite.getMv_genre().equals("comedy")){
-	   genre="코미디";
-	}else if(favorite.getMv_genre().equals("indie")){
-	   genre="독립영화";
-	}else if(favorite.getMv_genre().equals("sf")){
-	   genre="sf";
-	}else if(favorite.getMv_genre().equals("action")){
-	   genre="액션";
-	}else if(favorite.getMv_genre().equals("thriller")){
-	   genre="스릴러";
-	}else if(favorite.getMv_genre().equals("romance")){
-	   genre="로맨스";
-	}else if(favorite.getMv_genre().equals("horror")){
-	   genre="공포";
-	}else if(favorite.getMv_genre().equals("drama")){
-	   genre="드라마";
-	}
+switch(favorite.getMv_genre()){
+case "animation" : genre="애니메이션"; break;
+case "comedy" : genre="코미디"; break;
+case "indie" : genre="독립영화"; break;
+case "sf" : genre="sf"; break;
+case "action" : genre="액션"; break;
+case "thriller" : genre="스릴러"; break;
+case "romance" : genre="로맨스"; break;
+case "horror" : genre="공포"; break;
+case "drama" : genre="드라마"; break;
+}
 }
 String genre2="";
 if(favorite2!=null){
-if(favorite2.getMv_genre().equals("animation")){
-	   genre2="애니메이션";
-	}else if(favorite2.getMv_genre().equals("comedy")){
-	   genre2="코미디";
-	}else if(favorite2.getMv_genre().equals("indie")){
-	   genre2="독립영화";
-	}else if(favorite2.getMv_genre().equals("sf")){
-	   genre2="sf";
-	}else if(favorite2.getMv_genre().equals("action")){
-	   genre2="액션";
-	}else if(favorite2.getMv_genre().equals("thriller")){
-	   genre2="스릴러";
-	}else if(favorite2.getMv_genre().equals("romance")){
-	   genre2="로맨스";
-	}else if(favorite2.getMv_genre().equals("horror")){
-	   genre2="공포";
-	}else if(favorite2.getMv_genre().equals("drama")){
-	   genre2="드라마";
-	}
-} 
+switch(favorite2.getMv_genre()){
+case "animation" : genre2="애니메이션"; break;
+case "comedy" : genre2="코미디"; break;
+case "indie" : genre2="독립영화"; break;
+case "sf" : genre2="sf"; break;
+case "action" : genre2="액션"; break;
+case "thriller" : genre2="스릴러"; break;
+case "romance" : genre2="로맨스"; break;
+case "horror" : genre2="공포"; break;
+case "drama" : genre2="드라마"; break;
+}
+}
 
 
 %>
@@ -97,8 +81,8 @@ if(favorite2.getMv_genre().equals("animation")){
 
 <section class="sec myInfo">
 	<div id="profile">
-		<img src="./images/proflie1.png" width="200px" height="200px">
-		<p><%=getmember.getM_id()%></p><p><%=grede%></p> <!-- 이름, 등급 가져오기 -->
+		<img src="./images/proflie1<%-- <%=getmember.getM_pic()%> --%>.png" width="200px" height="200px">
+		<p><%=getmember.getM_id()%></p><p><%=grade%></p> <!-- 이름, 등급 가져오기 -->
 	</div><!-- profile -->
 	<div id="info">
 		<table border="1">
