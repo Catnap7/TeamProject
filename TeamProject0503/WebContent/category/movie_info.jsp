@@ -298,11 +298,6 @@ $(document).ready(function(){
          %>
          
       <%															
-      String num1 =Integer.toString(memberBean.getM_id_num1());
-	  
-	  String str = String.format("%06d",101);
-	  //int num3=String.format("%06d",101);
-	  //System.out.print(num3);
       if(memberBean.getM_pay()==0){
          %>
          <script type="text/javascript">
@@ -314,7 +309,7 @@ $(document).ready(function(){
          </script>
       <%   
       }else if(memberBean.getM_pay()==1){
-         if(memberBean.getM_id_num1()<=991231 && moviebean.getMv_age()==19 ){
+         if(memberBean.getM_id_num1()<=19991231 && moviebean.getMv_age()==19 ){
             
              %>
               <script type="text/javascript">
@@ -327,7 +322,7 @@ $(document).ready(function(){
                });           
               </script>
               <%
-         }else if ( memberBean.getM_id_num1()>=000101 && moviebean.getMv_age()==19){
+         }else if ( memberBean.getM_id_num1()>=20000101 && moviebean.getMv_age()==19){
             %>
                <script type="text/javascript">
                $(document).ready(function(){
