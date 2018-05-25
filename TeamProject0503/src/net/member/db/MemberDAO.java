@@ -36,11 +36,6 @@ private Connection getConnection() throws Exception {
 	 PreparedStatement pstmt =null;
 	 int pic=(int)(Math.random()*10)+1;
 	 try {
-//		 
-//		 memberbean.getM_id_num1().
-//		 
-//		if()
-//		 
 		 
 		con=getConnection();
 		
