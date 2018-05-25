@@ -38,6 +38,7 @@
 		searchFunction();
 	}
 </script>
+
 <!-- script -->
 
 </head>
@@ -73,6 +74,7 @@
 					<th class="th3">닉네임</th>
 					<th class="th4">회원등급</th>
 					<th class="th5">가입일</th>
+					<th class="th5">내보내기</th>
 				</tr>
 			</thead>
 			<tbody id="ajaxTable">
