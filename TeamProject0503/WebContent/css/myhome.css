@@ -29,6 +29,7 @@ article{
 
 .sec{
 	border:1px solid #9f9f9f;
+	border-bottom:2px dashed #333;
 	background-color:white;
 	border-radius:10px;
 	margin: 20px auto;
@@ -44,6 +45,7 @@ article{
 	border-bottom:2px dashed #333;
 	box-sizing:border-box;
 	height: 350px;
+	line-height:1.5em;
 }
 #profile{
 	text-align: center;
@@ -139,12 +141,12 @@ article{
 .mvList{
 	/* border:1px solid #333; */
 	margin:20px auto;
-	width: 770px;
+	width: 720px;
 	height: 700px;;
 	box-sizing:border-box;
 	text-align: center;
 	position: relative;
-	top:10px;left: 20px;
+	top:20px;left: 50px;
 }
 
 .mvList div{
