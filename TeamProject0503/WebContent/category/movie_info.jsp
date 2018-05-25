@@ -153,9 +153,9 @@ String age = "";
 
 switch(moviebean.getMv_age()){
 case 0  : age="전체이용가"; break;
-case 12	: genre="12세이용가"; break;
-case 15	: genre="15세이용가"; break;
-case 19 : genre="청소년관람불가"; break;
+case 12	: age="12세이용가"; break;
+case 15	: age="15세이용가"; break;
+case 19 : age="청소년관람불가"; break;
 }
 
    

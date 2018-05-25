@@ -56,16 +56,13 @@
 		<%for(int i=0;i<vipMovieList.size();i++){
 			VipBean vipbean =(VipBean)vipMovieList.get(i);
 			
-				String age = "";
-					if(vipbean.getV_age()==0){
-						age = "전체이용가";
-					}else if(vipbean.getV_age()==12){
-						age = "12세이용가";
-					}else if(vipbean.getV_age()==15){
-						age="15세이용가";
-					}else if(vipbean.getV_age()==19){
-						age="청소년이용불가";
-					}
+			String age = "";
+			switch(vipbean.getV_age()){
+			case 0  : age="전체이용가"; break;
+			case 12	: age="12세이용가"; break;
+			case 15	: age="15세이용가"; break;
+			case 19 : age="청소년관람불가"; break;
+			}
 		%>
 		<tr>
 			<td><%=vipbean.getV_num()%></td><td><a href="./VipMovieContent.vi?v_num=<%=vipbean.getV_num() %>"><%=vipbean.getV_kor_title()%></a></td>
