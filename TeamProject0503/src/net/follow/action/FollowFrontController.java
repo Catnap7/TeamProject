@@ -32,6 +32,20 @@ public class FollowFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/FollowFavorite.fo")){
+			action = new FollowFavorite();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}else if(command.equals("/FollowReview.fo")){
+			action = new FollowReview();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 			
 		
