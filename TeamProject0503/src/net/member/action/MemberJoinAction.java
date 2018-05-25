@@ -29,13 +29,22 @@ public  class MemberJoinAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		// 자바빈 MemberBean mb 객체생성
 		MemberBean memberbean = new MemberBean();
+		
+		int jumin2=Integer.parseInt(request.getParameter("m_num2"));
+		
+		
 		// 자바빈 멤버변수 <--폼파라미터 가져와서 저장
 		memberbean.setM_id(request.getParameter("m_id"));
 		memberbean.setM_pass(request.getParameter("m_pass"));
 		memberbean.setM_name(request.getParameter("m_name"));
-		memberbean.setM_id_num1(Integer.parseInt(request.getParameter("m_num1")));
+		if(jumin2==3||jumin2==4) {
+		memberbean.setM_id_num1(Integer.parseInt("20"+request.getParameter("m_num1")));
+		}else {
+		 memberbean.setM_id_num1(Integer.parseInt("19"+request.getParameter("m_num1")));
+		}
 		memberbean.setM_id_num2(Integer.parseInt(request.getParameter("m_num2")));
 		memberbean.setM_grade(0);
+		memberbean.setM_pay(0);
 		memberbean.setM_reg_date(new Date(System.currentTimeMillis()));
 		MemberDAO memberdao = new MemberDAO();
 		memberdao.insertMember(memberbean);
