@@ -36,6 +36,7 @@ private Connection getConnection() throws Exception {
 	 PreparedStatement pstmt =null;
 	 int pic=(int)(Math.random()*10)+1;
 	 try {
+		 
 		con=getConnection();
 		
 		sql = "insert into member(m_id, m_pass, m_name,m_id_num1,m_id_num2,m_pay,m_grade, m_reg_date,m_pic) values(?,?,?,?,?,?,?,?,?)";

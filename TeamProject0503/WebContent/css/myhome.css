@@ -20,6 +20,7 @@ article{
 	background-color:#e8e8e8;
 	border-radius:30px;
 	width: 1000px;
+/* 	width: 1100px; */
 	margin:50px auto;
 	margin-bottom:200px;
 	box-shadow: 2px 2px #9f9f9f;
@@ -28,6 +29,7 @@ article{
 
 .sec{
 	border:1px solid #9f9f9f;
+	border-bottom:2px dashed #333;
 	background-color:white;
 	border-radius:10px;
 	margin: 20px auto;
@@ -40,46 +42,60 @@ article{
 
 
 .myInfo{
+	border-bottom:2px dashed #333;
 	box-sizing:border-box;
-	height: 400px;
+	height: 350px;
+	line-height:1.5em;
 }
 #profile{
 	text-align: center;
 	font-weight: bold;
 	font-size: 1.4em;
 	position: relative;
-	top:30px; left: -250px;
+	top:20px; left: -150px;
 	line-height: 1.7em;
 }
+
 #info{
 	font-size:1.2em;
-	border:1px solid #333;
+	/* border:1px solid #333; */
 	text-align: center;
-	width:500px;
+	/* width:270px; */
 	position: relative;
-	top:-300px; left: 550px;
+	top:-240px; left: 420px;
 	line-height: 1.7em;
 	text-align: center;
 }
 
 #info table{
 	text-align: center;
+	padding-bottom: 50px;
 }
 #info table tr th{
-	padding:5px 20px 5px 20px;
+	font-size:1.2em;
+	color:#50a4aa;
+	/* border-right:1px dotted #333; */
+	padding:10px 5px;
+	text-align: center;
+}
+#info table tr td{
+	font-weight:bold;
+	padding:0 20px;
+	text-align: left;
+	width: 200px;
 }
 
-.secInfo{
+.secInfo {
 	font-size: 1.2em;
 	font-weight: bold;
 	position: relative;
-	top:30px; left: 50px;
+	top:10px; left: 25px;
 	/* float:left; */
 }
 
 .secInfo a{
 	position:relative;
-	top:-20px; left:750px;
+	top:0px; left:660px;
 	text-decoration: none;
 }
 .secInfo a:LINK, .secInfo a:VISITED{
@@ -117,21 +133,30 @@ article{
 } */
 
 .myFavMovie{
-	padding:10px 5px 10px 5px;
-	height: 400px;
+	padding:10px 30px 10px 30px;
+	height: 850px; 
+	margin:20 auto;
+/* 	height: 450px; */
 }
 .mvList{
 	/* border:1px solid #333; */
 	margin:20px auto;
-	width: 900px;
-	height: 300px;;
-	/* box-sizing:border-box; */
+	width: 720px;
+	height: 700px;;
+	box-sizing:border-box;
+	text-align: center;
+	position: relative;
+	top:20px;left: 50px;
 }
 
 .mvList div{
+	/* border:1px solid red; */
 	float:left;
-	margin: 10px 2px;
+	margin: 10px 10px;
 	text-align: center;
+	line-height: 1.5em;
+	font-size: 1.1em;
+	font-weight: bold;
 }
 
 

@@ -205,6 +205,7 @@ $(function(){ //전체선택 체크박스 클릭
 		document.fr.checkagree[2].focus()
 		return false;
 	} 
+	
 	document.fr.submit();
 
 }
@@ -314,6 +315,10 @@ $(function(){ //전체선택 체크박스 클릭
 		}); 
 	});
 	}); 
+	
+  
+	
+	
 </script>
 </head>
 <body>
