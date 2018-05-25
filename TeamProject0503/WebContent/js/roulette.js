@@ -14,7 +14,7 @@ window.onload = function(){
     	var id_frm = $("input[name=id]");						   
 			$.ajax({
 				type: 'POST',
-				url: 'roulette/check.jsp',
+				url: './RouletteAction.ro',
 				dataType : "json",
 				data: {
 					"id" : $(id_frm).val()
