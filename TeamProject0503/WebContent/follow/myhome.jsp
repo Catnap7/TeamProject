@@ -157,52 +157,7 @@ case "drama" : genre2="드라마"; break;
 		<!--         내가 팔로잉 하는 한 사람  -->
 		
 		<!--         내가 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         내가 팔로잉 하는 한 사람  -->
 		
-		<!--         내가 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         내가 팔로잉 하는 한 사람  -->
-		
-		<!--         내가 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         내가 팔로잉 하는 한 사람  -->
-		
-		<!--         내가 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         내가 팔로잉 하는 한 사람  -->
 		
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
