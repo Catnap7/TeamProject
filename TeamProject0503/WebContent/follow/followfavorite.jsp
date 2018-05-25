@@ -1,3 +1,4 @@
+<%@page import="net.member.db.MemberBean"%>
 <%@page import="net.admin.manage.db.MovieBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,7 +16,7 @@
 //id값 챙겨왔다.
 
 List<MovieBean> followfavoritelist=(List)request.getAttribute("followfavoritelist");
-
+MemberBean getmember=(MemberBean)request.getAttribute("memberbean");
 	
 	
 
