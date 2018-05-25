@@ -17,7 +17,7 @@ public class FollowFavorite implements Action{
 
 		request.setCharacterEncoding("utf-8");
 		
-		String id= request.getParameter("id");
+		String id= request.getParameter("m_id");
 		FollowDAO fdao= new FollowDAO();
 		List followfavoritelist=fdao.followfavorite(id);
 		

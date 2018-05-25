@@ -17,7 +17,7 @@ public class FollowReview implements Action{
 
 		request.setCharacterEncoding("utf-8");
 		
-		String id= request.getParameter("id");
+		String id= request.getParameter("m_id");
 		FollowDAO fdao= new FollowDAO();
 		List followfavoritelist=fdao.followreview(id);
 		
@@ -25,7 +25,7 @@ public class FollowReview implements Action{
 		
 
 		ActionForward forward = new ActionForward();
-	    forward.setPath("./follow/followfavorite.jsp");
+	    forward.setPath("./follow/followreviewlist.jsp");
 	    forward.setRedirect(false);
 
 		return forward;
