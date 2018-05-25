@@ -12,6 +12,8 @@
 <body>
 <%
 MemberBean memberbean = (MemberBean)request.getAttribute("mb");
+int followercount=((Integer)request.getAttribute("followercount"));
+int followingcount= ((Integer)request.getAttribute("followingcount"));
 String grade=null;
 switch(memberbean.getM_grade()){
 case 1 : grade = "정회원"; break;
@@ -33,8 +35,8 @@ case 2 : grade = "VIP회원"; break;
 		    <a href="#"><img alt="프로필사진" src="./images/m_cover.jpg" width="130px" height="130px" title="사진 변경"></a>
 		  </div>
 		  <ul class="follow_ul">
-		    <li class="follower"><a href="#">팔로워<span>999</span></a></li>
-		    <li class="follows"><a href="#">팔로우<span>999</span></a></li>
+		    <li class="follower"><a href="#">팔로워<span><%=followercount %></span></a></li>
+		    <li class="follows"><a href="#">팔로우<span><%=followingcount %></span></a></li>
 		  </ul>
 		</div>
 		

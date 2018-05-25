@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.follow.db.FollowDAO;
 import net.member.db.MemberBean;
 import net.member.db.MemberDAO;
 
@@ -24,7 +25,13 @@ public class Mypage implements Action{
 		MemberDAO mdao = new MemberDAO();
 		// getMember(세션값) 메서드 호출()
 		mb=mdao.getMember(id);
-						
+		
+		FollowDAO followdao = new FollowDAO();
+		int followercount= followdao.Followercount(id);
+		int followingcount= followdao.Followingcount(id);
+		
+		request.setAttribute("followercount", followercount);
+		request.setAttribute("followingcount", followingcount);
 		request.setAttribute("mb", mb);			
 		
 		//이동 ActionForward 객체 생성    

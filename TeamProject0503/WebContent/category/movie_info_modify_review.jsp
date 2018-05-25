@@ -14,6 +14,7 @@
 <title>Insert title here</title>
 <!-- jQuery -->
 <script src="./js/jquery-3.3.1.js"></script>
+<script src="http://code.jquery.com/jquery-3.1.0.js"></script>
 
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/movie_info.css" rel="stylesheet" type="text/css">
@@ -21,6 +22,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <style>
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
@@ -131,35 +134,24 @@ if(moviebean.getMv_genre().equals("animation")){
 }
 
 String genre="";
-if(moviebean.getMv_genre().equals("animation")){
-	genre="애니메이션";
-}else if(moviebean.getMv_genre().equals("comedy")){
-	genre="코미디";
-}else if(moviebean.getMv_genre().equals("indie")){
-	genre="독립영화";
-}else if(moviebean.getMv_genre().equals("sf")){
-	genre="sf";
-}else if(moviebean.getMv_genre().equals("action")){
-	genre="액션";
-}else if(moviebean.getMv_genre().equals("thriller")){
-	genre="스릴러";
-}else if(moviebean.getMv_genre().equals("romance")){
-	genre="로맨스";
-}else if(moviebean.getMv_genre().equals("horror")){
-	genre="공포";
-}else if(moviebean.getMv_genre().equals("drama")){
-	genre="드라마";
+switch(moviebean.getMv_genre()){
+case "animation" : genre="애니메이션"; break;
+case "comedy" 	 : genre="코미디"; break;
+case "indie"	 : genre="독립영화"; break;
+case "sf" 		 : genre="sf"; break;
+case "action"	 : genre="액션"; break;
+case "thriller"  : genre="스릴러"; break;
+case "romance"   : genre="로맨스"; break;
+case "horror"    : genre="공포"; break;
+case "drama"     : genre="드라마"; break;
 }
 
 String age = "";
-if(moviebean.getMv_age()==0){
-	age = "전체이용가";
-}else if(moviebean.getMv_age()==12){
-	age = "12세이용가";
-}else if(moviebean.getMv_age()==15){
-	age="15세이용가";
-}else if(moviebean.getMv_age()==19){
-	age="청소년이용불가";
+switch(moviebean.getMv_age()){
+case 0  : age="전체이용가"; break;
+case 12	: age="12세이용가"; break;
+case 15	: age="15세이용가"; break;
+case 19 : age="청소년관람불가"; break;
 }
 	
 %>
@@ -344,6 +336,13 @@ $(document).ready(function(){
 	<!--댓글   -->
 	<div class="coment">
 	<hr>
+	
+	<!--    <a id="recommend_sort">추천순</a> | <a id="date_sort">최신순</a> -->
+		<a id="rec"></a><a id="new"></a>
+		<div class="sort_wrap">
+		<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>&order=recommend#rec" class="sort_btn">추천순</a>
+		<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>&order=newest#new" class="sort_btn">최신순</a>
+		</div>
 	 <!-- 댓글 리스트 -->
  	<%
  	 List reviewList = (List)request.getAttribute("reviewList");
@@ -361,7 +360,7 @@ $(document).ready(function(){
  		 %>
  		  <table>
  		    <tr>
- 		      <td>아직 등록된 리뷰가 없어요.</td>
+ 		      <td class="review_none">아직 등록된 리뷰가 없어요.</td>
  		    </tr>
  		  </table>
  		  <%
@@ -374,16 +373,19 @@ $(document).ready(function(){
  			 %>
  			 <table> 
  			    <tr>
- 			      <td class="c_name"><%=memberbean.getM_name() %></td>
+                <td class="c_name">
+                <%=memberbean.getM_name() %>
+                <a class="glyphicon glyphicon-home"></a>
+                </td>
+              </tr>
+ 			    <tr>
+ 			      <td class="review_content"><%=reviewbean.getR_content() %></td>
  			    </tr>
  			    <tr>
- 			      <td><%=reviewbean.getR_content() %></td>
+ 			      <td class="review_sub">추천 <%=reviewbean.getR_recommand() %> / 신고 <%=reviewbean.getR_report() %></td>
  			    </tr>
  			    <tr>
- 			      <td>추천 <%=reviewbean.getR_recommand() %> / 신고 <%=reviewbean.getR_report() %></td>
- 			    </tr>
- 			    <tr>
- 			      <td><%=reviewbean.getR_date() %></td>
+ 			      <td class="review_sub"><%=reviewbean.getR_date() %></td>
  			    </tr>
 <!--  			    본인이면  (수정 삭제) 보이기 본인이 아니면 (추천 신고) 보이기  -->
 				<%
@@ -391,18 +393,92 @@ $(document).ready(function(){
 					%>
 					<tr>
  			      	  <td>
- 			      	  <a href="./ModifyReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">수정</a> | 
- 			      	  <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">삭제</a>
+ 			      	  <a href="./ModifyReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">수정</a> | 
+ 			      	  <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">삭제</a>
  			      	  </td>
  			    	</tr>
 					<%
 				}else {
 					%>
 					<tr>
- 			          <td>
- 			          <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>&r_id=<%=reviewbean.getR_id() %>">추천</a> | 
- 			          <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">신고</a>
- 			          </td>
+ 			           <td>
+<%--                     <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>&r_id=<%=reviewbean.getR_id() %>">추천</a> |  --%>
+					
+                    <a id="recommend<%=reviewbean.getR_num() %>"><img alt="추천" src="./images/recommend.PNG" style="width: 40px; height: 40px; border-radius: 30px;" title="추천"></a>
+                    <a id="report<%=reviewbean.getR_num() %>"><img alt="신고" src="./images/report.PNG" style="width: 40px; height: 40px; border-radius: 30px;" title="신고"></a>
+<%--                     <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">신고</a> --%>
+                    
+                    <input type="hidden" id="r_num<%=reviewbean.getR_num() %>" value="<%=reviewbean.getR_num() %>">
+					<input type="hidden" id="mv_num<%=reviewbean.getR_num() %>" value="<%=moviebean.getMv_num() %>">
+					<input type="hidden" id="id<%=reviewbean.getR_num() %>" value="<%=id %>">
+					<input type="hidden" id="r_id<%=reviewbean.getR_num() %>" value="<%=reviewbean.getR_id() %>">
+
+					<script type="text/javascript">
+						$(document).ready(function() {
+							
+							$('#recommend<%=reviewbean.getR_num() %>').click(function(){
+								var r_num = $('#r_num<%=reviewbean.getR_num() %>').val();
+								var mv_num = $('#mv_num<%=reviewbean.getR_num() %>').val();
+								var id = $('#id<%=reviewbean.getR_num() %>').val();
+								var r_id = $('#r_id<%=reviewbean.getR_num() %>').val();
+								
+<%-- 								alert($('#r_num<%=reviewbean.getR_num() %>').val()); --%>
+<%-- 								alert($('#mv_num<%=reviewbean.getR_num() %>').val()); --%>
+<%-- 								alert($('#id<%=reviewbean.getR_num() %>').val()); --%>
+<%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
+								
+									$.ajax({
+										type: "get",
+										url: "./RecommendAction.ca",
+										dataType: "html",
+										data: {
+											"r_num": r_num,
+											"mv_num": mv_num,
+											"id": id,
+											"r_id": r_id
+										},
+										success:function(data){
+											if(data==0) {
+												alert("이미 추천을 준 리뷰 입니다");
+											}
+											location.reload();
+										}
+									});
+							});
+							
+							$('#report<%=reviewbean.getR_num() %>').click(function(){
+								var r_num = $('#r_num<%=reviewbean.getR_num() %>').val();
+								var mv_num = $('#mv_num<%=reviewbean.getR_num() %>').val();
+								var id = $('#id<%=reviewbean.getR_num() %>').val();
+								var r_id = $('#r_id<%=reviewbean.getR_num() %>').val();
+								
+<%-- 								alert($('#r_num<%=reviewbean.getR_num() %>').val()); --%>
+<%-- 								alert($('#mv_num<%=reviewbean.getR_num() %>').val()); --%>
+<%-- 								alert($('#id<%=reviewbean.getR_num() %>').val()); --%>
+<%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
+								
+									$.ajax({
+										type: "get",
+										url: "./ReportAction.ca",
+										dataType: "html",
+										data: {
+											"r_num": r_num,
+											"mv_num": mv_num,
+											"id": id,
+											"r_id": r_id
+										},
+										success:function(data){
+											if(data==0) {
+												alert("이미 신고한 리뷰 입니다");
+											}
+											location.reload();
+										}
+									});
+							});
+					});
+					</script>
+					
+                      </td>
  			    	</tr>
 					<%
 				}

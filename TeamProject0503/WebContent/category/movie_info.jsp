@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 
 
@@ -136,36 +137,27 @@ if(moviebean.getMv_genre().equals("animation")){
 }
 
 String genre="";
-if(moviebean.getMv_genre().equals("animation")){
-   genre="애니메이션";
-}else if(moviebean.getMv_genre().equals("comedy")){
-   genre="코미디";
-}else if(moviebean.getMv_genre().equals("indie")){
-   genre="독립영화";
-}else if(moviebean.getMv_genre().equals("sf")){
-   genre="sf";
-}else if(moviebean.getMv_genre().equals("action")){
-   genre="액션";
-}else if(moviebean.getMv_genre().equals("thriller")){
-   genre="스릴러";
-}else if(moviebean.getMv_genre().equals("romance")){
-   genre="로맨스";
-}else if(moviebean.getMv_genre().equals("horror")){
-   genre="공포";
-}else if(moviebean.getMv_genre().equals("drama")){
-   genre="드라마";
+switch(moviebean.getMv_genre()){
+case "animation" : genre="애니메이션"; break;
+case "comedy" 	 : genre="코미디"; break;
+case "indie"	 : genre="독립영화"; break;
+case "sf" 		 : genre="sf"; break;
+case "action"	 : genre="액션"; break;
+case "thriller"  : genre="스릴러"; break;
+case "romance"   : genre="로맨스"; break;
+case "horror"    : genre="공포"; break;
+case "drama"     : genre="드라마"; break;
 }
 
 String age = "";
-if(moviebean.getMv_age()==0){
-   age = "전체이용가";
-}else if(moviebean.getMv_age()==12){
-   age = "12세이용가";
-}else if(moviebean.getMv_age()==15){
-   age="15세이용가";
-}else if(moviebean.getMv_age()==19){
-   age="청소년이용불가";
+
+switch(moviebean.getMv_age()){
+case 0  : age="전체이용가"; break;
+case 12	: age="12세이용가"; break;
+case 15	: age="15세이용가"; break;
+case 19 : age="청소년관람불가"; break;
 }
+
    
 %>
 
@@ -297,11 +289,6 @@ $(document).ready(function(){
          %>
          
       <%															
-      String num1 =Integer.toString(memberBean.getM_id_num1());
-	  
-	  String str = String.format("%06d",101);
-	  //int num3=String.format("%06d",101);
-	  //System.out.print(num3);
       if(memberBean.getM_pay()==0){
          %>
          <script type="text/javascript">
@@ -313,7 +300,7 @@ $(document).ready(function(){
          </script>
       <%   
       }else if(memberBean.getM_pay()==1){
-         if(memberBean.getM_id_num1()<=991231 && moviebean.getMv_age()==19 ){
+         if(memberBean.getM_id_num1()<=19991231 && moviebean.getMv_age()==19 ){
             
              %>
               <script type="text/javascript">
@@ -326,7 +313,7 @@ $(document).ready(function(){
                });           
               </script>
               <%
-         }else if ( memberBean.getM_id_num1()>=000101 && moviebean.getMv_age()==19){
+         }else if ( memberBean.getM_id_num1()>=20000101 && moviebean.getMv_age()==19){
             %>
                <script type="text/javascript">
                $(document).ready(function(){
@@ -429,7 +416,10 @@ $(document).ready(function(){
            %>
            <table> 
               <tr>
-                <td class="c_name"><%=memberbean.getM_name() %></td>
+                <td class="c_name">
+                <%=memberbean.getM_name() %>
+                <a class="glyphicon glyphicon-home"></a>
+                </td>
               </tr>
               <tr>
                 <td class="review_content"><%=reviewbean.getR_content() %></td>
@@ -446,8 +436,8 @@ $(document).ready(function(){
                %>
                <tr>
                      <td>
-                     <a href="./ModifyReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">수정</a> | 
-                     <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>">삭제</a>
+                     <a href="./ModifyReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">수정</a> | 
+                     <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">삭제</a>
                      </td>
                  </tr>
                <%
