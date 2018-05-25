@@ -81,7 +81,7 @@ case "drama" : genre2="드라마"; break;
 
 <section class="sec myInfo">
 	<div id="profile">
-		<img src="./images/proflie1<%-- <%=getmember.getM_pic()%> --%>.png" width="200px" height="200px">
+		<img src="./images/proflie_img/proflie<%=getmember.getM_pic()%>.png" width="200px" height="200px">
 		<p><%=getmember.getM_id()%></p><p><%=grade%></p> <!-- 이름, 등급 가져오기 -->
 	</div><!-- profile -->
 	<div id="info">
