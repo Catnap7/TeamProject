@@ -332,7 +332,7 @@ public class PayDAO {
 	}	
 	
 	
-	//사용한 쿠폰 삭제 //////////////////쿠폰이 중복으로 적용된다면, 수정할것.
+	//사용한 쿠폰 삭제 /////////같은종류의 쿠폰은 기간이 먼저 만료되는 쿠폰먼저 사용(강제)
 	public void deleteUseCoupon(String id, int c_name) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -341,7 +341,7 @@ public class PayDAO {
 		try {
 			con=getConnection();
 
-			sql="delete coupon where c_id=? and c_name=?";
+			sql="delete coupon where c_id=? and c_name=? order by c_end_day asc limit 1";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setInt(2, c_name);

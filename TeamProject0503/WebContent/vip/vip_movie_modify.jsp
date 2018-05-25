@@ -19,15 +19,12 @@
 <%VipBean vipbean =(VipBean)request.getAttribute("vipbean"); 
 
 	String age = "";
-		if(vipbean.getV_age()==0){
-			age = "전체이용가";
-		}else if(vipbean.getV_age()==12){
-			age = "12세이용가";
-		}else if(vipbean.getV_age()==15){
-			age="15세이용가";
-		}else if(vipbean.getV_age()==19){
-			age="청소년이용불가";
-		}
+	switch(vipbean.getV_age()){
+	case 0  : age="전체이용가"; break;
+	case 12	: age="12세이용가"; break;
+	case 15	: age="15세이용가"; break;
+	case 19 : age="청소년관람불가"; break;
+	}
 %>
 			
 <!-- 헤더 영역 -->
