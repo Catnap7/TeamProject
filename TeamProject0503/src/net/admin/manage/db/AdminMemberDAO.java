@@ -22,23 +22,44 @@ public class AdminMemberDAO {
 		return con;
 	}
 	
+	public void AdminMemberDelete(String m_id) {
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			sql = "delete from member where m_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, m_id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+		}
+	}//End AdminMemberDelete
+	
 	public List<MemberBean> getAdminMemberSearch(String searchValue, String select) {
 		List<MemberBean> lmb = new ArrayList<MemberBean>();
 		Connection con = null;
 		String sql = "";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		if(searchValue.equals("VIP")) {
-			searchValue = "2";
-		}else if(searchValue.equals("정회원")) {
-			searchValue = "1";
-		}else if(searchValue.equals("준회원")) {
-			searchValue = "0";
-		}else if(searchValue.equals("댓글정지")) {
-			searchValue = "-1";
-		}else if(searchValue.equals("로그인정지")) {
-			searchValue = "-2";
+		if(select.equals("m_grade")) {
+			
+			if(searchValue.equals("로") || searchValue.equals("로그") || searchValue.equals("로그인") || searchValue.equals("로그인정") || searchValue.equals("로그인정지")) {
+				searchValue = "4";
+			}else if(searchValue.equals("댓") || searchValue.equals("댓글") || searchValue.equals("댓글정") || searchValue.equals("댓글정지")) {
+				searchValue = "3";
+			}else if(searchValue.equals("V") || searchValue.equals("VI") || searchValue.equals("VIP")) {
+				searchValue = "2";
+			}else if(searchValue.equals("정") || searchValue.equals("정회") || searchValue.equals("정회원")) {
+				searchValue = "1";
+			}else if(searchValue.equals("준") || searchValue.equals("준회") || searchValue.equals("준회원")) {
+				searchValue = "0";
+			}
+
 		}
 		try {
 			con = getConnection();
