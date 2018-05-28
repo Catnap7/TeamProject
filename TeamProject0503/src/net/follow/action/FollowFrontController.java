@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.member.action.MemberJoinAction;
-
 public class FollowFrontController extends HttpServlet{
 
 
@@ -33,7 +31,26 @@ public class FollowFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/FollowReview.fo")){
+			action= new FollowReview();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/FollowFavorite.fo")){
+			action= new FollowFavorite();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 			
+		
+		
+		
 		
 		
 		

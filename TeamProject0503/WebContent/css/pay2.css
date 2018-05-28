@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-
+/* pay_result */
 .state {/* border:solid 1px #333; */
 	margin: 50px auto;	
 	height:300px;
@@ -7,7 +7,8 @@
 	box-shadow:5px 5px #333;
 	border-radius:30px;	
 	border-spacing: 0px; 
-	margin-bottom: 80px; 	
+	margin-bottom: 80px; 
+	margin-top: 120px;	
 }
 
 
@@ -75,6 +76,15 @@ tr.bg_light th {
 .state td{
 	padding-left: 30px;
 }
+.state a {
+	text-decoration: none;
+	color:#000;
+	font-weight: bold;
+}
+.state a:HOVER {
+	color:#228c6a;
+	font-weight: bold;
+}
 .list td{text-align: center;}
 
 .prev_next {
@@ -90,4 +100,92 @@ tr.bg_light th {
 	text-decoration: none;
 	color: #000;
 	
+}
+
+
+/* pay */
+.select {/* border:1px solid red; */
+width:700px;
+margin: 130px auto;	
+height:150px;
+margin-bottom: 50px;
+}
+
+th, td {
+	magrin : 0 10px;
+}
+.coupon {		
+	height:150px;
+	width:700px;	
+	box-shadow:5px 5px #333;
+	border-radius:30px;	
+	border-spacing: 0px; 
+	margin-bottom: 80px; 
+}
+
+.radius {
+	border-radius:30px 0 0 30px ;
+}
+.radius_2{
+	border-radius:0 30px 30px 0 ;
+}
+.radius_2 select{
+	/* border:1px solid red; */
+	font-size: 25px;
+	position: relative;
+	left:75px;
+}
+.total {
+	/* border:1px solid red; */
+	width:700px;
+	margin: 0px auto;	
+	height:150px;
+	margin-bottom: 50px;
+}
+
+.payment {
+	height:150px;
+	width:700px;	
+	box-shadow:5px 5px #333;
+	border-radius:30px;	
+	border-spacing: 0px; 
+	margin-bottom: 80px; 
+}
+.radius_3 {
+	border-radius: 30px 0 0 0;
+	padding:10px 76px;
+}
+.radius_4 {
+	border-radius: 0 30px 0 0;	
+}
+.radius_4 #box{
+	/* border:1px solid red; */
+	position: relative;
+	left:55px;
+	height: 30px;
+	font-size: 20px;
+}
+.radius_5{
+	border-radius: 0 0 30px 30px ;
+	padding : 15px 0;
+}
+.radius_5 input{
+	display: none;
+}
+.radius_5 label{
+	font-size: 25px;
+	position: relative;
+	left:300px;
+	/* border:1px solid red; */
+}
+.radius_5 label:HOVER{
+	color:#228c6a;
+}
+.to_money {
+	padding:20px 0;
+}
+#amount {
+	/* border:1px solid red; */
+	text-align: center;
+	font-size: 25px;
 }

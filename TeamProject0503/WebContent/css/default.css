@@ -5,6 +5,10 @@
 	padding: 0;
 	font-family: 'Nanum Gothic', sans-serif;
 }
+body{
+	width: 100%;
+	height: auto;
+}
 
 .clear{clear:both;}
 
@@ -18,37 +22,53 @@
 
 
 /*---header---*/
-header{ /* border:1px solid blue;   */
-	height: 100px;
+.header{ /* border:1px solid blue;  */  
+	height: 120px;
+	width:100%;
 	margin: 0px;
-	margin-bottom:70px;
+	/* margin-bottom:30px; */
 	padding: 0px;
+	/* padding-bottom:90px; */
 	box-sizing:boarder-box;
 	/*float:left;*/
 	}
 
 .title_logo{
-	position:absolute;
-	top:10px;
-	left:10px;
+	position:relative;
+	top:30px;
+	left:30px;
+	width: 350px;
 }	
 
+.rightInfo{
+	/* border:1px solid red; */
+	width:350px;
+	height: 60px;
+	position: relative;
+	top:-20px; right: -1540px;
+	line-height: 2em;
+	margin:0;
+}
+
+.rightInfo div{
+	float: left;
+}
 
 /*이용권구매*/
 .pay{
-	background-color: #ffffff;
+	/* background-color: #ffffff; */
     color: #333;
     padding: 16px;
-    font-size: 16px;
     border: none;
     position: absolute;
-    right: 30px; top:20px;
+    right:0px; top:0px;
     font-size: 1.2em;
 }
 
 .pay>a{
 	text-decoration: none;
 	font-weight: bold;
+	font-size: 0.9em;
 }	
 
 .pay>a:LINK, .pay>a:VISITED{
@@ -61,8 +81,8 @@ header{ /* border:1px solid blue;   */
 
 
 /*유저정보*/
-.dropbtn1 {
-    background-color: #ffffff;
+.h_dropbtn1 {
+    background-color: #ffffff; 
     color: #333;
     padding: 16px;
     font-size: 16px;
@@ -70,17 +90,17 @@ header{ /* border:1px solid blue;   */
     font-weight: bold;
 }
 
-.myinfo {
+.h_myinfo {
 	/* border:1px solid red; */
     position: absolute;
-    right:170px; top:20px;
+    left:150px; top:0px; 
     display: inline-block;
 }
 
-.myinfo button{
-	font-size: 1.2em;
+.h_myinfo button{
+	font-size: 1em;
 }
-.dropdown-content1 {
+.h_dropdown-content1 {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
@@ -89,7 +109,7 @@ header{ /* border:1px solid blue;   */
     z-index: 1;
 }
 
-.dropdown-content1 a {
+.h_dropdown-content1 a {
     color: #333;
     font-family:sans-serif;
 	text-align:center;
@@ -98,13 +118,13 @@ header{ /* border:1px solid blue;   */
     display: block;
 }
 
-.dropdown-content1 a:hover {background-color: #ddd}
+.h_dropdown-content1 a:hover {background-color: #ddd}
 
-.myinfo:hover .dropdown-content1 {
+.h_myinfo:hover .h_dropdown-content1 {
     display: block;
 }
 
-.myinfo:hover .dropbtn1 {
+.h_myinfo:hover .h_dropbtn1 {
     color: #ff8000;
 }
 
@@ -112,54 +132,46 @@ article{
 	border:none;
 }
 
-#follow{
-	border-collapse:collapse;
-	border:none;
-	/* border:1px solid #333;  */ 
-	width: 140px; height: 20px;
+#h_follow{
+	/* border:1px solid #333; */
+	width: 130px; height: 20px;
 	font-weight: lighter;
 	font-size: 0.8em;
 	font-family: 'Nanum Gothic', sans-serif;
-	position: relative;
-	top:35px; left:1490px;
-	line-height: 20px;	
+	position: absolute;
+	top:10px; left:40px; 
+	line-height: 15px;	
 	text-align: center;
 }
-#follow tr th{
+
+#h_follow div{
+	/* border:1px solid red; */
+	float:left;
+	margin:10px 10px;
 	font-weight: bold;
-	font-size: 1.3em;
-	text-align: center;
-	color:#50d4aa;
-	/* padding: 2px; */
 }
-#follow tr td{
-	color:#333;
-	text-align: center;
-	/* padding: 2px; */
-	font-size: 0.8em;
+#h_follow div p:nth-of-type(1){
+	color: #50a4aa;
 }
-
-
 
 
 /*메인Navigation*/
 /* Navbar container */
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-  /* font-family: Arial; */
-/*   position: relative;
-  top:80px; */
-  margin-top: 80px;
+.h_navbar {
+	/* border:1px solid red; */
+  	overflow: hidden;
+  	background-color: #333;
+    margin-top: 10px; 
+    height: 50px;
 
 }
 
 /* Links inside the navbar */
-.dropdown button{	
-	border:1px solid red;
+.h_dropdown>button{	
 	background-color: #333;
 }
-.navbar a {
+.h_navbar a {
+	/* border:1px solid red; */
 	float: left;
 	font-size: 16px;
 	color: white;
@@ -167,18 +179,17 @@ article{
 	padding: 14px 16px;
 	text-decoration: none;
 	font-weight:bold;
-	height: 22px;
 	text-transform: uppercase;
 }
 
-/* The dropdown container */
-.dropdown {
+/* The h_dropdown container */
+.h_dropdown {
   float: left;
   overflow: hidden;
 }
 
-/* Dropdown button */
-.dropdown .dropbtn {
+/* h_dropdown button */
+.h_dropdown .h_dropbtn {
   font-size: 16px; 
   border: none;
   outline: none;
@@ -190,13 +201,15 @@ article{
 }
 
 /* Add a red background color to navbar links on hover */
-.navbar a:hover, .dropdown:hover .dropbtn {
+.h_navbar a:hover, .h_dropdown:hover .h_dropbtn {
   background-color: #ff8000;
   color: #333;
+  text-decoration: none;
+  /* height: 50px; */
 }
 
-/* Dropdown content (hidden by default) */
-.dropdown-content {
+/* h_dropdown content (hidden by default) */
+.h_dropdown-content {
   display: none; 
   position: absolute;
   background-color: #f9f9f9;
@@ -205,8 +218,8 @@ article{
   z-index: 1; 
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
+/* Links inside the h_dropdown */
+.h_dropdown-content a {
   color: #333;
   font-family:sans-serif;
   text-align:center;
@@ -222,13 +235,13 @@ article{
 	height: 49px;
 }
 
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
+/* Add a grey background color to h_dropdown links on hover */
+.h_dropdown-content a:hover {
   background-color: #ddd;
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+/* Show the h_dropdown menu on hover */
+.h_dropdown:hover .h_dropdown-content {
   display: block;
 }
 
@@ -237,7 +250,7 @@ article{
   float: right;
 }
 
-.navbar input[type=text] {
+.h_navbar input[type=text] {
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
@@ -257,7 +270,7 @@ article{
   height: 32px;
 }
 
-.navbar .search-container button:hover {
+.h_navbar .search-container button:hover {
   background: #ccc;
 }
 
@@ -293,6 +306,8 @@ footer {
 	background-color: #333;
 	width:inherit;
 	height: 350px;
+	position: relative;
+	bottom:0px; 
 }
 
 div.f_logo {

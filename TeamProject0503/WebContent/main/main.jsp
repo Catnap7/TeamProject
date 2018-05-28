@@ -8,15 +8,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>당신의 모든 영화, 세상의 모든 취향 : 왓츄</title>
+<title>왓츄 : 당신의 모든 영화, 세상의 모든 취향 </title>
+
+  
 <!-- js -->
 <script src="./js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="./js/jquery.ulslide.js"></script>
- <jsp:include page="../popup/popup.jsp"/> 
+<jsp:include page="../popup/popup.jsp"/>
+
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/main.css" rel="stylesheet" type="text/css" media="screen"> 
+
+
+<!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -313,6 +320,7 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 <!-- 크롬 기준 -->
 
 <!-- 왓츄에서 인기있는 영화 -->
+<div class="containerWithBtn">	
   	<div class="container"> 
   		<h2>이번 달 인기 영화</h2>
 		<div class="slider trending">
@@ -366,10 +374,13 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 			<div class="prev1 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>
 			<div class="next1 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->
-		
+</div><!-- containerWithBtn -->
+
+
 	
 <%if(Bestrating!=null){ %>	
 <!-- 회원님이 별점을 높게 준 영화와 비슷한 영화 -->
+<div class="containerWithBtn"> 	
   	<div class="container">  <!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  		
   		<h2>회원님이 별점을 높게 준 영화와 비슷한 영화</h2>
 		<div class="slider recommendRating">
@@ -425,10 +436,13 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 			<div class="prev2 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>
 			<div class="next2 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->
-<%} %>
+	<%} %>
+</div><!-- containerWithBtn -->
+
 		
 <%if(Mostcount!=null){ %>		
 <!-- 회원님이 많이 본 영화와 비슷한 영화 -->
+<div class="containerWithBtn">
   	<div class="container">  <!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  		
   		<h2>회원님이 좋아하는 영화가 될 것 같아요</h2>
 		<div class="slider recommendMany">
@@ -484,10 +498,14 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 			<div class="prev3 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>
 			<div class="next3 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->	
-<%} %>
-	
+	<%} %>
+</div><!-- containerWithBtn -->	
+
+
 <%if(favoritecount>=13){%>
 <!-- 회원님이 보고싶은 영화 (즐겨찾기)-->
+
+<div class="containerWithBtn">
   	<div class="container">  <!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  		
   		<h2>즐겨찾기에 담긴 영화</h2>
 		<div class="slider wannaWatch">
@@ -543,10 +561,12 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 			<div class="prev4 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>
 			<div class="next4 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->
-<%}%>		
-			
+	<%}%>		
+</div>			
+	
 	
 <!-- 왓츄 관리자가 추천하는 영화 -->
+<div class="containerWithBtn">
   	<div class="container">  <!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  		
   		<h2>왓츄가 추천해요!</h2>
 		<div class="slider adminPick">
@@ -602,6 +622,8 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 			<div class="prev5 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>
 			<div class="next5 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->
+</div><!--  containerWithBtn-->
+
 	
 </article>
 <!-- 아티클 영역 끝 -->

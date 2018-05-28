@@ -1,3 +1,4 @@
+<%@page import="net.follow.db.FollowDAO"%>
 <%@page import="net.member.db.MemberDAO"%>
 <%@page import="net.member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,8 +8,16 @@
 <%String id = (String)session.getAttribute("m_id");
 /* int followercount=((Integer)request.getAttribute("followercount"));
 int followingcount= ((Integer)request.getAttribute("followingcount"));  */
+
+MemberBean getmember=(MemberBean)request.getAttribute("memberbean");
+
+FollowDAO followdao = new FollowDAO();
+int followercount= followdao.Followercount(id);
+int followingcount= followdao.Followingcount(id);
+
+
 %>
-<header>
+<div class="header">
 	<div class="title_logo">
 		<a href="./Main.ma"><img src="./images/watchu_logo.png" width="250px" height="50px"></a>
 	</div>
@@ -16,26 +25,24 @@ int followingcount= ((Integer)request.getAttribute("followingcount"));  */
 
 <div class="clear"></div>
 
-		<div class="pay">
-			<a href="./PayList.pa">이용권구매</a>
-		</div><!--이용권구매 -->
-			<table id="follow">
-				<tr>
-					<!-- 팔로잉수 가져오기 -->	<!-- 팔로워수 가져오기 -->
-					<th><%-- <%=followercount %> --%> </th><th><%-- <%=followingcount %> --%> </th>
-				</tr>
-				<tr>
-					<td>팔로잉</td><td>팔로워</td>
-				</tr>
-			</table>
-		
+	<div class="rightInfo">
+		<div id="h_follow">
+			<div id="h_following">
+				<p><%=followingcount %></p>
+				<p>팔로잉</p>
+			</div>
+			<div id="h_follower">
+				<p><%=followercount %></p>
+				<p>팔로워</p>
+			</div>		
+		</div><!-- 팔로우 정보 -->		
 		<%
-				String m_name="";
-					 m_name=(String)session.getAttribute("m_name");
+		String m_name="";
+		m_name=(String)session.getAttribute("m_name");
 		%>
-		<div class="myinfo">
-  			<button class="dropbtn1"><%=m_name %></button>
-				  <div class="dropdown-content1">
+		<div class="h_myinfo">
+  			<button class="h_dropbtn1"><%=m_name %></button>
+				  <div class="h_dropdown-content1">
 				    <a href="./Mypage.my">내정보보기</a>
 				    <a href="./Coupon.my">쿠폰함</a>
 				    <a href="./Alarm.my">알림창</a>
@@ -43,14 +50,17 @@ int followingcount= ((Integer)request.getAttribute("followingcount"));  */
 				    <a href="./MemberLogout.me">로그아웃</a>
 				  </div>
 		</div><!-- 유저정보 -->
-		
+		<div class="pay">
+			<a href="./PayList.pa">이용권구매</a>
+		</div><!--이용권구매 -->
+	</div><!-- rightInfo -->		
 				
 <div class="clear"></div>
 	
-		<div class="navbar">
-		  	<div class="dropdown">
-			    <button class="dropbtn">CATEGORY</button>
-			    <div class="dropdown-content">
+		<div class="h_navbar">
+		  	<div class="h_dropdown">
+			    <button class="h_dropbtn">CATEGORY</button>
+			    <div class="h_dropdown-content">
 			     	<a href="./CategoryList.ca?mv_genre=animation">애니메이션</a>
 					<a href="./CategoryList.ca?mv_genre=thriller">공포/스릴러</a>
 					<a href="./CategoryList.ca?mv_genre=indie">독립영화</a>
@@ -62,9 +72,9 @@ int followingcount= ((Integer)request.getAttribute("followingcount"));  */
 	  		</div> 
 	  		<a href="./Rating.ra">취향분석</a>
 		 	<a href="./Favorite.fa">보고 싶은 영화</a>
-			<div class="dropdown">
-			    <button class="dropbtn">내 왓츄 페이지</button>
-			    <div class="dropdown-content">
+			<div class="h_dropdown">
+			    <button class="h_dropbtn">내 왓츄 페이지</button>
+			    <div class="h_dropdown-content">
 			     	<a href="./FollowMyHome.fo?m_id=<%=id%>">My Watchu</a>
 					<a href="./CategoryList.ca?mv_genre=thriller">리뷰 다 보기</a>
 			    </div>
@@ -78,5 +88,6 @@ int followingcount= ((Integer)request.getAttribute("followingcount"));  */
 			    </form>
 			</div><!-- 검색창 -->
 		</div><!--메인메뉴 -->
-</header>
+<div class="clear"></div>
+</div>
 <!-- 헤더 영역 -->

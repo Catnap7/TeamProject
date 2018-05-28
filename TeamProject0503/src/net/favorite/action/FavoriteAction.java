@@ -1,5 +1,7 @@
 package net.favorite.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -32,7 +34,8 @@ System.out.println("FavoriteAction execute()");
 
 //		세션값 없을때 쓴 아이디	(강제 아이디 설정)
 //		String ra_id="wahchu";
-		
+		response.setContentType("text/html;	charset=UTF-8");
+		PrintWriter out = response.getWriter();
 		
 		//bean파일에 저장
 		FavoriteBean favoriteBean = new FavoriteBean();

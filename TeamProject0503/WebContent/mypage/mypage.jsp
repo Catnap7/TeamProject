@@ -32,7 +32,7 @@ case 2 : grade = "VIP회원"; break;
 		
 		<div class="follow">
 		  <div class="photo">
-		    <a href="#"><img alt="프로필사진" src="./images/m_cover.jpg" width="130px" height="130px" title="사진 변경"></a>
+		    <a href="#"><img alt="프로필사진" src="./images/proflie_img/proflie<%=memberbean.getM_pic()%>.png" width="130px" height="130px" title="사진 변경"></a>
 		  </div>
 		  <ul class="follow_ul">
 		    <li class="follower"><a href="#">팔로워<span><%=followercount %></span></a></li>
