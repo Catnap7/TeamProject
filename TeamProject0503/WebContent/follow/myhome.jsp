@@ -1,3 +1,5 @@
+<%@page import="net.category.db.ReviewBean"%>
+<%@page import="java.util.List"%>
 <%@page import="net.admin.manage.db.MovieBean"%>
 <%@page import="net.favorite.db.FavoriteBean"%>
 <%@page import="net.member.db.MemberBean"%>
@@ -32,6 +34,10 @@ int followingcount= ((Integer)request.getAttribute("followingcount"));
 int reviewcount= ((Integer)request.getAttribute("reviewcount"));
 MovieBean favorite = (MovieBean)request.getAttribute("moviebean");
 MovieBean favorite2=(MovieBean)request.getAttribute("moviebean2");
+List top5reviewlist = (List)request.getAttribute("top5reviewlist");
+List top5movielist = (List)request.getAttribute("top5movielist");
+ List top5favoritelist = (List)request.getAttribute("top5favoritelist");
+/*  List top5movielist2 = (List)request.getAttribute("top5movielist2"); */
 String grade="";
 switch(getmember.getM_grade()){
 case 1 : grade = "정회원"; break;
@@ -213,17 +219,21 @@ case "drama" : genre2="드라마"; break;
 
 <section class="sec myReview">
 	<div class="secInfo">
-		<h2><%=getmember.getM_id()%>님 의 리뷰</h2>
+		<h2><%=getmember.getM_name()%>님 의 리뷰</h2>
 		<a href=""><p>리뷰 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->
 	</div>	
 	
 	<!-- ↓↓↓↓↓↓↓리뷰 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
 	<!-- <div class="rvList"> -->
-			<%for(int i=0;i<=4;i++){ %>
+			<%for(int i=0;i<top5reviewlist.size();i++){
+				ReviewBean reviewbean = (ReviewBean)top5reviewlist.get(i);
+			 	MovieBean moviebean= (MovieBean)top5movielist.get(i);
+			 	
+				%>
 			<div id="rv"> 
-				<p>영화 제목/ 리뷰 날짜/ 추천/ 신고</p>
+				<p> <%=moviebean.getMv_kor_title() %> / <%=reviewbean.getR_date() %>/ <%=reviewbean.getR_recommand() %>/ <%=reviewbean.getR_report() %></p>
 				<p class="rvList">
-				<%="Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has "%></p>
+				<%=reviewbean.getR_content()%></p>
 			</div> 
 			<%} %>
 	<!-- </div> -->	
@@ -232,17 +242,35 @@ case "drama" : genre2="드라마"; break;
 
 <section class="sec myFavMovie">
 	<div class="secInfo">
-		<h2><%=getmember.getM_id()%>님 이 좋아한 영화</h2>
+		<h2><%=getmember.getM_name()%>님 이 좋아한 영화</h2>
 		<a href=""><p>영화 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->	
 	</div>	
 	
 		<!-- ↓↓↓↓↓↓↓영화 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
 	<!-- <div class="mvList" id="rv"> -->
 		<div class="mvList"> 
-			<%for(int i=0;i<=4;i++){%>
+			<%for(int i=0;i<top5favoritelist.size();i++){
+				MovieBean moviebean=(MovieBean)top5favoritelist.get(i);
+				String img_genre= "";
+				if(moviebean.getMv_genre().equals("animation")){
+					img_genre="animation";
+				}else if(moviebean.getMv_genre().equals("comedy")){
+					img_genre="comedy";
+				}else if(moviebean.getMv_genre().equals("indie")){
+					img_genre="indie";
+				}else if(moviebean.getMv_genre().equals("sf")){
+					img_genre="sf";
+				}else if(moviebean.getMv_genre().equals("action")){
+					img_genre="action";
+				}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
+					img_genre="thriller";
+				}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
+					img_genre="romance";
+				}
+			%>
 			<div>
-				<img src="./images/animation/Zootopia_p.jpg" width="175px" height="260px">
-				<p>영화 제목</p>
+				<img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="175px" height="260px">
+				<p><%=moviebean.getMv_kor_title()%></p>
 			</div>
 		<%} %>
 		</div>
