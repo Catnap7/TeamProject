@@ -62,7 +62,7 @@ int count = ((Integer)request.getAttribute("count")).intValue();
 				<!-- //자동결제, 한달결제 -->
 			<td><%=currentpaybean.getP_auto() %></td></tr>
 		<%}else{ %>
-			<td>보유하신 이용권이 없습니다</td>
+			<td class="radius_rt">보유하신 이용권이 없습니다</td>
 		</tr>
 		<tr>
 			<td><a href="./Pay.pa">이용권 구매하러 가기</a></td></tr>
