@@ -9,12 +9,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>당신의 모든 영화, 세상의 모든 취향 : 왓츄</title>
-
-  
 <!-- js -->
 <script src="./js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="./js/jquery.ulslide.js"></script>
-<jsp:include page="../popup/popup.jsp"/>
+ <jsp:include page="../popup/popup.jsp"/> 
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/main.css" rel="stylesheet" type="text/css" media="screen"> 
@@ -258,14 +256,15 @@ function couponClose(){
     if($("input[name='chkbox']").is(":checked") ==true){
         setCookie("close","Y",1);
     }
-    $("#popp27").hide();
+     $("#popp27").attr('style', 'display:none');
+
 }
 $(document).ready(function(){
     cookiedata = document.cookie;
     if(cookiedata.indexOf("close=Y")<0){
         $("#popp27").show();
     }else{
-         $("#popp27").hide(); 
+         $("#popp27").attr('style', 'display:none');
     }
     $("#close").click(function(){
         couponClose();
