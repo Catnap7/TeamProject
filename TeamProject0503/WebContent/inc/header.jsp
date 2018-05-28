@@ -3,7 +3,24 @@
 <%@page import="net.member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<script>
+var a = 0
+function start(){		
+		if(a==0){
+		//alert("0");	
+		document.img1.src = "./images/alarm.png";	
+		a=1;
+		}else if(a==1){
+			//alert("1");
+			document.img1.src = "./images/alarm2.png";	
+			a=0;
+		}		
+}
+function alarm(){
+	//alert("됩니다");
+	setInterval("start()", 500);
+}
+</script>
 <!-- 헤더 영역 -->
 <%String id = (String)session.getAttribute("m_id");
 /* int followercount=((Integer)request.getAttribute("followercount"));
@@ -37,11 +54,17 @@ int followingcount= followdao.Followingcount(id);
 			</div>		
 		</div><!-- 팔로우 정보 -->		
 		<%
+		session.setAttribute("alarm_num", "5");
 		String m_name="";
 		m_name=(String)session.getAttribute("m_name");
-		%>
+		String alarm = (String)session.getAttribute("alarm_num");
+		if(alarm==null){alarm="0";}
+		int alarm_num = Integer.parseInt(alarm);	
+		if(alarm_num>0){%>
+			<script>alarm();</script>	
+		<%}%>
 		<div class="h_myinfo">
-  			<button class="h_dropbtn1"><%=m_name %></button>
+  			<button class="h_dropbtn1"><%=m_name %><img src="./images/alarm2.png" id="no_alarm" name="img1"></button>
 				  <div class="h_dropdown-content1">
 				    <a href="./Mypage.my">내정보보기</a>
 				    <a href="./Coupon.my">쿠폰함</a>
