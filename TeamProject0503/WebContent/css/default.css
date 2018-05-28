@@ -300,6 +300,8 @@ footer {
 	background-color: #333;
 	width:inherit;
 	height: 350px;
+	position: relative;
+	bottom:0px; 
 }
 
 div.f_logo {

@@ -109,18 +109,19 @@ article{
 
 
 .rvList{
-	border:2px solid #838383;
-	border-radius:10px;
+	border-top:1px solid #838383;
+	border-bottom:2px solid #838383;
+	/* border-radius:10px; */
 	margin:20px auto;
-	padding:30px;
-	width: 800px;
+	padding:20px;
+	width: 760px;
 	height: auto;
 	box-sizing:border-box;
 }
 #rv{
 	/* border:1px solid #333; */
 	margin:20px auto;
-	width: 800px;
+	width: 760px;
 	height: auto;
 	box-sizing:border-box;
 	padding:10px;

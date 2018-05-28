@@ -19,22 +19,22 @@
 	
 } */
 article.main1{
-	/* border:1px solid red;  */ 
+	border:1px solid window;  
 	/* position:relative;
-	top:100px; */
+	top:10px; */
 	height:1800px;
 	width: auto;
 	padding-top:50px;
-	padding-bottom: 300px;
+	padding-bottom: 500px; 
 }
 article.main2{
 	border:1px solid window;  
 	/* position:relative;
-	top:100px; */
+	top:10px;  */
 	height:1500px;
 	width: auto;
 	padding-top:55px;
-	padding-bottom: 300px;
+	/* padding-bottom: 00px;  */
 }
 
 .containerWithBtn{
