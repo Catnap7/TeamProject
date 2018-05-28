@@ -6,6 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="./css/default.css" rel="stylesheet" type="text/css">
+<link href="./css/pay2.css" rel="stylesheet" type="text/css">
 <title>왓츄:결제</title>
 
 <script src="./js/jquery-3.3.1.js"></script>
@@ -55,6 +57,9 @@ $(document).ready(function(){
 </head>
 <body>
 
+<!-- 헤더영역 -->
+<jsp:include page="../inc/header.jsp"/>
+<!-- 헤더영역 -->
 
 
 <%
@@ -66,13 +71,15 @@ List couponlist=(List)request.getAttribute("couponlist");
 
 %>
 	<form name="form" action="./PayAction.pa">
-	
-		이용권 종류 선택 
-		<select name="pay" >
+	<section class="select">
+	<table class="coupon">
+		<tr><th class="radius">이용권 종류 선택 </th>
+		<td class="radius_2"><select name="pay" >
 			 <option value="한달" id="monthpay">한달만결제</option> 
 			 <option value="정기" id="autopay">매달 자동결제</option>
-		</select><br>
-
+		</select><br></td></tr>
+	</table>
+	</section>
 <br><br>
 <%
 //	 0 10%
@@ -81,8 +88,10 @@ List couponlist=(List)request.getAttribute("couponlist");
 //   3 vip%
   
 %>	
-		쿠폰
-		<select name="couponBox" >
+		<section class="total">
+		<table class="payment">
+		<tr><th class="radius_3">쿠폰</th>
+		<td class="radius_4"><select name="couponBox" id="box">
 			<%if(couponlist.size()!=0){ %>
 			 <option value="-1">가지고 계신 쿠폰을 선택하세요</option>
 			 <%
@@ -106,17 +115,21 @@ List couponlist=(List)request.getAttribute("couponlist");
 			 }else{
 				 %><option value="-1">가지고 계신 쿠폰이 없습니다</option><%
 			 }
-				 %>
-		</select><br>
+				 %>				 				 
+		<br></td></tr>				
 <input type="hidden" id="amounth" name="charge">
-총 결제 금액:<p id="amount">
+<tr><th class="to_money">총 결제 금액:</th><td><p id="amount"></td></tr>
 
 </p>
-<input type="submit" value="결제하기">
+<tr><td colspan="2" class="radius_5"><label for="pay">결제하기</label><input type="submit" value="결제하기" id="pay"></td></tr>
+	</table>
+	</section>
 	</form><br>
 
 
-
+<!-- 푸터 영역 -->
+<jsp:include page="../inc/footer.jsp"/>
+<!-- 푸터 영역 -->
 
 </body>
 </html>

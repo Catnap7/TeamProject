@@ -1,5 +1,6 @@
 package net.roulette.action;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +47,12 @@ public class RouletteAction implements Action{
 //		배열변수 한 칸 저장 <= 한 사람의 정보(자바빈)
 		arr.add(obj);
 		
-		System.out.println(arr);
+		PrintWriter out;
+		response.setContentType("application/json;charset=utf-8");
+		out=response.getWriter();
+		out.println(arr);		
+		out.close();
+		
 		return null;
 	}
 	

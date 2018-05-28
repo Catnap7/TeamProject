@@ -395,6 +395,7 @@ span.star_rating {
 /* 	height: 180px; */
 	height: 300px;
 	box-shadow:5px 5px #a0a0a0;
+	margin-top: 100px;
 }
 .mypage_coupon .prev_next {
 	text-align: center;	
