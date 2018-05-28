@@ -5,6 +5,10 @@
 	padding: 0;
 	font-family: 'Nanum Gothic', sans-serif;
 }
+body{
+	width: 100%;
+	height: auto;
+}
 
 .clear{clear:both;}
 
@@ -20,6 +24,7 @@
 /*---header---*/
 .header{ /* border:1px solid blue;  */  
 	height: 120px;
+	width:100%;
 	margin: 0px;
 	/* margin-bottom:30px; */
 	padding: 0px;
@@ -32,14 +37,15 @@
 	position:relative;
 	top:30px;
 	left:30px;
+	width: 350px;
 }	
 
 .rightInfo{
-	/* border:1px solid red;  */
+	/* border:1px solid red; */
 	width:350px;
 	height: 60px;
 	position: relative;
-	top:-20px; right: -1550px;
+	top:-20px; right: -1540px;
 	line-height: 2em;
 	margin:0;
 }
