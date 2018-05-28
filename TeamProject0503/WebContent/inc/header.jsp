@@ -54,17 +54,17 @@ int followingcount= followdao.Followingcount(id);
 			</div>		
 		</div><!-- 팔로우 정보 -->		
 		<%
-		session.setAttribute("alarm_num", "5");
 		String m_name="";
 		m_name=(String)session.getAttribute("m_name");
 		String alarm = (String)session.getAttribute("alarm_num");
+		String id_name = "no_alarm";
 		if(alarm==null){alarm="0";}
 		int alarm_num = Integer.parseInt(alarm);	
-		if(alarm_num>0){%>
+		if(alarm_num>0){id_name="alarm";%>
 			<script>alarm();</script>	
 		<%}%>
 		<div class="h_myinfo">
-  			<button class="h_dropbtn1"><%=m_name %><a href="./Alarm.my"><img src="./images/alarm2.png" id="no_alarm" name="img1"></a></button>
+  			<button class="h_dropbtn1"><%=m_name %></button>
 				  <div class="h_dropdown-content1">
 				    <a href="./Mypage.my">내정보보기</a>
 				    <a href="./Coupon.my">쿠폰함</a>
@@ -73,6 +73,7 @@ int followingcount= followdao.Followingcount(id);
 				    <a href="./MemberLogout.me">로그아웃</a>
 				  </div>
 		</div><!-- 유저정보 -->
+		<div><a href="./Alarm.my"><img src="./images/alarm2.png" id=<%=id_name %> name="img1"><span class="num"><%=alarm_num%></span></a></div>
 		<div class="pay">
 			<a href="./PayList.pa">이용권구매</a>
 		</div><!--이용권구매 -->

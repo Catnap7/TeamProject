@@ -90,11 +90,31 @@
     left:150px; top:0px; 
     display: inline-block;
 }
-.h_myinfo #no_alarm {
+#no_alarm {
 	/* border:1px solid red; */
-	position: relative;
-	top:-10px;
-	right: 7px;
+	position: absolute;
+	top:1px;
+	right: 105px;
+}
+#alarm{
+	position: absolute;
+	top:1px;
+	right: 105px;
+}
+.num{
+	text-align:center;
+	font-size:12px;
+	line-height:15px;
+	border-radius:30px;
+	text-decoration:none;
+	color:#fff;
+	font-weight:bold;
+	border:1px solid red;
+	position:absolute;
+	right:97px;
+	background-color: red;
+	width:15px;
+	height: 15px;
 }
 .h_myinfo button{
 	font-size: 1em;
