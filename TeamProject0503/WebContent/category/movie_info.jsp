@@ -286,6 +286,7 @@ $(document).ready(function(){
 		</form>
    <%
       }
+  	System.out.print( memberBean.getM_id_num1());
          %>
          
       <%															
@@ -300,7 +301,7 @@ $(document).ready(function(){
          </script>
       <%   
       }else if(memberBean.getM_pay()==1){
-         if(memberBean.getM_id_num1()<=19991231 && moviebean.getMv_age()==19 ){
+         if(memberBean.getM_id_num1()<200001 && moviebean.getMv_age()==19 ){
             
              %>
               <script type="text/javascript">
@@ -313,7 +314,22 @@ $(document).ready(function(){
                });           
               </script>
               <%
-         }else if ( memberBean.getM_id_num1()>=20000101 && moviebean.getMv_age()==19){
+         }     
+              	
+         }
+      
+      if(memberBean.getM_pay()==0){
+          %>
+          <script type="text/javascript">
+          $(document).ready(function(){
+             $('.hr').click(function(){
+                alert("결제 후 이용 가능합니다.");
+                });
+          });      
+          </script>
+       <%   
+       }else if(memberBean.getM_pay()==1){
+      	if ( memberBean.getM_id_num1()>199912 && moviebean.getMv_age()==19){
             %>
                <script type="text/javascript">
                $(document).ready(function(){
@@ -325,18 +341,7 @@ $(document).ready(function(){
                </script>
             <%   
             }
-          %>
-           <script type="text/javascript">
-            $(document).ready(function(){
-               $('.hr').click(function(){
-                   window.open('<%=moviebean.getMv_video()%>','_blank') 
-                  });
-               
-            });           
-           </script>
-           <%
-      }
-      
+      	}
       %>
       		  <button class="hr" id="mv_play" style="display: none;">이동</button>
       		  <label class="fa fa-play-circle play" for="mv_play" title="보러가기"></label>

@@ -19,11 +19,12 @@
 	
 } */
 article.main1{
-	border:1px solid window;  
+	/* border:1px solid red;  */ 
 	/* position:relative;
 	top:100px; */
 	height:1800px;
 	width: auto;
+	padding-top:50px;
 	padding-bottom: 300px;
 }
 article.main2{
@@ -32,7 +33,13 @@ article.main2{
 	top:100px; */
 	height:1500px;
 	width: auto;
+	padding-top:55px;
 	padding-bottom: 300px;
+}
+
+.containerWithBtn{
+	border:1px solid white;  
+	position: relative;
 }
 
 /*슬라이더 컨테이너 설정*/
@@ -41,6 +48,7 @@ article.main2{
 	/* width:auto; */
 	margin: 80px auto;
 	overflow: hidden; 	
+	position: relative;
 }
 
 /*슬라이더 제목*/
@@ -115,47 +123,49 @@ article.main2{
 /**이전 다음 버튼 제어**/
 .prev1{
 	position:absolute;
-	top:380px; left:30px;
+	top:200px; left:0px;
 }
 .next1{
 	position:absolute;
-	top:380px; right: 30px;
+	top:200px; right: 0px;
 }
 
 .prev2{
 	position:absolute;
-	top:730px; left:30px;
+	top:200px; left:0px;
 }
 .next2{
 	position:absolute;
-	top:730px; right: 30px;
+	top:200px; right: 0px;
 }
 
 .prev3{
 	position:absolute;
-	top:1090px; left:30px;
+	top:200px; left:0px;
 }
 .next3{
 	position:absolute;
-	top:1090px; right: 30px;
+	top:200px; right: 0px;
 }
 
 .prev4{
 	position:absolute;
-	top:1450px; left:30px;
+	top:200px; left:0px;
 }
 .next4{
 	position:absolute;
-	top:1450px; right: 30px;
+	top:200px; right: 0px;
 }
 
 .prev5{
+	/* border:1px solid red; */
 	position:absolute;
-	top:1810px; left:30px;
+	top:200px; left:0px;
 }
 .next5{
+	/* border:1px solid red; */
 	position:absolute;
-	top:1810px; right: 30px;
+	top:200px; right: 0px;
 }
 
 

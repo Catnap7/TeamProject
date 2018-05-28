@@ -67,7 +67,6 @@ case "drama" : genre2="드라마"; break;
 }
 }
 
-
 %>
 
 <!-- 헤더 영역 -->
@@ -76,66 +75,58 @@ case "drama" : genre2="드라마"; break;
 
 
 <article>
-
 <div class="all">
 
 <section class="sec myInfo">
 	<div id="profile">
-		<img src="./images/proflie1<%-- <%=getmember.getM_pic()%> --%>.png" width="200px" height="200px">
-		<p><%=getmember.getM_id()%></p><p><%=grade%></p> <!-- 이름, 등급 가져오기 -->
+		<img src="./images/proflie_img/proflie<%=getmember.getM_pic()%>.png" width="200px" height="200px">
+		<p><%=getmember.getM_name()%></p><p><%=grade%></p> <!-- 이름, 등급 가져오기 -->
 	</div><!-- profile -->
 	<div id="info">
-		<table border="1">
+		<table>
 			<tr>
-				<th>Following</th><th>Follower</th> 
+				<th>Following</th><td data-toggle="modal" data-target="#following"><a href=""><%=followingcount%></a></td>
+			</tr>
+			<tr>	
+				<th>Follower</th><td data-toggle="modal" data-target="#follower"><a href=""><%=followercount%></a></td><!-- 팔로잉, 팔로워 수 가져오기 --> 
+			</tr>		
+			<tr>
+				<th>리뷰 수</th><td><%=reviewcount%></td><!-- 리뷰 수 가져오기 -->
 			</tr>
 			<tr>
-				<td data-toggle="modal" data-target="#following"><%=followingcount%></td><td data-toggle="modal" data-target="#follower"><%=followercount%></td><!-- 팔로잉, 팔로워 수 가져오기 -->
-			</tr>
-			<tr>
-				<th colspan="2">리뷰 수</th>
-			</tr>
-			<tr>
-				<td><%=reviewcount%></td><!-- 리뷰 수 가져오기 -->
-			</tr>
-			<tr>
-				<th colspan="2">선호장르</th>
-			</tr>
-			<tr>
+				<th>선호장르</th>
 				<td>
-			<%if(favorite==null){
+					<%if(favorite==null){
+						%>
+						<%="선호장르 없음"%>
+						<%
+					}else{
+						%>
+						<%=genre%>
+						<%
+					} 
 					%>
-					<%="선호장르 없음"%>
-					<%
-				}else{
+					<%=", " %>
+					 <%if(favorite2==null){
+						%>
+						<%="선호장르 없음"%>
+						<%
+					}else{
+						%>
+						<%=genre2%>
+						<%
+					}
 					%>
-					<%=genre%>
-					<%
-				} 
-				
-				%>
-				</td>
-				<td>
-				 <%if(favorite2==null){
-					%>
-					<%="선호장르 없음"%>
-					<%
-				}else{
-					%>
-					<%=genre2%>
-					<%
-				}
-				
-				%>
-
 				</td> <!-- 선호장르 상위 2개 -->
 			</tr>
 		</table>
 	</div><!-- info -->
 </section><!-- myInfo -->
 
+
+
 <!----------------------------------- 팔로잉 --------------------------------------------------------->  
-    <div class="modal fade" id="following">
+ <div class="modal fade" id="following">
     <div class="modal-dialog">
     
       <div class="modal-content">
@@ -258,7 +249,7 @@ case "drama" : genre2="드라마"; break;
 
 <section class="sec myReview">
 	<div class="secInfo">
-		<h2><%=getmember.getM_id()%>님 의 리뷰</h2>
+		<h3><%=getmember.getM_name()%>님 의 영화 리뷰</h3>
 		<a href=""><p>리뷰 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->
 	</div>	
 	
@@ -277,26 +268,26 @@ case "drama" : genre2="드라마"; break;
 
 <section class="sec myFavMovie">
 	<div class="secInfo">
-		<h2><%=getmember.getM_id()%>님 이 좋아한 영화</h2>
+		<h3><%=getmember.getM_name()%>님 이 좋아한 영화</h3>
 		<a href=""><p>영화 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->	
 	</div>	
 	
 		<!-- ↓↓↓↓↓↓↓영화 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
 	<!-- <div class="mvList" id="rv"> -->
 		<div class="mvList"> 
-			<%for(int i=0;i<=4;i++){%>
+			<%for(int i=0;i<=5;i++){%>
 			<div>
-				<img src="./images/animation/Zootopia_p.jpg" width="175px" height="260px">
-				<p>영화 제목</p>
+				<!-- 회원이 좋아한 영화 최근 순 6개. 포스터 불러오기, 제목 불러오기 -->
+				<a href=""><img src="./images/animation/Zootopia_p.jpg" width="190px" height="280px"></a>
+				<p><%="주토피아" %></p>
 			</div>
 		<%} %>
 		</div>
 	<!-- </div> -->	
 </section>
 </div><!-- all -->
-	
 </article>
-
+	
 
 
 <!-- 푸터 영역 -->
