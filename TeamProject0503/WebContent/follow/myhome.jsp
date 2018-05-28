@@ -287,4 +287,5 @@ case "drama" : genre2="드라마"; break;
 <!-- 푸터 영역 -->
 
 </body>
+
 </html>

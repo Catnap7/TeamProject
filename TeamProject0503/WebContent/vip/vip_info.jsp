@@ -77,7 +77,7 @@ if(m_grade==1 || m_grade==0){
 	</div>
 <%} %>
 
-
+<div class="clear"></div>
 <div class="crown"><img src="./images/crown.png" width="80px" height="70px"></div>
 
 <section class="whoIsVip" id="whoIsVip">

@@ -12,16 +12,16 @@ body{
 }
 
 article{
-	/* border:1px solid red; */
-	padding:50px;
+	/* border:1px solid red;  */
+	padding:50px;	
 }
+
 .all{
 	border: 1px solid #e8e8e8;
 	background-color:#e8e8e8;
 	border-radius:30px;
 	width: 1000px;
-/* 	width: 1100px; */
-	margin:50px auto;
+	margin:50px auto; 
 	margin-bottom:200px;
 	box-shadow: 2px 2px #9f9f9f;
 	padding:50px 70px;
