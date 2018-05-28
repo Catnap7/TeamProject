@@ -206,7 +206,7 @@ public class FollowDAO {
 		try {
 			con=getConnection();
 
-			sql= "select * from favorite f join movie m on f.f_num = m.mv_num where f_id = ? order by rand() limit 5";
+			sql= "select * from favorite f join movie m on f.f_num = m.mv_num where f_id = ? order by rand() limit 6";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, m_id);
 			rs=pstmt.executeQuery();
