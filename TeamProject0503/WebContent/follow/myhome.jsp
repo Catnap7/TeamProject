@@ -67,7 +67,6 @@ case "drama" : genre2="드라마"; break;
 }
 }
 
-
 %>
 
 <!-- 헤더 영역 -->
@@ -76,7 +75,6 @@ case "drama" : genre2="드라마"; break;
 
 
 <article>
-
 <div class="all">
 
 <section class="sec myInfo">
@@ -87,10 +85,10 @@ case "drama" : genre2="드라마"; break;
 	<div id="info">
 		<table>
 			<tr>
-				<th>Following</th><td data-toggle="modal" data-target="#following"><a hreg=""><%=followingcount%></a></td>
+				<th>Following</th><td data-toggle="modal" data-target="#following"><a href=""><%=followingcount%></a></td>
 			</tr>
 			<tr>	
-				<th>Follower</th><td data-toggle="modal" data-target="#follower"><a hreg=""><%=followercount%></a></td><!-- 팔로잉, 팔로워 수 가져오기 --> 
+				<th>Follower</th><td data-toggle="modal" data-target="#follower"><a href=""><%=followercount%></a></td><!-- 팔로잉, 팔로워 수 가져오기 --> 
 			</tr>		
 			<tr>
 				<th>리뷰 수</th><td><%=reviewcount%></td><!-- 리뷰 수 가져오기 -->
@@ -125,8 +123,10 @@ case "drama" : genre2="드라마"; break;
 	</div><!-- info -->
 </section><!-- myInfo -->
 
+
+
 <!----------------------------------- 팔로잉 --------------------------------------------------------->  
-    <div class="modal fade" id="following">
+ <div class="modal fade" id="following">
     <div class="modal-dialog">
     
       <div class="modal-content">
@@ -286,9 +286,8 @@ case "drama" : genre2="드라마"; break;
 	<!-- </div> -->	
 </section>
 </div><!-- all -->
-	
 </article>
-
+	
 
 
 <!-- 푸터 영역 -->
