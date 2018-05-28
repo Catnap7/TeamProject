@@ -64,7 +64,7 @@ int followingcount= followdao.Followingcount(id);
 			<script>alarm();</script>	
 		<%}%>
 		<div class="h_myinfo">
-  			<button class="h_dropbtn1"><%=m_name %><img src="./images/alarm2.png" id="no_alarm" name="img1"></button>
+  			<button class="h_dropbtn1"><%=m_name %><a href="./Alarm.my"><img src="./images/alarm2.png" id="no_alarm" name="img1"></a></button>
 				  <div class="h_dropdown-content1">
 				    <a href="./Mypage.my">내정보보기</a>
 				    <a href="./Coupon.my">쿠폰함</a>
