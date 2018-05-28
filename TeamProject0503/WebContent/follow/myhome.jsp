@@ -1,3 +1,4 @@
+<%@page import="net.follow.db.FollowBean"%>
 <%@page import="net.category.db.ReviewBean"%>
 <%@page import="java.util.List"%>
 <%@page import="net.admin.manage.db.MovieBean"%>
@@ -37,6 +38,10 @@ MovieBean favorite2=(MovieBean)request.getAttribute("moviebean2");
 List top5reviewlist = (List)request.getAttribute("top5reviewlist");
 List top5movielist = (List)request.getAttribute("top5movielist");
  List top5favoritelist = (List)request.getAttribute("top5favoritelist");
+List f_followingList = (List)request.getAttribute("f_followingList");
+List m_followingList = (List)request.getAttribute("m_followingList");
+List f_followerList = (List)request.getAttribute("f_followerList");
+List m_followerList = (List)request.getAttribute("m_followerList");
 /*  List top5movielist2 = (List)request.getAttribute("top5movielist2"); */
 String grade="";
 switch(getmember.getM_grade()){
@@ -140,66 +145,26 @@ case "drama" : genre2="드라마"; break;
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">팔로잉</h4>
         </div>
-	
-		<!--         내가 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         내가 팔로잉 하는 한 사람  -->
-		
-		<!--         내가 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         내가 팔로잉 하는 한 사람  -->
-		
-		<!--         내가 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         내가 팔로잉 하는 한 사람  -->
-		
-		<!--         내가 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         내가 팔로잉 하는 한 사람  -->
-		
-		<!--         내가 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         내가 팔로잉 하는 한 사람  -->
+        
+        <%
+        for(int i=0; i<f_followingList.size(); i++) {
+        	FollowBean fbean = (FollowBean)f_followingList.get(i);
+        	MemberBean mbean = (MemberBean)m_followingList.get(i);
+        	%>
+        	<!--         내가 팔로잉 하는 한 사람  -->
+			<div class="follow_div">
+	          <div class="photo">
+			    <a href="http://www.naver.com"><img src="./images/proflie_img/proflie<%=mbean.getM_pic() %>.png" width="50px" height="50px"></a>
+			  </div>
+			  <a href="http://www.naver.com"><%=fbean.getFo_following() %></a><br>
+			  <span><%=mbean.getM_name() %></span>
+			  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
+			</div>
+			<div class="clear"></div>
+			<!--         내가 팔로잉 하는 한 사람  -->
+        	<%
+        }
+        %>
 		
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
@@ -220,19 +185,27 @@ case "drama" : genre2="드라마"; break;
           <h4 class="modal-title">팔로워</h4>
         </div>
         
-		<!--         나를 팔로우 하는 한 사람  -->
-        <div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="follow_a">팔로잉</a>
-		</div>
-		<div class="clear"></div>
-		<!--         나를 팔로우 하는 한 사람  -->
+        <%
+        for(int i=0; i<f_followerList.size(); i++) {
+        	FollowBean fbean = (FollowBean)f_followerList.get(i);
+        	MemberBean mbean = (MemberBean)m_followerList.get(i);
+        	%>
+        	<!--         나를 팔로잉 하는 한 사람  -->
+	        <div class="follow_div">
+	          <div class="photo">
+			    <a href="http://www.naver.com"><img src="./images/proflie_img/proflie<%=mbean.getM_pic() %>.png" width="50px" height="50px"></a>
+			  </div>
+			  <a href="http://www.naver.com"><%=fbean.getFo_id() %></a><br>
+			  <span><%=mbean.getM_name() %></span>
+			  <a href="http://www.naver.com" class="follow_a">팔로잉</a>
+			</div>
+			<div class="clear"></div>
+			<!--         나를 팔로잉 하는 한 사람  -->
+        	<%
+        }
+        %>
 		
-		<!--         나를 팔로우 하는 한 사람  -->
+		<!--         나를 팔로잉 하는 한 사람  -->
 		<div class="follow_div">
           <div class="photo">
 		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
@@ -242,7 +215,7 @@ case "drama" : genre2="드라마"; break;
 		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
 		</div>
 		<div class="clear"></div>
-		<!--         나를 팔로우 하는 한 사람  -->
+		<!--         나를 팔로잉 하는 한 사람  -->
 		  
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
