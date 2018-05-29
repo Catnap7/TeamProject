@@ -349,7 +349,7 @@ public class FollowDAO {
 				ReviewBean reviewbean = new ReviewBean();
 				reviewbean.setR_num(rs.getInt("r_num"));
 				reviewbean.setR_content(rs.getString("r_content"));
-				reviewbean.setR_date(rs.getDate("r_date"));
+				reviewbean.setR_date(rs.getTimestamp("r_date"));
 				reviewbean.setR_recommand(rs.getInt("r_recommand"));
 				reviewbean.setR_report(rs.getInt("r_report"));
 				top5reviewlist.add(reviewbean);
