@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
+import com.mysql.fabric.Response;
+
 import net.admin.manage.db.AdminMemberDAO;
 import net.member.db.MemberBean;
 
@@ -59,8 +61,9 @@ public class AdminMember_List_Search extends HttpServlet {
 	}
 	
 	public String confirm() {
-		JOptionPane.showMessageDialog(null, "정말로 내보내시겠습니까?");
-		
+		String message = "정말로 내보내시겠습니까?";
+		String title = "확인";
+		JOptionPane.showConfirmDialog(null, message, title, 0);
 		return null;
 	}
 

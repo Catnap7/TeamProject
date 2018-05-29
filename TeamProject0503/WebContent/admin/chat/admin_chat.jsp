@@ -6,10 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta content="viewport" content="width=device-width, initial-scale=1">
+
+<!-- css -->
 <link href="./css/css/bootstrap2.css" rel="stylesheet" type="text/css">
 <link href="./css/css/custom.css" rel="stylesheet" type="text/css">
+
+
 <script type="text/javascript" src="../css/js/bootstrap.js"></script>
-<title>Admin Chating Room</title>
+
+<title>관리자 실시간 채팅</title>
 </head>
 <body>
 <%
@@ -24,14 +29,14 @@ Date now = new Date();
                <div class="portlet portlet-default">
                   <div class="portlet-heading">
                      <div class="portlet-title">
-                        <h4>   <i class="fa fa-circle text-green"></i>실시간 채팅방</h4>
+                        <h4>   <i class="fa fa-circle text-green"></i>관리자 채팅방</h4>
                      </div>
                      <div class="clearfix"></div>
                   </div>
                   <div id="chat" class="pannel-collapse collapse in">
                      <div class="portlet-body chat-widget">
 
-                        style="overflow-y: hidden; width: auto; height: auto;">
+                        <!-- style="overflow-y: hidden; width: auto; height: auto;"> -->
                         <div class="row">
                            <div class="col-lg-12">
                               <p class="text-center text-muted small"><%=now %></p>
