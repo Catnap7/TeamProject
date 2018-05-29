@@ -255,7 +255,7 @@ article.main2{
 }
 
 /*  팝업 css */
-#popp27 { position: absolute; width:400px; height:400px; top:40%; left:50%; margin-top:-250px; margin-left:-390px; background:#000000; z-index:10000;}
+#popp27 { position: absolute; width:400px; height:400px; top:40%; left:50%; margin-top:-250px; margin-left:-390px; background:#000000; z-index:10000;display:none;}
 #popp27 .cont {width:400px; height:400px;}
 #popp27 .close {width:390px; height:30px; background:#dbdbdb; line-height:30px; padding-left:10px; font-size:13px;}
 #popp27 .close #close {float:right; margin-right:10px; cursor:pointer;}

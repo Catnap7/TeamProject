@@ -60,7 +60,6 @@ public class CategoryMovie_InfoAction implements Action{
 //				
 //		request.setAttribute("reviewList", reviewList);
 		String order = request.getParameter("order");
-		System.out.println(order);
 		
 		int count = reviewdao.getReviewCount(mv_num);
 		int pageSize = 10;

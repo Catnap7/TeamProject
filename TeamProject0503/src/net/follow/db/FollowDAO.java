@@ -293,7 +293,7 @@ public class FollowDAO {
 		try {
 			con=getConnection();
 
-			sql= "select * from favorite f join movie m on f.f_num = m.mv_num where f_id = ? order by rand() limit 5";
+			sql= "select * from favorite f join movie m on f.f_num = m.mv_num where f_id = ? order by rand() limit 6";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, m_id);
 			rs=pstmt.executeQuery();
@@ -337,7 +337,7 @@ public class FollowDAO {
 
 			sql="select * "
 					+ "from review r join movie m "
-					+ "on r.r_num = m.mv_num "
+					+ "on r.r_p_num = m.mv_num "
 					+ "where r_id = ?"
 					+ " order by r_date desc limit 5";
 			pstmt=con.prepareStatement(sql);
@@ -347,8 +347,9 @@ public class FollowDAO {
 	while(rs.next()){
 				
 				ReviewBean reviewbean = new ReviewBean();
+				reviewbean.setR_num(rs.getInt("r_num"));
 				reviewbean.setR_content(rs.getString("r_content"));
-				reviewbean.setR_date(rs.getDate("r_date"));
+				reviewbean.setR_date(rs.getTimestamp("r_date"));
 				reviewbean.setR_recommand(rs.getInt("r_recommand"));
 				reviewbean.setR_report(rs.getInt("r_report"));
 				top5reviewlist.add(reviewbean);

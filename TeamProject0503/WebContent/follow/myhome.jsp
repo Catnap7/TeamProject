@@ -234,17 +234,29 @@ case "drama" : genre2="드라마"; break;
 	
 	<!-- ↓↓↓↓↓↓↓리뷰 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
 	<!-- <div class="rvList"> -->
-			<%for(int i=0;i<top5reviewlist.size();i++){
+	
+			<%
+			 if(top5reviewlist.size()==0){
+				 %>
+				 <div id="rv"> 
+				<%-- <p> <%=moviebean.getMv_kor_title() %> / <%=reviewbean.getR_date() %>/ <%=reviewbean.getR_recommand() %>/ <%=reviewbean.getR_report() %></p> --%>
+					<p class="rvList"><%="ㅎㅇ"%></p>
+				</div>
+				 <%
+			 }else{	
+			for(int i=0;i<top5reviewlist.size();i++){
 				ReviewBean reviewbean = (ReviewBean)top5reviewlist.get(i);
 			 	MovieBean moviebean= (MovieBean)top5movielist.get(i);
-			 	
+			 			
 				%>
 			<div id="rv"> 
-				<p> <%=moviebean.getMv_kor_title() %> / <%=reviewbean.getR_date() %>/ <%=reviewbean.getR_recommand() %>/ <%=reviewbean.getR_report() %></p>
+				<p> <%=moviebean.getMv_kor_title()%>/ <%=reviewbean.getR_date()%>/ <%=reviewbean.getR_recommand()%>/ <%=reviewbean.getR_report()%></p>
 				<p class="rvList">
 				<%=reviewbean.getR_content()%></p>
 			</div> 
-			<%} %>
+			
+			<%}
+			}%>
 	<!-- </div> -->	
 </section>
 	
@@ -258,7 +270,16 @@ case "drama" : genre2="드라마"; break;
 		<!-- ↓↓↓↓↓↓↓영화 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
 	<!-- <div class="mvList" id="rv"> -->
 		<div class="mvList"> 
-			<%for(int i=0;i<top5favoritelist.size();i++){
+			<%
+				if(top5favoritelist.size()==0){
+					%>
+					<div>
+				<%-- <img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="175px" height="260px"> --%>
+				<p><%="노데이터"%></p>
+				</div>
+					<%
+				}else{
+				for(int i=0;i<top5favoritelist.size();i++){
 				MovieBean moviebean=(MovieBean)top5favoritelist.get(i);
 				String img_genre= "";
 				if(moviebean.getMv_genre().equals("animation")){
@@ -281,7 +302,8 @@ case "drama" : genre2="드라마"; break;
 				<img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="175px" height="260px">
 				<p><%=moviebean.getMv_kor_title()%></p>
 			</div>
-		<%} %>
+		<%	}
+				}%>
 		</div>
 	<!-- </div> -->	
 </section>

@@ -196,7 +196,7 @@ public int getReviewCount(String m_id) {
 				reviewbean.setR_recommand(rs.getInt("r_recommand"));
 				reviewbean.setR_report(rs.getInt("r_report"));
 				reviewbean.setR_content(rs.getString("r_content"));
-				reviewbean.setR_date(rs.getDate("r_date"));
+				reviewbean.setR_date(rs.getTimestamp("r_date"));
 				reviewList.add(reviewbean);
 				MemberBean memberbean = new MemberBean();///////////
 				memberbean.setM_name(rs.getString("m_name"));///////////
@@ -341,7 +341,7 @@ public int getReviewCount(String m_id) {
 				reviewbean.setR_recommand(rs.getInt("r_recommand"));
 				reviewbean.setR_report(rs.getInt("r_report"));
 				reviewbean.setR_content(rs.getString("r_content"));
-				reviewbean.setR_date(rs.getDate("r_date"));
+				reviewbean.setR_date(rs.getTimestamp("r_date"));
 				reviewList.add(reviewbean);
 				MemberBean memberbean = new MemberBean();///////////
 				memberbean.setM_name(rs.getString("m_name"));///////////

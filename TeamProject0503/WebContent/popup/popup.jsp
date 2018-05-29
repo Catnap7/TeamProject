@@ -4,11 +4,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+
+ /*하루동안 보지않기  exdays*24*60*60*1000) */
+function couponClose(){
+    if($("input[name='chkbox']").is(":checked") ==true){
+        setCookie("close","Y",1);
+    }
+    window.close();
+
+}
+</script>
 </head>
 <body>
 
 <!-- 팝업 -->
+<div>
 <div id="popp27">
  <div class="cont">
   <img src="./images/popup3.png" alt="할인쿠폰광고 " border="0" width="400px" height="400px"></div>
@@ -18,6 +31,7 @@
    <span id="close">닫기</span>
   </form>
  </div>
+</div>
 </div>
 <!--  end of popup -->
 
