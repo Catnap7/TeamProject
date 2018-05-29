@@ -1,114 +1,88 @@
-<%@page import="net.category.db.ReviewBean"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Review List & AJAX Search</title>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-	<%
-		List<ReviewBean> AdminReviewList = (List)request.getAttribute("AdminReviewList");
-		int count = ((Integer) request.getAttribute("count")).intValue();
-		String pageNum = (String) request.getAttribute("pageNum");
-		int pageCount = ((Integer) request.getAttribute("pageCount")).intValue();
-		int pageBlock = ((Integer) request.getAttribute("pageBlock")).intValue();
-		int startPage = ((Integer) request.getAttribute("startPage")).intValue();
-		int endPage = ((Integer) request.getAttribute("endPage")).intValue();
-	%>
-	<script type="text/javascript">
-		function del(r_num) {
-			if (confirm("정말로 삭제하시겠습니까?") == true) {
-				location.href = "./AdminReviewDelete.am?r_num="+r_num;
+
+<!-- script -->
+
+<script type="text/javascript">
+	var request = new XMLHttpRequest();
+	function searchFunction() {
+		request.open("Post", "./AdminReviewSearch?searchValue="+encodeURIComponent(document.getElementById("searchValue").value)+"&select="+encodeURIComponent(document.getElementById("select").value), true);
+		request.onreadystatechange = searchProcess;
+		request.send(null);
+	}
+	function searchProcess() {
+		var table = document.getElementById("ajaxTable");
+		table.innerHTML = "";
+		if (request.readyState == 4 && request.status == 200) {
+			var object = eval('(' + request.responseText + ')');
+			var result = object.result;
+			for (var i = 0; i < result.length; i++) {
+				var row = table.insertRow(0);
+				for (var j = 0; j < result[i].length; j++) {
+					var cell = row.insertCell(j);
+					cell.innerHTML = result[i][j].value;
+				}
 			}
 		}
-	</script>
+	}
+	window.onload = function() {
+		searchFunction();
+	}
+</script>
 
-	<!-- 헤더영역 -->
+<!-- script -->
+
+</head>
+<body>
+
+	<!-- JSP -->
+	<!-- JSP -->
+
+	<!-- Header -->
 	<jsp:include page="../../inc/header.jsp" />
-	<!-- 헤더영역 -->
-
-<!-- 어드민 서브메뉴 -->
-<jsp:include page="../../inc/admin_sub.jsp"/>
-<!-- 어드민 서브메뉴 -->
-
-	<div id="content">
-		<h1>REVIEW LIST [<%=count %>]</h1>
-
+	<!-- Header -->
+	
+	<!-- Sub -->
+	<jsp:include page="../../inc/admin_sub.jsp" />
+	<!-- Sub -->
+	
+	<div id="content_member">
+		<h1>REVIEW LIST</h1>
 		<div class="admin-search-container">
-			<form action="admin_review_list_search.jsp">
-				<input type="text" placeholder="Search.." name="search">
-				<button type="submit" class="searchBtn">
-					<img src="./images/search.png" width="20px" height="20px">
-				</button>
-			</form>
+		<select id="select">
+			<option value="r_id" selected="selected">ID</option>
+			<option value="r_date">날짜</option>
+		</select>
+		<input type="text" onkeyup="searchFunction()" id="searchValue" placeholder="검색할 내용 입력해라.">
+		<button type="button" onclick="searchFunction();"><img src="./images/search.png" width="20px" height="20px"></button>
 		</div>
-
 		<table class="db_list">
-			<tr>
-				<th class="rv_th1">ID</th>
-				<th class="rv_th3">댓글 내용</th>
-				<th class="rv_th4">신고횟수</th>
-				<th class="rv_th5">작성일</th>
-				<th class="rv_th5">댓글삭제</th>
-			</tr>
-			<%
-			
-			for(int i = 0; i < AdminReviewList.size(); i++) {
-				ReviewBean arb = (ReviewBean)AdminReviewList.get(i);
-				%>
-
-
-			<tr>
-				<td><%=arb.getR_id() %></td>
-				<td><%=arb.getR_content() %></td>
-				<td><%=arb.getR_report() %></td>
-				<td><%=arb.getR_date() %></td>
-				<td><a href="javascript:del('<%=arb.getR_num() %>')">삭제</a></td>
-			</tr>
-
-			<%
-			}
-			
-			%>
+			<thead>
+				<tr>
+					<th class="th5">NUM</th>
+					<th class="th5">ID</th>
+					<th class="th5">내용</th>
+					<th class="th5">신고</th>
+					<th class="th5">추천</th>
+					<th class="th5">날짜</th>
+				</tr>
+			</thead>
+			<tbody id="ajaxTable">
+			</tbody>
 		</table>
-
-		<div class="prev_next">
-			<%
-				// 이전
-				if (startPage > pageBlock) {
-			%>
-			<a
-				href="./AdminReviewListAction.am?pageNum=<%=startPage - pageBlock%>">[이전]</a>
-			<%
-				}
-
-				// 1~10, 11~20, 21~30
-				for (int i = startPage; i <= endPage; i++) {
-			%>
-			<a href="./AdminReviewListAction.am?pageNum=<%=i%>">[<%=i%>페이지]
-			</a>
-			<%
-				}
-
-				// 다음
-				if (endPage < pageCount) {
-			%>
-			<a
-				href="./AdminReviewListAction.am?pageNum=<%=startPage + pageBlock%>">[다음]</a>
-			<%
-				}
-			%>
-		</div>
 	</div>
 
-	<!-- 푸터 영역 -->
+	<!-- Footer -->
 	<jsp:include page="../../inc/footer.jsp" />
-	<!-- 푸터 영역 -->
-
+	<!-- Footer -->
+	
 </body>
 </html>
