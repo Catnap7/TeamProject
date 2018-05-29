@@ -67,6 +67,7 @@ public class FollowMyHome implements Action{
 		List<MovieBean> top5movielist=(List)vector.get(1);
 		
 		List top5favoritelist = followdao.top5followfavorite(id);
+		
  /*		Vector vector2 = new Vector();
 		vector2 = followdao.top5followfavorite(m_id);
 		List<ReviewBean> top5favoritelist=(List)vector2.get(0);
@@ -85,7 +86,6 @@ public class FollowMyHome implements Action{
 		request.setAttribute("m_followingList", m_followingList);
 		request.setAttribute("f_followerList", f_followerList);
 		request.setAttribute("m_followerList", m_followerList);
-		
 		ActionForward forward= new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("./follow/myhome.jsp");

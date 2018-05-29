@@ -77,6 +77,7 @@ public class FollowDAO {
 		return followingcount;
 	}
 	
+	
 	// 팔로잉 리스트
 	public Vector followingList(String m_id) {
 		Connection con=null;

@@ -42,7 +42,6 @@ List f_followingList = (List)request.getAttribute("f_followingList");
 List m_followingList = (List)request.getAttribute("m_followingList");
 List f_followerList = (List)request.getAttribute("f_followerList");
 List m_followerList = (List)request.getAttribute("m_followerList");
-/*  List top5movielist2 = (List)request.getAttribute("top5movielist2"); */
 String grade="";
 switch(getmember.getM_grade()){
 case 1 : grade = "정회원"; break;
@@ -159,6 +158,7 @@ case "drama" : genre2="드라마"; break;
 			  <a href="http://www.naver.com"><%=fbean.getFo_following() %></a><br>
 			  <span><%=mbean.getM_name() %></span>
 			  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
+				  
 			</div>
 			<div class="clear"></div>
 			<!--         내가 팔로잉 하는 한 사람  -->
@@ -197,7 +197,10 @@ case "drama" : genre2="드라마"; break;
 			  </div>
 			  <a href="http://www.naver.com"><%=fbean.getFo_id() %></a><br>
 			  <span><%=mbean.getM_name() %></span>
-			  <a href="http://www.naver.com" class="follow_a">팔로잉</a>
+			
+		 	 <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
+		     <a href="http://www.naver.com" class="follow_a">팔로우</a>
+			 
 			</div>
 			<div class="clear"></div>
 			<!--         나를 팔로잉 하는 한 사람  -->
@@ -206,14 +209,7 @@ case "drama" : genre2="드라마"; break;
         %>
 		
 		<!--         나를 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
+
 		<div class="clear"></div>
 		<!--         나를 팔로잉 하는 한 사람  -->
 		  

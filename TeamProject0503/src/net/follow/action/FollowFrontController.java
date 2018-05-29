@@ -69,12 +69,12 @@ public class FollowFrontController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberFrontController doGet()");	
+		System.out.println("followFrontController doGet()");	
 		doProcess(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberFrontController doPost()");
+		System.out.println("followFrontController doPost()");
 		doProcess(request, response);
 		
 	}
