@@ -155,7 +155,7 @@ private Connection getConnection() throws Exception {
 	
 	
 	public int userCheck(String m_id,String m_pass) {
-		int check =3;
+		int check =-1;
 		Connection con=null;
 		String sql =null;
 		PreparedStatement pstmt =null;
@@ -169,12 +169,12 @@ private Connection getConnection() throws Exception {
 		 rs= pstmt.executeQuery();
 		if(rs.next()){
 			if(m_pass.equals(rs.getString("m_pass"))){
-				check=1;
+				check=1; //로그인성공
 			}else {
-				check=0;
+				check=0; //비번틀릴경우
 			}
 		}else {
-			check=-1;
+			check=-1; //아이디없을경우
 		}
 
 		}catch(Exception e) {
@@ -212,6 +212,8 @@ private Connection getConnection() throws Exception {
 				memberbean.setM_reg_date(rs.getDate("m_reg_date"));
 				memberbean.setM_pay(rs.getInt("m_pay"));
 				memberbean.setM_pic(rs.getInt("m_pic"));
+				
+			}else {
 				
 			}
 			

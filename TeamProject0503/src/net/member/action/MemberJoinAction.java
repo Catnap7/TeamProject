@@ -65,7 +65,7 @@ public  class MemberJoinAction implements Action{
 		return null;
 	}
 	// 사용자에게 보낼 메시지를 기입합니다.
-	String host = "http://localhost:8080/TimProject/EmailCheckAction.me";
+	String host = "http://localhost:8080/TeamProject0503/EmailCheckAction.me";
 	String from = "wkdwodn22@gmail.com";
 	String fromname = "와츄";
 	String to = m_id;

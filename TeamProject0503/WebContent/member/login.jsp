@@ -101,11 +101,11 @@ function getCookie(cookieName) {
 			<input type="text"  name="m_id" placeholder="이메일 (example@gmail.com)" class="text" id="m_id">
 			</label><br>
 			<label>
-			<input type="password" name="m_pass" placeholder="비밀번호 (6자 이상)" class="text">
+			<input type="password" name="m_pass" placeholder="비밀번호 (6자 이상)" class="text" required>
 			</label><br>
 			<input type="checkbox" id="idSaveCheck" class="id_save"><span><label for="idSaveCheck">아이디 저장 </label></span><br>
 			<input type="checkbox" id="AutoLoginCheck" class="id_save"><span><label for="AutoLoginCheck">로그인 상태 유지</label></span><br>
-			<input type="submit" value="로그인" id="submit">
+			<input type="submit" value="로그인" id="submit" >
 		</form>
 	
 </div>

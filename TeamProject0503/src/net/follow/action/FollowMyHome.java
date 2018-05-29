@@ -14,6 +14,7 @@ import net.category.db.ReviewBean;
 import net.category.db.ReviewDAO;
 import net.favorite.db.FavoriteBean;
 import net.favorite.db.FavoriteDAO;
+import net.follow.db.FollowBean;
 import net.follow.db.FollowDAO;
 import net.member.db.MemberBean;
 import net.member.db.MemberDAO;
@@ -32,6 +33,7 @@ public class FollowMyHome implements Action{
 			forward.setRedirect(true);
 			return forward;
 		}
+		Vector vector = new Vector();
 		MemberBean memberbean = new MemberBean();
 		MemberDAO memberdao = new MemberDAO();
 		memberbean=memberdao.getMember(m_id);
@@ -39,6 +41,14 @@ public class FollowMyHome implements Action{
 		FollowDAO followdao = new FollowDAO();
 		int followercount= followdao.Followercount(m_id);
 		int followingcount= followdao.Followingcount(m_id);
+		// 팔로잉 리스트
+		vector = followdao.followingList(m_id);
+		List<FollowBean> f_followingList = (List)vector.get(0);
+		List<MemberBean> m_followingList = (List)vector.get(1);
+		// 팔로워 리스트
+		vector = followdao.followerList(m_id);
+		List<FollowBean> f_followerList = (List)vector.get(0);
+		List<MemberBean> m_followerList = (List)vector.get(1);
 		
 		ReviewDAO reviewdao = new ReviewDAO();
 		int reviewcount=reviewdao.getReviewCount(m_id);
@@ -49,7 +59,7 @@ public class FollowMyHome implements Action{
 		moviebean=moviedao.getfavorite(m_id);
 		moviebean2 =moviedao.getfavorite2(m_id);
 		
-		Vector vector = new Vector();
+//		Vector vector = new Vector();
 		vector=followdao.top5followreview(m_id);
 		List<ReviewBean> top5reviewlist=(List)vector.get(0);
 		List<MovieBean> top5movielist=(List)vector.get(1);
@@ -69,6 +79,10 @@ public class FollowMyHome implements Action{
 		request.setAttribute("top5reviewlist", top5reviewlist);
 		request.setAttribute("top5movielist", top5movielist);
 		request.setAttribute("top5favoritelist", top5favoritelist);
+		request.setAttribute("f_followingList", f_followingList);
+		request.setAttribute("m_followingList", m_followingList);
+		request.setAttribute("f_followerList", f_followerList);
+		request.setAttribute("m_followerList", m_followerList);
 		
 		ActionForward forward= new ActionForward();
 		forward.setRedirect(false);

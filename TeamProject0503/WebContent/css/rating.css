@@ -6,8 +6,11 @@
 
 /******************* 취향분석 ********************/
 
+
 .movie_wrap {
-	/* border: 1px solid red;  */
+ 	/* border: 1px solid red; */  
+	width:1900px;
+	margin:0 auto;
 	height: 1100px;
 	padding: 100px 0;
 }
