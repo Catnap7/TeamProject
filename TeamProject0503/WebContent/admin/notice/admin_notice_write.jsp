@@ -5,9 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-<title>Insert title here</title>
+<title>I왓츄 : 공지사항 쓰기</title>
+
+<!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
+
+<!-- 웹 폰트 : 나눔고딕 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
 
 <!--  notice/writeForm.jsp -->
 </head>
@@ -24,7 +30,7 @@
 <!-- 어드민 서브메뉴 -->
 
 	<div id="content">
-		<h1>Notice Write Form</h1>
+		<h1>관리자 공지사항 글쓰기</h1>
 
 		<form action="./AdminNoticeWriteAction.an" method="post" enctype="multipart/form-data">
 			<table border="0" class="db_list_insert">
@@ -44,9 +50,12 @@
 					<td>첨부파일</td>
 					<td><input type="file" name="n_file"></td>
 				</tr>
+				
 				<tr>
-					<td><input type="submit" value="등록"></td>
-					<td><button type="button" onclick="history.back()">돌아가기</button></td>
+				<div class="u_admin-notice-write">
+					<input type="submit" class="wirtebtn" value="등록">
+					<button type="button" class="wirtebtn" onclick="history.back()">돌아가기</button>
+				</div>
 				</tr>
 			</table>
 		</form>
