@@ -7,10 +7,6 @@ public class CouponBean {
 	private int c_num;
 	private int c_name;
 	private String c_end_day;
-	
-	
-	
-	
 	public String getC_end_day() {
 		return c_end_day;
 	}

@@ -30,7 +30,7 @@ public class MemberLoginAction implements Action{
 		MemberDAO mdao = new MemberDAO();
 		String m_id = request.getParameter("m_id");
 		
-		MemberBean memberbean= mdao.getMember(m_id);
+		MemberBean memberbean= new MemberBean();
 		
 		Calendar cal= new GregorianCalendar();
 		cal.clear(Calendar.MILLISECOND);
@@ -41,7 +41,7 @@ public class MemberLoginAction implements Action{
 		CouponDAO cdao = new CouponDAO();
 
 		List <CouponBean>couponlist = cdao.getCoupons(m_id);
-		List <AlarmBean>alarmlist = adao.getAlarms(m_id);//세션 아이디 넣으세요.
+		List <AlarmBean>alarmlist = adao.getAlarms(m_id);
 		
 		memberbean.setM_id(request.getParameter("m_id"));		
 		memberbean.setM_pass(request.getParameter("m_pass"));
@@ -80,7 +80,6 @@ public class MemberLoginAction implements Action{
 				out.println("</script>");
 			}else {
 			
-			
 			if(couponlist != null){
 				for(CouponBean couponbean:couponlist){
 				 String c_array[] = couponbean.getC_end_day().split("/");  
@@ -104,7 +103,7 @@ public class MemberLoginAction implements Action{
 					}  
 				 }//end for
 				}//end if
-		
+			memberbean = mdao.getMember(m_id);
 			session.setAttribute("m_id",memberbean.getM_id());
 			session.setAttribute("m_name",memberbean.getM_name());
 			

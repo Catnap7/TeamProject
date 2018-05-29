@@ -36,7 +36,6 @@ public class CookieLogin implements Action{
 			}
 		
 		}if(m_pass!=null) {
-			System.out.println("쿠키로그인시도");
 			m_id = m_id1+"@"+m_id2;
 			MemberDAO mdao = new MemberDAO();
 			MemberBean memberbean=new MemberBean();

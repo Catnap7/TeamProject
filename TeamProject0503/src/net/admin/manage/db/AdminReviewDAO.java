@@ -63,7 +63,7 @@ public class AdminReviewDAO {
 			while(rs.next()) {
 				ReviewBean reviewbean = new ReviewBean();
 				reviewbean.setR_content(rs.getString("r_content"));
-				reviewbean.setR_date(rs.getDate("r_date"));
+				reviewbean.setR_date(rs.getTimestamp("r_date"));
 				reviewbean.setR_id(rs.getString("r_id"));
 				reviewbean.setR_num(rs.getInt("r_num"));
 				reviewbean.setR_p_num(rs.getInt("r_p_num"));

@@ -263,14 +263,15 @@ function couponClose(){
     if($("input[name='chkbox']").is(":checked") ==true){
         setCookie("close","Y",1);
     }
-    $("#popp27").hide();
+     $("#popp27").attr('style', 'display:none');
+
 }
 $(document).ready(function(){
     cookiedata = document.cookie;
     if(cookiedata.indexOf("close=Y")<0){
         $("#popp27").show();
     }else{
-         $("#popp27").hide(); 
+         $("#popp27").attr('style', 'display:none');
     }
     $("#close").click(function(){
         couponClose();

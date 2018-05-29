@@ -41,17 +41,27 @@ System.out.println("FavoriteAction execute()");
 		FavoriteBean favoriteBean = new FavoriteBean();
 		favoriteBean.setF_id(f_id);
 		favoriteBean.setF_num(f_num);
-		
-
 		//메소드 실행, insert, update
 		FavoriteDAO favoriteDAO =new FavoriteDAO();
 		int check = favoriteDAO.favoriteCheck(f_id, f_num);
-		//준 레이팅 확인하고(아이디, 영화)
 		if(check==1){
+			favoriteDAO.insertFavortie(favoriteBean);
+			out.print(check);
+			out.close();
+			return null;
+		}else if(check==-1){
+			favoriteDAO.favoritedelete(f_id, f_num);
+			out.print(check);
+			out.close();
+			return null;
+		}
+		//int check = favoriteDAO.favoriteCheck(f_id, f_num);
+		//준 레이팅 확인하고(아이디, 영화)
+		/*if(check==1){
 			favoriteDAO.insertFavortie(favoriteBean);
 		}else if(check==-1){
 			favoriteDAO.favoritedelete(f_id, f_num);
-		}
+		}*/
 		
 		ActionForward forward= new ActionForward();
 		forward.setPath("./Category.ca");
