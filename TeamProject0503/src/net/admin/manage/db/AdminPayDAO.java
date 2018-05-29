@@ -11,10 +11,10 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import net.category.db.ReviewBean;
+import net.pay.db.PayBean;
 
-public class AdminReviewDAO {
-
+public class AdminPayDAO {
+	
 	private Connection getConnection() throws Exception {
 		Context init=new InitialContext();
 		DataSource ds=(DataSource)init.lookup("java:comp/env/jdbc/Mysql");
@@ -22,28 +22,28 @@ public class AdminReviewDAO {
 		return con;
 	}
 	
-	public List<ReviewBean> getAdminReviewSearch(String searchValue, String select) {
-		List<ReviewBean> lrb = new ArrayList<ReviewBean>();
+	public List<PayBean> getAdminPaySearch(String searchValue, String select) {
+		List<PayBean> lpb = new ArrayList<PayBean>();
 		Connection con = null;
 		String sql = "";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			con = getConnection();
-			sql = "select * from review where "+select+" LIKE ? order by r_date asc";
+			sql = "select * from payment where "+select+" LIKE ? order by p_end_day asc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchValue+"%");
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
-				ReviewBean reviewBean = new ReviewBean();
-				reviewBean.setR_content(rs.getString("r_content"));
-				reviewBean.setR_date(rs.getDate("r_date"));
-				reviewBean.setR_id(rs.getString("r_id"));
-				reviewBean.setR_num(rs.getInt("r_num"));
-				reviewBean.setR_recommand(rs.getInt("r_recommand"));
-				reviewBean.setR_report(rs.getInt("r_report"));
-				lrb.add(reviewBean);
+				PayBean payBean = new PayBean();
+				payBean.setP_auto(rs.getString("p_auto"));
+				payBean.setP_charge(rs.getInt("p_charge"));
+				payBean.setP_end_day(rs.getDate("p_end_day"));
+				payBean.setP_id(rs.getString("p_id"));
+				payBean.setP_num(rs.getInt("p_num"));
+				payBean.setP_start_day(rs.getDate("p_start_day"));
+				lpb.add(payBean);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -52,7 +52,7 @@ public class AdminReviewDAO {
 			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
 			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
 		}
-		return lrb;
+		return lpb;
 	}
 
 }

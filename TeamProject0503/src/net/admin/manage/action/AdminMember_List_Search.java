@@ -52,7 +52,7 @@ public class AdminMember_List_Search extends HttpServlet {
 			result.append("{\"value\" : \"" + StrGrade + "\"},");
 			result.append("{\"value\" : \"" + userList.get(i).getM_reg_date() + "\"},");
 //			result.append("{\"value\" : \"<a href='./AdminMemberDelete.am?m_id="+ userList.get(i).getM_id() +"'>내보내기" + "</a>\"}],");	
-		result.append("{\"value\" : \"<button onclick='confirm()'>내보내기" + "</button>\"}],");	
+			result.append("{\"value\" : \"<button onclick='confirm()'>내보내기" + "</button>\"}],");	
 		}		
 		result.append("]}");
 		return result.toString();
