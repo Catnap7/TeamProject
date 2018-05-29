@@ -4,12 +4,27 @@
 
 
 /************** 서브메뉴바 **************/
+
+.menu{
+	border-bottom: 2px solid #50a4aa;
+	position: relative;
+	top:170px; left:100px;
+	width:240px;
+	text-align: right;
+	padding: 5px;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+
 #menu_bar {
 	/* border:1px solid red;  */
-	width: 300px;
-	margin: 140px 50px 0 110px;
+	width: 250px;	
+	margin: 180px 150px 0 110px;
 	float: left;
-	font-size: 22px;
+	font-size: 20px;
+	text-align: right;
+	padding-top: 40px;
 }
 
 #menu_bar ul {
@@ -21,16 +36,16 @@
 	text-decoration: none;
 	display: block;
 	padding: 15px;
-	background-color: #50d4aa;
+	background-color: #aad3d7;
 	border-radius: 40px;
 	color: #000;
 	/* letter-spacing: 0.2px; */
-	margin-bottom: 60px;
+	margin-bottom: 50px;
 	text-align: center;
 }
 
 #menu_bar ul li a:HOVER {
-	opacity: 0.5;
+	background-color: #6ab1b9;
 }
 
 
