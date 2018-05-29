@@ -1,6 +1,7 @@
 package net.favorite.action;
 
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,6 +42,7 @@ System.out.println("FavoriteAction execute()");
 		FavoriteBean favoriteBean = new FavoriteBean();
 		favoriteBean.setF_id(f_id);
 		favoriteBean.setF_num(f_num);
+		//favoriteBean.setF_date(new Timestamp(System.);
 		//메소드 실행, insert, update
 		FavoriteDAO favoriteDAO =new FavoriteDAO();
 		int check = favoriteDAO.favoriteCheck(f_id, f_num);
