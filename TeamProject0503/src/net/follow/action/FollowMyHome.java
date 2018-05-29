@@ -1,5 +1,6 @@
 package net.follow.action;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -52,6 +53,35 @@ public class FollowMyHome implements Action{
 		List<FollowBean> f_followerList = (List)vector.get(0);
 		List<MemberBean> m_followerList = (List)vector.get(1);
 		
+		String following_id = null;
+		String f_id = null;
+		List<Integer> followingCheckList = new ArrayList<>();
+		List<Integer> followCheckList = new ArrayList<>();
+		
+		// 팔로잉 체크
+		for(int i=0; i<f_followingList.size(); i++) {
+			FollowBean fbean = (FollowBean)f_followingList.get(i);
+			following_id = fbean.getFo_following();
+			System.out.println(following_id);
+			
+			followingCheckList.addAll(followdao.followingCheck(id, following_id));
+			request.setAttribute("followingCheckList", followingCheckList);
+			System.out.println(followingCheckList.get(i));
+
+		}
+		
+		// 팔로워 체크
+		for(int i=0; i<f_followerList.size(); i++) {
+			FollowBean fbean = (FollowBean)f_followerList.get(i);
+			f_id = fbean.getFo_id();
+			System.out.println(f_id);
+			
+			followCheckList.addAll(followdao.followCheck(id, f_id));
+			request.setAttribute("followCheckList", followCheckList);
+			System.out.println(followCheckList.get(i));
+
+		}
+		
 		ReviewDAO reviewdao = new ReviewDAO();
 		int reviewcount=reviewdao.getReviewCount(id);
 		
@@ -86,6 +116,8 @@ public class FollowMyHome implements Action{
 		request.setAttribute("m_followingList", m_followingList);
 		request.setAttribute("f_followerList", f_followerList);
 		request.setAttribute("m_followerList", m_followerList);
+		request.setAttribute("m_id", id);
+		
 		ActionForward forward= new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("./follow/myhome.jsp");
