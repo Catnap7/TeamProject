@@ -1,10 +1,13 @@
 package net.rating.db;
 
+import java.sql.Timestamp;
+
 public class RatingBean {
-	int ra_num;
-	String ra_id;
-	int ra_rating;
-	int ra_p_num;
+	private int ra_num;
+	private String ra_id;
+	private int ra_rating;
+	private int ra_p_num;
+	private Timestamp ra_date;
 	
 	public int getRa_num() {
 		return ra_num;
@@ -29,6 +32,12 @@ public class RatingBean {
 	}
 	public void setRa_p_num(int ra_p_num) {
 		this.ra_p_num = ra_p_num;
+	}
+	public Timestamp getRa_date() {
+		return ra_date;
+	}
+	public void setRa_date(Timestamp ra_date) {
+		this.ra_date = ra_date;
 	}
 
 }

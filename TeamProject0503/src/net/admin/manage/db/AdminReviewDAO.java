@@ -21,8 +21,39 @@ public class AdminReviewDAO {
 		DataSource ds=(DataSource)init.lookup("java:comp/env/jdbc/Mysql");
 		Connection con=ds.getConnection();		
 		return con;
-	}
-	
+	}		
+		public List<ReviewBean> getAdminReviewSearch(String searchValue, String select) {
+			List<ReviewBean> lrb = new ArrayList<ReviewBean>();
+			Connection con = null;
+			String sql = "";
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = getConnection();
+				sql = "select * from review where "+select+" LIKE ? order by r_date asc";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%"+searchValue+"%");
+				rs = pstmt.executeQuery();
+
+				while(rs.next()) {
+					ReviewBean reviewBean = new ReviewBean();
+					reviewBean.setR_content(rs.getString("r_content"));
+					reviewBean.setR_date(rs.getTimestamp("r_date"));
+					reviewBean.setR_id(rs.getString("r_id"));
+					reviewBean.setR_num(rs.getInt("r_num"));
+					reviewBean.setR_recommand(rs.getInt("r_recommand"));
+					reviewBean.setR_report(rs.getInt("r_report"));
+					lrb.add(reviewBean);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
+				if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+				if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+			}
+			return lrb;
+		}
 	public int getAdminReviewCount(){
 		Connection con = null;
 		String sql = "";
@@ -63,7 +94,7 @@ public class AdminReviewDAO {
 			while(rs.next()) {
 				ReviewBean reviewbean = new ReviewBean();
 				reviewbean.setR_content(rs.getString("r_content"));
-				reviewbean.setR_date(rs.getDate("r_date"));
+				reviewbean.setR_date(rs.getTimestamp("r_date"));
 				reviewbean.setR_id(rs.getString("r_id"));
 				reviewbean.setR_num(rs.getInt("r_num"));
 				reviewbean.setR_p_num(rs.getInt("r_p_num"));
