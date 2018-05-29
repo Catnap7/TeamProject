@@ -288,9 +288,8 @@ public class RatingDAO {
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, mv_num);
 				rs = pstmt.executeQuery();
-				
 				if(rs.next()){
-					avg=rs.getInt("avg");
+					avg=rs.getFloat("avg");
 				}
 				
 			} catch(Exception e) {

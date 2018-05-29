@@ -250,7 +250,7 @@ public class FollowDAO {
 
 			sql="select * "
 					+ "from review r join movie m "
-					+ "on r.r_num = m.mv_num "
+					+ "on r.r_p_num = m.mv_num "
 					+ "where r_id = ?"
 					+ " order by r_date desc limit 5";
 			pstmt=con.prepareStatement(sql);
@@ -260,6 +260,7 @@ public class FollowDAO {
 	while(rs.next()){
 				
 				ReviewBean reviewbean = new ReviewBean();
+				reviewbean.setR_num(rs.getInt("r_num"));
 				reviewbean.setR_content(rs.getString("r_content"));
 				reviewbean.setR_date(rs.getDate("r_date"));
 				reviewbean.setR_recommand(rs.getInt("r_recommand"));

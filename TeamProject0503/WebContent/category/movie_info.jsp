@@ -102,7 +102,7 @@
  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="./js/rating.js"></script>
-<script src="./js/favorite.js"></script>
+<!-- <script src="./js/favorite.js"></script> -->
 </head>
 <body>
 <%
@@ -192,8 +192,6 @@ case 19 : age="청소년관람불가"; break;
    </script>
 <script type="text/javascript">
 
-
-
 $(document).ready(function(){
    $('.next').click(function(){
       $('.steelcut').attr('src',"./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>"+"_s2.jpg"); // 스틸컷 2번째 이미지 소스
@@ -210,6 +208,39 @@ $(document).ready(function(){
 });
 
 </script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		/* document.getElementById("#dup").innerHTML += "<input type='hidden' name='' id=''/>"; */
+
+	
+	$('#favorite').click(function(){
+		var m_id = $('#m_id').val();
+		var mv_num =$('#mv_num').val(); 
+			$.ajax({
+				type:"post",
+				url:"./FavoriteAction.fa",
+				data:{
+					"m_id":m_id,"f_num":mv_num
+				},
+				success:function(data){
+					if(data==1){
+					alert("즐겨찾기에 추가 되었습니다.")
+					$('.fa_full').css('color','red');
+					}
+					
+					if(data==-1){
+					alert("즐겨찾기가 삭제 되었습니다.")
+					$('.fa_full').css('color','#ddd');
+					}
+				}
+			});
+	});
+	});
+
+	
+</script>
+
 <!-- 헤더영역 -->
 <jsp:include page="../inc/header.jsp"/>
 <!-- 헤더영역 -->
@@ -246,7 +277,8 @@ $(document).ready(function(){
             </fieldset>
             <!-- 별점 끝 -->
             </form>
-               평균 평점 <%=avg %> / 5
+            <%String avg2 =String.format("%.1f",avg);%>
+               평균 평점  <%=avg2 %>/ 5
             </td>
          </tr>
          <tr>
@@ -263,6 +295,24 @@ $(document).ready(function(){
          </tr>
       </table>
       <!--즐겨찾기  -->
+      <fieldset class="like" id="starfield<%=mv_num %>" >
+      	
+    			   <div id="dup"></div><!--  <input type="hidden" id ="dup_fa" value=""> -->
+    			   <%  if(favoritebean !=null){
+    				      if(favoritebean.getF_id()!=null && favoritebean.getF_num()==mv_num){
+				    %><input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="좋아요" style="color: red;"></label><%
+    				      }
+    			   		}else{
+				    	%>
+				    	<input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="해제"  ></label>
+				    	<%  
+				      }
+   				     %>
+    			    <input type="hidden" id ="m_id"value="<%=id%>">
+    			    <input type="hidden" id ="mv_num"value="<%=mv_num%>">
+    			    
+  	 </fieldset>
+      <%-- 
       <%
       if(favoritebean !=null){
       if(favoritebean.getF_id()!=null && favoritebean.getF_num()==mv_num)
@@ -286,9 +336,9 @@ $(document).ready(function(){
 		</form>
    <%
       }
-  	System.out.print( memberBean.getM_id_num1());
+
          %>
-         
+ --%>         
       <%															
       if(memberBean.getM_pay()==0){
          %>
@@ -299,7 +349,7 @@ $(document).ready(function(){
                });
          });      
          </script>
-      <%   
+              <%   
       }else if(memberBean.getM_pay()==1){
          if(memberBean.getM_id_num1()<200001 && moviebean.getMv_age()==19 ){
             
