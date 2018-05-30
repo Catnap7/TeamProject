@@ -5,23 +5,26 @@
 .menu{
 	border-bottom: 2px solid #50a4aa;
 	position: relative;
-	top:170px; left:100px;
-	width:240px;
+	top:170px; 
+	left:-510px; 
+	width:340px;
 	text-align: right;
 	padding: 5px;
 	font-weight: bold;
 	font-size: 1.2em;
+	display: inline-block;
 }
 
 
 #menu_bar {
 	/* border:1px solid red;  */
 	width: 250px;	
-	margin: 180px 150px 0 110px;
+	margin: 180px 120px 0 110px;
 	float: left;
 	font-size: 20px;
 	text-align: right;
-	padding-top: 40px;
+	padding-top: 50px;
+	padding-right: 30px;
 }
 
 #menu_bar ul {
@@ -33,28 +36,42 @@
 	text-decoration: none;
 	display: block;
 	padding: 15px;
-	background-color: #aad3d7;
-	border-radius: 40px;
+	/* background-color: #aad3d7; */
+	border-radius: 30px;
 	color: #000;
 	font-weight:bold;
-	letter-spacing: 0.2px;
+	/* letter-spacing: 0.2px;
 	margin-bottom: 50px;
-	text-align: center;
+	text-align: center; */
 }
 
 #menu_bar ul li a:HOVER {
 	background-color: #50a4aa;
 }
 
-/************** 서브메뉴바 **************/
-
-
 
 
 /**************폼 영역 **************/
 
 .I_content{
-	height: 1400px;
+	height: 1500px; 
+}
+
+.adminTitle{
+	border:1px dashed #50a4aa;
+	background-color:#eee;
+	border-radius:5px;
+	text-align: center;
+	padding:5px;
+	display: inline-block;
+	height:50px;
+	line-height:22px;
+	position: relative;
+	left: 40px;
+	/* top:87px; */
+	padding:10px 20px;
+	box-sizing:border-box;
+	font-size: 1.3em;
 }
 
 div#content {
@@ -63,30 +80,19 @@ div#content {
 	margin-top: 0px;
 	width:1500px;height: 800px;
 	position: relative;
-	bottom:520px; left:150px;
+	bottom:300px; left:195px;
 }
 
-div#content h1 {
-	text-align: center;
-	display: inline-block;
-	position: relative;
-	left: 40px;
-	top: -10px;
-	font-size: 1.7em;
-	letter-spacing: 2px;
-	text-transform: capitalize;
-	/* padding-bottom: 20px; */
-}
 div#content p{
 	position: relative;
-	top:0px;left:50px;
+	top:10px;left:40px;
 }
 
 .db_list_insert {
 	/* border-collapse: collapse; */
 	border-top:1px dashed #808080;
 	position: relative;
-	top: -20px;
+	/* top: -20px; */
 	left: 40px;
 	height: 500px; width: 1100px;
 	padding:30px;
