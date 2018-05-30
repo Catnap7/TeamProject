@@ -183,14 +183,13 @@ public class CouponDAO {
 		Connection con=null;
 		String sql="";
 		PreparedStatement pstmt=null;
-		int num=0;
 		try{ //예외가 발생할 것 같은 명령, 	필수적으로 외부파일접근, 디비접근
 			 con = getConnection();
 			 sql="insert into coupon (c_id,c_num,c_name,c_end_day) values(?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, cb.getC_id()); 
-			pstmt.setInt(2,num); 
+			pstmt.setInt(2,cb.getC_num()); 
 			pstmt.setInt(3, cb.getC_name()); 
 			pstmt.setString(4, cb.getC_end_day()); 
 			

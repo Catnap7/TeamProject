@@ -24,7 +24,7 @@ function couponClose(){
 <div>
 <div id="popp27">
  <div class="cont">
-  <img src="./images/popup3.png" alt="할인쿠폰광고 " border="0" width="400px" height="400px"></div>
+  <img src="./images/popup3_white.png" alt="할인쿠폰광고 " border="0" width="400px" height="400px"></div>
  <div class="close">
   <form method="post" action="" name="pop_form">
    <span id="check"><input type="checkbox" value="checkbox" name="chkbox" id="chkday"/><label for="chkday">오늘 하루동안 보지 않기</label></span>
