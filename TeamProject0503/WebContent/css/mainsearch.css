@@ -11,13 +11,12 @@
 }
 
 /*아티클 전체 설정*/
-article.main1{
-	height:1800px;
-	width: auto;
-}
+
 article.main2{
+	border:1px solid window;  
 	height:1500px;
 	width: auto;
+	padding-top:55px;
 }
 
 

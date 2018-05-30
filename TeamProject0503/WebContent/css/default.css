@@ -73,10 +73,12 @@ body{
 }	
 
 .pay>a:LINK, .pay>a:VISITED{
+	text-decoration: none;
 	color:#333;
 }
 
 .pay a:HOVER{
+	text-decoration: none;
 	color:#ff8000;
 }
 

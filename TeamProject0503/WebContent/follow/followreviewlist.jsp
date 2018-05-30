@@ -11,7 +11,7 @@
 
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
-<link href="./css/myhome.css" rel="stylesheet" type="text/css">
+<link href="./css/followReviews.css" rel="stylesheet" type="text/css">
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
@@ -70,56 +70,62 @@ case "drama" : genre2="드라마"; break;
 <jsp:include page="../inc/header.jsp"/>
 <!-- 헤더 영역 -->
 
-<article>
-	<div class="all allList">
+<article class="all">
+
+
+<section class="sec myInfo">
+	<div id="profile">
+		<img src="./images/proflie_img/proflie<%=getmember.getM_pic()%>.png" width="100px" height="100px">
+		<p><span><%=getmember.getM_name()%></span></p> <!-- 이름, 등급 가져오기 -->
+	</div><!-- profile -->
+	<div id="info">
+		
+				<p><span id="span1">Following</span><span><td data-toggle="modal" data-target="#following"><%=followingcount%></td></span>
+				<span id="span1">Follower</span><span><td data-toggle="modal" data-target="#follower"><%=followercount%></td></span></p>
+				<p><span id="span1">리뷰 수</span><span><%=reviewcount%></span></p>
+				<p><span id="span1">선호장르</span>
+				<span>
+					<%if(favorite==null){
+						%>
+						<%="선호장르 없음"%>
+					<% }else{
+						%>
+						<%=genre+", "%>
+						<%
+					} 
+					%>
+					 <%if(favorite2==null){
+						%>
+						<%-- <%="선호장르 없음"%> --%>
+						<%
+					}else{
+						%>
+						<%=genre2%>
+						<%
+					}
+					%>
+			</span></p>
+	</div><!-- info -->
+</section><!-- myInfo -->
+
 
 
 	<section class="sec myReviewList">
-		<%-- <div id="profileList">
-			<img src="./images/proflie_img/proflie<%=getmember.getM_pic()%>.png" width="200px" height="200px">
-			<p><%=getmember.getM_name()%></p><p><%=grade%></p> <!-- 이름, 등급 가져오기 -->
-		</div><!-- profile -->
-		<div id="info">
-			<table>
-				<tr>
-					<th>Following</th><td data-toggle="modal" data-target="#following"><%=followingcount%></td>
-				</tr>
-				<tr>	
-					<th>Follower</th><td data-toggle="modal" data-target="#follower"><%=followercount%></td><!-- 팔로잉, 팔로워 수 가져오기 --> 
-				</tr>		
-				<tr>
-					<th>리뷰 수</th><td><%=reviewcount%></td><!-- 리뷰 수 가져오기 -->
-				</tr>
-				<tr>
-					<th>선호장르</th>
-					<td>
-						<%if(favorite==null){
-							%><%="선호장르 없음"%>
-						<%}else{%>
-							<%=genre%>
-						<%}%>
-						<%=", " %>
-						 <%if(favorite2==null){%>
-							<%="선호장르 없음"%>
-						<%}else{%>
-							<%=genre2%>
-						<%}%>
-					</td> <!-- 선호장르 상위 2개 -->
-				</tr>
-			</table>
-		</div><!-- info --> --%>
-		<div class="secInfo">
+		<%-- <div class="secInfo">
 			<h3><%="유저이름"%>님 의 영화 리뷰</h3>
-		</div>	
-				<%for(int i=0;i<=4;i++){ %>
+		</div>	 --%>
+				<%for(int i=0;i<=10;i++){ %>
 				<div id="rv"> 
-					<p>영화 제목/ 리뷰 날짜/ 추천/ 신고</p>
+					<p><span id="reviewTitle"><%="영화이름"%></span>
+					<span id="reviewDate"><%="리뷰 쓴 날짜"%></span>
+					<span id="reviewRecommand"><%="추천수  "%><%="0"%></span>
+					<%-- / <%=reviewbean.getR_report()%> --%></p>
 					<p class="rvList">
 					<%="Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has "%></p>
 				</div> 
 				<%} %>
 	</section>
-	</div>
+
 </article>
 
 

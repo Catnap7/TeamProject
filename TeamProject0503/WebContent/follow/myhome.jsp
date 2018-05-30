@@ -115,18 +115,16 @@ case "drama" : genre2="드라마"; break;
 				<td>
 					<%if(favorite==null){
 						%>
-						<%="선호장르 없음"%>
-						<%
-					}else{
+						<%="아직 선호장르가 없습니다"%>
+					<% }else{
 						%>
-						<%=genre%>
+						<%=genre+", "%>
 						<%
 					} 
 					%>
-					<%=", " %>
 					 <%if(favorite2==null){
 						%>
-						<%="선호장르 없음"%>
+						<%-- <%="선호장르 없음"%> --%>
 						<%
 					}else{
 						%>
@@ -370,7 +368,7 @@ case "drama" : genre2="드라마"; break;
 
 <section class="sec myReview">
 	<div class="secInfo">
-		<h2><%=getmember.getM_name()%>님 의 리뷰</h2>
+		<h3><%=getmember.getM_name()%>님의 리뷰</h3>
 		<a href="./FollowReview.fo"><p>리뷰 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->
 	</div>	
 	
@@ -383,8 +381,9 @@ case "drama" : genre2="드라마"; break;
 				 <div id="rv"> 
 				<%-- <p> <%=moviebean.getMv_kor_title() %> / <%=reviewbean.getR_date() %>/ <%=reviewbean.getR_recommand() %>/ <%=reviewbean.getR_report() %></p> --%>
 					<div class="noReviewContents">
-						<img src="./images/noReview.png" width="140px" height="140px"> 
-						<p><%="등록 된 리뷰가 없습니다TT"%></p>
+						<!-- <img src="./images/noReview.png" width="140px" height="140px">  -->
+						<p><%="아직 리뷰가 없습니다"%></p>
+						<p><%="영화를 본 후 내 감상을 리뷰로 남겨주세요!"%></p>
 					
 					</div>
 				</div>
@@ -396,9 +395,11 @@ case "drama" : genre2="드라마"; break;
 			 			
 				%>
 			<div id="rv"> 
-				<p> <%=moviebean.getMv_kor_title()%>/ <%=reviewbean.getR_date()%>/ <%=reviewbean.getR_recommand()%>/ <%=reviewbean.getR_report()%></p>
-				<p class="rvList">
-				<%=reviewbean.getR_content()%></p>
+				<p><span id="reviewTitle"><%=moviebean.getMv_kor_title()%></span>
+				<span id="reviewDate"><%=reviewbean.getR_date()%></span>
+				<span id="reviewRecommand"><%="추천수  "%><%=reviewbean.getR_recommand()%></span>
+				<%-- / <%=reviewbean.getR_report()%> --%></p>
+				<p class="rvList"><%=reviewbean.getR_content()%></p>
 			</div> 
 			
 			<%}
@@ -409,7 +410,7 @@ case "drama" : genre2="드라마"; break;
 
 <section class="sec myFavMovie">
 	<div class="secInfo">
-		<h2><%=getmember.getM_name()%>님 이 좋아한 영화</h2>
+		<h3><%=getmember.getM_name()%>님이 좋아한 영화</h3>
 		<a href="./FollowFavorite.fo"><p>영화 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->	
 	</div>	
 	
@@ -422,6 +423,7 @@ case "drama" : genre2="드라마"; break;
 					<div class="noFavContents">
 						<!-- <img src="./images/noFavorite.png" width="140px" height="140px"> --> 
 						<p><%="좋아요 누른 영화가 없습니다"%></p>
+						<p><%="좋아하는 영화에 하트를 눌러주세요!"%></p>
 					</div>
 
 					<%
@@ -446,7 +448,7 @@ case "drama" : genre2="드라마"; break;
 				}
 			%>
 			<div class="favMovies">
-				<%-- <img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="175px" height="260px"> --%>
+				<img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="195px" height="280px"> 
 				<p><%=moviebean.getMv_kor_title()%></p>
 			</div>
 		<%	}
