@@ -39,27 +39,6 @@ public class AdminManageFrontController extends HttpServlet{
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./admin/admin_manage_list.jsp");
-		}else if(command.equals("/AdminPayListAction.am")) {
-			action = new AdminPayListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(command.equals("/AdminReviewListAction.am")) {
-			action = new AdminReviewListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(command.equals("/AdminReviewDelete.am")) {
-			action = new AdminReviewDelete();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		}else if(command.equals("/AdminMember_List_Search.am")) {     
 			forward = new ActionForward();
 			forward.setRedirect(false);
@@ -71,6 +50,14 @@ public class AdminManageFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/AdminPay_List_Search.am")) {     
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./admin/manage/admin_pay_list.jsp");			
+		}else if(command.equals("/AdminReview_List_Search.am")) {     
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./admin/manage/admin_review_list.jsp");			
 		}
 
 

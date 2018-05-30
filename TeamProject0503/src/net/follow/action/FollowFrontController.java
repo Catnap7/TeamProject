@@ -47,6 +47,29 @@ public class FollowFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/DeleteFollowerAction.fo")){
+			action= new DeleteFollowerAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/InsertFollowerAction.fo")){
+			action= new InsertFollowerAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/TimeLine.fo")){
+			action = new TimeLine();
+			try{
+			forward=action.execute(request, response);
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 			
 		
 		
@@ -69,12 +92,12 @@ public class FollowFrontController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberFrontController doGet()");	
+		System.out.println("followFrontController doGet()");	
 		doProcess(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberFrontController doPost()");
+		System.out.println("followFrontController doPost()");
 		doProcess(request, response);
 		
 	}

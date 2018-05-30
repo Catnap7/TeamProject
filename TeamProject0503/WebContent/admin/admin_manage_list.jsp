@@ -4,9 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원리스트</title>
+<title>왓츄 : 관리자 페이지</title>
+
+<!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
+
+<!-- 웹 폰트 : 나눔고딕 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
+
 </head>
 <body>
 
@@ -18,12 +25,13 @@
 <jsp:include page="../inc/admin_sub.jsp"/>
 <!-- 어드민 서브메뉴 -->
 
-<div id="content">
-	<div class="content_position">
-	<label for="member">
-		<div class="content_inner">
-			<a href="./AdminMember_List_Search.am" id="member">member</a>
-		</div>
+<article class="content">
+	<div id="content">
+		<div class="content_position">
+		<label for="member">
+			<div class="content_inner">
+				<a href="./AdminMember_List_Search.am" id="member">member</a>
+			</div>
 	</label>
 	<label for="movie">
 		<div class="content_inner">
@@ -32,17 +40,17 @@
 	</label>
 	<label for="pay">
 		<div class="content_inner">
-			<a href="./AdminPayListAction.am" id="pay">pay</a>
+			<a href="./AdminPay_List_Search.am" id="pay">pay</a>
 		</div>
 	</label>
 	<label for="review">
 		<div class="content_inner">
-			<a href="./AdminReviewListAction.am" id="review">review</a>
+			<a href="./AdminReview_List_Search.am" id="review">review</a>
 		</div>
 	</label>
-	</div>
-</div>
 
+	</div>
+</article>
 <div class="clear"></div>
 
 <!-- 푸터 영역 -->

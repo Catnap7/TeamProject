@@ -11,6 +11,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>왓츄: My Watchu Page</title>
+<!-- jQuery -->
+<script src="./js/jquery-3.3.1.js"></script>
+<script src="http://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
@@ -24,6 +28,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
@@ -42,7 +47,8 @@ List f_followingList = (List)request.getAttribute("f_followingList");
 List m_followingList = (List)request.getAttribute("m_followingList");
 List f_followerList = (List)request.getAttribute("f_followerList");
 List m_followerList = (List)request.getAttribute("m_followerList");
-/*  List top5movielist2 = (List)request.getAttribute("top5movielist2"); */
+String id = (String)request.getAttribute("m_id");
+String m_id=(String)session.getAttribute("m_id");
 String grade="";
 switch(getmember.getM_grade()){
 case 1 : grade = "정회원"; break;
@@ -150,15 +156,61 @@ case "drama" : genre2="드라마"; break;
         for(int i=0; i<f_followingList.size(); i++) {
         	FollowBean fbean = (FollowBean)f_followingList.get(i);
         	MemberBean mbean = (MemberBean)m_followingList.get(i);
+        	List followingCheckList = (List)request.getAttribute("followingCheckList");
         	%>
         	<!--         내가 팔로잉 하는 한 사람  -->
 			<div class="follow_div">
 	          <div class="photo">
-			    <a href="http://www.naver.com"><img src="./images/proflie_img/proflie<%=mbean.getM_pic() %>.png" width="50px" height="50px"></a>
+			    <a href="./FollowMyHome.fo?m_id=<%=fbean.getFo_following() %>"><img src="./images/proflie_img/proflie<%=mbean.getM_pic() %>.png" width="50px" height="50px"></a>
 			  </div>
-			  <a href="http://www.naver.com"><%=fbean.getFo_following() %></a><br>
+			  <a href="./FollowMyHome.fo?m_id=<%=fbean.getFo_following() %>"><%=fbean.getFo_following() %></a><br>
 			  <span><%=mbean.getM_name() %></span>
-			  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
+			  <%
+			  if(m_id.equals(id)) {
+				  
+			  
+				  if((Integer)followingCheckList.get(i) == 1) {
+					  %>
+	<!-- 				  서로 팔로우 할때 -->
+					  <a id="f_unfollow<%=mbean.getM_name() %>" class="unfollow_a">언팔로우</a>
+					  <%
+				  }
+			  }
+			  %>
+
+        	<input type="hidden" id="m_id<%=mbean.getM_name() %>" value="<%=m_id %>">
+			<input type="hidden" id="f_id<%=mbean.getM_name() %>" value="<%=fbean.getFo_following() %>">
+			  
+			  <script type="text/javascript">
+			  
+		        $(document).ready(function() {
+		        	
+		        	$('#f_unfollow<%=mbean.getM_name() %>').click(function(){
+		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
+						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
+						
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
+						
+						$.ajax({
+							type: "get",
+							url: "./DeleteFollowerAction.fo",
+							dataType: "html",
+							data: {
+								"m_id": m_id,
+								"f_id": f_id,
+							},
+							success:function(data){
+								alert("팔로우 끊기");
+								location.reload();
+							}
+						});
+		        	});
+		        	
+		        });
+		        
+       		 </script>
+			  
 			</div>
 			<div class="clear"></div>
 			<!--         내가 팔로잉 하는 한 사람  -->
@@ -189,34 +241,96 @@ case "drama" : genre2="드라마"; break;
         for(int i=0; i<f_followerList.size(); i++) {
         	FollowBean fbean = (FollowBean)f_followerList.get(i);
         	MemberBean mbean = (MemberBean)m_followerList.get(i);
+        	List followCheckList = (List)request.getAttribute("followCheckList");
         	%>
+        	
         	<!--         나를 팔로잉 하는 한 사람  -->
 	        <div class="follow_div">
 	          <div class="photo">
-			    <a href="http://www.naver.com"><img src="./images/proflie_img/proflie<%=mbean.getM_pic() %>.png" width="50px" height="50px"></a>
+			    <a href="./FollowMyHome.fo?m_id=<%=fbean.getFo_id() %>"><img src="./images/proflie_img/proflie<%=mbean.getM_pic() %>.png" width="50px" height="50px"></a>
 			  </div>
-			  <a href="http://www.naver.com"><%=fbean.getFo_id() %></a><br>
+			  <a href="./FollowMyHome.fo?m_id=<%=fbean.getFo_id() %>"><%=fbean.getFo_id() %></a><br>
 			  <span><%=mbean.getM_name() %></span>
-			  <a href="http://www.naver.com" class="follow_a">팔로잉</a>
+			  <%
+			  if(m_id.equals(id)) {
+				  
+				  if((Integer)followCheckList.get(i) == 1) {
+					  %>
+	<!-- 				  서로 팔로우 할때 -->
+					  <a id="unfollow<%=mbean.getM_name() %>" class="unfollow_a">언팔로우</a>
+					  <%
+				  }else {
+					  %>
+	<!-- 				  상대방만 나를 팔로우 할때 -->
+					  <a id="following<%=mbean.getM_name() %>" class="follow_a">팔로잉</a>
+					  <%
+				  }
+			  }
+			  %>
+
+        	<input type="hidden" id="m_id<%=mbean.getM_name() %>" value="<%=m_id %>">
+			<input type="hidden" id="f_id<%=mbean.getM_name() %>" value="<%=fbean.getFo_id() %>">
+			  
+			  <script type="text/javascript">
+			  
+		        $(document).ready(function() {
+		        	
+		        	$('#unfollow<%=mbean.getM_name() %>').click(function(){
+		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
+						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
+						
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
+						
+						$.ajax({
+							type: "get",
+							url: "./DeleteFollowerAction.fo",
+							dataType: "html",
+							data: {
+								"m_id": m_id,
+								"f_id": f_id,
+							},
+							success:function(data){
+								alert("팔로우 끊기");
+								location.reload();
+							}
+						});
+		        	});
+		        	
+		        	$('#following<%=mbean.getM_name() %>').click(function(){
+		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
+						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
+						
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
+						
+						$.ajax({
+							type: "get",
+							url: "./InsertFollowerAction.fo",
+							dataType: "html",
+							data: {
+								"m_id": m_id,
+								"f_id": f_id,
+							},
+							success:function(data){
+								alert("팔로잉 하기");
+								location.reload();
+							}
+						});
+		        	});
+		        	
+		        	
+		        });
+		        
+       		 </script>
+       		       
 			</div>
 			<div class="clear"></div>
 			<!--         나를 팔로잉 하는 한 사람  -->
         	<%
         }
         %>
-		
-		<!--         나를 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         나를 팔로잉 하는 한 사람  -->
-		  
+        
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
         </div>

@@ -67,7 +67,7 @@ public class FavoriteDAO {
 		ResultSet rs = null;
 		try{
 			con = getConnection();
-			sql="insert into favorite(f_id,f_num) values(?,?)";
+			sql="insert into favorite(f_id,f_num,f_date) values(?,?,now())";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, favoriteBean.getF_id());
 			pstmt.setInt(2, favoriteBean.getF_num());
@@ -125,7 +125,6 @@ public class FavoriteDAO {
 				FavoriteBean fb = new FavoriteBean();
 				fb.setF_id(rs.getString("f_id"));
 				fb.setF_num(rs.getInt("f_num"));
-							
 				favoritelist.add(fb);
 				}
 		 }catch(Exception e) {
@@ -160,6 +159,7 @@ public class FavoriteDAO {
 				favoriteBean = new FavoriteBean();
 				favoriteBean.setF_id(rs.getString("f_id"));
 				favoriteBean.setF_num(rs.getInt("f_num"));
+				favoriteBean.setF_date(rs.getTimestamp("f_date"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

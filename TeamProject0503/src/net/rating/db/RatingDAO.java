@@ -105,7 +105,7 @@ public class RatingDAO {
 		try {
 			con=getConnection();
 			
-			sql="insert into rating (ra_id,ra_rating,ra_p_num) values(?,?,?)";
+			sql="insert into rating (ra_id,ra_rating,ra_p_num,ra_date) values(?,?,?,now())";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, ratingbean.getRa_id());
 			pstmt.setInt(2, ratingbean.getRa_rating());
@@ -213,6 +213,7 @@ public class RatingDAO {
 					rb.setRa_id(rs.getString("ra_id"));					
 					rb.setRa_p_num(rs.getInt("ra_p_num"));
 					rb.setRa_rating(rs.getInt("ra_rating"));
+					rb.setRa_date(rs.getTimestamp("ra_date"));
 					ratinglist.add(rb);
 					
 					MovieBean moviebean= new MovieBean();
@@ -260,7 +261,7 @@ public class RatingDAO {
 			
 			if(rs.next()){
 				ratingBean.setRa_id(rs.getString("ra_id"));
-				ratingBean.setRa_rating(rs.getInt("ra_rating")); //
+				ratingBean.setRa_rating(rs.getInt("ra_rating"));
 			}
 			
 		} catch(Exception e) {
