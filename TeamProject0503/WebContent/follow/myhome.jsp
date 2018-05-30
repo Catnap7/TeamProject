@@ -354,7 +354,11 @@ case "drama" : genre2="드라마"; break;
 				 %>
 				 <div id="rv"> 
 				<%-- <p> <%=moviebean.getMv_kor_title() %> / <%=reviewbean.getR_date() %>/ <%=reviewbean.getR_recommand() %>/ <%=reviewbean.getR_report() %></p> --%>
-					<p class="rvList"><%="ㅎㅇ"%></p>
+					<div class="noReviewContents">
+						<img src="./images/noReview.png" width="140px" height="140px"> 
+						<p><%="등록 된 리뷰가 없습니다TT"%></p>
+					
+					</div>
 				</div>
 				 <%
 			 }else{	
@@ -387,10 +391,11 @@ case "drama" : genre2="드라마"; break;
 			<%
 				if(top5favoritelist.size()==0){
 					%>
-					<div>
-				<%-- <img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="175px" height="260px"> --%>
-				<p><%="노데이터"%></p>
-				</div>
+					<div class="noFavContents">
+						<!-- <img src="./images/noFavorite.png" width="140px" height="140px"> --> 
+						<p><%="좋아요 누른 영화가 없습니다"%></p>
+					</div>
+
 					<%
 				}else{
 				for(int i=0;i<top5favoritelist.size();i++){
@@ -412,8 +417,8 @@ case "drama" : genre2="드라마"; break;
 					img_genre="romance";
 				}
 			%>
-			<div>
-				<img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="175px" height="260px">
+			<div class="favMovies">
+				<%-- <img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="175px" height="260px"> --%>
 				<p><%=moviebean.getMv_kor_title()%></p>
 			</div>
 		<%	}
