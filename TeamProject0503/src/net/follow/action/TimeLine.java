@@ -21,7 +21,7 @@ public class TimeLine implements Action{
 		request.setAttribute("timelinelist", timelinelist);
 		forward=new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("./follow/timelinetest.jsp");						
+		forward.setPath("./follow/timeline.jsp");						
 			
 		return forward;
 	}
