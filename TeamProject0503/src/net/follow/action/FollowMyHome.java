@@ -102,7 +102,6 @@ public class FollowMyHome implements Action{
 		vector2 = followdao.top5followfavorite(m_id);
 		List<ReviewBean> top5favoritelist=(List)vector2.get(0);
 		List<MovieBean> top5movielist2=(List)vector2.get(1);*/
-		
 		request.setAttribute("memberbean", memberbean);
 		request.setAttribute("followercount", followercount);
 		request.setAttribute("followingcount", followingcount);

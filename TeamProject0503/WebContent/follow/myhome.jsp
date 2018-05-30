@@ -113,7 +113,9 @@ case "drama" : genre2="드라마"; break;
 			<tr>
 				<th>선호장르</th>
 				<td>
-					<%if(favorite==null){
+					<%
+					
+					if(favorite==null){
 						%>
 						<%="선호장르 없음"%>
 						<%
@@ -133,7 +135,8 @@ case "drama" : genre2="드라마"; break;
 						<%=genre2%>
 						<%
 					}
-					%>
+					 
+					%> 
 				</td> <!-- 선호장르 상위 2개 -->
 			</tr>
 		</table>
