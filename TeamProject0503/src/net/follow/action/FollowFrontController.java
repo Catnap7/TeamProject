@@ -61,6 +61,14 @@ public class FollowFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/TimeLine.fo")){
+			action = new TimeLine();
+			try{
+			forward=action.execute(request, response);
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 			
 		
