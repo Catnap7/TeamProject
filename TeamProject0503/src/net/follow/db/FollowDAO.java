@@ -510,6 +510,49 @@ public class FollowDAO {
 		}
 		return vector;		
 	}
+	public List timelinelist(String id){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		List timelinelist= new ArrayList();
+		try {
+			con=getConnection();
+
+			sql="select kind,fo_following,title "
+					+ "from (select 'rating' as kind,ra_id as id, ra_date as regdate, mv.mv_kor_title as title "
+					+ "from rating ra join movie mv "
+					+ "on mv.mv_num=ra.ra_p_num "
+					+ "union select 'favorite' as kind, f_id as id, f_date as regdate, mv.mv_kor_title as title "
+					+ "from favorite f join movie mv "
+					+ "on  mv.mv_num=f.f_num "
+					+ "union select 'review' as kind, r_id as id, r_date as regdate, mv.mv_kor_title  as title	"
+					+ "from review r join movie mv "
+					+ "on  mv.mv_num=r.r_p_num) a join follow fo "
+					+ "on a.id = fo.fo_following "
+					+ "where fo.fo_id=? "
+					+ "order by regdate desc";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+				TimeLineBean timelinebean = new TimeLineBean();
+				timelinebean.setKind(rs.getString("kind"));
+				timelinebean.setFo_following(rs.getString("fo_following"));
+				timelinebean.setTitle(rs.getString("title"));
+				timelinelist.add(timelinebean);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		return timelinelist;		
+	}
 	
 	
 }
