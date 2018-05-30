@@ -166,16 +166,22 @@ case "drama" : genre2="드라마"; break;
 			  <a href="./FollowMyHome.fo?m_id=<%=fbean.getFo_following() %>"><%=fbean.getFo_following() %></a><br>
 			  <span><%=mbean.getM_name() %></span>
 			  <%
-			  if(m_id.equals(id)) {
+// 			  if(m_id.equals(id)) {
 				  
-			  
-				  if((Integer)followingCheckList.get(i) == 1) {
+			  if(m_id.equals(fbean.getFo_following())) {
+				
+			  }else if((Integer)followingCheckList.get(i) == 1) {
 					  %>
 	<!-- 				  서로 팔로우 할때 -->
 					  <a id="f_unfollow<%=mbean.getM_name() %>" class="unfollow_a">언팔로우</a>
 					  <%
+				  }else if((Integer)followingCheckList.get(i) == 0) {
+					  %>
+	<!-- 				  상대방만 나를 팔로우 할때 -->
+					  <a id="f_following<%=mbean.getM_name() %>" class="follow_a">팔로잉</a>
+					  <%
 				  }
-			  }
+// 			  }
 			  %>
 
         	<input type="hidden" id="m_id<%=mbean.getM_name() %>" value="<%=m_id %>">
@@ -189,8 +195,8 @@ case "drama" : genre2="드라마"; break;
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
-<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
-<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
+						alert($('#m_id<%=mbean.getM_name() %>').val());
+						alert($('#f_id<%=mbean.getM_name() %>').val());
 						
 						$.ajax({
 							type: "get",
@@ -202,6 +208,28 @@ case "drama" : genre2="드라마"; break;
 							},
 							success:function(data){
 								alert("팔로우 끊기");
+								location.reload();
+							}
+						});
+		        	});
+		        	
+		        	$('#f_following<%=mbean.getM_name() %>').click(function(){
+		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
+						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
+						
+						alert($('#m_id<%=mbean.getM_name() %>').val());
+						alert($('#f_id<%=mbean.getM_name() %>').val());
+						
+						$.ajax({
+							type: "get",
+							url: "./InsertFollowerAction.fo",
+							dataType: "html",
+							data: {
+								"m_id": m_id,
+								"f_id": f_id,
+							},
+							success:function(data){
+								alert("팔로잉 하기");
 								location.reload();
 							}
 						});
@@ -252,20 +280,20 @@ case "drama" : genre2="드라마"; break;
 			  <a href="./FollowMyHome.fo?m_id=<%=fbean.getFo_id() %>"><%=fbean.getFo_id() %></a><br>
 			  <span><%=mbean.getM_name() %></span>
 			  <%
-			  if(m_id.equals(id)) {
-				  
-				  if((Integer)followCheckList.get(i) == 1) {
+			  if(m_id.equals(fbean.getFo_id())) {
+				
+			  }else	if((Integer)followCheckList.get(i) == 1) {
 					  %>
 	<!-- 				  서로 팔로우 할때 -->
 					  <a id="unfollow<%=mbean.getM_name() %>" class="unfollow_a">언팔로우</a>
 					  <%
-				  }else {
+				  }else if((Integer)followCheckList.get(i) == 0) {
 					  %>
 	<!-- 				  상대방만 나를 팔로우 할때 -->
 					  <a id="following<%=mbean.getM_name() %>" class="follow_a">팔로잉</a>
 					  <%
 				  }
-			  }
+// 			  }
 			  %>
 
         	<input type="hidden" id="m_id<%=mbean.getM_name() %>" value="<%=m_id %>">
@@ -279,8 +307,8 @@ case "drama" : genre2="드라마"; break;
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
-<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
-<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
+						alert($('#m_id<%=mbean.getM_name() %>').val());
+						alert($('#f_id<%=mbean.getM_name() %>').val());
 						
 						$.ajax({
 							type: "get",
@@ -301,8 +329,8 @@ case "drama" : genre2="드라마"; break;
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
-<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
-<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
+						alert($('#m_id<%=mbean.getM_name() %>').val());
+						alert($('#f_id<%=mbean.getM_name() %>').val());
 						
 						$.ajax({
 							type: "get",
