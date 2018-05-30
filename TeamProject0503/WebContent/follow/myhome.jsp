@@ -113,7 +113,9 @@ case "drama" : genre2="드라마"; break;
 			<tr>
 				<th>선호장르</th>
 				<td>
-					<%if(favorite==null){
+					<%
+					
+					if(favorite==null){
 						%>
 						<%="아직 선호장르가 없습니다"%>
 					<% }else{
@@ -131,7 +133,8 @@ case "drama" : genre2="드라마"; break;
 						<%=genre2%>
 						<%
 					}
-					%>
+					 
+					%> 
 				</td> <!-- 선호장르 상위 2개 -->
 			</tr>
 		</table>
@@ -193,8 +196,8 @@ case "drama" : genre2="드라마"; break;
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
-						alert($('#m_id<%=mbean.getM_name() %>').val());
-						alert($('#f_id<%=mbean.getM_name() %>').val());
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
 							type: "get",
@@ -215,8 +218,8 @@ case "drama" : genre2="드라마"; break;
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
-						alert($('#m_id<%=mbean.getM_name() %>').val());
-						alert($('#f_id<%=mbean.getM_name() %>').val());
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
 							type: "get",
@@ -305,8 +308,8 @@ case "drama" : genre2="드라마"; break;
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
-						alert($('#m_id<%=mbean.getM_name() %>').val());
-						alert($('#f_id<%=mbean.getM_name() %>').val());
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
 							type: "get",
@@ -327,8 +330,8 @@ case "drama" : genre2="드라마"; break;
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
-						alert($('#m_id<%=mbean.getM_name() %>').val());
-						alert($('#f_id<%=mbean.getM_name() %>').val());
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
 							type: "get",
