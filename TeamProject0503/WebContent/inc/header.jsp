@@ -76,7 +76,7 @@ int followingcount= followdao.Followingcount(id);
 			    <button class="h_dropbtn">내 왓츄 페이지</button>
 			    <div class="h_dropdown-content">
 			     	<a href="./FollowMyHome.fo?m_id=<%=id%>">My Watchu</a>
-					<a href="./CategoryList.ca?mv_genre=thriller">리뷰 다 보기</a>
+					<a href="./TimeLine.fo">리뷰 다 보기</a>
 			    </div>
 	  		</div> 
 	  		<a href="./VipInfo.vi">watchu vip</a>
