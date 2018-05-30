@@ -1,4 +1,5 @@
 <%-- <%@page import="net.admin.manage.db.MovieBean"%> --%>
+<%@page import="net.follow.db.FollowBean"%>
 <%@page import="net.category.db.RecChkBean"%>
 <%@page import="net.category.db.ReviewBean"%>
 <%@page import="net.member.db.MemberBean"%>
@@ -473,7 +474,7 @@ $(document).ready(function(){
               <tr>
                 <td class="c_name">
                 <%=memberbean.getM_name() %>
-                <a class="glyphicon glyphicon-home"></a>
+                <a href="./FollowMyHome.fo?m_id=<%=reviewbean.getR_id() %>" class="glyphicon glyphicon-home" style="color: green;" title="구경하기"></a>
                 </td>
               </tr>
               <tr>
