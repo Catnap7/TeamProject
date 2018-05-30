@@ -33,9 +33,11 @@
 			}
 		}
 	}
+	
 	window.onload = function() {
 		searchFunction();
 	}
+	
 </script>
 
 <!-- script -->
@@ -69,10 +71,10 @@
 				<tr>
 					<th class="th5">NUM</th>
 					<th class="th5">ID</th>
-					<th class="th5">내용</th>
+					<th class="th2">내용</th>
 					<th class="th5">신고</th>
 					<th class="th5">추천</th>
-					<th class="th5">날짜</th>
+					<th class="th6">날짜</th>
 				</tr>
 			</thead>
 			<tbody id="ajaxTable">
