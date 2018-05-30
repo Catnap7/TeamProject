@@ -64,7 +64,7 @@ public class FollowMyHome implements Action{
 			following_id = fbean.getFo_following();
 			System.out.println(following_id);
 			
-			followingCheckList.addAll(followdao.followingCheck(id, following_id));
+			followingCheckList.addAll(followdao.followingCheck(m_id, following_id));
 			request.setAttribute("followingCheckList", followingCheckList);
 			System.out.println(followingCheckList.get(i));
 
@@ -76,7 +76,7 @@ public class FollowMyHome implements Action{
 			f_id = fbean.getFo_id();
 			System.out.println(f_id);
 			
-			followCheckList.addAll(followdao.followCheck(id, f_id));
+			followCheckList.addAll(followdao.followCheck(m_id, f_id));
 			request.setAttribute("followCheckList", followCheckList);
 			System.out.println(followCheckList.get(i));
 
@@ -102,7 +102,6 @@ public class FollowMyHome implements Action{
 		vector2 = followdao.top5followfavorite(m_id);
 		List<ReviewBean> top5favoritelist=(List)vector2.get(0);
 		List<MovieBean> top5movielist2=(List)vector2.get(1);*/
-		
 		request.setAttribute("memberbean", memberbean);
 		request.setAttribute("followercount", followercount);
 		request.setAttribute("followingcount", followingcount);

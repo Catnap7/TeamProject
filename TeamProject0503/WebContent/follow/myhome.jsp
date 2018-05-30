@@ -113,7 +113,9 @@ case "drama" : genre2="드라마"; break;
 			<tr>
 				<th>선호장르</th>
 				<td>
-					<%if(favorite==null){
+					<%
+					
+					if(favorite==null){
 						%>
 						<%="선호장르 없음"%>
 						<%
@@ -133,7 +135,8 @@ case "drama" : genre2="드라마"; break;
 						<%=genre2%>
 						<%
 					}
-					%>
+					 
+					%> 
 				</td> <!-- 선호장르 상위 2개 -->
 			</tr>
 		</table>
@@ -166,16 +169,22 @@ case "drama" : genre2="드라마"; break;
 			  <a href="./FollowMyHome.fo?m_id=<%=fbean.getFo_following() %>"><%=fbean.getFo_following() %></a><br>
 			  <span><%=mbean.getM_name() %></span>
 			  <%
-			  if(m_id.equals(id)) {
+// 			  if(m_id.equals(id)) {
 				  
-			  
-				  if((Integer)followingCheckList.get(i) == 1) {
+			  if(m_id.equals(fbean.getFo_following())) {
+				
+			  }else if((Integer)followingCheckList.get(i) == 1) {
 					  %>
 	<!-- 				  서로 팔로우 할때 -->
 					  <a id="f_unfollow<%=mbean.getM_name() %>" class="unfollow_a">언팔로우</a>
 					  <%
+				  }else if((Integer)followingCheckList.get(i) == 0) {
+					  %>
+	<!-- 				  상대방만 나를 팔로우 할때 -->
+					  <a id="f_following<%=mbean.getM_name() %>" class="follow_a">팔로잉</a>
+					  <%
 				  }
-			  }
+// 			  }
 			  %>
 
         	<input type="hidden" id="m_id<%=mbean.getM_name() %>" value="<%=m_id %>">
@@ -202,6 +211,28 @@ case "drama" : genre2="드라마"; break;
 							},
 							success:function(data){
 								alert("팔로우 끊기");
+								location.reload();
+							}
+						});
+		        	});
+		        	
+		        	$('#f_following<%=mbean.getM_name() %>').click(function(){
+		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
+						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
+						
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
+						
+						$.ajax({
+							type: "get",
+							url: "./InsertFollowerAction.fo",
+							dataType: "html",
+							data: {
+								"m_id": m_id,
+								"f_id": f_id,
+							},
+							success:function(data){
+								alert("팔로잉 하기");
 								location.reload();
 							}
 						});
@@ -252,20 +283,20 @@ case "drama" : genre2="드라마"; break;
 			  <a href="./FollowMyHome.fo?m_id=<%=fbean.getFo_id() %>"><%=fbean.getFo_id() %></a><br>
 			  <span><%=mbean.getM_name() %></span>
 			  <%
-			  if(m_id.equals(id)) {
-				  
-				  if((Integer)followCheckList.get(i) == 1) {
+			  if(m_id.equals(fbean.getFo_id())) {
+				
+			  }else	if((Integer)followCheckList.get(i) == 1) {
 					  %>
 	<!-- 				  서로 팔로우 할때 -->
 					  <a id="unfollow<%=mbean.getM_name() %>" class="unfollow_a">언팔로우</a>
 					  <%
-				  }else {
+				  }else if((Integer)followCheckList.get(i) == 0) {
 					  %>
 	<!-- 				  상대방만 나를 팔로우 할때 -->
 					  <a id="following<%=mbean.getM_name() %>" class="follow_a">팔로잉</a>
 					  <%
 				  }
-			  }
+// 			  }
 			  %>
 
         	<input type="hidden" id="m_id<%=mbean.getM_name() %>" value="<%=m_id %>">
@@ -354,7 +385,11 @@ case "drama" : genre2="드라마"; break;
 				 %>
 				 <div id="rv"> 
 				<%-- <p> <%=moviebean.getMv_kor_title() %> / <%=reviewbean.getR_date() %>/ <%=reviewbean.getR_recommand() %>/ <%=reviewbean.getR_report() %></p> --%>
-					<p class="rvList"><%="ㅎㅇ"%></p>
+					<div class="noReviewContents">
+						<img src="./images/noReview.png" width="140px" height="140px"> 
+						<p><%="등록 된 리뷰가 없습니다TT"%></p>
+					
+					</div>
 				</div>
 				 <%
 			 }else{	
@@ -387,10 +422,11 @@ case "drama" : genre2="드라마"; break;
 			<%
 				if(top5favoritelist.size()==0){
 					%>
-					<div>
-				<%-- <img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="175px" height="260px"> --%>
-				<p><%="노데이터"%></p>
-				</div>
+					<div class="noFavContents">
+						<!-- <img src="./images/noFavorite.png" width="140px" height="140px"> --> 
+						<p><%="좋아요 누른 영화가 없습니다"%></p>
+					</div>
+
 					<%
 				}else{
 				for(int i=0;i<top5favoritelist.size();i++){
@@ -412,8 +448,8 @@ case "drama" : genre2="드라마"; break;
 					img_genre="romance";
 				}
 			%>
-			<div>
-				<img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="175px" height="260px">
+			<div class="favMovies">
+				<%-- <img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="175px" height="260px"> --%>
 				<p><%=moviebean.getMv_kor_title()%></p>
 			</div>
 		<%	}
