@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@page import="net.follow.db.TimeLineBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -18,5 +19,6 @@
 		System.out.println(timeLineBean.getFo_following()+"님이"+timeLineBean.getTitle()+"에"+timeLineBean.getKind()+"주었습니다.");
 	}
 %>
+
 </body>
 </html>

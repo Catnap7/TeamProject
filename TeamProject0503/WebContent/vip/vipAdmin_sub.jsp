@@ -8,7 +8,6 @@
 		<li><a href="./VipAdmin.vi">VIP관리 메인으로</a></li>
 		<li><a href="./VipModify.vi">VIP영화 DB입력</a></li>
 		<li><a href="./VipMovieList.vi">VIP영화 리스트</a></li>
-		<li><a href="./VipMemberList.vi">VIP 회원리스트</a></li>
 	</ul>
 </nav>
 
