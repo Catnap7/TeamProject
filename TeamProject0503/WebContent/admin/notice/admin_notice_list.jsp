@@ -39,7 +39,7 @@
 <!-- 어드민 서브메뉴 -->
 
 	<div id="content">
-		<h1>
+		<h1 class="adminTitle">
 			공지사항 [<%=count %>]
 		</h1>
 		<table class="db_list">

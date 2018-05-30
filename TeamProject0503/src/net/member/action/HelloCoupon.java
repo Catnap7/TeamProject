@@ -2,13 +2,8 @@ package net.member.action;
 
 import java.util.Random;
 
-import net.mypage.db.CouponBean;
-
-
 public class HelloCoupon {
 
-	
-	
 	public static String couponnum(){
 		String hellocoupon = null;
 		  //실행시 ???개 쿠폰 생성
@@ -33,7 +28,6 @@ public class HelloCoupon {
 		    buf.append(possibleCharacters[rnd.nextInt(possibleCharacterCount)]);
 		   }
 		   String couponnum = buf.toString();
-		   System.out.println("couponnum==>"+couponnum);   
 		   arr[currentIndex] = couponnum;
 		   currentIndex++;
 		   hellocoupon = couponnum;

@@ -46,7 +46,6 @@ public class AdminReview_List_Search extends HttpServlet {
 			result.append("{\"value\" : \"" + reviewList.get(i).getR_recommand() + "\"},");
 			result.append("{\"value\" : \"" + reviewList.get(i).getR_report() + "\"},");
 			result.append("{\"value\" : \"" + reviewList.get(i).getR_date() + "\"}],");
-			System.out.println(reviewList.get(i).getR_content().replaceAll("\r\n", "<br>"));
 		}		
 		result.append("]}");
 		return result.toString();

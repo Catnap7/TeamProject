@@ -477,13 +477,13 @@ $(document).ready(function(){
                 </td>
               </tr>
               <tr>
-                <td class="review_content"><%=reviewbean.getR_content() %></td>
+                <td class="review_content"><%=reviewbean.getR_content().replaceAll("\r\n","<br>") %></td>
               </tr>
               <tr>
                 <td class="review_sub">추천 <%=reviewbean.getR_recommand() %> / 신고 <%=reviewbean.getR_report() %></td>
               </tr>
               <tr>
-                <td class="review_sub"><%=reviewbean.getR_date() %></td>
+                <td class="review_sub"><%=reviewbean.getR_date()%></td>
               </tr>
 <!--               본인이면  (수정 삭제) 보이기 본인이 아니면 (추천 신고) 보이기  -->
             <%

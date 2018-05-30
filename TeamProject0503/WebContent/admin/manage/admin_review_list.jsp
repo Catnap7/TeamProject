@@ -10,7 +10,7 @@
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
 
 <!-- script -->
-
+<%request.setCharacterEncoding("utf-8"); %>
 <script type="text/javascript">
 	var request = new XMLHttpRequest();
 	function searchFunction() {

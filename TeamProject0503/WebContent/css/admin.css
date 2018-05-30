@@ -49,7 +49,7 @@
 }
 
 #menu_bar ul li a:HOVER {
-	background-color: #aad3d7;
+	background-color: #50a4aa;
 	/* opacity: 0.5; */
 }
 
@@ -171,7 +171,7 @@ div#content_member {
 	overflow: auto;
 }
 
-div#content h1, div#content_member h1 {
+/* div#content h1, div#content_member h1 {
 	text-align: center;
 	display: inline-block;
 	position: relative;
@@ -180,12 +180,27 @@ div#content h1, div#content_member h1 {
 	font-size: 1.6em;
 	letter-spacing: 2px;
 	text-transform: capitalize;
+} */
+
+.adminTitle{
+	border:1px dashed #50a4aa;
+	background-color:#eee;
+	border-radius:5px;
+	text-align: center;
+	padding:5px;
+	display: inline-block;
+	height:50px;
+	position: relative;
+	left: 20px; top:87px;
+	padding:10px 20px;
+	box-sizing:border-box;
+	font-size: 1.3em;
 }
 
 .db_list {
 	border-collapse: collapse;
 	position: relative;
-	top: 160px;
+	top: 90px;
 	left: 20px;
 	width: 1100px;
 }
@@ -317,7 +332,7 @@ div#content h1, div#content_member h1 {
 	text-align: center;
 	position: relative;
 	width:1200px;
-	bottom: -200px;
+	bottom: -120px;
 	left: 200px;
 }
 
@@ -425,8 +440,8 @@ div#content h1, div#content_member h1 {
 .admin-notice-write {
 	/* border:1px solid red; */
 	position: relative;
-	top: 200px;
-	left: 1000px;
+	top:100px;
+	left: 1030px;
 	width: 350px; height: 40px;
 }
 .c_admin-notice-write {
@@ -450,7 +465,7 @@ div#content h1, div#content_member h1 {
 
 
 .wirtebtn {
-	border:1px solid #333;
+	border:1px solid #50a4aa;
 	border-radius:10px;
 	/* background-color: #aad3d7; */
 	/* border-radius: 30px; */
@@ -458,8 +473,9 @@ div#content h1, div#content_member h1 {
 	font-size:1.0em;
 	color: #000;
 	letter-spacing: 0.2px;
-	width: 80px; height: 30px;
-	padding: 3px;
+	width: 90px; height: 40px;
+	padding: 5px;
+	font-weight: bold;
 }
 
 .wirtebtn:HOVER {

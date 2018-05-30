@@ -181,7 +181,10 @@ public int getReviewCount(String m_id) {
 			
 			
 				//sql = "select * from review where r_p_num=?";
-				sql = "select * from review rev join member mem on rev.r_id = mem.m_id where r_p_num= ? order by r_recommand desc limit ?,?";
+				sql = "select * "
+						+ "from review rev join member mem "
+						+ "on rev.r_id = mem.m_id "
+						+ "where r_p_num= ? order by r_recommand desc limit ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, mv_num);
 				pstmt.setInt(2, startRow-1);

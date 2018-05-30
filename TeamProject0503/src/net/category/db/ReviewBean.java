@@ -13,6 +13,7 @@ public class ReviewBean {
 	private String r_content; // 내용
 	private Timestamp r_date;	// 댓글 단 날
 	
+	
 	public int getR_num() {
 		return r_num;
 	}
@@ -55,5 +56,6 @@ public class ReviewBean {
 	public void setR_date(Timestamp r_date) {
 		this.r_date = r_date;
 	}
+
 	
 }

@@ -125,7 +125,6 @@ public class FavoriteDAO {
 				FavoriteBean fb = new FavoriteBean();
 				fb.setF_id(rs.getString("f_id"));
 				fb.setF_num(rs.getInt("f_num"));
-							
 				favoritelist.add(fb);
 				}
 		 }catch(Exception e) {
