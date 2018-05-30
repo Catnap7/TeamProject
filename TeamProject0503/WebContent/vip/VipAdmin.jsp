@@ -104,7 +104,7 @@ List<VipResBean> seatList=(List)request.getAttribute("seatList");
 
 <h1 class="adminTitle">VIP 멤버 목록</h1>	
 <section id="vipMember">
-		<table class="vip_db_list">
+		<table class="vip_db_list vipmain">
 			<tr>
 				<th>시사회 좌석 번호</th><th>아이디</th><th>이름</th><th>등급</th><th>생년월일</th><th>가입일</th>
 			</tr>

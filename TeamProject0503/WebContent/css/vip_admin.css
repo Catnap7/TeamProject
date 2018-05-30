@@ -8,23 +8,26 @@
 .menu{
 	border-bottom: 2px solid #50a4aa;
 	position: relative;
-	top:170px; left:100px;
-	width:240px;
+	top:170px; 
+	left:-510px; 
+	width:340px;
 	text-align: right;
 	padding: 5px;
 	font-weight: bold;
 	font-size: 1.2em;
+	display: inline-block;
 }
 
 
 #menu_bar {
 	/* border:1px solid red;  */
 	width: 250px;	
-	margin: 180px 150px 0 110px;
+	margin: 180px 120px 0 110px;
 	float: left;
 	font-size: 20px;
 	text-align: right;
-	padding-top: 40px;
+	padding-top: 50px;
+	padding-right: 30px;
 }
 
 #menu_bar ul {
@@ -36,13 +39,13 @@
 	text-decoration: none;
 	display: block;
 	padding: 15px;
-	background-color: #aad3d7;
-	border-radius: 40px;
+	/* background-color: #aad3d7; */
+	border-radius: 30px;
 	color: #000;
 	font-weight:bold;
-	letter-spacing: 0.2px;
+	/* letter-spacing: 0.2px;
 	margin-bottom: 50px;
-	text-align: center;
+	text-align: center; */
 }
 
 #menu_bar ul li a:HOVER {
@@ -63,14 +66,14 @@
 	display: inline-block;
 	height:50px;
 	position: relative;
-	left: 200px; bottom:500px;
+	left: 530px; bottom:303px;
 	padding:10px 20px;
 	box-sizing:border-box;
 	font-size: 1.3em;
 } 
 
 .content{
-	height: 1500px;
+	/* height: 1500px; */
 } 
 
 
@@ -80,19 +83,10 @@
 	margin:0 auto;
 	padding:15px;
 	position: relative;
-	bottom: 520px; left:200px;
+	bottom: 300px; left:195px;
 	margin-bottom: 30px;
 }
 
-.content h1{
-	font-size:1.4em;
-	text-align: center;
-	display: inline-block;
-	padding: 10px;
-	position: relative;
-	bottom: 525px; left:500px;
-	
-}
 
 
 /***영화 정보***/
@@ -166,33 +160,6 @@ td .seatSelected{
 	display: none; 
 }
 
-/* input:checked + p, .confirm_num{ 
-	background-color:red;
-	color: #000000;
-	font-weight: bold;
-}  */
-
-/* #vipListBtn{
-	border:1px solid #c0c0c0;
-	border-radius:10px;
-	width:200px; height: 30px;
-	background-color: #dedede;
-	text-align: center;
-	padding-top:4px;
-	box-sizing:border-box;
-	position: relative;
-	top:-30px; left:900px;
-}
-
-#vipListBtn a{
-	text-decoration: none;
-	color: #000;
-}
-
-#vipListBtn:HOVER{
-	background-color: #aad3d7;
-} */
-
 .u_admin-notice-write {
 	/*  border:1px solid red;  */
 	margin:0 auto;
@@ -223,43 +190,64 @@ td .seatSelected{
 
 
 /************** vip movie db list **************/
+
+.dblistTitle{
+	border:1px dashed #50a4aa;
+	background-color:#eee;
+	border-radius:5px;
+	text-align: center;
+	padding:5px;
+	display: inline-block;
+	height:50px;
+	position: relative;
+	left: 40px; 
+	bottom:0px;
+	padding:10px 20px;
+	box-sizing:border-box;
+	font-size: 1.3em;
+} 
+
 div#content {
-	border: 1px solid orange; 
+	/* border: 1px solid orange;  */
 	margin-left: 300px;
 	margin-top: 0px;
 	width:1500px;height: 800px;
 	position: relative;
-	bottom:500px; left:150px;
-}
-
-div#content h1 {
-	text-align: center;
-	display: inline-block;
-	position: relative;
-	left: 0;
-	top: -20px;
-	font-size: 1.7em;
-	letter-spacing: 2px;
-	text-transform: capitalize;
-	padding-bottom: 20px;
+	bottom:300px; left:195px;
 }
 
 .vip_db_list {
 	border-collapse: collapse;
-	/* position: relative;
+	position: relative;
 	top: 30px;
-	left: -20px; */
-	margin: 0 auto;
+	left: 40px; 
+	/* margin: 0 auto; */
+}
+
+div#content p{
+	position: relative;
+	top:10px;left:40px;
+}
+
+.vipmain {
+	border-collapse: collapse;
+/* 	position: relative;
+	top: 30px;
+	left: 0px;  */
+	margin: 0 auto; 
+	margin-bottom: 100px;
 }
 
 .vip_db_list th {
-	border: 1px solid #b1b1b1;
+	border: 1px solid #fff;
 	height: 50px;
 	padding: 0px 20px;
-	background-color: #333;
-	/* letter-spacing: 0.3em; */
+	background-color: #646464;
+	letter-spacing: 0.1em;
 	color: white;
 	font-size: 1.1em;
+	padding: 0px 5px 0px 5px;
+	text-align: center;
 }
 
 .vip_db_list td {
@@ -282,19 +270,40 @@ div#content h1 {
 }
 
 .prev_next {
-	/* border: 1px solid red; */
+	/* border:1px solid blue; */
 	text-align: center;
-	width:1300px;
-	margin:0 auto;
 	position: relative;
-	top: 600px; left: -110px;
+	width:1200px;
+	bottom: -120px;
+	left: 50px;
 }
 
 .prev_next a {
+	/* border:1px solid red;
 	text-transform: capitalize;
 	margin: 0 10px;
-	font-size: 20px;
+	font-size: 1.1em; */
 	text-decoration: none;
+	color: #000;
+} 
+
+.thisPage {
+	border:1px solid #c0c0c0;
+	border-radius:5px;
+	padding:5px;
+	margin: 0 2px;
+	font-size: 1.1em;
+	text-decoration: none;
+	color: #ff8000;
+	font-weight: bold;
+}
+
+.normalPage{
+	/* border:1px solid #c0c0c0;
+	border-radius:5px; */
+	/* padding: 2px; */
+	margin: 0 2px;
+	font-size: 1.1em;	
 	color: #000;
 }
 
@@ -304,36 +313,29 @@ div#content h1 {
 
 /************** vip movie content **************/
 
-div#movieContent h1 {
-	text-align: center;
-	display: inline-block;
-	position: relative;
-	left: 0;
-	top: -20px;
-	font-size: 1.7em;
-	letter-spacing: 2px;
-	text-transform: capitalize;
-	padding-bottom: 20px;
-}
-
 .movieContent {
-	border: 1px solid orange;
+	/* border: 1px solid orange; */
 	width: 50%;
 	border-collapse: collapse;
 	position: relative;
-	bottom: 580px;
-	left: 500px;
+	bottom: 300px;
+	left: 530px;
 	padding: 0px;
 }
-
+.movieContent input{
+	width: 100%; height: 100%;
+	padding:5px;
+	border: none;
+}
 .movieContent th {
-	border: 1px solid #5e5e5e;
+	border: 1px solid #fff;
 	height: 50px;
-	padding: 0px 20px;
-	background-color: #333;
-	letter-spacing: 0.7em; 
+	background-color: #646464;
+	letter-spacing: 0.1em;
 	color: white;
-	font-size: 1.2em;
+	font-size: 1.1em;
+	padding: 0px 5px 0px 5px;
+	text-align: center;
 	text-transform: uppercase;
 }
 
@@ -355,23 +357,46 @@ div#movieContent h1 {
 
 /************** admin notice write **************/
 
-.btn {
-	width: 200px;
-    position: relative;
-    bottom: 590px;
-    left: 1520px;
+.vip_movie_btn {
+	/*  border:1px solid red;  */
+	margin:0 auto;
+	position: relative;
+	top:-200px;
+	left: 730px; 
+	width: 350px; height: 40px;
 }
 
-.btn a{
-	border: 1px solid #eee;
-	background-color: #eee;
-	width: 100px;
-	padding:10px;
-	maring-right:20px;
-	color:black;
-	box-shadow:2px 2px #333;
+.vip_movie_btn_modi {
+	/*  border:1px solid red;  */
+	margin:0 auto;
+	position: relative;
+	top:-200px;
+	left: 520px; 
+	width: 350px; height: 40px;
 }
 
-.btn a:HOVER {
-	box-shadow:2px 2px #333;
+.vip_movie_btn a{
+	text-decoration: none;
+}
+
+.vip_movie_btn a:LINK, .vip_movie_btn a:VISITED{
+	color:#333;
+}
+
+.wirtebtn {
+	border:1px solid #50a4aa;
+	border-radius:10px;
+	/* background-color: #aad3d7; */
+	/* border-radius: 30px; */
+	/* font-weight:bold; */
+	font-size:1.0em;
+	color: #000;
+	letter-spacing: 0.2px;
+	width: 90px; height: 40px;
+	padding: 5px;
+	font-weight: bold;
+}
+
+.wirtebtn:HOVER {
+	 background-color: #aad3d7;
 }
