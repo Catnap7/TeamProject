@@ -33,13 +33,13 @@
 						TimeLineBean timeLineBean =  (TimeLineBean)timeline.get(i);
 						String kind="";
 						switch(timeLineBean.getKind()){
-							case "rating" : kind="별점"; break;
-							case "favorite" : kind="즐겨찾기"; break;
-							case "review" : kind="리뷰"; break;
+							case "rating" : kind="별점을 주었습니다."; break;
+							case "favorite" : kind="즐겨찾기를 추가 하였습니다."; break;
+							case "review" : kind="리뷰를 남겼습니다."; break;
 						}
 					%>
 					<div id="rv"> 
-						<%=timeLineBean.getFo_following()+ "님이" +timeLineBean.getTitle()+ "에" +kind+"를(을) 주었습니다."%></p>
+						<%=timeLineBean.getFo_following()+ "님이" +timeLineBean.getTitle()+ "에"+kind%></p>
 					</div> 
 					<%} %>
 		</section>
