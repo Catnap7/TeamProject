@@ -268,11 +268,12 @@ public class FollowDAO {
 			try {
 				con=getConnection();
 
-				sql="select m.fo_id, m.fo_following, f.fo_id, f.fo_following from follow m join follow f on m.fo_id = f.fo_following where m.fo_id = ? and m.fo_following = ? and f.fo_id = ?";
+//				sql="select m.fo_id, m.fo_following, f.fo_id, f.fo_following from follow m join follow f on m.fo_id = f.fo_following where m.fo_id = ? and m.fo_following = ? and f.fo_id = ?";
+				sql="select fo_id, fo_following from follow where fo_id = ? and fo_following = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, m_id);
 				pstmt.setString(2, f_id);
-				pstmt.setString(3, f_id);
+//				pstmt.setString(3, f_id);
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {

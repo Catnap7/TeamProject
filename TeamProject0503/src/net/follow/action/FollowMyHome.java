@@ -64,7 +64,7 @@ public class FollowMyHome implements Action{
 			following_id = fbean.getFo_following();
 			System.out.println(following_id);
 			
-			followingCheckList.addAll(followdao.followingCheck(id, following_id));
+			followingCheckList.addAll(followdao.followingCheck(m_id, following_id));
 			request.setAttribute("followingCheckList", followingCheckList);
 			System.out.println(followingCheckList.get(i));
 
@@ -76,7 +76,7 @@ public class FollowMyHome implements Action{
 			f_id = fbean.getFo_id();
 			System.out.println(f_id);
 			
-			followCheckList.addAll(followdao.followCheck(id, f_id));
+			followCheckList.addAll(followdao.followCheck(m_id, f_id));
 			request.setAttribute("followCheckList", followCheckList);
 			System.out.println(followCheckList.get(i));
 
