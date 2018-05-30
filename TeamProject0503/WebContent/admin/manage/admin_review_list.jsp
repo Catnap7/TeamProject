@@ -10,7 +10,7 @@
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
 
 <!-- script -->
-
+<%request.setCharacterEncoding("utf-8"); %>
 <script type="text/javascript">
 	var request = new XMLHttpRequest();
 	function searchFunction() {
@@ -69,8 +69,8 @@
 				<tr>
 					<th class="th5">NUM</th>
 					<th class="th5">ID</th>
-					<th class="th5">내용</th>
-					<th class="th5">신고</th>
+					<th class="th2">내용</th>
+ 					<th class="th5">신고</th>
 					<th class="th5">추천</th>
 					<th class="th5">날짜</th>
 				</tr>

@@ -37,65 +37,65 @@
 <jsp:include page="../vip/vipAdmin_sub.jsp"/>
 <!-- vip 서브메뉴 -->
 
-<div id="movieContent">
-
-	<!-- 수정/삭제 버튼 -->
-	<div class="btn">
-		<a href="./VipMovieModify.vi?v_num=<%=vipbean.getV_num()%>">수정</a>
-		<a href="./VipMovieDelete.vi?v_num=<%=vipbean.getV_num()%>">삭제</a>
-	</div>
-	<!-- 수정/삭제 버튼 -->
-	
+<div id="movieContent">		
+	<h1  class="adminTitle">VIP영화 상세보기</h1>	
 	
 	<table class="movieContent">
 		<tr>
-			<th colspan="5">VIP영화 상세보기</th>
+			<th><%=vipbean.getV_kor_title()%></th>
 		</tr>
 		<tr>
-			<td><%=vipbean.getV_num()%></td>
-			<td colspan="2"><%=vipbean.getV_kor_title()%></td>
-			<td colspan="2"><%=vipbean.getV_eng_title()%></td>	
-		</tr>
-		<tr>
+			<td><%=vipbean.getV_eng_title()%></td>
 			<td><%=vipbean.getV_year()%>년도</td>
-			<td><%=vipbean.getV_country()%></td><td><%=age%></td>
-			<td><%=vipbean.getV_genre()%></td><td><%=vipbean.getV_time()%>분</td>
+			<td><%=age%></td>
 		</tr>
 		<tr>	
-			<td colspan="2"><%=vipbean.getV_director()%> 감독</td><td colspan="3"><%=vipbean.getV_actor()%></td>
+			<td><%=vipbean.getV_director()%> 감독</td><td colspan="2"><%=vipbean.getV_actor()%></td>
 		</tr>	
 		<tr>
-			<td colspan="3"><%=vipbean.getV_date()%></td>
-			<td colspan="2"><%=vipbean.getV_when()%></td>
+			<td><%=vipbean.getV_country()%></td>
+			<td><%=vipbean.getV_genre()%></td>
+			<td><%=vipbean.getV_time()%>분</td>
+		</tr>
+		
+		<tr>
+			<td colspan="1">시사회 날짜 [<%=vipbean.getV_date()%>]</td>
+			<td colspan="2">시사회 시간 [<%=vipbean.getV_when()%>]</td>
 		</tr>
 		<tr>
-			<th colspan="5">줄거리</th>
+			<th colspan="3">줄거리</th>
 		</tr>
 		<tr>
-			<td colspan="5" id="needsPadding"><%=vipbean.getV_story() %></td>
+			<td colspan="3" id="needsPadding"><%=vipbean.getV_story() %></td>
 		</tr>
 		<tr>
-			<th colspan="2">review 1</th>
-			<td colspan="3"> <%=vipbean.getV_critic_1_by() %></td>
+			<th colspan="1">review 1</th>
+			<td colspan="2"> <%=vipbean.getV_critic_1_by() %></td>
 		</tr>
 		<tr>
-			<td colspan="5" id="needsPadding"><%=vipbean.getV_critic_1() %></td>
+			<td colspan="3" id="needsPadding"><%=vipbean.getV_critic_1() %></td>
 		</tr>
 		<tr>
-			<th colspan="2">review 2</th>
-			<td colspan="3"> <%=vipbean.getV_critic_2_by() %></td>
+			<th colspan="1">review 2</th>
+			<td colspan="2"> <%=vipbean.getV_critic_2_by() %></td>
 		</tr>
 		<tr>
-			<td colspan="5" id="needsPadding"><%=vipbean.getV_critic_2() %></td>
+			<td colspan="3" id="needsPadding"><%=vipbean.getV_critic_2() %></td>
 		</tr>
 		<tr>
-			<th colspan="5">VOD</th>
+			<th colspan="3">VOD</th>
 		</tr>
 		<tr>
-			<td colspan="5" id="needsPadding"><iframe width="1040px" height="760px" src="<%=vipbean.getV_video()%>" allowfullscreen frameborder="0" scrolling="no"></iframe></td>
+			<td colspan="3" id="needsPadding"><iframe width="1040px" height="760px" src="<%=vipbean.getV_video()%>" allowfullscreen frameborder="0" scrolling="no"></iframe></td>
 		</tr>	
 	</table>
 
+	<!-- 수정/삭제 버튼 -->
+	<div class="vip_movie_btn">
+		<a href="./VipMovieModify.vi?v_num=<%=vipbean.getV_num()%>" class="wirtebtn">수정</a>
+		<a href="./VipMovieDelete.vi?v_num=<%=vipbean.getV_num()%>" class="wirtebtn">삭제</a>
+	</div>
+	<!-- 수정/삭제 버튼 -->
 
 </div><!-- content -->
 
