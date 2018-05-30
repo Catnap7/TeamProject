@@ -52,7 +52,7 @@ public class CookieLogin implements Action{
 		}else{                                            // 쿠키에서 이름 id를 찾지 못했을때
 			 forward= new ActionForward();			
 			forward.setRedirect(false);
-			forward.setPath("./member/login.jsp");
+			forward.setPath("./start/start.jsp");
 			return forward;  
 		}
 }

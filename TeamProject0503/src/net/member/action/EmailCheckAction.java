@@ -25,19 +25,18 @@ public class EmailCheckAction implements Action {
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		
-		
 		Calendar cal= new GregorianCalendar();
+		cal.add(Calendar.MONTH,1);
 		cal.clear(Calendar.MILLISECOND);
-		SimpleDateFormat date = new SimpleDateFormat("yyyyMMdd");
-		int today = Integer.parseInt(date.format(cal.getTime()).toString());
-		
-		
+		SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
+		String c_end_day=date.format(cal.getTime()).toString();
+
 		CouponBean cb= new CouponBean();
 		String hellocoupon= HelloCoupon.couponnum();
 		cb.setC_id(m_id);
 		cb.setC_num(Integer.parseInt(hellocoupon));
-		cb.setC_name(0);
-		cb.setC_end_day(Integer.toString(today));
+		cb.setC_name(1);
+		cb.setC_end_day(c_end_day);
 		CouponDAO cdao = new CouponDAO();
 		cdao.insertCoupon(cb);
 		

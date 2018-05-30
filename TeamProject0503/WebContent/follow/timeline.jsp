@@ -1,3 +1,5 @@
+<%@page import="net.follow.db.TimeLineBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,8 +17,9 @@
 
 </head>
 <body>
+<%List timeline=(List)request.getAttribute("timelinelist"); 
 
-<!-- 헤더 영역 -->
+%>
 <jsp:include page="../inc/header.jsp"/>
 <!-- 헤더 영역 -->
 
@@ -26,11 +29,17 @@
 			<div class="secInfo">
 				<h3><%="왓츄 실시간 REVIEWS"%></h3>
 			</div>	
-					<%for(int i=0;i<=4;i++){ %>
+					<%for(int i=0; i<timeline.size(); i++){ 
+						TimeLineBean timeLineBean =  (TimeLineBean)timeline.get(i);
+						String kind="";
+						switch(timeLineBean.getKind()){
+							case "rating" : kind="별점"; break;
+							case "favorite" : kind="즐겨찾기"; break;
+							case "review" : kind="리뷰"; break;
+						}
+					%>
 					<div id="rv"> 
-						<p>pic 그림 /닉네임 / 영화 제목/ 리뷰 날짜/ 추천/ 신고</p>
-						<p class="rvList">
-						<%="Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has "%></p>
+						<%=timeLineBean.getFo_following()+ "님이" +timeLineBean.getTitle()+ "에" +kind+"를(을) 주었습니다."%></p>
 					</div> 
 					<%} %>
 		</section>
@@ -40,7 +49,6 @@
 <!-- 푸터 영역 -->
 <jsp:include page="../inc/footer.jsp"/>
 <!-- 푸터 영역 -->
-
 
 </body>
 </html>
