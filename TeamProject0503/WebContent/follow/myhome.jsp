@@ -195,8 +195,8 @@ case "drama" : genre2="드라마"; break;
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
-						alert($('#m_id<%=mbean.getM_name() %>').val());
-						alert($('#f_id<%=mbean.getM_name() %>').val());
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
 							type: "get",
@@ -217,8 +217,8 @@ case "drama" : genre2="드라마"; break;
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
-						alert($('#m_id<%=mbean.getM_name() %>').val());
-						alert($('#f_id<%=mbean.getM_name() %>').val());
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
 							type: "get",
@@ -307,8 +307,8 @@ case "drama" : genre2="드라마"; break;
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
-						alert($('#m_id<%=mbean.getM_name() %>').val());
-						alert($('#f_id<%=mbean.getM_name() %>').val());
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
 							type: "get",
@@ -329,8 +329,8 @@ case "drama" : genre2="드라마"; break;
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
-						alert($('#m_id<%=mbean.getM_name() %>').val());
-						alert($('#f_id<%=mbean.getM_name() %>').val());
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
 							type: "get",
