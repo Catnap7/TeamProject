@@ -77,6 +77,7 @@ public class FollowDAO {
 		return followingcount;
 	}
 	
+	
 	// 팔로잉 리스트
 	public Vector followingList(String m_id) {
 		Connection con=null;
@@ -162,6 +163,137 @@ public class FollowDAO {
 		
 		return vector;
 	}	// 팔로워 리스트	
+	
+	// 팔로워 리스트 언팔
+		public void deleteFollower(String m_id, String f_id) {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			String sql="";
+			
+			try {
+				con=getConnection();
+
+				sql="delete from follow where fo_id = ? and fo_following = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, m_id);
+				pstmt.setString(2, f_id);
+				pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+				if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+				if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+			}
+		}	// 팔로워 리스트 언팔
+		
+		// 팔로워 리스트 팔로잉
+			public void insertFollower(String m_id, String f_id) {
+				Connection con=null;
+				PreparedStatement pstmt=null;
+				ResultSet rs=null;
+				String sql="";
+				
+				try {
+					con=getConnection();
+
+					sql="insert into follow values(?, ?)";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, m_id);
+					pstmt.setString(2, f_id);
+					pstmt.executeUpdate();
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+					if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+					if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+				}
+			}	// 팔로워 리스트 팔로잉
+		
+		// 팔로잉 체크
+			public List<Integer> followingCheck(String m_id, String following_id) {
+				Connection con=null;
+				PreparedStatement pstmt=null;
+				ResultSet rs=null;
+				String sql="";
+				int check = 0;
+				List<Integer> followingCheckList = new ArrayList<>();
+				System.out.println("내 아이디 "+m_id);
+				System.out.println("받아온 팔로워 아이디 "+following_id);
+				try {
+					con=getConnection();
+
+					sql="select fo_id, fo_following from follow where fo_id = ? and fo_following = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, m_id);
+					pstmt.setString(2, following_id);
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()) {
+						check = 1; // 이미 팔로우 하고있으면 1
+						followingCheckList.add(1);
+					}else {
+						check = 0; // 아니면 0
+						followingCheckList.add(0);
+					}
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+					if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+					if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+				}
+				
+				return followingCheckList;
+			}	// 팔로잉 체크
+		
+		// 팔로워 체크
+		public List<Integer> followCheck(String m_id, String f_id) {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			String sql="";
+			int check = 0;
+			List<Integer> followCheckList = new ArrayList<>();
+			System.out.println("내 아이디 "+m_id);
+			System.out.println("받아온 팔로워 아이디 "+f_id);
+			try {
+				con=getConnection();
+
+				sql="select m.fo_id, m.fo_following, f.fo_id, f.fo_following from follow m join follow f on m.fo_id = f.fo_following where m.fo_id = ? and m.fo_following = ? and f.fo_id = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, m_id);
+				pstmt.setString(2, f_id);
+				pstmt.setString(3, f_id);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					check = 1; // 내 팔로워 중 내가 팔로잉 하는 사람이 있으면 1(언팔로우)
+					followCheckList.add(1);
+				}else {
+					check = 0; // 아니면 0
+					followCheckList.add(0);
+				}
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+				if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+				if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+			}
+			
+			return followCheckList;
+		}	// 팔로워 체크
 	
 
 	//followfavorite

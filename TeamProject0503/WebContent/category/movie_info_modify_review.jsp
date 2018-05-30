@@ -290,7 +290,7 @@ $(document).ready(function(){
 			</tr>
 		</table>
 		<!--즐겨찾기  -->
-		 <fieldset class="like" id="starfield<%=mv_num %>" >
+		  <fieldset class="like" id="starfield<%=mv_num %>" >
       	
     			   <div id="dup"></div><!--  <input type="hidden" id ="dup_fa" value=""> -->
     			   <%  if(favoritebean !=null){
@@ -307,7 +307,6 @@ $(document).ready(function(){
     			    <input type="hidden" id ="mv_num"value="<%=mv_num%>">
     			    
   	 </fieldset>
-		
 	<%-- 	
 		<%
 		if(favoritebean !=null){
