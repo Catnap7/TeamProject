@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Review List & AJAX Search</title>
+<title>Pay List & AJAX Search</title>
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
 
 <!-- script -->
-<%request.setCharacterEncoding("utf-8"); %>
+
 <script type="text/javascript">
 	var request = new XMLHttpRequest();
 	function searchFunction() {
@@ -20,7 +20,7 @@
 	}
 	function searchProcess() {
 		var table = document.getElementById("ajaxTable");
-		table.innerHTML = "";
+// 		table.innerHTML = "";
 		if (request.readyState == 4 && request.status == 200) {
 			var object = eval('(' + request.responseText + ')');
 			var result = object.result;
@@ -33,11 +33,9 @@
 			}
 		}
 	}
-	
 	window.onload = function() {
 		searchFunction();
 	}
-	
 </script>
 
 <!-- script -->
@@ -69,15 +67,18 @@
 		<table class="db_list">
 			<thead>
 				<tr>
-					<th class="th5">NUM</th>
-					<th class="th5">ID</th>
+					<th class="th5">NO</th>
+					<th class="th3">ID</th>
 					<th class="th2">내용</th>
-					<th class="th5">신고</th>
 					<th class="th5">추천</th>
-					<th class="th6">날짜</th>
+					<th class="th5">신고</th>
+					<th class="th5">날짜</th>
 				</tr>
 			</thead>
 			<tbody id="ajaxTable">
+				<tr>
+					<td>안녕</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

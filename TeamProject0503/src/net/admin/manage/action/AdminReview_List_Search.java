@@ -1,7 +1,6 @@
 package net.admin.manage.action;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,14 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
-
-import org.json.simple.JSONArray;
-
-import net.admin.manage.db.AdminMemberDAO;
 import net.admin.manage.db.AdminReviewDAO;
 import net.category.db.ReviewBean;
-import net.member.db.MemberBean;
 
 
 @WebServlet("/AdminReviewSearch")
@@ -42,7 +35,6 @@ public class AdminReview_List_Search extends HttpServlet {
 		for(int i = 0; i < reviewList.size(); i++) {
 			result.append("[{\"value\" : \"" + reviewList.get(i).getR_num() + "\"},");
 			result.append("{\"value\" : \"" + reviewList.get(i).getR_id() + "\"},");
-			result.append("{\"value\" : \"" + reviewList.get(i).getR_content().replaceAll("\r\n", "<br>") + "\"},");
 			result.append("{\"value\" : \"" + reviewList.get(i).getR_recommand() + "\"},");
 			result.append("{\"value\" : \"" + reviewList.get(i).getR_report() + "\"},");
 			result.append("{\"value\" : \"" + reviewList.get(i).getR_date() + "\"}],");
