@@ -45,16 +45,18 @@ MovieDAO mdao = new MovieDAO();
 
 <!-- 크롬 기준 -->
 
-<h2 id="categoryTitle">회원님이 보고 싶어 하는 영화</h2> 
+
 
 <!-- 아티클 -->
 <article>
 
 	<div class="container">
 		
-		
-		<!--for문으로 반복 하시면 됩니다.아래의 디자인 예시 코드를 지우고 for문만 남기면 정상작동-->
-		<%for(FavoriteBean fb : favoritelist){
+	<%if(favoritelist.size()!=0) {%>
+	
+	<h2 id="favoriteTitle">회원님이 보고 싶어 하는 영화</h2> 
+	<%
+		for(FavoriteBean fb : favoritelist){
 		MovieBean moviebean= mdao.getMovie(fb.getF_num());
 		
 
@@ -97,7 +99,15 @@ MovieDAO mdao = new MovieDAO();
 							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
 							</div>
 			</a>
-		<%} %> 
+		<%}
+		}else{%>
+			<div id="noMoreMovie"><!-- <p><i class="material-icons" style="font-size:48px;">warning</i></p><br> -->
+				<p>아직 보고싶어요를 하나도 누르지 않으셨네요TT</p><br><br>
+				<p><img src="./images/noFavorite.png" width="140px" height="140px"></p><br>
+				<p>회원님이 보고 싶은 영화에 하트를 꾹 눌러주세요!</p><br><br>
+				
+			</div>	
+		<%}%> 
 		
 	</div><!-- container -->
 </article>
