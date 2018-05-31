@@ -42,8 +42,10 @@ public class FollowDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, m_id);
 			rs = pstmt.executeQuery();
-			rs.next();
-			followercount = rs.getInt("count(*)");
+			if(rs.next()){
+				
+				followercount = rs.getInt("count(*)");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -65,8 +67,11 @@ public class FollowDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, m_id);
 			rs = pstmt.executeQuery();
-			rs.next();
-			followingcount = rs.getInt("count(*)");
+			if(rs.next()){
+				
+				followingcount = rs.getInt("count(*)");
+			}
+				
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

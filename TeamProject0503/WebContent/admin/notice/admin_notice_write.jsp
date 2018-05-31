@@ -30,7 +30,7 @@
 <!-- 어드민 서브메뉴 -->
 
 	<div id="content">
-		<h1>관리자 공지사항 글쓰기</h1>
+		<h1 class="adminTitle">관리자 공지사항 글쓰기</h1>
 
 		<form action="./AdminNoticeWriteAction.an" method="post" enctype="multipart/form-data">
 			<table border="0" class="db_list_insert">

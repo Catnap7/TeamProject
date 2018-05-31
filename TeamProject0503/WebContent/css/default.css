@@ -24,7 +24,7 @@ body{
 /*---header---*/
 .header{ /* border:1px solid blue;  */  
 	height: 120px;
-	width:100%;
+	width:1900px;
 	margin: 0px;
 	/* margin-bottom:30px; */
 	padding: 0px;
@@ -48,6 +48,7 @@ body{
 	top:-20px; right: -1540px;
 	line-height: 2em;
 	margin:0;
+	font-size: 16px !important;
 }
 
 .rightInfo div{
@@ -72,10 +73,12 @@ body{
 }	
 
 .pay>a:LINK, .pay>a:VISITED{
+	text-decoration: none;
 	color:#333;
 }
 
 .pay a:HOVER{
+	text-decoration: none;
 	color:#ff8000;
 }
 
@@ -88,12 +91,13 @@ body{
     font-size: 16px;
     border: none;
     font-weight: bold;
+    line-height: normal;
 }
 
 .h_myinfo {
 	/* border:1px solid red; */
     position: absolute;
-    left:150px; top:0px; 
+    left:150px; top:5px; 
     display: inline-block;
 }
 
@@ -152,6 +156,11 @@ body{
 }
 #h_follow div p:nth-of-type(1){
 	color: #50a4aa;
+	margin:0;
+}
+
+#h_follow div p:nth-of-type(2){
+	margin:0;
 }
 
 
@@ -305,7 +314,7 @@ body{
 footer {
 
 	background-color: #333;
-	width:inherit;
+	width:1900px;
 	height: 350px;
 	position: relative;
 	bottom:0px; 

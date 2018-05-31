@@ -46,16 +46,6 @@ public class MemberLoginAction implements Action{
 		memberbean.setM_id(request.getParameter("m_id"));		
 		memberbean.setM_pass(request.getParameter("m_pass"));
 		
-		if(request.getParameter("m_id").equals("admin")) {
-			memberbean = mdao.getMember(m_id);
-			session.setAttribute("m_id",memberbean.getM_id());
-			session.setAttribute("m_name",memberbean.getM_name());
-			ActionForward forward= new ActionForward();
-			forward.setRedirect(true);
-			forward.setPath("./AdminManageList.am");
-			return forward;
-		}
-		
 		response.setContentType("text/html;	charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		int check=mdao.userCheck(memberbean.getM_id(),memberbean.getM_pass());
@@ -108,6 +98,12 @@ public class MemberLoginAction implements Action{
 			session.setAttribute("m_id",memberbean.getM_id());
 			session.setAttribute("m_name",memberbean.getM_name());
 			
+			if(request.getParameter("m_id").equals("admin")) {
+				ActionForward forward= new ActionForward();
+				forward.setRedirect(true);
+				forward.setPath("./AdminManageList.am");
+				return forward;	
+			}
 			ActionForward forward= new ActionForward();			
 			forward.setRedirect(true);
 			forward.setPath("./Main.ma");
