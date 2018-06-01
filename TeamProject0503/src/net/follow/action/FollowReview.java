@@ -1,5 +1,8 @@
 package net.follow.action;
 
+import java.util.List;
+import java.util.Vector;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -49,6 +52,20 @@ public class FollowReview implements Action{
 		List<ReviewBean> top5favoritelist=(List)vector2.get(0);
 		List<MovieBean> top5movielist2=(List)vector2.get(1);*/
 		
+		
+		
+		request.setCharacterEncoding("utf-8");
+		
+		String id= request.getParameter("m_id");
+		FollowDAO fdao= new FollowDAO();
+		
+		Vector vector=fdao.followreview(id);
+		List followreviewlist=(List)vector.get(0);
+		List followmovielist=(List)vector.get(1);
+		request.setAttribute("followreviewlist", followreviewlist);
+		request.setAttribute("followmovielist", followmovielist);
+		
+
 		
 		request.setAttribute("memberbean", memberbean);
 		request.setAttribute("followercount", followercount);

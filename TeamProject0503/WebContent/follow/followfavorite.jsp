@@ -28,36 +28,26 @@
 //FollowFavorite.fo?id=<%mv.getm_id%/>들고오기
 //id값 챙겨왔다.
 
-/* List<MovieBean> followfavoritelist=(List)request.getAttribute("followfavoritelist");
-MemberBean getmember=(MemberBean)request.getAttribute("memberbean");
-	
-	 */
+List<MovieBean> followfavoritelist=(List)request.getAttribute("followfavoritelist");
 
-
+String m_name="";
+m_name=(String)session.getAttribute("m_name");
+	 
+	 
 %>
-
-
-
-<%
-/* for(MovieBean mb: followfavoritelist){
-	mb.getMv_kor_title();
-	mb.getMv_eng_title();
-	mb.getMv_director();
-	mb.getMv_actor();
-	
-} */
-%>
-
 <article>
 <section class="sec myFavMovie">
 	<div class="secInfo">
-		<h2><%="유저이름"%>님 이 좋아한 영화</h2>
+		<h2><%=m_name%>님 이 좋아한 영화</h2>
 	</div>	
-	
-	<!-- ↓↓↓↓↓↓↓영화 리스트6개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
-		<%-- <div class="mvList"> 
-			<%for(int i=0;i<top5favoritelist.size();i++){
-				MovieBean moviebean=(MovieBean)top5favoritelist.get(i);
+			
+		<div class="mvList"> 
+			<%for(MovieBean moviebean: followfavoritelist){
+				
+				String imgname = moviebean.getMv_eng_title().replaceAll(" " , "");
+				imgname = imgname.replaceAll("\\p{Z}", "");
+				
+				/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/
 				String img_genre= "";
 				if(moviebean.getMv_genre().equals("animation")){
 					img_genre="animation";
@@ -76,23 +66,11 @@ MemberBean getmember=(MemberBean)request.getAttribute("memberbean");
 				}
 			%>
 			<div>
-				<img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="175px" height="260px">
+				<img src="./images/<%=img_genre %>/<%=imgname %>_p.jpg" width="175px" height="260px">
 				<p><%=moviebean.getMv_kor_title()%></p>
 			</div>
 		<%} %>
-		</div> --%>
-		
-		
-		<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓디자인 예시를 위한 코드. 위의 for문 완성 한 후에 지워도 무방 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
-		<div class="mvList"> 
-			<%for(int i=0;i<=5;i++){%>
-			<div>
-				<img src="./images/action/IronMan3_p.jpg" width="175px" height="260px">
-				<p><%="아이언맨3"%></p>
-			</div>
-		<%} %>
 		</div>
-		<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑디자인 예시를 위한 코드. 위의 for문 완성 한 후에 지워도 무방 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↓-->
 		
 		
 </section>

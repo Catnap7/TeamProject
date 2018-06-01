@@ -372,7 +372,7 @@ case "drama" : genre2="드라마"; break;
 <section class="sec myReview">
 	<div class="secInfo">
 		<h3><%=getmember.getM_name()%>님의 리뷰</h3>
-		<a href="./FollowReview.fo"><p>리뷰 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->
+		<a href="./FollowReview.fo?m_id=<%=getmember.getM_id()%>"><p>리뷰 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->
 	</div>	
 	
 	<!-- ↓↓↓↓↓↓↓리뷰 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
@@ -414,7 +414,7 @@ case "drama" : genre2="드라마"; break;
 <section class="sec myFavMovie">
 	<div class="secInfo">
 		<h3><%=getmember.getM_name()%>님이 좋아한 영화</h3>
-		<a href="./FollowFavorite.fo"><p>영화 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->	
+		<a href="./FollowFavorite.fo?m_id=<%=getmember.getM_id()%>"><p>영화 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->	
 	</div>	
 	
 		<!-- ↓↓↓↓↓↓↓영화 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
