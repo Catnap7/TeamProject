@@ -485,7 +485,7 @@ $(document).ready(function(){
                 <td class="review_sub">추천 <%=reviewbean.getR_recommand() %> / 신고 <%=reviewbean.getR_report() %></td>
               </tr>
               <tr>
-                <td class="review_sub"><%=yymmdd.substring(0,10)%></td>
+                <td class="review_sub"><%=yymmdd.substring(0,16)%></td>
                 
               </tr>
 <!--               본인이면  (수정 삭제) 보이기 본인이 아니면 (추천 신고) 보이기  -->
