@@ -114,7 +114,7 @@ case "drama" : genre2="드라마"; break;
 		<%-- <div class="secInfo">
 			<h3><%="유저이름"%>님 의 영화 리뷰</h3>
 		</div>	 --%>
-				<%for(int i=0;i<=10;i++){ %>
+				<%for(int i=0;i<=100;i++){ %>
 				<div id="rv"> 
 					<p><span id="reviewTitle"><%="영화이름"%></span>
 					<span id="reviewDate"><%="리뷰 쓴 날짜"%></span>

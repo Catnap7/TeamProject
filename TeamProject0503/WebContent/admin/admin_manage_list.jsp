@@ -26,30 +26,38 @@
 <!-- 어드민 서브메뉴 -->
 
 <article class="content">
-	<div id="content">
-		<div class="content_position">
-		<label for="member">
-			<div class="content_inner">
-				<a href="./AdminMember_List_Search.am" id="member">member</a>
-			</div>
-	</label>
-	<label for="movie">
-		<div class="content_inner">
-			<a href="./AdminMovieInsert.am" id="movie">movie</a>
-		</div>
-	</label>
-	<label for="pay">
-		<div class="content_inner">
-			<a href="./AdminPay_List_Search.am" id="pay">pay</a>
-		</div>
-	</label>
-	<label for="review">
-		<div class="content_inner">
-			<a href="./AdminReview_List_Search.am" id="review">review</a>
-		</div>
-	</label>
-
-	</div>
+	 <div id="maincontent"> 
+		 <div class="content_position"> 
+			<label for="member">
+				<a href="./AdminMember_List_Search.am" id="member">
+					<div class="content_inner">
+						member
+					</div>
+				</a>
+			</label>
+			<label for="movie">
+				<a href="./AdminMovieInsert.am" id="movie">
+					<div class="content_inner">
+						movie
+					</div>
+				</a>
+			</label>
+			<label for="pay">
+				<a href="./AdminPay_List_Search.am" id="pay">
+					<div class="content_inner">
+						pay
+					</div>
+				</a>
+			</label>
+			<label for="review">
+				<a href="./AdminReview_List_Search.am" id="review">
+					<div class="content_inner">
+						review
+					</div>
+				</a>
+			</label>
+		</div> 
+		</div> 
 </article>
 <div class="clear"></div>
 

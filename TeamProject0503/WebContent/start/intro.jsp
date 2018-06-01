@@ -17,9 +17,9 @@
 	margin: 0;
 	padding:0;
 	box-sizing: border-box;
-	background-image: url("./images/vip_done.png");
+	/* background-image: url("./images/vip_done.png");
 	background-repeat: none;
-	background-size:cover;
+	background-size:cover; */
 	font-family: 'Nanum Gothic', sans-serif;
 }
 
@@ -28,6 +28,14 @@
 
 body{
 	background-color: white;
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
 }
 
 .start{
@@ -119,6 +127,11 @@ body{
 </head>
 <body>
 
+
+<video autoplay muted loop id="myVideo">
+  <source src="./media/Star.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
 
 	<div class="start">
 		<img src="./images/watchu_logo.png" id="logo">

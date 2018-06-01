@@ -18,24 +18,43 @@
 	top:80px;
 	
 } */
+
+
+
 article.main1{
 	border:1px solid window;  
 	/* position:relative;
 	top:10px; */
 	height:1800px;
-	width: auto;
-	padding-top:50px;
-	padding-bottom: 500px; 
+	width: 1900px;
+	position: relative;
+    top: 100px;
+    left: 0px; 
 }
 article.main2{
-	border:1px solid window;  
-	/* position:relative;
-	top:10px;  */
-	height:1500px;
-	width: auto;
-	padding-top:55px;
-	/* padding-bottom: 00px;  */
+    border: 1px solid window;
+    height: 1500px;
+    width: 1900px;
+    position: relative;
+    top: 100px;
+    left: 0px;
 }
+
+.mainMovie{
+	border:1px solid red;
+	height: 500px;
+	position: relative;
+	top:-50px;
+	margin-bottom: 30px;
+	overflow: hidden;	
+}
+
+.mainPic img{
+	border:1px solid blue;
+	height:500px;
+	width: 1500px;
+}
+
 
 .containerWithBtn{
 	border:1px solid white;  
@@ -46,15 +65,28 @@ article.main2{
 .container{/* border:1px solid orange; */ 
 	height:280px;
 	/* width:auto; */
-	margin: 80px auto;
+	margin: 45px auto;
 	overflow: hidden; 	
 	position: relative;
 }
 
-/*슬라이더 제목*/
-.container h2{/* border:1px solid red; */
+#title{
 	padding-bottom: 20px;
-	font-family: sans-serif;
+}
+
+/*슬라이더 제목*/
+.container h2{
+	/* border:1px solid red; */
+	padding-bottom: 20px;
+	height:30px;
+	/* font-family: sans-serif; */
+	/* border:1px solid red; */
+	/* background: linear-gradient(30deg,#009AAC 70%,transparent); */
+	/* background-color: #009AAC; */
+	padding:10px;
+	margin-bottom: 5px;
+	color:#333;
+	line-height: 1.5em;
 }
 
 /*슬라이더*/
@@ -79,11 +111,12 @@ article.main2{
 	margin-right: 5px;
 	/* box-shadow:5px 5px #a0a0a0; */
 	position: relative;
+	transition: .2s ease;
 }
 .mv>img {
 	position:relative;
 	top:-50px;
-	left: -110px;	
+	left: -110px;
 /* 	height: 100%;
 	width: auto; */
 }
@@ -124,56 +157,56 @@ article.main2{
 /**이전 다음 버튼 제어**/
 .prev1{
 	position:absolute;
-	top:200px; left:0px;
+	top:200px; left:20px;
 }
 .next1{
 	position:absolute;
-	top:200px; right: 0px;
+	top:200px; right: 20px;
 }
 
 .prev2{
 	position:absolute;
-	top:200px; left:0px;
+	top:200px; left:20px;
 }
 .next2{
 	position:absolute;
-	top:200px; right: 0px;
+	top:200px; right: 20px;
 }
 
 .prev3{
 	position:absolute;
-	top:200px; left:0px;
+	top:200px; left:20px;
 }
 .next3{
 	position:absolute;
-	top:200px; right: 0px;
+	top:200px; right: 20px;
 }
 
 .prev4{
 	position:absolute;
-	top:200px; left:0px;
+	top:200px; left:20px;
 }
 .next4{
 	position:absolute;
-	top:200px; right: 0px;
+	top:200px; right: 20px;
 }
 
 .prev5{
 	/* border:1px solid red; */
 	position:absolute;
-	top:200px; left:0px;
+	top:200px; left:20px;
 }
 .next5{
 	/* border:1px solid red; */
 	position:absolute;
-	top:200px; right: 0px;
+	top:200px; right: 20px;
 }
 
 
 .button img:HOVER {
 	opacity:1;
-	width: 70px;
-	height: 70px;
+/* 	width: 70px;
+	height: 70px; */
 }
 /**이전 다음 버튼 제어 끝**/
 
@@ -190,6 +223,7 @@ article.main2{
 	position: relative;
 	top:-20px; left:50px;
 	z-index: 5;
+	transition: 0.3s;
 }
 
 .mv:LAST-CHILD:HOVER{
@@ -202,7 +236,10 @@ article.main2{
 	position: relative;
 	top:-20px; right:100px;
 	z-index: 5;
+	transition: 0.3s;
 }
+
+
 
 
 .mv:HOVER{

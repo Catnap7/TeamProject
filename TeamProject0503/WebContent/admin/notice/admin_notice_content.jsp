@@ -30,7 +30,7 @@
 <article class="content">
 	<div id="content">
 		<!-- <h1>notice content</h1> -->
-		<table class="db_list">
+		<table class="adminCont">
 			<tr>
 				<th class="th1">No</th>
 				<th class="th2">제목</th>

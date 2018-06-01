@@ -15,6 +15,8 @@ article{
 	/* border:1px solid red;  */
 	padding:50px;	
 	height: auto;
+	width:1900px;
+	background-color: #72bcc4;
 }
 
 
@@ -28,7 +30,7 @@ article{
 	width: 1000px;
 	/* margin:50px auto;  */
 	position:relative;
-	top:50px; left:380px;
+	top:100px; left:400px;
 	margin-bottom:200px;
 	box-shadow: 2px 2px #9f9f9f;
 	padding:40px 70px;
@@ -170,8 +172,8 @@ article{
 	box-sizing:border-box;
 	text-align: center;
 	position: relative;
-	top:10px;
-	left: 60px; 
+	top:20px;
+	left: 30px; 
 }
 
 .noReviewContents{
