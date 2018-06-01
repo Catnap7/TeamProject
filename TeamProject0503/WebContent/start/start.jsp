@@ -12,9 +12,10 @@
 	margin: 0;
 	padding:0;
 	box-sizing: border-box;
-	background-image: url("./images/jakob-owens-199505-unsplash.jpg");
+/* 	background-image: url("./images/jakob-owens-199505-unsplash.jpg");
 	background-repeat: none;
-	background-size:cover;
+	background-size:cover; */
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 .clear{clear: both;}
@@ -24,6 +25,13 @@ body{
 	background-color: white;
 }
 
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+}
 
 .start{
 	text-align:center;
@@ -79,6 +87,11 @@ body{
 </style>
 </head>
 <body>
+
+<video autoplay muted id="myVideo">
+  <source src="./media/Turntable.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
 
 	<div class="start">
 		<img src="./images/watchu_logo_2.png" id="logo">

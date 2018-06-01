@@ -6,7 +6,7 @@
 /************** 서브메뉴바 **************/
 
 .menu{
-	border-bottom: 2px solid #50a4aa;
+	border-bottom: 2px double #ff8000;
 	position: relative;
 	top:170px; 
 	left:-510px; 
@@ -15,7 +15,7 @@
 	padding: 5px;
 	font-weight: bold;
 	font-size: 1.2em;
-	display: inline-block;
+	display: inline-block; 
 }
 
 
@@ -27,7 +27,7 @@
 	font-size: 20px;
 	text-align: right;
 	padding-top: 50px;
-	padding-right: 30px;
+/* 	padding-right: 30px; */
 }
 
 #menu_bar ul {
@@ -49,13 +49,19 @@
 }
 
 #menu_bar ul li a:HOVER {
-	background-color: #50a4aa;
+	background-color: #ff8000;
 }
 
 
 
 
 /************** vip관리자 메인 **************/
+
+.content{
+	height: auto;
+	width:1500px;
+	position: relative;
+}
 
 .adminTitle{
 	border:1px dashed #50a4aa;
@@ -66,14 +72,11 @@
 	display: inline-block;
 	height:50px;
 	position: relative;
-	left: 530px; bottom:303px;
+	left: 540px; 
+	bottom:303px;
 	padding:10px 20px;
 	box-sizing:border-box;
 	font-size: 1.3em;
-} 
-
-.content{
-	/* height: 1500px; */
 } 
 
 
@@ -83,7 +86,7 @@
 	margin:0 auto;
 	padding:15px;
 	position: relative;
-	bottom: 300px; left:195px;
+	bottom: 300px; left:410px;
 	margin-bottom: 30px;
 }
 

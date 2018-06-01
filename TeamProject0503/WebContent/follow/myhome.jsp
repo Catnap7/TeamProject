@@ -39,7 +39,7 @@ int followercount=((Integer)request.getAttribute("followercount"));
 int followingcount= ((Integer)request.getAttribute("followingcount"));
 int reviewcount= ((Integer)request.getAttribute("reviewcount"));
 MovieBean favorite = (MovieBean)request.getAttribute("moviebean");
-MovieBean favorite2=(MovieBean)request.getAttribute("moviebean2");
+//MovieBean favorite2=(MovieBean)request.getAttribute("moviebean2");
 List top5reviewlist = (List)request.getAttribute("top5reviewlist");
 List top5movielist = (List)request.getAttribute("top5movielist");
  List top5favoritelist = (List)request.getAttribute("top5favoritelist");
@@ -69,7 +69,8 @@ case "horror" : genre="공포"; break;
 case "drama" : genre="드라마"; break;
 }
 }
-String genre2="";
+/* String genre2="";
+
 if(favorite2!=null){
 switch(favorite2.getMv_genre()){
 case "animation" : genre2="애니메이션"; break;
@@ -82,7 +83,7 @@ case "romance" : genre2="로맨스"; break;
 case "horror" : genre2="공포"; break;
 case "drama" : genre2="드라마"; break;
 }
-}
+} */
 
 %>
 
@@ -114,26 +115,15 @@ case "drama" : genre2="드라마"; break;
 				<th>선호장르</th>
 				<td>
 					<%
-					
-					if(favorite==null){
+					if(favorite==null ){
 						%>
 						<%="아직 선호장르가 없습니다"%>
-					<% }else{
-						%>
-						<%=genre+", "%>
-						<%
-					} 
-					%>
-					 <%if(favorite2==null){
-						%>
-						<%-- <%="선호장르 없음"%> --%>
 						<%
 					}else{
 						%>
-						<%=genre2%>
+						<%=genre%>
 						<%
 					}
-					 
 					%> 
 				</td> <!-- 선호장르 상위 2개 -->
 			</tr>
@@ -395,11 +385,12 @@ case "drama" : genre2="드라마"; break;
 			for(int i=0;i<top5reviewlist.size();i++){
 				ReviewBean reviewbean = (ReviewBean)top5reviewlist.get(i);
 			 	MovieBean moviebean= (MovieBean)top5movielist.get(i);
+			 	String yymmdd =reviewbean.getR_date().toString();
 			 			
 				%>
 			<div id="rv"> 
 				<p><span id="reviewTitle"><%=moviebean.getMv_kor_title()%></span>
-				<span id="reviewDate"><%=reviewbean.getR_date()%></span>
+				<span id="reviewDate"><%=yymmdd.substring(0,10)%></span>
 				<span id="reviewRecommand"><%="추천수  "%><%=reviewbean.getR_recommand()%></span>
 				<%-- / <%=reviewbean.getR_report()%> --%></p>
 				<p class="rvList"><%=reviewbean.getR_content()%></p>

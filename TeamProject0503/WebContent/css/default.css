@@ -22,7 +22,7 @@ body{
 
 
 /*---header---*/
-.header{ /* border:1px solid blue;  */  
+.header{/*  border:1px solid blue;   */
 	height: 120px;
 	width:1900px;
 	margin: 0px;
@@ -30,7 +30,9 @@ body{
 	padding: 0px;
 	/* padding-bottom:90px; */
 	box-sizing:boarder-box;
-	/*float:left;*/
+	border-bottom-color:white;
+/* 	position:fixed;
+	top:0px; */
 	}
 
 .title_logo{
@@ -169,7 +171,7 @@ body{
 .h_navbar {
 	/* border:1px solid red; */
   	overflow: hidden;
-  	background-color: #333;
+  	background-color: #455a64;
     margin-top: 10px; 
     height: 50px;
 
@@ -261,10 +263,11 @@ body{
 }
 
 .h_navbar input[type=text] {
-  padding: 6px;
+  padding: 0 6px;
   margin-top: 8px;
   font-size: 17px;
   border: none;
+  height: 32px;
 }
 
 .search-container button {
@@ -321,34 +324,37 @@ footer {
 }
 
 div.f_logo {
-	width: 130px;
-	height: 50px;
-	margin: 30px 10px 30px 20px;
+    width: 250px;
+    height: 50px;
+    position: relative;
+    top: 30px;
+    left: 30px;
+    margin-bottom: 30px;
 }
 
 div.use {
 	width: 240px;
 	height: 30px;
 /* 	margin: 10px 20px; */
-	margin: 20px 20px 0 20px;
+	margin: 20px 20px 0 30px;
 	padding: 5px 5px;
 	float: left;
 	color: white;
 }
 
 div.sns {
-	width: 240px;
+	width: 260px;
 	float: right;
 	position: relative;
-	bottom: 100px;
-	right: 100px;
+	bottom: 80px;
+	right: 60px;
 	padding: 5px;
 }
 
 div.sns img {
 	border: 1px solid white;
 	border-radius: 30px;
-	margin-right: 10px;
+	margin-right: 20px;
 }
 
 div.use a {
@@ -358,7 +364,7 @@ div.use a {
 }
 
 div.explain {
-	margin: 0 20px 10px 20px;
+	margin: 0 20px 10px 30px;
 	padding: 5px 5px;
 	width: 560px;
 	color: white;
