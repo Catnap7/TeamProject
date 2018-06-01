@@ -34,7 +34,7 @@
 <%
 String id = (String)session.getAttribute("m_id");
 List<FavoriteBean> favoritelist = (List)request.getAttribute("favoritelist");
-MovieDAO mdao = new MovieDAO();
+List<MovieBean> movielist = (List)request.getAttribute("movielist");
 %>
 
 <!-- 헤더 영역 -->
@@ -54,8 +54,8 @@ MovieDAO mdao = new MovieDAO();
 		
 		
 		<!--for문으로 반복 하시면 됩니다.아래의 디자인 예시 코드를 지우고 for문만 남기면 정상작동-->
-		<%for(FavoriteBean fb : favoritelist){
-		MovieBean moviebean= mdao.getMovie(fb.getF_num());
+		<%for(int i=0;i<favoritelist.size();i++){
+		MovieBean moviebean= movielist.get(i);
 		
 
 		/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/

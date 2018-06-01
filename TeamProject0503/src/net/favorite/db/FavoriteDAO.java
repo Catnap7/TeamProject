@@ -7,13 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Vector;
 import java.sql.DriverManager;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-
 import net.admin.manage.db.MovieBean;
+
 
 
 public class FavoriteDAO {
@@ -170,6 +171,73 @@ public class FavoriteDAO {
 		}
 		return favoriteBean;
 }
+	
+	//getBasketList(id)
+	public Vector getFavoriteList(String id){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		PreparedStatement pstmt2=null;
+		ResultSet rs2=null;
+		String sql="";
+		Vector vector=new Vector();
+		List favoriteList=new ArrayList();
+		List movieList=new ArrayList();
+		try {
+			//1,2 디비연결
+			con=getConnection();
+			//3 sql id에 해당하는 장바구니 정보 가져오기
+			sql="select * from favorite where f_id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			//4 rs 실행 저장
+			rs=pstmt.executeQuery();
+			//5 rs 데이터 있으면 장바구니 자바빈 객체 생성
+			//  rs => 자바빈 저장 =>basketList 배열한칸 저장
+			//  rs => b_g_num 
+			//  3 sql b_g_num 해당하는 상품정보가져오기
+			//  4 rs2  pstmt2 실행저장   
+			//  5 rs2데이터 있으면 상품 자바빈 객체 생성
+			//  rs2=>자바빈 저장 => goodsList한칸 저장
+			while(rs.next()){
+				FavoriteBean fb=new FavoriteBean();
+				fb.setF_id(rs.getString("f_id"));
+				fb.setF_num(rs.getInt("f_num"));							
+				favoriteList.add(fb);								
+				sql="select * from movie where mv_num=?";
+				pstmt2=con.prepareStatement(sql);
+				pstmt2.setInt(1, fb.getF_num());
+				rs2=pstmt2.executeQuery();
+				if(rs2.next()){
+					MovieBean mb=new MovieBean();
+					mb.setMv_num(fb.getF_num());
+					mb.setMv_kor_title(rs.getString("mv_kor_title"));
+					mb.setMv_eng_title(rs.getString("mv_eng_title"));
+					mb.setMv_year(rs.getInt("mv_year"));
+					mb.setMv_country(rs.getString("mv_country"));
+					mb.setMv_age(rs.getInt("mv_age"));
+					mb.setMv_genre(rs.getString("mv_genre"));
+					mb.setMv_time(rs.getInt("mv_time"));
+					mb.setMv_director(rs.getString("mv_director"));
+					mb.setMv_actor(rs.getString("mv_actor"));
+					mb.setMv_story(rs.getString("mv_story"));
+					mb.setMv_video(rs.getString("mv_video"));
+					movieList.add(mb);
+				}
+			}
+			// vector 첫번째 칸 basketList 저장
+			// vector 두번째 칸 goodsList 저장
+			vector.add(favoriteList);
+			vector.add(movieList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+		return vector;
+	}
 
 	public List randomFavoriteList(String id){
 		Connection con=null;
