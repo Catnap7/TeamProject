@@ -26,9 +26,11 @@
 	position: relative;
 	left: 0px;
 	top: 100px; 
-	width:300px;
+	/* width:300px; */
+	width:400px;
 /* 	height: 180px; */
-	height: 480px;
+/* 	height: 480px; */
+	height: 600px;
 	box-shadow:5px 5px #a0a0a0;
 }
 

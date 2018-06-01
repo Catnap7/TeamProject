@@ -59,7 +59,7 @@ public class MovieDAO {
 		}
 		return movieBean;
 }
-	public MovieBean getfavorite2(String m_id){
+	/*public MovieBean getfavorite2(String m_id){
 		
 		 Connection con = null;
 	      String sql = "";
@@ -81,9 +81,8 @@ public class MovieDAO {
 		         //Step.04 객체실행
 			if (rs.next()) {
 				rs.next();
-				movieBean =new MovieBean();
-				movieBean.setMv_genre(rs.getString("m.mv_genre"));
-				
+					movieBean =new MovieBean();
+					movieBean.setMv_genre(rs.getString("m.mv_genre"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,7 +92,7 @@ public class MovieDAO {
 	         if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
 		}
 		return movieBean;
-}
+}*/
 	
 	//카테고리마다 뿌려주는 폼
 	public List getCategoryList(String mv_genre){

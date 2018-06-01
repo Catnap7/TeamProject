@@ -89,7 +89,7 @@ public class FollowMyHome implements Action{
 		MovieBean moviebean = new MovieBean();
 		MovieBean moviebean2 = new MovieBean();
 		moviebean=moviedao.getfavorite(id);
-		moviebean2 =moviedao.getfavorite2(id);
+		//moviebean2 =moviedao.getfavorite2(id);
 		
 //		Vector vector = new Vector();
 		vector=followdao.top5followreview(id);
@@ -107,7 +107,7 @@ public class FollowMyHome implements Action{
 		request.setAttribute("followingcount", followingcount);
 		request.setAttribute("reviewcount", reviewcount);
 		request.setAttribute("moviebean", moviebean);
-		request.setAttribute("moviebean2", moviebean2);
+		//request.setAttribute("moviebean2", moviebean2);
 		request.setAttribute("top5reviewlist", top5reviewlist);
 		request.setAttribute("top5movielist", top5movielist);
 		request.setAttribute("top5favoritelist", top5favoritelist);
