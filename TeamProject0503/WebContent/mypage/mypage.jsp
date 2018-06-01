@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/mypage.css" rel="stylesheet" type="text/css">
+<link href="./css/followList.css" rel="stylesheet" type="text/css">
 
 <!-- 팔로우 리스트 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

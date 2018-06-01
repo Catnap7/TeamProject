@@ -420,6 +420,7 @@ $(document).ready(function(){
  		 ReviewBean reviewbean = (ReviewBean)reviewList.get(i);
  		 MemberBean memberbean = (MemberBean)memberName.get(i);
  		 if(moviebean.getMv_num()==reviewbean.getR_p_num()) {
+ 			String yymmdd =reviewbean.getR_date().toString();
  			 %>
  			 <table> 
  			    <tr>
@@ -435,7 +436,7 @@ $(document).ready(function(){
  			      <td class="review_sub">추천 <%=reviewbean.getR_recommand() %> / 신고 <%=reviewbean.getR_report() %></td>
  			    </tr>
  			    <tr>
- 			      <td class="review_sub"><%=reviewbean.getR_date() %></td>
+ 			      <td class="review_sub"><%=yymmdd.substring(0,16)%></td>
  			    </tr>
 <!--  			    본인이면  (수정 삭제) 보이기 본인이 아니면 (추천 신고) 보이기  -->
 				<%
