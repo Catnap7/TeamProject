@@ -34,7 +34,7 @@ public class Mypage implements Action{
 		FollowDAO followdao = new FollowDAO();
 		int followercount= followdao.Followercount(id);
 		int followingcount= followdao.Followingcount(id);
-Vector vector = new Vector();
+		Vector vector = new Vector();
 		
 		// 팔로잉 리스트
 		vector = followdao.followingList(id);
