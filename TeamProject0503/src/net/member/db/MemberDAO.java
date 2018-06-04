@@ -242,11 +242,13 @@ private Connection getConnection() throws Exception {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
-						if(rs.getInt("m_grade")==1 ||rs.getInt("m_grade")==2) {
+						if(rs.getInt("m_grade")==1 ||rs.getInt("m_grade")==2 ||rs.getInt("m_grade")==3) {
 							Echeck=1;
 						}else {
 							Echeck=0;
 						}
+							
+					
 			}
 
 		}catch (Exception e) {
