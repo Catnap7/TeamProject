@@ -93,6 +93,7 @@ public class AlarmDAO {
 					ab.setA_start_day(rs.getString("a_start_day"));
 					ab.setA_alarm_name(rs.getInt("a_alarm_name"));
 					ab.setA_movie_name(rs.getString("a_movie_name"));
+					ab.setA_check(rs.getInt("a_check"));
 					alarmlist.add(ab);
 					}
 				
@@ -240,7 +241,7 @@ public class AlarmDAO {
 		}
 	}//end deleteAlarm
 	
-	public void checkAlarm(){
+	public void checkAlarm(String id){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -248,9 +249,9 @@ public class AlarmDAO {
 		try {
 			//1,2 디비연결
 			con=getConnection();			
-			sql="update from alarm where a_num=?";
+			sql="update alarm set a_check=1 where a_id=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, a_num);
+			pstmt.setString(1, id);
 			//4 실행
 			pstmt.executeUpdate();
 		} catch (Exception e) {

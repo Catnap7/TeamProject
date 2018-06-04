@@ -85,6 +85,14 @@ public class MypageFrontController extends HttpServlet{
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		}else if(command.equals("/CheckAlarm.my")){
+			action = new CheckAlarm();
+			try{
+			forward=action.execute(request, response);
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}			
 		}else if(command.equals("/Myrating.my")){
 			action = new Myrating();
 			try{

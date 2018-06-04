@@ -9,6 +9,7 @@ public class AlarmBean {
 	String a_end_day;
 	String a_movie_name;
 	String a_start_day;
+	int a_check;
 	
 	
 	
@@ -49,6 +50,13 @@ public class AlarmBean {
 	public void setA_end_day(String a_end_day) {
 		this.a_end_day = a_end_day;
 	}
+	public int getA_check() {
+		return a_check;
+	}
+	public void setA_check(int a_check) {
+		this.a_check = a_check;
+	}
+	
 	
 	
 }
