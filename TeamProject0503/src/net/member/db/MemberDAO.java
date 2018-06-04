@@ -244,7 +244,10 @@ private Connection getConnection() throws Exception {
 			while(rs.next()) {
 						if(rs.getInt("m_grade")==1 ||rs.getInt("m_grade")==2 ||rs.getInt("m_grade")==3) {
 							Echeck=1;
-						}else {
+						}else if(rs.getInt("m_grade")==4) {
+							Echeck=2;
+						}
+						else {
 							Echeck=0;
 						}
 							
