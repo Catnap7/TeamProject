@@ -49,6 +49,7 @@ List f_followerList = (List)request.getAttribute("f_followerList");
 List m_followerList = (List)request.getAttribute("m_followerList");
 String id = (String)request.getAttribute("m_id");
 String m_id=(String)session.getAttribute("m_id");
+int myhomeFollowCheck = ((Integer)request.getAttribute("myhomeFollowCheck"));
 String grade="";
 switch(getmember.getM_grade()){
 case 1 : grade = "정회원"; break;
@@ -129,21 +130,81 @@ case "drama" : genre2="드라마"; break;
 			</tr>
 		</table>
 	</div><!-- info -->
-	<button class="FBtn">
-		<a href="#">
-			<!-- 디자인예시:아래 if문 작성 후 지워도 무방 -->follow<!-- 디자인예시:아래 if문 작성 후 지워도 무방 -->
+		<%
+		if(m_id.equals(id)) {
+		
+		}else if(myhomeFollowCheck == 0) {
+			%>
+			<button class="FBtn" id="myhome_follow">
+				<a>
+				follow
+				</a>
+			</button>
+			<%
+		}else {
+			%>
+			<button class="FBtn" id="myhome_unfollow">
+				<a>
+				unfollow
+				</a>
+			</button>
+			<%
+		}
+		%>
+		<input type="hidden" id="m_id" value="<%=m_id %>">
+		<input type="hidden" id="f_id" value="<%=id %>">
+		
+		<script type="text/javascript">
+		
+		$(document).ready(function() {
+        	
+        	$('#myhome_unfollow').click(function(){
+        		var m_id = $('#m_id').val();
+				var f_id = $('#f_id').val();
+				
+// 						alert($('#m_id').val());
+// 						alert($('#f_id').val());
+				
+				$.ajax({
+					type: "get",
+					url: "./DeleteFollowerAction.fo",
+					dataType: "html",
+					data: {
+						"m_id": m_id,
+						"f_id": f_id,
+					},
+					success:function(data){
+						alert("팔로우 끊기");
+						location.reload();
+					}
+				});
+        	});
+        	
+        	$('#myhome_follow').click(function(){
+        		var m_id = $('#m_id').val();
+				var f_id = $('#f_id').val();
+				
+// 						alert($('#m_id').val());
+// 						alert($('#f_id').val());
+				
+				$.ajax({
+					type: "get",
+					url: "./InsertFollowerAction.fo",
+					dataType: "html",
+					data: {
+						"m_id": m_id,
+						"f_id": f_id,
+					},
+					success:function(data){
+						alert("팔로잉 하기");
+						location.reload();
+					}
+				});
+        	});
+        	
+        });
 			
-			<!-- ↓↓↓↓↓↓↓팔로우 하기 전 문자 : follow/ 팔로우 한 후 문자 : unfollow 로 오게 제어해 주세요 -->
-			<%-- <%if(팔로우 하기 전){%>
-				follow<%
-			}elst{
-				%>unfollow<%
-			}%> --%>
-			<!-- ↑↑↑↑↑↑↑↑팔로우 하기 전 문자 : follow/ 팔로우 한 후 문자 : unfollow 로 오게 제어해 주세요 -->
-			
-		</a>
-	</button>
-	
+		</script>
 </section><!-- myInfo -->
 
 
