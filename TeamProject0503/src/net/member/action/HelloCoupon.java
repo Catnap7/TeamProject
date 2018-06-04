@@ -12,9 +12,9 @@ public class HelloCoupon {
 		  final char[] possibleCharacters =
 		    {'1','2','3','4','5','6','7','8','9'
 		    		,'0'
-		    		/*,'A','B','C','D','E','F',
+		    		,'A','B','C','D','E','F',
 		     'G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V',
-		     'W','X','Y','Z'*/};
+		     'W','X','Y','Z'};
 		  
 		  final int possibleCharacterCount = possibleCharacters.length;
 		  String[] arr = new String[couponSize];
