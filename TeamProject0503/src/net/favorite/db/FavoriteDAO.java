@@ -69,7 +69,7 @@ public class FavoriteDAO {
 		ResultSet rs = null;
 		try{
 			con = getConnection();
-			sql="insert into favorite(f_id,f_num) values(?,?)";
+			sql="insert into favorite(f_id,f_num,f_date) values(?,?,now())";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, favoriteBean.getF_id());
 			pstmt.setInt(2, favoriteBean.getF_num());
@@ -162,6 +162,7 @@ public class FavoriteDAO {
 				favoriteBean = new FavoriteBean();
 				favoriteBean.setF_id(rs.getString("f_id"));
 				favoriteBean.setF_num(rs.getInt("f_num"));
+				favoriteBean.setF_date(rs.getTimestamp("f_date"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -188,7 +189,7 @@ public class FavoriteDAO {
 			//1,2 디비연결
 			con=getConnection();
 			//3 sql id에 해당하는 장바구니 정보 가져오기
-			sql="select * from favorite where f_id=?";
+			sql="select * from favorite where f_id=? order by f_date desc";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			//4 rs 실행 저장
@@ -203,7 +204,8 @@ public class FavoriteDAO {
 			while(rs.next()){
 				FavoriteBean fb=new FavoriteBean();
 				fb.setF_id(rs.getString("f_id"));
-				fb.setF_num(rs.getInt("f_num"));							
+				fb.setF_num(rs.getInt("f_num"));
+				//fb.setF_date(rs.getTimestamp("f_date"));
 				favoriteList.add(fb);								
 				sql="select * from movie where mv_num=?";
 				pstmt2=con.prepareStatement(sql);
