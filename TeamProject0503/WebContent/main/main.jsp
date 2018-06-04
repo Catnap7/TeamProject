@@ -318,13 +318,13 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 
 <div class="mainMovie">
 	<div class="mainCover">
-		<div class="mainPic">
-			<img src="./images/sf/Arrival_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+			<div class="mainPic"><img src="./images/mainCover.png"></div>
+			<img src="./images/sf/Pixels_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
 			<span class="mv_title"><%="컨택트"%></span><!-- 한글제목 --> 
 			<span class="mv_year"><%="2017"%></span><!-- 년도 -->
 			<span class="mv_grade"><%="15세관람가"%></span><!-- 등급 -->
 			<span class="mv_time"><%="114"%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
-		</div>
+		
 	</div>
 </div> 
 

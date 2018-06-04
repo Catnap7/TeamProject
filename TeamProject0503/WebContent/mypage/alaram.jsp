@@ -9,6 +9,15 @@
 <title>Insert title here</title>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/mypage.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+$(window).on("beforeunload",function (){
+	$.ajax({
+		type: 'POST',
+		url: './CheckAlarm.my'																	 					 		
+	});//end ajax 		
+});
+</script>
 </head>
 <body>
 <%
@@ -51,7 +60,7 @@ if(count == 0){
 		break;		
 		}
 %>
-<tr><td colspan="3"><%=name%></td></tr>	
+<tr><td colspan="3"><%if(alarmbean.getA_check()==0){%><span style=color:red;>new! </span><%}%><%=name%></td></tr>	
 <%	
 	}
 }

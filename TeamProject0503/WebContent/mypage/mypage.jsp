@@ -17,7 +17,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<script>
+function profile(){
+	window.open("./UpdateProfile.my","","width=500,height=500,left=600,top=200,scrollbars=yes,resizable=yes,menubar=yes,location=yes");
+}
+</script>
 </head>
 <body>
 <%
@@ -46,7 +50,7 @@ case 2 : grade = "VIP회원"; break;
 		
 		<div class="follow">
 		  <div class="photo">
-		    <a href="#"><img alt="프로필사진" src="./images/proflie_img/proflie<%=memberbean.getM_pic()%>.png" width="130px" height="130px" title="사진 변경"></a>
+		    <a href="#" onclick="profile()"><img alt="프로필사진" src="./images/proflie_img/proflie<%=memberbean.getM_pic()%>.png" width="130px" height="130px" title="사진 변경"></a>
 		  </div>
 		  <ul class="follow_ul">
 		    <li class="follower"><a>팔로워<span data-toggle="modal" data-target="#follower"><%=followercount %></span></a></li>

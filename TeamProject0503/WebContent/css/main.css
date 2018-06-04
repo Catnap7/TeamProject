@@ -19,6 +19,13 @@
 	
 } */
 
+.mainMovie{
+	border:1px solid red;
+	height: 40%;
+	width: 100%;
+	overflow: hidden;
+	text-align: center;
+}
 
 
 article.main1{
@@ -42,17 +49,32 @@ article.main2{
 
 .mainMovie{
 	border:1px solid red;
-	height: 500px;
+	height: 700px;
 	position: relative;
 	top:-50px;
 	margin-bottom: 30px;
 	overflow: hidden;	
 }
+.mainCover{
+	position: relative;
+}
 
-.mainPic img{
+.mainCover img{
 	border:1px solid blue;
-	height:500px;
+	height:auto;
 	width: 1500px;
+	scale:0.8;
+/* 	position: relative;
+	top:-130px; */
+}
+.mainPic{position: relative;}
+.mainPic img{
+	border:1px solid green;
+	/* background-image:url("./images/mainCover.png"); */
+	position:absolute;
+	top:0;left:0;
+	height:700px; width: 1900px;
+	box-sizing:border-box;
 }
 
 

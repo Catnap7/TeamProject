@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.Vector;
@@ -303,78 +306,91 @@ public class FollowDAO {
 	
 
 	//followfavorite
-	public List followfavorite(String id){
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="";
-		List movieList=null;
-		try {
-			con=getConnection();
+		public List followfavorite(String id){
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			String sql="";
+			List movieList=new ArrayList();
+			try {
+				con=getConnection();
 
-			sql="select * from favorite f join movie m on f.f_num=m.mv_num where f_id=?";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs=pstmt.executeQuery();
-			
-			while(rs.next()){
-				MovieBean moviebean= new MovieBean();
-				moviebean.setMv_num(rs.getInt("mv_num"));
-				moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
-				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
-				moviebean.setMv_genre(rs.getString("mv_genre"));
-				moviebean.setMv_year(rs.getInt("mv_year"));
-				moviebean.setMv_age(rs.getInt("mv_age"));
-				moviebean.setMv_time(rs.getInt("mv_time"));
-				movieList.add(moviebean);
+				sql="select * from favorite f join movie m on f.f_num=m.mv_num where f_id=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs=pstmt.executeQuery();
+				
+				while(rs.next()){
+					MovieBean moviebean= new MovieBean();
+					moviebean.setMv_num(rs.getInt("mv_num"));
+					moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
+					moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+					moviebean.setMv_genre(rs.getString("mv_genre"));
+					moviebean.setMv_year(rs.getInt("mv_year"));
+					moviebean.setMv_age(rs.getInt("mv_age"));
+					moviebean.setMv_time(rs.getInt("mv_time"));
+					movieList.add(moviebean);
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+				if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+				if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
-			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
-			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+			return movieList;		
 		}
-		return movieList;		
-	}
 
 	//followReview
-	public List followreview(String id){
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="";
-		List movieList=null;
-		try {
-			con=getConnection();
+		public Vector followreview(String id){
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			String sql="";
+			List reviewList=new ArrayList();
+			List movieList=new ArrayList();
+			Vector vector=new Vector();
+			try {
+				con=getConnection();
 
-			sql="select * from favorite f join movie m on f.f_num=m.mv_num where f_id=?";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs=pstmt.executeQuery();
-			
-			while(rs.next()){
-				MovieBean moviebean= new MovieBean();
-				moviebean.setMv_num(rs.getInt("mv_num"));
-				moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
-				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
-				moviebean.setMv_genre(rs.getString("mv_genre"));
-				moviebean.setMv_year(rs.getInt("mv_year"));
-				moviebean.setMv_age(rs.getInt("mv_age"));
-				moviebean.setMv_time(rs.getInt("mv_time"));
-				movieList.add(moviebean);
+				sql="select * from review r join movie m on r.r_p_num=m.mv_num where r.r_id=? order by r.r_date desc";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs=pstmt.executeQuery();
+				
+				while(rs.next()){
+					ReviewBean reviewbean= new ReviewBean();
+					//왓츄그램 리뷰리스트에서 날짜 포맷 바꿀때 쓸것.
+					//Date date=rs.getTimestamp("r_date");
+
+					
+					reviewbean.setR_id(rs.getString("r_id"));
+					reviewbean.setR_num(rs.getInt("r_num"));
+					reviewbean.setR_p_num(rs.getInt("r_p_num"));
+					reviewbean.setR_recommand(rs.getInt("r_recommand"));
+					reviewbean.setR_report(rs.getInt("r_report"));
+					reviewbean.setR_date(rs.getTimestamp("r_date"));
+					reviewbean.setR_content(rs.getString("r_content"));
+					reviewList.add(reviewbean);
+					
+					MovieBean moviebean= new MovieBean();
+					moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+					movieList.add(moviebean);
+				}
+				vector.add(reviewList);
+				vector.add(movieList);
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+				if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+				if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
-			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
-			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+			return vector;		
 		}
-		return movieList;		
-	}
 	
 	/*public Vector top5followfavorite(String m_id){
 		Connection con=null;

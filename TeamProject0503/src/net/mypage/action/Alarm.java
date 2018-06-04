@@ -28,6 +28,7 @@ public class Alarm implements Action{
 				AlarmDAO adao = new AlarmDAO();
 				HttpSession session=request.getSession();		
 				String id = (String)session.getAttribute("m_id");
+				session.setAttribute("alarm_num", "0");
 				if(id==null){
 					forward=new ActionForward();
 					forward.setRedirect(true);		

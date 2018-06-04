@@ -3,7 +3,24 @@
 <%@page import="net.member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<script>
+var a = 0
+function start(){		
+		if(a==0){
+		//alert("0");	
+		document.img1.src = "./images/alarm.png";	
+		a=1;
+		}else if(a==1){
+			//alert("1");
+			document.img1.src = "./images/alarm2.png";	
+			a=0;
+		}		
+}
+function alarm(){
+	//alert("됩니다");
+	setInterval("start()", 500);
+}
+</script>
 <!-- 헤더 영역 -->
 <%String id = (String)session.getAttribute("m_id");
 /* int followercount=((Integer)request.getAttribute("followercount"));
@@ -39,7 +56,13 @@ int followingcount= followdao.Followingcount(id);
 		<%
 		String m_name="";
 		m_name=(String)session.getAttribute("m_name");
-		%>
+		String alarm = (String)session.getAttribute("alarm_num");
+		String id_name = "no_alarm";
+		if(alarm==null){alarm="0";}
+		int alarm_num = Integer.parseInt(alarm);	
+		if(alarm_num>0){id_name="alarm";%>
+			<script>alarm();</script>	
+		<%}%>
 		<div class="h_myinfo">
   			<button class="h_dropbtn1"><%=m_name %></button>
 				  <div class="h_dropdown-content1">
@@ -50,6 +73,7 @@ int followingcount= followdao.Followingcount(id);
 				    <a href="./MemberLogout.me">로그아웃</a>
 				  </div>
 		</div><!-- 유저정보 -->
+		<div><a href="./Alarm.my"><img src="./images/alarm2.png" id=<%=id_name %> name="img1"><span class="num"><%=alarm_num%></span></a></div>
 		<div class="pay">
 			<a href="./PayList.pa">이용권구매</a>
 		</div><!--이용권구매 -->
