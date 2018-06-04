@@ -70,6 +70,53 @@ public class AlarmDAO {
 		 return count;
 	 }//end count
 	
+	public int getCount(String id){ //확인 안 한 알람 갯수 구하는 메소드
+		 Connection con=null;
+		 String sql="";
+		 PreparedStatement pstmt=null;
+		 ResultSet rs=null;
+		 int count = 0;
+		 try{ //예외가 발생할 것 같은 명령, 	필수적으로 외부파일접근, 디비접근
+				con = getConnection();
+				sql="select count(*) as count from alarm where a_id=? and a_check=0";				 				 
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()){
+					count = rs.getInt("count");
+				}
+				
+			} catch(Exception e) {
+					//예외 생기면 변수 e에 저장
+					//예외를 잡아서 처리 -> 메시지 출력
+					e.printStackTrace();
+					}finally{
+						//예외가 발생하든 말든 상관없이 마무리작업
+						//객체 기억장소 마무리
+						
+						if(rs!=null){
+							try{rs.close();
+							}catch(SQLException e){
+								e.printStackTrace();
+							 }
+							}//end if
+						if(pstmt!=null){
+							try{pstmt.close();						
+							}catch(SQLException e){
+								e.printStackTrace();
+							}
+						 }//end if
+							if(con!=null){
+								try{con.close();
+								}catch(SQLException e){
+									e.printStackTrace();
+								 }
+								}//end if
+					}
+		 return count;
+	 }//end count
+	
 	public List<AlarmBean> getAlarms(String id, int startRow, int pageSize){
 		 List<AlarmBean> alarmlist = new ArrayList<AlarmBean>();
 		 Connection con=null;
