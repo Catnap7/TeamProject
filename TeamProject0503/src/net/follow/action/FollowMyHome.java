@@ -44,6 +44,8 @@ public class FollowMyHome implements Action{
 		FollowDAO followdao = new FollowDAO();
 		int followercount= followdao.Followercount(id);
 		int followingcount= followdao.Followingcount(id);
+		
+		int myhomeFollowCheck = followdao.myhomeFollowCheck(m_id, id);
 		// 팔로잉 리스트
 		vector = followdao.followingList(id);
 		List<FollowBean> f_followingList = (List)vector.get(0);
@@ -116,6 +118,7 @@ public class FollowMyHome implements Action{
 		request.setAttribute("f_followerList", f_followerList);
 		request.setAttribute("m_followerList", m_followerList);
 		request.setAttribute("m_id", id);
+		request.setAttribute("myhomeFollowCheck", myhomeFollowCheck);
 		
 		ActionForward forward= new ActionForward();
 		forward.setRedirect(false);
