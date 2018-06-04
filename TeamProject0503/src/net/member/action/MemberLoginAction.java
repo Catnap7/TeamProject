@@ -91,13 +91,7 @@ public class MemberLoginAction implements Action{
 				out.println("alert('이메일 인증을 완료해주세요');");
 				out.println("history.back()");
 				out.println("</script>");
-			}else if(Echeck==2) {
-				out.println("<script>");
-				out.println("alert('회원님은 현재 로그인 정지중인 회원입니다');");
-				out.println("history.back()");
-				out.println("</script>");
-			}
-			else {
+			}else {
 			
 			if(couponlist != null){
 				for(CouponBean couponbean:couponlist){
