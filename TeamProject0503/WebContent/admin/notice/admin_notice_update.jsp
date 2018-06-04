@@ -7,9 +7,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-<title>Insert title here</title>
+<title>왓츄 : 공지사항 수정</title>
+
+<!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
+
+<!-- 웹 폰트 : 나눔고딕 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
 
 <!--  notice/writeForm.jsp -->
 </head>
@@ -27,7 +33,7 @@
 <!-- 어드민 서브메뉴 -->
 
 	<div id="content">
-		<h1>Notice Update Form</h1>
+		<h1 class="adminTitle">관리자 공지사항 글 수정 </h1>
 
 		<form action="./AdminNoticeUpdateAction.an?n_num=<%=n_num %>" method="post" enctype="multipart/form-data">
 			<table border="0" class="db_list_insert">
@@ -48,9 +54,13 @@
 					<td><input type="file" name="n_file" value="<%=noticebean.getN_file() %>"></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="수정"></td>
-					<td><button type="button" onclick="history.back()">돌아가기</button></td>
-				</tr>
+				
+				<div class="u_admin-notice-write">
+					<input type="submit" class="wirtebtn" value="수정">
+					<button type="button"  class="wirtebtn" onclick="history.back()">돌아가기</button>
+				</div>
+
+
 			</table>
 		</form>
 	</div>

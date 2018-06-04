@@ -1,0 +1,219 @@
+@CHARSET "UTF-8";
+
+*{
+	padding: 0;
+	margin: 0;
+	font-family: 'Nanum Gothic', sans-serif;}
+
+.clear {clear: both;}
+
+body{
+	height: auto;
+}
+
+article{
+	/* border:1px solid red;  */
+	padding:50px;	
+	height: auto;
+	width:2000px;
+
+}
+
+
+
+/* ################전체레이아웃################ */
+
+
+.sec{
+	border:10px solid #9f9f9f;
+	border-radius:30px;
+	background-color:white;
+	/* border-radius:10px; */
+	margin: 20px auto;
+	padding:40px;
+}
+
+
+/* ################프로필################ */
+
+.myInfo{
+	border:10px solid #bed5da;
+	border-radius:30px;
+	position:relative;
+	top:80px; 
+	right:550px;
+	width:300px;
+	height:auto;
+	box-sizing:border-box;
+	height: 300px;
+	line-height:1.5em;
+	padding:30px;
+}
+
+#profile{
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.4em;
+/* 	position: relative;
+	top:20px; left: -150px; */
+	line-height: 1.7em;
+}
+
+#info{
+	font-size:1.2em;
+	/* border:1px solid #c0c0c0;  */
+	text-align: center;
+	/* width:270px; */
+/* 	position: relative;
+	top:-240px; left: 420px; */
+	line-height: 1em;
+	text-align: center;
+}
+
+#info p{
+	font-size: 0.9em;
+	line-height: 1.7em;
+}
+
+#span1{
+	font-size: 1em;
+	font-weight: bold;
+	color:#50a4aa;
+	margin-right: 5px;
+	margin-left: 10px;
+}
+
+
+/* ################ 리뷰 ################ */
+
+
+.myReviewList{
+	position:relative;
+	bottom:240px; left:50px;
+	width:900px;
+	height:auto;
+	box-sizing:border-box;
+	line-height:1.5em;
+}
+
+
+.secInfo {
+	font-size: 1.2em;
+	font-weight: bold;
+	position: relative;
+	top:10px; left: 25px;
+	/* float:left; */
+}
+
+.secInfo h3{
+	font-family: sans-serif;
+}
+
+.secInfo a{
+	position:relative;
+	top:0px; left:660px;
+	text-decoration: none;
+}
+.secInfo a:LINK, .secInfo a:VISITED{
+	color:#50a4aa;
+	text-shadow: 1px 1px #eee;
+} 
+
+.secInfo a:HOVER{
+	color:#ff8040;
+}
+
+
+.rvList{
+	border-top:1px solid #838383;
+	border-bottom:2px solid #838383;
+	/* border-radius:10px; */
+	margin:10px auto;
+	padding:20px;
+	width: 760px;
+	height: auto;
+	box-sizing:border-box;
+}
+#rv{
+	/* border:1px solid #333; */
+	margin:20px auto;
+	width: 760px;
+	height: auto;
+	box-sizing:border-box;
+	padding:10px;
+}
+
+#rv p{
+	padding-left: 10px;
+}
+ 
+#reviewTitle{
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+/* ################ 좋아하는 영화 ################ */
+.myFavMovie{
+	padding:25px 30px 10px 30px;
+	height: 850px; 
+	margin:20 auto;
+/* 	height: 450px; */
+}
+.mvList{
+	/* border:1px solid #333; */
+	width: 750px;
+	height: 700px;;
+	box-sizing:border-box;
+	text-align: center;
+	position: relative;
+	top:10px;
+	left: 60px; 
+}
+
+.noReviewContents{
+	border:1px solid #c0c0c0;
+	padding:40px;
+	text-align: center;
+	line-height:2.5em;
+	font-size: 1.2em;
+	/* font-weight: bold; */
+}
+
+.noFavContents{
+	border:1px solid #c0c0c0;
+	padding:250px 40px;
+	margin-top:10px;
+	text-align: center;
+	line-height:2.5em;
+	font-size: 1.2em;
+	/* font-weight: bold; */
+}
+
+.mvList .favMovies{
+	/* border:1px solid red; */
+	float:left;
+	margin: 20px 20px;
+	text-align: center;
+	line-height: 1.5em;
+	font-size: 1.1em;
+	/* font-weight: bold; */
+}
+
+.favMovies img{
+	border:1px solid #a8a8a8;
+}
+
+.favMovies p{
+	padding-top: 5px;
+	font-size: 1.2em;
+}
+
+
+
+

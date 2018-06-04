@@ -42,9 +42,8 @@
 	
 
 <div id="content">
-	<h1>VIP 시사회 영화 목록</h1>	
-	<p>[총 영화 개수 : <%=count %>]<br><br>
-		더 자세한 영화 정보와 수정 및 삭제는 영화 제목 또는 수정 버튼을 눌러 상세보기로 들어가십시오<br></p>
+	<h1  class="dblistTitle">VIP 시사회 영화 목록</h1>	
+	<p>[총 영화 개수 : <%=count %>] 더 자세한 영화 정보와 수정 및 삭제는 영화 제목 또는 수정 버튼을 눌러 상세보기로 들어가십시오</p>
 	
 	<table class="vip_db_list">
 		<tr>
@@ -79,15 +78,23 @@
 			<div class="prev_next">
 				<%// 이전
 					if (startPage > pageBlock) {%>
-					<a href="./AdminNoticeList.am?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+					<a href="./VipMovieList.vi?pageNum=<%=startPage - pageBlock%>">[이전]</a>
 					<%}
 						// 1~10, 11~20, 21~30
 						for (int i = startPage; i <= endPage; i++) {%>
-						<a href="./AdminNoticeList.am?pageNum=<%=i%>">[<%=i%>]</a>
+						<a href="./VipMovieList.vi?pageNum=<%=i%>">
+						<%
+							int pageNumm=Integer.parseInt(pageNum);
+							if(pageNumm==i) {%>
+							<span class="thisPage"><%=i%></span>
+							<%}else{%>
+							<span class="normalPage"><%=i%></span>
+							<%} %>			
+						</a>
 					<%}
 						// 다음
 						if (endPage < pageCount) {%>
-					<a href="./AdminNoticeList.am?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+					<a href="./VipMovieList.vi?pageNum=<%=startPage + pageBlock%>">[다음]</a>
 					<%}
 					%>
 			</div>

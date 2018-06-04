@@ -58,13 +58,13 @@ if(mv_genre_request.equals("animation")){
 	mv_genre="로맨스/드라마";
 } 
 %>
-<h2 id="categoryTitle"><%=mv_genre%><%=" 카테고리 검색 결과"%></h2> <!-- Sf부분에 카테고리 이름 넣어주세요. '카테고리 검색 결과'는 지우지 말 것 -->
+<h2 id="categoryTitle"><%=mv_genre%></h2> <!-- Sf부분에 카테고리 이름 넣어주세요. -->
 
 <!-- 아티클 -->
 <article>
 
 	<div class="container">
-		<!-- 한페이지에 나오는 영화수 150개로 임시 설정 -->
+		
 		
 		<!--for문으로 반복 하시면 됩니다.아래의 디자인 예시 코드를 지우고 for문만 남기면 정상작동-->
  	<%for(int i=0; i<CategoryList.size(); i++){ 

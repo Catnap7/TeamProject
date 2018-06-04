@@ -11,13 +11,12 @@
 }
 
 /*아티클 전체 설정*/
-article.main1{
-	height:1800px;
-	width: auto;
-}
+
 article.main2{
+	border:1px solid window;  
 	height:1500px;
 	width: auto;
+	padding-top:55px;
 }
 
 
@@ -110,39 +109,39 @@ article.main2{
 /**이전 다음 버튼 제어**/
 .prev1{
 	position:absolute;
-	top:200px; left:0px;
+	top:200px; left:20px;
 }
 .next1{
 	position:absolute;
-	top:200px; right: 0px;
+	top:200px; right: 20px;
 }
 
 
 .prev2{
 	position:absolute;
-	top:200px; left:0px;
+	top:200px; left:20px;
 }
 .next2{
 	position:absolute;
-	top:200px; right:0px;
+	top:200px; right:20px;
 }
 
 
 .prev3{
 	position:absolute;
-	top:200px; left:0px;
+	top:200px; left:20px;
 }
 .next3{
 	position:absolute;
-	top:200px; right: 0px;
+	top:200px; right: 20px;
 }
 
 
 
 .button img:HOVER {
 	opacity:1;
-	width: 70px;
-	height: 70px;
+/* 	width: 70px;
+	height: 70px; */
 }
 /**이전 다음 버튼 제어 끝**/
 

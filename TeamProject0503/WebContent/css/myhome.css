@@ -14,17 +14,26 @@ body{
 article{
 	/* border:1px solid red;  */
 	padding:50px;	
+	height: auto;
+	width:1900px;
+	background-color: #72bcc4;
 }
+
+
+
+/* ################전체레이아웃################ */
 
 .all{
 	border: 1px solid #e8e8e8;
-	background-color:#e8e8e8;
+	background-color:#f3f7f8;
 	border-radius:30px;
 	width: 1000px;
-	margin:50px auto; 
+	/* margin:50px auto;  */
+	position:relative;
+	top:100px; left:400px;
 	margin-bottom:200px;
 	box-shadow: 2px 2px #9f9f9f;
-	padding:50px 70px;
+	padding:40px 70px;
 }
 
 .sec{
@@ -40,6 +49,9 @@ article{
 	/* float:left; */
 }
 
+
+
+/* ################프로필################ */
 
 .myInfo{
 	border-bottom:2px dashed #333;
@@ -58,7 +70,7 @@ article{
 
 #info{
 	font-size:1.2em;
-	/* border:1px solid #333; */
+	/* border:1px solid #333; */ 
 	text-align: center;
 	/* width:270px; */
 	position: relative;
@@ -82,8 +94,12 @@ article{
 	font-weight:bold;
 	padding:0 20px;
 	text-align: left;
-	width: 200px;
+	width: 300px;
 }
+
+
+
+/* ################ 리뷰 ################ */
 
 .secInfo {
 	font-size: 1.2em;
@@ -93,13 +109,17 @@ article{
 	/* float:left; */
 }
 
+.secInfo h3{
+	font-family: sans-serif;
+}
+
 .secInfo a{
 	position:relative;
 	top:0px; left:660px;
 	text-decoration: none;
 }
 .secInfo a:LINK, .secInfo a:VISITED{
-	color:#50d4aa;
+	color:#50a4aa;
 	text-shadow: 1px 1px #eee;
 } 
 
@@ -112,7 +132,7 @@ article{
 	border-top:1px solid #838383;
 	border-bottom:2px solid #838383;
 	/* border-radius:10px; */
-	margin:20px auto;
+	margin:10px auto;
 	padding:20px;
 	width: 760px;
 	height: auto;
@@ -126,39 +146,74 @@ article{
 	box-sizing:border-box;
 	padding:10px;
 }
- 
-/* #rvrv{
-	border:1px solid #333;
-	margin:10px auto;
-	padding: 10px;
-} */
 
+#rv p{
+	padding-left: 10px;
+}
+ 
+#reviewTitle{
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+
+
+/* ################ 좋아하는 영화 ################ */
 .myFavMovie{
-	padding:10px 30px 10px 30px;
+	padding:25px 30px 10px 30px;
 	height: 850px; 
 	margin:20 auto;
 /* 	height: 450px; */
 }
 .mvList{
 	/* border:1px solid #333; */
-	margin:20px auto;
-	width: 720px;
+	width: 750px;
 	height: 700px;;
 	box-sizing:border-box;
 	text-align: center;
 	position: relative;
-	top:20px;left: 50px;
+	top:20px;
+	left: 30px; 
 }
 
-.mvList div{
+.noReviewContents{
+	border:1px solid #c0c0c0;
+	padding:40px;
+	text-align: center;
+	line-height:2.5em;
+	font-size: 1.2em;
+	/* font-weight: bold; */
+}
+
+.noFavContents{
+	border:1px solid #c0c0c0;
+	padding:250px 40px;
+	margin-top:10px;
+	text-align: center;
+	line-height:2.5em;
+	font-size: 1.2em;
+	/* font-weight: bold; */
+}
+
+.mvList .favMovies{
 	/* border:1px solid red; */
 	float:left;
-	margin: 10px 10px;
+	margin: 20px 20px;
 	text-align: center;
 	line-height: 1.5em;
 	font-size: 1.1em;
-	font-weight: bold;
+	/* font-weight: bold; */
 }
+
+.favMovies img{
+	border:1px solid #a8a8a8;
+}
+
+.favMovies p{
+	padding-top: 5px;
+	font-size: 1.2em;
+}
+
 
 
 

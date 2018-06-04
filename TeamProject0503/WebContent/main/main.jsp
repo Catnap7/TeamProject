@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>왓츄 : 당신의 모든 영화, 세상의 모든 취향 </title>
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
 <!-- js -->
 <script src="./js/jquery-3.3.1.js"></script>
@@ -263,14 +263,15 @@ function couponClose(){
     if($("input[name='chkbox']").is(":checked") ==true){
         setCookie("close","Y",1);
     }
-    $("#popp27").hide();
+     $("#popp27").attr('style', 'display:none');
+
 }
 $(document).ready(function(){
     cookiedata = document.cookie;
     if(cookiedata.indexOf("close=Y")<0){
         $("#popp27").show();
     }else{
-         $("#popp27").hide(); 
+         $("#popp27").attr('style', 'display:none');
     }
     $("#close").click(function(){
         couponClose();
@@ -304,6 +305,7 @@ List<MovieBean>Bestmovie = (List)request.getAttribute("Bestmovie");
 List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMovieList");
 %>
 
+<!-- 크롬 기준 -->
 
 
 <!-- 헤더 영역 -->
@@ -311,17 +313,27 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 <!-- 헤더 영역 -->
 
 
-
-
 <!-- 아티클 -->
 <article class=<%=classname%>>
 
-<!-- 크롬 기준 -->
+<div class="mainMovie">
+	<div class="mainCover">
+			<div class="mainPic"><img src="./images/mainCover.png"></div>
+			<img src="./images/sf/Pixels_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+			<span class="mv_title"><%="컨택트"%></span><!-- 한글제목 --> 
+			<span class="mv_year"><%="2017"%></span><!-- 년도 -->
+			<span class="mv_grade"><%="15세관람가"%></span><!-- 등급 -->
+			<span class="mv_time"><%="114"%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+		
+	</div>
+</div> 
+
+
 
 <!-- 왓츄에서 인기있는 영화 -->
 <div class="containerWithBtn">	
   	<div class="container"> 
-  		<h2>이번 달 인기 영화</h2>
+  		<h2><i class="material-icons" style="font-size:36px">movie_filter</i><span id="title">이번 달 인기 영화</span></h2>
 		<div class="slider trending">
 			 <!--for문으로 반복 하시면 됩니다-->
 		<%for(MovieBean moviebean  : Bestmovie){

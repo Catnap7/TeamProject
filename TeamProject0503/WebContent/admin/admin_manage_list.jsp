@@ -4,9 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원리스트</title>
+<title>왓츄 : 관리자 페이지</title>
+
+<!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
+
+<!-- 웹 폰트 : 나눔고딕 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
+
 </head>
 <body>
 
@@ -18,31 +25,40 @@
 <jsp:include page="../inc/admin_sub.jsp"/>
 <!-- 어드민 서브메뉴 -->
 
-<div id="content">
-	<div class="content_position">
-	<label for="member">
-		<div class="content_inner">
-			<a href="./AdminMember_List_Search.am" id="member">member</a>
-		</div>
-	</label>
-	<label for="movie">
-		<div class="content_inner">
-			<a href="./AdminMovieInsert.am" id="movie">movie</a>
-		</div>
-	</label>
-	<label for="pay">
-		<div class="content_inner">
-			<a href="./AdminPayListAction.am" id="pay">pay</a>
-		</div>
-	</label>
-	<label for="review">
-		<div class="content_inner">
-			<a href="./AdminReviewListAction.am" id="review">review</a>
-		</div>
-	</label>
-	</div>
-</div>
-
+<article class="content">
+	 <div id="maincontent"> 
+		 <div class="content_position"> 
+			<label for="member">
+				<a href="./AdminMember_List_Search.am" id="member">
+					<div class="content_inner">
+						member
+					</div>
+				</a>
+			</label>
+			<label for="movie">
+				<a href="./AdminMovieInsert.am" id="movie">
+					<div class="content_inner">
+						movie
+					</div>
+				</a>
+			</label>
+			<label for="pay">
+				<a href="./AdminPay_List_Search.am" id="pay">
+					<div class="content_inner">
+						pay
+					</div>
+				</a>
+			</label>
+			<label for="review">
+				<a href="./AdminReview_List_Search.am" id="review">
+					<div class="content_inner">
+						review
+					</div>
+				</a>
+			</label>
+		</div> 
+		</div> 
+</article>
 <div class="clear"></div>
 
 <!-- 푸터 영역 -->

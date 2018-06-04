@@ -1,5 +1,6 @@
 package net.category.action;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -56,7 +57,7 @@ public class InsertReview implements Action {
 			reviewbean.setR_content(r_content);
 			reviewbean.setR_recommand(r_recommand);
 			reviewbean.setR_report(r_report);
-			
+			//reviewbean.setR_date(new Timestamp(System.currentTimeMillis()));
 			reviewdao.insertReview(reviewbean);
 		}
 		

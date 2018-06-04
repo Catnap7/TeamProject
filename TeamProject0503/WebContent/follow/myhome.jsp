@@ -1,3 +1,4 @@
+<%@page import="net.follow.db.FollowBean"%>
 <%@page import="net.category.db.ReviewBean"%>
 <%@page import="java.util.List"%>
 <%@page import="net.admin.manage.db.MovieBean"%>
@@ -10,6 +11,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>왓츄: My Watchu Page</title>
+<!-- jQuery -->
+<script src="./js/jquery-3.3.1.js"></script>
+<script src="http://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
@@ -23,6 +28,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
@@ -33,11 +39,16 @@ int followercount=((Integer)request.getAttribute("followercount"));
 int followingcount= ((Integer)request.getAttribute("followingcount"));
 int reviewcount= ((Integer)request.getAttribute("reviewcount"));
 MovieBean favorite = (MovieBean)request.getAttribute("moviebean");
-MovieBean favorite2=(MovieBean)request.getAttribute("moviebean2");
+//MovieBean favorite2=(MovieBean)request.getAttribute("moviebean2");
 List top5reviewlist = (List)request.getAttribute("top5reviewlist");
 List top5movielist = (List)request.getAttribute("top5movielist");
  List top5favoritelist = (List)request.getAttribute("top5favoritelist");
-/*  List top5movielist2 = (List)request.getAttribute("top5movielist2"); */
+List f_followingList = (List)request.getAttribute("f_followingList");
+List m_followingList = (List)request.getAttribute("m_followingList");
+List f_followerList = (List)request.getAttribute("f_followerList");
+List m_followerList = (List)request.getAttribute("m_followerList");
+String id = (String)request.getAttribute("m_id");
+String m_id=(String)session.getAttribute("m_id");
 String grade="";
 switch(getmember.getM_grade()){
 case 1 : grade = "정회원"; break;
@@ -58,7 +69,8 @@ case "horror" : genre="공포"; break;
 case "drama" : genre="드라마"; break;
 }
 }
-String genre2="";
+/* String genre2="";
+
 if(favorite2!=null){
 switch(favorite2.getMv_genre()){
 case "animation" : genre2="애니메이션"; break;
@@ -71,7 +83,7 @@ case "romance" : genre2="로맨스"; break;
 case "horror" : genre2="공포"; break;
 case "drama" : genre2="드라마"; break;
 }
-}
+} */
 
 %>
 
@@ -102,27 +114,17 @@ case "drama" : genre2="드라마"; break;
 			<tr>
 				<th>선호장르</th>
 				<td>
-					<%if(favorite==null){
+					<%
+					if(favorite==null ){
 						%>
-						<%="선호장르 없음"%>
+						<%="아직 선호장르가 없습니다"%>
 						<%
 					}else{
 						%>
 						<%=genre%>
 						<%
-					} 
-					%>
-					<%=", " %>
-					 <%if(favorite2==null){
-						%>
-						<%="선호장르 없음"%>
-						<%
-					}else{
-						%>
-						<%=genre2%>
-						<%
 					}
-					%>
+					%> 
 				</td> <!-- 선호장르 상위 2개 -->
 			</tr>
 		</table>
@@ -140,66 +142,100 @@ case "drama" : genre2="드라마"; break;
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">팔로잉</h4>
         </div>
-	
-		<!--         내가 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         내가 팔로잉 하는 한 사람  -->
-		
-		<!--         내가 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         내가 팔로잉 하는 한 사람  -->
-		
-		<!--         내가 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         내가 팔로잉 하는 한 사람  -->
-		
-		<!--         내가 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         내가 팔로잉 하는 한 사람  -->
-		
-		<!--         내가 팔로잉 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         내가 팔로잉 하는 한 사람  -->
+        
+        <%
+        for(int i=0; i<f_followingList.size(); i++) {
+        	FollowBean fbean = (FollowBean)f_followingList.get(i);
+        	MemberBean mbean = (MemberBean)m_followingList.get(i);
+        	List followingCheckList = (List)request.getAttribute("followingCheckList");
+        	%>
+        	<!--         내가 팔로잉 하는 한 사람  -->
+			<div class="follow_div">
+	          <div class="photo">
+			    <a href="./FollowMyHome.fo?m_id=<%=fbean.getFo_following() %>"><img src="./images/proflie_img/proflie<%=mbean.getM_pic() %>.png" width="50px" height="50px"></a>
+			  </div>
+			  <a href="./FollowMyHome.fo?m_id=<%=fbean.getFo_following() %>"><%=fbean.getFo_following() %></a><br>
+			  <span><%=mbean.getM_name() %></span>
+			  <%
+// 			  if(m_id.equals(id)) {
+				  
+			  if(m_id.equals(fbean.getFo_following())) {
+				
+			  }else if((Integer)followingCheckList.get(i) == 1) {
+					  %>
+	<!-- 				  서로 팔로우 할때 -->
+					  <a id="f_unfollow<%=mbean.getM_name() %>" class="unfollow_a">언팔로우</a>
+					  <%
+				  }else if((Integer)followingCheckList.get(i) == 0) {
+					  %>
+	<!-- 				  상대방만 나를 팔로우 할때 -->
+					  <a id="f_following<%=mbean.getM_name() %>" class="follow_a">팔로잉</a>
+					  <%
+				  }
+// 			  }
+			  %>
+
+        	<input type="hidden" id="m_id<%=mbean.getM_name() %>" value="<%=m_id %>">
+			<input type="hidden" id="f_id<%=mbean.getM_name() %>" value="<%=fbean.getFo_following() %>">
+			  
+			  <script type="text/javascript">
+			  
+		        $(document).ready(function() {
+		        	
+		        	$('#f_unfollow<%=mbean.getM_name() %>').click(function(){
+		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
+						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
+						
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
+						
+						$.ajax({
+							type: "get",
+							url: "./DeleteFollowerAction.fo",
+							dataType: "html",
+							data: {
+								"m_id": m_id,
+								"f_id": f_id,
+							},
+							success:function(data){
+								alert("팔로우 끊기");
+								location.reload();
+							}
+						});
+		        	});
+		        	
+		        	$('#f_following<%=mbean.getM_name() %>').click(function(){
+		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
+						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
+						
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
+						
+						$.ajax({
+							type: "get",
+							url: "./InsertFollowerAction.fo",
+							dataType: "html",
+							data: {
+								"m_id": m_id,
+								"f_id": f_id,
+							},
+							success:function(data){
+								alert("팔로잉 하기");
+								location.reload();
+							}
+						});
+		        	});
+		        	
+		        });
+		        
+       		 </script>
+			  
+			</div>
+			<div class="clear"></div>
+			<!--         내가 팔로잉 하는 한 사람  -->
+        	<%
+        }
+        %>
 		
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
@@ -220,30 +256,100 @@ case "drama" : genre2="드라마"; break;
           <h4 class="modal-title">팔로워</h4>
         </div>
         
-		<!--         나를 팔로우 하는 한 사람  -->
-        <div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="follow_a">팔로잉</a>
-		</div>
-		<div class="clear"></div>
-		<!--         나를 팔로우 하는 한 사람  -->
-		
-		<!--         나를 팔로우 하는 한 사람  -->
-		<div class="follow_div">
-          <div class="photo">
-		    <a href="http://www.naver.com"><img src="./images/m_cover.jpg" width="50px" height="50px"></a>
-		  </div>
-		  <a href="http://www.naver.com">gns@naver.com</a><br>
-		  <span>김태훈</span>
-		  <a href="http://www.naver.com" class="unfollow_a">언팔로우</a>
-		</div>
-		<div class="clear"></div>
-		<!--         나를 팔로우 하는 한 사람  -->
-		  
+        <%
+        for(int i=0; i<f_followerList.size(); i++) {
+        	FollowBean fbean = (FollowBean)f_followerList.get(i);
+        	MemberBean mbean = (MemberBean)m_followerList.get(i);
+        	List followCheckList = (List)request.getAttribute("followCheckList");
+        	%>
+        	
+        	<!--         나를 팔로잉 하는 한 사람  -->
+	        <div class="follow_div">
+	          <div class="photo">
+			    <a href="./FollowMyHome.fo?m_id=<%=fbean.getFo_id() %>"><img src="./images/proflie_img/proflie<%=mbean.getM_pic() %>.png" width="50px" height="50px"></a>
+			  </div>
+			  <a href="./FollowMyHome.fo?m_id=<%=fbean.getFo_id() %>"><%=fbean.getFo_id() %></a><br>
+			  <span><%=mbean.getM_name() %></span>
+			  <%
+			  if(m_id.equals(fbean.getFo_id())) {
+				
+			  }else	if((Integer)followCheckList.get(i) == 1) {
+					  %>
+	<!-- 				  서로 팔로우 할때 -->
+					  <a id="unfollow<%=mbean.getM_name() %>" class="unfollow_a">언팔로우</a>
+					  <%
+				  }else if((Integer)followCheckList.get(i) == 0) {
+					  %>
+	<!-- 				  상대방만 나를 팔로우 할때 -->
+					  <a id="following<%=mbean.getM_name() %>" class="follow_a">팔로잉</a>
+					  <%
+				  }
+// 			  }
+			  %>
+
+        	<input type="hidden" id="m_id<%=mbean.getM_name() %>" value="<%=m_id %>">
+			<input type="hidden" id="f_id<%=mbean.getM_name() %>" value="<%=fbean.getFo_id() %>">
+			  
+			  <script type="text/javascript">
+			  
+		        $(document).ready(function() {
+		        	
+		        	$('#unfollow<%=mbean.getM_name() %>').click(function(){
+		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
+						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
+						
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
+						
+						$.ajax({
+							type: "get",
+							url: "./DeleteFollowerAction.fo",
+							dataType: "html",
+							data: {
+								"m_id": m_id,
+								"f_id": f_id,
+							},
+							success:function(data){
+								alert("팔로우 끊기");
+								location.reload();
+							}
+						});
+		        	});
+		        	
+		        	$('#following<%=mbean.getM_name() %>').click(function(){
+		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
+						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
+						
+<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
+						
+						$.ajax({
+							type: "get",
+							url: "./InsertFollowerAction.fo",
+							dataType: "html",
+							data: {
+								"m_id": m_id,
+								"f_id": f_id,
+							},
+							success:function(data){
+								alert("팔로잉 하기");
+								location.reload();
+							}
+						});
+		        	});
+		        	
+		        	
+		        });
+		        
+       		 </script>
+       		       
+			</div>
+			<div class="clear"></div>
+			<!--         나를 팔로잉 하는 한 사람  -->
+        	<%
+        }
+        %>
+        
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
         </div>
@@ -255,37 +361,68 @@ case "drama" : genre2="드라마"; break;
 
 <section class="sec myReview">
 	<div class="secInfo">
-		<h2><%=getmember.getM_name()%>님 의 리뷰</h2>
+		<h3><%=getmember.getM_name()%>님의 리뷰</h3>
 		<a href="./FollowReview.fo"><p>리뷰 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->
 	</div>	
 	
 	<!-- ↓↓↓↓↓↓↓리뷰 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
 	<!-- <div class="rvList"> -->
-			<%for(int i=0;i<top5reviewlist.size();i++){
+	
+			<%
+			 if(top5reviewlist.size()==0){
+				 %>
+				 <div id="rv"> 
+				<%-- <p> <%=moviebean.getMv_kor_title() %> / <%=reviewbean.getR_date() %>/ <%=reviewbean.getR_recommand() %>/ <%=reviewbean.getR_report() %></p> --%>
+					<div class="noReviewContents">
+						<!-- <img src="./images/noReview.png" width="140px" height="140px">  -->
+						<p><%="아직 리뷰가 없습니다"%></p>
+						<p><%="영화를 본 후 내 감상을 리뷰로 남겨주세요!"%></p>
+					
+					</div>
+				</div>
+				 <%
+			 }else{	
+			for(int i=0;i<top5reviewlist.size();i++){
 				ReviewBean reviewbean = (ReviewBean)top5reviewlist.get(i);
 			 	MovieBean moviebean= (MovieBean)top5movielist.get(i);
-			 	
+			 	String yymmdd =reviewbean.getR_date().toString();
+			 			
 				%>
 			<div id="rv"> 
-				<p> <%=moviebean.getMv_kor_title() %> / <%=reviewbean.getR_date() %>/ <%=reviewbean.getR_recommand() %>/ <%=reviewbean.getR_report() %></p>
-				<p class="rvList">
-				<%=reviewbean.getR_content()%></p>
+				<p><span id="reviewTitle"><%=moviebean.getMv_kor_title()%></span>
+				<span id="reviewDate"><%=yymmdd.substring(0,10)%></span>
+				<span id="reviewRecommand"><%="추천수  "%><%=reviewbean.getR_recommand()%></span>
+				<%-- / <%=reviewbean.getR_report()%> --%></p>
+				<p class="rvList"><%=reviewbean.getR_content()%></p>
 			</div> 
-			<%} %>
+			
+			<%}
+			}%>
 	<!-- </div> -->	
 </section>
 	
 
 <section class="sec myFavMovie">
 	<div class="secInfo">
-		<h2><%=getmember.getM_name()%>님 이 좋아한 영화</h2>
+		<h3><%=getmember.getM_name()%>님이 좋아한 영화</h3>
 		<a href="./FollowFavorite.fo"><p>영화 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->	
 	</div>	
 	
 		<!-- ↓↓↓↓↓↓↓영화 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
 	<!-- <div class="mvList" id="rv"> -->
 		<div class="mvList"> 
-			<%for(int i=0;i<top5favoritelist.size();i++){
+			<%
+				if(top5favoritelist.size()==0){
+					%>
+					<div class="noFavContents">
+						<!-- <img src="./images/noFavorite.png" width="140px" height="140px"> --> 
+						<p><%="좋아요 누른 영화가 없습니다"%></p>
+						<p><%="좋아하는 영화에 하트를 눌러주세요!"%></p>
+					</div>
+
+					<%
+				}else{
+				for(int i=0;i<top5favoritelist.size();i++){
 				MovieBean moviebean=(MovieBean)top5favoritelist.get(i);
 				String img_genre= "";
 				if(moviebean.getMv_genre().equals("animation")){
@@ -304,11 +441,12 @@ case "drama" : genre2="드라마"; break;
 					img_genre="romance";
 				}
 			%>
-			<div>
-				<img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="175px" height="260px">
+			<div class="favMovies">
+				<img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="195px" height="280px"> 
 				<p><%=moviebean.getMv_kor_title()%></p>
 			</div>
-		<%} %>
+		<%	}
+				}%>
 		</div>
 	<!-- </div> -->	
 </section>

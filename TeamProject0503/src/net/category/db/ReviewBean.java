@@ -1,6 +1,7 @@
 package net.category.db;
 
-import java.sql.Date;
+
+import java.sql.Timestamp;
 
 public class ReviewBean {
 	
@@ -10,7 +11,8 @@ public class ReviewBean {
 	private int r_recommand; //	default 0 추천
 	private int r_report; // 신고수
 	private String r_content; // 내용
-	private Date r_date;	// 댓글 단 날
+	private Timestamp r_date;	// 댓글 단 날
+	
 	
 	public int getR_num() {
 		return r_num;
@@ -48,11 +50,12 @@ public class ReviewBean {
 	public void setR_content(String r_content) {
 		this.r_content = r_content;
 	}
-	public Date getR_date() {
+	public Timestamp getR_date() {
 		return r_date;
 	}
-	public void setR_date(Date r_date) {
+	public void setR_date(Timestamp r_date) {
 		this.r_date = r_date;
 	}
+
 	
 }

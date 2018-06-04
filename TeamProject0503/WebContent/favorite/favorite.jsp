@@ -45,7 +45,7 @@ List<MovieBean> movielist = (List)request.getAttribute("movielist");
 
 <!-- 크롬 기준 -->
 
-<h2 id="categoryTitle">회원님이 보고 싶어 하는 영화</h2> 
+
 
 <!-- 아티클 -->
 <article>
@@ -54,8 +54,16 @@ List<MovieBean> movielist = (List)request.getAttribute("movielist");
 		
 		
 		<!--for문으로 반복 하시면 됩니다.아래의 디자인 예시 코드를 지우고 for문만 남기면 정상작동-->
-		<%for(int i=0;i<favoritelist.size();i++){
-		MovieBean moviebean= movielist.get(i);
+<%-- 		<%for(int i=0;i<favoritelist.size();i++){
+		MovieBean moviebean= movielist.get(i); --%>
+
+	<%if(favoritelist.size()!=0) {%>
+	
+	<h2 id="favoriteTitle">회원님이 보고 싶어 하는 영화</h2> 
+	<%
+		for(int i=0;i<favoritelist.size();i++){
+		MovieBean moviebean= (MovieBean)movielist.get(i);
+
 		
 
 		/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/
@@ -97,7 +105,15 @@ List<MovieBean> movielist = (List)request.getAttribute("movielist");
 							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
 							</div>
 			</a>
-		<%} %> 
+		<%}
+		}else{%>
+			<div id="noMoreMovie"><!-- <p><i class="material-icons" style="font-size:48px;">warning</i></p><br> -->
+				<p>아직 보고싶어요를 하나도 누르지 않으셨네요TT</p><br><br>
+				<p><img src="./images/noFavorite.png" width="140px" height="140px"></p><br>
+				<p>회원님이 보고 싶은 영화에 하트를 꾹 눌러주세요!</p><br><br>
+				
+			</div>	
+		<%}%> 
 		
 	</div><!-- container -->
 </article>

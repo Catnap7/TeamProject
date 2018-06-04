@@ -6,9 +6,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>왓츄 : 공지사항</title>
+
+<!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
+
+<!-- 웹 폰트 : 나눔고딕 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
+
 </head>
 <body>
 
@@ -32,8 +39,8 @@
 <!-- 어드민 서브메뉴 -->
 
 	<div id="content">
-		<h1>
-			notice [<%=count %>]
+		<h1 class="adminTitle">
+			공지사항 [<%=count %>]
 		</h1>
 		<table class="db_list">
 			<tr>
@@ -81,7 +88,14 @@
 				// 1~10, 11~20, 21~30
 				for (int i = startPage; i <= endPage; i++) {
 			%>
-			<a href="./AdminNoticeList.am?pageNum=<%=i%>">[<%=i%>페이지]
+			<a href="./AdminNoticeList.am?pageNum=<%=i%>">
+				<%
+				int pageNumm=Integer.parseInt(pageNum);
+				if(pageNumm==i) {%>
+				<span class="thisPage"><%=i%></span>
+				<%}else{%>
+				<span class="normalPage"><%=i%></span>
+				<%} %>				
 			</a>
 			<%
 				}

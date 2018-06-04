@@ -1,5 +1,6 @@
 package net.rating.action;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,7 +42,7 @@ public class RatingAction implements Action{
 		ratingbean.setRa_id(ra_id);//레이팅 한 사람 받아옴
 		ratingbean.setRa_p_num(ra_p_num);//레이팅 준 영화번호 받아옴
 		ratingbean.setRa_rating(Integer.parseInt(request.getParameter("ra_rating")));//레이팅값 받아옴.
-		
+		//ratingbean.setRa_date(new Timestamp(System.currentTimeMillis()));
 
 		//메소드 실행, insert, update
 		RatingDAO rdao= new RatingDAO();

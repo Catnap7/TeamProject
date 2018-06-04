@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
+import com.mysql.fabric.Response;
+
 import net.admin.manage.db.AdminMemberDAO;
 import net.member.db.MemberBean;
 
@@ -52,15 +54,16 @@ public class AdminMember_List_Search extends HttpServlet {
 			result.append("{\"value\" : \"" + StrGrade + "\"},");
 			result.append("{\"value\" : \"" + userList.get(i).getM_reg_date() + "\"},");
 //			result.append("{\"value\" : \"<a href='./AdminMemberDelete.am?m_id="+ userList.get(i).getM_id() +"'>내보내기" + "</a>\"}],");	
-		result.append("{\"value\" : \"<button onclick='confirm()'>내보내기" + "</button>\"}],");	
+			result.append("{\"value\" : \"<button onclick='confirm()'>내보내기" + "</button>\"}],");	
 		}		
 		result.append("]}");
 		return result.toString();
 	}
 	
 	public String confirm() {
-		JOptionPane.showMessageDialog(null, "정말로 내보내시겠습니까?");
-		
+		String message = "정말로 내보내시겠습니까?";
+		String title = "확인";
+		JOptionPane.showConfirmDialog(null, message, title, 0);
 		return null;
 	}
 

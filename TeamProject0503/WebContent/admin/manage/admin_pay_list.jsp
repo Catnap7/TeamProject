@@ -1,108 +1,89 @@
 <%@page import="java.util.List"%>
-<%@page import="net.pay.db.PayBean"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Pay List & AJAX Search</title>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
+
+<!-- script -->
+
+<script type="text/javascript">
+	var request = new XMLHttpRequest();
+	function searchFunction() {
+		request.open("Post", "./AdminPaySearch?searchValue="+encodeURIComponent(document.getElementById("searchValue").value)+"&select="+encodeURIComponent(document.getElementById("select").value), true);
+		request.onreadystatechange = searchProcess;
+		request.send(null);
+	}
+	function searchProcess() {
+		var table = document.getElementById("ajaxTable");
+		table.innerHTML = "";
+		if (request.readyState == 4 && request.status == 200) {
+			var object = eval('(' + request.responseText + ')');
+			var result = object.result;
+			for (var i = 0; i < result.length; i++) {
+				var row = table.insertRow(0);
+				for (var j = 0; j < result[i].length; j++) {
+					var cell = row.insertCell(j);
+					cell.innerHTML = result[i][j].value;
+				}
+			}
+		}
+	}
+	window.onload = function() {
+		searchFunction();
+	}
+</script>
+
+<!-- script -->
+
 </head>
 <body>
-	<%
-		List<PayBean> AdminPayList = (List)request.getAttribute("AdminPayList");
-		int count = ((Integer) request.getAttribute("count")).intValue();
-		String pageNum = (String) request.getAttribute("pageNum");
-		int pageCount = ((Integer) request.getAttribute("pageCount")).intValue();
-		int pageBlock = ((Integer) request.getAttribute("pageBlock")).intValue();
-		int startPage = ((Integer) request.getAttribute("startPage")).intValue();
-		int endPage = ((Integer) request.getAttribute("endPage")).intValue();
-	%>
 
-	<!-- 헤더영역 -->
+	<!-- JSP -->
+	<!-- JSP -->
+
+	<!-- Header -->
 	<jsp:include page="../../inc/header.jsp" />
-	<!-- 헤더영역 -->
-
-	<!-- 어드민 서브메뉴 -->
+	<!-- Header -->
+	
+	<!-- Sub -->
 	<jsp:include page="../../inc/admin_sub.jsp" />
-	<!-- 어드민 서브메뉴 -->
-
-	<div id="content">
-		<h1>PAT LIST [<%=count %>]</h1>
-
+	<!-- Sub -->
+	
+	<div id="content_member">
+		<h1>PAY LIST</h1>
 		<div class="admin-search-container">
-			<form action="admin_pay_list_search.jsp">
-				<input type="text" placeholder="Search.." name="search">
-				<button type="submit" class="searchBtn">
-					<img src="./images/search.png" width="20px" height="20px">
-				</button>
-			</form>
+		<select id="select">
+			<option value="p_id" selected="selected">ID</option>
+			<option value="p_auto">결제방식</option>
+			<option value="p_start_day">결제일</option>		
+			<option value="p_end_day">만료일</option>	
+		</select>
+		<input type="text" onkeyup="searchFunction()" id="searchValue" placeholder="검색할 내용 입력해라.">
+		<button type="button" onclick="searchFunction();"><img src="./images/search.png" width="20px" height="20px"></button>
 		</div>
-
 		<table class="db_list">
-			<tr>
-				<th class="pay_th1">No</th>
-				<th class="pay_th2">ID</th>
-				<th class="pay_th4">결제 방식</th>
-				<th class="pay_th5">결제일</th>
-				<th class="pay_th6">쿠폰만료일</th>
-			</tr>
-			<%
-			
-			for(int i = 0; i < AdminPayList.size(); i++) {
-				PayBean paybean = AdminPayList.get(i);
-				
-				%>
-				
+			<thead>
 				<tr>
-				<td class="pay_th1"><%=paybean.getP_num() %></td>
-				<td class="pay_th2"><%=paybean.getP_id() %></td>
-				<td class="pay_th4"><%=paybean.getP_auto() %> 방식</td>
-				<td class="pay_th5"><%=paybean.getP_start_day() %></td>
-				<td class="pay_th6"><%=paybean.getP_end_day() %></td>
-			</tr>
-				
-				<%
-			}
-			
-			%>
+					<th class="th2">NO</th>
+					<th class="th3">ID</th>
+					<th class="th4">결제방식</th>
+					<th class="th5">결제일</th>
+					<th class="th5">쿠폰만료일</th>
+				</tr>
+			</thead>
+			<tbody id="ajaxTable">
+			</tbody>
 		</table>
-
-		<div class="prev_next">
-			<%
-				// 이전
-				if (startPage > pageBlock) {
-			%>
-			<a
-				href="./AdminMemberListAction.am?pageNum=<%=startPage - pageBlock%>">[이전]</a>
-			<%
-				}
-
-				// 1~10, 11~20, 21~30
-				for (int i = startPage; i <= endPage; i++) {
-			%>
-			<a href="./AdminMemberListAction.am?pageNum=<%=i%>">[<%=i%>페이지]
-			</a>
-			<%
-				}
-
-				// 다음
-				if (endPage < pageCount) {
-			%>
-			<a
-				href="./AdminMemberListAction.am?pageNum=<%=startPage + pageBlock%>">[다음]</a>
-			<%
-				}
-			%>
-		</div>
-
 	</div>
 
-	<!-- 푸터 영역 -->
+	<!-- Footer -->
 	<jsp:include page="../../inc/footer.jsp" />
-	<!-- 푸터 영역 -->
-
+	<!-- Footer -->
+	
 </body>
 </html>

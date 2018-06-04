@@ -1,6 +1,7 @@
 package net.category.action;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -13,6 +14,8 @@ import net.admin.manage.db.MovieDAO;
 import net.category.db.ReviewDAO;
 import net.favorite.db.FavoriteBean;
 import net.favorite.db.FavoriteDAO;
+import net.follow.db.FollowBean;
+import net.follow.db.FollowDAO;
 import net.member.db.MemberBean;
 import net.member.db.MemberDAO;
 import net.rating.db.RatingBean;
@@ -60,7 +63,6 @@ public class CategoryMovie_InfoAction implements Action{
 //				
 //		request.setAttribute("reviewList", reviewList);
 		String order = request.getParameter("order");
-		System.out.println(order);
 		
 		int count = reviewdao.getReviewCount(mv_num);
 		int pageSize = 10;

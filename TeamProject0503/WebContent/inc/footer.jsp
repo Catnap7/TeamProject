@@ -8,10 +8,9 @@
 </script>
 
 <footer>
-<hr>
 <div class="f_logo">
 	<a href="#">
-	<img alt="logo" src="./images/watchu_logo_gray.png" width="135px" height="50px"></a>
+	<img alt="logo" src="./images/watchu_logo_gray.png" width="240px" height="50px"></a>
 </div>
 
 <div class="use">
@@ -22,11 +21,11 @@
 
 <div class="sns">
 <a href="https://ko-kr.facebook.com" target="_blank">
-<img alt="fb" src="./images/sns_fb.png" width="40px" height="40px"></a>
+<img alt="fb" src="./images/sns_fb.png" width="60px" height="60px"></a>
 <a href="https://www.instagram.com" target="_blank">
-<img alt="insta" src="./images/sns_insta.png" width="40px" height="40px"></a>
+<img alt="insta" src="./images/sns_insta.png" width="60px" height="60px"></a>
 <a href="https://twitter.com" target="_blank">
-<img alt="twitter" src="./images/sns_twi.png" width="40px" height="40px"></a>
+<img alt="twitter" src="./images/sns_twi.png" width="60px" height="60px"></a>
 </div>
 
 <div class="clear"></div>

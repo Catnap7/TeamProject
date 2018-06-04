@@ -36,13 +36,10 @@
 <!-- vip 서브메뉴 -->
 
 <div id="movieContent">
-	
+	<h1  class="adminTitle">VIP영화 정보 수정하기</h1>
 	<form action="./VipMovieModifyAction.vi" method="post">
 	<%-- <input type="hidden" name="v_num" value="<%=vipbean.getV_num()%>"> --%>
 		<table class="movieContent">
-			<tr>
-				<th colspan="5">VIP영화 정보 수정하기</th>
-			</tr>
 			<tr>
 				<td><%=vipbean.getV_num()%></td>
 				<td colspan="2"><input type="text" name="v_kor_title" value="<%=vipbean.getV_kor_title()%>"></td>
@@ -91,8 +88,10 @@
 			</tr>	
 		</table>
 		
-			<input type="submit" value="상품수정">
-			<input type="reset" value="다시등록">
+		<div class="vip_movie_btn_modi">
+			<input type="submit" class="wirtebtn" value="상품수정">
+			<input type="reset"  class="wirtebtn" value="다시등록">
+		</div>
 </form>
 
 </div><!-- content -->

@@ -5,6 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>왓츄 : 당신의 모든 영화, 세상의 모든 취향 </title>
+
+<!-- 웹 폰트 : 나눔고딕 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
+
 <style type="text/css">
 
 
@@ -12,9 +17,10 @@
 	margin: 0;
 	padding:0;
 	box-sizing: border-box;
-	background-image: url("./images/intro_cover.jpg");
+	/* background-image: url("./images/vip_done.png");
 	background-repeat: none;
-	background-size:cover;
+	background-size:cover; */
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 .clear{clear: both;}
@@ -22,6 +28,14 @@
 
 body{
 	background-color: white;
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
 }
 
 .start{
@@ -41,7 +55,7 @@ body{
 	.caption{
 		width: 600px; height:100px;
 		background-image:none;
-		color: #292929;
+		color: white;
 		margin: 50px auto;
 		font-weight:bold;
 		font-size:1.5em;
@@ -77,22 +91,23 @@ body{
 	.btn a{
 		display: inline-block;
 		border: 1px solid #50d4aa;
-		border-radius:20px;
-		width: 300px; height: 80px;
+		border-radius:40px;
+		width: 250px; height: 60px;
 		background-image:none;
 		background-color: #50d4aa;
 		text-decoration: none;
 		margin:auto auto;
 		margin-top:50px;	
-		padding-left:20px;
-		padding-top:25px;
-		letter-spacing: 20px;
+		padding-left:10px; 
+		text-align:center;
+		padding-top:15px;
+		letter-spacing: 10px; 
 	}
 	
 	.btn a:LINK, .btn a:VISITED, .btn a:ACTIVE{
-		color:#fffffd;
-		font-weight:bold;
-		font-size: 1.5em;	
+		color:white;
+		/* font-weight:bold; */
+		font-size: 1.4em;	
 	}
 
 
@@ -113,6 +128,11 @@ body{
 <body>
 
 
+<video autoplay muted loop id="myVideo">
+  <source src="./media/Star.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+
 	<div class="start">
 		<img src="./images/watchu_logo.png" id="logo">
 		<div class="caption">
@@ -120,7 +140,7 @@ body{
 			<p id="start_caption2">국내 최대 영화 취향 분석 사이트, <span>WATCHU</span></p>
 		</div>
 		<div class="btn">
-			<a href="./start.st">시작하기</a>
+			<a href="./start.st">START</a>
 		</div>
 	</div>
 	

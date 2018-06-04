@@ -1,3 +1,4 @@
+<%@page import="net.member.db.MemberBean"%>
 <%@page import="java.util.List"%>
 <%@page import="net.vip.db.VipResBean"%>
 <%@page import="net.vip.db.VipResDAO"%>
@@ -28,6 +29,10 @@ VipResBean vipresbean=new VipResBean();
 
 List<VipResBean> VipSeatTakenList = (List)request.getAttribute("VipSeatTakenList");
 
+List vipMemberList = (List)request.getAttribute("vipMemberList");
+List<VipResBean> seatList=(List)request.getAttribute("seatList");
+
+
 %>
 <!-- 헤더 영역 -->
 <jsp:include page="../inc/header.jsp"/>
@@ -37,35 +42,36 @@ List<VipResBean> VipSeatTakenList = (List)request.getAttribute("VipSeatTakenList
 <jsp:include page="../vip/vipAdmin_sub.jsp"/>
 <!-- vip 서브메뉴 -->
 
-
+<article class="content">
+	
+<h1 class="adminTitle">이번달 VIP 시사회 영화</h1>
 <section id="movie">
-이번달 영화
-<div class="movie_title"><p>이 달의 영화</p></div>
-		<div class="poster"><img src="./images/vip/<%=vipbean.getV_eng_title().replaceAll(" ","")+"_p.jpg"%>" width="370" height="500"></div>
+		<div class="poster"><img src="./images/vip/<%=vipbean.getV_eng_title().replaceAll(" ","")+"_p.jpg"%>" width="250" height="350"></div>
 		<div class="movie_info">
-			<P><%=vipbean.getV_kor_title()%></P>
-			<p><%=vipbean.getV_director()%><%="  감독"%></p>
-			<p><%=vipbean.getV_year()%><%="년도 개봉" %></p>
-			<p>
-				<%
-				String age = "";
-				switch(vipbean.getV_age()){
-				case 0  : age="전체이용가"; break;
-				case 12	: age="12세이용가"; break;
-				case 15	: age="15세이용가"; break;
-				case 19 : age="청소년관람불가"; break;
-				}
-				%>
-				<%=age%>
-			</p>
-			<p><%=vipbean.getV_genre()%></p>
-			<p><%=vipbean.getV_actor().replaceAll(","," , ")%></p>
+				<P><%=vipbean.getV_kor_title()%></P>
+				<p><%=vipbean.getV_director()%><%="  감독"%></p>
+				<p><%=vipbean.getV_year()%><%="년도 개봉" %></p>
+				<p>
+					<%
+					String age = "";
+					switch(vipbean.getV_age()){
+					case 0  : age="전체이용가"; break;
+					case 12	: age="12세이용가"; break;
+					case 15	: age="15세이용가"; break;
+					case 19 : age="청소년관람불가"; break;
+					}
+					%>
+					<%=age%>
+				</p>
+				<p><%=vipbean.getV_genre()%></p>
+				<p><%=vipbean.getV_actor().replaceAll(","," , ")%></p>
+				<p><%=vipbean.getV_story()%></p>
 		</div>
 </section>
 		
-	
-<section id="seat">		
-vip시사회 좌석 예매 현황 
+
+<h1 class="adminTitle">vip시사회 좌석 예매 현황 </h1>
+<section id="seat">			
 	<div id="screen">SCREEN</div>
 			<table class="seatTable">	
 				<tr>
@@ -93,8 +99,32 @@ vip시사회 좌석 예매 현황
 				 	}//for %>
 				</tr>
 			</table> 
+			<!-- <div id="vipListBtn"><a href="./VipMemberList.vi"> 이번달 VIP리스트 보기</a></div> -->
 </section>
 
+<h1 class="adminTitle">VIP 멤버 목록</h1>	
+<section id="vipMember">
+		<table class="vip_db_list vipmain">
+			<tr>
+				<th>시사회 좌석 번호</th><th>아이디</th><th>이름</th><th>등급</th><th>생년월일</th><th>가입일</th>
+			</tr>
+			
+			<%for(int i=0;i<vipMemberList.size();i++){
+				MemberBean memberbean =(MemberBean)vipMemberList.get(i);
+				vipresbean=(VipResBean)seatList.get(i);
+			%>
+			<tr>
+				<td><%=vipresbean.getVr_seat_num()%></td>
+				<td><%=memberbean.getM_id()%></td><td><%=memberbean.getM_name()%></td>
+				<td><%=memberbean.getM_grade()%></td><td><%=memberbean.getM_id_num1()%></td>
+				<td><%=memberbean.getM_reg_date()%></td>
+			</tr>
+			<%} %>
+		</table>
+</section>
+
+
+</article>
 
 
 <!-- 푸터 영역 -->

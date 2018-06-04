@@ -181,7 +181,10 @@ public int getReviewCount(String m_id) {
 			
 			
 				//sql = "select * from review where r_p_num=?";
-				sql = "select * from review rev join member mem on rev.r_id = mem.m_id where r_p_num= ? order by r_recommand desc limit ?,?";
+				sql = "select * "
+						+ "from review rev join member mem "
+						+ "on rev.r_id = mem.m_id "
+						+ "where r_p_num= ? order by r_recommand desc limit ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, mv_num);
 				pstmt.setInt(2, startRow-1);
@@ -196,7 +199,7 @@ public int getReviewCount(String m_id) {
 				reviewbean.setR_recommand(rs.getInt("r_recommand"));
 				reviewbean.setR_report(rs.getInt("r_report"));
 				reviewbean.setR_content(rs.getString("r_content"));
-				reviewbean.setR_date(rs.getDate("r_date"));
+				reviewbean.setR_date(rs.getTimestamp("r_date"));
 				reviewList.add(reviewbean);
 				MemberBean memberbean = new MemberBean();///////////
 				memberbean.setM_name(rs.getString("m_name"));///////////
@@ -341,7 +344,7 @@ public int getReviewCount(String m_id) {
 				reviewbean.setR_recommand(rs.getInt("r_recommand"));
 				reviewbean.setR_report(rs.getInt("r_report"));
 				reviewbean.setR_content(rs.getString("r_content"));
-				reviewbean.setR_date(rs.getDate("r_date"));
+				reviewbean.setR_date(rs.getTimestamp("r_date"));
 				reviewList.add(reviewbean);
 				MemberBean memberbean = new MemberBean();///////////
 				memberbean.setM_name(rs.getString("m_name"));///////////

@@ -456,7 +456,7 @@ public class VipDAO {
 			ResultSet rs = null;
 			try {
 				con = getConnection();
-				sql = "select * from member m join vip_reservation v on m.m_id=v.vr_id	where m_grade=2";
+				sql = "select * from member m left outer join vip_reservation v on m.m_id=v.vr_id	where m_grade=2";
 				pstmt = con.prepareStatement(sql);
 				
 				rs = pstmt.executeQuery();
@@ -481,7 +481,7 @@ public class VipDAO {
 				
 				vector.add(vipMemberList);
 				vector.add(seatList);
-				
+				System.out.println(vipMemberList.size());
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {

@@ -1,3 +1,4 @@
+
 package net.favorite.db;
 
 import java.sql.Connection;
@@ -211,17 +212,17 @@ public class FavoriteDAO {
 				if(rs2.next()){
 					MovieBean mb=new MovieBean();
 					mb.setMv_num(fb.getF_num());
-					mb.setMv_kor_title(rs.getString("mv_kor_title"));
-					mb.setMv_eng_title(rs.getString("mv_eng_title"));
-					mb.setMv_year(rs.getInt("mv_year"));
-					mb.setMv_country(rs.getString("mv_country"));
-					mb.setMv_age(rs.getInt("mv_age"));
-					mb.setMv_genre(rs.getString("mv_genre"));
-					mb.setMv_time(rs.getInt("mv_time"));
-					mb.setMv_director(rs.getString("mv_director"));
-					mb.setMv_actor(rs.getString("mv_actor"));
-					mb.setMv_story(rs.getString("mv_story"));
-					mb.setMv_video(rs.getString("mv_video"));
+					mb.setMv_kor_title(rs2.getString("mv_kor_title"));
+					mb.setMv_eng_title(rs2.getString("mv_eng_title"));
+					mb.setMv_year(rs2.getInt("mv_year"));
+					mb.setMv_country(rs2.getString("mv_country"));
+					mb.setMv_age(rs2.getInt("mv_age"));
+					mb.setMv_genre(rs2.getString("mv_genre"));
+					mb.setMv_time(rs2.getInt("mv_time"));
+					mb.setMv_director(rs2.getString("mv_director"));
+					mb.setMv_actor(rs2.getString("mv_actor"));
+					mb.setMv_story(rs2.getString("mv_story"));
+					mb.setMv_video(rs2.getString("mv_video"));
 					movieList.add(mb);
 				}
 			}
@@ -375,3 +376,4 @@ public class FavoriteDAO {
 	 }//end count
 	
 }
+
