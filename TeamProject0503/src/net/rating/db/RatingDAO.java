@@ -213,7 +213,7 @@ public class RatingDAO {
 					rb.setRa_id(rs.getString("ra_id"));					
 					rb.setRa_p_num(rs.getInt("ra_p_num"));
 					rb.setRa_rating(rs.getInt("ra_rating"));
-					rb.setRa_date(rs.getTimestamp("ra_date"));
+					//rb.setRa_date(rs.getTimestamp("ra_date"));
 					ratinglist.add(rb);
 					
 					MovieBean moviebean= new MovieBean();
