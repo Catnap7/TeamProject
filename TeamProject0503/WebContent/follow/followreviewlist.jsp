@@ -1,3 +1,4 @@
+<%@page import="net.category.db.ReviewBean"%>
 <%@page import="java.util.List"%>
 <%@page import="net.admin.manage.db.MovieBean"%>
 <%@page import="net.member.db.MemberBean"%>
@@ -18,6 +19,12 @@
 
 
 <body>
+
+<%
+//리뷰 출력을 위한 list
+List<ReviewBean> followreviewlist=(List)request.getAttribute("followreviewlist");
+List<MovieBean> followmovielist=(List)request.getAttribute("followmovielist");
+%>
 <%
 MemberBean getmember=(MemberBean)request.getAttribute("memberbean");
 
@@ -114,14 +121,17 @@ case "drama" : genre2="드라마"; break;
 		<%-- <div class="secInfo">
 			<h3><%="유저이름"%>님 의 영화 리뷰</h3>
 		</div>	 --%>
-				<%for(int i=0;i<=100;i++){ %>
+				<%for(int i=0;i<followreviewlist.size();i++){
+				ReviewBean reviewbean=followreviewlist.get(i);
+				MovieBean moviebean=followmovielist.get(i);
+				%>
 				<div id="rv"> 
-					<p><span id="reviewTitle"><%="영화이름"%></span>
-					<span id="reviewDate"><%="리뷰 쓴 날짜"%></span>
-					<span id="reviewRecommand"><%="추천수  "%><%="0"%></span>
+					<p><span id="reviewTitle"><%=moviebean.getMv_kor_title()%></span>
+					<span id="reviewDate"><%=reviewbean.getR_date()%></span>
+					<span id="reviewRecommand"><%="추천수  "%><%=reviewbean.getR_recommand()%></span>
 					<%-- / <%=reviewbean.getR_report()%> --%></p>
 					<p class="rvList">
-					<%="Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has "%></p>
+					<%=reviewbean.getR_content()%></p>
 				</div> 
 				<%} %>
 	</section>
