@@ -576,5 +576,40 @@ public class FollowDAO {
 		return timelinelist;		
 	}
 	
+	public int myhomeFollowCheck(String m_id, String f_id) {
+		
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		int check = 0;
+		
+		try {
+			con=getConnection();
+
+			sql="select * from follow where fo_id = ? and fo_following = ?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, m_id);
+			pstmt.setString(2, f_id);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				check = 1;	//	 팔로잉 하고있으면 1
+			}else {
+				check = 0;	//	안하면 0
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		
+		return check;
+	}
+	
 	
 }

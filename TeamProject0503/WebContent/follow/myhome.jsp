@@ -25,10 +25,10 @@
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 
 <!-- 팔로우 리스트 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
 </head>
 <body>
@@ -49,6 +49,7 @@ List f_followerList = (List)request.getAttribute("f_followerList");
 List m_followerList = (List)request.getAttribute("m_followerList");
 String id = (String)request.getAttribute("m_id");
 String m_id=(String)session.getAttribute("m_id");
+int myhomeFollowCheck = ((Integer)request.getAttribute("myhomeFollowCheck"));
 String grade="";
 switch(getmember.getM_grade()){
 case 1 : grade = "정회원"; break;
@@ -129,6 +130,81 @@ case "drama" : genre2="드라마"; break;
 			</tr>
 		</table>
 	</div><!-- info -->
+		<%
+		if(m_id.equals(id)) {
+		
+		}else if(myhomeFollowCheck == 0) {
+			%>
+			<button class="FBtn" id="myhome_follow">
+				<a>
+				follow
+				</a>
+			</button>
+			<%
+		}else {
+			%>
+			<button class="FBtn" id="myhome_unfollow">
+				<a>
+				unfollow
+				</a>
+			</button>
+			<%
+		}
+		%>
+		<input type="hidden" id="m_id" value="<%=m_id %>">
+		<input type="hidden" id="f_id" value="<%=id %>">
+		
+		<script type="text/javascript">
+		
+		$(document).ready(function() {
+        	
+        	$('#myhome_unfollow').click(function(){
+        		var m_id = $('#m_id').val();
+				var f_id = $('#f_id').val();
+				
+// 						alert($('#m_id').val());
+// 						alert($('#f_id').val());
+				
+				$.ajax({
+					type: "get",
+					url: "./DeleteFollowerAction.fo",
+					dataType: "html",
+					data: {
+						"m_id": m_id,
+						"f_id": f_id,
+					},
+					success:function(data){
+						alert("팔로우 끊기");
+						location.reload();
+					}
+				});
+        	});
+        	
+        	$('#myhome_follow').click(function(){
+        		var m_id = $('#m_id').val();
+				var f_id = $('#f_id').val();
+				
+// 						alert($('#m_id').val());
+// 						alert($('#f_id').val());
+				
+				$.ajax({
+					type: "get",
+					url: "./InsertFollowerAction.fo",
+					dataType: "html",
+					data: {
+						"m_id": m_id,
+						"f_id": f_id,
+					},
+					success:function(data){
+						alert("팔로잉 하기");
+						location.reload();
+					}
+				});
+        	});
+        	
+        });
+			
+		</script>
 </section><!-- myInfo -->
 
 
