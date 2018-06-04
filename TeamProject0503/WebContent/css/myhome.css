@@ -123,8 +123,13 @@ article{
 	text-decoration: none;
 }
 
+.FBtn a {
+	color: #333;
+}
+
 #myhome_follow {
-	background-color: #50d4aa;
+/* 	색상 변경 */
+	background-color: #50b4aa;
 }
 
 .FBtn:HOVER{
