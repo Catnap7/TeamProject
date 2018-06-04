@@ -34,7 +34,7 @@ public class AdminReviewDAO {
 		ResultSet rs = null;
 		try {
 			con = getConnection();
-			sql = "select * from review where "+select+" LIKE ? order by r_date asc";
+			sql = "select * from review where "+select+" LIKE ? order by r_report asc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchValue+"%");
 			rs = pstmt.executeQuery();
