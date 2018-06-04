@@ -59,12 +59,14 @@
 
 .content{
 	height: 1100px;
+	width: 1500px;
 }
 div#content {
 	/* 	border: 1px solid orange; */
 	margin-left: 300px;
 	margin-top: 30px;
 	height:auto;
+	width:1500px;
 	padding-bottom: 300px;
 	/* position: relative; */
 	/* 	overflow: auto; */
@@ -246,7 +248,7 @@ div#content_member {
 	padding: 10px;
 	font-size: 1em;
 }
-.db_list th, {
+.db_list th {
 	border: 1px solid #fff;
 	height: 50px;
 	background-color: #646464;

@@ -25,10 +25,10 @@
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 
 <!-- 팔로우 리스트 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
 </head>
 <body>
@@ -129,6 +129,21 @@ case "drama" : genre2="드라마"; break;
 			</tr>
 		</table>
 	</div><!-- info -->
+	<button class="FBtn">
+		<a href="#">
+			<!-- 디자인예시:아래 if문 작성 후 지워도 무방 -->follow<!-- 디자인예시:아래 if문 작성 후 지워도 무방 -->
+			
+			<!-- ↓↓↓↓↓↓↓팔로우 하기 전 문자 : follow/ 팔로우 한 후 문자 : unfollow 로 오게 제어해 주세요 -->
+			<%-- <%if(팔로우 하기 전){%>
+				follow<%
+			}elst{
+				%>unfollow<%
+			}%> --%>
+			<!-- ↑↑↑↑↑↑↑↑팔로우 하기 전 문자 : follow/ 팔로우 한 후 문자 : unfollow 로 오게 제어해 주세요 -->
+			
+		</a>
+	</button>
+	
 </section><!-- myInfo -->
 
 
