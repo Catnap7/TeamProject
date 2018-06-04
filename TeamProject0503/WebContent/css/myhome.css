@@ -123,6 +123,10 @@ article{
 	text-decoration: none;
 }
 
+#myhome_follow {
+	background-color: #50d4aa;
+}
+
 .FBtn:HOVER{
 	border-color: #233285;
 }
