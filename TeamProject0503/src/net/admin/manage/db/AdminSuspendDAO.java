@@ -43,5 +43,31 @@ public class AdminSuspendDAO {
 		}
 		return max;
 	}
+	
+	public int AdminMemberGrade(String id) {
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int grade = 0;
+		try {
+			con = getConnection();
+			sql = "select m_grade from member where m_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				grade = rs.getInt("m_grade");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+		}
+		return grade;
+	}
 
 }
