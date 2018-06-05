@@ -69,5 +69,34 @@ public class AdminSuspendDAO {
 		}
 		return grade;
 	}
+	
+	public int AdminReviewReport(int r_p_num, String id) {
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int reportCheck = 0;
+		System.out.println(r_p_num);
+		System.out.println(id);
+		try {
+			con = getConnection();
+			sql = "select r_report from review where r_id = ? and r_p_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, r_p_num);
+			rs = pstmt.executeQuery();			
+			if(rs.next()) {
+				reportCheck = rs.getInt("r_report");
+			}			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+		}
+		System.out.println(reportCheck);
+		return reportCheck;
+	}
 
 }
