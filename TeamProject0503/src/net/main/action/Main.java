@@ -70,6 +70,20 @@ public class Main implements Action{
 //		timer.scheduleAtFixedRate(dailyReset, date.getTime(), 1000*60*60*24); //1000밀리초*60초*60분*24시간
 //		매일 자정마다 리셋 실행시키는 메소드
 		
+////		실시간 알람 메소드
+//		System.out.println("실시간 알람 실험 시작");
+//		RealtimeAlarm realtime = new RealtimeAlarm();
+//		Timer timer2 = new Timer();
+//		Calendar date2 = Calendar.getInstance();		
+//		date2.set(Calendar.AM_PM,Calendar.AM);
+//		date2.set(Calendar.HOUR,12);
+//		date2.set(Calendar.MINUTE, 0);
+//		date2.set(Calendar.SECOND, 0);
+//		date2.set(Calendar.MILLISECOND, 0);
+//		
+//		timer2.scheduleAtFixedRate(realtime, date2.getTime(), 1000*60); //1000밀리초*60초*60분*24시간
+////		실시간 알람 메소드
+		
 		forward=new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("./main/main.jsp");						

@@ -99,7 +99,8 @@ case "drama" : genre2="드라마"; break;
 <section class="sec myInfo">
 	<div id="profile">
 		<img src="./images/proflie_img/proflie<%=getmember.getM_pic()%>.png" width="200px" height="200px">
-		<p><%=getmember.getM_name()%></p><p><%=grade%></p> <!-- 이름, 등급 가져오기 -->
+		<div id="pfName"><p><%=getmember.getM_name()%></p><p><%=grade%></p></div> <!-- 이름, 등급 가져오기 -->
+	<div class="clear"></div>
 	</div><!-- profile -->
 	<div id="info">
 		<table>
@@ -527,6 +528,10 @@ case "drama" : genre2="드라마"; break;
 	<!-- </div> -->	
 </section>
 </div><!-- all -->
+
+<div class="up"><a href="#">▲<br>▲</a></div>
+
+
 </article>
 	
 
