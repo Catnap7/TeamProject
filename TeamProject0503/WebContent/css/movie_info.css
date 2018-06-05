@@ -7,10 +7,9 @@
    clear: both;
 }
 
-article { 
-	/* border: 1px solid red; */
+article {
 	width: 1500px;
- } 
+} 
 
 section {
    border: 1px solid #333;
@@ -22,6 +21,7 @@ section {
    top: 100px;
    left: 210px;
    margin-bottom: 300px;
+
 }
 
 .content {

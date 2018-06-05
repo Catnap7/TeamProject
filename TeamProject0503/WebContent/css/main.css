@@ -19,15 +19,6 @@
 	
 } */
 
-.mainMovie{
-	border:1px solid red;
-	height: 40%;
-	width: 100%;
-	overflow: hidden;
-	text-align: center;
-}
-
-
 article.main1{
 	border:1px solid window;  
 	/* position:relative;
@@ -40,42 +31,126 @@ article.main1{
 }
 article.main2{
     border: 1px solid window;
-    height: 1500px;
+    height: 2500px;
     width: 1900px;
     position: relative;
     top: 100px;
     left: 0px;
 }
 
+
+
+/* main상단 */
 .mainMovie{
-	border:1px solid red;
-	height: 700px;
+	/* border:1px solid red; */ 
+	height: 690px;
+	width:1900px;
 	position: relative;
 	top:-50px;
 	margin-bottom: 30px;
 	overflow: hidden;	
-}
+	box-sizing:border-box;
+	padding: 30px;
+	background: linear-gradient(#455a64bd, white);
+} 
+
+
 .mainCover{
+	/* border:1px solid blue;  */
+	position: relative;
+	height: 660px;
+	width:1370px;
+	box-sizing:border-box;
+	padding: 20px;
+	text-align: center;
+	margin: 0 auto;
+	box-sizing:border-box;
+}
+ 
+.mainPic{
+	float:left;
+	border: 20px solid #ffffff29;
+	/* width:430px; */
+	height:auto; 
+	position: relative;
+	text-align: center;
+	/* padding: 10px 0px 10px 0px; */
+}
+
+.mainPic img{
+	
+	display: inline-block;
+	/* box-shadow:2px 2px #c0c0c0; */
 	position: relative;
 }
 
-.mainCover img{
-	border:1px solid blue;
-	height:auto;
-	width: 1500px;
-	scale:0.8;
-/* 	position: relative;
-	top:-130px; */
+#mainPos{
+	border:1px solid #c0c0c0;
+	width:400px;
+	height:auto; 
+}	
+	
+/* .mainPic:HOVER #play img{
+	display: inline-block;
+} */
+
+.mainPic:HOVER #mainPos{
+	opacity: 0.8;
 }
-.mainPic{position: relative;}
-.mainPic img{
-	border:1px solid green;
-	/* background-image:url("./images/mainCover.png"); */
-	position:absolute;
-	top:0;left:0;
-	height:700px; width: 1900px;
-	box-sizing:border-box;
+
+#play img, #play2 img, #play3 img{
+	border:none;
+	/* display:none; */
+	width:100px; height: 100px;
+	position: absolute;
+	top: 230px;
+    left: 170px;
 }
+
+/* 플레이 버튼 누르면 나오는 예고편 */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 1000px;
+    text-align:center;
+}
+
+/* The Close Button */.
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+} 
+
+
+/* main상단 */
+
+
+
 
 
 .containerWithBtn{
@@ -274,6 +349,7 @@ article.main2{
 	/* margin:0 250px 0 250px; */
 	position: absolute;
 	top:-50px; right:200px;
+	transition: 0.3s;
 	z-index: 5;
 } 
 .mv:HOVER .mv_title{
