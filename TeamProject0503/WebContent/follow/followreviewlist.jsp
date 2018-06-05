@@ -136,6 +136,8 @@ case "drama" : genre2="드라마"; break;
 				<%} %>
 	</section>
 
+<p class="up"><a href="#">▲<br>▲</a></p>
+
 </article>
 
 

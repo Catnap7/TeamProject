@@ -67,15 +67,18 @@ m_name=(String)session.getAttribute("m_name");
 					img_genre="romance";
 				}
 			%>
-			
+			<div id="fvfv">
 				<img src="./images/<%=img_genre %>/<%=imgname %>_p.jpg" width="175px" height="260px">
 				<p><%=moviebean.getMv_kor_title()%></p>
-			
+			</div>
 		<%} %>
 		</div>
 		
 		
 </section>
+
+<p class="up2"><a href="#">▲<br>▲</a></p>
+
 </article>
 
 <!-- 푸터 영역 -->
