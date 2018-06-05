@@ -13,19 +13,25 @@ import net.follow.db.FollowDAO;
 import net.member.db.MemberBean;
 import net.member.db.MemberDAO;
 
-public class Mypage implements Action{
-
+public class Mypage implements Action{	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("Mypage execute()");
 		//한글처리
 		request.setCharacterEncoding("utf-8");
+		ActionForward forward=new ActionForward();
 		// 자바빈 MemberBean mb 객체생성
 		MemberBean mb = new MemberBean();
 		// 자바빈 멤버변수 <= 폼파라미터 가져와서 저장
 		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("m_id");				
+		String id = (String)session.getAttribute("m_id");		
+		if(id==null){
+			forward=new ActionForward();
+			forward.setRedirect(true);		
+			forward.setPath("./MemberLogin.me");
+			return forward;
+		}
 		// MemberDAO mdao 객체생성
 		MemberDAO mdao = new MemberDAO();
 		// getMember(세션값) 메서드 호출()
@@ -34,7 +40,7 @@ public class Mypage implements Action{
 		FollowDAO followdao = new FollowDAO();
 		int followercount= followdao.Followercount(id);
 		int followingcount= followdao.Followingcount(id);
-Vector vector = new Vector();
+		Vector vector = new Vector();
 		
 		// 팔로잉 리스트
 		vector = followdao.followingList(id);
@@ -84,7 +90,7 @@ Vector vector = new Vector();
 		
 		//이동 ActionForward 객체 생성    
 		// 방식,경로 저장
-		ActionForward forward=new ActionForward();
+		
 		forward.setRedirect(false);
 		forward.setPath("./mypage/mypage.jsp");				
 		return forward;

@@ -51,8 +51,7 @@ public class RouletteAction implements Action{
 		response.setContentType("application/json;charset=utf-8");
 		out=response.getWriter();
 		out.println(arr);		
-		out.close();
-		
+		out.close();		
 		return null;
 	}
 	

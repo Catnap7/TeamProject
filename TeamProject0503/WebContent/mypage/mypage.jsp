@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script>
 function profile(){
-	window.open("./UpdateProfile.my","","width=500,height=500,left=600,top=200,scrollbars=yes,resizable=yes,menubar=yes,location=yes");
+	window.open("./UpdateProfile.my","","width=550,height=500,left=600,top=200,scrollbars=yes,resizable=yes,menubar=yes,location=yes");
 }
 </script>
 </head>

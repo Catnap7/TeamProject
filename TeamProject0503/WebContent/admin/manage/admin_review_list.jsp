@@ -20,7 +20,7 @@
 	}
 	function searchProcess() {
 		var table = document.getElementById("ajaxTable");
-// 		table.innerHTML = "";
+		table.innerHTML = "";
 		if (request.readyState == 4 && request.status == 200) {
 			var object = eval('(' + request.responseText + ')');
 			var result = object.result;
@@ -69,7 +69,6 @@
 				<tr>
 					<th class="th5">NO</th>
 					<th class="th3">ID</th>
-					<th class="th2">내용</th>
 					<th class="th5">추천</th>
 					<th class="th5">신고</th>
 					<th class="th5">날짜</th>
@@ -77,7 +76,6 @@
 			</thead>
 			<tbody id="ajaxTable">
 				<tr>
-					<td>안녕</td>
 				</tr>
 			</tbody>
 		</table>

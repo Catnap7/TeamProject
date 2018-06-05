@@ -29,7 +29,7 @@ public class EmailCheckAction implements Action {
 		cal.add(Calendar.MONTH,1);
 		cal.clear(Calendar.MILLISECOND);
 		SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
-		String c_end_day=date.format(cal.getTime()).toString();
+		String c_end_day=date.format(cal.getActualMaximum(Calendar.DATE)).toString();
 
 		CouponBean cb= new CouponBean();
 		String hellocoupon= HelloCoupon.couponnum();
