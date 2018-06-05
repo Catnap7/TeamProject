@@ -7,9 +7,10 @@
    clear: both;
 }
 
-/* article { */
-/*    border: 1px solid red; */
-/* } */
+article { 
+	/* border: 1px solid red; */
+	width: 1500px;
+ } 
 
 section {
    border: 1px solid #333;
@@ -17,6 +18,10 @@ section {
    margin: 20px auto;
    border-radius: 15px;
    background-color: #f6f6f6;
+   position: relative;
+   top: 100px;
+   left: 210px;
+   margin-bottom: 300px;
 }
 
 .content {
