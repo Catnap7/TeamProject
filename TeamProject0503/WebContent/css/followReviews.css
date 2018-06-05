@@ -160,20 +160,22 @@ article{
 
 /* ################ 좋아하는 영화 ################ */
 .myFavMovie{
-	padding:25px 30px 10px 30px;
-	height: 850px; 
-	margin:20 auto;
-/* 	height: 450px; */
+	position:relative;
+	bottom:240px; left:50px;
+	width:1300px;
+	height:auto;
+	box-sizing:border-box;
+	line-height:1.5em;
 }
 .mvList{
 	/* border:1px solid #333; */
-	width: 750px;
+	width: 1200px;
 	height: 700px;;
 	box-sizing:border-box;
 	text-align: center;
-	position: relative;
+/* 	position: relative;
 	top:10px;
-	left: 60px; 
+	left: 60px;  */
 }
 
 .noReviewContents{

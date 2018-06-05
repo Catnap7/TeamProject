@@ -11,7 +11,9 @@
 
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
-<link href="./css/myhome.css" rel="stylesheet" type="text/css">
+<!-- <link href="./css/myhome.css" rel="stylesheet" type="text/css">-->
+<link href="./css/followReviews.css" rel="stylesheet" type="text/css">
+
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
@@ -35,7 +37,7 @@ m_name=(String)session.getAttribute("m_name");
 	 
 	 
 %>
-<article>
+<article class="all">
 <section class="sec myFavMovie">
 	<div class="secInfo">
 		<h2><%=m_name%>님 이 좋아한 영화</h2>
@@ -65,10 +67,10 @@ m_name=(String)session.getAttribute("m_name");
 					img_genre="romance";
 				}
 			%>
-			<div>
+			
 				<img src="./images/<%=img_genre %>/<%=imgname %>_p.jpg" width="175px" height="260px">
 				<p><%=moviebean.getMv_kor_title()%></p>
-			</div>
+			
 		<%} %>
 		</div>
 		
