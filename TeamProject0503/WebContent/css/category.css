@@ -29,7 +29,7 @@
 	width: 400px;
 }
 
-article{  /* border:1px solid green; */ 
+article{  /* border:1px solid green; */
 	width:1700px; 
 	/* height: calc(150/5*270px);  */
 	margin:20px auto;
@@ -88,6 +88,7 @@ div.mv {
 	z-index: 5;
 	overflow: hidden;
 	margin:0 30px 50px 30px; 
+	/* transition: 0.3s; */
 }
 
 .mv:HOVER .mv_title{

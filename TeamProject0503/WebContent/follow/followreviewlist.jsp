@@ -17,7 +17,7 @@
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <body>
 
 <%
@@ -135,6 +135,8 @@ case "drama" : genre2="드라마"; break;
 				</div> 
 				<%} %>
 	</section>
+
+<p class="up"><a href="#">▲<br>▲</a></p>
 
 </article>
 

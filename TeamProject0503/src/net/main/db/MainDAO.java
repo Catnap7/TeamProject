@@ -50,7 +50,7 @@ public class MainDAO {
 				movieList= new ArrayList<MovieBean>();
 			}						
 			
-			sql="select * from movie where mv_genre=? order by rand() limit 13";
+			sql="select * from movie where mv_genre=? order by rand() limit 15";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, mostCountGenre);
 			rs=pstmt.executeQuery();
@@ -101,7 +101,7 @@ public class MainDAO {
 				movieList= new ArrayList<MovieBean>();
 			}			
 			
-			sql="select * from movie where mv_genre=? order by rand() limit 13";
+			sql="select * from movie where mv_genre=? order by rand() limit 15";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, mostAvgGenre);
 			rs=pstmt.executeQuery();
@@ -139,7 +139,7 @@ public class MainDAO {
 		try {
 			con=getConnection();
 
-			sql="select * from movie join rating on mv_num = ra_p_num group by mv_num order by avg(ra_rating) desc limit 13";
+			sql="select * from movie join rating on mv_num = ra_p_num group by mv_num order by avg(ra_rating) desc limit 15";
 			pstmt=con.prepareStatement(sql);			
 			rs=pstmt.executeQuery();
 			while(rs.next()){
@@ -185,7 +185,7 @@ public class MainDAO {
 		try {
 			con=getConnection();
 
-			sql="select * from movie order by rand() limit 13";
+			sql="select * from movie order by rand() limit 15";
 			pstmt=con.prepareStatement(sql);			
 			rs=pstmt.executeQuery();
 			while(rs.next()){

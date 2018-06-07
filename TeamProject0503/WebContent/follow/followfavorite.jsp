@@ -13,7 +13,7 @@
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <!-- <link href="./css/myhome.css" rel="stylesheet" type="text/css">-->
 <link href="./css/followReviews.css" rel="stylesheet" type="text/css">
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
@@ -67,15 +67,18 @@ m_name=(String)session.getAttribute("m_name");
 					img_genre="romance";
 				}
 			%>
-			
+			<div id="fvfv">
 				<img src="./images/<%=img_genre %>/<%=imgname %>_p.jpg" width="175px" height="260px">
 				<p><%=moviebean.getMv_kor_title()%></p>
-			
+			</div>
 		<%} %>
 		</div>
 		
 		
 </section>
+
+<p class="up2"><a href="#">▲<br>▲</a></p>
+
 </article>
 
 <!-- 푸터 영역 -->

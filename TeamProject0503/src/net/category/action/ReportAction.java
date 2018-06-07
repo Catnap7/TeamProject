@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.admin.manage.db.AdminSuspendDAO;
 import net.category.db.ReportChkDAO;
 import net.category.db.ReviewBean;
 import net.category.db.ReviewDAO;
@@ -20,21 +21,22 @@ public class ReportAction implements Action {
 		
 		ReviewBean reviewbean = new ReviewBean();
 		ReviewDAO reviewdao = new ReviewDAO();
+		AdminSuspendDAO asdao = new AdminSuspendDAO();
 		
 		int r_num = Integer.parseInt(request.getParameter("r_num"));
 		int r_p_num = Integer.parseInt(request.getParameter("mv_num"));
-		String id = request.getParameter("id");	
+		String id = request.getParameter("id");
 		
 		ReportChkDAO repdao = new ReportChkDAO();
 		
-		int check = repdao.reportCheck(r_num, id);
-		
+		int check = repdao.reportCheck(r_num, id);		
 		if(check == 1) {
 			reviewdao.reportReview(r_num);
+			int reportCount = asdao.AdminReviewReport(r_p_num, id);
+			System.out.println(reportCount);
 			
 			response.setContentType("text/html;	charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			
+			PrintWriter out = response.getWriter();			
 			out.println(check);
 			out.close();
 			return null;
