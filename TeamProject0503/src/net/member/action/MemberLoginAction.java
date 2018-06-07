@@ -41,26 +41,17 @@ public class MemberLoginAction implements Action{
 		AlarmDAO adao = new AlarmDAO();
 		CouponDAO cdao = new CouponDAO();
 		AdminSuspendDAO asdao = new AdminSuspendDAO();
+		int m_grade = asdao.AdminMemberGrade(m_id);
 		
-		if(memberbean.getM_grade() == 4) {
+		if(m_grade == 4) {
 			response.setContentType("text/html;	charset=UTF-8");
-			PrintWriter out = response.getWriter();			
+			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('신고수 누적으로 로그인이 정지되었습니다 고객센터에 문의하세요')");
+			out.println("alert('신고 누적으로 인한 로그인 정지(고객센터 문의)');");
 			out.println("history.back()");
 			out.println("</script>");
 			out.close();
 		}
-		/*int maxReport = asdao.AdminMemberSuspend(m_id);
-		if(maxReport >= 20) {
-			response.setContentType("text/html;	charset=UTF-8");
-			PrintWriter out = response.getWriter();			
-			out.println("<script>");
-			out.println("alert('신고수 누적으로 로그인이 정지되었습니다 고객센터에 문의하세요')");
-			out.println("history.back()");
-			out.println("</script>");
-			out.close();
-		}*/
 
 		List <CouponBean>couponlist = cdao.getCoupons(m_id);
 		List <AlarmBean>alarmlist = adao.getAlarms(m_id);

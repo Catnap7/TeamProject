@@ -10,8 +10,14 @@
 <script type="text/javascript" src="jquery-2.1.3.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>왓츄 : 당신의 모든 영화, 세상의 모든 취향 </title>
+
+
+
+
+
+<!-- icon -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
+
 <!-- js -->
 <script src="./js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="./js/jquery.ulslide.js"></script>
@@ -21,7 +27,7 @@
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/main.css" rel="stylesheet" type="text/css" media="screen"> 
-
+<link href="./css/mainModal.css" rel="stylesheet" type="text/css">
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
@@ -320,13 +326,76 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 
 <div class="mainMovie">
 	<div class="mainCover">
-			<div class="mainPic"><img src="./images/mainCover.png"></div>
-			<img src="./images/sf/Pixels_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-			<span class="mv_title"><%="컨택트"%></span><!-- 한글제목 --> 
-			<span class="mv_year"><%="2017"%></span><!-- 년도 -->
-			<span class="mv_grade"><%="15세관람가"%></span><!-- 등급 -->
-			<span class="mv_time"><%="114"%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+	
+	
+		<%-- ↓↓↓↓↓↓↓↓↓↓↓↓ for문을 이용해서 랜덤으로 영화 3개씩 뿌려주세요
+		<%for(int i=0;i<=2;i++) {%>
+			<div class="mainPic">
+				<img src="./images/sf/Pixels_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+				<span class="mv_title"><%="컨택트"%></span><!-- 한글제목 --> 
+				<span class="mv_year"><%="2017"%></span><!-- 년도 -->
+				<span class="mv_grade"><%="15세관람가"%></span><!-- 등급 -->
+				<span class="mv_time"><%="114"%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+			</div>
+		<%} %>
+			↑↑↑↑↑↑↑↑↑↑↑↑ for문을 이용해서 랜덤으로 영화 3개씩 뿌려주세요--%>
 		
+		
+		
+		
+		<%-- ↓↓↓↓↓↓↓↓↓↓↓↓ 디자인 예시를 위한 코드 위의 for문 작성 후 지워도 무방 ↓↓↓↓↓↓↓↓↓↓↓↓--%>						
+			<div class="mainPic">
+				<div><img id="mainPos" src="./images/thriller/Annabelle_p.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+					 <p id="play" onclick="document.getElementById('id01').style.display='block'"><a href="#"><img src="./images/play.png"></a></p>
+
+				</div>		
+			</div>
+			
+
+			<div class="mainPic">
+				<img id="mainPos" src="./images/sf/Equals_p.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+				 <p id="play" onclick="document.getElementById('id02').style.display='block'"><a href="#"><img src="./images/play.png"></a></p>
+			</div>
+			
+			
+			<div class="mainPic">
+				<img id="mainPos" src="./images/animation/Wall-E_p.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+				 <p id="play"  onclick="document.getElementById('id03').style.display='block'"><a href="#"><img src="./images/play.png"></a></p>
+					
+			</div>
+			
+ 								
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <iframe width="640" height="360"src="https://kakaotv.daum.net/embed/player/cliplink/374032780?service=daum_movie" allowfullscreen frameborder="0" scrolling="no"></iframe>
+      </div>
+    </div>
+  </div> 
+  
+  <div id="id02" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+       <p><iframe width="640" height="360"src="https://kakaotv.daum.net/embed/player/cliplink/78230923?service=daum_movie" allowfullscreen frameborder="0" scrolling="no"></iframe></p>
+      </div>
+    </div>
+  </div> 
+  
+    <div id="id03" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id03').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+       <p><iframe width="640" height="360"src='http://tv.kakao.com/embed/player/cliplink/9227925?service=flash' allowfullscreen frameborder="0" scrolling="no"></iframe></p>
+      </div>
+    </div>
+  </div> 
+		<%--↑↑↑↑↑↑↑↑↑↑↑↑ 디자인 예시를 위한 코드 위의 for문 작성 후 지워도 무방--%>
+		
+		
+		
+	<div class="clear"></div>	
 	</div>
 </div> 
 
