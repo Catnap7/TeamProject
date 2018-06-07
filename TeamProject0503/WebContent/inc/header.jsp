@@ -3,6 +3,8 @@
 <%@page import="net.member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script src="./js/main.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
 var a = 0
 function start(){		
@@ -21,6 +23,7 @@ function alarm(){
 	setInterval("start()", 500);
 }
 </script>
+<script>realtimeMain();</script>
 <!-- 헤더 영역 -->
 <%String id = (String)session.getAttribute("m_id");
 /* int followercount=((Integer)request.getAttribute("followercount"));

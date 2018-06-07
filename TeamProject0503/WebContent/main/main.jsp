@@ -7,7 +7,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script src="./js/main.js"></script>
 <script type="text/javascript" src="jquery-2.1.3.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>왓츄 : 당신의 모든 영화, 세상의 모든 취향 </title>
@@ -22,6 +21,7 @@
 <!-- js -->
 <script src="./js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="./js/jquery.ulslide.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <jsp:include page="../popup/popup.jsp"/>
 
 <!-- CSS -->
