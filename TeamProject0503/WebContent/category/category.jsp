@@ -11,7 +11,7 @@
   
 <!-- js -->
 <script src="../js/jquery-3.3.1.js"></script>
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/category.css" rel="stylesheet" type="text/css" media="screen"> 

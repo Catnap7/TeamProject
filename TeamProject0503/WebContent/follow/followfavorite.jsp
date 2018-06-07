@@ -13,7 +13,7 @@
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <!-- <link href="./css/myhome.css" rel="stylesheet" type="text/css">-->
 <link href="./css/followReviews.css" rel="stylesheet" type="text/css">
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
