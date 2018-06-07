@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>왓츄 : 내 평점내역</title>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/mypage.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">

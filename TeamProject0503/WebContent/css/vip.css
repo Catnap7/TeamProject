@@ -8,7 +8,7 @@
 .clear {clear: both;}
 
 body{
-
+	width:1900px;
 	height: auto;
 }
 
@@ -20,7 +20,7 @@ body{
 
 .pic_frame_info{   
 	position:relative;
-	top:55px;
+	top:50px;
 	margin:0px auto;
 	width:1900px;
 	height:650px;
@@ -96,15 +96,19 @@ body{
 /***vip선정안내***/
 
 .crown{
-	text-align: center;
-	margin:0;
-	padding-top: 60px;
+	position: relative;
+    left: 890px;
+    width: 100px;
+    text-align: center;
+    margin: 0;
+    padding-top: 60px;
 }
 
 .whoIsVip{
 	/* border:1px solid blue; */
 	width:1400px; height:300px;
 	position:relative;
+	left:0px;
 	background-color: #333;
 	margin:0 auto;
 }
@@ -142,6 +146,8 @@ body{
 .info{
 	border:2px solid #333;
 	border-radius:20px;
+	position: relative;
+    left: 0px;
 	width: 1400px;
 	margin:50px auto;
 	padding:30px 40px 60x 40px;
@@ -259,6 +265,8 @@ body{
 
 .ChallengeVip{
 	width:1400px; height:100px;
+	position: relative;
+    left: 0px;
 	background-color: #333;
 	margin:20px auto 200px auto;
 	font-family: 'Do Hyeon', sans-serif;
