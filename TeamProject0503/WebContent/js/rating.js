@@ -10,7 +10,7 @@ $(document).ready(function(){
 		var formData = $('.params').serialize(); 
 		
 		$.ajax({
-            type: "get",
+            type: "POST",
             url: "./RatingAction.ra",
             dataType: "html",
             data: formData,
