@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/mypage.css" rel="stylesheet" type="text/css">
+<link href="./css/myrating.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./css/ratingStar.css">
@@ -162,7 +163,7 @@ if(count-(pageNum-1)*10<=5){
 	}
 		%>															
 		
-	<div class="prev_next">
+<%-- 	<div class="prev_next">
 		<%
 		if(startPage>pageBlock){			
 			%><a href="./Myrating.my?pageNum=<%=startPage-pageBlock%>">prev</a><%
@@ -174,8 +175,15 @@ if(count-(pageNum-1)*10<=5){
 			%><a href="./Myrating.my?pageNum=<%=startPage+pageBlock%>">next</a><%
 		}
 		%>
-	</div>
+	</div> --%><!-- 페이지처리 슬라이드버튼으로 변경 -->
 	</section>
+	
+	
+		<div>
+			<div class="prev1 button" data-btn="0"><a href="./Myrating.my?pageNum=<%if(pageNum!=1){%><%=pageNum-1 %><%;}else{%><%=1 %><%;}%>"><img src="./images/arrow_left.png" width="60px" height="60px"></a></div>
+			<div class="next1 button" data-btn="1"><a href="./Myrating.my?pageNum=<%if(pageNum!=endPage){%><%=pageNum+1 %><%;}else{%><%=endPage %><%;}%>"><img src="./images/arrow_right.png" width="60px" height="60px"></a></div>
+		</div><!-- button -->
+		
 </div>
 </article>
 
