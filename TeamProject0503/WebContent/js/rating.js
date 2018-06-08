@@ -17,7 +17,7 @@ $(document).ready(function(){
             success: function(data, txtStatus) {
 //            	alert("success");
             	$this.parent().parent().removeClass("params");
-            },
+            	},
             error: function(xhr, txtStatus, errorThrown) {
                 alert(errorThrown);
             }   
