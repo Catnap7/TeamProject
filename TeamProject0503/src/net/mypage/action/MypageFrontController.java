@@ -109,6 +109,14 @@ public class MypageFrontController extends HttpServlet{
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		}else if(command.equals("/UpdateProfileAction.my")){
+			action = new UpdateProfileAction();
+			try{
+			forward=action.execute(request, response);
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 		
 			

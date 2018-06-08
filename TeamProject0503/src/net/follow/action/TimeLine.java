@@ -23,16 +23,16 @@ public class TimeLine implements Action{
 		
 		
 		List timelinelist = followdao.timelinelist(id);
-		Vector vector = new Vector();
+		/*Vector vector = new Vector();
 		
 		vector = followdao.TimeLineReview(id);
 		List<FollowBean> timelinemovie = (List)vector.get(0);
 		List<MemberBean> timelinereview = (List)vector.get(1);
 		
-		
+		*/
 		request.setAttribute("timelinelist", timelinelist);
-		request.setAttribute("timelinemovie", timelinemovie);
-		request.setAttribute("timelinereview", timelinereview);
+		/*request.setAttribute("timelinemovie", timelinemovie);
+		request.setAttribute("timelinereview", timelinereview);*/
 		forward=new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("./follow/timeline.jsp");						

@@ -15,7 +15,7 @@ article{
 	/* border:1px solid red;  */
 	padding:50px;	
 	height: auto;
-	width:1900px;
+	width:1910px;
 	background-color: #72bcc4;
 }
 
@@ -45,9 +45,6 @@ article{
 	padding:20px;
 }
 
-.sec div{
-	/* float:left; */
-}
 
 
 
@@ -58,6 +55,21 @@ article{
 	box-sizing:border-box;
 	height: 350px;
 	line-height:1.5em;
+}
+
+#pfName p{
+	float: left;
+	margin-left: 8px;
+}
+
+#pfName{
+	position: relative;
+    left: 350px;
+    top: 15px;
+}
+#pfName p:nth-of-type(2){
+	color:#ff8000;
+	font-size: 0.8em;
 }
 #profile{
 	text-align: center;
@@ -74,7 +86,8 @@ article{
 	text-align: center;
 	/* width:270px; */
 	position: relative;
-	top:-240px; left: 420px;
+	top: -220px;
+    left: 440px;
 	line-height: 1.7em;
 	text-align: center;
 }
@@ -97,6 +110,51 @@ article{
 	width: 300px;
 }
 
+#info table tr:nth-of-type(1) td:HOVER{
+	color: #ff8000;
+	text-decoration: underline;
+}
+
+#info table tr:nth-of-type(2) td:HOVER{
+	color: #ff8000;
+	text-decoration: underline;
+}
+
+
+.FBtn {
+	border:1px solid #808080;
+	border-radius:5px;
+	width:250px; height:35px;
+	text-align:center;
+	text-transform: uppercase;	
+	background-color: white;
+	position: relative;
+	bottom: 200px; left:430px;
+	font-size: 1.1em;
+	letter-spacing: 2px;
+	color: inherit;
+	text-decoration: none;
+}
+
+.FBtn a {
+	color: #333;
+}
+
+#myhome_follow {
+/* 	색상 변경 */
+	background-color: #50b4aa;
+}
+
+.FBtn:HOVER{
+	border-color: #233285;
+}
+.FBtn:HOVER a, .FBtn a:HOVER{
+	color:#ff8000;
+}
+.FBtn a:VISITED, .FBtn a:LINK{
+	color:inherit;
+	text-decoration: none;
+}
 
 
 /* ################ 리뷰 ################ */
@@ -161,7 +219,7 @@ article{
 /* ################ 좋아하는 영화 ################ */
 .myFavMovie{
 	padding:25px 30px 10px 30px;
-	height: 850px; 
+	height: 890px;
 	margin:20 auto;
 /* 	height: 450px; */
 }
@@ -173,7 +231,7 @@ article{
 	text-align: center;
 	position: relative;
 	top:20px;
-	left: 30px; 
+	left: 50px; 
 }
 
 .noReviewContents{
@@ -187,6 +245,7 @@ article{
 
 .noFavContents{
 	border:1px solid #c0c0c0;
+	width: 720px;
 	padding:250px 40px;
 	margin-top:10px;
 	text-align: center;

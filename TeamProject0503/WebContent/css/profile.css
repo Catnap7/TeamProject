@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+h1 {text-align: center;}
+img {
+	margin:10px;
+}
+img:HOVER {
+	opacity:0.6;
+}
+input:checked + label{
+	opacity:0.4;
+	
+}
+.rdo {
+	display: none;
+}
+.btn {/* border:1px solid red; */
+	margin:10px auto;
+	width:100px;
+	height: 30px;
+	background-color: #50d4aa;
+	text-align: center;
+	position: absolute;
+	left: 220px;
+	margin-bottom: 20px;
+	color:#333;
+	font-size: 15px;
+	border-radius:30px;
+}

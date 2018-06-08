@@ -17,7 +17,7 @@
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <body>
 
 <%
@@ -118,23 +118,38 @@ case "drama" : genre2="드라마"; break;
 
 
 	<section class="sec myReviewList">
-		<%-- <div class="secInfo">
-			<h3><%="유저이름"%>님 의 영화 리뷰</h3>
-		</div>	 --%>
-				<%for(int i=0;i<followreviewlist.size();i++){
+				<%
+			 if(followreviewlist.size()==0){
+				 %>
+				 <div id="rv"> 
+				<%-- <p> <%=moviebean.getMv_kor_title() %> / <%=reviewbean.getR_date() %>/ <%=reviewbean.getR_recommand() %>/ <%=reviewbean.getR_report() %></p> --%>
+					<div class="noReviewContents">
+						<!-- <img src="./images/noReview.png" width="140px" height="140px">  -->
+						<p><%="아직 리뷰가 없습니다"%></p>
+						<p><%="영화를 본 후 내 감상을 리뷰로 남겨주세요!"%></p>
+					
+					</div>
+				</div>
+				 <%
+			 }else{	
+				
+				for(int i=0;i<followreviewlist.size();i++){
 				ReviewBean reviewbean=followreviewlist.get(i);
 				MovieBean moviebean=followmovielist.get(i);
 				%>
 				<div id="rv"> 
-					<p><span id="reviewTitle"><%=moviebean.getMv_kor_title()%></span>
+					<p><span id="reviewTitle"><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><%=moviebean.getMv_kor_title()%></a></span>
 					<span id="reviewDate"><%=reviewbean.getR_date()%></span>
 					<span id="reviewRecommand"><%="추천수  "%><%=reviewbean.getR_recommand()%></span>
 					<%-- / <%=reviewbean.getR_report()%> --%></p>
 					<p class="rvList">
 					<%=reviewbean.getR_content()%></p>
 				</div> 
-				<%} %>
+				<%}
+				}%>
 	</section>
+
+<p class="up"><a href="#">▲<br>▲</a></p>
 
 </article>
 

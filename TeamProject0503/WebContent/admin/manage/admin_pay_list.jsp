@@ -54,8 +54,9 @@
 	<jsp:include page="../../inc/admin_sub.jsp" />
 	<!-- Sub -->
 	
+	<section class="content_member">
 	<div id="content_member">
-		<h1>PAY LIST</h1>
+		<h1 class="adminTitle">PAY LIST</h1>
 		<div class="admin-search-container">
 		<select id="select">
 			<option value="p_id" selected="selected">ID</option>
@@ -80,7 +81,9 @@
 			</tbody>
 		</table>
 	</div>
-
+	</section>
+	
+	
 	<!-- Footer -->
 	<jsp:include page="../../inc/footer.jsp" />
 	<!-- Footer -->

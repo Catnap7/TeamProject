@@ -20,7 +20,7 @@
 	}
 	function searchProcess() {
 		var table = document.getElementById("ajaxTable");
-// 		table.innerHTML = "";
+		table.innerHTML = "";
 		if (request.readyState == 4 && request.status == 200) {
 			var object = eval('(' + request.responseText + ')');
 			var result = object.result;
@@ -54,8 +54,9 @@
 	<jsp:include page="../../inc/admin_sub.jsp" />
 	<!-- Sub -->
 	
+	<section class="content_member">
 	<div id="content_member">
-		<h1>REVIEW LIST</h1>
+		<h1 class="adminTitle">REVIEW LIST</h1>
 		<div class="admin-search-container">
 		<select id="select">
 			<option value="r_id" selected="selected">ID</option>
@@ -69,7 +70,6 @@
 				<tr>
 					<th class="th5">NO</th>
 					<th class="th3">ID</th>
-					<th class="th2">내용</th>
 					<th class="th5">추천</th>
 					<th class="th5">신고</th>
 					<th class="th5">날짜</th>
@@ -77,12 +77,12 @@
 			</thead>
 			<tbody id="ajaxTable">
 				<tr>
-					<td>안녕</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-
+	</section>
+	
 	<!-- Footer -->
 	<jsp:include page="../../inc/footer.jsp" />
 	<!-- Footer -->

@@ -15,6 +15,7 @@
 <!-- jQuery -->
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="http://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/movie_info.css" rel="stylesheet" type="text/css">

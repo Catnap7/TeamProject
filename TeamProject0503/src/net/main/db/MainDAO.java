@@ -16,10 +16,10 @@ import javax.sql.DataSource;
 import net.admin.manage.db.MovieBean;
 
 public class MainDAO {
-	//디비연결 메서드
+	//�뵒鍮꾩뿰寃� 硫붿꽌�뱶
 	private Connection getConnection() throws Exception {
 		Context init=new InitialContext();
-		//자원의 이름 불러오기 자원 위치 java:comp/env 자원이름 jdbc/Mysql
+		//�옄�썝�쓽 �씠由� 遺덈윭�삤湲� �옄�썝 �쐞移� java:comp/env �옄�썝�씠由� jdbc/Mysql
 		DataSource ds=(DataSource)init.lookup("java:comp/env/jdbc/Mysql");
 		Connection con=ds.getConnection();
 		
@@ -28,8 +28,8 @@ public class MainDAO {
 	
 	
 	
-	//사용자가 가장 많은수의 평가(별점)을 남긴 장르
-	//수정해서 쓸것
+	//�궗�슜�옄媛� 媛��옣 留롮��닔�쓽 �룊媛�(蹂꾩젏)�쓣 �궓湲� �옣瑜�
+	//�닔�젙�빐�꽌 �벝寃�
 	public List mostCountGenre(String id){		
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -50,7 +50,7 @@ public class MainDAO {
 				movieList= new ArrayList<MovieBean>();
 			}						
 			
-			sql="select * from movie where mv_genre=? order by rand() limit 13";
+			sql="select * from movie where mv_genre=? order by rand() limit 15";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, mostCountGenre);
 			rs=pstmt.executeQuery();
@@ -80,8 +80,8 @@ public class MainDAO {
 	
 	
 	
-	//사용자가 가장 높은 수의 평가(별점)을 남긴 장르
-	//수정해서 쓸것
+	//�궗�슜�옄媛� 媛��옣 �넂�� �닔�쓽 �룊媛�(蹂꾩젏)�쓣 �궓湲� �옣瑜�
+	//�닔�젙�빐�꽌 �벝寃�
 	public List mostAvgGenre(String id){
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -101,7 +101,7 @@ public class MainDAO {
 				movieList= new ArrayList<MovieBean>();
 			}			
 			
-			sql="select * from movie where mv_genre=? order by rand() limit 13";
+			sql="select * from movie where mv_genre=? order by rand() limit 15";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, mostAvgGenre);
 			rs=pstmt.executeQuery();
@@ -139,7 +139,7 @@ public class MainDAO {
 		try {
 			con=getConnection();
 
-			sql="select * from movie join rating on mv_num = ra_p_num group by mv_num order by avg(ra_rating) desc limit 13";
+			sql="select * from movie join rating on mv_num = ra_p_num group by mv_num order by avg(ra_rating) desc limit 15";
 			pstmt=con.prepareStatement(sql);			
 			rs=pstmt.executeQuery();
 			while(rs.next()){
@@ -175,7 +175,7 @@ public class MainDAO {
 		return RandomList;
 	}
 	
-	// 관리자 Pick
+	// 愿�由ъ옄 Pick
 	public List adminSelectMovie(){
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -185,7 +185,7 @@ public class MainDAO {
 		try {
 			con=getConnection();
 
-			sql="select * from movie order by rand() limit 13";
+			sql="select * from movie order by rand() limit 15";
 			pstmt=con.prepareStatement(sql);			
 			rs=pstmt.executeQuery();
 			while(rs.next()){
@@ -208,7 +208,7 @@ public class MainDAO {
 		}
 		return adminSelectMovieList;
 	}
-	// 관리자 PIck
+	// 愿�由ъ옄 PIck
 	
 	//search
 	public List titlesearch(String search){

@@ -17,6 +17,7 @@
 <!-- jQuery -->
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="http://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/movie_info.css" rel="stylesheet" type="text/css">
@@ -439,9 +440,19 @@ $(document).ready(function(){
    
      <!--댓글 쓰는 란  -->
      <form action="./InsertReview.ca" class="coment_write">
-       <textarea cols="90" rows="7" value placeholder="영화를 어떻게 보셨나요?" name="r_content"></textarea>
-       <input type="hidden" name="mv_num" value="<%=moviebean.getMv_num() %>">
-       <input type="submit" value="등록">
+     <%     
+     if(memberBean.getM_grade() == 3) {
+    	 %>
+    	 <textarea cols="90" rows="7" placeholder="리뷰를 등록할 수 없습니다." readonly="readonly"></textarea>
+    	 <%
+     }else {
+    	 %>
+    	 <textarea cols="90" rows="7" placeholder="영화를 어떻게 보셨나요?" name="r_content"></textarea>
+         <input type="hidden" name="mv_num" value="<%=moviebean.getMv_num() %>">
+         <input type="submit" value="등록">    	 
+    	 <%
+     }     
+     %>       
      </form>
      <!-- 댓글 리스트 -->
      <%

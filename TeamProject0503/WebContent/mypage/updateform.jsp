@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>왓츄 : 회원정보수정</title>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/mypage.css" rel="stylesheet" type="text/css">
 <script src="./js/jquery-3.3.1.js"></script>
@@ -137,8 +137,8 @@ String name = (String)request.getAttribute("name");
 			<input type="text" value placeholder="<%=id%>" class="update" readonly name="id" onkeypress="check2()"><br>
 			<input type="password" value placeholder="변경 할 비밀번호 입력" class="update" name="pass"><br>
 			<input type="password" value placeholder="변경 할 비밀번호 재입력" class="update" name="pass2"><br>
-			<input type="text" value="<%=name%>" class="update" name="m_name"  id="name"><br>
-			<input type="button" value="닉네임 중복체크" id="name_dup" >
+			<input type="text" value="<%=name%>" class="update_name" name="m_name"  id="name">
+			<input type="button" value="중복체크" id="name_dup" class="name_text">
          	<input type="hidden" value="-1" id="dup_name_check"> 
 			<input type="submit" value="확인" class="update_text">
 			<input type="reset" value="다시쓰기" class="update_text2">

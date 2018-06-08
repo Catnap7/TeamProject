@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.admin.manage.db.AdminSuspendDAO;
 import net.category.db.ReviewBean;
 import net.category.db.ReviewDAO;
 
@@ -22,9 +23,12 @@ public class InsertReview implements Action {
 		
 		ReviewBean reviewbean = new ReviewBean();
 		ReviewDAO reviewdao = new ReviewDAO();
+		AdminSuspendDAO asdao = new AdminSuspendDAO();
 		
 		HttpSession session = request.getSession();
 		String r_id = (String)session.getAttribute("m_id");
+
+		asdao.AdminMemberSuspend(r_id);
 		
 		if(r_id==null){
 			forward=new ActionForward();

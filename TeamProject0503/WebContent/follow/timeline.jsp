@@ -18,11 +18,12 @@
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
 <%List timeline=(List)request.getAttribute("timelinelist"); 
-List timelinemovie=(List)request.getAttribute("timelinemovie");
-List timelinereview=(List)request.getAttribute("timelinereview");
+/* List timelinemovie=(List)request.getAttribute("timelinemovie");
+List timelinereview=(List)request.getAttribute("timelinereview"); */
 %>
 <jsp:include page="../inc/header.jsp"/>
 <!-- 헤더 영역 -->

@@ -15,8 +15,9 @@ article{
 	/* border:1px solid red;  */
 	padding:50px;	
 	height: auto;
-	width:2000px;
-
+	width: 1900px;
+    /* background-color: #50a4aa29; */
+    box-sizing: border-box;
 }
 
 
@@ -89,7 +90,7 @@ article{
 
 .myReviewList{
 	position:relative;
-	bottom:240px; left:50px;
+	bottom:240px; left:60px;
 	width:900px;
 	height:auto;
 	box-sizing:border-box;
@@ -160,20 +161,33 @@ article{
 
 /* ################ 좋아하는 영화 ################ */
 .myFavMovie{
-	padding:25px 30px 10px 30px;
-	height: 850px; 
-	margin:20 auto;
-/* 	height: 450px; */
+	border:10px solid #bed5da;
+	position:relative;
+	left:0px;
+	width:1300px;
+	height:auto;
+	box-sizing:border-box;
+	line-height:1.5em;
+	margin-top: 80px;
+    margin-bottom: 150px;
 }
 .mvList{
-	/* border:1px solid #333; */
-	width: 750px;
-	height: 700px;;
+	width: 1200px;
+	height: auto;
 	box-sizing:border-box;
-	text-align: center;
-	position: relative;
-	top:10px;
-	left: 60px; 
+	padding: 80px 10px 30px 45px;
+}
+
+#fvfv{
+	display: inline-block;
+    width: 220px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+#fvfv p{
+	font-weight: bold;
+	font-size: 1.1em;
+	margin-top: 5px;
 }
 
 .noReviewContents{
@@ -213,6 +227,37 @@ article{
 	padding-top: 5px;
 	font-size: 1.2em;
 }
+
+
+
+
+
+.up, .up2{
+	color:#455a64;
+}
+.up a{
+	font-size:2em;
+	position:relative;
+	top:0;
+	left: 55px;
+	text-decoration: none;
+	display: block;
+	/*margin:20px auto; */
+	text-align: center;
+}
+
+.up2 a{
+	font-size:2em;
+	position:relative;
+	top:0;left:0px;
+	text-decoration: none;
+	display: block;
+	/*margin:20px auto; */
+	text-align: center;
+}
+.up a:LINK, .up a:visited, .up2 a:LINK, .up2 a:visited{color:#455a64;}
+.up a:HOVER, .up2 a:HOVER{color:#ff8000;}
+
 
 
 

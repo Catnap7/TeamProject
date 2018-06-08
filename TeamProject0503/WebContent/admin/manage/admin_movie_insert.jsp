@@ -22,10 +22,11 @@
 	<jsp:include page="../../inc/admin_sub.jsp" />
 	<!-- 어드민 서브메뉴 -->
 
+	<section class="content_member">
 	<div id="content">
-		<h1>영화 등록</h1>
+		<h1 class="adminTitle">영화 등록</h1>
 		<form action="./AdminMovieInsertAction.am" method="post">
-			<table class="db_list_mv">
+			<table class="db_list db_list_mv">
 				<tr>
 					<th>제목(한글)</th>
 					<td><input type="text" name="mv_kor_title"></td>
@@ -77,7 +78,7 @@
 			</div>
 		</form>
 	</div>
-
+	</section>
 
 	<!-- 푸터 영역 -->
 	<jsp:include page="../../inc/footer.jsp" />

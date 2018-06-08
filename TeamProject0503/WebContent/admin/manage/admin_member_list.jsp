@@ -54,32 +54,35 @@
 	<jsp:include page="../../inc/admin_sub.jsp" />
 	<!-- Sub -->
 	
-	<div id="content_member">
-		<h1>MEMBER LIST</h1>
-		<div class="admin-search-container">
-		<select id="select">
-			<option value="m_id" selected="selected">ID</option>
-			<option value="m_name">닉네임</option>
-			<option value="m_grade">회원등급</option>
-			<option value="m_reg_date">날짜</option>		
-		</select>
-		<input type="text" onkeyup="searchFunction()" id="searchValue" placeholder="검색할 내용 입력해라.">
-		<button type="button" onclick="searchFunction();"><img src="./images/search.png" width="20px" height="20px"></button>
+	
+	<section class="content_member">
+		<div id="content_member">
+			<h1 class="adminTitle">MEMBER LIST</h1>
+			<div class="admin-search-container">
+			<select id="select">
+				<option value="m_id" selected="selected">ID</option>
+				<option value="m_name">닉네임</option>
+				<option value="m_grade">회원등급</option>
+				<option value="m_reg_date">날짜</option>		
+			</select>
+			<input type="text" onkeyup="searchFunction()" id="searchValue" placeholder="검색할 내용을 입력하세요">
+			<button type="button" onclick="searchFunction();"><img src="./images/search.png" width="20px" height="20px"></button>
+			</div>
+			<table class="db_list">
+				<thead>
+					<tr>
+						<th class="th2">ID</th>
+						<th class="th3">닉네임</th>
+						<th class="th4">회원등급</th>
+						<th class="th5">가입일</th>
+					</tr>
+				</thead>
+				<tbody id="ajaxTable">
+				</tbody>
+			</table>
 		</div>
-		<table class="db_list">
-			<thead>
-				<tr>
-					<th class="th2">ID</th>
-					<th class="th3">닉네임</th>
-					<th class="th4">회원등급</th>
-					<th class="th5">가입일</th>
-					<th class="th5">내보내기</th>
-				</tr>
-			</thead>
-			<tbody id="ajaxTable">
-			</tbody>
-		</table>
-	</div>
+	</section>
+
 
 	<!-- Footer -->
 	<jsp:include page="../../inc/footer.jsp" />

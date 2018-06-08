@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.follow.db.FollowDAO;
 
+
+
 public class DeleteFollowerAction implements Action {
 
 	@Override

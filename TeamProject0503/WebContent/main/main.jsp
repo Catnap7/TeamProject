@@ -7,19 +7,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript" src="jquery-2.1.3.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>왓츄 : 당신의 모든 영화, 세상의 모든 취향 </title>
+
+
+
+
+
+<!-- icon -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
+
 <!-- js -->
 <script src="./js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="./js/jquery.ulslide.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <jsp:include page="../popup/popup.jsp"/>
 
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/main.css" rel="stylesheet" type="text/css" media="screen"> 
-
+<link href="./css/mainModal.css" rel="stylesheet" type="text/css">
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
@@ -31,10 +39,11 @@ $(document).ready(function(){
 	/* alert($(".sd2>img").length); */ 
 	
 	/***변수선언***/
-	var $container = 1720;
+	var $container = 1550;
 	var $display = 5;
-	var $mv = $container/$display;
-	var $mv_mv = ($container/$display)+5;	
+	var $mv = 1525/$display;
+	/* var $mv_mv = ($container/$display)+5; */
+	var $mv_mv = 1525+25;
 
 	var $1_count =$(".sd1>img").length;
 	var $2_count =$(".sd2>img").length;
@@ -42,11 +51,11 @@ $(document).ready(function(){
 	var $4_count =$(".sd4>img").length;
 	var $5_count =$(".sd5>img").length;
 	
-	var $1_slidebox=($mv_mv*$1_count);  
-	var $2_slidebox=($mv_mv*$2_count);  
-	var $3_slidebox=($mv_mv*$3_count); 
-	var $4_slidebox=($mv_mv*$4_count);  
-	var $5_slidebox=($mv_mv*$5_count);  
+	var $1_slidebox=($mv_mv*$1_count/5);  
+	var $2_slidebox=($mv_mv*$2_count/5);  
+	var $3_slidebox=($mv_mv*$3_count/5); 
+	var $4_slidebox=($mv_mv*$4_count/5);  
+	var $5_slidebox=($mv_mv*$5_count/5);  
 	
 
 	/*마우스 오버시 슬라이더 길이 조정*/
@@ -79,7 +88,7 @@ $(document).ready(function(){
 		
 		$('.mv').css('width',$mv);
 	 	$('.mv img').css('width',$mv*1.6);
-		$('.mv img').css('height',$mv*1.1);	 
+		$('.mv img').css('height',$mv*1.2);	 
 	}
 	
 
@@ -88,9 +97,9 @@ $(document).ready(function(){
 		var check=$(this).attr('data-btn');
 		
 		if(check==0){
-			$('.trending').animate({left:'+='+$mv_mv},300,slideEnd1)
+			$('.trending').animate({left:'+='+$mv_mv},350,slideEnd1)
 		}else if(check==1){
-			$('.trending').animate({left:'-='+$mv_mv},300,slideEnd1)
+			$('.trending').animate({left:'-='+$mv_mv},350,slideEnd1)
 		}
 	}
 	
@@ -98,9 +107,9 @@ $(document).ready(function(){
 		var check=$(this).attr('data-btn');
 		
 		if(check==0){
-			$('.recommendRating').animate({left:'+='+$mv_mv},300,slideEnd2)
+			$('.recommendRating').animate({left:'+='+$mv_mv},350,slideEnd2)
 		}else if(check==1){
-			$('.recommendRating').animate({left:'-='+$mv_mv},300,slideEnd2)
+			$('.recommendRating').animate({left:'-='+$mv_mv},350,slideEnd2)
 		}
 	}
 	
@@ -108,9 +117,9 @@ $(document).ready(function(){
 		var check=$(this).attr('data-btn');
 		
 		if(check==0){
-			$('.recommendMany').animate({left:'+='+$mv_mv},300,slideEnd3)
+			$('.recommendMany').animate({left:'+='+$mv_mv},350,slideEnd3)
 		}else if(check==1){
-			$('.recommendMany').animate({left:'-='+$mv_mv},300,slideEnd3)
+			$('.recommendMany').animate({left:'-='+$mv_mv},350,slideEnd3)
 		}
 	}
 	
@@ -118,9 +127,9 @@ $(document).ready(function(){
 		var check=$(this).attr('data-btn');
 		
 		if(check==0){
-			$('.wannaWatch').animate({left:'+='+$mv_mv},300,slideEnd4)
+			$('.wannaWatch').animate({left:'+='+$mv_mv},350,slideEnd4)
 		}else if(check==1){
-			$('.wannaWatch').animate({left:'-='+$mv_mv},300,slideEnd4)
+			$('.wannaWatch').animate({left:'-='+$mv_mv},350,slideEnd4)
 		}
 	}
 	
@@ -128,9 +137,9 @@ $(document).ready(function(){
 		var check=$(this).attr('data-btn');
 		
 		if(check==0){
-			$('.adminPick').animate({left:'+='+$mv_mv},300,slideEnd5)
+			$('.adminPick').animate({left:'+='+$mv_mv},350,slideEnd5)
 		}else if(check==1){
-			$('.adminPick').animate({left:'-='+$mv_mv},300,slideEnd5)
+			$('.adminPick').animate({left:'-='+$mv_mv},350,slideEnd5)
 		}
 	}
 	/*슬라이더 1~5*/
@@ -293,11 +302,11 @@ String id = (String)request.getAttribute("m_id");
 List<MovieBean> favoritelist = (List)request.getAttribute("favoritelist");
 int favoritecount = ((Integer)request.getAttribute("favoritecount")).intValue();
 String classname = null;
-if(favoritecount>=13){
+/* if(favoritecount>=13){
 	classname = "main1";
 }else{
 	classname = "main2";
-}
+} */
 
 List<MovieBean>Mostcount = (List)request.getAttribute("Mostcount");
 List<MovieBean>Bestrating = (List)request.getAttribute("Bestrating");
@@ -314,26 +323,125 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 
 
 <!-- 아티클 -->
-<article class=<%=classname%>>
-
+<%-- <article class=<%=classname%>> --%>
+<article class="main">
 <div class="mainMovie">
+	<p class="mainCoverTitle">왓츄 TODAY</p>
 	<div class="mainCover">
-			<div class="mainPic"><img src="./images/mainCover.png"></div>
-			<img src="./images/sf/Pixels_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-			<span class="mv_title"><%="컨택트"%></span><!-- 한글제목 --> 
-			<span class="mv_year"><%="2017"%></span><!-- 년도 -->
-			<span class="mv_grade"><%="15세관람가"%></span><!-- 등급 -->
-			<span class="mv_time"><%="114"%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+		<%-- ↓↓↓↓↓↓↓↓↓↓↓↓ for문을 이용해서 랜덤으로 영화 뿌려주세요
+		<%for() {%>
+		<div class="mainPic">
+				<div><img id="mainPos" src="./images/thriller/Annabelle_p.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+					 <p id="play" onclick="document.getElementById('id01').style.display='block'"><a href="#"><img src="./images/play.png"></a></p>
+
+				</div>		
+			</div>
+			<div class="mainPic">
+				<img src="./images/sf/Pixels_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+				<span class="mv_title"><%="컨택트"%></span><!-- 한글제목 --> 
+				<span class="mv_year"><%="2017"%></span><!-- 년도 -->
+				<span class="mv_grade"><%="15세관람가"%></span><!-- 등급 -->
+				<span class="mv_time"><%="114"%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+			</div>
+		<%} %>
+			↑↑↑↑↑↑↑↑↑↑↑↑ for문을 이용해서 랜덤으로 영화 뿌려주세요--%>
 		
+		
+		
+		
+		<%-- ↓↓↓↓↓↓↓↓↓↓↓↓ 디자인 예시를 위한 코드 위의 for문 작성 후 지워도 무방 ↓↓↓↓↓↓↓↓↓↓↓↓--%>						
+			<div class="mainPic">
+				<div><img id="mainPos" src="./images/thriller/Annabelle_p.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+					 <p id="play" onclick="document.getElementById('id01').style.display='block'"><a href="#"><img src="./images/play.png"></a></p>
+
+				</div>		
+			</div>
+			
+			<div class="mainPic">
+				<img id="mainPos" src="./images/sf/Equals_p.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+				 <p id="play" onclick="document.getElementById('id02').style.display='block'"><a href="#"><img src="./images/play.png"></a></p>
+			</div>
+			
+			
+			<div class="mainPic">
+				<img id="mainPos" src="./images/animation/Wall-E_p.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
+				 <p id="play"  onclick="document.getElementById('id03').style.display='block'"><a href="#"><img src="./images/play.png"></a></p>
+					
+			</div>
+			
+ 								
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <iframe width="1000" height="700"src="https://kakaotv.daum.net/embed/player/cliplink/374032780?service=daum_movie" allowfullscreen frameborder="0" scrolling="no"></iframe>
+      </div>
+    </div>
+  </div> 
+  
+  <div id="id02" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+       <p><iframe width="1000" height="700"src="https://kakaotv.daum.net/embed/player/cliplink/78230923?service=daum_movie" allowfullscreen frameborder="0" scrolling="no"></iframe></p>
+      </div>
+    </div>
+  </div> 
+  
+    <div id="id03" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id03').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+       <p><iframe width="1000" height="700"src='http://tv.kakao.com/embed/player/cliplink/9227925?service=flash' allowfullscreen frameborder="0" scrolling="no"></iframe></p>
+      </div>
+    </div>
+  </div> 
+		<%--↑↑↑↑↑↑↑↑↑↑↑↑ 디자인 예시를 위한 코드 위의 for문 작성 후 지워도 무방--%>
+		
+		
+		
+	<div class="clear"></div>	
 	</div>
 </div> 
+
+
+	<div class="chart">
+		<div>
+			<p id="chartTitle">왓츄 RANKING</p>
+			<p>왓츄에서 가장 많은 리뷰를 받은 영화!</p>
+			<div id="rank">
+				<a href="#"><p>컨택트<br>SF / 15세관람가</p></a>
+				<a href="#"><p>애나벨<br>공포 / 15세관람가</p></a>
+				<a href="#"><p>센과 치히로의 행방불명<br>애니메이션 / 15세관람가</p></a>
+				<a href="#"><p>인터스텔라<br>SF / 15세관람가</p></a>
+				<a href="#"><p>영화 제목이 엄청 길면 어쩌지<br> SF / 15세관람가</p></a>
+			</div>
+		</div>
+	</div>
+	<div class="totalRv">
+		<div>
+			<p>오늘자 왓츄 총 리뷰수 </p>
+			<p>5645742</p>
+			<div>
+			
+			</div>
+		</div>
+	</div>
+	<div class="sheep">
+		<a href="./Roulette.ro">
+			<div>행운의 양을 만나보세요! </div>
+			<div><img src="./images/sheep.png" width="80px" height="80px"></div>
+		</a>
+	</div>
+	
+<div class="clear"></div>
 
 
 
 <!-- 왓츄에서 인기있는 영화 -->
 <div class="containerWithBtn">	
   	<div class="container"> 
-  		<h2><i class="material-icons" style="font-size:36px">movie_filter</i><span id="title">이번 달 인기 영화</span></h2>
+  		<h2><span><img src="./images/slate.png" width="30px" height="30px"></span><span id="title">이번 달 인기 영화</span></h2>
 		<div class="slider trending">
 			 <!--for문으로 반복 하시면 됩니다-->
 		<%for(MovieBean moviebean  : Bestmovie){

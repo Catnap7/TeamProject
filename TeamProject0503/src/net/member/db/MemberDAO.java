@@ -242,11 +242,13 @@ private Connection getConnection() throws Exception {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
-						if(rs.getInt("m_grade")==1 ||rs.getInt("m_grade")==2) {
-							Echeck=1;
-						}else {
+						if(rs.getInt("m_grade")==0) {
 							Echeck=0;
+						}else {
+							Echeck=1;
 						}
+							
+					
 			}
 
 		}catch (Exception e) {
@@ -557,9 +559,45 @@ private Connection getConnection() throws Exception {
 		}
 	}//end reset
 		
+	public void updateProfile(String id, int profile_num){			
+		Connection con=null;
+		String sql="";
+		PreparedStatement pstmt=null;
+		try{con = getConnection();
+	
+		sql="update member set m_pic=? where m_id =?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, profile_num);
+		pstmt.setString(2, id); 
+		
+		pstmt.executeUpdate();
+		
+		}catch(Exception e) {
+			//예외 생기면 변수 e에 저장
+			//예외를 잡아서 처리 -> 메시지 출력
+			e.printStackTrace();
+			}finally{
+				//예외가 발생하든 말든 상관없이 마무리작업 => 기억장소 정리
+				//객체 기억장소 마무리
+			 if(pstmt!=null){
+				try{pstmt.close();						
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			 }
+				if(con!=null){
+					try{con.close();
+					}catch(SQLException e){
+						e.printStackTrace();
+					 }
+					}
+				
+			}		
+	}//end updateProfile
+	
 }
 
-	
+
 	
 	
 	
