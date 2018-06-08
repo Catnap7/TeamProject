@@ -44,7 +44,18 @@ m_name=(String)session.getAttribute("m_name");
 	</div>	
 			
 		<div class="mvList"> 
-			<%for(MovieBean moviebean: followfavoritelist){
+		<%
+				if(followfavoritelist.size()==0){
+					%>
+					<div class="noFavContents">
+						<!-- <img src="./images/noFavorite.png" width="140px" height="140px"> --> 
+						<p><%="좋아요 누른 영화가 없습니다"%></p>
+						<p><%="좋아하는 영화에 하트를 눌러주세요!"%></p>
+					</div>
+
+					<%
+				}else{
+			for(MovieBean moviebean: followfavoritelist){
 				
 				String imgname = moviebean.getMv_eng_title().replaceAll(" " , "");
 				imgname = imgname.replaceAll("\\p{Z}", "");
@@ -71,7 +82,8 @@ m_name=(String)session.getAttribute("m_name");
 				<img src="./images/<%=img_genre %>/<%=imgname %>_p.jpg" width="175px" height="260px">
 				<p><%=moviebean.getMv_kor_title()%></p>
 			</div>
-		<%} %>
+		<%}
+		} %>
 		</div>
 		
 		

@@ -529,7 +529,7 @@ case "drama" : genre2="드라마"; break;
 </section>
 </div><!-- all -->
 
-<div class="up"><a href="#">▲<br>▲</a></div>
+<!-- <div class="up"><a href="#">▲<br>▲</a></div> -->
 
 
 </article>
