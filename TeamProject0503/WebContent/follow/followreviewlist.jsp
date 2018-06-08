@@ -138,7 +138,7 @@ case "drama" : genre2="드라마"; break;
 				MovieBean moviebean=followmovielist.get(i);
 				%>
 				<div id="rv"> 
-					<p><span id="reviewTitle"><%=moviebean.getMv_kor_title()%></span>
+					<p><span id="reviewTitle"><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><%=moviebean.getMv_kor_title()%></a></span>
 					<span id="reviewDate"><%=reviewbean.getR_date()%></span>
 					<span id="reviewRecommand"><%="추천수  "%><%=reviewbean.getR_recommand()%></span>
 					<%-- / <%=reviewbean.getR_report()%> --%></p>

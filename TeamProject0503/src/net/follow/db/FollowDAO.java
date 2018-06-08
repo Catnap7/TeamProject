@@ -376,6 +376,7 @@ public class FollowDAO {
 					
 					MovieBean moviebean= new MovieBean();
 					moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+					moviebean.setMv_num(rs.getInt("mv_num"));
 					movieList.add(moviebean);
 				}
 				vector.add(reviewList);
