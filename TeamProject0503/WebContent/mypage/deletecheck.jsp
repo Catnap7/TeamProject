@@ -11,7 +11,10 @@
 <body>
 <script>
 function finalcheck(){
-	alert("정말 탈퇴하시겠습니까?");
+	var check = confirm("탈퇴하시겠습니까?");
+	if(check==false){
+		return false;
+	}
 }
 </script>
 <!-- 헤더영역 -->
@@ -24,7 +27,7 @@ function finalcheck(){
 	<div class="mypage_profile2">
 		<h2 class="pw_check">비밀번호를 입력해 주세요</h2>
 		
-		<form action="./DeleteAction.my" method="get" name="fr" onsubmit="finalcheck()">
+		<form action="./DeleteAction.my" method="get" name="fr" onsubmit="return finalcheck()">
 			<input type="password" value placeholder="비밀번호 입력" class="mypage_check" name="pass"><br>
 			<input type="submit" value="확인" class="check_text">
 		</form>
