@@ -341,7 +341,9 @@ $(document).ready(function(){
 
          %>
  --%>         
-      <%															
+      <%						
+      System.out.print(memberBean.getM_id_num1());   
+			    		System.out.print(moviebean.getMv_video());   
       if(memberBean.getM_pay()==0){
          %>
          <script type="text/javascript">
@@ -360,17 +362,19 @@ $(document).ready(function(){
          });      
          </script>
               <%   
-      }else if(memberBean.getM_pay()==1){
+      }
+      
+      if(memberBean.getM_pay()==1){
          if(memberBean.getM_id_num1()<200001 && moviebean.getMv_age()==19 ){
-            
              %>
               <script type="text/javascript">
-              var url = $('hr').attr('href','<%=moviebean.getMv_video()%>');
                $(document).ready(function(){
+                var url = $('hr').attr('href','<%=moviebean.getMv_video()%>');  
                   $('.hr').click(function(){
-                      window.open('<%=moviebean.getMv_video()%>','_blank')
+                	  alert('<%=moviebean.getMv_video()%>');
+                      window.open('<%=moviebean.getMv_video()%>','_blank'); 
                      });
-                  
+              break;
                });           
               </script>
               <%
@@ -385,13 +389,29 @@ $(document).ready(function(){
              });      
              </script>
           <%   
-         }    
-              	
+         } 
+         %>
+         
+         <script type="text/javascript">
+         $(document).ready(function(){
+          var url = $('hr').attr('href','<%=moviebean.getMv_video()%>');  
+            $('.hr').click(function(){
+          	  alert('<%=moviebean.getMv_video()%>');
+          	  
+                window.open('<%=moviebean.getMv_video()%>','_blank'); 
+                <%-- $('.hr').attr({'href':'<%=moviebean.getMv_video()%>','target':'_black'}); --%>
+
+
+               });
+            
+         });           
+        </script>
+        <%
          }
       %>
-      		  <button class="hr" id="mv_play" style="display: none;">이동</button>
+      		 <button class="hr" id="mv_play" style="display: none;">이동</button>
       		  <label class="fa fa-play-circle play" for="mv_play" title="보러가기"></label>
-           <!-- <button class="hr">이동</button> -->
+        <!--    <button class="hr">이동</button> -->
       </div>
    </div>
    </div>
