@@ -29,8 +29,8 @@ int count = ((Integer)request.getAttribute("count")).intValue();
 <div class="mypage_">
 	<div class="mypage_coupon">
 <h2>나의 쿠폰함</h2>
-<table border="1" class="coupon_info">
-<tr><th>번호</th><th>쿠폰명</th><th>만료일자</th></tr>
+<table class="coupon_info">
+<tr><th class="rad">번호</th><th>쿠폰명</th><th>만료일자</th></tr>
 <%
 if(count == 0){
 %>
@@ -84,7 +84,7 @@ if(count != 0){
 %>
 	</div>	 
 </div>
-
+</div>
 
 	
 <div class="clear"></div>
