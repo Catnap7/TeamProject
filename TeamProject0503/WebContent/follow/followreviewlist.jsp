@@ -135,7 +135,7 @@ case "drama" : genre2="드라마"; break;
 					<span id="reviewRecommand"><%="추천수  "%><%=reviewbean.getR_recommand()%></span>
 					<%-- / <%=reviewbean.getR_report()%> --%></p>
 					<p class="rvList">
-					<%=reviewbean.getR_content()%></p>
+					<%=reviewbean.getR_content().replaceAll("\r\n", "<br>")%></p>
 				</div> 
 				<%}
 				}%>

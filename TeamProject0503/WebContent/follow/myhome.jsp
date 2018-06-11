@@ -167,7 +167,7 @@ case "drama" : genre2="드라마"; break;
 // 						alert($('#f_id').val());
 				
 				$.ajax({
-					type: "get",
+					type: "post",
 					url: "./DeleteFollowerAction.fo",
 					dataType: "html",
 					data: {
@@ -189,7 +189,7 @@ case "drama" : genre2="드라마"; break;
 // 						alert($('#f_id').val());
 				
 				$.ajax({
-					type: "get",
+					type: "post",
 					url: "./InsertFollowerAction.fo",
 					dataType: "html",
 					data: {
@@ -267,7 +267,7 @@ case "drama" : genre2="드라마"; break;
 <%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
-							type: "get",
+							type: "post",
 							url: "./DeleteFollowerAction.fo",
 							dataType: "html",
 							data: {
@@ -289,7 +289,7 @@ case "drama" : genre2="드라마"; break;
 <%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
-							type: "get",
+							type: "post",
 							url: "./InsertFollowerAction.fo",
 							dataType: "html",
 							data: {
@@ -379,7 +379,7 @@ case "drama" : genre2="드라마"; break;
 <%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
-							type: "get",
+							type: "post",
 							url: "./DeleteFollowerAction.fo",
 							dataType: "html",
 							data: {
@@ -401,7 +401,7 @@ case "drama" : genre2="드라마"; break;
 <%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
-							type: "get",
+							type: "post",
 							url: "./InsertFollowerAction.fo",
 							dataType: "html",
 							data: {
@@ -470,7 +470,7 @@ case "drama" : genre2="드라마"; break;
 				<span id="reviewDate"><%=yymmdd.substring(0,10)%></span>
 				<span id="reviewRecommand"><%="추천수  "%><%=reviewbean.getR_recommand()%></span>
 				<%-- / <%=reviewbean.getR_report()%> --%></p>
-				<p class="rvList"><%=reviewbean.getR_content()%></p>
+				<p class="rvList"><%=reviewbean.getR_content().replaceAll("\r\n", "<br>")%></p>
 			</div> 
 			
 			<%}
