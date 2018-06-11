@@ -225,6 +225,26 @@
 	height: 40px;
 }
 
+.update_name {
+	margin-bottom: 25px;
+	margin-right: 10px;
+	width: 180px;
+	height: 40px;
+}
+
+.name_text {
+	background-color: #50d4aa;
+	border-radius: 40px;
+	width: 100px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	margin-top: 25px;
+	font-size: 14px;
+	color: #333;
+	letter-spacing: 2px;
+}
+
 .update_text, .update_text2 {
 	background-color: #50d4aa;
 	border-radius: 40px;

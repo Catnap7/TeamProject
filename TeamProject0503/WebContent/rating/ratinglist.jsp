@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>당신의 모든 영화, 세상의 모든 취향 : 왓츄</title>
+<title>왓츄 : 취향분석</title>
 
 <!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
@@ -35,7 +35,8 @@
 <article>
 <div class="movie_wrap">
 	<div class="movie_star">
-		<h2>회원님의 취향을 분석해드려요</h2>
+		<p><img src="./images/analysis.png" width="80px" height="80px"></p>
+		<p>관람하신 영화의 별점을 매겨주시면 왓챠가 회원님의 취향을 분석해 드려요!</p>
 	</div>
 	<section class="movie_sec">
 

@@ -3,7 +3,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	font-family: 'Nanum Gothic', sans-serif;
+	/* font-family: 'Nanum Gothic', sans-serif; */
 }
 body{
 	width: 100%;
@@ -102,6 +102,12 @@ body{
     left:150px; top:5px; 
     display: inline-block;
 }
+
+.h_myinfo a:LINK, .h_myinfo a:VISITED{
+	color:#333;
+	text-decoration: none;
+}
+
 #no_alarm {
 	/* border:1px solid red; */
 	position: absolute;
@@ -159,10 +165,6 @@ body{
     color: #ff8000;
 }
 
-/* article{
-	border:none;
-} */
-
 #h_follow{
 	/* border:1px solid #333; */
 	width: 130px; height: 20px;
@@ -199,7 +201,10 @@ body{
   	background-color: #455a64;
     margin-top: 10px; 
     height: 50px;
-
+	width: 1900px;
+/*     position: relative;
+    top: 0;
+    left: 0; */
 }
 
 /* Links inside the navbar */
@@ -218,6 +223,8 @@ body{
 	font-weight:bold;
 	text-transform: uppercase;
 }
+
+
 
 /* The h_dropdown container */
 .h_dropdown {
@@ -340,12 +347,11 @@ body{
 
 /*---footer---*/
 footer {
-
-	background-color: #333;
-	width:1900px;
-	height: 350px;
-	position: relative;
-	bottom:0px; 
+	background-color:#2d3940;
+	width: 1900px;
+    height: 400px;
+    /* position: relative; */
+    bottom: -280px;
 }
 
 div.f_logo {
@@ -383,7 +389,7 @@ div.sns img {
 }
 
 div.sns img:HOVER{
-	border: 1px solid #50a4aa;
+	border: 1px solid #ff8800;
 	opacity:0.8;
 }
 
@@ -391,6 +397,9 @@ div.use a {
 	text-decoration: none;
 	color: white;
 	cursor: pointer;
+}
+div.use a:HOVER{
+	color:#ff8800;
 }
 
 div.explain {
