@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.admin.manage.db.MovieBean;
+import net.admin.manage.db.MovieDAO;
 import net.category.db.ReviewDAO;
 import net.follow.db.FollowDAO;
 import net.member.db.MemberBean;
@@ -45,7 +47,9 @@ public class FollowReview implements Action{
 		
 		ReviewDAO reviewdao = new ReviewDAO();
 		int reviewcount=reviewdao.getReviewCount(m_id);
-		
+		MovieDAO moviedao = new MovieDAO();
+		MovieBean moviebean = new MovieBean();
+		moviebean=moviedao.getfavorite(m_id);
 		
  /*		Vector vector2 = new Vector();
 		vector2 = followdao.top5followfavorite(m_id);
@@ -64,7 +68,7 @@ public class FollowReview implements Action{
 		List followmovielist=(List)vector.get(1);
 		request.setAttribute("followreviewlist", followreviewlist);
 		request.setAttribute("followmovielist", followmovielist);
-		
+		request.setAttribute("moviebean", moviebean);
 
 		
 		request.setAttribute("memberbean", memberbean);

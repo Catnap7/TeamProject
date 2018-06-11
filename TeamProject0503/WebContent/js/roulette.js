@@ -36,7 +36,7 @@ window.onload = function(){
 					   });
 					if(checknum==0){
 			    		alert("오늘 룰렛횟수를 모두 사용하셨습니다.");
-			    	}else if(checknum==1){
+			    	}else if(checknum==1){			    		
 			    		rotation();
 			    	}    																				 					 
 				}
@@ -44,8 +44,7 @@ window.onload = function(){
 		    	       
     }); //end click
  
-    function rotation(){
-   	
+    function rotation(){    	
         $("#image").rotate({
           angle:0,
           animateTo:360 * 5 + randomRotate(),                            

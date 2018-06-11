@@ -10,14 +10,14 @@ $(document).ready(function(){
 		var formData = $('.params').serialize(); 
 		
 		$.ajax({
-            type: "get",
+            type: "POST",
             url: "./RatingAction.ra",
             dataType: "html",
             data: formData,
             success: function(data, txtStatus) {
 //            	alert("success");
             	$this.parent().parent().removeClass("params");
-            },
+            	},
             error: function(xhr, txtStatus, errorThrown) {
                 alert(errorThrown);
             }   
