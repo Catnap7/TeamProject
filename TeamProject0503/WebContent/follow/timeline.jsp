@@ -1,3 +1,6 @@
+<%@page import="net.admin.manage.db.MovieBean"%>
+<%@page import="net.category.db.ReviewBean"%>
+<%@page import="net.member.db.MemberBean"%>
 <%@page import="net.follow.db.TimeLineBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -19,7 +22,8 @@
 </head>
 <body>
 <%List timeline=(List)request.getAttribute("timelinelist"); 
-
+/* List timelinemovie=(List)request.getAttribute("timelinemovie");
+List timelinereview=(List)request.getAttribute("timelinereview"); */
 %>
 <jsp:include page="../inc/header.jsp"/>
 <!-- 헤더 영역 -->
@@ -38,9 +42,29 @@
 							case "favorite" : kind="즐겨찾기를 추가 하였습니다."; break;
 							case "review" : kind="리뷰를 남겼습니다."; break;
 						}
+						String img_genre= "";
+						if(timeLineBean.getGenre().equals("animation")){
+						   img_genre="animation";
+						}else if(timeLineBean.getGenre().equals("comedy")){
+						   img_genre="comedy";
+						}else if(timeLineBean.getGenre().equals("indie")){
+						   img_genre="indie";
+						}else if(timeLineBean.getGenre().equals("sf")){
+						   img_genre="sf";
+						}else if(timeLineBean.getGenre().equals("action")){
+						   img_genre="action";
+						}else if(timeLineBean.getGenre().equals("horror") || timeLineBean.getGenre().equals("thriller")){
+						   img_genre="thriller";
+						}else if(timeLineBean.getGenre().equals("romance") || timeLineBean.getGenre().equals("drama")){
+						   img_genre="romance";
+						}
+						String yymmdd=timeLineBean.getDate().toString();
 					%>
-					<div id="rv"> 
-						<%=timeLineBean.getFo_following()+ "님이" +timeLineBean.getTitle()+ "에"+kind%></p>
+					
+					<div id="rv">
+				<%-- 	<img src="./images/<%=img_genre%>/<%=timeLineBean.getEngtitle().replaceAll(" ","")+"_p.jpg"%>" width="500px" height="650px;"><br>
+					<img src="./images/proflie_img/proflie<%=timeLineBean.getPic()%>.png" width="50px" height="50px">  --%>
+						<%=timeLineBean.getFo_following()+ "님이" +timeLineBean.getTitle()+ "에"+kind+yymmdd.substring(0,16)%></p>
 					</div> 
 					<%} %>
 		</section>

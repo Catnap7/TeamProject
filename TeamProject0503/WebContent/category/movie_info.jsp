@@ -341,63 +341,77 @@ $(document).ready(function(){
 
          %>
  --%>         
-      <%															
+      <%						
+      System.out.print(memberBean.getM_id_num1());   
+			    		System.out.print(moviebean.getMv_video());   
       if(memberBean.getM_pay()==0){
          %>
          <script type="text/javascript">
-         $(document).ready(function(){
-            $('.hr').click(function(){
-               alert("결제 후 이용 가능합니다.");
+         $(document).ready(function(){ 
+        	 //var con="이용권이 존재 하지 않습니다. 이용권 페이지로 이동 하시겠습니까?"
+   		 
+   			 	$('.hr').click(function(){
+   			 	 var con=confirm("이용권이 존재 하지 않습니다. 이용권 페이지로 이동 하시겠습니까?");
+   		         if(con==true){
+   		         	location.href="./PayList.pa";
+   		         }else{
+   		         }
+
+               //alert("결제 후 이용 가능합니다.");
                });
          });      
          </script>
               <%   
-      }else if(memberBean.getM_pay()==1){
+      }
+      
+      if(memberBean.getM_pay()==1){
          if(memberBean.getM_id_num1()<200001 && moviebean.getMv_age()==19 ){
-            
              %>
               <script type="text/javascript">
-              var url = $('hr').attr('href','<%=moviebean.getMv_video()%>');
                $(document).ready(function(){
+                var url = $('hr').attr('href','<%=moviebean.getMv_video()%>');  
                   $('.hr').click(function(){
-                      window.open('<%=moviebean.getMv_video()%>','_blank')
+                	  alert('<%=moviebean.getMv_video()%>');
+                      window.open('<%=moviebean.getMv_video()%>','_blank'); 
                      });
-                  
+              break;
                });           
               </script>
               <%
-         }     
-              	
+         }else if( memberBean.getM_id_num1()>199912 && moviebean.getMv_age()==19){
+        	 %>
+             <script type="text/javascript">
+             $(document).ready(function(){
+                $('.hr').click(function(){
+                   alert("청소년 관람불가 영화입니다.");
+                   return attributes;
+                   });
+             });      
+             </script>
+          <%   
+         } 
+         %>
+         
+         <script type="text/javascript">
+         $(document).ready(function(){
+          var url = $('hr').attr('href','<%=moviebean.getMv_video()%>');  
+            $('.hr').click(function(){
+          	  alert('<%=moviebean.getMv_video()%>');
+          	  
+                window.open('<%=moviebean.getMv_video()%>','_blank'); 
+                <%-- $('.hr').attr({'href':'<%=moviebean.getMv_video()%>','target':'_black'}); --%>
+
+
+               });
+            
+         });           
+        </script>
+        <%
          }
-      
-      if(memberBean.getM_pay()==0){
-          %>
-          <script type="text/javascript">
-          $(document).ready(function(){
-             $('.hr').click(function(){
-                alert("결제 후 이용 가능합니다.");
-                });
-          });      
-          </script>
-       <%   
-       }else if(memberBean.getM_pay()==1){
-      	if ( memberBean.getM_id_num1()>199912 && moviebean.getMv_age()==19){
-            %>
-               <script type="text/javascript">
-               $(document).ready(function(){
-                  $('.hr').click(function(){
-                     alert("19세 미만은 사용하실 수 없습니다.");
-                     return attributes;
-                     });
-               });      
-               </script>
-            <%   
-            }
-      	}
       %>
-      		  <button class="hr" id="mv_play" style="display: none;">이동</button>
+      		 <button class="hr" id="mv_play" style="display: none;">이동</button>
       		  <label class="fa fa-play-circle play" for="mv_play" title="보러가기"></label>
-           <!-- <button class="hr">이동</button> -->
+        <!--    <button class="hr">이동</button> -->
       </div>
    </div>
    </div>
