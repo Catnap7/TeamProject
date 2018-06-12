@@ -92,7 +92,7 @@ body{
     padding: 16px;
     font-size: 16px;
     border: none;
-    font-weight: bold;
+   	font-weight: bold; 
     line-height: normal;
 }
 
@@ -220,7 +220,7 @@ body{
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
-	font-weight:bold;
+	/* font-weight:bold; */
 	text-transform: uppercase;
 }
 
@@ -242,7 +242,10 @@ body{
   background-color: inherit;
   font-family: inherit; /* Important for vertical align on mobile phones */
   margin: 0; /* Important for vertical align on mobile phones */
+  text-align: center;
+  font-weight: lighter;
 }
+
 
 /* Add a red background color to navbar links on hover */
 .h_navbar a:hover, .h_dropdown:hover .h_dropbtn {
@@ -257,7 +260,7 @@ body{
   display: none; 
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 150px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1; 
 }
@@ -272,7 +275,7 @@ body{
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  text-align: left;
+  text-align: center;
 }
 
 .vip{
