@@ -19,7 +19,7 @@ public class Pay implements Action{
 		request.setCharacterEncoding("utf-8");
 		
 		HttpSession session=request.getSession();
-		String id=(String) session.getAttribute("m_id");
+		String id=(String)session.getAttribute("m_id");
 		if(id==null){
 			ActionForward forward=new  ActionForward();
 			forward.setPath("./Main.ma");
@@ -27,12 +27,11 @@ public class Pay implements Action{
 			return forward;
 		}
 		
-		
 		PayDAO pdao= new PayDAO();
 		
 		//m_pay들고와서, 이미 결제한 회원이면, 돌아가기
-		String m_pay=pdao.getMpay(id);
-		if(m_pay=="1"){
+		int m_pay=pdao.getMpay(id);
+		if(m_pay==1){
 			ActionForward forward=new  ActionForward();
 			forward.setPath("./PayList.pa");
 			forward.setRedirect(true);

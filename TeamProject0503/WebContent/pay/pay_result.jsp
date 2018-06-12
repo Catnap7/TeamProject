@@ -98,7 +98,7 @@ int count = ((Integer)request.getAttribute("count")).intValue();
 //해지한 사용자의 재결제 구현x
 if(currentpaybean!=null){
 if(currentpaybean.getP_auto().equals("정기")){ %>
-<input type="button" onclick="pcancel()" value="해지하기">
+<input type="button" onclick="pcancel()" value="해지하기" id="pcancel">
 
 <% 
 }

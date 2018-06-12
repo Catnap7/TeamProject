@@ -303,22 +303,23 @@ public class PayDAO {
 	
 	
 	//중복결제 방지. m_pay값 들고오기
-	public String getMpay(String id) {
+	public int getMpay(String id) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		String sql="";
-		String m_pay="";
+		int m_pay=0;
 		try {
 			con=getConnection();
 
-			sql="select m_pay from member where id=?";
+			sql="select m_pay from member where m_id=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
-			rs=pstmt.executeQuery(sql);
+			rs=pstmt.executeQuery();
+			
 			
 			if(rs.next()){
-				m_pay=rs.getString("m_pay");
+				m_pay=rs.getInt("m_pay");
 			}
 			
 		} catch (Exception e) {
