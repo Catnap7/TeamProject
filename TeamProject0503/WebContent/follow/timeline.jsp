@@ -64,7 +64,7 @@ List timelinereview=(List)request.getAttribute("timelinereview"); */
 					<div id="rv">
 				<%-- 	<img src="./images/<%=img_genre%>/<%=timeLineBean.getEngtitle().replaceAll(" ","")+"_p.jpg"%>" width="500px" height="650px;"><br>
 					<img src="./images/proflie_img/proflie<%=timeLineBean.getPic()%>.png" width="50px" height="50px">  --%>
-						<%=timeLineBean.getFo_following()+ "님이" +timeLineBean.getTitle()+ "에"+kind+yymmdd.substring(0,16)%></p>
+						<%=timeLineBean.getName()+ "님이" +timeLineBean.getTitle()+ "에"+kind+yymmdd.substring(0,16)%></p>
 					</div> 
 					<%} %>
 		</section>

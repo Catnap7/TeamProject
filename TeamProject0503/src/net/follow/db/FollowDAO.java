@@ -542,22 +542,22 @@ public class FollowDAO {
 		try {
 			con=getConnection();
 
-			sql="select  kind,fo_following,title,engtitle,pic,num,date,genre "
-					+ "from (select 'rating' as kind, ra_id as id, ra_date as regdate, mv.mv_kor_title as title ,mv.mv_eng_title as engtitle,m.m_pic as pic,mv.mv_num as num,ra.ra_date as date,mv.mv_genre as genre "
+			sql="select  kind,fo_following,title,engtitle,pic,num,date,genre,name "
+					+ "from (select 'rating' as kind, ra_id as id, ra_date as regdate, mv.mv_kor_title as title ,mv.mv_eng_title as engtitle,m.m_pic as pic,mv.mv_num as num,ra.ra_date as date,mv.mv_genre as genre,m.m_name as name "
 					+ "from rating ra "
 					+ "join movie mv "
 					+ "on  mv.mv_num=ra.ra_p_num "
 					+ "join member m "
 					+ "on m.m_id = ra.ra_id "
 					+ "union "
-					+ "select 'favorite' as kind, f_id as id, f_date as regdate, mv.mv_kor_title as title,mv.mv_eng_title as engtitle ,m.m_pic as pic,mv.mv_num as num,f.f_date as date,mv.mv_genre as genre "
+					+ "select 'favorite' as kind, f_id as id, f_date as regdate, mv.mv_kor_title as title,mv.mv_eng_title as engtitle ,m.m_pic as pic,mv.mv_num as num,f.f_date as date,mv.mv_genre as genre,m.m_name as name "
 					+ "from favorite f "
 					+ "join movie mv "
 					+ "on  mv.mv_num=f.f_num "
 					+ "join member m "
 					+ "on m.m_id = f.f_id "
 					+ "union "
-					+ "select 'review' as kind, r_id as id, r_date as regdate, mv.mv_kor_title  as title,mv.mv_eng_title as engtitle ,m.m_pic as pic,mv.mv_num as num,r.r_date as date,mv.mv_genre as genre "
+					+ "select 'review' as kind, r_id as id, r_date as regdate, mv.mv_kor_title  as title,mv.mv_eng_title as engtitle ,m.m_pic as pic,mv.mv_num as num,r.r_date as date,mv.mv_genre as genre,m.m_name as name "
 					+ "from review r "
 					+ "join movie mv "
 					+ "on  mv.mv_num=r.r_p_num "
@@ -582,7 +582,7 @@ public class FollowDAO {
 				timelinebean.setDate(rs.getTimestamp("date"));
 				timelinebean.setNum(rs.getInt("num"));
 				timelinebean.setPic(rs.getInt("pic"));
-				
+				timelinebean.setName(rs.getString("name"));
 				timelinelist.add(timelinebean);
 			}
 		} catch (Exception e) {
