@@ -28,9 +28,9 @@ public class PayAction implements Action{
 
 		PayDAO pdao= new PayDAO();
 		//m_pay들고와서, 이미 결제한 회원이면, 돌아가기
-		String m_pay=pdao.getMpay(id);
+		int m_pay=pdao.getMpay(id);
 		
-		if(m_pay=="1"){
+		if(m_pay==1){
 			ActionForward forward=new  ActionForward();
 			forward.setPath("./PayList.pa");
 			forward.setRedirect(true);

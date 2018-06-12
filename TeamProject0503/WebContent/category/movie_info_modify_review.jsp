@@ -513,7 +513,7 @@ $(document).ready(function(){
 <%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
 								
 									$.ajax({
-										type: "get",
+										type: "post",
 										url: "./RecommendAction.ca",
 										dataType: "html",
 										data: {
@@ -543,7 +543,7 @@ $(document).ready(function(){
 <%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
 								
 									$.ajax({
-										type: "get",
+										type: "post",
 										url: "./ReportAction.ca",
 										dataType: "html",
 										data: {
