@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>왓츄 : 비밀번호찾기 </title>
 <link href="./css/member.css" rel="stylesheet" type="text/css">
 <script src="../script/script.js">
 

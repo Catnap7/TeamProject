@@ -4,13 +4,19 @@
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
-<title> WATCHU roulette </title>
+<title> 왓츄 : 행운의 양</title>
 <meta charset="utf-8">
+
+<!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/roulette.css" rel="stylesheet" type="text/css">
+
+<!-- jquery -->
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/jQueryRotateCompressed.js"></script>
 <script src="./js/roulette.js"></script>
+
+
 <style>
 #image{
   margin:0px auto;z-index:10;

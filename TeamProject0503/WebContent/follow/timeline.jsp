@@ -13,10 +13,11 @@
 
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
-<link href="./css/myhome.css" rel="stylesheet" type="text/css">
+<link href="./css/timeline.css" rel="stylesheet" type="text/css">
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
@@ -30,10 +31,12 @@ List timelinereview=(List)request.getAttribute("timelinereview"); */
 
 <article>
 	<div class="all allList">
-		<section class="sec myReviewList">
+		<section class="logList">
 			<div class="secInfo">
-				<h3><%="왓츄 실시간 REVIEWS"%></h3>
+				<p><%="WATCHU LOG 왓츄로그"%></p>
 			</div>	
+				<%if(timeline.size()!=0){ %>
+			
 					<%for(int i=0; i<timeline.size(); i++){ 
 						TimeLineBean timeLineBean =  (TimeLineBean)timeline.get(i);
 						String kind="";
@@ -62,11 +65,23 @@ List timelinereview=(List)request.getAttribute("timelinereview"); */
 					%>
 					
 					<div id="rv">
-				<%-- 	<img src="./images/<%=img_genre%>/<%=timeLineBean.getEngtitle().replaceAll(" ","")+"_p.jpg"%>" width="500px" height="650px;"><br>
-					<img src="./images/proflie_img/proflie<%=timeLineBean.getPic()%>.png" width="50px" height="50px">  --%>
-						<%=timeLineBean.getFo_following()+ "님이" +timeLineBean.getTitle()+ "에"+kind+yymmdd.substring(0,16)%></p>
+						<div id="rvProfile"><span><img src="./images/proflie_img/proflie<%=timeLineBean.getPic()%>.png" width="60px" height="60px"></span><span><%=yymmdd.substring(0,16)%></span><span><%=timeLineBean.getName()%></span></div>
+						<div id="rvMv">
+							<p id="rvPos"><img src="./images/<%=img_genre%>/<%=timeLineBean.getEngtitle().replaceAll(" ","")+"_p.jpg"%>" width="180px" height="250px;"></p> 
+							<p id="rvStill"><img src="./images/<%=img_genre%>/<%=timeLineBean.getEngtitle().replaceAll(" ","")+"_s.jpg"%>" width="350px" height="250px;"></p> 
+						</div>
+							<p id="rvMent"><span><%=timeLineBean.getName()%></span><%="님이   " +timeLineBean.getTitle()+ "에  "+kind%></p>
 					</div> 
-					<%} %>
+					<%} 
+				}else{%>
+					<div id="noFollow">
+						<p><img src="./images/following.png" width="80px" height="80px"></p>
+						<p>마음에 드는 리뷰를 쓰는 다른 왓츄 회원을 팔로우 하고<br>
+							관심 회원의 왓츄 활동을 실시간으로 알아보세요!</p>
+					</div>
+				
+				<%}%>
+					
 		</section>
 	</div>
 </article>

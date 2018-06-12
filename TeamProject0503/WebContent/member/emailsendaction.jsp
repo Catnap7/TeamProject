@@ -2,7 +2,7 @@
 <html>
   <head>
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <title> 이메일 인증메일 발송</title>
+    <title>왓츄 : 이메일 인증메일 발송</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- 부트스트랩 CSS 추가하기 -->
