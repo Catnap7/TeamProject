@@ -14,27 +14,21 @@ public class ReportAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		System.out.println("ReportAction execute()");
-		
+		System.out.println("ReportAction execute()");		
 		request.setCharacterEncoding("utf-8");
 		
 		ReviewBean reviewbean = new ReviewBean();
 		ReviewDAO reviewdao = new ReviewDAO();
-		AdminSuspendDAO asdao = new AdminSuspendDAO();
-		
-		int r_num = Integer.parseInt(request.getParameter("r_num"));
-		int r_p_num = Integer.parseInt(request.getParameter("mv_num"));
-		String id = request.getParameter("id");
-		
+		AdminSuspendDAO asdao = new AdminSuspendDAO();		
 		ReportChkDAO repdao = new ReportChkDAO();
-		
+
+		String id = request.getParameter("id");
+		int r_num = Integer.parseInt(request.getParameter("r_num"));
+		int r_p_num = Integer.parseInt(request.getParameter("mv_num"));		
 		int check = repdao.reportCheck(r_num, id);		
+		
 		if(check == 1) {
 			reviewdao.reportReview(r_num);
-			int reportCount = asdao.AdminReviewReport(r_p_num, id);
-			System.out.println(reportCount);
-			
 			response.setContentType("text/html;	charset=UTF-8");
 			PrintWriter out = response.getWriter();			
 			out.println(check);
@@ -42,21 +36,10 @@ public class ReportAction implements Action {
 			return null;
 		}else {
 			response.setContentType("text/html;	charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			
-//			out.println("<script>");
-//			out.println("alert('이미 신고한 리뷰 입니다')");
-//			out.println("history.back()");
-//			out.println("</script>");
+			PrintWriter out = response.getWriter();			
 			out.println(check);
 			out.close();
 			return null;
 		}
-		
-//		ActionForward forward = new ActionForward();
-//		forward.setRedirect(true);
-//		forward.setPath("./CategoryMovie.ca?mv_num="+r_p_num);
-//		return forward;
 	}
-
 }

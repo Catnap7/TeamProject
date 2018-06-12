@@ -11,6 +11,7 @@
 <title>왓츄 : 내 평점내역</title>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/mypage.css" rel="stylesheet" type="text/css">
+<link href="./css/myrating.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./css/ratingStar.css">
@@ -58,31 +59,11 @@ if(count-(pageNum-1)*10<=5){
 	
 	
 	function abc(c) {
-//		alert(c);
-//c는 체크해야 하는 아이디값
+		//c는 영화 넘버로 설정된 id를 불러와, 영화마다 별점 셋팅을 해준다
 		$(document).ready(function(){
-//			alert(c);
-//			$("[id="+c+"]").attr( "checked" );
-//			$("[id=star133").prop( "checked" );
-//			$("[id=star133]").attr( "checked", "checked" );
 			$("[id="+c+"]").attr( "checked", "checked" );
 		});
 	}
-	
-/* 	
-	$(document).ready(function(){
-		//string2.jsp에
-		//파라미터값 넘겨서data:{name:"홍길동", age:21}
-		//결과 받아서 body 태그 뒷부분에 추가
-		
-		$(".rating").addClass("pp");
-
-		$(".pp").checked = false;
-		
-	});
-	 */
-	
-	//
 	
 	
 	</script>
@@ -99,15 +80,7 @@ if(count-(pageNum-1)*10<=5){
 //		int mv_num=moviebean.getMv_num();
 		int mv_num=ratingbean.getRa_p_num();
 		int ra_rating=ratingbean.getRa_rating();
-		
-		
-		//id= star+"ra_rating"+mv_num => checked 되도록. ;
-		//제이쿼리 사용해서 $().css()
-		//페이지가 켜지자 마자 와야하니까. 온로드? 
-		//그런데 for문에서 이름을 챙겨와야하는데. 
-		
-		
-		
+
 		/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/
 		String img_genre= "";
 		if(moviebean.getMv_genre().equals("animation")){
@@ -131,7 +104,7 @@ if(count-(pageNum-1)*10<=5){
 		
 	%>
 		<div class="movie_sec_inner" >
-			<img src="./images/<%=img_genre%>/<%=imgname %>_p.jpg" width="250px" height="350px"><br>
+			<a href="./CategoryMovie.ca?mv_num=<%=mv_num %>"><img src="./images/<%=img_genre%>/<%=imgname %>_p.jpg" width="250px" height="350px"></a><br>
 			<div class="star">
 				<form action="" id="starform<%=mv_num %>">
 				<input type="hidden" name="ra_p_num" value="<%=mv_num %>">
@@ -162,7 +135,7 @@ if(count-(pageNum-1)*10<=5){
 	}
 		%>															
 		
-	<div class="prev_next">
+<%-- 	<div class="prev_next">
 		<%
 		if(startPage>pageBlock){			
 			%><a href="./Myrating.my?pageNum=<%=startPage-pageBlock%>">prev</a><%
@@ -174,8 +147,14 @@ if(count-(pageNum-1)*10<=5){
 			%><a href="./Myrating.my?pageNum=<%=startPage+pageBlock%>">next</a><%
 		}
 		%>
-	</div>
+	</div> --%><!-- 페이지처리 슬라이드버튼으로 변경 -->
+	
 	</section>
+		<div>
+			<div class="prev1 button" data-btn="0"><a href="./Myrating.my?pageNum=<%if(pageNum!=1){%><%=pageNum-1 %><%;}else{%><%=1 %><%;}%>"><img src="./images/arrow_left.png" width="60px" height="60px"></a></div>
+			<div class="next1 button" data-btn="1"><a href="./Myrating.my?pageNum=<%if(pageNum!=endPage){%><%=pageNum+1 %><%;}else{%><%=endPage %><%;}%>"><img src="./images/arrow_right.png" width="60px" height="60px"></a></div>
+		</div><!-- button -->
+		
 </div>
 </article>
 

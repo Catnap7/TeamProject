@@ -20,6 +20,7 @@
 <body>
 
 	<%
+		request.setCharacterEncoding("utf-8");
 		List<NoticeBean> AdminNoticeList = (List) request.getAttribute("AdminNoticeList");
 		int count = ((Integer) request.getAttribute("count")).intValue();
 		String pageNum = (String) request.getAttribute("pageNum");
@@ -40,7 +41,7 @@
 
 	<div id="content">
 		<h1 class="adminTitle">
-			공지사항 [<%=count %>]
+			공지사항 []
 		</h1>
 		<table class="db_list">
 			<tr>
@@ -51,20 +52,30 @@
 				<th class="th5">작성일</th>
 			</tr>
 			<%
+			if(AdminNoticeList == null) {
+				%>
+				
+				<tr>
+					<td colspan="5">공지사항 없습니다.</td>
+				</tr>
+				
+				<%
+			}else {
 				for (int i = 0; i < AdminNoticeList.size(); i++) {
 					NoticeBean nb = (NoticeBean) AdminNoticeList.get(i);
-			%>
+						%>
 
-			<tr>
-				<td><%=nb.getN_num() %></td>
-				<td><a href="./AdminNoticeContent.an?n_num=<%=nb.getN_num() %>"><%=nb.getN_subject() %></a></td>
-				<td>관리자</td>
-				<td>1</td>
-				<td><%=nb.getN_date() %></td>
-			</tr>
+						<tr>
+							<td><%=nb.getN_num() %></td>
+							<td><a href="./AdminNoticeContent.an?n_num=<%=nb.getN_num() %>"><%=nb.getN_subject() %></a></td>
+							<td>관리자</td>
+							<td>1</td>
+							<td><%=nb.getN_date() %></td>
+						</tr>
 
-			<%
-				}
+						<%
+					}			
+				}				
 			%>
 
 		</table>

@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script>
 function profile(){
-	window.open("./UpdateProfile.my","","width=550,height=500,left=600,top=200,scrollbars=yes,resizable=yes,menubar=yes,location=yes");
+	window.open("./UpdateProfile.my","","width=600,height=500,left=600,top=200,scrollbars=yes,resizable=yes,menubar=yes,location=yes");
 }
 </script>
 </head>
@@ -53,8 +53,8 @@ case 2 : grade = "VIP회원"; break;
 		    <a href="#" onclick="profile()"><img alt="프로필사진" src="./images/proflie_img/proflie<%=memberbean.getM_pic()%>.png" width="130px" height="130px" title="사진 변경"></a>
 		  </div>
 		  <ul class="follow_ul">
-		    <li class="follower"><a>팔로워<span data-toggle="modal" data-target="#follower"><%=followercount %></span></a></li>
-		    <li class="follows"><a>팔로잉<span data-toggle="modal" data-target="#following"><%=followingcount %></span></a></li>
+		    <li class="follower"><a style="text-decoration: none;">팔로워<span data-toggle="modal" data-target="#follower" style="cursor: pointer;"><%=followercount %></span></a></li>
+		    <li class="follows"><a style="text-decoration: none;">팔로잉<span data-toggle="modal" data-target="#following" style="cursor: pointer;"><%=followingcount %></span></a></li>
 		  </ul>
 		</div>
 		
@@ -87,7 +87,7 @@ case 2 : grade = "VIP회원"; break;
 				  if((Integer)followingCheckList.get(i) == 1) {
 					  %>
 	<!-- 				  서로 팔로우 할때 -->
-					  <a id="f_unfollow<%=mbean.getM_name() %>" class="unfollow_a">언팔로우</a>
+					  <a id="f_unfollow<%=mbean.getM_name() %>" class="unfollow_a" style="cursor: pointer;">언팔로우</a>
 					  <%
 				  }
 			  %>
@@ -170,12 +170,12 @@ case 2 : grade = "VIP회원"; break;
 				  if((Integer)followCheckList.get(i) == 1) {
 					  %>
 	<!-- 				  서로 팔로우 할때 -->
-					  <a id="unfollow<%=mbean.getM_name() %>" class="unfollow_a">언팔로우</a>
+					  <a id="unfollow<%=mbean.getM_name() %>" class="unfollow_a" style="cursor: pointer;">언팔로우</a>
 					  <%
 				  }else {
 					  %>
 	<!-- 				  상대방만 나를 팔로우 할때 -->
-					  <a id="following<%=mbean.getM_name() %>" class="follow_a">팔로잉</a>
+					  <a id="following<%=mbean.getM_name() %>" class="follow_a" style="cursor: pointer;">팔로잉</a>
 					  <%
 				  }
 			  %>

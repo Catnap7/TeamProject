@@ -9,6 +9,7 @@
 <title>왓츄:이용권 결제</title>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/pay2.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 function pcancel(){
 	var a=confirm("해지하시겠습니까?");

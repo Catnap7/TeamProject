@@ -376,6 +376,7 @@ public class FollowDAO {
 					
 					MovieBean moviebean= new MovieBean();
 					moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+					moviebean.setMv_num(rs.getInt("mv_num"));
 					movieList.add(moviebean);
 				}
 				vector.add(reviewList);
@@ -541,19 +542,32 @@ public class FollowDAO {
 		try {
 			con=getConnection();
 
-			sql="select kind,fo_following,title "
-					+ "from (select 'rating' as kind,ra_id as id, ra_date as regdate, mv.mv_kor_title as title "
-					+ "from rating ra join movie mv "
-					+ "on mv.mv_num=ra.ra_p_num "
-					+ "union select 'favorite' as kind, f_id as id, f_date as regdate, mv.mv_kor_title as title "
-					+ "from favorite f join movie mv "
+			sql="select  kind,fo_following,title,engtitle,pic,num,date,genre "
+					+ "from (select 'rating' as kind, ra_id as id, ra_date as regdate, mv.mv_kor_title as title ,mv.mv_eng_title as engtitle,m.m_pic as pic,mv.mv_num as num,ra.ra_date as date,mv.mv_genre as genre "
+					+ "from rating ra "
+					+ "join movie mv "
+					+ "on  mv.mv_num=ra.ra_p_num "
+					+ "join member m "
+					+ "on m.m_id = ra.ra_id "
+					+ "union "
+					+ "select 'favorite' as kind, f_id as id, f_date as regdate, mv.mv_kor_title as title,mv.mv_eng_title as engtitle ,m.m_pic as pic,mv.mv_num as num,f.f_date as date,mv.mv_genre as genre "
+					+ "from favorite f "
+					+ "join movie mv "
 					+ "on  mv.mv_num=f.f_num "
-					+ "union select 'review' as kind, r_id as id, r_date as regdate, mv.mv_kor_title  as title	"
-					+ "from review r join movie mv "
-					+ "on  mv.mv_num=r.r_p_num) a join follow fo "
+					+ "join member m "
+					+ "on m.m_id = f.f_id "
+					+ "union "
+					+ "select 'review' as kind, r_id as id, r_date as regdate, mv.mv_kor_title  as title,mv.mv_eng_title as engtitle ,m.m_pic as pic,mv.mv_num as num,r.r_date as date,mv.mv_genre as genre "
+					+ "from review r "
+					+ "join movie mv "
+					+ "on  mv.mv_num=r.r_p_num "
+					+ "join member m "
+					+ "on m.m_id = r.r_id) a "
+					+ "join follow fo "
 					+ "on a.id = fo.fo_following "
 					+ "where fo.fo_id=? "
-					+ "order by regdate desc";
+					+ "order by regdate desc ";
+
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
@@ -563,6 +577,12 @@ public class FollowDAO {
 				timelinebean.setKind(rs.getString("kind"));
 				timelinebean.setFo_following(rs.getString("fo_following"));
 				timelinebean.setTitle(rs.getString("title"));
+				timelinebean.setEngtitle(rs.getString("engtitle"));
+				timelinebean.setGenre(rs.getString("genre"));
+				timelinebean.setDate(rs.getTimestamp("date"));
+				timelinebean.setNum(rs.getInt("num"));
+				timelinebean.setPic(rs.getInt("pic"));
+				
 				timelinelist.add(timelinebean);
 			}
 		} catch (Exception e) {
@@ -575,7 +595,55 @@ public class FollowDAO {
 		}
 		return timelinelist;		
 	}
-	
+/*<<<<<<< HEAD
+	public Vector TimeLineReview(String id){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";
+		Vector vector= new Vector();
+		List timelinereview= new ArrayList();
+		List timelinemovie = new ArrayList();
+		try {
+			con=getConnection();
+
+			sql="select mv.mv_num,r.r_content,r.r_id,r.r_date "
+					+ "from movie mv join review r "
+					+ "on mv.mv_num = r.r_p_num "
+					+ "join follow fo "
+					+ "on r.r_id = fo.fo_following "
+					+ "where fo.fo_id=? "
+					+ "order by r.r_date desc;";
+
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+				MovieBean moviebean = new MovieBean();
+				moviebean.setMv_num(rs.getInt("mv_num"));
+				timelinemovie.add(moviebean);
+				ReviewBean reviewbean = new ReviewBean();
+				reviewbean.setR_content(rs.getString("r_content"));
+				reviewbean.setR_id(rs.getString("r_id"));
+				reviewbean.setR_date(rs.getTimestamp("r_date"));
+				timelinereview.add(reviewbean);
+			}
+			vector.add(timelinemovie);
+			vector.add(timelinereview);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		return vector;		
+	}
+=======
+*/	
 	public int myhomeFollowCheck(String m_id, String f_id) {
 		
 		Connection con=null;

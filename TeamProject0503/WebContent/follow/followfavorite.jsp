@@ -79,8 +79,8 @@ m_name=(String)session.getAttribute("m_name");
 				}
 			%>
 			<div id="fvfv">
-				<img src="./images/<%=img_genre %>/<%=imgname %>_p.jpg" width="175px" height="260px">
-				<p><%=moviebean.getMv_kor_title()%></p>
+				<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><img src="./images/<%=img_genre %>/<%=imgname %>_p.jpg" width="175px" height="260px"></a>
+				<p><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><%=moviebean.getMv_kor_title()%></a></p>
 			</div>
 		<%}
 		} %>

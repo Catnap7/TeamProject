@@ -32,10 +32,10 @@ int followercount=((Integer)request.getAttribute("followercount"));
 int followingcount= ((Integer)request.getAttribute("followingcount"));
 int reviewcount= ((Integer)request.getAttribute("reviewcount"));
 MovieBean favorite = (MovieBean)request.getAttribute("moviebean");
-MovieBean favorite2=(MovieBean)request.getAttribute("moviebean2");
-List top5reviewlist = (List)request.getAttribute("top5reviewlist");
-List top5movielist = (List)request.getAttribute("top5movielist");
- List top5favoritelist = (List)request.getAttribute("top5favoritelist");
+//MovieBean favorite2=(MovieBean)request.getAttribute("moviebean2");
+//List top5reviewlist = (List)request.getAttribute("top5reviewlist");
+//List top5movielist = (List)request.getAttribute("top5movielist");
+// List top5favoritelist = (List)request.getAttribute("top5favoritelist");
 /*  List top5movielist2 = (List)request.getAttribute("top5movielist2"); */
 String grade="";
 switch(getmember.getM_grade()){
@@ -57,7 +57,7 @@ case "horror" : genre="공포"; break;
 case "drama" : genre="드라마"; break;
 }
 }
-String genre2="";
+/* String genre2="";
 if(favorite2!=null){
 switch(favorite2.getMv_genre()){
 case "animation" : genre2="애니메이션"; break;
@@ -71,7 +71,7 @@ case "horror" : genre2="공포"; break;
 case "drama" : genre2="드라마"; break;
 }
 }
-
+ */
 %>
 <!-- 헤더 영역 -->
 <jsp:include page="../inc/header.jsp"/>
@@ -92,25 +92,17 @@ case "drama" : genre2="드라마"; break;
 				<p><span id="span1">리뷰 수</span><span><%=reviewcount%></span></p>
 				<p><span id="span1">선호장르</span>
 				<span>
-					<%if(favorite==null){
+					<%
+					if(favorite==null ){
 						%>
-						<%="선호장르 없음"%>
-					<% }else{
-						%>
-						<%=genre+", "%>
-						<%
-					} 
-					%>
-					 <%if(favorite2==null){
-						%>
-						<%-- <%="선호장르 없음"%> --%>
+						<%="아직 선호장르가 없습니다"%>
 						<%
 					}else{
 						%>
-						<%=genre2%>
+						<%=genre%>
 						<%
 					}
-					%>
+					%> 
 			</span></p>
 	</div><!-- info -->
 </section><!-- myInfo -->
@@ -138,12 +130,12 @@ case "drama" : genre2="드라마"; break;
 				MovieBean moviebean=followmovielist.get(i);
 				%>
 				<div id="rv"> 
-					<p><span id="reviewTitle"><%=moviebean.getMv_kor_title()%></span>
+					<p><span id="reviewTitle"><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><%=moviebean.getMv_kor_title()%></a></span>
 					<span id="reviewDate"><%=reviewbean.getR_date()%></span>
 					<span id="reviewRecommand"><%="추천수  "%><%=reviewbean.getR_recommand()%></span>
 					<%-- / <%=reviewbean.getR_report()%> --%></p>
 					<p class="rvList">
-					<%=reviewbean.getR_content()%></p>
+					<%=reviewbean.getR_content().replaceAll("\r\n", "<br>")%></p>
 				</div> 
 				<%}
 				}%>

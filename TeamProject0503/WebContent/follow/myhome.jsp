@@ -105,10 +105,10 @@ case "drama" : genre2="드라마"; break;
 	<div id="info">
 		<table>
 			<tr>
-				<th>Following</th><td data-toggle="modal" data-target="#following"><%=followingcount%></td>
+				<th>Following</th><td data-toggle="modal" data-target="#following" style="text-decoration: none; cursor: pointer;"><%=followingcount%></td>
 			</tr>
 			<tr>	
-				<th>Follower</th><td data-toggle="modal" data-target="#follower"><%=followercount%></td><!-- 팔로잉, 팔로워 수 가져오기 --> 
+				<th>Follower</th><td data-toggle="modal" data-target="#follower" style="text-decoration: none; cursor: pointer;"><%=followercount%></td><!-- 팔로잉, 팔로워 수 가져오기 --> 
 			</tr>		
 			<tr>
 				<th>리뷰 수</th><td><%=reviewcount%></td><!-- 리뷰 수 가져오기 -->
@@ -167,7 +167,7 @@ case "drama" : genre2="드라마"; break;
 // 						alert($('#f_id').val());
 				
 				$.ajax({
-					type: "get",
+					type: "post",
 					url: "./DeleteFollowerAction.fo",
 					dataType: "html",
 					data: {
@@ -189,7 +189,7 @@ case "drama" : genre2="드라마"; break;
 // 						alert($('#f_id').val());
 				
 				$.ajax({
-					type: "get",
+					type: "post",
 					url: "./InsertFollowerAction.fo",
 					dataType: "html",
 					data: {
@@ -241,12 +241,12 @@ case "drama" : genre2="드라마"; break;
 			  }else if((Integer)followingCheckList.get(i) == 1) {
 					  %>
 	<!-- 				  서로 팔로우 할때 -->
-					  <a id="f_unfollow<%=mbean.getM_name() %>" class="unfollow_a">언팔로우</a>
+					  <a id="f_unfollow<%=mbean.getM_name() %>" class="unfollow_a" style="cursor: pointer;">언팔로우</a>
 					  <%
 				  }else if((Integer)followingCheckList.get(i) == 0) {
 					  %>
 	<!-- 				  상대방만 나를 팔로우 할때 -->
-					  <a id="f_following<%=mbean.getM_name() %>" class="follow_a">팔로잉</a>
+					  <a id="f_following<%=mbean.getM_name() %>" class="follow_a" style="cursor: pointer;">팔로잉</a>
 					  <%
 				  }
 // 			  }
@@ -267,7 +267,7 @@ case "drama" : genre2="드라마"; break;
 <%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
-							type: "get",
+							type: "post",
 							url: "./DeleteFollowerAction.fo",
 							dataType: "html",
 							data: {
@@ -289,7 +289,7 @@ case "drama" : genre2="드라마"; break;
 <%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
-							type: "get",
+							type: "post",
 							url: "./InsertFollowerAction.fo",
 							dataType: "html",
 							data: {
@@ -353,12 +353,12 @@ case "drama" : genre2="드라마"; break;
 			  }else	if((Integer)followCheckList.get(i) == 1) {
 					  %>
 	<!-- 				  서로 팔로우 할때 -->
-					  <a id="unfollow<%=mbean.getM_name() %>" class="unfollow_a">언팔로우</a>
+					  <a id="unfollow<%=mbean.getM_name() %>" class="unfollow_a" style="cursor: pointer;">언팔로우</a>
 					  <%
 				  }else if((Integer)followCheckList.get(i) == 0) {
 					  %>
 	<!-- 				  상대방만 나를 팔로우 할때 -->
-					  <a id="following<%=mbean.getM_name() %>" class="follow_a">팔로잉</a>
+					  <a id="following<%=mbean.getM_name() %>" class="follow_a" style="cursor: pointer;">팔로잉</a>
 					  <%
 				  }
 // 			  }
@@ -379,7 +379,7 @@ case "drama" : genre2="드라마"; break;
 <%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
-							type: "get",
+							type: "post",
 							url: "./DeleteFollowerAction.fo",
 							dataType: "html",
 							data: {
@@ -401,7 +401,7 @@ case "drama" : genre2="드라마"; break;
 <%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
-							type: "get",
+							type: "post",
 							url: "./InsertFollowerAction.fo",
 							dataType: "html",
 							data: {
@@ -470,7 +470,7 @@ case "drama" : genre2="드라마"; break;
 				<span id="reviewDate"><%=yymmdd.substring(0,10)%></span>
 				<span id="reviewRecommand"><%="추천수  "%><%=reviewbean.getR_recommand()%></span>
 				<%-- / <%=reviewbean.getR_report()%> --%></p>
-				<p class="rvList"><%=reviewbean.getR_content()%></p>
+				<p class="rvList"><%=reviewbean.getR_content().replaceAll("\r\n", "<br>")%></p>
 			</div> 
 			
 			<%}
