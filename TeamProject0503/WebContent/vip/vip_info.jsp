@@ -57,8 +57,8 @@ String grade="";
 	
 
 <%
-if(m_grade==1 || m_grade==0){
-	grade="준회원";
+if(m_grade==1){
+	grade="정회원";
 	%>
 	<div class="gradeInfo">
 		<p><%="회원님의 등급은 "%><br>
