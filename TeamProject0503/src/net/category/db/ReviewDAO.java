@@ -16,15 +16,17 @@ import javax.sql.DataSource;
 import net.member.db.MemberBean;
 
 public class ReviewDAO {
-	//디비연결 메서드
+	//�뵒鍮꾩뿰寃� 硫붿꽌�뱶
 	private Connection getConnection() throws Exception {
 		Context init=new InitialContext();
-		//자원의 이름 불러오기 자원 위치 java:comp/env 자원이름 jdbc/Mysql
+		//�옄�썝�쓽 �씠由� 遺덈윭�삤湲� �옄�썝 �쐞移� java:comp/env �옄�썝�씠由� jdbc/Mysql
 		DataSource ds=(DataSource)init.lookup("java:comp/env/jdbc/Mysql");
 		Connection con=ds.getConnection();
 		
 		return con;
 	}
+	
+	
 	
 public int getReviewCount(int mv_num) {
 		
@@ -55,7 +57,7 @@ public int getReviewCount(int mv_num) {
 		}
 		
 		return count;
-	}	// 댓글수
+	}	// �뙎湲��닔
 	
 public int getReviewCount(String m_id) {
 	
@@ -86,7 +88,7 @@ public int getReviewCount(String m_id) {
 	}
 	
 	return reviewcount;
-}	// 아이디에 따른 댓글수
+}	// �븘�씠�뵒�뿉 �뵲瑜� �뙎湲��닔
 
 	public List checkReview(String r_id, int r_p_num) {
 		
@@ -124,7 +126,7 @@ public int getReviewCount(String m_id) {
 		}
 		
 		return checkList;
-	}	// 댓글 중복 확인
+	}	// �뙎湲� 以묐났 �솗�씤
 	
 	public void insertReview(ReviewBean reviewbean) {
 		
@@ -165,7 +167,7 @@ public int getReviewCount(String m_id) {
 			if(pstmt!=null)try{pstmt.close();}catch(SQLException e){};
 			if(con!=null)try{con.close();}catch(SQLException e){};
 		}
-	}	// 댓글 입력
+	}	// �뙎湲� �엯�젰
 	
 	public Vector getReview(int mv_num, int startRow, int pageSize) {
 		Connection con=null;
@@ -217,7 +219,7 @@ public int getReviewCount(String m_id) {
 		}
 		
 		return vector;
-	}	// 댓글 리스트
+	}	// �뙎湲� 由ъ뒪�듃
 	
 	public void deleteReview(int r_num) {
 		Connection con=null;
@@ -239,7 +241,7 @@ public int getReviewCount(String m_id) {
 			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
 			if(con!=null)try{con.close();}catch(SQLException ex){}
 		}
-	}	// 댓글 삭제
+	}	// �뙎湲� �궘�젣
 	
 	
 	
@@ -266,7 +268,7 @@ public int getReviewCount(String m_id) {
 			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
 			if(con!=null)try{con.close();}catch(SQLException ex){}
 		}
-	}	// 댓글 수정
+	}	// �뙎湲� �닔�젙
 	
 	public void recommandReview(int r_num) {
 		Connection con=null;
@@ -290,7 +292,7 @@ public int getReviewCount(String m_id) {
 			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
 			if(con!=null)try{con.close();}catch(SQLException ex){}
 		}
-	}	// 댓글 추천
+	}	// �뙎湲� 異붿쿇
 	
 	public void reportReview(int r_num) {
 		Connection con=null;
@@ -314,7 +316,7 @@ public int getReviewCount(String m_id) {
 			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
 			if(con!=null)try{con.close();}catch(SQLException ex){}
 		}
-	}	// 댓글 신고
+	}	// �뙎湲� �떊怨�
 
 	public Vector dateSortReview(int mv_num, int startRow, int pageSize) {
 		Connection con=null;
@@ -362,7 +364,7 @@ public int getReviewCount(String m_id) {
 		}
 		
 		return vector;
-	}	// 최신순 정렬 
+	}	// 理쒖떊�닚 �젙�젹 
 	
 }
 

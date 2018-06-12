@@ -308,10 +308,17 @@ String classname = null;
 	classname = "main2";
 } */
 
+List<MovieBean>mainMovieList=(List)request.getAttribute("mainMovieList");
+List<MovieBean>mostReviewsList=(List)request.getAttribute("mostReviewsList");
+/* List<FavoriteBean>favList=(List)request.getAttribute("favList"); */
+
 List<MovieBean>Mostcount = (List)request.getAttribute("Mostcount");
 List<MovieBean>Bestrating = (List)request.getAttribute("Bestrating");
 List<MovieBean>Bestmovie = (List)request.getAttribute("Bestmovie");
 List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMovieList");
+
+int allreviewcount=((Integer)request.getAttribute("allreviewcount")).intValue(); 
+
 %>
 
 <!-- 크롬 기준 -->
@@ -326,107 +333,132 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 <%-- <article class=<%=classname%>> --%>
 <article class="main">
 <div class="mainMovie">
-	<p class="mainCoverTitle">왓츄 TODAY</p>
-	<div class="mainCover">
-		<%-- ↓↓↓↓↓↓↓↓↓↓↓↓ for문을 이용해서 랜덤으로 영화 뿌려주세요
-		<%for() {%>
-		<div class="mainPic">
-				<div><img id="mainPos" src="./images/thriller/Annabelle_p.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-					 <p id="play" onclick="document.getElementById('id01').style.display='block'"><a href="#"><img src="./images/play.png"></a></p>
 
-				</div>		
-			</div>
-			<div class="mainPic">
-				<img src="./images/sf/Pixels_s.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-				<span class="mv_title"><%="컨택트"%></span><!-- 한글제목 --> 
-				<span class="mv_year"><%="2017"%></span><!-- 년도 -->
-				<span class="mv_grade"><%="15세관람가"%></span><!-- 등급 -->
-				<span class="mv_time"><%="114"%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
-			</div>
-		<%} %>
-			↑↑↑↑↑↑↑↑↑↑↑↑ for문을 이용해서 랜덤으로 영화 뿌려주세요--%>
-		
-		
-		
-		
-		<%-- ↓↓↓↓↓↓↓↓↓↓↓↓ 디자인 예시를 위한 코드 위의 for문 작성 후 지워도 무방 ↓↓↓↓↓↓↓↓↓↓↓↓--%>						
-			<div class="mainPic">
-				<div><img id="mainPos" src="./images/thriller/Annabelle_p.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-					 <p id="play" onclick="document.getElementById('id01').style.display='block'"><a href="#"><img src="./images/play.png"></a></p>
 
-				</div>		
-			</div>
-			
+<p class="mainCoverTitle">왓츄 TODAY</p>
+
+	<!--################# 메인 영화 추천################## -->
+	<div class="mainCover">	
+		<%for(int i=0;i<mainMovieList.size();i++){ %>
 			<div class="mainPic">
-				<img id="mainPos" src="./images/sf/Equals_p.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-				 <p id="play" onclick="document.getElementById('id02').style.display='block'"><a href="#"><img src="./images/play.png"></a></p>
-			</div>
-			
-			
-			<div class="mainPic">
-				<img id="mainPos" src="./images/animation/Wall-E_p.jpg"><!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  
-				 <p id="play"  onclick="document.getElementById('id03').style.display='block'"><a href="#"><img src="./images/play.png"></a></p>
+			<%	
+					MovieBean moviebean = mainMovieList.get(i);
+					String img_genre= "";
+						if(moviebean.getMv_genre().equals("animation")){
+							img_genre="animation";
+						}else if(moviebean.getMv_genre().equals("comedy")){
+							img_genre="comedy";
+						}else if(moviebean.getMv_genre().equals("indie")){
+							img_genre="indie";
+						}else if(moviebean.getMv_genre().equals("sf")){
+							img_genre="sf";
+						}else if(moviebean.getMv_genre().equals("action")){
+							img_genre="action";
+						}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
+							img_genre="thriller";
+						}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
+							img_genre="romance";
+						}
+						
+					String genre= "";
+						if(moviebean.getMv_genre().equals("animation")){
+							genre="애니메이션";
+						}else if(moviebean.getMv_genre().equals("comedy")){
+							genre="코미디";
+						}else if(moviebean.getMv_genre().equals("indie")){
+							genre="독립영화";
+						}else if(moviebean.getMv_genre().equals("sf")){
+							genre="SF";
+						}else if(moviebean.getMv_genre().equals("action")){
+							genre="액션";
+						}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
+							genre="호러/스릴러";
+						}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
+							genre="로맨스/드라마";
+						}
+		
+				 	String age = "";
+						switch(moviebean.getMv_age()){
+							case 0  : age="전체이용가"; break;
+							case 12	: age="12세이용가"; break;
+							case 15	: age="15세이용가"; break;
+							case 19 : age="청소년관람불가"; break;
+						}
+				 
+					String moviename = moviebean.getMv_eng_title();
+					String imgname = moviename.replaceAll(" " , "");
+			 		imgname = imgname.replaceAll("\\p{Z}", "");%>
 					
-			</div>
-			
- 								
-<div id="id01" class="w3-modal">
-    <div class="w3-modal-content">
-      <div class="w3-container">
-        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-        <iframe width="1000" height="700"src="https://kakaotv.daum.net/embed/player/cliplink/374032780?service=daum_movie" allowfullscreen frameborder="0" scrolling="no"></iframe>
-      </div>
-    </div>
-  </div> 
-  
-  <div id="id02" class="w3-modal">
-    <div class="w3-modal-content">
-      <div class="w3-container">
-        <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-       <p><iframe width="1000" height="700"src="https://kakaotv.daum.net/embed/player/cliplink/78230923?service=daum_movie" allowfullscreen frameborder="0" scrolling="no"></iframe></p>
-      </div>
-    </div>
-  </div> 
-  
-    <div id="id03" class="w3-modal">
-    <div class="w3-modal-content">
-      <div class="w3-container">
-        <span onclick="document.getElementById('id03').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-       <p><iframe width="1000" height="700"src='http://tv.kakao.com/embed/player/cliplink/9227925?service=flash' allowfullscreen frameborder="0" scrolling="no"></iframe></p>
-      </div>
-    </div>
-  </div> 
-		<%--↑↑↑↑↑↑↑↑↑↑↑↑ 디자인 예시를 위한 코드 위의 for문 작성 후 지워도 무방--%>
-		
-		
-		
+					<div class="mainPos"><img id="mainPos" src="./images/<%=img_genre%>/<%=imgname%>_p.jpg">
+						 <p id="play" onclick="document.getElementById('id0<%=i+1%>').style.display='block'"><a href="#"><img src="./images/play.png"></a></p>
+						 
+						 <a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>">
+						 	<p><span id="mainPosTitle"><%=moviebean.getMv_kor_title()%></span><br><%=genre+" / "+age %></p></a>
+					</div>	
+					<!-- modal javascript -->
+					<div id="id0<%=i+1%>" class="w3-modal">
+					    <div class="w3-modal-content">
+					      <div class="w3-container">
+					        <span onclick="document.getElementById('id0<%=i+1%>').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+					        <iframe width="1000" height="700"src="<%=moviebean.getMv_video()%>" allowfullscreen frameborder="0" scrolling="no"></iframe>
+					      </div>
+					    </div>
+				   </div> <!-- modal -->							
+				</div>
+			<%}%><!--for문 -->
+		</div>	
 	<div class="clear"></div>	
-	</div>
 </div> 
 
-
+	<!--################# 리뷰 차트 ################## -->
 	<div class="chart">
 		<div>
 			<p id="chartTitle">왓츄 RANKING</p>
 			<p>왓츄에서 가장 많은 리뷰를 받은 영화!</p>
 			<div id="rank">
-				<a href="#"><p>컨택트<br>SF / 15세관람가</p></a>
-				<a href="#"><p>애나벨<br>공포 / 15세관람가</p></a>
-				<a href="#"><p>센과 치히로의 행방불명<br>애니메이션 / 15세관람가</p></a>
-				<a href="#"><p>인터스텔라<br>SF / 15세관람가</p></a>
-				<a href="#"><p>영화 제목이 엄청 길면 어쩌지<br> SF / 15세관람가</p></a>
+				<%for(int i=0;i<mostReviewsList.size();i++){
+					MovieBean moviebean = (MovieBean)mostReviewsList.get(i);
+					/* FavoriteBean favbean =(FavoriteBean)favList.get(i); */
+					String genre= "";
+					if(moviebean.getMv_genre().equals("animation")){
+						genre="애니메이션";
+					}else if(moviebean.getMv_genre().equals("comedy")){
+						genre="코미디";
+					}else if(moviebean.getMv_genre().equals("indie")){
+						genre="독립영화";
+					}else if(moviebean.getMv_genre().equals("sf")){
+						genre="SF";
+					}else if(moviebean.getMv_genre().equals("action")){
+						genre="액션";
+					}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
+						genre="호러/스릴러";
+					}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
+						genre="로맨스/드라마";
+					}
+	
+			 	String age = "";
+					switch(moviebean.getMv_age()){
+						case 0  : age="전체이용가"; break;
+						case 12	: age="12세이용가"; break;
+						case 15	: age="15세이용가"; break;
+						case 19 : age="청소년관람불가"; break;
+					}
+				%>
+					<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><p><%=moviebean.getMv_kor_title()%><br>
+						<%=genre+" / "+age%></p></a>
+				<%} %>
 			</div>
 		</div>
 	</div>
+	
+	<!--################# 리뷰 수 ################## -->
 	<div class="totalRv">
 		<div>
-			<p>오늘자 왓츄 총 리뷰수 </p>
-			<p>5645742</p>
-			<div>
-			
-			</div>
+			<p>오늘자 왓츄 총 리뷰수 <br>
+			<%=allreviewcount%></p>
 		</div>
 	</div>
+	<!--################# 룰렛 링크################## -->
 	<div class="sheep">
 		<a href="./Roulette.ro">
 			<div>행운의 양을 만나보세요! </div>
@@ -438,7 +470,7 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 
 
 
-<!-- 왓츄에서 인기있는 영화 -->
+<!-- 이번달 인기영화-->
 <div class="containerWithBtn">	
   	<div class="container"> 
   		<h2><span><img src="./images/slate.png" width="30px" height="30px"></span><span id="title">이번 달 인기 영화</span></h2>
