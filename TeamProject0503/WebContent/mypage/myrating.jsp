@@ -9,19 +9,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>왓츄 : 내 평점내역</title>
+
+<!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
-<link href="./css/mypage.css" rel="stylesheet" type="text/css">
+<!-- <link href="./css/mypage.css" rel="stylesheet" type="text/css"> -->
 <link href="./css/myrating.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./css/ratingStar.css">
 
-
+<!-- jquery -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="./js/rating.js"></script>
 
-
+<!-- icon -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 <body>
@@ -49,27 +51,33 @@ if(count-(pageNum-1)*10<=5){
 <!-- 헤더영역 -->
 
 <article>
-<div class="<%=class_name%>">
-	<div class="movie_star">
-		<h2>회원님의 평점 내역</h2>
-	</div>
+<%-- <div class="<%=class_name%>"> --%>
+<div class="movie_wrap">
+	
+	
 	<section class="movie_sec">
 	
-	<script>
+		<script>
 	
+			function abc(c) {
+				//c는 영화 넘버로 설정된 id를 불러와, 영화마다 별점 셋팅을 해준다
+				$(document).ready(function(){
+					$("[id="+c+"]").attr( "checked", "checked" );
+				});
+			}
 	
-	function abc(c) {
-		//c는 영화 넘버로 설정된 id를 불러와, 영화마다 별점 셋팅을 해준다
-		$(document).ready(function(){
-			$("[id="+c+"]").attr( "checked", "checked" );
-		});
-	}
-	
-	
-	</script>
+		</script>
 	
 	<%
 	if(ratinglist!=null&& movielist!=null){
+		%>
+		<div class="movie_star">
+		<p><img src="./images/star.png" width="55px" height="70px">
+		<img src="./images/star.png" width="55px" height="70px">
+		<img src="./images/star.png" width="55px" height="70px"></p>
+		<p>회원님의 별점 내역</p>
+	</div>
+	<%
 	for(int i=0;i<ratinglist.size();i++){
 		RatingBean ratingbean=(RatingBean)ratinglist.get(i);
 		MovieBean moviebean=(MovieBean)movielist.get(i);
@@ -98,10 +106,7 @@ if(count-(pageNum-1)*10<=5){
 		}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
 			img_genre="romance";
 		}
-		
-		
-		
-		
+
 	%>
 		<div class="movie_sec_inner" >
 			<a href="./CategoryMovie.ca?mv_num=<%=mv_num %>"><img src="./images/<%=img_genre%>/<%=imgname %>_p.jpg" width="250px" height="350px"></a><br>
@@ -131,11 +136,12 @@ if(count-(pageNum-1)*10<=5){
 		</div>
 		
 		<%
-	}
-	}
-		%>															
+		}
+	%>
+	
+															
 		
-<%-- 	<div class="prev_next">
+	<%-- <div class="prev_next">
 		<%
 		if(startPage>pageBlock){			
 			%><a href="./Myrating.my?pageNum=<%=startPage-pageBlock%>">prev</a><%
@@ -147,14 +153,25 @@ if(count-(pageNum-1)*10<=5){
 			%><a href="./Myrating.my?pageNum=<%=startPage+pageBlock%>">next</a><%
 		}
 		%>
-	</div> --%><!-- 페이지처리 슬라이드버튼으로 변경 -->
+	</div>  --%><!-- 페이지처리 슬라이드버튼으로 변경 -->
 	
 	</section>
-		<div>
+	
+		<!-- button -->
 			<div class="prev1 button" data-btn="0"><a href="./Myrating.my?pageNum=<%if(pageNum!=1){%><%=pageNum-1 %><%;}else{%><%=1 %><%;}%>"><img src="./images/arrow_left.png" width="60px" height="60px"></a></div>
 			<div class="next1 button" data-btn="1"><a href="./Myrating.my?pageNum=<%if(pageNum!=endPage){%><%=pageNum+1 %><%;}else{%><%=endPage %><%;}%>"><img src="./images/arrow_right.png" width="60px" height="60px"></a></div>
-		</div><!-- button -->
+		<!-- button -->
 		
+<% }else{
+	%>
+	<div id="noMoreMovie"><p><i class="material-icons" style="font-size:48px;">warning</i></p><br>
+		<p>평점 내역이 없습니다</p><br><br><br>
+		<p>관람한 영화에 별점을 매겨주세요!</p><br><br>
+		<p><img src="./images/nostar.png" width="140px" height="140px"></p>
+	</div>
+	<%
+}
+%>			
 </div>
 </article>
 
