@@ -17,10 +17,10 @@ import net.member.db.MemberBean;
 
 
 public class VipDAO {
-	//디비연결 메서드
+	//�뵒鍮꾩뿰寃� 硫붿꽌�뱶
 	private Connection getConnection() throws Exception {
 		Context init=new InitialContext();
-		//자원의 이름 불러오기 자원 위치 java:comp/env 자원이름 jdbc/Mysql
+		//�옄�썝�쓽 �씠由� 遺덈윭�삤湲� �옄�썝 �쐞移� java:comp/env �옄�썝�씠由� jdbc/Mysql
 		DataSource ds=(DataSource)init.lookup("java:comp/env/jdbc/Mysql");
 		Connection con=ds.getConnection();
 		
@@ -334,13 +334,13 @@ public class VipDAO {
 			ResultSet rs=null;
 			String sql="";
 			try {
-				//1,2 디비연결
+				//1,2 �뵒鍮꾩뿰寃�
 				con=getConnection();
-				//3 sql num해당하는 상품 삭제
+				//3 sql num�빐�떦�븯�뒗 �긽�뭹 �궘�젣
 				sql="delete from vip_cinema_prev where v_num = ?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, v_num);
-				//4 실행
+				//4 �떎�뻾
 				pstmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -456,7 +456,7 @@ public class VipDAO {
 			ResultSet rs = null;
 			try {
 				con = getConnection();
-				sql = "select * from member m left outer join vip_reservation v on m.m_id=v.vr_id	where m_grade=2";
+				sql = "select * from member m left outer join vip_reservation v on m.m_id=v.vr_id where m_grade=2";
 				pstmt = con.prepareStatement(sql);
 				
 				rs = pstmt.executeQuery();

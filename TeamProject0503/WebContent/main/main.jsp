@@ -414,7 +414,7 @@ int allreviewcount=((Integer)request.getAttribute("allreviewcount")).intValue();
 	<div class="chart">
 		<div>
 			<p id="chartTitle">왓츄 RANKING</p>
-			<p>왓츄에서 가장 많은 리뷰를 받은 영화!</p>
+			<p>왓츄회원들이 가장 보고 싶어 하는 영화!</p>
 			<div id="rank">
 				<%for(int i=0;i<mostReviewsList.size();i++){
 					MovieBean moviebean = (MovieBean)mostReviewsList.get(i);
