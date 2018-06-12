@@ -453,7 +453,7 @@ $(document).ready(function(){
 		</div>
    
      <!--댓글 쓰는 란  -->
-     <form action="./InsertReview.ca" class="coment_write">
+     <form action="./InsertReview.ca" class="coment_write" id="review">
      <%     
      if(memberBean.getM_grade() == 3) {
     	 %>

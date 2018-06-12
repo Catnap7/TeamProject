@@ -342,7 +342,7 @@ public class PayDAO {
 		try {
 			con=getConnection();
 
-			sql="delete coupon where c_id=? and c_name=? order by c_end_day asc limit 1";
+			sql="delete from coupon where c_id=? and c_name=? order by c_end_day asc limit 1";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setInt(2, c_name);
