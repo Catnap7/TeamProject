@@ -363,6 +363,7 @@ $(document).ready(function(){
                   $('.hr').click(function(){
                       window.open('<%=moviebean.getMv_video()%>','_blank')
                      });
+                      break;
                   
                });           
               </script>
