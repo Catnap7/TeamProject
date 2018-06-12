@@ -554,7 +554,7 @@ $(document).ready(function(){
 <%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
 								
 									$.ajax({
-										type: "get",
+										type: "post",
 										url: "./RecommendAction.ca",
 										dataType: "html",
 										data: {
@@ -568,6 +568,7 @@ $(document).ready(function(){
 												alert("이미 추천을 준 리뷰 입니다");
 											}
 											location.reload();
+										
 										}
 									});
 							});
@@ -584,7 +585,7 @@ $(document).ready(function(){
 <%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
 								
 									$.ajax({
-										type: "get",
+										type: "post",
 										url: "./ReportAction.ca",
 										dataType: "html",
 										data: {
