@@ -89,7 +89,9 @@ public class MainDAO {
 		
 		try {
 			con=getConnection();
-			sql = "select mv_num, mv_kor_title, mv_genre, mv_age, count(*) from watchu.favorite f join watchu.movie m on f.f_num=m.mv_num group by f_num order by count(*) desc limit 5";
+			/*sql = "select mv_num, mv_kor_title, mv_genre, mv_age, count(*) from watchu.favorite f join watchu.movie m on f.f_num=m.mv_num group by f_num order by count(*) asc limit 5";
+			sql="select m.mv_kor_title, m.mv_genre, m.mv_age, f.f_num, count(*) from watchu.favorite f join watchu.movie m on f.f_num=m.mv_num group by f.f_num order by count(*) desc limit 5";*/
+			sql="select mv_num, m.mv_kor_title, m.mv_genre, m.mv_age, count(*) from watchu.favorite f join watchu.movie m on f.f_num=m.mv_num group by f.f_num order by count(*) desc limit 5 ";
 			pstmt=con.prepareStatement(sql);			
 			rs=pstmt.executeQuery();
 			
@@ -135,9 +137,7 @@ public class MainDAO {
 		ResultSet rs = null;
 		try {
 			con = getConnection();
-			sql = "select f_num, count(*) from favorite f join movie m on f.f_num=m.mv_num group by f_num order by count(*) desc limit 5";
-			sql = "select mv_kor_title,mv_genre, mv_age, count(*) from watchu.favorite f join watchu.movie m on f.f_num=m.mv_num group by f_num order by count(*) desc limit 5";
-
+			sql="select m.mv_kor_title, m.mv_genre, m.mv_age, f.f_num, count(*) from watchu.favorite f join watchu.movie m on f.f_num=m.mv_num group by f.f_num order by count(*) desc limit 5";
 			pstmt = con.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
@@ -159,7 +159,7 @@ public class MainDAO {
 			
 			vector.add(mostReviewsList);
 			vector.add(favList);
-			System.out.println(vipMemberList.size());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -169,7 +169,7 @@ public class MainDAO {
 		}
 		return vector;
 	}//getMostReviewsList
-*/	
+	*/
 	
 	//총 리뷰 수
 	public int getAllReviewCount() {
