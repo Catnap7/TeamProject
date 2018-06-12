@@ -189,3 +189,33 @@ th, td {
 	text-align: center;
 	font-size: 25px;
 }
+
+
+
+/* 해지하기버튼 */
+
+#pcancel{
+    position: relative;
+    left: 1200px;
+    top: -50px;
+    border: 2px solid #228c6a;
+    background-color: #adebd7;
+    height: 40px;
+    width: 100px;
+    font-size: 16px;
+    color: #14523e;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
