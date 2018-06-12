@@ -48,7 +48,8 @@ $(document).ready(function(){
 			$("#amount").html(amount1*0.9);
 			$("#amounth").val(amount1*0.9);
 		}else if($this.val()==-1){
-			
+			$("#amount").html(amount1);
+			$("#amounth").val(amount1);
 		}
 	});
 }); 
@@ -101,13 +102,13 @@ List couponlist=(List)request.getAttribute("couponlist");
 					 couponbean.getC_name();
 					 switch(couponbean.getC_name()){
 					  case 0: 
-						 %><option value="0">10%할인</option><%
+						 %><option value="0">10%할인  <%=couponbean.getC_end_day() %></option><%
 						  break;
 					  case 1: 
-						 %><option value="1">50%할인</option><%
+						 %><option value="1">50%할인  <%=couponbean.getC_end_day() %></option><%
 						  break;
 					  case 2:
-						  %><option value="2">한달 무료</option><%
+						  %><option value="2">한달 무료  <%=couponbean.getC_end_day() %></option><%
 						  break;
 					  default://vip쿠폰일때,
 						  break;
