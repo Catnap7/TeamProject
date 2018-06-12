@@ -566,9 +566,9 @@ $(document).ready(function(){
 										success:function(data){
 											if(data==0) {
 												alert("이미 추천을 준 리뷰 입니다");
+											}else {
+												location.reload();
 											}
-											location.reload();
-										
 										}
 									});
 							});
@@ -597,8 +597,9 @@ $(document).ready(function(){
 										success:function(data){
 											if(data==0) {
 												alert("이미 신고한 리뷰 입니다");
+											}else {
+												location.reload();
 											}
-											location.reload();
 										}
 									});
 							});
