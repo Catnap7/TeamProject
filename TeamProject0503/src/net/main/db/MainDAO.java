@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Vector;
 import java.sql.DriverManager;
 
 import javax.naming.Context;
@@ -14,6 +15,9 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import net.admin.manage.db.MovieBean;
+import net.favorite.db.FavoriteBean;
+import net.member.db.MemberBean;
+import net.vip.db.VipResBean;
 
 public class MainDAO {
 	//�뵒鍮꾩뿰寃� 硫붿꽌�뱶
@@ -27,6 +31,177 @@ public class MainDAO {
 	}
 	
 	
+	
+	//main movie recommand
+	public List mainMovieList(){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";		
+		
+		List mainMovieList=new ArrayList<MovieBean>();
+		
+		try {
+			con=getConnection();
+
+			/*sql="select * from movie order by rand() limit 15";*/
+			sql="select * from movie order by rand() limit 3";
+			pstmt=con.prepareStatement(sql);			
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+ 				MovieBean moviebean= new MovieBean();
+				moviebean.setMv_num(rs.getInt("mv_num"));
+				moviebean.setMv_eng_title(rs.getString("mv_eng_title"));
+				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+				moviebean.setMv_genre(rs.getString("mv_genre"));
+				moviebean.setMv_year(rs.getInt("mv_year"));
+				moviebean.setMv_country(rs.getString("mv_country"));
+				moviebean.setMv_age(rs.getInt("mv_age"));
+				moviebean.setMv_time(rs.getInt("mv_time"));
+				moviebean.setMv_director(rs.getString("mv_director"));
+				moviebean.setMv_actor(rs.getString("mv_actor"));
+				moviebean.setMv_video(rs.getString("mv_video"));
+				
+				mainMovieList.add(moviebean);		
+				
+				System.out.println(mainMovieList.size());
+			}		
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		return mainMovieList;
+	}
+	
+	
+	public List getMostReviewsList(){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="";		
+		int favcount=0;
+				
+		List mostReviewsList=new ArrayList<MovieBean>();
+		
+		try {
+			con=getConnection();
+			/*sql = "select mv_num, mv_kor_title, mv_genre, mv_age, count(*) from watchu.favorite f join watchu.movie m on f.f_num=m.mv_num group by f_num order by count(*) asc limit 5";
+			sql="select m.mv_kor_title, m.mv_genre, m.mv_age, f.f_num, count(*) from watchu.favorite f join watchu.movie m on f.f_num=m.mv_num group by f.f_num order by count(*) desc limit 5";*/
+			sql="select mv_num, m.mv_kor_title, m.mv_genre, m.mv_age, count(*) from watchu.favorite f join watchu.movie m on f.f_num=m.mv_num group by f.f_num order by count(*) desc limit 5 ";
+			pstmt=con.prepareStatement(sql);			
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+ 				MovieBean moviebean= new MovieBean();
+				
+ 				moviebean.setMv_num(rs.getInt("mv_num"));
+ 				/*moviebean.setMv_eng_title(rs.getString("mv_eng_title"));*/
+				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+				moviebean.setMv_genre(rs.getString("mv_genre"));
+				/*moviebean.setMv_year(rs.getInt("mv_year"));
+				moviebean.setMv_country(rs.getString("mv_country"));*/
+				moviebean.setMv_age(rs.getInt("mv_age"));
+				/*moviebean.setMv_time(rs.getInt("mv_time"));
+				moviebean.setMv_director(rs.getString("mv_director"));
+				moviebean.setMv_actor(rs.getString("mv_actor"));
+				moviebean.setMv_video(rs.getString("mv_video"));*/
+				
+				mostReviewsList.add(moviebean);		
+				
+				System.out.println("이거"+mostReviewsList.size());
+			}		
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(con!=null)try {con.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		return mostReviewsList;
+	}
+	
+	
+	/*public Vector getMostReviewsList() {
+		List<MovieBean> mostReviewsList = new ArrayList<MovieBean>();
+		List<FavoriteBean> favList=new ArrayList<FavoriteBean>();
+		Vector vector=new Vector();
+		
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = getConnection();
+			sql="select m.mv_kor_title, m.mv_genre, m.mv_age, f.f_num, count(*) from watchu.favorite f join watchu.movie m on f.f_num=m.mv_num group by f.f_num order by count(*) desc limit 5";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				MovieBean moviebean = new MovieBean();
+				FavoriteBean favbean=new FavoriteBean();
+
+				moviebean.setMv_num(rs.getInt("mv_num"));
+				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
+				moviebean.setMv_genre(rs.getString("mv_genre"));
+				moviebean.setMv_age(rs.getInt("mv_age"));
+
+				favbean.setF_num(rs.getInt("f_num"));
+				
+				mostReviewsList.add(moviebean);
+				favList.add(favbean);
+			}
+			
+			vector.add(mostReviewsList);
+			vector.add(favList);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+		}
+		return vector;
+	}//getMostReviewsList
+	*/
+	
+	//총 리뷰 수
+	public int getAllReviewCount() {
+		
+		Connection con=null;
+		String sql="";
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int allreviewcount = 0;
+		
+		try {
+			con = getConnection();
+			sql = "select count(*) as allreviewcount from review";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				allreviewcount = rs.getInt("allreviewcount");
+			}
+			System.out.println(allreviewcount);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs!=null)try{rs.close();}catch(SQLException e){};
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException e){};
+			if(con!=null)try{con.close();}catch(SQLException e){};
+		}
+		return allreviewcount;
+	}	//총 리뷰 수
+	
+
 	
 	//�궗�슜�옄媛� 媛��옣 留롮��닔�쓽 �룊媛�(蹂꾩젏)�쓣 �궓湲� �옣瑜�
 	//�닔�젙�빐�꽌 �벝寃�
@@ -292,6 +467,7 @@ public class MainDAO {
 		}
 		return directorsearchList;
 	}
+	
 	public List actorsearch(String search){
 		Connection con=null;
 		PreparedStatement pstmt=null;

@@ -112,7 +112,7 @@ article.main{
 #mainPos{
 	border:1px solid #c0c0c0;
 	width:400px;
-	height:auto; 
+	height: 580px; 
 }	
 
 .mainPic:HOVER #mainPos{
@@ -130,6 +130,12 @@ article.main{
 .mainPic:HOVER #play img{
 	display: inline-block;
 } 
+
+.mainPos a{text-decoration: none;}
+.mainPos a p{margin-top: 10px; line-height: 1.9em;}
+.mainPos a:LINK, .mainPos a:VISITED{color:#333;}
+#mainPosTitle{font-size: 1.4em; font-weight: bold;}
+#mainPosTitle:HOVER{color:#ff8800;}
 
 
 /* 플레이 버튼 누르면 나오는 예고편 */
@@ -192,7 +198,7 @@ article.main{
 	height: 440px;
     background-color: #393939;
     position: relative;
-    bottom: 745px;
+     bottom: 730px;
     left: 1490px;
 }
 #chartTitle{
@@ -219,14 +225,14 @@ article.main{
 .totalRv{
 	background-color: #50a4aa;
     position: relative;
-    bottom: 665px;
+    bottom: 650px;
     left: 1185px;
 }
 .sheep{
 	height: 100px;
     background-color: #455a64;
     position: relative;
-    bottom: 540px;
+    bottom: 525px;
     left: 880px;
 }
 .sheep div{
