@@ -519,7 +519,9 @@ case "drama" : genre2="드라마"; break;
 				}
 			%>
 			<div class="favMovies">
-				<img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="195px" height="280px"> 
+			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>">
+				<img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="195px" height="280px">
+				</a> 
 				<p><%=moviebean.getMv_kor_title()%></p>
 			</div>
 		<%	}
