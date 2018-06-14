@@ -27,7 +27,8 @@ public class MemberLoginAction implements Action{
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
-		
+		response.setContentType("text/html;	charset=UTF-8");
+		PrintWriter out = response.getWriter();
 		MemberDAO mdao = new MemberDAO();
 		String m_id = request.getParameter("m_id");
 		
@@ -44,8 +45,6 @@ public class MemberLoginAction implements Action{
 		int m_grade = asdao.AdminMemberGrade(m_id);
 		
 		if(m_grade == 4) {
-			response.setContentType("text/html;	charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('신고 누적으로 인한 로그인 정지(고객센터 문의)');");
 			out.println("history.back()");
@@ -59,8 +58,7 @@ public class MemberLoginAction implements Action{
 		memberbean.setM_id(request.getParameter("m_id"));		
 		memberbean.setM_pass(request.getParameter("m_pass"));
 		
-		response.setContentType("text/html;	charset=UTF-8");
-		PrintWriter out = response.getWriter();
+		
 		int check=mdao.userCheck(memberbean.getM_id(),memberbean.getM_pass());
 		int Echeck=mdao.EmailChecked(memberbean.getM_id());
 		
