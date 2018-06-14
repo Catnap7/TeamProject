@@ -78,6 +78,12 @@
 					</tr>
 				</thead>
 				<tbody id="ajaxTable">
+				<tr>
+						<th class="th2">ID</th>
+						<th class="th3">닉네임</th>
+						<th class="th4">회원등급</th>
+						<th class="th5">가입일</th>
+					</tr>
 				</tbody>
 			</table>
 		</div>
