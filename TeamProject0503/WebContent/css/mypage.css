@@ -404,6 +404,16 @@ span.star_rating {
 	/* border: 1px solid #333; */
 }
 
+.alram_info tr:LAST-CHILD td:ONLY-CHILD{
+	border-radius: 0 0 20px 20px;
+}
+.mo {
+	text-decoration: none;
+	color:#0000d9;
+}
+.mo:HOVER {
+	color:#6c6cff;
+}
 /******************* 쿠폰 ********************/
 
 .mypage_coupon {border:1px solid #a0a0a0;
@@ -438,7 +448,7 @@ span.star_rating {
 	width: 330px;
 	position: absolute;
 	left: 40px;
-	top: 60px;
+	top: 50px;
 	/* border-collapse: collapse; */
 	/* border: 1px solid #333; */
 }

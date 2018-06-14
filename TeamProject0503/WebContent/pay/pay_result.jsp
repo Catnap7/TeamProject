@@ -9,6 +9,7 @@
 <title>왓츄:이용권 결제</title>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/pay2.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 function pcancel(){
 	var a=confirm("해지하시겠습니까?");
@@ -97,7 +98,7 @@ int count = ((Integer)request.getAttribute("count")).intValue();
 //해지한 사용자의 재결제 구현x
 if(currentpaybean!=null){
 if(currentpaybean.getP_auto().equals("정기")){ %>
-<input type="button" onclick="pcancel()" value="해지하기">
+<input type="button" onclick="pcancel()" value="해지하기" id="pcancel">
 
 <% 
 }

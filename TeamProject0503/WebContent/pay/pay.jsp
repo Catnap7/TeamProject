@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/pay2.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <title>왓츄:결제</title>
 
 <script src="./js/jquery-3.3.1.js"></script>
@@ -47,7 +48,8 @@ $(document).ready(function(){
 			$("#amount").html(amount1*0.9);
 			$("#amounth").val(amount1*0.9);
 		}else if($this.val()==-1){
-			
+			$("#amount").html(amount1);
+			$("#amounth").val(amount1);
 		}
 	});
 }); 
@@ -91,7 +93,8 @@ List couponlist=(List)request.getAttribute("couponlist");
 		<section class="total">
 		<table class="payment">
 		<tr><th class="radius_3">쿠폰</th>
-		<td class="radius_4"><select name="couponBox" id="box">
+		<td class="radius_4">
+		<select name="couponBox" id="box">
 			<%if(couponlist.size()!=0){ %>
 			 <option value="-1">가지고 계신 쿠폰을 선택하세요</option>
 			 <%
@@ -100,13 +103,13 @@ List couponlist=(List)request.getAttribute("couponlist");
 					 couponbean.getC_name();
 					 switch(couponbean.getC_name()){
 					  case 0: 
-						 %><option value="0">10%할인</option><%
+						 %><option value="0">10%할인&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~<%=couponbean.getC_end_day() %></option><%
 						  break;
 					  case 1: 
-						 %><option value="1">50%할인</option><%
+						 %><option value="1">50%할인&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~<%=couponbean.getC_end_day() %></option><%
 						  break;
 					  case 2:
-						  %><option value="2">한달 무료</option><%
+						  %><option value="2">한달 무료&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~<%=couponbean.getC_end_day() %></option><%
 						  break;
 					  default://vip쿠폰일때,
 						  break;
@@ -115,12 +118,14 @@ List couponlist=(List)request.getAttribute("couponlist");
 			 }else{
 				 %><option value="-1">가지고 계신 쿠폰이 없습니다</option><%
 			 }
-				 %>				 				 
+				 %>
+		</select>	 
 		<br></td></tr>				
-<input type="hidden" id="amounth" name="charge">
-<tr><th class="to_money">총 결제 금액:</th><td><p id="amount"></td></tr>
+		<tr><th class="to_money">
+		<input type="hidden" id="amounth" name="charge">
+		총 결제 금액:</th><td><p id="amount"></p></td></tr>
 
-</p>
+
 <tr><td colspan="2" class="radius_5"><label for="pay">결제하기</label><input type="submit" value="결제하기" id="pay"></td></tr>
 	</table>
 	</section>

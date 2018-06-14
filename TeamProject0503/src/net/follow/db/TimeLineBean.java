@@ -11,6 +11,13 @@ public class TimeLineBean {
 	private int num;
 	private Timestamp date;
 	private String genre;
+	private String name;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getGenre() {
 		return genre;
 	}

@@ -453,7 +453,7 @@ $(document).ready(function(){
 		</div>
    
      <!--댓글 쓰는 란  -->
-     <form action="./InsertReview.ca" class="coment_write">
+     <form action="./InsertReview.ca" class="coment_write" id="review">
      <%     
      if(memberBean.getM_grade() == 3) {
     	 %>
@@ -554,7 +554,7 @@ $(document).ready(function(){
 <%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
 								
 									$.ajax({
-										type: "get",
+										type: "post",
 										url: "./RecommendAction.ca",
 										dataType: "html",
 										data: {
@@ -566,8 +566,9 @@ $(document).ready(function(){
 										success:function(data){
 											if(data==0) {
 												alert("이미 추천을 준 리뷰 입니다");
+											}else {
+												location.reload();
 											}
-											location.reload();
 										}
 									});
 							});
@@ -584,7 +585,7 @@ $(document).ready(function(){
 <%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
 								
 									$.ajax({
-										type: "get",
+										type: "post",
 										url: "./ReportAction.ca",
 										dataType: "html",
 										data: {
@@ -596,8 +597,9 @@ $(document).ready(function(){
 										success:function(data){
 											if(data==0) {
 												alert("이미 신고한 리뷰 입니다");
+											}else {
+												location.reload();
 											}
-											location.reload();
 										}
 									});
 							});
