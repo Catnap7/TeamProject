@@ -34,7 +34,8 @@
     </nav>
 	<div class="container">
 	    <div class="alert alert-success mt-4" role="alert">
-		  이메일 주소 인증 메일이 전송되었습니다. 이메일에 들어가셔서 인증해주세요.
+		  E-Mail 주소 인증 메일이 전송되었습니다. <br>
+		  본인 확인을 위해 E-Mail을 이용하여 회원가입을 진행해주세요 :)  
 		</div>
     </div>
     <footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFFF;">

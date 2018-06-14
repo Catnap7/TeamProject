@@ -35,8 +35,8 @@
     </nav>
 	<div class="container">
 	    <div class="alert alert-success mt-4" role="alert">
-		  임시비밀번호가 발송되었습니다! <br>
-		   임시비밀번호를 통해 로그인을 진행해주세요.<br>
+		  가입하신 E-Mail 계정으로 임시비밀번호가 발송되었습니다. <br>
+		    메일을 확인하신후, 로그인을 진행해주세요.<br>
 		</div>
     </div>
     <footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFFF;">
