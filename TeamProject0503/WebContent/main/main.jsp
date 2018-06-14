@@ -30,7 +30,7 @@
 <link href="./css/mainModal.css" rel="stylesheet" type="text/css">
 
 <!-- 웹 폰트 : 나눔고딕 -->
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet"> -->
 
 <script type="text/javascript">
 
@@ -340,6 +340,7 @@ int allreviewcount=((Integer)request.getAttribute("allreviewcount")).intValue();
 	<!--################# 메인 영화 추천################## -->
 	<div class="mainCover">	
 		<%for(int i=0;i<mainMovieList.size();i++){ %>
+		<div class="mainPicBack">
 			<div class="mainPic">
 			<%	
 					MovieBean moviebean = mainMovieList.get(i);
@@ -404,6 +405,7 @@ int allreviewcount=((Integer)request.getAttribute("allreviewcount")).intValue();
 					      </div>
 					    </div>
 				   </div> <!-- modal -->							
+				</div>
 				</div>
 			<%}%><!--for문 -->
 		</div>	

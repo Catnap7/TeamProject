@@ -97,21 +97,29 @@ article{
 	box-shadow:none;
 	box-sizing:border-box;	
 } 
-.button>img{
-	opacity:0.5;
-}
-
+.button>img{opacity:0.5;}
+.button>a:HOVER {opacity:0.3;}
 
 /**이전 다음 버튼 제어**/
 .prev1{
-	position: absolute;
-    bottom: 650px;
+	/* position: absolute;
+    top: 450px;
+    left: 20px; */
+    position: absolute;
+    top: 50%;
     left: 20px;
+    height: 340px;
+    /* margin-top: -170px; */
 }
 .next1{
-	position: absolute;
-    bottom: 650px;
+	/* position: absolute;
+    top: 450px;
+    left: 1770px; */
+    position: absolute;
+    top: 50%;
     left: 1770px;
+    height: 340px;
+    /* margin-top: -170px; */
 }
 
 .button img:HOVER {
