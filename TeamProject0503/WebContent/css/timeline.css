@@ -3,7 +3,7 @@
 *{
 	padding: 0;
 	margin: 0;
-	font-family: 'Nanum Gothic', sans-serif;}
+	/* font-family: 'Nanum Gothic', sans-serif; */}
 
 .clear {clear: both;}
 
@@ -30,7 +30,7 @@ article{
 	width: 1000px;
 	/* margin:50px auto;  */
 	position:relative;
-	top:100px; left:390px;
+	top:100px; left:340px;
 	margin-bottom:200px;
 	box-shadow: 2px 2px #9f9f9f;
 	padding:40px 70px;
@@ -63,38 +63,71 @@ article{
 }
 
 #rv{
-	border-bottom: 1px dashed #a8a8a8;
-    border-top: 1px dashed #a8a8a8;
+	border: 1px solid #a8a8a8;
+    border-top: 10px solid #a8a8a8;
+    border-radius:0px 0px 10px 10px;
     /* margin: 20px auto; */
-    width: 930px;
-    height: 220px;
+    width: 900px;
+    height: 340px; */
+    /* height: 100px; */
     box-sizing: border-box;
     padding: 10px;
-    margin-top: 50px;
+    margin-top: 60px;
     position: relative;
     left: 20px;
+    box-shadow: 2px 2px #eee;
 }
 
 #rvProfile{padding-left: 10px;}
-#rvProfile span:nth-of-type(1){padding-left:30px;}
+#rvProfile span:nth-of-type(1){
+	position: relative;
+    top: 60px;
+    left: 45px;
+}
 #rvProfile span:nth-of-type(2){    
 	margin-top: -50px;
     /* border: 1px solid red; */
     position: relative;
-    left: 630px;
+    left:-50px;
     bottom: 25px;
 }
+#rvProfile span:nth-of-type(3){
+	position: relative;
+    top: 90px;
+    left: -140px;
+    width: 80px;
+}
 #rvMv{padding-left: 50px; margin-top: 10px;}
+#rvMv p{display: inline-block;}
 #rvPos{
-	border:1px solid #b4b4b4;
-	position: relative;
-    left: 75px;
-    bottom: 50px;
-    width: 115px; height:165px;}
+	border: 1px solid #b4b4b4;
+    position: relative;
+    left: 160px;
+    bottom: 55px;
+    width: 180px;
+    height: 250px;
+    margin-right: 10px;}
+#rvStill{
+	border: 1px solid #b4b4b4;
+    position: relative;
+    left: 160px;
+    bottom: 55px;
+    width: 350px;
+    height: 250px;}    
 #rvMent{
-	position: relative;
-    left: 220px;
-    bottom: 140px;}
+	/*border: 1px solid red; */
+    position: relative;
+    left: 0px;
+    bottom: 30px;
+    width: 900px;
+    text-align: center;
+    }
+#rvMent span{
+	font-weight: bold;
+	font-size: 1.2em;
+	color:#ff8800;
+}    
+    
 #noFollow{
 	border: 1px solid #e8e8e8;
     width: 800px;

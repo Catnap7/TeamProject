@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.admin.manage.db.AdminSuspendDAO;
 import net.admin.manage.db.MovieBean;
 import net.admin.manage.db.MovieDAO;
+import net.category.db.ReviewBean;
 import net.category.db.ReviewDAO;
 import net.favorite.db.FavoriteBean;
 import net.favorite.db.FavoriteDAO;
@@ -105,6 +107,19 @@ public class CategoryMovie_InfoAction implements Action{
 				vector = reviewdao.getReview(mv_num, startRow, pageSize);
 				reviewList = (List)vector.get(0);
 				memberName = (List)vector.get(1);
+			}
+			
+			for(int i = 0; i < reviewList.size(); i++) {
+				ReviewBean rb = (ReviewBean)reviewList.get(i);
+				String report_id = rb.getR_id();
+				rb.getR_report();
+				if(rb.getR_report() >= 5 && rb.getR_report() < 10) {
+					AdminSuspendDAO asdao = new AdminSuspendDAO();
+					asdao.AdminMemberGradeChange(report_id);
+				}else if(rb.getR_report() >= 10) {
+					AdminSuspendDAO asdao = new AdminSuspendDAO();
+					asdao.AdminMemberGradeChangeplus(report_id);
+				}
 			}
 			
 		}

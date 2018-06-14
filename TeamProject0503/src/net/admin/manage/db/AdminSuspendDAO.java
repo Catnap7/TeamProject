@@ -98,5 +98,41 @@ public class AdminSuspendDAO {
 		System.out.println(reportCheck);
 		return reportCheck;
 	}
+	
+	public void AdminMemberGradeChange(String id) {
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			sql = "update member set m_grade = 3 where m_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+		}
+	}
+	
+	public void AdminMemberGradeChangeplus(String id) {
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			sql = "update member set m_grade = 4 where m_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+		}
+	}
 
 }

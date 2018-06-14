@@ -18,6 +18,7 @@
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 
+
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
@@ -64,11 +65,12 @@ List timelinereview=(List)request.getAttribute("timelinereview"); */
 					%>
 					
 					<div id="rv">
-						<div id="rvProfile"><span><img src="./images/proflie_img/proflie<%=timeLineBean.getPic()%>.png" width="60px" height="60px"></span><span><%=yymmdd.substring(0,16)%></span></div>
+						<div id="rvProfile"><span><img src="./images/proflie_img/proflie<%=timeLineBean.getPic()%>.png" width="60px" height="60px"></span><span><%=yymmdd.substring(0,16)%></span><span><%=timeLineBean.getName()%></span></div>
 						<div id="rvMv">
-							<p id="rvPos"><img src="./images/<%=img_genre%>/<%=timeLineBean.getEngtitle().replaceAll(" ","")+"_p.jpg"%>" width="115px" height="165px;"></p>
-							<p id="rvMent"><%=timeLineBean.getName()+ "님이" +timeLineBean.getTitle()+ "에"+kind%></p>
+							<p id="rvPos"><img src="./images/<%=img_genre%>/<%=timeLineBean.getEngtitle().replaceAll(" ","")+"_p.jpg"%>" width="180px" height="250px;"></p> 
+							<p id="rvStill"><img src="./images/<%=img_genre%>/<%=timeLineBean.getEngtitle().replaceAll(" ","")+"_s.jpg"%>" width="350px" height="250px;"></p> 
 						</div>
+							<p id="rvMent"><span><%=timeLineBean.getName()%></span><%="님이   " +timeLineBean.getTitle()+ "에  "+kind%></p>
 					</div> 
 					<%} 
 				}else{%>
