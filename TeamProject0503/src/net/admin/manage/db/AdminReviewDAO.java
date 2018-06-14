@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -26,15 +27,17 @@ public class AdminReviewDAO {
 		Connection con=ds.getConnection();		
 		return con;
 	}		
-	public List<ReviewBean> getAdminReviewSearch(String searchValue, String select) {
+	public Vector getAdminReviewSearch(String searchValue, String select) {
 		List<ReviewBean> lrb = new ArrayList<ReviewBean>();
+		List<MemberBean> lmb = new ArrayList<MemberBean>();
+		Vector vector = new Vector();
 		Connection con = null;
 		String sql = "";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			con = getConnection();
-			sql = "select * from review where "+select+" LIKE ? order by r_report asc";
+			sql = "select * from review r join member m on r.r_id = m.m_id where "+select+" LIKE ? order by r_report asc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchValue+"%");
 			rs = pstmt.executeQuery();
@@ -47,8 +50,15 @@ public class AdminReviewDAO {
 				reviewBean.setR_recommand(rs.getInt("r_recommand"));
 				reviewBean.setR_report(rs.getInt("r_report"));
 				reviewBean.setR_date(rs.getTimestamp("r_date"));
+				reviewBean.setR_p_num(rs.getInt("r_p_num"));
 				lrb.add(reviewBean);
+				
+				MemberBean memberBean = new MemberBean();
+				memberBean.setM_name(rs.getString("m_name"));
+				lmb.add(memberBean);
 			}
+			vector.add(lrb);
+			vector.add(lmb);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -56,7 +66,7 @@ public class AdminReviewDAO {
 			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
 			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
 		}
-		return lrb;
+		return vector;
 	}
 
 }

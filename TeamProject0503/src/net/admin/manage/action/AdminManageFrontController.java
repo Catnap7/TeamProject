@@ -62,6 +62,13 @@ public class AdminManageFrontController extends HttpServlet{
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./admin/manage/admin_member_delete_confirm.jsp");	
+		}else if(command.equals("/AdminMemberDelete.am")) {
+			action = new AdminMemberDelete();  
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
 		}
 
 
