@@ -63,6 +63,74 @@ public class ReportChkDAO {
 		return check;
 	}
 	
+public int totalReport(int r_num) {
+				
+		int total=0;
+		Connection con=null;
+		String sql="";
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		try {
+			con = getConnection();
+			
+			sql = "select r_id from review where r_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, r_num);			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String r_id = rs.getString("r_id");
+				sql = "select sum(r_report) as sum from review where r_id=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, r_id);		
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					total = rs.getInt("sum");	
+				}
+			}			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			if(rs!=null)try{rs.close();}catch(SQLException e){};
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException e){};
+			if(con!=null)try{con.close();}catch(SQLException e){};
+		}
+		return total;
+	}//end total
 
+public String ReportUser(int r_num) {
+	
+	String user=null;
+	Connection con=null;
+	String sql="";
+	PreparedStatement pstmt=null;
+	ResultSet rs=null;
+	
+	try {
+		con = getConnection();
+		
+		sql = "select r_id from review where r_num=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, r_num);			
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			user = rs.getString("r_id");			
+		}			
+		
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	} finally {
+		if(rs!=null)try{rs.close();}catch(SQLException e){};
+		if(pstmt!=null)try{pstmt.close();}catch(SQLException e){};
+		if(con!=null)try{con.close();}catch(SQLException e){};
+	}
+	return user;
+}//end user
+	
 	
 }
