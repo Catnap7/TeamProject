@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -74,8 +75,11 @@ public class Alarm implements Action{
 					// 구한 끝페이지 보다 전체페이지 수가 작은 경우
 					if(pageCount<endPage){
 						endPage=pageCount;
-					}
-					alarmlist= adao.getAlarms(id, startRow, pageSize);			
+					}					
+					Vector<List> v = adao.getAlarmlist(id, startRow, pageSize);
+					alarmlist = v.get(0);
+					List movielist = v.get(1);					
+					request.setAttribute("movielist", movielist);
 				}
 				
 				

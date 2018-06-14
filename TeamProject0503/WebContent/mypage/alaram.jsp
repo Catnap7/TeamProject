@@ -1,3 +1,4 @@
+<%@page import="net.admin.manage.db.MovieBean"%>
 <%@page import="net.mypage.db.AlarmBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -29,6 +30,7 @@ int pageBlock = ((Integer)request.getAttribute("pageBlock")).intValue();
 int startPage = ((Integer)request.getAttribute("startPage")).intValue();
 int endPage = ((Integer)request.getAttribute("endPage")).intValue();
 int count = ((Integer)request.getAttribute("count")).intValue();
+List<MovieBean> movielist = (List)request.getAttribute("movielist");
 %>
 
 <!-- 헤더영역 -->
@@ -47,7 +49,9 @@ if(count == 0){
 <% 
 }else{
 	String name=null;	
-	for(AlarmBean alarmbean:alarmlist){			
+	for(int i=0;i<alarmlist.size();i++){
+		AlarmBean alarmbean = (AlarmBean)alarmlist.get(i);
+		MovieBean moviebean= (MovieBean)movielist.get(i);
 		int a_name = alarmbean.getA_alarm_name();		
 		switch(a_name){
 		case 0 :  name = "영화 "+alarmbean.getA_movie_name()+"의 후기가 추천받았습니다! - "+alarmbean.getA_start_day();
@@ -60,9 +64,10 @@ if(count == 0){
 		break;		
 		}
 %>
-<tr><td colspan="3"><%if(alarmbean.getA_check()==0){%><span style=color:red;>new! </span><%}%><%=name%></td></tr>	
+<tr><td colspan="3"><%if(alarmbean.getA_check()==0){%><span style=color:red;>new! </span><%} if(a_name==0){%>
+영화 <a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>#review" class="mo"><%=alarmbean.getA_movie_name()%></a>의 후기가 추천받았습니다! - <%=alarmbean.getA_start_day()%><%}else{%><%=name%><%}%></td></tr>	
 <%	
-	}
+	}//for
 }
 %>
 </table>		

@@ -30,7 +30,7 @@ public class ReportAction implements Action {
 		if(check == 1) {
 			reviewdao.reportReview(r_num);
 			response.setContentType("text/html;	charset=UTF-8");
-			PrintWriter out = response.getWriter();			
+			PrintWriter out = response.getWriter();
 			out.println(check);
 			out.close();
 			return null;

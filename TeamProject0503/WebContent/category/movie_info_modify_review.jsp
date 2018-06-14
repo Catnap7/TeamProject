@@ -464,7 +464,19 @@ $(document).ready(function(){
                 </td>
               </tr>
  			    <tr>
- 			      <td class="review_content"><%=reviewbean.getR_content().replaceAll("\r\n","<br>") %></td>
+ 			      <td class="review_content">
+                <%
+                if(reviewbean.getR_report() >= 10) {
+                	%>
+                	<%="신고 누적으로 관리자가 검토중입니다." %>
+                	<%
+                }else {
+                	%>
+                	<%=reviewbean.getR_content().replaceAll("\r\n","<br>") %> 
+                	<%
+                }
+                %>
+                </td>
  			    </tr>
  			    <tr>
  			      <td class="review_sub">추천 <%=reviewbean.getR_recommand() %> / 신고 <%=reviewbean.getR_report() %></td>
@@ -479,6 +491,14 @@ $(document).ready(function(){
 					<tr>
  			      	  <td>
  			      	  <a href="./ModifyReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">수정</a> | 
+ 			      	  <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">삭제</a>
+ 			      	  </td>
+ 			    	</tr>
+					<%
+				}else if(memberBean.getM_name().equals("관리자")) {
+					%>
+					<tr>
+ 			      	  <td>
  			      	  <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">삭제</a>
  			      	  </td>
  			    	</tr>
@@ -513,7 +533,7 @@ $(document).ready(function(){
 <%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
 								
 									$.ajax({
-										type: "get",
+										type: "post",
 										url: "./RecommendAction.ca",
 										dataType: "html",
 										data: {
@@ -543,7 +563,7 @@ $(document).ready(function(){
 <%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
 								
 									$.ajax({
-										type: "get",
+										type: "post",
 										url: "./ReportAction.ca",
 										dataType: "html",
 										data: {
@@ -573,7 +593,7 @@ $(document).ready(function(){
  			  <hr class="coment_sec">
  			  <%
  		 }
- 		if(reviewbean.getR_id().equals(id) && reviewbean.getR_num() == r_num){
+ 		if(reviewbean.getR_id().equals(id) || memberbean.getM_name().equals("관리자") && reviewbean.getR_num() == r_num){
  			%>
  		  <!--댓글 수정 란  -->
  		  <form action="./ModifyReviewAction.ca" class="coment_write">
