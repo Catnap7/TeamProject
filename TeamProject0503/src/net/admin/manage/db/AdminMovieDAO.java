@@ -28,6 +28,27 @@ public class AdminMovieDAO {
 		String sql = "";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		if(select.equals("mv_genre")) {
+			if(searchValue.equals("공") || searchValue.equals("공포")) {
+				searchValue = "horror";
+			}else if(searchValue.equals("스") || searchValue.equals("스릴") || searchValue.equals("스릴러")) {
+				searchValue = "thriller";
+			}else if(searchValue.equals("애") || searchValue.equals("애니") || searchValue.equals("애니메") || searchValue.equals("애니메이") || searchValue.equals("애니메이션")) {
+				searchValue = "animation";
+			}else if(searchValue.equals("코") || searchValue.equals("코미") || searchValue.equals("코미디")) {
+				searchValue = "comedy";
+			}else if(searchValue.equals("독") || searchValue.equals("독립") || searchValue.equals("독립영") || searchValue.equals("독립영화")) {
+				searchValue = "indie";
+			}else if(searchValue.equals("S") || searchValue.equals("SF")) {
+				searchValue = "sf";
+			}else if(searchValue.equals("액") || searchValue.equals("액션")) {
+				searchValue = "action";
+			}else if(searchValue.equals("로") || searchValue.equals("로맨") || searchValue.equals("로맨스")) {
+				searchValue = "romance";
+			}else if(searchValue.equals("드") || searchValue.equals("드라") || searchValue.equals("드라마")) {
+				searchValue = "drama";
+			}
+		}
 		try {
 			con = getConnection();
 			sql = "select * from movie where "+select+" LIKE ? order by mv_year asc";

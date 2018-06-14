@@ -30,16 +30,28 @@ public class AdminMovie_List_Search extends HttpServlet {
 		if(searchValue == null) searchValue = "";
 		StringBuffer result = new StringBuffer("");
 		result.append("{\"result\":[");
+		String genre = null;
 		AdminMovieDAO amdao = new AdminMovieDAO();
 		List<MovieBean> movieList = amdao.getAdminMovieSearch(searchValue, select);
 		
-		for(int i = 0; i < movieList.size(); i++) {
+		for(int i = 0; i < movieList.size(); i++) {			
+			switch(movieList.get(i).getMv_genre()) {
+			case "animation" : genre="애니메이션"; break;
+			case "comedy" : genre="코미디"; break;
+			case "indie" : genre="독립영화"; break;
+			case "sf" : genre="SF"; break;
+			case "action" : genre="액션"; break;
+			case "thriller" : genre="스릴러"; break;
+			case "romance" : genre="로맨스"; break;
+			case "horror" : genre="공포"; break;
+			case "drama" : genre="드라마"; break;
+			}
 			result.append("[{\"value\" : \"" + movieList.get(i).getMv_num() + "\"},");
 			result.append("{\"value\" : \"<a href='./AdminMovieInfo.am?mv_num=" + movieList.get(i).getMv_num() + "'>" + movieList.get(i).getMv_kor_title() + " ( "+movieList.get(i).getMv_eng_title() + " ) " + "</a>\"},");
 			result.append("{\"value\" : \"" + movieList.get(i).getMv_director() + "\"},");
 			result.append("{\"value\" : \"" + movieList.get(i).getMv_year() + "\"},");
 			result.append("{\"value\" : \"" + movieList.get(i).getMv_age() + "\"},");
-			result.append("{\"value\" : \"" + movieList.get(i).getMv_genre() + "\"}],");
+			result.append("{\"value\" : \"" + genre + "\"}],");
 		}		
 		result.append("]}");
 		return result.toString();

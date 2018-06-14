@@ -46,8 +46,7 @@ public class AdminMemberDAO {
 		String sql = "";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		if(select.equals("m_grade")) {
-			
+		if(select.equals("m_grade")) {			
 			if(searchValue.equals("로") || searchValue.equals("로그") || searchValue.equals("로그인") || searchValue.equals("로그인정") || searchValue.equals("로그인정지")) {
 				searchValue = "4";
 			}else if(searchValue.equals("댓") || searchValue.equals("댓글") || searchValue.equals("댓글정") || searchValue.equals("댓글정지")) {
@@ -59,7 +58,6 @@ public class AdminMemberDAO {
 			}else if(searchValue.equals("준") || searchValue.equals("준회") || searchValue.equals("준회원")) {
 				searchValue = "0";
 			}
-
 		}
 		try {
 			con = getConnection();
