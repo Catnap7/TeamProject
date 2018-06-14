@@ -504,7 +504,19 @@ $(document).ready(function(){
                 </td>
               </tr>
               <tr>
-                <td class="review_content"><%=reviewbean.getR_content().replaceAll("\r\n","<br>") %></td>
+                <td class="review_content">
+                <%
+                if(reviewbean.getR_report() >= 10) {
+                	%>
+                	<%="신고누적" %>
+                	<%
+                }else {
+                	%>
+                	<%=reviewbean.getR_content().replaceAll("\r\n","<br>") %> 
+                	<%
+                }
+                %>
+                </td>
               </tr>
               <tr>
                 <td class="review_sub">추천 <%=reviewbean.getR_recommand() %> / 신고 <%=reviewbean.getR_report() %></td>
@@ -524,7 +536,15 @@ $(document).ready(function(){
                      </td>
                  </tr>
                <%
-            }else {
+            }else if(memberBean.getM_name().equals("관리자")) {
+				%>
+				<tr>
+			      	  <td>
+			      	  <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">삭제</a>
+			      	  </td>
+			    	</tr>
+				<%
+			}else {
                %>
                <tr>
                     <td>
