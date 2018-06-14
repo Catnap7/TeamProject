@@ -468,7 +468,7 @@ $(document).ready(function(){
                 <%
                 if(reviewbean.getR_report() >= 10) {
                 	%>
-                	<%="신고누적" %>
+                	<%="신고 누적으로 관리자가 검토중입니다." %>
                 	<%
                 }else {
                 	%>
