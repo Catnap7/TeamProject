@@ -17,10 +17,7 @@ import net.member.db.MemberBean;
 
 @WebServlet("/AdminMemberSearch")
 public class AdminMember_List_Search extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
-	
-	
+	private static final long serialVersionUID = 1L;	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("AdminMember_List_Search execute()");
 		request.setCharacterEncoding("utf-8");
@@ -28,8 +25,7 @@ public class AdminMember_List_Search extends HttpServlet {
 		String searchValue = request.getParameter("searchValue");
 		String select = request.getParameter("select");
 		response.getWriter().write(getJSON(searchValue, select));
-	}
-	
+	}	
 	public String getJSON(String searchValue, String select) {
 		if(searchValue == null) searchValue = "";
 		StringBuffer result = new StringBuffer("");
@@ -39,8 +35,7 @@ public class AdminMember_List_Search extends HttpServlet {
 		String value = "내보내기";
 		result.append("{\"result\":[");
 		AdminMemberDAO amdao = new AdminMemberDAO();
-		List<MemberBean> userList = amdao.getAdminMemberSearch(searchValue, select);
-		
+		List<MemberBean> userList = amdao.getAdminMemberSearch(searchValue, select);		
 		for(int i = 0; i < userList.size(); i++) {
 			switch(userList.get(i).getM_grade()){
 			case 4: StrGrade="로그인정지"; break;
@@ -58,5 +53,4 @@ public class AdminMember_List_Search extends HttpServlet {
 		result.append("]}");
 		return result.toString();
 	}
-
 }

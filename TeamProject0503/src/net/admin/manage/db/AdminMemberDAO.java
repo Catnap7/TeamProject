@@ -14,14 +14,12 @@ import javax.sql.DataSource;
 import net.member.db.MemberBean;
 
 public class AdminMemberDAO {
-
 	private Connection getConnection() throws Exception {
 		Context init=new InitialContext();
 		DataSource ds=(DataSource)init.lookup("java:comp/env/jdbc/Mysql");
 		Connection con=ds.getConnection();		
 		return con;
-	}
-	
+	}	
 	public void AdminMemberDelete(String m_id) {
 		Connection con = null;
 		String sql = "";
@@ -38,8 +36,7 @@ public class AdminMemberDAO {
 			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
 			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
 		}
-	}//End AdminMemberDelete
-	
+	}//End AdminMemberDelete	
 	public List<MemberBean> getAdminMemberSearch(String searchValue, String select) {
 		List<MemberBean> lmb = new ArrayList<MemberBean>();
 		Connection con = null;
@@ -66,7 +63,6 @@ public class AdminMemberDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchValue+"%");
 			rs = pstmt.executeQuery();
-
 			while(rs.next()) {
 				MemberBean memberBean = new MemberBean();
 				memberBean.setM_grade(rs.getInt("m_grade"));
@@ -88,5 +84,28 @@ public class AdminMemberDAO {
 		}
 		return lmb;
 	}//End getAdminMemberSearch
+	public int memberCountAll() {
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int countAll = 0;
+		try {
+			con = getConnection();
+			sql = "select count(*) as count from member";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				countAll = rs.getInt("count");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+		}
+		return countAll;		
+	}
 
 }//End AdminMemberDAO
