@@ -114,9 +114,11 @@ section {
 .content_table2 tr td{padding-left: 30px;}
 
 /* 별점 */
+#giveStar{color:white;font-size: 1.2em;letter-spacing: 3px;}
 .starRating{
  	border: 1px solid #999;
     border-radius: 10px;
+    background-color:#333;
     font-weight: bold;
     width: 400px;
     height: 100px;
@@ -126,7 +128,7 @@ section {
     top: 30px;
     left: 60px;
 }
-#giveStar{font-size: 1.2em;letter-spacing: 3px;}
+
 .rating{
 	position: relative;
 	left: 75px;
