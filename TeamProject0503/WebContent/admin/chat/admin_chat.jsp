@@ -39,7 +39,7 @@
 								</div>
 								<div class="row" style="height: 90px;">
 									<div class="form-group col-xs-10">
-										<textarea rows="10" cols="50" style="height: 80px; width: 365px;" id="inputMessage" class="form-control" placeholder="내용을 입력하세요" maxlength="100" onkeyup="enter_chk();"></textarea>
+										<textarea rows="10" cols="50" style="height: 80px; width: 365px;" id="inputMessage" class="form-control" placeholder="내용을 입력하세요" maxlength="100" onkeydown="enter_chk();"></textarea>
 									</div>
 								</div>
 							</div>
@@ -79,16 +79,15 @@
        alert(event.data); 
      }
      function send() {
-    	 textarea.value += "나 " + "\n" + inputMessage.value + "\n\n"; 
+    	 textarea.value += "나 " + "\n" + inputMessage.value + "\n\n";
          webSocket.send(inputMessage.value);
-         inputMessage.value="";
          document.getElementById("messageWindow").scrollTop = document.getElementById("messageWindow").scrollHeight;
-     	 return false;
      } 
      function enter_chk() {
-    	 if(!event.keyCode==13) {
-     }else {
-    	 send();
-     }
+    	 if(event.keyCode == 13){
+    		 send();
+         inputMessage.value="";
+         }
+    	 }
    </script>
 </html>
