@@ -78,8 +78,10 @@ public class Alarm implements Action{
 					}					
 					Vector<List> v = adao.getAlarmlist(id, startRow, pageSize);
 					alarmlist = v.get(0);
-					List movielist = v.get(1);					
+					List movielist = v.get(1);		
+					List memberList = v.get(2);
 					request.setAttribute("movielist", movielist);
+					request.setAttribute("memberList", memberList);
 				}
 				
 				
