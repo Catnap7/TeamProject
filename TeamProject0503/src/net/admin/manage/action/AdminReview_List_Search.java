@@ -2,6 +2,7 @@ package net.admin.manage.action;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Vector;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.admin.manage.db.AdminReviewDAO;
 import net.category.db.ReviewBean;
+import net.member.db.MemberBean;
 
 
 @WebServlet("/AdminReviewSearch")
@@ -30,15 +32,19 @@ public class AdminReview_List_Search extends HttpServlet {
 		StringBuffer result = new StringBuffer("");
 		result.append("{\"result\":[");
 		AdminReviewDAO ardao = new AdminReviewDAO();
-		List<ReviewBean> reviewList = ardao.getAdminReviewSearch(searchValue, select);
+//		List<ReviewBean> reviewList = ardao.getAdminReviewSearch(searchValue, select);
+		Vector vector = ardao.getAdminReviewSearch(searchValue, select);
+		List<ReviewBean> reviewList = (List)vector.get(0);
+		List<MemberBean> memberList = (List)vector.get(1);
 		
 		for(int i = 0; i < reviewList.size(); i++) {
-			result.append("[{\"value\" : \"" + reviewList.get(i).getR_num() + "\"},");
-			result.append("{\"value\" : \"" + reviewList.get(i).getR_id() + "\"},");
-//			result.append("{\"value\" : \"" + reviewList.get(i).getR_content() + "\"},");
-			result.append("{\"value\" : \"" + reviewList.get(i).getR_recommand() + "\"},");
-			result.append("{\"value\" : \"" + reviewList.get(i).getR_report() + "\"},");
-			result.append("{\"value\" : \"" + reviewList.get(i).getR_date() + "\"}],");
+				result.append("[{\"value\" : \"" + reviewList.get(i).getR_num() + "\"},");
+				result.append("{\"value\" : \"" + reviewList.get(i).getR_id() + "\"},");
+				result.append("{\"value\" : \"<a href='./CategoryMovie.ca?mv_num="+ reviewList.get(i).getR_p_num() +"'>" + memberList.get(i).getM_name() + "</a>\"},");
+				result.append("{\"value\" : \"" + reviewList.get(i).getR_recommand() + "\"},");
+				result.append("{\"value\" : \"" + reviewList.get(i).getR_report() + "\"},");
+				result.append("{\"value\" : \"" + reviewList.get(i).getR_date() + "\"}],");
+//				result.append("{\"value\" : \"" + reviewList.get(i).getR_content() + "\"}],");
 		}		
 		result.append("]}");
 		return result.toString();
