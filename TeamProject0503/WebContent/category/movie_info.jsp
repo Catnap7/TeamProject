@@ -104,10 +104,14 @@
 .like > input:checked ~ label:hover ~ label { color: red;  } 
 /* 좋아요  */
 </style>
- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="./js/rating.js"></script>
 <!-- <script src="./js/favorite.js"></script> -->
+
+
 </head>
 <body>
 <%
@@ -258,6 +262,23 @@ $(document).ready(function(){
 	    <!-- poster -->
 	     <div class="post">
 	       <img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")+"_p.jpg"%>"><br>
+	    	 <!--즐겨찾기  -->
+	      <fieldset class="like" id="starfield<%=mv_num %>" >
+	      		<!-- <span>보고싶어요</span -->
+	    			   <div id="dup"></div><!--  <input type="hidden" id ="dup_fa" value=""> -->
+	    			   <%  if(favoritebean !=null){
+	    				      if(favoritebean.getF_id()!=null && favoritebean.getF_num()==mv_num){
+					    %><input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="좋아요" style="color:red;"></label><%
+	    				      }
+	    			   		}else{
+					    	%>
+					    	<input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="해제"  ></label>
+					    	<%  
+					      }
+	   				     %>
+	    			    <input type="hidden" id ="m_id"value="<%=id%>">
+	    			    <input type="hidden" id ="mv_num"value="<%=mv_num%>">  
+	  	 </fieldset>
 	     </div>
 	     
 	     <!-- movie info -->
@@ -278,8 +299,11 @@ $(document).ready(function(){
 		      	
 	        	
 	        <table class="content_table2">
+	        	 <tr>
+	        	 	<td><%=age %></td>
+	        	 </tr>
 		         <tr>
-		            <td><%=genre%> | <%=moviebean.getMv_country() %> | <%=moviebean.getMv_time() %>분  | <%=age %></td>
+		            <td><%=genre%> | <%=moviebean.getMv_country() %> | <%=moviebean.getMv_time() %>분 </td>
 		         </tr>
 		            <td>감독 : <%=moviebean.getMv_director() %></td>
 		         </tr>
@@ -289,7 +313,7 @@ $(document).ready(function(){
 	      	</table><!-- table2 -->
 	      	
 	      	
-	      <!-- 별점 시작 -->
+	     	 <!-- 별점 시작 -->
 		      	<div class="starRating">
 			       <p id="giveStar">별점주기</p>
 			         <form action="" id="starform<%=mv_num %>">
@@ -307,24 +331,7 @@ $(document).ready(function(){
 			          </form>
 				</div><!-- 별점 끝 -->
 				
-				
-	      <!--즐겨찾기  -->
-	      <fieldset class="like" id="starfield<%=mv_num %>" >
-	      		<span>보고싶어요</span>
-	    			   <div id="dup"></div><!--  <input type="hidden" id ="dup_fa" value=""> -->
-	    			   <%  if(favoritebean !=null){
-	    				      if(favoritebean.getF_id()!=null && favoritebean.getF_num()==mv_num){
-					    %><input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="좋아요" style="color:red; width=50px;height=50px;"></label><%
-	    				      }
-	    			   		}else{
-					    	%>
-					    	<input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="해제"  ></label>
-					    	<%  
-					      }
-	   				     %>
-	    			    <input type="hidden" id ="m_id"value="<%=id%>">
-	    			    <input type="hidden" id ="mv_num"value="<%=mv_num%>">  
-	  	 </fieldset>
+
 	  	 
 	      <%-- 
 	      <%
@@ -422,7 +429,12 @@ $(document).ready(function(){
 	         }
 	      %>
 	      		 <button class="hr" id="mv_play" style="display: none;">이동</button>
-	      		  <label class="fa fa-play-circle play" for="mv_play" title="보러가기"></label>
+	      		  <!-- <label class="fa fa-play-circle play" for="mv_play" title="보러가기"></label> -->
+	      		  
+	      		  <label class="play" for="mv_play" title="보러가기">왓츄에서 영화보기<label>
+	      		  
+	      		  
+	      		  
 	        <!--    <button class="hr">이동</button> -->
 	        
 	      </div><!-- contentTable -->
@@ -472,11 +484,6 @@ $(document).ready(function(){
 		<p class="movieInfoTitle">리뷰 쓰기</p>
 		 <div class="coment c1" id="comment">
 	<!--    <a id="recommend_sort">추천순</a> | <a id="date_sort">최신순</a> -->
-			
-	
-	
-			
-	   
 	     <!--댓글 쓰는 란  -->
 	     <form action="./InsertReview.ca" class="coment_write" id="review">
 	     <%     
@@ -507,92 +514,6 @@ $(document).ready(function(){
 				<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>&order=newest#new" class="sort_btn">최신순</a>
 			</div>
 			
-		     <%
-		     List reviewList = (List)request.getAttribute("reviewList");
-		     List memberName = (List)request.getAttribute("memberName");
-		     String pageNum_s= (String)request.getAttribute("pageNum");
-		     int pageNum = Integer.parseInt(pageNum_s);
-		     int pageCount = ((Integer)request.getAttribute("pageCount")).intValue();
-		     int pageBlock = ((Integer)request.getAttribute("pageBlock")).intValue();
-		     int startPage = ((Integer)request.getAttribute("startPage")).intValue();
-		     int endPage = ((Integer)request.getAttribute("endPage")).intValue();
-		     int count = ((Integer)request.getAttribute("count")).intValue();
-		     
-		     if(reviewList == null) {
-		        %>
-		         <table>
-		           <tr>
-		             <td class="review_none">아직 등록된 리뷰가 없어요</td>
-		           </tr>
-		         </table>
-		         <%
-		     }else {
-		
-		     for(int i=0; i<reviewList.size(); i++) {
-		        ReviewBean reviewbean = (ReviewBean)reviewList.get(i);
-		        MemberBean memberbean = (MemberBean)memberName.get(i);
-		        if(moviebean.getMv_num()==reviewbean.getR_p_num()) {
-		        	String yymmdd =reviewbean.getR_date().toString();
-		           %>
-		           <table> 
-		              <tr>
-		                <td class="c_name">
-		                <%=memberbean.getM_name() %>
-		                <a href="./FollowMyHome.fo?m_id=<%=reviewbean.getR_id() %>" class="glyphicon glyphicon-home" style="color: green;" title="구경하기"></a>
-		                </td>
-		              </tr>
-		              <tr>
-		                <td class="review_content"><%=reviewbean.getR_content().replaceAll("\r\n","<br>") %></td>
-		              </tr>
-		              <tr>
-		                <td class="review_sub">추천 <%=reviewbean.getR_recommand() %> / 신고 <%=reviewbean.getR_report() %></td>
-		              </tr>
-		              <tr>
-		                <td class="review_sub"><%=yymmdd.substring(0,16)%></td>
-		                
-		              </tr>
-		<!--               본인이면  (수정 삭제) 보이기 본인이 아니면 (추천 신고) 보이기  -->
-		            <%
-		            if(reviewbean.getR_id().equals(id)) {
-		               %>
-		               <tr>
-		                     <td>
-		                     <a href="./ModifyReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">수정</a> | 
-		                     <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">삭제</a>
-		                     </td>
-		                 </tr>
-		               <%
-		            }else {
-		               %>
-		               <tr>
-		                    <td>
-		<%--                     <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>&r_id=<%=reviewbean.getR_id() %>">추천</a> |  --%>
-
-   <div class="coment">
-   <hr>
-<!--    <a id="recommend_sort">추천순</a> | <a id="date_sort">최신순</a> -->
-		<a id="rec"></a><a id="new"></a>
-		<div class="sort_wrap">
-		<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>&order=recommend#rec" class="sort_btn">추천순</a>
-		<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>&order=newest#new" class="sort_btn">최신순</a>
-		</div>
-   
-     <!--댓글 쓰는 란  -->
-     <form action="./InsertReview.ca" class="coment_write" id="review">
-     <%     
-     if(memberBean.getM_grade() == 3) {
-    	 %>
-    	 <textarea cols="90" rows="7" placeholder="리뷰를 등록할 수 없습니다." readonly="readonly"></textarea>
-    	 <%
-     }else {
-    	 %>
-    	 <textarea cols="90" rows="7" placeholder="영화를 어떻게 보셨나요?" name="r_content"></textarea>
-         <input type="hidden" name="mv_num" value="<%=moviebean.getMv_num() %>">
-         <input type="submit" value="등록">    	 
-    	 <%
-     }     
-     %>       
-     </form>
      <!-- 댓글 리스트 -->
      <%
      List reviewList = (List)request.getAttribute("reviewList");
@@ -607,9 +528,9 @@ $(document).ready(function(){
      
      if(reviewList == null) {
         %>
-         <table>
+         <table class="review_none">
            <tr>
-             <td class="review_none">아직 등록된 리뷰가 없어요.</td>
+             <td>아직 등록된 리뷰가 없어요</td>
            </tr>
          </table>
          <%
@@ -621,7 +542,7 @@ $(document).ready(function(){
         if(moviebean.getMv_num()==reviewbean.getR_p_num()) {
         	String yymmdd =reviewbean.getR_date().toString();
            %>
-           <table> 
+           <table class="review_o">
               <tr>
                 <td class="c_name">
                 <%=memberbean.getM_name() %>
@@ -781,13 +702,14 @@ $(document).ready(function(){
 		         %><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num() %>&pageNum=<%=i%>"><%=i%></a><%
 		      }
 		      if(pageCount>endPage){
-		         %><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num() %>&pageNum=<%=startPage+pageBlock%>">next</a><%
+		       	 %><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num() %>&pageNum=<%=startPage+pageBlock%>">next</a><%
 		      }
 		      %>
 		   </div>
-	   <%
-	   }
-	   %>
+		<%
+		} 
+		%>
+
 	   </div>
 
    </section>

@@ -43,14 +43,43 @@ section {
 }
 
 .post {
-    position: absolute;
-    top: 80px;
-    left: 170px;
-    width: 350px;
-    height: 500px;
+	border:1px solid #c0c0c0;
+    position: relative;
+    top: -20px;
+    left: 80px;
+    width: 352px;
+    height: 502px;
 }
 .post>img{width: 350px;
    height: 500px;}
+
+
+.checked-like {
+   color: red;
+}
+.like {
+   /* border: 1px solid blue;  */
+   font-size: 1.1em;
+   float: left;
+   /* padding: 10px; */
+   cursor: pointer;
+   position: absolute;
+   top: 10px;
+   left: 280px;
+}
+.fa_full{
+	width:60px;
+	height:60px;
+}
+.like label{
+	font-size: 1.5em;
+}
+
+.checked {
+   color: orange;
+}
+
+
 
 #content_table{
 	/* border: 1px solid red;  */
@@ -67,6 +96,7 @@ section {
     font-weight: bold;
     line-height: 1.6em;
 }
+.content_table tr td{padding-left: 10px;}
 .content_table tr:nth-of-type(1){font-size: 1.5em;}
 .content_table tr:nth-of-type(3){font-size: 1em;}
 
@@ -80,6 +110,8 @@ section {
     font-weight: bold;
     line-height: 2em;
 }
+.content_table2 tr:nth-of-type(1) td {padding-top: 20px;}
+.content_table2 tr td{padding-left: 30px;}
 
 /* 별점 */
 .starRating{
@@ -91,10 +123,16 @@ section {
     padding: 10px;
     text-align: center;
     position: relative;
-    top: 50px;
-    left: 0px;
+    top: 30px;
+    left: 60px;
 }
-
+#giveStar{font-size: 1.2em;letter-spacing: 3px;}
+.rating{
+	position: relative;
+	left: 75px;
+    top: -10px;
+}
+.rating label{font-size: 1.4em;}
 /* 즐겨찾기 */
 /* span.like {
    font-size: 80px;
@@ -103,33 +141,29 @@ section {
    border: 1px solid red;
 } */
 
-.checked-like {
-   color: red;
-}
-.like {
-   border: 1px solid blue; 
-   font-size: 1.1em;
-   float: left;
-   /* padding: 10px; */
-   cursor: pointer;
-   position: relative;
-   top:0; left:0;
-}
-
-.checked {
-   color: orange;
-}
-
 
 /* 재생 */
 label.play {
-/* border: 1px solid red; */
-   font-size: 80px;
-   margin-left: 50px;
-   padding: 10px;
-   color: green;
-   text-decoration: none;
-   cursor: pointer;
+	border: 1px solid #eee; 
+	background-color: #ff4f00;
+	color:white;
+	/* font-weight:bold; */
+	letter-spacing:3px;
+	border-radius:10px;
+	width:300px;
+	height:60px;
+    margin-left: 50px;
+    padding: 10px;
+    line-height:230%;
+    text-align:center;
+    font-size:1.2em;
+    /* color: green; */
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    top: 40px;
+    left: 60px;
+    box-shadow:3px 3px #eee;
 }
 
 div.star {
@@ -254,7 +288,8 @@ div.star {
 	margin-bottom: 100px;
 }
 .c1{
-	margin-bottom:200px;
+	/* margin-bottom:200px; */
+	padding-bottom:250px;
 }
 
 
@@ -303,7 +338,7 @@ div.star {
 	border-radius: 5px;
 }
 
-.coment table {
+.review_o {
 	border-bottom: 1px solid #999;
     width: 800px;
     /* height: 100px; */
@@ -320,10 +355,12 @@ div.star {
    color: #333;
 }
 
-.coment table .review_none {
-   text-align: center;
-   font-size: 20px;
-   color: gray;
+.review_none {
+	width: 800px;
+	border:none;
+    text-align: center;
+    font-size: 1.2em;
+    color: gray;
 }
 
 .coment table .c_name {
