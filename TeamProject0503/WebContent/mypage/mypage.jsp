@@ -108,6 +108,7 @@ case 2 : grade = "VIP회원"; break;
 		        $(document).ready(function() {
 		        	
 		        	$('#f_unfollow<%=mbean.getM_name() %>').click(function(){
+		        		if(confirm("팔로우 취소 하시겠습니까?") == true) {
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
@@ -123,10 +124,11 @@ case 2 : grade = "VIP회원"; break;
 								"f_id": f_id,
 							},
 							success:function(data){
-								alert("팔로우 끊기");
+// 								alert("팔로우 끊기");
 								location.reload();
 							}
 						});
+		        		}
 		        	});
 		        	
 		        });
@@ -196,6 +198,7 @@ case 2 : grade = "VIP회원"; break;
 		        $(document).ready(function() {
 		        	
 		        	$('#unfollow<%=mbean.getM_name() %>').click(function(){
+		        		if(confirm("팔로우 취소 하시겠습니까?") == true) {
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
@@ -211,13 +214,15 @@ case 2 : grade = "VIP회원"; break;
 								"f_id": f_id,
 							},
 							success:function(data){
-								alert("팔로우 끊기");
+// 								alert("팔로우 끊기");
 								location.reload();
 							}
 						});
+		        		}
 		        	});
 		        	
 		        	$('#following<%=mbean.getM_name() %>').click(function(){
+		        		if(confirm("팔로잉 하시겠습니까?") == true) {
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
@@ -233,10 +238,11 @@ case 2 : grade = "VIP회원"; break;
 								"f_id": f_id,
 							},
 							success:function(data){
-								alert("팔로잉 하기");
+// 								alert("팔로잉 하기");
 								location.reload();
 							}
 						});
+		        		}
 		        	});
 		        	
 		        	
