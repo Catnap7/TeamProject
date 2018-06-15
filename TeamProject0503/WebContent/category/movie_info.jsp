@@ -272,7 +272,7 @@ $(document).ready(function(){
 	    				      }
 	    			   		}else{
 					    	%>
-					    	<input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="해제"  ></label>
+					    	<input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="해제" style="color:gray;" ></label>
 					    	<%  
 					      }
 	   				     %>

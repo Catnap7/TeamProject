@@ -52,7 +52,10 @@ section {
 }
 .post>img{width: 350px;
    height: 500px;}
-
+.post:HOVER img{opacity:0.5;}
+.post:HOVER .like .fa_full{
+	/* border: 1px solid black; */
+}
 
 .checked-like {
    color: red;
