@@ -17,9 +17,12 @@
 
 .photo img {
 	border: 1px solid #999;
-	border-radius: 50%;
-	float: left;
-	margin-right: 10px;
+    border-radius: 50%;
+    float: left; 
+    margin-right: 10px; 
+    /* position: relative;
+    top: -20px;
+    left:10px; */
 }
 
 .follow_div a {

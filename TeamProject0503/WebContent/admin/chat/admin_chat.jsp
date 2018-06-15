@@ -14,14 +14,9 @@
 
 <script type="text/javascript" src="../css/js/bootstrap.js"></script>
 
-<title>관리자 실시간 채팅</title>
+<title>영화 토론</title>
 </head>
 <body>
-<%
-
-Date now = new Date();
-
-%>
    <div class="container">
       <div class="container bootstrap snippet">
          <div class="row">
@@ -29,7 +24,7 @@ Date now = new Date();
                <div class="portlet portlet-default">
                   <div class="portlet-heading">
                      <div class="portlet-title">
-                        <h4>   <i class="fa fa-circle text-green"></i>관리자 채팅방</h4>
+                        <h4>   <i class="fa fa-circle text-green"></i>영화 토론</h4>
                      </div>
                      <div class="clearfix"></div>
                   </div>
@@ -39,7 +34,7 @@ Date now = new Date();
                         <!-- style="overflow-y: hidden; width: auto; height: auto;"> -->
                         <div class="row">
                            <div class="col-lg-12">
-                              <p class="text-center text-muted small"><%=now %></p>
+                              <p class="text-center text-muted small"></p>
                            </div>
                         </div>
 
@@ -100,7 +95,7 @@ Date now = new Date();
      }
   
      function send() {
-    	 textarea.value += "\n" + "나 " + "\n" + "\n" + inputMessage.value + "\n"; 
+    	 textarea.value += "\n" + "나 " + "\n" + inputMessage.value + "\n"; 
          webSocket.send(inputMessage.value); 
          inputMessage.value = ""; 
      } 

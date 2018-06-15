@@ -366,6 +366,7 @@ public int getReviewCount(String m_id) {
 		return vector;
 	}	// 理쒖떊�닚 �젙�젹 
 	
+	
 }
 
 

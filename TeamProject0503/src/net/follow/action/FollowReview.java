@@ -37,19 +37,21 @@ public class FollowReview implements Action{
 			forward.setRedirect(true);
 			return forward;
 		}
+		String f_id=request.getParameter("m_id");
+		
 		MemberBean memberbean = new MemberBean();
 		MemberDAO memberdao = new MemberDAO();
-		memberbean=memberdao.getMember(m_id);
+		memberbean=memberdao.getMember(f_id);
 		
 		FollowDAO followdao = new FollowDAO();
-		int followercount= followdao.Followercount(m_id);
-		int followingcount= followdao.Followingcount(m_id);
+		int followercount= followdao.Followercount(f_id);
+		int followingcount= followdao.Followingcount(f_id);
 		
 		ReviewDAO reviewdao = new ReviewDAO();
-		int reviewcount=reviewdao.getReviewCount(m_id);
+		int reviewcount=reviewdao.getReviewCount(f_id);
 		MovieDAO moviedao = new MovieDAO();
 		MovieBean moviebean = new MovieBean();
-		moviebean=moviedao.getfavorite(m_id);
+		moviebean=moviedao.getfavorite(f_id);
 		
  /*		Vector vector2 = new Vector();
 		vector2 = followdao.top5followfavorite(m_id);
@@ -60,10 +62,9 @@ public class FollowReview implements Action{
 		
 		request.setCharacterEncoding("utf-8");
 		
-		String id= request.getParameter("m_id");
 		FollowDAO fdao= new FollowDAO();
 		
-		Vector vector=fdao.followreview(id);
+		Vector vector=fdao.followreview(f_id);
 		List followreviewlist=(List)vector.get(0);
 		List followmovielist=(List)vector.get(1);
 		request.setAttribute("followreviewlist", followreviewlist);

@@ -10,7 +10,7 @@ public class AlarmBean {
 	String a_movie_name;
 	String a_start_day;
 	int a_check;
-	
+	String a_follower;
 	
 	
 	
@@ -55,6 +55,12 @@ public class AlarmBean {
 	}
 	public void setA_check(int a_check) {
 		this.a_check = a_check;
+	}
+	public String getA_follower() {
+		return a_follower;
+	}
+	public void setA_follower(String a_follower) {
+		this.a_follower = a_follower;
 	}
 	
 	

@@ -209,9 +209,7 @@ List actorsearchList =(List)request.getAttribute("actorsearchList");
 <!-- 아티클 -->
 <article class = "main2">
 
-<!-- ***********각 슬라이드에 들어갈 영화는 13개씩 지정해놨습니다********** -->
 <!-- 크롬 기준 -->
-
 
 <!-- ************* 제목별 검색결과 ************* -->
 <%if(titlesearchList.size()!=0){%>  
@@ -403,6 +401,15 @@ List actorsearchList =(List)request.getAttribute("actorsearchList");
 	}%> 
 </div>	
 
+
+<%if(titlesearchList.size()==0 && directorsearchList.size()==0 && actorsearchList.size()==0){%>
+	<div id="noSearch"><!-- <p><i class="material-icons" style="font-size:48px;">warning</i></p><br> -->
+		<p>검색결과가 없습니다</p><!-- <br><br> -->
+<!-- 		<p><img src="./images/noFavorite.png" width="140px" height="140px"></p><br>
+		<p>회원님이 보고 싶은 영화에 하트를 꾹 눌러주세요!</p><br><br> -->
+				
+	</div>
+<%} %>
 
 
 

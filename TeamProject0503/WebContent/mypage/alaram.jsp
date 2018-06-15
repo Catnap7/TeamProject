@@ -50,7 +50,7 @@ if(count == 0){
 }else{
 	String name=null;	
 	for(int i=0;i<alarmlist.size();i++){
-		AlarmBean alarmbean = (AlarmBean)alarmlist.get(i);
+		AlarmBean alarmbean = (AlarmBean)alarmlist.get(i);		
 		MovieBean moviebean= (MovieBean)movielist.get(i);
 		int a_name = alarmbean.getA_alarm_name();		
 		switch(a_name){

@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import javafx.application.Application;
 import net.admin.notice.db.NoticeBean;
 import net.admin.notice.db.NoticeDAO;
 
@@ -16,8 +15,8 @@ public class AdminNoticeWriteAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("AdminNoticeWrite execute()");
 		request.setCharacterEncoding("UTF-8");
+		System.out.println("AdminNoticeWrite execute()");
 		   String realpath = request.getRealPath("./upload");
 		   System.out.println("upload폴더의 물리적 경로:" + realpath);
 		   int maxSize = 10 * 1024 * 1024;

@@ -70,7 +70,7 @@ List timelinereview=(List)request.getAttribute("timelinereview"); */
 							<p id="rvPos"><img src="./images/<%=img_genre%>/<%=timeLineBean.getEngtitle().replaceAll(" ","")+"_p.jpg"%>" width="180px" height="250px;"></p> 
 							<p id="rvStill"><img src="./images/<%=img_genre%>/<%=timeLineBean.getEngtitle().replaceAll(" ","")+"_s.jpg"%>" width="350px" height="250px;"></p> 
 						</div>
-							<p id="rvMent"><span><%=timeLineBean.getName()%></span><%="님이   " +timeLineBean.getTitle()+ "에  "+kind%></p>
+							<p id="rvMent"><a href="./FollowMyHome.fo?m_id=<%=timeLineBean.getFo_following()%>"><span><%=timeLineBean.getName()%></span></a><%="님이   " +timeLineBean.getTitle()+ "에  "+kind%></p>
 					</div> 
 					<%} 
 				}else{%>
