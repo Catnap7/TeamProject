@@ -44,7 +44,7 @@ public class ReportAction implements Action {
 				alarmInsert(user, 3); //1 : 후기쓰기 정지 알람, 2:후기쓰기 정지 해제 알람, 3: 로그인정지 임박 알람
 			}
 			response.setContentType("text/html;	charset=UTF-8");
-			PrintWriter out = response.getWriter();			
+			PrintWriter out = response.getWriter();
 			out.println(check);
 			out.close();
 			return null;

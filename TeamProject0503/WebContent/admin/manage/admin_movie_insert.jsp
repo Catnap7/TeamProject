@@ -73,7 +73,7 @@
 				</tr>
 			</table>
 			<div class="mv_btn">
-			<input type="submit" value="글쓰기">
+			<input type="submit" value="입력하기">
 			<input type="button" value="돌아가기" onclick="history.back()">
 			</div>
 		</form>

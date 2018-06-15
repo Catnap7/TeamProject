@@ -58,6 +58,45 @@ public class AdminManageFrontController extends HttpServlet{
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./admin/manage/admin_review_list.jsp");			
+		}else if(command.equals("/AdminMovie_List_Search.am")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./admin/manage/admin_movie_list.jsp");	
+		}else if(command.equals("/AdminMemberDelete.am")) {
+			action = new AdminMemberDelete();  
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
+		}else if(command.equals("/AdminMovieInfo.am")) {
+			action = new AdminMovieInfo();  
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}else if(command.equals("/AdminMovieDelete.am")) {
+			action = new AdminMovieDelete();  
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}else if(command.equals("/AdminMovieUpdate.am")) {
+			action = new AdminMovieUpdate();  
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
+		}else if(command.equals("/AdminMovieUpdateAction.am")) {
+			action = new AdminMovieUpdateAction();  
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}				
 		}
 
 

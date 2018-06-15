@@ -61,6 +61,7 @@
 		<select id="select">
 			<option value="r_id" selected="selected">ID</option>
 			<option value="r_date">날짜</option>
+			<option value="m_name">NAME</option>
 		</select>
 		<input type="text" onkeyup="searchFunction()" id="searchValue" placeholder="검색할 내용 입력해라.">
 		<button type="button" onclick="searchFunction();"><img src="./images/search.png" width="20px" height="20px"></button>
@@ -70,6 +71,7 @@
 				<tr>
 					<th class="th5">NO</th>
 					<th class="th3">ID</th>
+					<th class="th3">NAME</th>
 					<th class="th5">추천</th>
 					<th class="th5">신고</th>
 					<th class="th5">날짜</th>

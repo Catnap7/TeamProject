@@ -8,16 +8,14 @@
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
-
 <!-- script -->
-
 <script type="text/javascript">
 	var request = new XMLHttpRequest();
 	function searchFunction() {
 		request.open("Post", "./AdminMemberSearch?searchValue="+encodeURIComponent(document.getElementById("searchValue").value)+"&select="+encodeURIComponent(document.getElementById("select").value), true);
 		request.onreadystatechange = searchProcess;
 		request.send(null);
-	}
+	}	
 	function searchProcess() {
 		var table = document.getElementById("ajaxTable");
 		table.innerHTML = "";
@@ -32,29 +30,20 @@
 				}
 			}
 		}
-	}
+	}	
 	window.onload = function() {
 		searchFunction();
 	}
 </script>
-
 <!-- script -->
-
 </head>
 <body>
-
-	<!-- JSP -->
-	<!-- JSP -->
-
 	<!-- Header -->
 	<jsp:include page="../../inc/header.jsp" />
-	<!-- Header -->
-	
+	<!-- Header -->	
 	<!-- Sub -->
 	<jsp:include page="../../inc/admin_sub.jsp" />
-	<!-- Sub -->
-	
-	
+	<!-- Sub -->	
 	<section class="content_member">
 		<div id="content_member">
 			<h1 class="adminTitle">MEMBER LIST</h1>
@@ -71,10 +60,11 @@
 			<table class="db_list">
 				<thead>
 					<tr>
-						<th class="th2">ID</th>
+						<th class="th5">ID</th>
 						<th class="th3">닉네임</th>
 						<th class="th4">회원등급</th>
-						<th class="th5">가입일</th>
+						<th class="th4">가입일</th>
+						<th class="th4">회원관리</th>
 					</tr>
 				</thead>
 				<tbody id="ajaxTable">
@@ -82,11 +72,8 @@
 			</table>
 		</div>
 	</section>
-
-
 	<!-- Footer -->
 	<jsp:include page="../../inc/footer.jsp" />
-	<!-- Footer -->
-	
+	<!-- Footer -->	
 </body>
 </html>

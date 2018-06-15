@@ -3,7 +3,7 @@
 *{
 	padding: 0;
 	margin: 0;
-	font-family: 'Nanum Gothic', sans-serif;}
+	}
 
 .clear {clear: both;}
 
@@ -17,6 +17,7 @@ article{
 	height: auto;
 	width:1910px;
 	background-color: #72bcc4;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 
@@ -179,6 +180,8 @@ article{
 .secInfo a:LINK, .secInfo a:VISITED{
 	color:#50a4aa;
 	text-shadow: 1px 1px #eee;
+	position: relative;
+    top: -30px;
 } 
 
 .secInfo a:HOVER{
@@ -207,13 +210,21 @@ article{
 
 #rv p{
 	padding-left: 10px;
+	position: relative;
 }
  
 #reviewTitle{
 	font-size: 1.2em;
 	font-weight: bold;
 }
-
+#reviewRecommand{
+	position: relative;
+    left: 5px;
+}
+#reviewDate{
+	position: absolute;
+	right: 0px;
+}
 
 
 /* ################ 좋아하는 영화 ################ */

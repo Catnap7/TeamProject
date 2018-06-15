@@ -10,6 +10,7 @@ public class AdminNoticeUpdate implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("UTF-8");
 		System.out.println("AdminNoticeUpdate execute()");
 		int n_num = Integer.parseInt(request.getParameter("n_num"));
 		NoticeDAO ndao = new NoticeDAO();	

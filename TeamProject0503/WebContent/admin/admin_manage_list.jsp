@@ -36,7 +36,7 @@
 				</a>
 			</label>
 			<label for="movie">
-				<a href="./AdminMovieInsert.am" id="movie">
+				<a href="./AdminMovie_List_Search.am" id="movie">
 					<div class="content_inner">
 						movie
 					</div>

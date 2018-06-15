@@ -62,7 +62,7 @@ switch(favorite.getMv_genre()){
 case "animation" : genre="애니메이션"; break;
 case "comedy" : genre="코미디"; break;
 case "indie" : genre="독립영화"; break;
-case "sf" : genre="sf"; break;
+case "sf" : genre="SF"; break;
 case "action" : genre="액션"; break;
 case "thriller" : genre="스릴러"; break;
 case "romance" : genre="로맨스"; break;
@@ -89,7 +89,7 @@ case "drama" : genre2="드라마"; break;
 %>
 
 <!-- 헤더 영역 -->
-<jsp:include page="../inc/header.jsp"/>
+<jsp:include page="../inc/header2.jsp"/>
 <!-- 헤더 영역 -->
 
 
@@ -98,7 +98,7 @@ case "drama" : genre2="드라마"; break;
 
 <section class="sec myInfo">
 	<div id="profile">
-		<img src="./images/proflie_img/proflie<%=getmember.getM_pic()%>.png" width="200px" height="200px">
+		<img class=photo2 src="./images/proflie_img/proflie<%=getmember.getM_pic()%>.png" width="200px" height="200px">
 		<div id="pfName"><p><%=getmember.getM_name()%></p><p><%=grade%></p></div> <!-- 이름, 등급 가져오기 -->
 	<div class="clear"></div>
 	</div><!-- profile -->
@@ -467,8 +467,8 @@ case "drama" : genre2="드라마"; break;
 				%>
 			<div id="rv"> 
 				<p><span id="reviewTitle"><%=moviebean.getMv_kor_title()%></span>
+				<span id="reviewRecommand"><img src="./images/thumbsUp.png" width="20px" height="20px"><%=reviewbean.getR_recommand()%></span>
 				<span id="reviewDate"><%=yymmdd.substring(0,10)%></span>
-				<span id="reviewRecommand"><%="추천수  "%><%=reviewbean.getR_recommand()%></span>
 				<%-- / <%=reviewbean.getR_report()%> --%></p>
 				<p class="rvList"><%=reviewbean.getR_content().replaceAll("\r\n", "<br>")%></p>
 			</div> 
@@ -519,7 +519,9 @@ case "drama" : genre2="드라마"; break;
 				}
 			%>
 			<div class="favMovies">
-				<img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="195px" height="280px"> 
+			<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>">
+				<img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")%>_p.jpg" width="195px" height="280px">
+				</a> 
 				<p><%=moviebean.getMv_kor_title()%></p>
 			</div>
 		<%	}

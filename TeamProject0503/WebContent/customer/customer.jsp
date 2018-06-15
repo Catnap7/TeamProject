@@ -9,11 +9,13 @@
 <title>Insert title here</title>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/customer.css" rel="stylesheet" type="text/css">
-
-
+<script type="text/javascript">
+function chat(){
+	window.open('./AdminChat.ac', 'chat', 'width=400 height=800');
+}
+</script>
 </head>
 <body>
 	<%
@@ -65,8 +67,7 @@
 			</div>
 		</div>
 		<div class="chat">
-			<input type="button" value="1:1 문의"
-				onclick="location.href='./AdminChat.ac'">
+			<input type="button" value="영화 토론방" onclick="chat()">
 		</div>
 
 	</div>

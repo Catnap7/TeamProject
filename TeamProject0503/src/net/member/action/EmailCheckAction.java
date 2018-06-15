@@ -2,7 +2,9 @@ package net.member.action;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,11 +27,13 @@ public class EmailCheckAction implements Action {
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		
-		Calendar cal= new GregorianCalendar();
+		Calendar cal= new GregorianCalendar(Locale.KOREA);
+		cal.setTime(new Date());
 		cal.add(Calendar.MONTH,1);
 		cal.clear(Calendar.MILLISECOND);
 		SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
-		String c_end_day=date.format(cal.getActualMaximum(Calendar.DATE)).toString();
+		String c_end_day=date.format(cal.getTime());
+				//date.format(cal.getActualMaximum(Calendar.DATE)).toString();
 
 		CouponBean cb= new CouponBean();
 		String hellocoupon= HelloCoupon.couponnum();

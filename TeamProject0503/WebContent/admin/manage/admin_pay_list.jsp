@@ -70,7 +70,7 @@
 		<table class="db_list">
 			<thead>
 				<tr>
-					<th class="th2">NO</th>
+					<th class="th3">NO</th>
 					<th class="th3">ID</th>
 					<th class="th4">결제방식</th>
 					<th class="th5">결제일</th>

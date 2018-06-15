@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-h1 {text-align: center;}
+h2 {text-align: center;}
 img {
 	margin:10px;
 }
@@ -17,12 +17,12 @@ input:checked + label{
 	margin:10px auto;
 	width:100px;
 	height: 30px;
-	background-color: #50d4aa;
+	background-color: #50a4aa;
 	text-align: center;
 	position: absolute;
 	left: 220px;
 	margin-bottom: 20px;
-	color:#333;
+	color:#fff;
 	font-size: 15px;
-	border-radius:30px;
+	border-radius:20px;
 }
