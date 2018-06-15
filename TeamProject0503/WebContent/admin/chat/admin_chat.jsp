@@ -39,7 +39,7 @@
 								</div>
 								<div class="row" style="height: 90px;">
 									<div class="form-group col-xs-10">
-										<textarea rows="10" cols="50" style="height: 80px;" id="inputMessage" class="form-control" placeholder="내용을 입력하세요" maxlength="100" onkeyup="enter_chk();"></textarea>
+										<textarea rows="10" cols="50" style="height: 80px; width: 365px;" id="inputMessage" class="form-control" placeholder="내용을 입력하세요" maxlength="100" onkeyup="enter_chk();"></textarea>
 									</div>
 								</div>
 							</div>
