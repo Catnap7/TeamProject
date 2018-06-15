@@ -172,7 +172,7 @@ body{
 	font-size: 0.8em;
 	font-family: 'Nanum Gothic', sans-serif;
 	position: absolute;
-	top:10px; left:40px; 
+	top:0px; left:40px; 
 	line-height: 15px;	
 	text-align: center;
 }

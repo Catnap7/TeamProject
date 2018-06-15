@@ -39,7 +39,7 @@ int followingcount= followdao.Followingcount(id);
 %>
 <div class="header">
 	<div class="title_logo">
-		<a href="./Main.ma"><img src="./images/watchu_logo.png" width="250px" height="50px"></a>
+		<a href="./Main.ma"><img src="./images/watchu_logo2.png" width="250px" height="50px"></a>
 	</div>
 	<link rel="shortcut icon" href="./images/watchu_logo.ico" type="image/x-icon">
 

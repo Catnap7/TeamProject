@@ -10,7 +10,7 @@
 <footer>
 <div class="f_logo">
 	<a href="#">
-	<img alt="logo" src="./images/watchu_logo_gray.png" width="240px" height="50px"></a>
+	<img alt="logo" src="./images/watchu_logo2_2.png" width="240px" height="50px"></a>
 </div>
 
 <div class="use">
