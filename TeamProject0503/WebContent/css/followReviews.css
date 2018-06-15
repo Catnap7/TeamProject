@@ -210,6 +210,13 @@ article{
 	font-size: 1.1em;
 	margin-top: 5px;
 }
+#fvfv a, #fvfv p a{
+	text-decoration: none;
+	color:#333;
+}
+#fvfv p a:HOVER{
+	text-decoration: underline;
+}
 
 .noReviewContents{
 	border:1px solid #c0c0c0;
