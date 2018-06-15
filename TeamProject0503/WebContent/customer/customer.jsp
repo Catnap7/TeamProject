@@ -20,6 +20,7 @@ function chat(){
 <body>
 	<%
 		List<NoticeBean> AdminNoticeList = (List) request.getAttribute("AdminNoticeList");
+		String id = (String)session.getAttribute("m_id");
 	%>
 
 	<!-- 헤더영역 -->
@@ -44,21 +45,20 @@ function chat(){
 							});
 					});
 				</script>
-
 				<h2 id="sub_<%=a%>" class="jemok"><%=nb.getN_subject()%></h2>
 				<div id="con_<%=a%>" style="display: none;" class="naeyong">
 				<%
 				if(nb.getN_image() != null) {
 					%>
-					<input type="image" src="<%=nb.getN_image() %>"><br>
+					<input type="image" src="./upload/<%=nb.getN_image() %>"><br>
 					<%=nb.getN_content()%>
 					<%
-				}else if(nb.getN_image() == null){
+				}else {
 					%>
 					<%=nb.getN_content()%>
 					<%
 				}
-				%>
+				%>								
 				</div>
 				<hr>
 				<%
