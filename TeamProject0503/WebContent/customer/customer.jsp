@@ -13,7 +13,7 @@
 <link href="./css/customer.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 function chat(){
-	window.open('./AdminChat.ac', 'chat', 'width=400 height=800');
+	window.open('./AdminChat.ac', 'chat', 'width=400 height=690');
 }
 </script>
 </head>

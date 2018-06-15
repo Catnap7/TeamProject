@@ -52,11 +52,20 @@ section {
 }
 .post>img{width: 350px;
    height: 500px;}
-
+.post:HOVER img{opacity:0.5;}
+.post:HOVER .like .fa_full{
+	/* border: 1px solid black; */
+}
 
 .checked-like {
    color: red;
 }
+#favImg{
+	position: relative;
+    top: 15px;
+    left: 15px;
+}
+#favImg img{width:50px; height:50px;}
 .like {
    /* border: 1px solid blue;  */
    font-size: 1.1em;
@@ -64,8 +73,8 @@ section {
    /* padding: 10px; */
    cursor: pointer;
    position: absolute;
-   top: 10px;
-   left: 280px;
+   top: -10px;
+   left: 430px;
 }
 .fa_full{
 	width:60px;
