@@ -62,6 +62,8 @@ if(count == 0){
 		break;
 		case 3 :  name = "이용자님께서는 로그인 정지가 임박합니다.(누적신고 9회) - "+alarmbean.getA_start_day();
 		break;		
+		case 4 :  name = alarmbean.getA_follower()+" 님이 회원님을 팔로우 하기 시작하였습니다";
+		break;		
 		}
 %>
 <tr><td colspan="3"><%if(alarmbean.getA_check()==0){%><span style=color:red;>new! </span><%} if(a_name==0){%>
