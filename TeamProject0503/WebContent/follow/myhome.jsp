@@ -160,6 +160,7 @@ case "drama" : genre2="드라마"; break;
 		$(document).ready(function() {
         	
         	$('#myhome_unfollow').click(function(){
+        		if(confirm("팔로우 취소 하시겠습니까?") == true) {
         		var m_id = $('#m_id').val();
 				var f_id = $('#f_id').val();
 				
@@ -175,13 +176,15 @@ case "drama" : genre2="드라마"; break;
 						"f_id": f_id,
 					},
 					success:function(data){
-						alert("팔로우 끊기");
+// 						alert("팔로우 끊기");
 						location.reload();
 					}
 				});
+        		}
         	});
         	
         	$('#myhome_follow').click(function(){
+        		if(confirm("팔로잉 하시겠습니까?") == true) {
         		var m_id = $('#m_id').val();
 				var f_id = $('#f_id').val();
 				
@@ -197,10 +200,11 @@ case "drama" : genre2="드라마"; break;
 						"f_id": f_id,
 					},
 					success:function(data){
-						alert("팔로잉 하기");
+// 						alert("팔로잉 하기");
 						location.reload();
 					}
 				});
+        		}
         	});
         	
         });
@@ -260,6 +264,7 @@ case "drama" : genre2="드라마"; break;
 		        $(document).ready(function() {
 		        	
 		        	$('#f_unfollow<%=mbean.getM_name() %>').click(function(){
+		        		if(confirm("팔로우 취소 하시겠습니까?") == true) {
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
@@ -275,13 +280,15 @@ case "drama" : genre2="드라마"; break;
 								"f_id": f_id,
 							},
 							success:function(data){
-								alert("팔로우 끊기");
+// 								alert("팔로우 끊기");
 								location.reload();
 							}
 						});
+		        		}
 		        	});
 		        	
 		        	$('#f_following<%=mbean.getM_name() %>').click(function(){
+		        		if(confirm("팔로잉 하시겠습니까?") == true) {
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
@@ -297,10 +304,11 @@ case "drama" : genre2="드라마"; break;
 								"f_id": f_id,
 							},
 							success:function(data){
-								alert("팔로잉 하기");
+// 								alert("팔로잉 하기");
 								location.reload();
 							}
 						});
+		        		}
 		        	});
 		        	
 		        });
@@ -372,6 +380,7 @@ case "drama" : genre2="드라마"; break;
 		        $(document).ready(function() {
 		        	
 		        	$('#unfollow<%=mbean.getM_name() %>').click(function(){
+		        		if(confirm("팔로우 취소 하시겠습니까?") == true) {
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
@@ -387,32 +396,35 @@ case "drama" : genre2="드라마"; break;
 								"f_id": f_id,
 							},
 							success:function(data){
-								alert("팔로우 끊기");
+// 								alert("팔로우 끊기");
 								location.reload();
 							}
 						});
+		        		}
 		        	});
 		        	
 		        	$('#following<%=mbean.getM_name() %>').click(function(){
-		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
-						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
-						
-<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
-<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
-						
-						$.ajax({
-							type: "post",
-							url: "./InsertFollowerAction.fo",
-							dataType: "html",
-							data: {
-								"m_id": m_id,
-								"f_id": f_id,
-							},
-							success:function(data){
-								alert("팔로잉 하기");
-								location.reload();
-							}
-						});
+		        		if(confirm("팔로잉 하시겠습니까?") == true) {
+			        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
+							var f_id = $('#f_id<%=mbean.getM_name() %>').val();
+							
+<%-- 							alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
+<%-- 							alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
+							
+							$.ajax({
+								type: "post",
+								url: "./InsertFollowerAction.fo",
+								dataType: "html",
+								data: {
+									"m_id": m_id,
+									"f_id": f_id,
+								},
+								success:function(data){
+// 									alert("팔로잉 하기");
+									location.reload();
+								}
+							});
+		        		}
 		        	});
 		        	
 		        	
