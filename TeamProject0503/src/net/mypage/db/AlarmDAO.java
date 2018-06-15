@@ -232,9 +232,9 @@ public class AlarmDAO {
 					mb.setMv_num(rs2.getInt("mv_num"));					
 					movieList.add(mb);
 				}
-				sql="select * from alarm a join member m on a.a_follower = m.m_id where a_id=?";
+				sql="select * from member where m_id=?";
 				pstmt3=con.prepareStatement(sql);
-				pstmt3.setString(1, id);
+				pstmt3.setString(1, ab.getA_follower());
 				rs3=pstmt3.executeQuery();
 					if(rs3.next()) {
 						MemberBean memb=new MemberBean();
