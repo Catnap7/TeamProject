@@ -54,7 +54,7 @@
 				<th colspan="2" class="th5">파일</th>
 			</tr>
 			<tr>
-				<td colspan="3"><input type="image" src="<%=noticebean.getN_image()%>"></td>
+				<td colspan="3"><input type="image" src="./upload/<%=noticebean.getN_image()%>" style="width: 500px; height: 500px;"></td>
 				<td colspan="2"><%=noticebean.getN_file()%></td>
 			</tr>
 

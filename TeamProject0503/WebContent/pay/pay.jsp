@@ -6,11 +6,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<<<<<<< HEAD
+
+<!-- css -->
+=======
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
+>>>>>>> refs/remotes/origin/master
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/pay2.css" rel="stylesheet" type="text/css">
+
+<!-- jquery -->
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <title>와츄 : WATCHU</title>
+
 <script src="./js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 var amount1=6900;	
@@ -63,6 +71,7 @@ $(document).ready(function(){
 <jsp:include page="../inc/header.jsp"/>
 <!-- 헤더영역 -->
 
+<article>
 
 <%
 //쿠폰리스트를 받아오는데, 쿠폰이 null 이면, 
@@ -77,7 +86,7 @@ List couponlist=(List)request.getAttribute("couponlist");
 	<table class="coupon">
 		<tr><th class="radius">이용권 종류 선택 </th>
 		<td class="radius_2"><select name="pay" >
-			 <option value="한달" id="monthpay">한달만결제</option> 
+			 <option value="한달" id="monthpay">한달만 결제</option> 
 			 <option value="정기" id="autopay">매달 자동결제</option>
 		</select><br></td></tr>
 	</table>
@@ -123,15 +132,16 @@ List couponlist=(List)request.getAttribute("couponlist");
 		<br></td></tr>				
 		<tr><th class="to_money">
 		<input type="hidden" id="amounth" name="charge">
-		총 결제 금액:</th><td><p id="amount"></p></td></tr>
+		총 결제 금액</th><td><p id="amount"></p></td></tr>
 
 
-<tr><td colspan="2" class="radius_5"><label for="pay">결제하기</label><input type="submit" value="결제하기" id="pay"></td></tr>
+	<tr><td colspan="2" class="radius_5"><label for="pay">결제하기</label><input type="submit" value="결제하기" id="pay"></td></tr> 
+
 	</table>
 	</section>
 	</form><br>
 
-
+</article>
 <!-- 푸터 영역 -->
 <jsp:include page="../inc/footer.jsp"/>
 <!-- 푸터 영역 -->

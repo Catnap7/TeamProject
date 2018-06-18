@@ -37,7 +37,7 @@ int count = ((Integer)request.getAttribute("count")).intValue();
 if(count == 0){
 %>
 <!-- 원래 들어가야하는 문장 -->
-<tr><td colspan="3">쿠폰이 없습니다.</td></tr>
+<tr><td colspan="3">쿠폰이 없습니다</td></tr>
 <!-- 원래 들어가야하는 문장 -->
 <% 
 }else{

@@ -21,7 +21,7 @@ article{
 /* 	border: 1px solid red; */
 	height: 600px;
 	padding:0;
-	
+	width: 1900px;
 /* 	position: relative; */
 }
 
@@ -202,7 +202,7 @@ article{
 	width:300px;
 	height: 150px;
 /* 	height: 280px; */
-	box-shadow:5px 5px #a0a0a0;
+	/* box-shadow:5px 5px #a0a0a0; */
 }
 
 .mypage_profile2 h2 {
@@ -227,21 +227,25 @@ article{
 	height: 40px;
 	position: relative;
 	top: -20px;
+	padding-left: 10px;
 }
 
 .check_text {
-/* 	border: 1px solid green; */
-	background-color: #50d4aa;
-	border-radius: 40px;
-	width: 160px;
-	height: 40px;
-	text-align: center;
-	line-height: 40px;
-	margin-left: 60px;
-	margin-top: 20px;
-	font-size: 17px;
-	color: #333;
-	letter-spacing: 2px;
+	border: 2px solid white;
+    background-color: #50a4aa;
+    border-radius: 10px;
+    width: 160px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    margin-left: 60px;
+    margin-top: 20px;
+    font-size: 17px;
+    color: #fff;
+    letter-spacing: 2px;
+}
+.check_text:HOVER{
+	border:2px solid #c0c0c0;
 }
 
 /* 회원정보 수정 페이지 */
@@ -255,12 +259,12 @@ article{
 	top: 30px; 
 	width:300px;
 	height: 400px;
-	box-shadow:5px 5px #a0a0a0;
+	/* box-shadow:5px 5px #a0a0a0; */
 }
 
 .mypage_update h2 {
 	margin-left: 500px;
-	padding: 20px;
+	padding: 20px 0px 0px 20px;
 	font-size: 1.5em;
 	color:#333;
 	font-weight: bold;
@@ -276,9 +280,10 @@ article{
 /* 	border: 1px solid blue; */
 /* 	margin-top: 20px; */
 /* 	margin-left: 50px; */
-	margin-bottom: 25px;
+	margin-bottom: 20px;
 	width: 260px;
 	height: 40px;
+	padding-left: 10px;
 }
 
 .update_name {
@@ -286,38 +291,50 @@ article{
 	margin-right: 10px;
 	width: 180px;
 	height: 40px;
+	padding-left: 10px;
 }
 
 .name_text {
-	background-color: #50d4aa;
-	border-radius: 40px;
-	width: 100px;
-	height: 40px;
-	text-align: center;
-	line-height: 40px;
-	margin-top: 25px;
-	font-size: 14px;
-	color: #333;
-	letter-spacing: 2px;
+	background-color: #f1f1f1;
+	border:2px solid #ccc;
+    border-radius: 10px;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333;
+    /* letter-spacing: 2px; */
+}
+.name_text:HOVER{
+	border:2px solid #808080;
 }
 
 .update_text, .update_text2 {
-	background-color: #50d4aa;
-	border-radius: 40px;
-/* 	width: 160px; */
-	width: 140px;
-	height: 40px;
-	text-align: center;
-	line-height: 40px;
-/* 	margin-left: 60px; */
-	margin-top: 25px;
-	font-size: 17px;
-	color: #333;
-	letter-spacing: 2px;
+	background-color: #50a4aa;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    /* width: 160px; */
+    width: 140px;
+    /* height: 40px; */
+    text-align: center;
+    line-height: 40px;
+    /* margin-left: 60px; */
+    margin-top: 25px;
+    font-size: 17px;
+    color: #f9f9f9;
+    letter-spacing: 2px;
 }
 
 .update_text2 {
 	float: right;
+}
+.update_text:HOVER{
+	border:2px solid #808080;
+} 
+.update_text2:HOVER{
+	border:2px solid #808080;
 }
 
 /******************* 평점 내역 ********************/
@@ -410,7 +427,7 @@ span.star_rating {
 	width:800px;
 /* 	height: 180px; */
 	height: 300px;
-	box-shadow:5px 5px #a0a0a0;
+	/* box-shadow:5px 5px #a0a0a0; */
 }
 
 .mypage_alram .prev_next {
@@ -442,22 +459,22 @@ span.star_rating {
 	
 	height: 50px;
 	letter-spacing: 0.5px;
-	background-color: #50d4aa;
+	background-color: #afdde2;
 	color: #333;
 	border-radius: 20px 20px 0 0;
 	/* border: 1px solid #333; */
 }
 
 .alram_info td {
-	background-color: #e8e8e8;						
-	padding: 8px;
-	color: #333;
-	font-size: 17px;
-	font-weight: bold;
-	letter-spacing: 1px;
-	text-align: center;
-	height: 12px;	
-	/* border: 1px solid #333; */
+	background-color: #e8e8e8;
+    padding: 8px;
+    color: #333;
+    font-size: 0.9em;
+    /* font-weight: bold; */
+    /* letter-spacing: 1px; */
+    text-align: center;
+    height: 12px;
+    /* border: 1px solid #333; */
 }
 
 .alram_info tr:LAST-CHILD td:ONLY-CHILD{
@@ -465,7 +482,8 @@ span.star_rating {
 }
 .mo {
 	text-decoration: none;
-	color:#0000d9;
+	color:#ff8800;
+	font-weight: bold;
 }
 .mo:HOVER {
 	color:#6c6cff;
@@ -482,7 +500,7 @@ span.star_rating {
 	width:300px;
 /* 	height: 180px; */
 	height: 300px;
-	box-shadow:5px 5px #a0a0a0;
+	/* box-shadow:5px 5px #a0a0a0; */
 	margin-top: 100px;
 }
 .mypage_coupon .prev_next {
@@ -513,7 +531,7 @@ span.star_rating {
 	
 	height: 50px;
 	letter-spacing: 0.5px;
-	background-color: #50d4aa;
+	background-color: #afdde2;
 	color: #333;
 }
 
@@ -521,8 +539,8 @@ span.star_rating {
 	background-color: #e8e8e8;
 	padding: 20px;
 	color: #333;
-	font-size: 17px;
-	font-weight: bold;
+	font-size:0.9em;
+	/* font-weight: bold; */
 	letter-spacing: 1px;
 	text-align: center;
 	height: 15px;
@@ -547,7 +565,7 @@ span.star_rating {
 .coupon_info tr:LAST-CHILD td:ONLY-CHILD {
 	border-radius: 0 0 20px 20px;
 }
- 
+  
 
 
 

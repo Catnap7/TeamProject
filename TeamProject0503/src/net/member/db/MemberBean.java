@@ -7,11 +7,20 @@ public class MemberBean {
 	private int m_id_num2;
 	private String m_id;
 	private String m_pass;
+	private String m_salt;
 	private String m_name;
 	private int m_grade;
 	private Date m_reg_date;
 	private int m_pay;
 	private int m_pic;
+	private Date m_end_day;
+	
+	public Date getM_end_day() {
+		return m_end_day;
+	}
+	public void setM_end_day(Date m_end_day) {
+		this.m_end_day = m_end_day;
+	}
 	public int getM_pic() {
 		return m_pic;
 	}
@@ -66,6 +75,11 @@ public class MemberBean {
 	public void setM_reg_date(Date m_reg_date) {
 		this.m_reg_date = m_reg_date;
 	}
-	
+	public String getM_salt() {
+		return m_salt;
+	}
+	public void setM_salt(String m_salt) {
+		this.m_salt = m_salt;
+	}
 	
 }
