@@ -23,8 +23,6 @@ public class AdminNoticeUpdateAction implements Action {
 		NoticeBean noticebean = new NoticeBean();
 		noticebean.setN_content(multi.getParameter("n_content"));
 		noticebean.setN_subject(multi.getParameter("n_subject"));
-		noticebean.setN_image(multi.getParameter("n_image"));
-		noticebean.setN_file(multi.getParameter("n_file"));
 		NoticeDAO ndao = new NoticeDAO();
 		ndao.NoticeUpdateInsert(noticebean, n_num);		
 		ActionForward forward = new ActionForward();

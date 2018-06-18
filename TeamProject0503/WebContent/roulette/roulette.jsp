@@ -5,6 +5,7 @@
 <html lang="ko">
 <head>
 <title> 왓츄 : 행운의 양</title>
+<link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 <meta charset="utf-8">
 
 <!-- css -->

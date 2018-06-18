@@ -24,7 +24,7 @@ div.logo img {
 }
 
 div.nav_r {
-	background-color: #50d4aa;
+	background-color: #ff8800;
 	width: 100px;
 	height: 40px;
 	float: right;
@@ -33,7 +33,7 @@ div.nav_r {
 	right: 2%;
 	text-align: center;
 	line-height: 40px;
-	border-radius: 40px;
+	border-radius: 10px;
 }
 
 div.nav_r a {
@@ -157,8 +157,8 @@ p {
 /* } */
 
 #submit {
-	background-color: #50d4aa;
-	border-radius: 40px;
+	background-color: #50a4aa;
+	border-radius: 10px;
 	padding:2px;
 	width:250px; 
 	height:50px;
@@ -166,4 +166,6 @@ p {
 	border: 1px solid #999;
 	cursor: pointer;
 	font-size: 18px;
+	letter-spacing: 5px;
+	color:white;
 }

@@ -7,7 +7,7 @@
 			<ul>
 				<li><a href="./AdminManageList.am">DB관리</a></li>
 				<li><a href="./AdminNoticeList.an">공지사항</a></li>
-				<li><a href="./AdminChat.ac">관리자채팅</a></li>
+				<li><a onclick="window.open('./AdminChat.ac', '영화토론', 'width=400 height=690')">영화 토론방</a></li>
 				<li><a href="./VipAdmin.vi">VIP관리</a></li>
 			</ul>
 		</nav>

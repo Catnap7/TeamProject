@@ -1,73 +1,57 @@
 <%@page import="java.util.Date"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta content="viewport" content="width=device-width, initial-scale=1">
-
-<!-- css -->
 <link href="./css/css/bootstrap2.css" rel="stylesheet" type="text/css">
 <link href="./css/css/custom.css" rel="stylesheet" type="text/css">
-
-
 <script type="text/javascript" src="../css/js/bootstrap.js"></script>
-
 <title>영화 토론</title>
 </head>
+<%
+	String id = (String)session.getAttribute("m_id");
+	System.out.println(id);
+%>
 <body>
-   <div class="container">
-      <div class="container bootstrap snippet">
-         <div class="row">
-            <div class="col-xs-12">
-               <div class="portlet portlet-default">
-                  <div class="portlet-heading">
-                     <div class="portlet-title">
-                        <h4>   <i class="fa fa-circle text-green"></i>영화 토론</h4>
-                     </div>
-                     <div class="clearfix"></div>
-                  </div>
-                  <div id="chat" class="pannel-collapse collapse in">
-                     <div class="portlet-body chat-widget">
-
-                        <!-- style="overflow-y: hidden; width: auto; height: auto;"> -->
-                        <div class="row">
-                           <div class="col-lg-12">
-                              <p class="text-center text-muted small"></p>
-                           </div>
-                        </div>
-
-                        <div class="row" style="height: 500px">
-                        <textarea id="messageWindow" rows="10" cols="50" readonly="true" style="width:100%;height:100%;"></textarea>
-                        <div class="portlet-footer">
-                           <!-- 이름 입력창 -->
-                           <div class="row">
-                              <div class="form-group col-xs-4">
-                              </div>
-                           </div>
-                           <div class="row" style="height: 90px;">
-                              <div class="form-group col-xs-10">
-                                 <textarea rows="" cols="" style="height: 80px;" id="inputMessage" class="form-control" placeholder="내용을 입력하세요"  maxlength="100"></textarea>
-                              </div>
-                              <div class="form-group col-xs-2">
-         							<input type="submit" value="send" onclick="send()" /> 
-                                 <div class="clearfix"></div>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- 이름 입력창 -->
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="portlet portlet-default">
+				<div class="portlet-heading">
+					<div class="portlet-title">
+						<h4><i class="fa fa-circle text-green"></i>영화 토론</h4>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div id="chat" class="pannel-collapse collapse in">
+					<div class="portlet-body chat-widget">
+						<div class="row">
+							<div class="col-lg-12">
+								<p class="text-center text-muted small"></p>
+							</div>
+						</div>
+						<div class="row" style="height: 500px">
+							<textarea id="messageWindow" rows="10" cols="50" readonly="readonly" style="width: 100%; height: 100%;"></textarea>
+							<div class="portlet-footer">
+								<div class="row">
+									<div class="form-group col-xs-4"></div>
+								</div>
+								<div class="row" style="height: 90px;">
+									<div class="form-group col-xs-10">
+										<textarea rows="10" cols="50" style="height: 80px; width: 365px;" id="inputMessage" class="form-control" placeholder="내용을 입력하세요" maxlength="100" onkeydown="enter_chk();"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
-     <script type="text/javascript">
+<script type="text/javascript">
          var textarea = document.getElementById("messageWindow"); 
-         //서버 컴퓨터의 경로를 설정해주어야함
          var webSocket = new WebSocket('ws://192.168.2.12:8080/TeamProject0503/AdminChatAction'); 
          var inputMessage = document.getElementById('inputMessage'); 
      webSocket.onerror = function(event) {
@@ -83,21 +67,27 @@
      }; 
   
      function onMessage(event) {
-    	 textarea.value += "\n" + "'<span>'상대'</span>'"+ "\n" + "\n" + event.data + "\n";
+    	 textarea.value += "\n" + "상대"+ "\n" + event.data + "\n\n";
+    	 document.getElementById("messageWindow").scrollTop = document.getElementById("messageWindow").scrollHeight;
      }
   
      function onOpen(event) {
-         textarea.value += "채팅방에 입장하였습니다.\n";
+         textarea.value += "채팅방에 입장하였습니다.\n\n";
      } 
   
      function onError(event) {
        alert(event.data); 
      }
-  
      function send() {
-    	 textarea.value += "\n" + "나 " + "\n" + inputMessage.value + "\n"; 
-         webSocket.send(inputMessage.value); 
-         inputMessage.value = ""; 
+    	 textarea.value += "\n" + inputMessage.value + "\n\n";
+         webSocket.send(inputMessage.value);
+         document.getElementById("messageWindow").scrollTop = document.getElementById("messageWindow").scrollHeight;
      } 
+     function enter_chk() {
+    	 if(event.keyCode == 13){
+    		 send();
+         inputMessage.value="";
+         }
+    	 }
    </script>
 </html>

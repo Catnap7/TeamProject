@@ -96,16 +96,13 @@ public class MemberFrontController extends HttpServlet {
 		}
 		
 		}
-			
-			
-			
 		
 	if(forward!=null) {
 			if(forward.isRedirect()) {
-				//true이면 response
+			
 			response.sendRedirect(forward.getPath());
 			}else{
-				//false이면 forward
+				
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);
 			}

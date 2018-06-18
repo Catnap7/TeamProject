@@ -65,7 +65,7 @@
 				</tr>
 				<tr>
 					<th>줄거리</th>
-					<td><textarea cols="35" rows="10" name="mv_story"></textarea>
+					<td><textarea cols="145" rows="10" name="mv_story"></textarea>
 				</tr>
 				<tr>
 					<th>예고편 링크</th>

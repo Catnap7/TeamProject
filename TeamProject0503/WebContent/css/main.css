@@ -40,14 +40,12 @@ article.main2{
 
 article.main{
 	/* border:1px solid window;   */
-	position:relative;
-	top:10px;
 	height:auto;
 	width: 1900px;
-	position: relative;
+	position: relative; 
     top: 100px;
     left: 0px; 
-    margin-bottom: -110px;
+    /* margin-bottom: -110px; */
 }
 
 /* main상단 좌측 */

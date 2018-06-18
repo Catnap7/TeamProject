@@ -6,11 +6,13 @@
 	window.open("./AccessTerms.ce", "", "width=750,height=900,left=620,top=50,scrollbars=yes");
 }
 </script>
-
+<%
+String id = (String)session.getAttribute("m_id");
+%>
 <footer>
 <div class="f_logo">
 	<a href="#">
-	<img alt="logo" src="./images/watchu_logo_gray.png" width="240px" height="50px"></a>
+	<img alt="logo" src="./images/watchu_logo2_2.png" width="240px" height="50px"></a>
 </div>
 
 <div class="use">

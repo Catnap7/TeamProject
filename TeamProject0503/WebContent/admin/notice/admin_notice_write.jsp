@@ -7,12 +7,26 @@
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 <title>I왓츄 : 공지사항 쓰기</title>
 
+<script src="./js/jquery-3.3.1.js"></script>
+<script src="http://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 <!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+<script type="text/javascript">
+function chk() {
+	alert("11");
+	alert($('#11').val());
+	alert($('#22').val());
+}
+
+
+
+</script>
 
 
 <!--  notice/writeForm.jsp -->
@@ -32,7 +46,7 @@
 	<div id="content">
 		<h1 class="adminTitle">관리자 공지사항 글쓰기</h1>
 
-		<form action="./AdminNoticeWriteAction.an" method="post" enctype="multipart/form-data">
+		<form action="./AdminNoticeWriteAction.an" method="post" enctype="multipart/form-data" onsubmit="chk()">
 			<table border="0" class="db_list_insert">
 				<tr>
 					<td>제목</td>
@@ -44,13 +58,12 @@
 				</tr>
 				<tr>
 					<td>사진</td>
-					<td><input type="file" name="n_image"></td>
+					<td><input type="file" name="n_image" id="11"></td>
 				</tr>
 				<tr>
 					<td>첨부파일</td>
-					<td><input type="file" name="n_file"></td>
-				</tr>
-				
+					<td><input type="file" name="n_file"id="22"></td>
+				</tr>				
 				<tr>
 				<div class="u_admin-notice-write">
 					<input type="submit" class="wirtebtn" value="등록">
