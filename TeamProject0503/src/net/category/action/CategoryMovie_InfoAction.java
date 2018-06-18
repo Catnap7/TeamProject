@@ -1,5 +1,6 @@
 package net.category.action;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
@@ -27,6 +28,7 @@ public class CategoryMovie_InfoAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		HttpSession session= request.getSession();
 		String id=(String)session.getAttribute("m_id");
+		AdminSuspendDAO asdao = new AdminSuspendDAO();
 		if(id==null){
 			ActionForward forward= new ActionForward();
 			forward.setPath("./MemberLogin.me");
@@ -113,11 +115,11 @@ public class CategoryMovie_InfoAction implements Action{
 				ReviewBean rb = (ReviewBean)reviewList.get(i);
 				String report_id = rb.getR_id();
 				rb.getR_report();
-				if(rb.getR_report() >= 5 && rb.getR_report() < 10) {
-					AdminSuspendDAO asdao = new AdminSuspendDAO();
+				if(rb.getR_report() == 5) {
+					asdao = new AdminSuspendDAO();
 					asdao.AdminMemberGradeChange(report_id);
-				}else if(rb.getR_report() >= 10) {
-					AdminSuspendDAO asdao = new AdminSuspendDAO();
+				}else if(rb.getR_report() == 10) {
+					asdao = new AdminSuspendDAO();
 					asdao.AdminMemberGradeChangeplus(report_id);
 				}
 			}

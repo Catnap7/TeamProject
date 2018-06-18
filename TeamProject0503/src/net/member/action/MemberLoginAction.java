@@ -3,6 +3,7 @@ package net.member.action;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class MemberLoginAction implements Action{
 		response.setContentType("text/html;	charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		MemberDAO mdao = new MemberDAO();
+		AdminSuspendDAO asdao = new AdminSuspendDAO();
 		String m_id = request.getParameter("m_id");
 		
 		MemberBean memberbean= new MemberBean();
@@ -41,16 +43,35 @@ public class MemberLoginAction implements Action{
 
 		AlarmDAO adao = new AlarmDAO();
 		CouponDAO cdao = new CouponDAO();
-		AdminSuspendDAO asdao = new AdminSuspendDAO();
 		int m_grade = asdao.AdminMemberGrade(m_id);
 		
-		if(m_grade == 4) {
+		if(m_grade == 4) {	
+			String endday[] = asdao.AdminMemberEndDay(m_id).split("/");
+			 String e_day = endday[0]+endday[1]+endday[2];
+			int m_end_day = Integer.parseInt(e_day);
+			if(today>=m_end_day) {
+				asdao.AdminMemberGradeReturn(m_id);
+			}
 			out.println("<script>");
 			out.println("alert('신고 누적으로 인한 로그인 정지(고객센터 문의)');");
 			out.println("history.back()");
 			out.println("</script>");
 			out.close();
-		}
+		}	
+		
+		if(m_grade == 3) {	
+			String endday[] = asdao.AdminMemberEndDay(m_id).split("/");
+			 String e_day = endday[0]+endday[1]+endday[2];
+			int m_end_day = Integer.parseInt(e_day);
+			if(today>=m_end_day) {
+				asdao.AdminMemberGradeReturn(m_id);
+			}
+			out.println("<script>");
+			out.println("alert('리뷰 정지가  풀렸습니다.');");
+			out.println("history.back()");
+			out.println("</script>");
+			out.close();
+		}	
 
 		List <CouponBean>couponlist = cdao.getCoupons(m_id);
 		List <AlarmBean>alarmlist = adao.getAlarms(m_id);
