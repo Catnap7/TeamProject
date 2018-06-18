@@ -54,8 +54,28 @@
 				<th colspan="2" class="th5">파일</th>
 			</tr>
 			<tr>
+			<%
+			if(noticebean.getN_image()==null) {
+				%>
+				<td colspan="3">등록된 사진이 없습니다.</td>
+				<%
+			}else {
+				%>
 				<td colspan="3"><input type="image" src="./upload/<%=noticebean.getN_image()%>" style="width: 500px; height: 500px;"></td>
-				<td colspan="2"><%=noticebean.getN_file()%></td>
+				<%
+			}			
+			%>
+			<%
+			if(noticebean.getN_file()==null) {
+				%>
+				<td colspan="2">등록된 파일이 없습니다.</td>				
+				<%
+			}else {
+				%>
+				<td colspan="2"><%=noticebean.getN_file()%></td>				
+				<%
+			}
+			%>
 			</tr>
 
 		</table>
