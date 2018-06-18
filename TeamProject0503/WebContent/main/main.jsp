@@ -9,6 +9,7 @@
 <head>
 <script type="text/javascript" src="jquery-2.1.3.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 <title>왓츄 : 당신의 모든 영화, 세상의 모든 취향 </title>
 
 
@@ -659,10 +660,10 @@ int allreviewcount=((Integer)request.getAttribute("allreviewcount")).intValue();
 <!-- 회원님이 보고싶은 영화 (즐겨찾기)-->
 
 <div class="containerWithBtn">
-  	<div class="container">  <!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  		
+  	<div class="container">  		
   		<h2>즐겨찾기에 담긴 영화</h2>
 		<div class="slider wannaWatch">
-			<!--for문으로 반복 하시면 됩니다-->
+
 		<%for(MovieBean moviebean  : favoritelist){
 		  		
 		/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/

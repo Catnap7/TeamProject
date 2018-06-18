@@ -13,12 +13,16 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="http://code.jquery.com/jquery-3.1.0.js"></script>
+<<<<<<< HEAD
 
 
 
+=======
+<link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
+>>>>>>> refs/remotes/origin/master
 <script type="text/javascript">
-//체크박스 제어란 
-$(function(){ //전체선택 체크박스 클릭 
+
+$(function(){  
 	$("#all_agree").click(function(){ 
 		if($("#all_agree").prop("checked")) { 
 			$(".check").prop("checked",true); 
@@ -28,20 +32,19 @@ $(function(){ //전체선택 체크박스 클릭
 		})
 		})
 		
-//회원가입 유효성 검사 부분
  function validate() { 
-	var check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;//이름에 한글만 입력하는 부분
+	var check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
 	var e_check= /[a-z]/;
 	var E_check=/[A-Z]/;
 	var t_check=/[0-9]/;
 	var space_check=/[\s]/g;
 	var a_check=/[~!@#$%^&*()_+|<>?:{}]/;
-	var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;//이메일 혹인
+	var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 	var jumin1 = document.fr.m_num1.value.substr(0,6);
 	var yy     = jumin1.substr(0,2);        // 년도
     var mm     = jumin1.substr(2,2);        // 월
     var dd     = jumin1.substr(4,2);        // 일
-	//이름
+	
  	 if (document.fr.m_name.value == "") {
 		alert("닉네임을 입력하지 않았습니다.");
 		document.fr.m_name.focus()

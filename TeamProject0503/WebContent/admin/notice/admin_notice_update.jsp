@@ -46,14 +46,6 @@
 					<td><textarea cols="100" rows="30" name="n_content"><%=noticebean.getN_content() %></textarea></td>
 				</tr>
 				<tr>
-					<td>사진</td>
-					<td><input type="file" name="n_image" value="<%=noticebean.getN_image() %>"></td>
-				</tr>
-				<tr>
-					<td>첨부파일</td>
-					<td><input type="file" name="n_file" value="<%=noticebean.getN_file() %>"></td>
-				</tr>
-				<tr>
 				
 				<div class="u_admin-notice-write">
 					<input type="submit" class="wirtebtn" value="수정">

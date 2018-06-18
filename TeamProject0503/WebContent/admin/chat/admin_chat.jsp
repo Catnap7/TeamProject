@@ -1,6 +1,5 @@
 <%@page import="java.util.Date"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,12 +7,13 @@
 <meta content="viewport" content="width=device-width, initial-scale=1">
 <link href="./css/css/bootstrap2.css" rel="stylesheet" type="text/css">
 <link href="./css/css/custom.css" rel="stylesheet" type="text/css">
-
-
 <script type="text/javascript" src="../css/js/bootstrap.js"></script>
-
 <title>영화 토론</title>
 </head>
+<%
+	String id = (String)session.getAttribute("m_id");
+	System.out.println(id);
+%>
 <body>
 	<div class="row">
 		<div class="col-xs-12">
@@ -79,7 +79,7 @@
        alert(event.data); 
      }
      function send() {
-    	 textarea.value += "나 " + "\n" + inputMessage.value + "\n\n";
+    	 textarea.value += "\n" + inputMessage.value + "\n\n";
          webSocket.send(inputMessage.value);
          document.getElementById("messageWindow").scrollTop = document.getElementById("messageWindow").scrollHeight;
      } 

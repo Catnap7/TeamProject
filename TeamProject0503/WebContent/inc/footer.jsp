@@ -6,7 +6,9 @@
 	window.open("./AccessTerms.ce", "", "width=750,height=900,left=620,top=50,scrollbars=yes");
 }
 </script>
-
+<%
+String id = (String)session.getAttribute("m_id");
+%>
 <footer>
 <div class="f_logo">
 	<a href="#">
