@@ -23,7 +23,6 @@ public class CategoryMovie_InfoAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("CategoryMovie_InfoAction execute()");
 		request.setCharacterEncoding("utf-8");
 		HttpSession session= request.getSession();
 		String id=(String)session.getAttribute("m_id");
@@ -57,9 +56,6 @@ public class CategoryMovie_InfoAction implements Action{
 		
 		// 리뷰
 		ReviewDAO reviewdao = new ReviewDAO();
-//		List reviewList = reviewdao.getReview(mv_num);
-//				
-//		request.setAttribute("reviewList", reviewList);
 		String order = request.getParameter("order");
 		
 		int count = reviewdao.getReviewCount(mv_num);

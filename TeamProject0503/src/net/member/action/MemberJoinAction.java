@@ -27,13 +27,10 @@ public  class MemberJoinAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//한글처리
 		request.setCharacterEncoding("utf-8");
-		// 자바빈 MemberBean mb 객체생성
 		MemberBean memberbean = new MemberBean();
 		
 		int jumin2=Integer.parseInt(request.getParameter("m_num2"));
 		
-		
-		// 자바빈 멤버변수 <--폼파라미터 가져와서 저장
 		memberbean.setM_id(request.getParameter("m_id"));
 		memberbean.setM_pass(request.getParameter("m_pass"));
 		memberbean.setM_name(request.getParameter("m_name"));
@@ -52,7 +49,6 @@ public  class MemberJoinAction implements Action{
 		String m_id = request.getParameter("m_id"); 
 		HttpSession session = request.getSession();
 		session.setAttribute("m_id", m_id);
-		
 	
 	int Echeck = memberdao.EmailChecked(m_id);
 	if(Echeck==1) {
@@ -64,7 +60,7 @@ public  class MemberJoinAction implements Action{
 		script.close();		
 		return null;
 	}
-	// 사용자에게 보낼 메시지를 기입합니다.
+
 	String host = "http://localhost:8080/TeamProject0503/EmailCheckAction.me";
 	String from = "wkdwodn22@gmail.com";
 	String fromname = "와츄";
@@ -72,7 +68,7 @@ public  class MemberJoinAction implements Action{
 	String subject = " 이메일 확인 메일입니다.";
 	String content = "다음 링크에 접속하여 이메일 확인을 진행하세요." +
 		"<a href='" + host +"?m_id="+m_id + "'>이메일 인증하기</a>";
-		// SMTP에 접속하기 위한 정보를 기입합니다.
+
 	Properties p = new Properties();
 	p.put("mail.smtp.user", from);
 	p.put("mail.smtp.host", "smtp.googlemail.com");
@@ -89,7 +85,6 @@ public  class MemberJoinAction implements Action{
 	    ses.setDebug(true);
 	    MimeMessage msg = new MimeMessage(ses); 
 	    msg.setSubject(subject);
-	    //Address fromAddr = new InternetAddress(from);
 	    
 	    msg.setFrom(new InternetAddress
                 (from, MimeUtility.encodeText(fromname,"utf-8","B")));
