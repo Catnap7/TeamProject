@@ -13,15 +13,9 @@ import net.vip.db.VipDAO;
 
 public class VipTimeController extends HttpServlet {
 	
-	
-	public void init() throws ServletException
-    {
-
+	public void init() throws ServletException{
 		Calendar date = Calendar.getInstance();
 		 
-		 //원래 셋팅해주어야하는 시간 12시에 적용되도록.
-
-
 		  date.set(Calendar.YEAR, 2018);
 		  date.set(Calendar.MONTH, 6);
 		  date.set(Calendar.DATE, 20);
@@ -31,7 +25,6 @@ public class VipTimeController extends HttpServlet {
 		  date.set(Calendar.SECOND, 0);
 		  date.set(Calendar.MILLISECOND, 0);
 		  
-		
 		Timer timer = new Timer("test");
 		timer.scheduleAtFixedRate(new TimerTask() {
            public void run() {
@@ -48,14 +41,11 @@ public class VipTimeController extends HttpServlet {
    				System.out.println("vip선정"+new Date()+" team0524");
    				vdao.AutoselectVip();
    				
-
                } catch (Exception e) {
                    e.printStackTrace();
                }
            }
        }, date.getTime(), 1000 * 60 * 60 * 24 * 7 * 4); // 4주에 한번
 		
-
-    }	
-	
+    }//end init
 }

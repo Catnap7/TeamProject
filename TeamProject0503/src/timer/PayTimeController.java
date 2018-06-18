@@ -8,20 +8,17 @@ import java.util.TimerTask;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
+import net.main.action.DailyReset;
 import net.pay.db.PayDAO;
 
 
 
 public class PayTimeController extends HttpServlet {
-	
-	
+
 	public void init() throws ServletException{	
 
-		
 		 Calendar date = Calendar.getInstance();
 		 
-		 //원래 셋팅해주어야하는 시간 12시에 적용되도록.
-
 		  date.set(Calendar.YEAR, 2018);
 		  date.set(Calendar.MONTH, 6);
 		  date.set(Calendar.DATE, 20);
@@ -30,7 +27,6 @@ public class PayTimeController extends HttpServlet {
 		  date.set(Calendar.MINUTE, 0);
 		  date.set(Calendar.SECOND, 0);
 		  date.set(Calendar.MILLISECOND, 0);
-		  
 		
 		Timer timer = new Timer("test");
 		timer.scheduleAtFixedRate(new TimerTask() {
@@ -43,21 +39,19 @@ public class PayTimeController extends HttpServlet {
     				PayDAO pdao= new PayDAO();
     				pdao.autoInsertPay();
 
-
     				// 00시에 기한만료 회원 m_pay등급조정
     				System.out.println("m_pay등급조절"+new Date()+" team0524");
     				pdao.autoUpdateMpaytoZero();
+    				
+    				//룰렛횟수 리셋
+    				DailyReset dailyReset= new DailyReset();
+    				dailyReset.run();
+    				
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }, date.getTime(), 1000 * 60 * 60 * 24);  //하루
 		
-		
-		
-		
-		
-		
 	}//end init
-	
 }
