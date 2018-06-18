@@ -66,7 +66,9 @@ public  class MemberJoinAction implements Action{
 	String fromname = "와츄";
 	String to = m_id;
 	String subject = " 이메일 확인 메일입니다.";
-	String content = "다음 링크에 접속하여 이메일 확인을 진행하세요." +
+	String content = 
+			"다음 링크에 접속하여 이메일 확인을 진행하세요." +
+			
 		"<a href='" + host +"?m_id="+m_id + "'>이메일 인증하기</a>";
 
 	Properties p = new Properties();
