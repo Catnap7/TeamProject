@@ -317,6 +317,7 @@ div.star {
    margin-bottom: 20px;
    margin-right: 10px;
    width: 800px;
+   padding: 10px;
    
 }
 
@@ -324,7 +325,7 @@ div.star {
     /* height: 145px; */
     width: 105px;
     position: absolute;
-    top: 190px;
+   /*  top: 190px; */
     left: 700px;
     background-color: #ddd;
     font-size: 18px;
