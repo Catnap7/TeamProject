@@ -316,7 +316,9 @@ public void  insertMember(MemberBean memberbean) {
 		String fromName="관리자"; // 
 		String from="wkdwodn22@gmail.com"; 
 		String authNum=authNum(); // 
-		String content="임시비밀번호 ["+authNum+"]"; //         
+		String content="임시비밀번호 ["+authNum+"]"; //
+		//임시비밀번호 확인용 호스팅 전에 삭제할것.
+		System.out.println(authNum);
 		try{
 			passUpdateMember(authNum,to1);
 		Properties props=new Properties();
