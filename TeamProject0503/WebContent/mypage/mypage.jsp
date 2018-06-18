@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
-<title>왓츄 : 마이페이지</title>
+<title>와츄 : WATCHU</title>
 
 <!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
@@ -117,7 +117,7 @@ case 2 : grade = "VIP회원"; break;
 <%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
-							type: "get",
+							type: "post",
 							url: "./DeleteFollowerAction.fo",
 							dataType: "html",
 							data: {
@@ -207,7 +207,7 @@ case 2 : grade = "VIP회원"; break;
 <%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
-							type: "get",
+							type: "post",
 							url: "./DeleteFollowerAction.fo",
 							dataType: "html",
 							data: {
@@ -231,7 +231,7 @@ case 2 : grade = "VIP회원"; break;
 <%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
-							type: "get",
+							type: "post",
 							url: "./InsertFollowerAction.fo",
 							dataType: "html",
 							data: {

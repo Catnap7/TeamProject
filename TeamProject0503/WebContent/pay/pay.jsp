@@ -10,8 +10,7 @@
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/pay2.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-<title>왓츄:결제</title>
-
+<title>와츄 : WATCHU</title>
 <script src="./js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 var amount1=6900;	

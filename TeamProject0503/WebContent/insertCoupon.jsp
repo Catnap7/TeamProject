@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>insert Coupon</title>
+<title>와츄 : WATCHU</title>
 </head>
 <body>
 <!-- 쿠폰 삽입하기 코드 -->

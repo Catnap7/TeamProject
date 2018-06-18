@@ -8,7 +8,7 @@
 <link href="./css/css/bootstrap2.css" rel="stylesheet" type="text/css">
 <link href="./css/css/custom.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="../css/js/bootstrap.js"></script>
-<title>영화 토론</title>
+<title>와츄 : watchu</title>
 </head>
 <%
 	String id = (String)session.getAttribute("m_id");

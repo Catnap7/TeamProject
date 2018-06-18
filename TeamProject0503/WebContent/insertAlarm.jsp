@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>와츄 : WATCHU</title>
 </head>
 <body>
 <!-- 알람 등록하기 코드 -->

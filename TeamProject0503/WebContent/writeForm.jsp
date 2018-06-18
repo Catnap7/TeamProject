@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-<title>와츄</title>
+<title>와츄 : WATCHU</title>
 
  	<!--  border/writeForm.jsp -->
 <h1>영화DB 입력폼</h1>
