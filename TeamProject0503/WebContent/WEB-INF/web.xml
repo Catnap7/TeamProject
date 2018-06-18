@@ -170,6 +170,17 @@
     <url-pattern>*.fo</url-pattern>
   </servlet-mapping>  
   
+   <servlet>
+    <servlet-name>PayTimeController</servlet-name>
+    <servlet-class>timer.PayTimeController</servlet-class>
+	<load-on-startup>1</load-on-startup>
+  </servlet>
+   <servlet>
+    <servlet-name>VipTimeController</servlet-name>
+    <servlet-class>timer.VipTimeController</servlet-class>
+	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
   
   <resource-ref>
     <description>dkd</description>

@@ -1,6 +1,8 @@
 package net.main.action;
 
+import java.util.Calendar;
 import java.util.List;
+import java.util.Timer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -73,6 +75,22 @@ public class Main implements Action{
 		request.setAttribute("Bestrating", Bestrating);
 		request.setAttribute("Bestmovie", Bestmovie);
 		request.setAttribute("adminSelectMovieList", adminSelectMovieList);
+			
+		//매일 1번 실행되는 메소드 (지우지 마시오)
+//		DailyReset dailyReset = new DailyReset();
+//		Timer timer = new Timer();
+//		Calendar date = Calendar.getInstance();	
+//		date.set(Calendar.YEAR,2018);
+//		date.set(Calendar.MONTH,6);
+//		date.set(Calendar.DATE,20);
+//		date.set(Calendar.AM_PM,Calendar.PM);
+//		date.set(Calendar.HOUR,4);
+//		date.set(Calendar.MINUTE, 0);
+//		date.set(Calendar.SECOND, 0);
+//		date.set(Calendar.MILLISECOND, 0);
+//		
+//		timer.scheduleAtFixedRate(dailyReset, date.getTime(), 1000*60*60); //1000*60초*60분*24시간
+		//매일 1번 실행되는 메소드 (지우지 마시오)
 		
 		
 		forward=new ActionForward();

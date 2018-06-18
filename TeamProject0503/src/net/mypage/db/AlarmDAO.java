@@ -192,6 +192,7 @@ public class AlarmDAO {
 		List alarmList=new ArrayList();
 		List movieList=new ArrayList();
 		List memberList=new ArrayList();
+		List userList=new ArrayList();
 		try {
 			//1,2 디비연결
 			con=getConnection();
@@ -246,7 +247,20 @@ public class AlarmDAO {
 						memb.setM_name("nono");
 						memberList.add(memb);
 					}
-				
+				sql="select * from member where m_id=?";
+					pstmt3=con.prepareStatement(sql);
+					pstmt3.setString(1, ab.getA_forAdmin());
+					rs3=pstmt3.executeQuery();
+						if(rs3.next()) {
+							MemberBean memb=new MemberBean();
+							memb.setM_name(rs3.getString("m_name"));
+							memb.setM_id(rs3.getString("m_id"));
+							userList.add(memb);
+						}else {
+							MemberBean memb=new MemberBean();
+							memb.setM_name("nono");
+							userList.add(memb);
+						}
 
 			}
 			// vector 첫번째 칸 basketList 저장
@@ -254,6 +268,7 @@ public class AlarmDAO {
 			vector.add(alarmList);
 			vector.add(movieList);
 			vector.add(memberList);
+			vector.add(userList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
@@ -324,7 +339,7 @@ public class AlarmDAO {
 		PreparedStatement pstmt=null;
 		try{ //예외가 발생할 것 같은 명령, 	필수적으로 외부파일접근, 디비접근
 			 con = getConnection();
-			 sql="insert into alarm (a_id,a_alarm_name,a_end_day,a_start_day,a_movie_name,a_follower) values(?,?,?,?,?,?)";
+			 sql="insert into alarm (a_id,a_alarm_name,a_end_day,a_start_day,a_movie_name,a_follower,a_forAdmin) values(?,?,?,?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, ab.getA_id()); 
@@ -333,6 +348,7 @@ public class AlarmDAO {
 			pstmt.setString(4, ab.getA_start_day());
 			pstmt.setString(5, ab.getA_movie_name()); 
 			pstmt.setString(6, ab.getA_follower());
+			pstmt.setString(7, ab.getA_forAdmin());
 			pstmt.executeUpdate();
 		} catch(Exception e) {
 				//예외 생기면 변수 e에 저장

@@ -21,7 +21,7 @@ session.invalidate();
 %>
 <div class="m_cover">
 <div class="logo">
-<a href="./MemberLogin.me"><img src="./images/watchu_logo.png" alt="logo"></a>
+<a href="./MemberLogin.me"><img src="./images/watchu_logo2_2.png" alt="logo"></a>
 </div>
 <div class="nav_r">
 <a href="./MemberLogin.me">로그인</a>
@@ -34,16 +34,16 @@ session.invalidate();
 
 <!-- 	<fieldset> -->
 <!-- 	<legend>비밀번호 찾기</legend> -->
-			<span class="find_txt">저런! 비밀번호를 잊어버리셨군요.</span>
+			<span class="find_txt">저런! 비밀번호를 잊어버리셨군요</span>
 		
 		<form action="./FindPassAction.me" id="join" method="post">
 			<label>
 			<input type="text" name="m_id" placeholder="이메일 (example@gmail.com)" class="find_text">
 			</label><br>
 			<p>
-			기존에 가입하신 이메일 주소를 입력해주시면<br>
-			임시비밀번호가 발송됩니다.임시비밀번호를 입력하신 뒤 
-			새로운 비밀 번호를 설정하세요.
+			기존에 가입하신 이메일 주소를 입력하시면<br>
+			임시비밀번호가 발송됩니다.<br>
+			임시비밀번호로 로그인 후 새로운 비밀 번호를 설정하세요.
 			</p>
 			<input type="submit" value="임시비밀번호 발급" id="submit">
 		</form>
