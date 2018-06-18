@@ -239,6 +239,7 @@ public class AlarmDAO {
 					if(rs3.next()) {
 						MemberBean memb=new MemberBean();
 						memb.setM_name(rs3.getString("m_name"));
+						memb.setM_id(rs3.getString("m_id"));
 						memberList.add(memb);
 					}else {
 						MemberBean memb=new MemberBean();

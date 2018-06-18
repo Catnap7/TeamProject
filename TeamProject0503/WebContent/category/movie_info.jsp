@@ -13,6 +13,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 <title>왓츄 : 영화 정보보기</title>
 
 <!-- jQuery -->
@@ -262,23 +263,7 @@ $(document).ready(function(){
 	    <!-- poster -->
 	     <div class="post">
 	       <img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")+"_p.jpg"%>"><br>
-	    	 <!--즐겨찾기  -->
-	      <fieldset class="like" id="starfield<%=mv_num %>" >
-	      		<!-- <span>보고싶어요</span -->
-	    			   <div id="dup"></div><!--  <input type="hidden" id ="dup_fa" value=""> -->
-	    			   <%  if(favoritebean !=null){
-	    				      if(favoritebean.getF_id()!=null && favoritebean.getF_num()==mv_num){
-					    %><input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="좋아요" style="color:red;"></label><%
-	    				      }
-	    			   		}else{
-					    	%>
-					    	<input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="해제"  ></label>
-					    	<%  
-					      }
-	   				     %>
-	    			    <input type="hidden" id ="m_id"value="<%=id%>">
-	    			    <input type="hidden" id ="mv_num"value="<%=mv_num%>">  
-	  	 </fieldset>
+	    	 
 	     </div>
 	     
 	     <!-- movie info -->
@@ -296,8 +281,6 @@ $(document).ready(function(){
 		         </tr>
 		      </table><!-- tabel1 -->
 		      
-		      	
-	        	
 	        <table class="content_table2">
 	        	 <tr>
 	        	 	<td><%=age %></td>
@@ -311,7 +294,6 @@ $(document).ready(function(){
 		            <td>주연 : <%=moviebean.getMv_actor() %></td>
 		         </tr>
 	      	</table><!-- table2 -->
-	      	
 	      	
 	     	 <!-- 별점 시작 -->
 		      	<div class="starRating">
@@ -331,6 +313,24 @@ $(document).ready(function(){
 			          </form>
 				</div><!-- 별점 끝 -->
 				
+				<!--즐겨찾기  -->
+			      <fieldset class="like" id="starfield<%=mv_num %>" >
+			      		<!-- <span>보고싶어요</span -->
+			      				<div id="favImg"><img src="./images/fav.png"></div>
+			    			    <div id="dup"></div><!--  <input type="hidden" id ="dup_fa" value=""> -->
+			    			   <%  if(favoritebean !=null){
+			    				      if(favoritebean.getF_id()!=null && favoritebean.getF_num()==mv_num){
+							    %><input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="좋아요 해제" style="color:red;"></label><%
+			    				      }
+			    			   		}else{
+							    	%>
+							    	<input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="좋아요" style="color:gray;" ></label>
+							    	<%  
+							      }
+			   				     %>
+			    			    <input type="hidden" id ="m_id"value="<%=id%>">
+			    			    <input type="hidden" id ="mv_num"value="<%=mv_num%>">  
+			  	 </fieldset>
 
 	  	 
 	      <%-- 

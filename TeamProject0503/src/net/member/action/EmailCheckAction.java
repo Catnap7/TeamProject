@@ -33,8 +33,7 @@ public class EmailCheckAction implements Action {
 		cal.clear(Calendar.MILLISECOND);
 		SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
 		String c_end_day=date.format(cal.getTime());
-				//date.format(cal.getActualMaximum(Calendar.DATE)).toString();
-
+				
 		CouponBean cb= new CouponBean();
 		String hellocoupon= HelloCoupon.couponnum();
 		cb.setC_id(m_id);

@@ -6,7 +6,7 @@ public class HelloCoupon {
 
 	public static String couponnum(){
 		String hellocoupon = null;
-		  //실행시 ???개 쿠폰 생성
+		  
 		  int couponSize = 1;
 
 		  final char[] possibleCharacters =
@@ -23,7 +23,7 @@ public class HelloCoupon {
 		  int i = 0;
 		  while (currentIndex < couponSize) {
 		   StringBuffer buf = new StringBuffer(16);
-		   //i는 8자리의 랜덤값을 의미
+		   
 		   for (i= 8; i > 0; i--) {
 		    buf.append(possibleCharacters[rnd.nextInt(possibleCharacterCount)]);
 		   }

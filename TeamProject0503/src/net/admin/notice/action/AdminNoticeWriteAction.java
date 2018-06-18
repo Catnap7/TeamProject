@@ -17,23 +17,18 @@ public class AdminNoticeWriteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		System.out.println("AdminNoticeWrite execute()");
-		   String realpath = request.getRealPath("./upload");
-		   System.out.println("upload폴더의 물리적 경로:" + realpath);
-		   int maxSize = 10 * 1024 * 1024;
-		   MultipartRequest multi = new MultipartRequest(request, realpath, maxSize, "euc-kr", new DefaultFileRenamePolicy());
-		
+		String realpath = request.getRealPath("./upload");
+		System.out.println("upload폴더의 물리적 경로:" + realpath);
+		int maxSize = 10 * 1024 * 1024;
+		MultipartRequest multi = new MultipartRequest(request, realpath, maxSize, "utf-8", new DefaultFileRenamePolicy());
 		NoticeBean nb = new NoticeBean();
 		nb.setN_content(multi.getParameter("n_content"));
 		nb.setN_subject(multi.getParameter("n_subject"));
-		nb.setN_image(multi.getParameter("n_image"));
-		nb.setN_file(multi.getParameter("n_file"));
-		nb.setN_date(new Date(System.currentTimeMillis()));
-		
-		
+		nb.setN_image(multi.getFilesystemName("n_image"));
+		nb.setN_file(multi.getFilesystemName("n_file"));
+		nb.setN_date(new Date(System.currentTimeMillis()));		
 		NoticeDAO ndao = new NoticeDAO();
-		ndao.NoticeInsert(nb);
-		
-		
+		ndao.NoticeInsert(nb);		
 		ActionForward forward = new ActionForward();
 		forward.setPath("./AdminNoticeList.an");
 		forward.setRedirect(true);

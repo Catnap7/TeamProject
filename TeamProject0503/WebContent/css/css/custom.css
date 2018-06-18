@@ -7,7 +7,7 @@
 }
 
 .portlet-body{
-	border:1px solid red;
+/* 	border:1px solid red; */
 }
 
 h5 {
@@ -43,7 +43,6 @@ h1 {
 }
 
 .portlet {
-    border: 1px solid;
 }
 
 .portlet .portlet-heading {
@@ -177,7 +176,6 @@ h1 {
 }
 
 .portlet-basic>.portlet-heading {
-    border-bottom: 1px solid #333;
     color: #333;
     background-color: #fff;
 }

@@ -22,7 +22,13 @@ public class VipInfo implements Action{
 				
 		HttpSession session = request.getSession();
 		String m_id = (String)session.getAttribute("m_id"); 
-				
+		if(m_id==null){
+			ActionForward forward=new ActionForward();
+			forward.setRedirect(true);		
+			forward.setPath("./MemberLogin.me");
+			return forward;
+		}		
+		
 		memberbean=memberdao.getMember(m_id);
 		request.setAttribute("memberbean", memberbean);
 		

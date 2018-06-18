@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 <title>왓츄 : 당신의 모든 영화, 세상의 모든 취향 </title>
 <style type="text/css">
 
@@ -54,36 +55,30 @@ body{
 
 	.btn a{
 		display: inline-block;
-		border: 1px solid ;
-		border-radius:20px;
-		width: 200px; height:60px;
-		background-image:none;
-		text-decoration: none;
-		background-color:#ad2a51;
-		margin:auto auto;
-		margin-top:50px;	
-		padding-left:10px;
-		padding-top:16px;
-		letter-spacing: 10px;
+	    border: 1px solid #333;
+	    border-radius: 10px;
+	    width: 150px;
+	    height: 60px;
+	    background-image: none;
+	    text-decoration: none;
+	    background-color: #ababab;
+	    margin: auto auto;
+	    margin-top: 50px;
+	    padding-left: 5px;
+	    padding-top: 16px;
+	    letter-spacing: 3px;
 	}
 	
 	.btn a:FIRST-CHILD{
-		background-color:#e8616a;
+		background-color:#ff8800;
 	}
 
 	.btn a:LINK, .btn a:VISITED, .btn a:ACTIVE{
 		color:white;
-		font-weight:bold;
+		font-weight:bold; 
 		font-size: 1.2em;	
 	}
 
-#pic_caption{
-	background-image:none;
-	font-weight: bold;
-	position: absolute;
-	right:0; bottom:0;
-	
-}
 </style>
 </head>
 <body>
@@ -94,14 +89,13 @@ body{
 </video>
 
 	<div class="start">
-		<img src="./images/watchu_logo_2.png" id="logo">
+		<img src="./images/watchu_logo_22_2.png" id="logo">
 
 		<div class="btn">
 			<a href="./MemberLogin.me">로그인</a>
 			<a href="./MemberJoin.me">회원가입</a>
 		</div>
 	</div>
-	
-	<p id="pic_caption">Photo by Jakob Owens on Unsplash</p>
+
 </body>
 </html>

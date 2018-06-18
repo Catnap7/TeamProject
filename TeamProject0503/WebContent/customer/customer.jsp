@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 <title>Insert title here</title>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -13,13 +14,14 @@
 <link href="./css/customer.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 function chat(){
-	window.open('./AdminChat.ac', 'chat', 'width=400 height=800');
+	window.open('./AdminChat.ac', 'chat', 'width=400 height=690');
 }
 </script>
 </head>
 <body>
 	<%
 		List<NoticeBean> AdminNoticeList = (List) request.getAttribute("AdminNoticeList");
+		String id = (String)session.getAttribute("m_id");
 	%>
 
 	<!-- 헤더영역 -->
@@ -44,21 +46,20 @@ function chat(){
 							});
 					});
 				</script>
-
 				<h2 id="sub_<%=a%>" class="jemok"><%=nb.getN_subject()%></h2>
 				<div id="con_<%=a%>" style="display: none;" class="naeyong">
 				<%
 				if(nb.getN_image() != null) {
 					%>
-					<input type="image" src="<%=nb.getN_image() %>"><br>
+					<input type="image" src="./upload/<%=nb.getN_image() %>"><br>
 					<%=nb.getN_content()%>
 					<%
-				}else if(nb.getN_image() == null){
+				}else {
 					%>
 					<%=nb.getN_content()%>
 					<%
 				}
-				%>
+				%>								
 				</div>
 				<hr>
 				<%

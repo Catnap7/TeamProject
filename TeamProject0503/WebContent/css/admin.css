@@ -511,3 +511,13 @@ div#content_member {
 	 background-color: #aad3d7;
 }
 
+.admin_movie_insert {
+	position: relative;
+	left: 1480px;
+	bottom: -20px;
+	width: 200px;
+	height: 50px;
+	font-size: 18px;
+	letter-spacing: 1.2px;
+	cursor: pointer;
+}

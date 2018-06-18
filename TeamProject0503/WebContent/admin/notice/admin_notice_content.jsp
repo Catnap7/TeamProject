@@ -35,15 +35,13 @@
 				<th class="th1">No</th>
 				<th class="th2">제목</th>
 				<th class="th3">작성자</th>
-				<th class="th4">조회수</th>
-				<th class="th5">작성일</th>
+				<th class="th5" colspan="2">작성일</th>
 			</tr>
 			<tr>
 				<td><%=noticebean.getN_num()%></td>
 				<td><%=noticebean.getN_subject()%></td>
 				<td>관리자</td>
-				<td><%=noticebean.getN_readcount()%></td>
-				<td><%=noticebean.getN_date()%></td>
+				<td colspan="2"><%=noticebean.getN_date()%></td>
 			</tr>
 			<tr>
 				<th colspan="5" class="th5">내용</th>

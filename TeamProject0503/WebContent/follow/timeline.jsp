@@ -9,6 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 <title>왓츄 : 리뷰 라인</title>
 
 <!-- CSS -->
@@ -65,11 +66,18 @@ List timelinereview=(List)request.getAttribute("timelinereview"); */
 					%>
 					
 					<div id="rv">
-						<div id="rvProfile"><span><img src="./images/proflie_img/proflie<%=timeLineBean.getPic()%>.png" width="60px" height="60px"></span><span><%=yymmdd.substring(0,16)%></span><span><%=timeLineBean.getName()%></span></div>
+					
+						<div id="rvProfile">
+							<p><%=yymmdd.substring(0,16)%></p>
+							<p><img src="./images/proflie_img/proflie<%=timeLineBean.getPic()%>.png" width="60px" height="60px"></p>
+							<p><%=timeLineBean.getName()%></p>
+						</div>
+						
 						<div id="rvMv">
 							<p id="rvPos"><img src="./images/<%=img_genre%>/<%=timeLineBean.getEngtitle().replaceAll(" ","")+"_p.jpg"%>" width="180px" height="250px;"></p> 
 							<p id="rvStill"><img src="./images/<%=img_genre%>/<%=timeLineBean.getEngtitle().replaceAll(" ","")+"_s.jpg"%>" width="350px" height="250px;"></p> 
 						</div>
+						
 							<p id="rvMent"><a href="./FollowMyHome.fo?m_id=<%=timeLineBean.getFo_following()%>"><span><%=timeLineBean.getName()%></span></a><%="님이   " +timeLineBean.getTitle()+ "에  "+kind%></p>
 					</div> 
 					<%} 
