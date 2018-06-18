@@ -18,6 +18,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import net.member.action.Sha256;
 
 public class MemberDAO {
 	
@@ -29,16 +30,15 @@ private Connection getConnection() throws Exception {
 		return con;
 		
 }
-	public void  insertMember(MemberBean memberbean) {
+public void  insertMember(MemberBean memberbean) {
 	 Connection con = null;
 	 String sql =null;
 	 PreparedStatement pstmt =null;
 	 int pic=(int)(Math.random()*10)+1;
 	 try {
-		 
 		con=getConnection();
 		
-		sql = "insert into member(m_id, m_pass, m_name,m_id_num1,m_id_num2,m_pay,m_grade, m_reg_date,m_pic) values(?,?,?,?,?,?,?,?,?)";
+		sql = "insert into member(m_id, m_pass, m_name,m_id_num1,m_id_num2,m_pay,m_grade, m_reg_date,m_pic,m_salt) values(?,?,?,?,?,?,?,?,?,?)";
 		 pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, memberbean.getM_id());			
 		pstmt.setString(2, memberbean.getM_pass());		
@@ -49,6 +49,7 @@ private Connection getConnection() throws Exception {
 		pstmt.setInt(7, 0); //grade	
 		pstmt.setDate(8, memberbean.getM_reg_date());
 		pstmt.setInt(9, pic);
+		pstmt.setString(10, memberbean.getM_salt());
 		pstmt.executeUpdate();
 	}catch(Exception e) {
 		//예외를 잡아서 처리 --> 메세지 출력 
@@ -60,8 +61,7 @@ private Connection getConnection() throws Exception {
 		if(con!=null)try {con.close();}catch(SQLException ex) {};
 		if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
 	}
-	
- }//insertMember() 메서드
+}//insertMember() 메서드
 
 	public int idcheck(String m_id) {
 		int check =0;
@@ -152,7 +152,6 @@ private Connection getConnection() throws Exception {
 		}return check;
 	}
 	
-	
 	public int userCheck(String m_id,String m_pass) {
 		int check =-1;
 		Connection con=null;
@@ -162,27 +161,30 @@ private Connection getConnection() throws Exception {
 		try {
 			con=getConnection();
 			
-		sql="select * from member where m_id=?";
-		 pstmt= con.prepareStatement(sql);
-		pstmt.setString(1, m_id);
-		 rs= pstmt.executeQuery();
-		if(rs.next()){
-			if(m_pass.equals(rs.getString("m_pass"))){
-				check=1; //로그인성공
-			}else {
-				check=0; //비번틀릴경우
-			}
-		}else {
-			check=-1; //아이디없을경우
-		}
+			sql="select * from member where m_id=?";
+			pstmt= con.prepareStatement(sql);
+			pstmt.setString(1, m_id);
+			rs= pstmt.executeQuery();
 
+			if(rs.next()){
+				//비밀번호 암호화
+				String salt=rs.getString("m_salt");
+				String passText=Sha256.encrypt(m_pass, salt);
+				
+				if(passText.equals(rs.getString("m_pass"))){
+					check=1; //로그인성공
+				}else {
+					check=0; //비번틀릴경우
+				}
+			}else {
+				check=-1; //아이디없을경우
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {};
 			if(con!=null)try {con.close();}catch(SQLException ex) {};
 			if(rs!=null)try {rs.close();}catch(SQLException ex) {};
-			
 		}return check;
 	}
 	
@@ -288,27 +290,23 @@ private Connection getConnection() throws Exception {
 		Connection con=null;
 		String sql="";
 		PreparedStatement pstmt=null;
-		try{con = getConnection();
-		sql="update member set m_pass=? where m_id=?";
+		try{
+			//생성한 난수를 암호화, salt 재설정
+			String salt = Sha256.getSalt();
+			String passText=Sha256.encrypt(m_pass, salt);
+		
+		con = getConnection();	
+		sql="update member set m_pass=?, m_salt=? where m_id=?";
 		pstmt = con.prepareStatement(sql);
-		pstmt.setString(1,m_pass);
-		pstmt.setString(2,m_id);
+		pstmt.setString(1,passText);
+		pstmt.setString(2,salt);
+		pstmt.setString(3,m_id);
 		pstmt.executeUpdate();			
 		}catch(Exception e) {
 			e.printStackTrace();
 			}finally{
-			 if(pstmt!=null){
-				try{pstmt.close();						
-				}catch(SQLException e){
-					e.printStackTrace();
-				}
-			 }
-				if(con!=null){
-					try{con.close();
-					}catch(SQLException e){
-						e.printStackTrace();
-					 }
-					}				
+			 if(pstmt!=null){try{pstmt.close();}catch(SQLException e){e.printStackTrace();} }
+			 if(con!=null){try{con.close();}catch(SQLException e){e.printStackTrace(); }}				
 			}
 	}//end  of passUpdateMember
 	public String connectEmail(String m_id){
@@ -404,12 +402,17 @@ private Connection getConnection() throws Exception {
 		String sql="";
 		PreparedStatement pstmt=null;
 		try{con = getConnection();
-	
-		sql="update member set m_name=?, m_pass=? where m_id =?";
+		
+		//생성한 난수를 암호화, salt 재설정
+		String salt = Sha256.getSalt();
+		String passText=Sha256.encrypt(mb.getM_pass(), salt);
+
+		sql="update member set m_name=?, m_pass=?, m_salt=? where m_id =?";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, mb.getM_name()); 
-		pstmt.setString(2, mb.getM_pass());		
-		pstmt.setString(3, mb.getM_id());
+		pstmt.setString(2, passText);
+		pstmt.setString(3, salt);				
+		pstmt.setString(4, mb.getM_id());
 		pstmt.executeUpdate();
 		
 		}catch(Exception e) {
@@ -419,19 +422,8 @@ private Connection getConnection() throws Exception {
 			}finally{
 				//예외가 발생하든 말든 상관없이 마무리작업 => 기억장소 정리
 				//객체 기억장소 마무리
-			 if(pstmt!=null){
-				try{pstmt.close();						
-				}catch(SQLException e){
-					e.printStackTrace();
-				}
-			 }
-				if(con!=null){
-					try{con.close();
-					}catch(SQLException e){
-						e.printStackTrace();
-					 }
-					}
-				
+			 if(pstmt!=null){try{pstmt.close();}catch(SQLException e){e.printStackTrace();} }
+			 if(con!=null){try{con.close();}catch(SQLException e){e.printStackTrace();}	}
 			}		
 	}//end updateMember
 	

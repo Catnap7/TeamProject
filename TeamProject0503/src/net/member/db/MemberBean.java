@@ -7,6 +7,7 @@ public class MemberBean {
 	private int m_id_num2;
 	private String m_id;
 	private String m_pass;
+	private String m_salt;
 	private String m_name;
 	private int m_grade;
 	private Date m_reg_date;
@@ -66,6 +67,11 @@ public class MemberBean {
 	public void setM_reg_date(Date m_reg_date) {
 		this.m_reg_date = m_reg_date;
 	}
-	
+	public String getM_salt() {
+		return m_salt;
+	}
+	public void setM_salt(String m_salt) {
+		this.m_salt = m_salt;
+	}
 	
 }
