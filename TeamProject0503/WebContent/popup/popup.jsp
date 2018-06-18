@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<title>Insert title here</title>
+<title>와츄 : WATCHU</title>
 <script type="text/javascript">
 
  /*하루동안 보지않기  exdays*24*60*60*1000) */

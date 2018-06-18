@@ -3,7 +3,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
-
+<<<<<<< HEAD
+<title>와츄 : WATCHU</title>
+=======
+<<<<<<< HEAD
     <title>왓츄 : 임시비밀번호 발급</title>
     
 <style type="text/css">

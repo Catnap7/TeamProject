@@ -15,8 +15,7 @@
 
 <!-- jquery -->
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-
-<title>왓츄:결제</title>
+<title>와츄 : WATCHU</title>
 
 <script src="./js/jquery-3.3.1.js"></script>
 <script type="text/javascript">

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>왓츄 : 공지사항 </title>
+<title>와츄 : WATCHU</title>
 
 <!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
@@ -54,8 +54,28 @@
 				<th colspan="2" class="th5">파일</th>
 			</tr>
 			<tr>
-				<td colspan="3"><input type="image" src="<%=noticebean.getN_image()%>"></td>
-				<td colspan="2"><%=noticebean.getN_file()%></td>
+			<%
+			if(noticebean.getN_image()==null) {
+				%>
+				<td colspan="3">등록된 사진이 없습니다.</td>
+				<%
+			}else {
+				%>
+				<td colspan="3"><input type="image" src="./upload/<%=noticebean.getN_image()%>" style="width: 500px; height: 500px;"></td>
+				<%
+			}			
+			%>
+			<%
+			if(noticebean.getN_file()==null) {
+				%>
+				<td colspan="2">등록된 파일이 없습니다.</td>				
+				<%
+			}else {
+				%>
+				<td colspan="2"><%=noticebean.getN_file()%></td>				
+				<%
+			}
+			%>
 			</tr>
 
 		</table>
