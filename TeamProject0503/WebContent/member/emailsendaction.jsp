@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
   <head>
+  <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <title>왓츄 : 이메일 인증메일 발송</title>
     <meta charset="utf-8">

@@ -10,6 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 <title>왓츄: My Watchu Page</title>
 <!-- jQuery -->
 <script src="./js/jquery-3.3.1.js"></script>

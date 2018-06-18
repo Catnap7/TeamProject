@@ -3,6 +3,8 @@
 <%@page import="net.member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
+	<link rel="icon" type="image/png" href="./images/watchu_logo22.png" sizes="192x192">
 <script src="./js/main.js"></script>
 <!-- <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script> -->
 <script>
@@ -41,7 +43,7 @@ int followingcount= followdao.Followingcount(id);
 	<div class="title_logo">
 		<a href="./Main.ma"><img src="./images/watchu_logo2.png" width="250px" height="50px"></a>
 	</div>
-	<link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon">
+	
 
 <div class="clear"></div>
 

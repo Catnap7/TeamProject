@@ -9,7 +9,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="http://code.jquery.com/jquery-3.1.0.js"></script>
-
+<link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 <script type="text/javascript">
 
 $(function(){  

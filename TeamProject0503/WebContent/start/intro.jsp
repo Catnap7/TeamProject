@@ -8,7 +8,7 @@
 
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-
+<link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 
 <style type="text/css">
 

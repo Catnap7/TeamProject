@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/css/bootstrap.min.css">
     <!-- 커스텀 CSS 추가하기 -->
     <link rel="stylesheet" href="./css/css/custom.css">
+    <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
