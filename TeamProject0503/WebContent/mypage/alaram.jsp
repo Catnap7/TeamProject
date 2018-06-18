@@ -1,3 +1,4 @@
+<%@page import="net.member.db.MemberBean"%>
 <%@page import="net.admin.manage.db.MovieBean"%>
 <%@page import="net.mypage.db.AlarmBean"%>
 <%@page import="java.util.List"%>
@@ -31,6 +32,7 @@ int startPage = ((Integer)request.getAttribute("startPage")).intValue();
 int endPage = ((Integer)request.getAttribute("endPage")).intValue();
 int count = ((Integer)request.getAttribute("count")).intValue();
 List<MovieBean> movielist = (List)request.getAttribute("movielist");
+List<MemberBean> memberList = (List)request.getAttribute("memberList");
 %>
 
 <!-- 헤더영역 -->
@@ -50,8 +52,9 @@ if(count == 0){
 }else{
 	String name=null;	
 	for(int i=0;i<alarmlist.size();i++){
-		AlarmBean alarmbean = (AlarmBean)alarmlist.get(i);
+		AlarmBean alarmbean = (AlarmBean)alarmlist.get(i);		
 		MovieBean moviebean= (MovieBean)movielist.get(i);
+		MemberBean memberbean= (MemberBean)memberList.get(i);
 		int a_name = alarmbean.getA_alarm_name();		
 		switch(a_name){
 		case 0 :  name = "영화 "+alarmbean.getA_movie_name()+"의 후기가 추천받았습니다! - "+alarmbean.getA_start_day();
@@ -62,10 +65,13 @@ if(count == 0){
 		break;
 		case 3 :  name = "이용자님께서는 로그인 정지가 임박합니다.(누적신고 9회) - "+alarmbean.getA_start_day();
 		break;		
+		case 4 :  name = memberbean.getM_name()+" 님이 회원님을 팔로우 하기 시작하였습니다";
+		break;		
 		}
 %>
 <tr><td colspan="3"><%if(alarmbean.getA_check()==0){%><span style=color:red;>new! </span><%} if(a_name==0){%>
-영화 <a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>#review" class="mo"><%=alarmbean.getA_movie_name()%></a>의 후기가 추천받았습니다! - <%=alarmbean.getA_start_day()%><%}else{%><%=name%><%}%></td></tr>	
+영화 <a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>#review" class="mo"><%=alarmbean.getA_movie_name()%></a>의 후기가 추천받았습니다! - <%=alarmbean.getA_start_day()%><%}
+else if(a_name==4){%><a href="./FollowMyHome.fo?m_id=<%=memberbean.getM_id()%>" class="mo"><%=memberbean.getM_name()%></a> 님이 회원님을 팔로우 하기 시작하였습니다 - <%=alarmbean.getA_start_day()%><%}else{%><%=name%><%}%></td></tr>	
 <%	
 	}//for
 }

@@ -13,21 +13,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>왓츄 : 영화 정보보기</title>
+
 <!-- jQuery -->
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="http://code.jquery.com/jquery-3.1.0.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
+<!-- cs -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/movie_info.css" rel="stylesheet" type="text/css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+<!-- 웹폰트 -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet"> -->
 
 
 <style>
@@ -101,10 +104,14 @@
 .like > input:checked ~ label:hover ~ label { color: red;  } 
 /* 좋아요  */
 </style>
- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="./js/rating.js"></script>
 <!-- <script src="./js/favorite.js"></script> -->
+
+
 </head>
 <body>
 <%
@@ -143,7 +150,7 @@ switch(moviebean.getMv_genre()){
 case "animation" : genre="애니메이션"; break;
 case "comedy" 	 : genre="코미디"; break;
 case "indie"	 : genre="독립영화"; break;
-case "sf" 		 : genre="sf"; break;
+case "sf" 		 : genre="SF"; break;
 case "action"	 : genre="액션"; break;
 case "thriller"  : genre="스릴러"; break;
 case "romance"   : genre="로맨스"; break;
@@ -249,225 +256,263 @@ $(document).ready(function(){
 
 <article>
    <section>
-   <div class="content">
-   <div class="content_inner">
-     <div class="post">
-       <img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")+"_p.jpg"%>" width="500px" height="650px;"><br>
-     </div>
-     <div>
-      <table class="content_table">
-         <tr>
-            <td><%=moviebean.getMv_kor_title() %> (<%=moviebean.getMv_year() %>) </td>
-         </tr>
-         <tr>
-            <td><%=moviebean.getMv_eng_title() %></td>
-         </tr>
-         <tr>
-            <td>
-               <form action="" id="starform<%=mv_num %>">
-            <input type="hidden" name="ra_p_num" value="<%=mv_num %>">
-            <script type="text/javascript">
-               abc("star"+<%=ra_rating%>+<%=mv_num%>);
-            </script>
-            <!-- 별점 시작 -->
-            <fieldset class="rating" id="starfield<%=mv_num %>" >
-                <input type="radio" id="star5<%=mv_num %>" name="ra_rating" value="5" /><label class = "full" for="star5<%=mv_num %>" title="5 stars"></label>
-                <input type="radio" id="star4<%=mv_num %>" name="ra_rating" value="4" /><label class = "full" for="star4<%=mv_num %>" title="4 stars"></label>
-                <input type="radio" id="star3<%=mv_num %>" name="ra_rating" value="3" /><label class = "full" for="star3<%=mv_num %>" title="3 stars"></label>
-                <input type="radio" id="star2<%=mv_num %>" name="ra_rating" value="2" /><label class = "full" for="star2<%=mv_num %>" title="2 stars"></label>
-                <input type="radio" id="star1<%=mv_num %>" name="ra_rating" value="1" /><label class = "full" for="star1<%=mv_num %>" title="1 star"></label>
-            </fieldset>
-            <!-- 별점 끝 -->
-            </form>
-            <%String avg2 =String.format("%.1f",avg);%>
-               평균 평점  <%=avg2 %>/ 5
-            </td>
-         </tr>
-         <tr>
-            <td><%=genre%> | <%=moviebean.getMv_country() %> </td>
-         </tr>
-         <tr>
-            <td><%=moviebean.getMv_time() %>분  | <%=age %></td>
-         </tr>
-         <tr>
-            <td>[감독] <%=moviebean.getMv_director() %></td>
-         </tr>
-         <tr>
-            <td>[주연] <%=moviebean.getMv_actor() %></td>
-         </tr>
-      </table>
-      <!--즐겨찾기  -->
-      <fieldset class="like" id="starfield<%=mv_num %>" >
-      	
-    			   <div id="dup"></div><!--  <input type="hidden" id ="dup_fa" value=""> -->
-    			   <%  if(favoritebean !=null){
-    				      if(favoritebean.getF_id()!=null && favoritebean.getF_num()==mv_num){
-				    %><input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="좋아요" style="color: red;"></label><%
-    				      }
-    			   		}else{
-				    	%>
-				    	<input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="해제"  ></label>
-				    	<%  
-				      }
-   				     %>
-    			    <input type="hidden" id ="m_id"value="<%=id%>">
-    			    <input type="hidden" id ="mv_num"value="<%=mv_num%>">
-    			    
-  	 </fieldset>
-      <%-- 
-      <%
-      if(favoritebean !=null){
-      if(favoritebean.getF_id()!=null && favoritebean.getF_num()==mv_num)
-      {
-   %>      
-		<form action="" id="starform<%=mv_num %>">
+ 	<div class="content">
+	   <div class="content_inner">
+	    
+	    <!-- poster -->
+	     <div class="post">
+	       <img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")+"_p.jpg"%>"><br>
+	    	 
+	     </div>
+	     
+	     <!-- movie info -->
+	     <div id="content_table">
+		     <table class="content_table">
+		         <tr>
+		            <td><%=moviebean.getMv_kor_title() %> (<%=moviebean.getMv_year() %>) </td>
+		         </tr>
+		         <tr>
+		            <td><%=moviebean.getMv_eng_title() %></td>
+		         </tr>
+		         <tr>
+		         	<td><%String avg2 =String.format("%.1f",avg);%>
+			          <p id="aveRating" style="color:#ff8800;">평균 평점  <%=avg2 %> / 5</p></td>
+		         </tr>
+		      </table><!-- tabel1 -->
+		      
+	        <table class="content_table2">
+	        	 <tr>
+	        	 	<td><%=age %></td>
+	        	 </tr>
+		         <tr>
+		            <td><%=genre%> | <%=moviebean.getMv_country() %> | <%=moviebean.getMv_time() %>분 </td>
+		         </tr>
+		            <td>감독 : <%=moviebean.getMv_director() %></td>
+		         </tr>
+		         <tr>
+		            <td>주연 : <%=moviebean.getMv_actor() %></td>
+		         </tr>
+	      	</table><!-- table2 -->
+	      	
+	     	 <!-- 별점 시작 -->
+		      	<div class="starRating">
+			       <p id="giveStar">별점주기</p>
+			         <form action="" id="starform<%=mv_num %>">
+			            <input type="hidden" name="ra_p_num" value="<%=mv_num %>">
+			            <script type="text/javascript">
+			               abc("star"+<%=ra_rating%>+<%=mv_num%>);
+			            </script>
+			            <fieldset class="rating" id="starfield<%=mv_num %>" >
+			                <input type="radio" id="star5<%=mv_num %>" name="ra_rating" value="5" /><label class = "full" for="star5<%=mv_num %>" title="5 stars"></label>
+			                <input type="radio" id="star4<%=mv_num %>" name="ra_rating" value="4" /><label class = "full" for="star4<%=mv_num %>" title="4 stars"></label>
+			                <input type="radio" id="star3<%=mv_num %>" name="ra_rating" value="3" /><label class = "full" for="star3<%=mv_num %>" title="3 stars"></label>
+			                <input type="radio" id="star2<%=mv_num %>" name="ra_rating" value="2" /><label class = "full" for="star2<%=mv_num %>" title="2 stars"></label>
+			                <input type="radio" id="star1<%=mv_num %>" name="ra_rating" value="1" /><label class = "full" for="star1<%=mv_num %>" title="1 star"></label>
+			            </fieldset>
+			          </form>
+				</div><!-- 별점 끝 -->
+				
+				<!--즐겨찾기  -->
+			      <fieldset class="like" id="starfield<%=mv_num %>" >
+			      		<!-- <span>보고싶어요</span -->
+			      				<div id="favImg"><img src="./images/fav.png"></div>
+			    			    <div id="dup"></div><!--  <input type="hidden" id ="dup_fa" value=""> -->
+			    			   <%  if(favoritebean !=null){
+			    				      if(favoritebean.getF_id()!=null && favoritebean.getF_num()==mv_num){
+							    %><input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="좋아요 해제" style="color:red;"></label><%
+			    				      }
+			    			   		}else{
+							    	%>
+							    	<input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="좋아요" style="color:gray;" ></label>
+							    	<%  
+							      }
+			   				     %>
+			    			    <input type="hidden" id ="m_id"value="<%=id%>">
+			    			    <input type="hidden" id ="mv_num"value="<%=mv_num%>">  
+			  	 </fieldset>
+
+	  	 
+	      <%-- 
+	      <%
+	      if(favoritebean !=null){
+	      if(favoritebean.getF_id()!=null && favoritebean.getF_num()==mv_num)
+	      {
+	   %>      
+			<form action="" id="starform<%=mv_num %>">
+					<input type="hidden" name="f_num" value="<%=mv_num %>">
+					<fieldset class="like" id="starfield<%=mv_num %>" >
+					    <input type="checkbox" id="favorite" name="fa_favorite" checked="checked"/><label class = "full" for="favorite" title="좋아요"></label>
+					</fieldset>
+			</form>
+		<%		
+			}
+			}else{
+		%>
+			<form action="" id="starform<%=mv_num %>">
 				<input type="hidden" name="f_num" value="<%=mv_num %>">
 				<fieldset class="like" id="starfield<%=mv_num %>" >
-				    <input type="checkbox" id="favorite" name="fa_favorite" checked="checked"/><label class = "full" for="favorite" title="좋아요"></label>
+				    <input type="checkbox" id="favorite" name="fa_favorite" /><label class = "full" for="favorite" title="좋아요"></label>
 				</fieldset>
-		</form>
-	<%		
-		}
-		}else{
-	%>
-		<form action="" id="starform<%=mv_num %>">
-			<input type="hidden" name="f_num" value="<%=mv_num %>">
-			<fieldset class="like" id="starfield<%=mv_num %>" >
-			    <input type="checkbox" id="favorite" name="fa_favorite" /><label class = "full" for="favorite" title="좋아요"></label>
-			</fieldset>
-		</form>
-   <%
-      }
-
-         %>
- --%>         
-      <%						
-      System.out.print(memberBean.getM_id_num1());   
-			    		System.out.print(moviebean.getMv_video());   
-      if(memberBean.getM_pay()==0){
-         %>
-         <script type="text/javascript">
-         $(document).ready(function(){ 
-        	 //var con="이용권이 존재 하지 않습니다. 이용권 페이지로 이동 하시겠습니까?"
-   		 
-   			 	$('.hr').click(function(){
-   			 	 var con=confirm("이용권이 존재 하지 않습니다. 이용권 페이지로 이동 하시겠습니까?");
-   		         if(con==true){
-   		         	location.href="./PayList.pa";
-   		         }else{
-   		         }
-
-               //alert("결제 후 이용 가능합니다.");
-               });
-         });      
-         </script>
-              <%   
-      }
-      
-      if(memberBean.getM_pay()==1){
-         if(memberBean.getM_id_num1()<200001 && moviebean.getMv_age()==19 ){
-             %>
-              <script type="text/javascript">
-               $(document).ready(function(){
-                var url = $('hr').attr('href','<%=moviebean.getMv_video()%>');  
-                  $('.hr').click(function(){
-                	  alert('<%=moviebean.getMv_video()%>');
-                      window.open('<%=moviebean.getMv_video()%>','_blank'); 
-                     });
-              break;
-               });           
-              </script>
-              <%
-         }else if( memberBean.getM_id_num1()>199912 && moviebean.getMv_age()==19){
-        	 %>
-             <script type="text/javascript">
-             $(document).ready(function(){
-                $('.hr').click(function(){
-                   alert("청소년 관람불가 영화입니다.");
-                   return attributes;
-                   });
-             });      
-             </script>
-          <%   
-         } 
-         %>
-         
-         <script type="text/javascript">
-         $(document).ready(function(){
-          var url = $('hr').attr('href','<%=moviebean.getMv_video()%>');  
-            $('.hr').click(function(){
-          	  alert('<%=moviebean.getMv_video()%>');
-          	  
-                window.open('<%=moviebean.getMv_video()%>','_blank'); 
-                <%-- $('.hr').attr({'href':'<%=moviebean.getMv_video()%>','target':'_black'}); --%>
-
-
-               });
-            
-         });           
-        </script>
-        <%
-         }
-      %>
-      		 <button class="hr" id="mv_play" style="display: none;">이동</button>
-      		  <label class="fa fa-play-circle play" for="mv_play" title="보러가기"></label>
-        <!--    <button class="hr">이동</button> -->
-      </div>
-   </div>
-   </div>
+			</form>
+	   <%
+	      }
+	
+	         %>
+	 --%>         
+	      <%						
+	      System.out.print(memberBean.getM_id_num1());   
+				    		System.out.print(moviebean.getMv_video());   
+	      if(memberBean.getM_pay()==0){
+	         %>
+	         <script type="text/javascript">
+	         $(document).ready(function(){ 
+	        	 //var con="이용권이 존재 하지 않습니다. 이용권 페이지로 이동 하시겠습니까?"
+	   		 
+	   			 	$('.hr').click(function(){
+	   			 	 var con=confirm("이용권이 존재 하지 않습니다. 이용권 페이지로 이동 하시겠습니까?");
+	   		         if(con==true){
+	   		         	location.href="./PayList.pa";
+	   		         }else{
+	   		         }
+	
+	               //alert("결제 후 이용 가능합니다.");
+	               });
+	         });      
+	         </script>
+	              <%   
+	      }
+	      
+	      if(memberBean.getM_pay()==1){
+	         if(memberBean.getM_id_num1()<200001 && moviebean.getMv_age()==19 ){
+	             %>
+	              <script type="text/javascript">
+	               $(document).ready(function(){
+	                var url = $('hr').attr('href','<%=moviebean.getMv_video()%>');  
+	                  $('.hr').click(function(){
+	                	  alert('<%=moviebean.getMv_video()%>');
+	                      window.open('<%=moviebean.getMv_video()%>','_blank'); 
+	                     });
+	              break;
+	               });           
+	              </script>
+	              <%
+	         }else if( memberBean.getM_id_num1()>199912 && moviebean.getMv_age()==19){
+	        	 %>
+	             <script type="text/javascript">
+	             $(document).ready(function(){
+	                $('.hr').click(function(){
+	                   alert("청소년 관람불가 영화입니다.");
+	                   return attributes;
+	                   });
+	             });      
+	             </script>
+	          <%   
+	         } 
+	         %>
+	         
+	         <script type="text/javascript">
+	         $(document).ready(function(){
+	          var url = $('hr').attr('href','<%=moviebean.getMv_video()%>');  
+	            $('.hr').click(function(){
+	          	  alert('<%=moviebean.getMv_video()%>');
+	          	  
+	                window.open('<%=moviebean.getMv_video()%>','_blank'); 
+	                <%-- $('.hr').attr({'href':'<%=moviebean.getMv_video()%>','target':'_black'}); --%>
+	
+	
+	               });
+	            
+	         });           
+	        </script>
+	        <%
+	         }
+	      %>
+	      		 <button class="hr" id="mv_play" style="display: none;">이동</button>
+	      		  <!-- <label class="fa fa-play-circle play" for="mv_play" title="보러가기"></label> -->
+	      		  
+	      		  <label class="play" for="mv_play" title="보러가기">왓츄에서 영화보기<label>
+	      		  
+	      		  
+	      		  
+	        <!--    <button class="hr">이동</button> -->
+	        
+	      </div><!-- contentTable -->
+	   </div><!-- contentInner -->
+   </div><!-- content -->
    
    <div class="clear"></div>
    
-   <div class="story">
-   <hr>
-      <p>
+   <nav class="movieNav">
+   	<ul>
+   		<li><a href="#story">줄거리</a></li>
+   		<li><a href="#movie_preview">예고편</a></li>
+   		<li><a href="#movie_steel">스틸컷</a></li>
+   		<li><a href="#comment">왓츄리뷰보기</a></li>
+   	</ul>
+   </nav>
+
+	<!-- 줄거리 -->
+   <div class="story" id="story">
+	<p class="movieInfoTitle">줄거리</p>     
+      <p class="movieInfoContent">
       <%=story%>
       </p>
-   <hr>
    </div>
    
    <!--예고편  -->
-   <div class="movie_preview">
-     <div>
+   <div class="movie_preview" id="movie_preview">
+   	<p class="movieInfoTitle">예고편</p>  
+     <p class="movieInfoContent">
       <iframe src=<%=moviebean.getMv_video()%>></iframe><br>
-     </div>
+     </p>
    </div>
    
    <!--스틸컷  -->
-   <div class="movie_steel">
-     <div>
-        <a href="#" class="prev" style="display: none;"><img alt="이전 이미지" src="./images/info_arrow_left.png" class="prev"></a>
+   <div class="movie_steel" id="movie_steel">
+   	<p class="movieInfoTitle">스틸컷</p>
+      <p class="movieInfoContent">
+        <a href="#" class="prev" style="display: none;"><img alt="이전 이미지" src="./images/arrow_left.png" class="prev"></a>
       <img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")+"_s.jpg"%>" class="steelcut"><!-- 스틸컷 1번째 이미지 -->
-      <a href="#" class="next"><img alt="다음 이미지" src="./images/info_arrow_right.png" class="next"></a>
-     </div>
+      <a href="#" class="next"><img alt="다음 이미지" src="./images/arrow_right.png" class="next"></a>
+     </p>
    </div>
 
    <!--댓글   -->
-   <div class="coment">
-   <hr>
-<!--    <a id="recommend_sort">추천순</a> | <a id="date_sort">최신순</a> -->
-		<a id="rec"></a><a id="new"></a>
-		<div class="sort_wrap">
-		<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>&order=recommend#rec" class="sort_btn">추천순</a>
-		<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>&order=newest#new" class="sort_btn">최신순</a>
-		</div>
-   
-     <!--댓글 쓰는 란  -->
-     <form action="./InsertReview.ca" class="coment_write" id="review">
-     <%     
-     if(memberBean.getM_grade() == 3) {
-    	 %>
-    	 <textarea cols="90" rows="7" placeholder="리뷰를 등록할 수 없습니다." readonly="readonly"></textarea>
-    	 <%
-     }else {
-    	 %>
-    	 <textarea cols="90" rows="7" placeholder="영화를 어떻게 보셨나요?" name="r_content"></textarea>
-         <input type="hidden" name="mv_num" value="<%=moviebean.getMv_num() %>">
-         <input type="submit" value="등록">    	 
-    	 <%
-     }     
-     %>       
-     </form>
+
+  
+		<p class="movieInfoTitle">리뷰 쓰기</p>
+		 <div class="coment c1" id="comment">
+	<!--    <a id="recommend_sort">추천순</a> | <a id="date_sort">최신순</a> -->
+	     <!--댓글 쓰는 란  -->
+	     <form action="./InsertReview.ca" class="coment_write" id="review">
+	     <%     
+	     if(memberBean.getM_grade() == 3) {
+	    	 %>
+	    	 <textarea cols="90" rows="7" placeholder="리뷰를 등록할 수 없습니다." readonly="readonly"></textarea>
+	    	 <%
+	     }else {
+	    	 %>
+	    	 <textarea cols="90" rows="7" placeholder="영화를 어떻게 보셨나요?" name="r_content"></textarea>
+	         <input type="hidden" name="mv_num" value="<%=moviebean.getMv_num() %>">
+	         <input type="submit" value="등록">    	 
+	    	 <%
+	     }     
+	     %>       
+	     </form>
+	     
+	   </div>  
+	   
+	   
+	   <!-- 댓글 리스트 -->
+	   <p class="movieInfoTitle">왓츄 REVIEWS</p>
+	   <div class="coment"> 
+			
+			<a id="rec"></a><a id="new"></a>
+			<div class="sort_wrap">
+				<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>&order=recommend#rec" class="sort_btn">추천순</a>
+				<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>&order=newest#new" class="sort_btn">최신순</a>
+			</div>
+			
      <!-- 댓글 리스트 -->
      <%
      List reviewList = (List)request.getAttribute("reviewList");
@@ -482,9 +527,9 @@ $(document).ready(function(){
      
      if(reviewList == null) {
         %>
-         <table>
+         <table class="review_none">
            <tr>
-             <td class="review_none">아직 등록된 리뷰가 없어요.</td>
+             <td>아직 등록된 리뷰가 없어요</td>
            </tr>
          </table>
          <%
@@ -496,7 +541,7 @@ $(document).ready(function(){
         if(moviebean.getMv_num()==reviewbean.getR_p_num()) {
         	String yymmdd =reviewbean.getR_date().toString();
            %>
-           <table> 
+           <table class="review_o">
               <tr>
                 <td class="c_name">
                 <%=memberbean.getM_name() %>
@@ -550,118 +595,121 @@ $(document).ready(function(){
                     <td>
 <%--                     <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>&r_id=<%=reviewbean.getR_id() %>">추천</a> |  --%>
 					
-                    <a id="recommend<%=reviewbean.getR_num() %>"><img alt="추천" src="./images/recommend.PNG" style="width: 40px; height: 40px; border-radius: 30px;" title="추천"></a>
-                    <a id="report<%=reviewbean.getR_num() %>"><img alt="신고" src="./images/report.PNG" style="width: 40px; height: 40px; border-radius: 30px;" title="신고"></a>
-<%--                     <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">신고</a> --%>
-                    
-                    <input type="hidden" id="r_num<%=reviewbean.getR_num() %>" value="<%=reviewbean.getR_num() %>">
-					<input type="hidden" id="mv_num<%=reviewbean.getR_num() %>" value="<%=moviebean.getMv_num() %>">
-					<input type="hidden" id="id<%=reviewbean.getR_num() %>" value="<%=id %>">
-					<input type="hidden" id="r_id<%=reviewbean.getR_num() %>" value="<%=reviewbean.getR_id() %>">
 
-					<script type="text/javascript">
-						$(document).ready(function() {
 							
-							$('#recommend<%=reviewbean.getR_num() %>').click(function(){
-								var r_num = $('#r_num<%=reviewbean.getR_num() %>').val();
-								var mv_num = $('#mv_num<%=reviewbean.getR_num() %>').val();
-								var id = $('#id<%=reviewbean.getR_num() %>').val();
-								var r_id = $('#r_id<%=reviewbean.getR_num() %>').val();
-								
-<%-- 								alert($('#r_num<%=reviewbean.getR_num() %>').val()); --%>
-<%-- 								alert($('#mv_num<%=reviewbean.getR_num() %>').val()); --%>
-<%-- 								alert($('#id<%=reviewbean.getR_num() %>').val()); --%>
-<%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
-								
-									$.ajax({
-										type: "post",
-										url: "./RecommendAction.ca",
-										dataType: "html",
-										data: {
-											"r_num": r_num,
-											"mv_num": mv_num,
-											"id": id,
-											"r_id": r_id
-										},
-										success:function(data){
-											if(data==0) {
-												alert("이미 추천을 준 리뷰 입니다");
-											}else {
-												location.reload();
-											}
-										}
+		                    <a id="recommend<%=reviewbean.getR_num() %>"><img alt="추천" src="./images/recommend.PNG" style="width: 40px; height: 40px; border-radius: 30px;" title="추천"></a>
+		                    <a id="report<%=reviewbean.getR_num() %>"><img alt="신고" src="./images/report.PNG" style="width: 40px; height: 40px; border-radius: 30px;" title="신고"></a>
+		<%--                     <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">신고</a> --%>
+		                    
+		                    <input type="hidden" id="r_num<%=reviewbean.getR_num() %>" value="<%=reviewbean.getR_num() %>">
+							<input type="hidden" id="mv_num<%=reviewbean.getR_num() %>" value="<%=moviebean.getMv_num() %>">
+							<input type="hidden" id="id<%=reviewbean.getR_num() %>" value="<%=id %>">
+							<input type="hidden" id="r_id<%=reviewbean.getR_num() %>" value="<%=reviewbean.getR_id() %>">
+		
+							<script type="text/javascript">
+								$(document).ready(function() {
+									
+									$('#recommend<%=reviewbean.getR_num() %>').click(function(){
+										var r_num = $('#r_num<%=reviewbean.getR_num() %>').val();
+										var mv_num = $('#mv_num<%=reviewbean.getR_num() %>').val();
+										var id = $('#id<%=reviewbean.getR_num() %>').val();
+										var r_id = $('#r_id<%=reviewbean.getR_num() %>').val();
+										
+		<%-- 								alert($('#r_num<%=reviewbean.getR_num() %>').val()); --%>
+		<%-- 								alert($('#mv_num<%=reviewbean.getR_num() %>').val()); --%>
+		<%-- 								alert($('#id<%=reviewbean.getR_num() %>').val()); --%>
+		<%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
+										
+											$.ajax({
+												type: "post",
+												url: "./RecommendAction.ca",
+												dataType: "html",
+												data: {
+													"r_num": r_num,
+													"mv_num": mv_num,
+													"id": id,
+													"r_id": r_id
+												},
+												success:function(data){
+													if(data==0) {
+														alert("이미 추천을 준 리뷰 입니다");
+													}else {
+														location.reload();
+													}
+												}
+											});
+									});
+									
+									$('#report<%=reviewbean.getR_num() %>').click(function(){
+										var r_num = $('#r_num<%=reviewbean.getR_num() %>').val();
+										var mv_num = $('#mv_num<%=reviewbean.getR_num() %>').val();
+										var id = $('#id<%=reviewbean.getR_num() %>').val();
+										var r_id = $('#r_id<%=reviewbean.getR_num() %>').val();
+										
+		<%-- 								alert($('#r_num<%=reviewbean.getR_num() %>').val()); --%>
+		<%-- 								alert($('#mv_num<%=reviewbean.getR_num() %>').val()); --%>
+		<%-- 								alert($('#id<%=reviewbean.getR_num() %>').val()); --%>
+		<%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
+										
+											$.ajax({
+												type: "post",
+												url: "./ReportAction.ca",
+												dataType: "html",
+												data: {
+													"r_num": r_num,
+													"mv_num": mv_num,
+													"id": id,
+													"r_id": r_id
+												},
+												success:function(data){
+													if(data==0) {
+														alert("이미 신고한 리뷰 입니다");
+													}else {
+														location.reload();
+													}
+												}
+											});
 									});
 							});
+							</script>
 							
-							$('#report<%=reviewbean.getR_num() %>').click(function(){
-								var r_num = $('#r_num<%=reviewbean.getR_num() %>').val();
-								var mv_num = $('#mv_num<%=reviewbean.getR_num() %>').val();
-								var id = $('#id<%=reviewbean.getR_num() %>').val();
-								var r_id = $('#r_id<%=reviewbean.getR_num() %>').val();
-								
-<%-- 								alert($('#r_num<%=reviewbean.getR_num() %>').val()); --%>
-<%-- 								alert($('#mv_num<%=reviewbean.getR_num() %>').val()); --%>
-<%-- 								alert($('#id<%=reviewbean.getR_num() %>').val()); --%>
-<%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
-								
-									$.ajax({
-										type: "post",
-										url: "./ReportAction.ca",
-										dataType: "html",
-										data: {
-											"r_num": r_num,
-											"mv_num": mv_num,
-											"id": id,
-											"r_id": r_id
-										},
-										success:function(data){
-											if(data==0) {
-												alert("이미 신고한 리뷰 입니다");
-											}else {
-												location.reload();
-											}
-										}
-									});
-							});
-					});
-					</script>
-					
-                    </td>
-                 </tr>
-               <%
-            }
-            %>
-              
-            </table>
-            <hr class="coment_sec">
-            <%
-        }
-     }
-     
-}
-     %>
+		                    </td>
+		                 </tr>
+		               <%
+		            }
+		            %>
+		              
+		            </table>
 
-     <%
-     
-     if(count != 0) {
-     %>
-   <div class="prev_next">
-     <%
-      if(startPage>pageBlock){         
-         %><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num() %>&pageNum=<%=startPage-pageBlock%>">prev</a><%
-      }
-      for(int i=startPage;i<=endPage;i++) {
-         %><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num() %>&pageNum=<%=i%>"><%=i%></a><%
-      }
-      if(pageCount>endPage){
-         %><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num() %>&pageNum=<%=startPage+pageBlock%>">next</a><%
-      }
-      %>
-   </div>
-   <%
-   }
-   %>
-   </div>
+		            <%
+		        }
+		     }
+		     
+		}
+		     %>
+		
+		     <%
+		     
+		     if(count != 0) {
+		     %>
+		   <div class="prev_next">
+		     <%
+		      if(startPage>pageBlock){         
+		         %><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num() %>&pageNum=<%=startPage-pageBlock%>">prev</a><%
+		      }
+		      for(int i=startPage;i<=endPage;i++) {
+		         %><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num() %>&pageNum=<%=i%>"><%=i%></a><%
+		      }
+		      if(pageCount>endPage){
+		       	 %><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num() %>&pageNum=<%=startPage+pageBlock%>">next</a><%
+		      }
+		      %>
+		   </div>
+		<%
+		} 
+		%>
+
+	   </div>
 
    </section>
 </article>

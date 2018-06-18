@@ -79,7 +79,7 @@ function getCookie(cookieName) {
 <body>
 <div class="m_cover">
 <div class="logo">
-<a href="./MemberLogin.me"><img src="./images/watchu_logo.png" alt="logo"></a>
+<a href="./MemberLogin.me"><img src="./images/watchu_logo2_2.png" alt="logo"></a>
 </div>
 
 <div class="nav_r">

@@ -3,7 +3,7 @@
 *{
 	padding: 0;
 	margin: 0;
-	font-family: 'Nanum Gothic', sans-serif;}
+	}
 
 .clear {clear: both;}
 
@@ -17,6 +17,7 @@ article{
 	height: auto;
 	width:1910px;
 	background-color: #72bcc4;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 
@@ -122,35 +123,44 @@ article{
 
 
 .FBtn {
-	border:1px solid #808080;
 	border-radius:5px;
 	width:250px; height:35px;
 	text-align:center;
 	text-transform: uppercase;	
-	background-color: white;
+	
 	position: relative;
-	bottom: 200px; left:430px;
+	bottom: 210px;
+    left: 460px;
 	font-size: 1.1em;
 	letter-spacing: 2px;
 	color: inherit;
 	text-decoration: none;
 }
+#myhome_follow{
+	background-color: white;
+	border:1px solid #808080;}
+#myhome_follow a {color: #333;}
 
-.FBtn a {
-	color: #333;
+#myhome_unfollow {
+	border:1px solid white;
+	background-color: #ff8800;
+}
+#myhome_unfollow a{
+	color:white;
 }
 
-#myhome_follow {
-/* 	색상 변경 */
-	background-color: #50b4aa;
-}
-
-.FBtn:HOVER{
-	border-color: #233285;
-}
-.FBtn:HOVER a, .FBtn a:HOVER{
+#myhome_follow:HOVER{
+	border:1px solid #ff8800;
 	color:#ff8000;
+	text-decoration: none;
+} 
+#myhome_unfollow:HOVER{
+	border:1px solid #808080;
 }
+#myhome_follow a:HOVER, #myhome_unfollow a:HOVER{
+	/* color:#ff8000; */
+	text-decoration: none;
+} 
 .FBtn a:VISITED, .FBtn a:LINK{
 	color:inherit;
 	text-decoration: none;
@@ -179,6 +189,8 @@ article{
 .secInfo a:LINK, .secInfo a:VISITED{
 	color:#50a4aa;
 	text-shadow: 1px 1px #eee;
+	position: relative;
+    top: -30px;
 } 
 
 .secInfo a:HOVER{
@@ -207,13 +219,21 @@ article{
 
 #rv p{
 	padding-left: 10px;
+	position: relative;
 }
  
 #reviewTitle{
 	font-size: 1.2em;
 	font-weight: bold;
 }
-
+#reviewRecommand{
+	position: relative;
+    left: 5px;
+}
+#reviewDate{
+	position: absolute;
+	right: 0px;
+}
 
 
 /* ################ 좋아하는 영화 ################ */

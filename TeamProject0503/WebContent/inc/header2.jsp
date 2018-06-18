@@ -115,7 +115,7 @@ int followingcount= followdao.Followingcount(id);
 	
 		<div class="h_navbar">
 		  	<div class="h_dropdown">
-			    <button class="h_dropbtn mhbtn">CATEGORY</button>
+			    <button class="h_dropbtn2">CATEGORY</button>
 			    <div class="h_dropdown-content">
 			     	<a href="./CategoryList.ca?mv_genre=animation">애니메이션</a>
 					<a href="./CategoryList.ca?mv_genre=thriller">공포/스릴러</a>
@@ -129,7 +129,7 @@ int followingcount= followdao.Followingcount(id);
 	  		<a href="./Rating.ra">취향분석</a>
 		 	<a href="./Favorite.fa">보고 싶은 영화</a>
 			<div class="h_dropdown">
-			    <button class="h_dropbtn mhbtn">WATCHUGRAM</button>
+			    <button class="h_dropbtn2">WATCHUGRAM</button>
 			    <div class="h_dropdown-content">
 			     	<a href="./FollowMyHome.fo?m_id=<%=id%>">마이왓츄</a>
 					<a href="./TimeLine.fo">왓츄 로그</a>

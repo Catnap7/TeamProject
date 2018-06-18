@@ -29,13 +29,11 @@ public class NoticeDAO {
 		PreparedStatement pstmt = null;	
 		try {		
 			con = getConnection();
-			sql = "update notice set n_subject= ?, n_content= ?, n_file= ?, n_image= ? where n_num= ?";
+			sql = "update notice set n_subject= ?, n_content= ? where n_num= ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, noticebean.getN_subject());
 			pstmt.setString(2, noticebean.getN_content());
-			pstmt.setString(3, noticebean.getN_file());
-			pstmt.setString(4, noticebean.getN_image());
-			pstmt.setInt(5, n_num);
+			pstmt.setInt(3, n_num);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

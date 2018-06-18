@@ -5,7 +5,13 @@
 }
 
 /* 마이페이지 */
+*{
+	font-family: 'Nanum Gothic', sans-serif;
+}
 
+article{
+	width: 1900px;
+}
 .mypage_follow {
 	min-height: 800px;
 	padding:0;	
@@ -53,25 +59,42 @@
 	top: -10px;
 }
 
-.photo img {
+/* .photo img {
 	border: 1px solid #999;
 	border-radius: 50%;
 	float: left;
+} */
+
+
+#profile>img{
+	/* border: 1px solid #999; */
+    border-radius: 50%;
+    /* float: left; */
+    /* margin-right: 10px; */
+    position: relative;
+    top: -20px;
+    left:10px;
 }
 
 .follow_ul {
-/* 	border: 1px solid red; */
-	margin-bottom: 10px;
-	list-style: none;
-	display: inline-block;
-	padding: 10px;
-	margin-left: 15px;
+    /* border: 1px solid red; */
+    /* margin-bottom: 10px; */
+    list-style: none;
+    display: inline-block;
+    /* padding: 10px; */
+    /* margin-left: 15px; */
+    position: relative;
+    top: -20px;
+    left: 15px;
 }
 
 .follower, .follows {
-	padding: 15px;
+	padding: 10px;
 }
-
+#ft{
+	font-weight: bold;
+	color: #50a4aa;
+}
 .follower a, .follows a {
 	text-decoration: none;
 	color: #333;
@@ -83,37 +106,70 @@
 	margin-left: 20px;
 }
 
-.mypage_info {/* border:1px solid blue; */
+.changeProf{
+	border: 1px solid #eee;
+    background: #eee;
+    width: 100px;
+    height: 20px;
+    position: relative;
+    left: 180px;
+    top: -20px;
+}
+.changeProf p{
+	width: 100px;
+    height: 20px;
+    position: absolute;
+    /* top: -3px; */
+    left: 8px;
+    font-size: 0.8em;
+}
+.changeProf:HOVER{
+	background-color: #ff8800;
+}
+.mypage_info {/* border:1px solid blue; */ 
 	margin:100px auto 100px auto;
-	width: 320px;
+	width: 300px;
 	position: relative;
-	left: 0px;
+	left: 20px;
 	top: -100px;
+	text-align: center;
 }
 
+.mypage_info th{
+	font-weight: bold;
+	color:#50a4aa;
+	font-size: 1.2em;
+	text-align: center;
+	width: 80px;
+}
 .mypage_info td {
 	padding: 20px;
 	color: #333;
-	font-size: 18px;
+	font-size: 1em;
 	letter-spacing: 0.5px;
 }
 
+
 .update_btn, .delete_btn {
-	background-color: #50d4aa;
-	border-radius: 40px;
-/* 	width: 160px; */
-	width: 140px;
-	height: 40px;
-	text-align: center;
-	line-height: 40px;
-/* 	margin-left: 60px; */
-/* 	margin-top: 50px; */
-	font-size: 17px;
-	color: #333;
-	letter-spacing: 2px;
-	position: relative;
-	top: -170px;
+    background-color: #50a4aa;
+    border-radius: 20px;
+    /* width: 160px; */
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    /* margin-left: 60px; */
+    /* margin-top: 50px; */
+    font-size: 17px;
+    color: #fff;
+    letter-spacing: 2px;
+    position: relative;
+    top: -160px;
+    left: 15px;
+    margin-right: 20px;
 }
+
+.btn:HOVER{background-color: #ff8800;font-weight: bold;}
 
 .delete_btn {
 	float: right;

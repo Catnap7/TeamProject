@@ -8,6 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>왓츄 : 마이페이지</title>
+
+<!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/mypage.css" rel="stylesheet" type="text/css">
 <link href="./css/followList.css" rel="stylesheet" type="text/css">
@@ -17,6 +19,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- 웹 폰트 : 나눔고딕 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
+
 <script>
 function profile(){
 	window.open("./UpdateProfile.my","","width=600,height=500,left=600,top=200,scrollbars=yes,resizable=yes,menubar=yes,location=yes");
@@ -50,12 +57,13 @@ case 2 : grade = "VIP회원"; break;
 		
 		<div class="follow">
 		  <div class="photo">
-		    <a href="#" onclick="profile()"><img alt="프로필사진" src="./images/proflie_img/proflie<%=memberbean.getM_pic()%>.png" width="130px" height="130px" title="사진 변경"></a>
+		    <img alt="프로필사진" src="./images/proflie_img/proflie<%=memberbean.getM_pic()%>.png" width="130px" height="130px">
 		  </div>
 		  <ul class="follow_ul">
-		    <li class="follower"><a style="text-decoration: none;">팔로워<span data-toggle="modal" data-target="#follower" style="cursor: pointer;"><%=followercount %></span></a></li>
-		    <li class="follows"><a style="text-decoration: none;">팔로잉<span data-toggle="modal" data-target="#following" style="cursor: pointer;"><%=followingcount %></span></a></li>
+		    <li class="follower"><a style="text-decoration: none;"><span id="ft">팔로워</span><span data-toggle="modal" data-target="#follower" style="cursor: pointer;"><%=followercount %></span></a></li>
+		    <li class="follows"><a style="text-decoration: none;"><span id="ft">팔로잉</span><span data-toggle="modal" data-target="#following" style="cursor: pointer;"><%=followingcount %></span></a></li>
 		  </ul>
+		 	 <div onclick="profile()" class="changeProf"><p title="사진 변경">프로필 사진 변경</p></div>
 		</div>
 		
 <!----------------------------------- 팔로잉 --------------------------------------------------------->  
@@ -100,6 +108,7 @@ case 2 : grade = "VIP회원"; break;
 		        $(document).ready(function() {
 		        	
 		        	$('#f_unfollow<%=mbean.getM_name() %>').click(function(){
+		        		if(confirm("팔로우 취소 하시겠습니까?") == true) {
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
@@ -115,10 +124,11 @@ case 2 : grade = "VIP회원"; break;
 								"f_id": f_id,
 							},
 							success:function(data){
-								alert("팔로우 끊기");
+// 								alert("팔로우 끊기");
 								location.reload();
 							}
 						});
+		        		}
 		        	});
 		        	
 		        });
@@ -188,6 +198,7 @@ case 2 : grade = "VIP회원"; break;
 		        $(document).ready(function() {
 		        	
 		        	$('#unfollow<%=mbean.getM_name() %>').click(function(){
+		        		if(confirm("팔로우 취소 하시겠습니까?") == true) {
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
@@ -203,13 +214,15 @@ case 2 : grade = "VIP회원"; break;
 								"f_id": f_id,
 							},
 							success:function(data){
-								alert("팔로우 끊기");
+// 								alert("팔로우 끊기");
 								location.reload();
 							}
 						});
+		        		}
 		        	});
 		        	
 		        	$('#following<%=mbean.getM_name() %>').click(function(){
+		        		if(confirm("팔로잉 하시겠습니까?") == true) {
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
@@ -225,10 +238,11 @@ case 2 : grade = "VIP회원"; break;
 								"f_id": f_id,
 							},
 							success:function(data){
-								alert("팔로잉 하기");
+// 								alert("팔로잉 하기");
 								location.reload();
 							}
 						});
+		        		}
 		        	});
 		        	
 		        	
@@ -255,21 +269,21 @@ case 2 : grade = "VIP회원"; break;
 		
 		<table class="mypage_info">
 			<tr>
-				<td>아이디</td>
+				<th>아이디</th>
 				<td class="content"><%=memberbean.getM_id()%></td>
 			</tr>
 			<tr>
-				<td>닉네임</td>
+				<th>닉네임</th>
 				<td class="content"><%=memberbean.getM_name()%></td>
 			</tr>
 			<tr>
-				<td>등급</td>
+				<th>등급</th>
 				<td class="content"><%=grade%></td>
 			</tr>
 		</table>
 		
-		<input type="button" value="정보 수정" class="update_btn" onclick="location.href='./UpdateCheck.my'">
-		<input type="button" value="서비스 탈퇴" class="delete_btn" onclick="location.href='./DeleteCheck.my'">
+		<input type="button" value="정보 수정" class="btn update_btn" onclick="location.href='./UpdateCheck.my'">
+		<input type="button" value="서비스 탈퇴" class="btn delete_btn" onclick="location.href='./DeleteCheck.my'">
 	</div>
 	
 	

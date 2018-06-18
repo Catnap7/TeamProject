@@ -59,6 +59,13 @@ article{
 	top:20px; left: -150px; */
 	line-height: 1.7em;
 }
+#profile p a{
+	text-decoration: none;
+	color:#333;
+}
+#profile p a:HOVER{
+	color:#ff8800;
+}
 
 #info{
 	font-size:1.2em;
@@ -146,8 +153,29 @@ article{
 
 #rv p{
 	padding-left: 10px;
+	position: relative;
 }
- 
+#reviewTitle{
+	font-size: 1.2em;
+	font-weight: bold;
+}
+#reviewTitle a{
+	text-decoration: none;
+	color:#333;
+}
+#reviewTitle a:HOVER{
+	text-decoration: underline;
+	color: #ff8800;
+}
+#reviewRecommand{
+	position: relative;
+    left: 5px;
+}
+#reviewDate{
+	position: absolute;
+	right: 0px;
+} 
+
 #reviewTitle{
 	font-size: 1.2em;
 	font-weight: bold;
@@ -188,6 +216,13 @@ article{
 	font-weight: bold;
 	font-size: 1.1em;
 	margin-top: 5px;
+}
+#fvfv a, #fvfv p a{
+	text-decoration: none;
+	color:#333;
+}
+#fvfv p a:HOVER{
+	text-decoration: underline;
 }
 
 .noReviewContents{

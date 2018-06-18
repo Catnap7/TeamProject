@@ -77,7 +77,7 @@ body{
 	}
 	
 	.start #start_caption2 span{
-		color:#50d4ab;
+		color:#ff8800;
 		background-color:#33485c;
 		background-image: none;
 	}
@@ -90,18 +90,17 @@ body{
 
 	.btn a{
 		display: inline-block;
-		border: 1px solid #50d4aa;
-		border-radius:40px;
-		width: 250px; height: 60px;
-		background-image:none;
-		background-color: #50d4aa;
-		text-decoration: none;
-		margin:auto auto;
-		margin-top:50px;	
-		padding-left:10px; 
-		text-align:center;
-		padding-top:15px;
-		letter-spacing: 10px; 
+	    border: 1px solid #ff8800;
+	    border-radius: 20px;
+	    width: 250px;
+	    height: 60px;
+	    background-color: #33485c;
+	    text-decoration: none;
+	    margin-top: 0px;
+	    padding-left: 10px;
+	    text-align: center;
+	    padding-top: 13px;
+	    letter-spacing: 10px; 
 	}
 	
 	.btn a:LINK, .btn a:VISITED, .btn a:ACTIVE{
@@ -134,7 +133,7 @@ body{
 </video>
 
 	<div class="start">
-		<img src="./images/watchu_logo.png" id="logo">
+		<img src="./images/watchu_logo2_2.png" id="logo">
 		<div class="caption">
 			<p id="start_caption">당신의 모든 <span>영화</span>, 세상의 모든 <span>취향</span></p>
 			<p id="start_caption2">국내 최대 영화 취향 분석 사이트, <span>WATCHU</span></p>

@@ -49,7 +49,7 @@ switch(favorite.getMv_genre()){
 case "animation" : genre="애니메이션"; break;
 case "comedy" : genre="코미디"; break;
 case "indie" : genre="독립영화"; break;
-case "sf" : genre="sf"; break;
+case "sf" : genre="SF"; break;
 case "action" : genre="액션"; break;
 case "thriller" : genre="스릴러"; break;
 case "romance" : genre="로맨스"; break;
@@ -83,7 +83,7 @@ case "drama" : genre2="드라마"; break;
 <section class="sec myInfo">
 	<div id="profile">
 		<img src="./images/proflie_img/proflie<%=getmember.getM_pic()%>.png" width="100px" height="100px">
-		<p><span><%=getmember.getM_name()%></span></p> <!-- 이름, 등급 가져오기 -->
+		<p><a href="./FollowMyHome.fo?m_id=<%=getmember.getM_id()%>"><span><%=getmember.getM_name()%></span></a></p> <!-- 이름, 등급 가져오기 -->
 	</div><!-- profile -->
 	<div id="info">
 		
@@ -132,7 +132,7 @@ case "drama" : genre2="드라마"; break;
 				<div id="rv"> 
 					<p><span id="reviewTitle"><a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>"><%=moviebean.getMv_kor_title()%></a></span>
 					<span id="reviewDate"><%=reviewbean.getR_date()%></span>
-					<span id="reviewRecommand"><%="추천수  "%><%=reviewbean.getR_recommand()%></span>
+					<span id="reviewRecommand"><img src="./images/thumbsUp.png" width="20px" height="20px" style="position:relative;top:5px"><%=reviewbean.getR_recommand()%></span>
 					<%-- / <%=reviewbean.getR_report()%> --%></p>
 					<p class="rvList">
 					<%=reviewbean.getR_content().replaceAll("\r\n", "<br>")%></p>

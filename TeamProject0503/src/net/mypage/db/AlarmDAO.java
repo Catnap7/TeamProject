@@ -15,6 +15,7 @@ import javax.sql.DataSource;
 
 import net.admin.manage.db.MovieBean;
 import net.favorite.db.FavoriteBean;
+import net.member.db.MemberBean;
 
 public class AlarmDAO {
 	//디비연결 메서드
@@ -184,15 +185,19 @@ public class AlarmDAO {
 		ResultSet rs=null;
 		PreparedStatement pstmt2=null;
 		ResultSet rs2=null;
+		PreparedStatement pstmt3=null;
+		ResultSet rs3=null;
 		String sql="";
 		Vector vector=new Vector();
 		List alarmList=new ArrayList();
 		List movieList=new ArrayList();
+		List memberList=new ArrayList();
 		try {
 			//1,2 디비연결
 			con=getConnection();
 			//3 sql id에 해당하는 장바구니 정보 가져오기
 			sql="select * from alarm where a_id=? order by a_num desc limit ?,?";
+//			sql="select * from alarm a join member m on a.a_follower = m.m_id where a_id=? order by a_num desc limit ?,?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setInt(2, startRow-1);
@@ -215,8 +220,9 @@ public class AlarmDAO {
 				ab.setA_alarm_name(rs.getInt("a_alarm_name"));
 				ab.setA_movie_name(rs.getString("a_movie_name"));
 				ab.setA_check(rs.getInt("a_check"));
+				ab.setA_follower(rs.getString("a_follower"));
 				//fb.setF_date(rs.getTimestamp("f_date"));
-				alarmList.add(ab);								
+				alarmList.add(ab);
 				sql="select * from movie where mv_kor_title=?";
 				pstmt2=con.prepareStatement(sql);
 				pstmt2.setString(1, ab.getA_movie_name());
@@ -226,11 +232,28 @@ public class AlarmDAO {
 					mb.setMv_num(rs2.getInt("mv_num"));					
 					movieList.add(mb);
 				}
+				sql="select * from member where m_id=?";
+				pstmt3=con.prepareStatement(sql);
+				pstmt3.setString(1, ab.getA_follower());
+				rs3=pstmt3.executeQuery();
+					if(rs3.next()) {
+						MemberBean memb=new MemberBean();
+						memb.setM_name(rs3.getString("m_name"));
+						memb.setM_id(rs3.getString("m_id"));
+						memberList.add(memb);
+					}else {
+						MemberBean memb=new MemberBean();
+						memb.setM_name("nono");
+						memberList.add(memb);
+					}
+				
+
 			}
 			// vector 첫번째 칸 basketList 저장
 			// vector 두번째 칸 goodsList 저장
 			vector.add(alarmList);
 			vector.add(movieList);
+			vector.add(memberList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
@@ -301,7 +324,7 @@ public class AlarmDAO {
 		PreparedStatement pstmt=null;
 		try{ //예외가 발생할 것 같은 명령, 	필수적으로 외부파일접근, 디비접근
 			 con = getConnection();
-			 sql="insert into alarm (a_id,a_alarm_name,a_end_day,a_start_day,a_movie_name) values(?,?,?,?,?)";
+			 sql="insert into alarm (a_id,a_alarm_name,a_end_day,a_start_day,a_movie_name,a_follower) values(?,?,?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, ab.getA_id()); 
@@ -309,7 +332,7 @@ public class AlarmDAO {
 			pstmt.setString(3, ab.getA_end_day()); 
 			pstmt.setString(4, ab.getA_start_day());
 			pstmt.setString(5, ab.getA_movie_name()); 
-			
+			pstmt.setString(6, ab.getA_follower());
 			pstmt.executeUpdate();
 		} catch(Exception e) {
 				//예외 생기면 변수 e에 저장

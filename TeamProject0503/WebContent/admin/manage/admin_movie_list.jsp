@@ -67,7 +67,7 @@
 		</select>
 		<input type="text" onkeyup="searchFunction()" id="searchValue" placeholder="검색어">
 		<button type="button" onclick="searchFunction();"><img src="./images/search.png" width="20px" height="20px"></button>
-		<input type="button" onclick="location.href('./AdminMovieInsert.am')" value="영화입력하기">
+		
 		</div>
 		<table class="db_list">
 			<thead>
@@ -84,6 +84,7 @@
 			</tbody>
 		</table>
 	</div>
+	<input type="button" onclick="location.href('./AdminMovieInsert.am')" value="영화입력하기" class="admin_movie_insert">
 	</section>
 	
 	

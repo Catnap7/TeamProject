@@ -12,6 +12,7 @@ public class AdminNoticeList implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("UTF-8");
 		System.out.println("AdminNoticeList execute()");
 		
 		NoticeDAO ndao = new NoticeDAO();
