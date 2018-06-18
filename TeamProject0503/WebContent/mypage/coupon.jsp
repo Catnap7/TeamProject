@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 <title>왓츄 : 쿠폰함</title>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/mypage.css" rel="stylesheet" type="text/css">
@@ -36,7 +37,7 @@ int count = ((Integer)request.getAttribute("count")).intValue();
 if(count == 0){
 %>
 <!-- 원래 들어가야하는 문장 -->
-<tr><td colspan="3">쿠폰이 없습니다.</td></tr>
+<tr><td colspan="3">쿠폰이 없습니다</td></tr>
 <!-- 원래 들어가야하는 문장 -->
 <% 
 }else{

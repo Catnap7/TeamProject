@@ -21,7 +21,6 @@ public class StartFrontController extends HttpServlet{
 		ActionForward forward=null;
 		Action action=null;
 		
-		
 		if(command.equals("/intro.st")) {
 			forward=new ActionForward();
 			forward.setRedirect(false);

@@ -6,46 +6,45 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>왓츄 : 당신의 모든 영화, 세상의 모든 취향 </title>
 <link href="./css/member.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 <script src="./js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){
-		// 쿠키값을 가져온다.
-	// 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
+		
     var userInputId = getCookie("userInputId");
     $("input[name='m_id']").val(userInputId); 
      
-    if($("input[name='m_id']").val() != ""){ // 그 전에 ID를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 ID가 표시된 상태라면,
-        $("#idSaveCheck").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
+    if($("input[name='m_id']").val() != ""){ 
+        $("#idSaveCheck").attr("checked", true); 
     }
      
-    $("#idSaveCheck").change(function(){ // 체크박스에 변화가 있다면,
-        if($("#idSaveCheck").is(":checked")){ // ID 저장하기 체크했을 때,
+    $("#idSaveCheck").change(function(){ 
+        if($("#idSaveCheck").is(":checked")){ 
             var userInputId = $("input[name='m_id']").val();
-            setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
-        }else{ // ID 저장하기 체크 해제 시,
+            setCookie("userInputId", userInputId, 7); 
+        }else{ 
             deleteCookie("userInputId");
         }
     });
-    $("#AutoLoginCheck").change(function(){ // 체크박스에 변화가 있다면,
-        if($("#AutoLoginCheck").is(":checked")){ // 자동로그인 체크했을 때,
+    $("#AutoLoginCheck").change(function(){ 
+        if($("#AutoLoginCheck").is(":checked")){ 
         	var m_id = $("input[name='m_id']").val();
             var m_pass = $("input[name='m_pass']").val();
 			var m_idSplit= m_id.split('@');
-            setCookie("m_id1", m_idSplit[0], 1); // 1일 동안 쿠키 보관
-            setCookie("m_id2", m_idSplit[1], 1); // 1일 동안 쿠키 보관
-            setCookie("m_pass", m_pass, 1); // 1일 동안 쿠키 보관
-        }else{ // ID 저장하기 체크 해제 시,
+            setCookie("m_id1", m_idSplit[0], 1); 
+            setCookie("m_id2", m_idSplit[1], 1); 
+            setCookie("m_pass", m_pass, 1); 
+        }else{ 
             deleteCookie("m_id");
             deleteCookie("m_pass");
         }
     });
      
-    // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
-    $("input[name='m_id']").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
-        if($("#idSaveCheck").is(":checked")){ // ID 저장하기를 체크한 상태라면,
+    $("input[name='m_id']").keyup(function(){ 
+        if($("#idSaveCheck").is(":checked")){ 
             var userInputId = $("input[name='m_id']").val();
-            setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
+            setCookie("userInputId", userInputId, 7); 
         }
     });
 });
