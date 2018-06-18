@@ -419,17 +419,7 @@ public class VipDAO {
 			ResultSet rs=null;
 			try{
 				con=getConnection();
-				sql="update member m join review r "
-						+ "on m.m_id = r.r_id"
-						+ "set m.m_grade=1"
-						+ "where m.m_grade in("
-						+ "select * from ("
-						+ "select distinct m_grade "
-						+ "from review join member"
-						+ "on review.r_id = member.m_id"
-						+ "group by r_id"
-						+ "order by r_recommand desc limit 10) as lim2"
-						+ ")";
+				sql="update member set m_grade=1 where m_grade=2";
 				pstmt=con.prepareStatement(sql);
 				pstmt.executeQuery();
 				
