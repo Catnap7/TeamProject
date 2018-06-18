@@ -34,11 +34,16 @@ div.nav_r {
 	text-align: center;
 	line-height: 40px;
 	border-radius: 10px;
+	border:2px solid transparent;
+	letter-spacing: 2px;
+}
+div.nav_r:HOVER{
+	border:2px solid #ddd;
 }
 
 div.nav_r a {
 	text-decoration: none;
-	color: #000;
+	color: #fff;
 	letter-spacing: 0.2px;
 }
 
@@ -78,12 +83,16 @@ div.nav_r a {
 	color: #fff;
 	font-size: 12px;
 }
+.find_pass:HOVER{
+	text-shadow:2px 2px #333;
+}
 
 form input.text {
-	width: 300px;
-	height: 40px;
-	margin-bottom: 10px;
-	margin-left: 20px;
+	width: 290px;
+    height: 40px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    padding-left: 10px;
 }
 
 
@@ -95,21 +104,24 @@ form input.id_save {
 
 form input.btn {
 	border: 1px solid #999;
-	background-color: #50d4aa;
-	border-radius: 40px;
-	font-size: 14px;
-	width:110px; 
-	height:35px;
-	margin-bottom: 10px;
-/* 	margin-left: 80px; */
-	cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 20px;
+    font-size: 0.7em;
+    width: 110px;
+    height: 30px;
+    margin-bottom: 10px;
+    /* margin-left: 80px; */
+    cursor: pointer;
 }
-
+form input.btn:HOVER{
+	border: 1px solid #ff8800;
+}
 form span {
 	font-size: 14px;
 /* 	font-weight: bold; */
 	color: #fff;
 	letter-spacing: 0.5px;
+	text-shadow: 1px 1px #333;
 }
 
 input.check {
@@ -144,6 +156,7 @@ p {
 	letter-spacing: 0.2px;
 	line-height: 20px;
 	width: 290px;
+	text-shadow:1px 1px #333;
 }
 
 /* label { */
@@ -163,9 +176,13 @@ p {
 	width:250px; 
 	height:50px;
 	margin:20px 45px;
-	border: 1px solid #999;
+	border: 2px solid #999;
 	cursor: pointer;
 	font-size: 18px;
 	letter-spacing: 5px;
 	color:white;
+}
+
+#submit:HOVER {
+	border: 2px solid #ddd;
 }

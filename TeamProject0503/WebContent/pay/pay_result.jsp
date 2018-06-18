@@ -7,9 +7,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>왓츄:이용권 결제</title>
+
+<!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/pay2.css" rel="stylesheet" type="text/css">
+
+<!-- jquery -->
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+
+
 <script type="text/javascript">
 function pcancel(){
 	var a=confirm("해지하시겠습니까?");
@@ -57,7 +63,7 @@ int count = ((Integer)request.getAttribute("count")).intValue();
 	<%
 		if(currentpaybean!=null){
 	%>
-			<td class="radius_rt"><%=currentpaybean.getP_end_day() %>까지 이용이 가능합니다</td>
+			<td class="radius_rt"><span><%=currentpaybean.getP_end_day() %></span>까지 이용이 가능합니다</td>
 		</tr>
 		<tr>
 				<!-- //자동결제, 한달결제 -->
@@ -84,7 +90,7 @@ int count = ((Integer)request.getAttribute("count")).intValue();
 				else if(paybean.getP_auto().equals("해지")){p_auto="정기결제(해지)";}
 				else if(paybean.getP_auto().equals("한달")){p_auto="한달결제";}
 				%>		
-		<tr><td class="tb_line"><%=paybean.getP_start_day() %></td><td class="tb_line"><%=paybean.getP_end_day() %></td><td class="tb_line"><%=p_auto%></td><td class="tb_line"><%=paybean.getP_charge() %></td></tr>
+		<tr><td class="tb_line"><%=paybean.getP_start_day() %></td><td class="tb_line"><%=paybean.getP_end_day() %></td><td class="tb_line"><%=p_auto%></td><td class="tb_line"><%=paybean.getP_charge() %>원</td></tr>
 			<%}
 			}else{%>
 		<tr><td colspan="4">결제 내역이 없습니다.</td></tr>

@@ -5,10 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>왓츄 : 당신의 모든 영화, 세상의 모든 취향 </title>
+
+<!-- css -->
 <link href="./css/member.css" rel="stylesheet" type="text/css">
+
+<!-- jquery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="http://code.jquery.com/jquery-3.1.0.js"></script>
+
+
 
 <script type="text/javascript">
 //체크박스 제어란 
@@ -37,33 +43,33 @@ $(function(){ //전체선택 체크박스 클릭
     var dd     = jumin1.substr(4,2);        // 일
 	//이름
  	 if (document.fr.m_name.value == "") {
-		alert("이름을 입력하지 않았습니다.");
+		alert("닉네임을 입력하지 않았습니다.");
 		document.fr.m_name.focus()
 		return false;
 	}
 	if (document.fr.m_name.value.length <= 2 
 			|| document.fr.m_name.value.length >= 9) {
-		alert("이름을 3자 이상 8자이하 입력해주십시오.");
+		alert("닉네임을 3자 이상 8자이하 입력해주십시오.");
 		document.fr.m_name.focus()
 		return false;
 	}
 	
 	if(space_check.test(document.fr.m_name.value)){
-		alert("이름엔 공백은 들어 갈 수 없습니다.")
+		alert("닉네임에는 공백이 들어 갈 수 없습니다.")
 		document.fr.m_name.focus();
 		return false;
 	}
 	if(a_check.test(document.fr.m_name.value)){
-		alert("이름엔 특수문자는 들어 갈 수 없습니다.")
+		alert("닉네임에는 특수문자가 들어 갈 수 없습니다.")
 		document.fr.m_name.focus();
 		return false;
 	} 
 	if (document.fr.dup_name_check.value==-1) {
-		alert("이름 중복체크하세요.")
+		alert("닉네임 중복체크하세요")
 		return false;	
 	}
 	if (document.fr.dup_name_check.value==1) {
-		alert("중복된 이름은 사용하실 수 없습니다.")
+		alert("중복된 닉네임은 사용하실 수 없습니다.")
 		return false;	
 	}
 	
@@ -74,28 +80,28 @@ $(function(){ //전체선택 체크박스 클릭
 		return false;
 	}
 	if (document.fr.m_id.value == "") {
-		alert("아이디를 입력하세요.");
+		alert("이메일을 입력하세요.");
 		document.fr.m_id.focus();
 		return false;
 	}
 	if (document.fr.m_id.value.length <= 8 
 			|| document.fr.m_id.value.length >= 30) {
-		alert("아이디는 8자 이상 25자 이하 입력 바랍니다.");
+		alert("이메일은 8자 이상 25자 이하 입력 바랍니다.");
 		document.fr.m_id.focus();
 		return false;
 	}
 
 	if (space_check.test(document.fr.m_id.value)) {
-		alert("아이디에 공백을 사용할 수 없습니다.");
+		alert("이메일에는 공백을 사용할 수 없습니다.");
 		document.fr.m_id.focus()
 		return false;
 	}
 	if (document.fr.dup_id_check.value==-1) {
-		alert("아이디 중복체크하세요.")
+		alert("이메일 중복체크하세요")
 		return false;	
 	}
 	if (document.fr.dup_id_check.value==1) {
-		alert("중복된 아이디는 사용하실 수 없습니다.")
+		alert("중복된 이메일은 사용하실 수 없습니다.")
 		return false;	
 	}
 
@@ -107,7 +113,7 @@ $(function(){ //전체선택 체크박스 클릭
 	}
 	if (document.fr.m_pass.value.length< 8 
 			||document.fr.m_pass.value.length>15) {//비밀번호 확인하는부분
-		alert("숫자 특수문자 대문자 조합 비밀번호를 8~15 자리로 입력하세요")
+		alert("숫자 특수문자 영문자 조합 비밀번호를 8~15 자리로 입력하세요")
 		document.fr.m_pass.focus();
 		return false;
 	}
@@ -324,7 +330,7 @@ $(function(){ //전체선택 체크박스 클릭
 <body>
    <div class="m_cover">
       <div class="logo">
-         <a href="./MemberLogin.me"><img src="./images/watchu_logo.png"
+         <a href="./MemberLogin.me"><img src="./images/watchu_logo2_2.png"
             alt="logo"></a>
       </div>
 
@@ -343,13 +349,13 @@ $(function(){ //전체선택 체크박스 클릭
             <label> <input type="text" name="m_name" id="name" placeholder="닉네임 (김와츄)" class="text"> </label> 
             <label> <input type="button" value="닉네임 중복체크" id ="name_dup" class="btn" ></label><br>
             		<input type="hidden" value="-1" id="dup_name_check"> 
-            <label> <input type="text" name="m_id" id="id" placeholder="이메일 (example@gmail.com)" class="text">
-            		<input type="button" id="id_dup" value="아이디 중복체크" class="btn">
+            <label> <input type="text" name="m_id" id="id" placeholder="이메일(example@gmail.com)" class="text">
+            		<input type="button" id="id_dup" value="이메일 중복체크" class="btn">
             		<input type="hidden" value="-1" id="dup_id_check">   
             </label><br> 
-            <label> <input type="password" name="m_pass" id="pwd" placeholder="비밀번호 (6자 이상)" class="text" ></label><br>
-            <label> <input type="text" name="m_num1" placeholder="주민등록번호 앞자리" class="text"  maxlength="6"></label><br> 
-            <label> <input type="text" name="m_num2" placeholder="주민등록번호 뒷자리" class="text" maxlength="1"></label><br>
+            <label> <input type="password" name="m_pass" id="pwd" placeholder="비밀번호 (대문자, 숫자, 특수문자 조합 8자 이상)" class="text" ></label><br>
+            <label> <input type="text" name="m_num1" placeholder="주민등록번호 앞자리" class="text"  maxlength="6"><br> 
+            <label> <input type="text" name="m_num2" placeholder="주민등록번호 뒷자리 첫번째 숫자" class="text" maxlength="1"></label><br>
             <input type="checkbox" class="check" id="all_agree" name="checkagree"> <span><label for="all_agree">전체 약관에 동의 합니다.</label></span><br>  
 			<input type="checkbox" class="check" id="use_agree" name="checkagree"> <span><label for="use_agree"><a onclick="terms()" class="use">이용약관</a>에 동의 합니다.</label></span><br>  
 			<input type="checkbox" class="check" id="p_agree" name="checkagree"> <span><label for="p_agree"><a onclick="Privacy()" class="use">개인정보 취급 방침</a>에 동의 합니다.</label></span> 

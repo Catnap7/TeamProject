@@ -575,7 +575,7 @@ $(document).ready(function(){
             if(reviewbean.getR_id().equals(id)) {
                %>
                <tr>
-                     <td>
+                     <td class="review_sub2">
                      <a href="./ModifyReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">수정</a> | 
                      <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">삭제</a>
                      </td>
@@ -584,7 +584,7 @@ $(document).ready(function(){
             }else if(memberBean.getM_name().equals("관리자")) {
 				%>
 				<tr>
-			      	  <td>
+			      	  <td class="review_sub2">
 			      	  <a href="./DeleteReview.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>" class="a">삭제</a>
 			      	  </td>
 			    	</tr>
@@ -592,7 +592,7 @@ $(document).ready(function(){
 			}else {
                %>
                <tr>
-                    <td>
+                    <td class="review_sub2">
 <%--                     <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>&r_id=<%=reviewbean.getR_id() %>">추천</a> |  --%>
 					
 
