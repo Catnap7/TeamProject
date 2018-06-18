@@ -65,12 +65,12 @@ public class MemberLoginAction implements Action{
 			int m_end_day = Integer.parseInt(e_day);
 			if(today>=m_end_day) {
 				asdao.AdminMemberGradeReturn(m_id);
+				out.println("<script>");
+				out.println("alert('리뷰 정지가  풀렸습니다.');");
+				out.println("history.back()");
+				out.println("</script>");
+				out.close();
 			}
-			out.println("<script>");
-			out.println("alert('리뷰 정지가  풀렸습니다.');");
-			out.println("history.back()");
-			out.println("</script>");
-			out.close();
 		}	
 
 		List <CouponBean>couponlist = cdao.getCoupons(m_id);
