@@ -14,15 +14,13 @@
 
 <script type="text/javascript">
 
-$(window).on("beforeunload",function (){
-	/* $.ajax({
-		type: 'POST',
-		url: './CheckAlarm.my'																	 					 		
-	});//end ajax 	 */	
+$(window).bind("beforeunload",function (){		
 	opener.location.reload();
 });
+
 function closeP(){
 	window.close();
+	opener.location.reload();
 }
 function updateP($num){
 	$.ajax({
