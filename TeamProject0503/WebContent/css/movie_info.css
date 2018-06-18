@@ -155,7 +155,7 @@ section {
 
 /* 재생 */
 label.play {
-	border: 1px solid #eee; 
+	border: 2px solid #eee; 
 	background-color: #ff4f00;
 	color:white;
 	/* font-weight:bold; */
@@ -174,9 +174,11 @@ label.play {
     position: relative;
     top: 40px;
     left: 60px;
-    box-shadow:3px 3px #eee;
+    /* box-shadow:3px 3px #eee; */
 }
-
+label.play:HOVER{
+	border: 2px solid #c0c0c0; 
+}
 div.star {
    font-size: 24px;
 }
@@ -233,7 +235,7 @@ div.star {
 	width: 900px;
 	margin: 0px auto;
 	padding:50px 30px;
-	font-size: 1.1em;
+	/* font-size: 1.1em; */
 	line-height: 1.7em;
 	position: relative;
 	margin-bottom: 100px;
@@ -315,6 +317,7 @@ div.star {
    margin-bottom: 20px;
    margin-right: 10px;
    width: 800px;
+   padding: 10px;
    
 }
 
@@ -322,7 +325,7 @@ div.star {
     /* height: 145px; */
     width: 105px;
     position: absolute;
-    top: 190px;
+   /*  top: 190px; */
     left: 700px;
     background-color: #ddd;
     font-size: 18px;
@@ -379,13 +382,16 @@ div.star {
 }
 
 .coment table .review_content {
-	padding: 30px 5px;
+	/* padding: 30px 5px; */
+	font-size: 0.9em;
 }
 
 .coment table .review_sub {
 	font-size: 16px;
 }
-
+.coment table .review_sub2{
+	padding-bottom: 50px;
+}
 .coment table td a {
    text-decoration: none;
    cursor: pointer;

@@ -70,6 +70,32 @@ public class AdminSuspendDAO {
 		return grade;
 	}
 	
+	public String AdminMemberEndDay(String id) {
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String endday = null;
+		try {
+			con = getConnection();
+			sql = "select m_end_day from member where m_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				endday = rs.getDate("m_end_day").toString();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
+		}
+		return endday;
+	}
+	
 	public int AdminReviewReport(int r_p_num, String id) {
 		Connection con = null;
 		String sql = "";
@@ -105,7 +131,25 @@ public class AdminSuspendDAO {
 		PreparedStatement pstmt = null;
 		try {
 			con = getConnection();
-			sql = "update member set m_grade = 3 where m_id = ?";
+			sql = "update member set m_grade = 3, m_end_day = date_add(now(), interval +1 day) where m_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
+			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}			
+		}
+	}
+	
+	public void AdminMemberGradeChangeplus(String id) {
+		Connection con = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			sql = "update member set m_grade = 4, m_end_day = date_add(now(), interval +1 day) where m_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
@@ -117,13 +161,13 @@ public class AdminSuspendDAO {
 		}
 	}
 	
-	public void AdminMemberGradeChangeplus(String id) {
+	public void AdminMemberGradeReturn(String id) {
 		Connection con = null;
 		String sql = "";
 		PreparedStatement pstmt = null;
 		try {
 			con = getConnection();
-			sql = "update member set m_grade = 4 where m_id = ?";
+			sql = "update member set m_grade = 1 where m_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();

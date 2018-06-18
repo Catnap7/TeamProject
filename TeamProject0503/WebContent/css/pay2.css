@@ -1,14 +1,21 @@
 @CHARSET "UTF-8";
 /* pay_result */
+
+article{
+	width: 1900px;
+}
 .state {/* border:solid 1px #333; */
-	margin: 50px auto;	
-	height:300px;
-	width:700px;	
-	box-shadow:5px 5px #333;
-	border-radius:30px;	
-	border-spacing: 0px; 
-	margin-bottom: 80px; 
-	margin-top: 120px;	
+	border: solid 1px #333; */
+    margin: 50px auto;
+    height: 300px;
+    width: 700px;
+    /* box-shadow: 5px 5px #333; */
+    border-radius: 30px;
+    border-spacing: 0px;
+    margin-bottom: 80px;
+    margin-top: 120px;
+    position: relative;
+    left: 600px;
 }
 
 
@@ -17,30 +24,37 @@
 	margin: 50px auto;
 	height:300px;
 	width:700px;	
-	box-shadow:5px 5px #333;
+	/* box-shadow:5px 5px #333; */
 	border-radius:30px;
 	border-spacing: 0px; 
 	margin-bottom: 80px; 			
 	
 }
 
-td {	border:1px solid #228c6a;	
+td {border:1px solid #333;	
 	padding-left: 10px;
-	font-size: 20px;		
+	font-size: 1em;		
 }
 
-th {background-color:#50d4aa;
-	font-size: 25px;
-	color:#14523e;
-		border:1px solid #228c6a;
+.state tr:nth-of-type(2){
+	color:#ff8800;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+th {
+	background-color: #afdde2;
+    font-size: 1.2em;
+    color: #455a64;
+    border: 1px solid #455a64;
 }
 
 tr.bg_light th {
-    background-color:#adebd7;
-    font-size: 20px;
+    background-color: #d8fbff;
+    font-size: 1em;
     height: 3rem;
     letter-spacing: 0.3rem;
-	color:#228c6a;
+    color: #2d3940;
     }
 
 .radius_lt{	
@@ -48,7 +62,7 @@ tr.bg_light th {
 
 .radius_rt{	
 	border-radius:0 30px 0 0 ;	}
-
+.radius_rt span{font-weight: bold;}
 .radius_lb{
 	border-radius: 0 0 0 30px ;	}
 
@@ -60,32 +74,39 @@ tr.bg_light th {
 
 .radius_lbrb {
     border-radius: 0 0 30px 30px;	
-    background-color:#50d4aa;	}
+    background-color:#afdde2;	}
 
 .tb_line {
     border-bottom : 1px dotted #ccc !important;
     border-top : 1px dotted #ccc !important;}
-    
-.bold_line { border-top: 3px solid #228c6a;
-   border-bottom: 3px solid #228c6a;}
+.tb_line:nth-of-type(2){
+	font-weight: bold;
+} 
+.tb_line:nth-of-type(3){
+	color:#ff8800;
+	font-weight: bold;
+} 
+.bold_line {
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;}
 
 .lett_min { letter-spacing: -0.2rem; }
 .lett_plus { letter-spacing: 1.2rem; }
 
 
 .state td{
-	padding-left: 30px;
+	padding-left: 20px;
 }
 .state a {
 	text-decoration: none;
-	color:#000;
+	color:#ff8800;
 	font-weight: bold;
 }
 .state a:HOVER {
-	color:#228c6a;
+	color:#800000;
 	font-weight: bold;
 }
-.list td{text-align: center;}
+.list td{text-align: center;padding: 0px;}
 
 .prev_next {
 	text-align: center;	
@@ -117,8 +138,8 @@ th, td {
 .coupon {		
 	height:150px;
 	width:700px;	
-	box-shadow:5px 5px #333;
-	border-radius:30px;	
+	/* box-shadow:5px 5px #333; */
+	border-radius:10px;	
 	border-spacing: 0px; 
 	margin-bottom: 80px; 
 }
@@ -131,7 +152,7 @@ th, td {
 }
 .radius_2 select{
 	/* border:1px solid red; */
-	font-size: 25px;
+	font-size: 1.1em;
 	position: relative;
 	left:75px;
 }
@@ -140,14 +161,14 @@ th, td {
 	width:700px;
 	margin: 0px auto;	
 	height:150px;
-	margin-bottom: 50px;
+	margin-bottom: 100px;
 }
 
 .payment {
 	height:150px;
 	width:700px;	
-	box-shadow:5px 5px #333;
-	border-radius:30px;	
+	/* box-shadow:5px 5px #333; */
+	border-radius:10px;	
 	border-spacing: 0px; 
 	margin-bottom: 80px; 
 }
@@ -163,7 +184,7 @@ th, td {
 	position: relative;
 	left:55px;
 	height: 30px;
-	font-size: 20px;
+	font-size: 1.1em;
 }
 .radius_5{
 	border-radius: 0 0 30px 30px ;
@@ -173,21 +194,29 @@ th, td {
 	display: none;
 }
 .radius_5 label{
-	font-size: 25px;
-	position: relative;
-	left:300px;
-	/* border:1px solid red; */
+ 	font-size: 1.2em;
+    position: relative;
+    left: 300px;
+    color: #333;
+    border: 2px solid #455a64;
+    padding: 5px;
+    font-weight: bold;
 }
 .radius_5 label:HOVER{
-	color:#228c6a;
+	 border: 2px solid #640000;
+	 color:#ff8800;
 }
+
 .to_money {
 	padding:20px 0;
 }
 #amount {
 	/* border:1px solid red; */
 	text-align: center;
-	font-size: 25px;
+	font-size: 1.2em;
+	color:#ff8800;
+	font-weight: bold;
+	
 }
 
 
@@ -198,16 +227,18 @@ th, td {
     position: relative;
     left: 1200px;
     top: -50px;
-    border: 2px solid #228c6a;
-    background-color: #adebd7;
+    border: 2px solid #ddd;
+    background-color: #ff8800;
     height: 40px;
     width: 100px;
     font-size: 16px;
-    color: #14523e;
+    color: #2d3940;
     font-weight: bold;
     border-radius: 10px;
 }
-
+#pcancel:HOVER {
+	border:2px solid #333;
+}
 
 
 
