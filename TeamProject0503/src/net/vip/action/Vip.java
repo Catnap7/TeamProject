@@ -20,15 +20,16 @@ public class Vip implements Action{
 		
 		System.out.println("Vip execute");
 		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
 		
 		
-		//회원 이름 가져오기
+		
+		//회원 정보 가져오기
 		MemberDAO memberdao=new MemberDAO();
 		MemberBean memberbean=new MemberBean();
 		
-		HttpSession session = request.getSession();
-		
 		String m_id = (String)session.getAttribute("m_id"); 
+
 		if(m_id==null){
 			ActionForward forward=new ActionForward();
 			forward.setRedirect(true);		
@@ -36,8 +37,9 @@ public class Vip implements Action{
 			return forward;
 		}
 		memberbean=memberdao.getMember(m_id);
-
-		request.setAttribute("memberbean", memberbean);
+		int grade=memberbean.getM_grade();
+		String name=memberbean.getM_name();
+		
 
 		
 		
@@ -46,18 +48,28 @@ public class Vip implements Action{
 		VipBean vipbean=new VipBean();
 		vipbean=vipdao.getVipMovie(); 
 
+		int v_num=vipbean.getV_num();
 
+		
 		//예약 여부 가져오기
 		VipResBean vipresbean=new VipResBean();
 		VipResDAO vipresdao=new VipResDAO();
 		List<VipResBean> VipSeatTakenList = (List)vipresdao.getVipSeatTakenList();
-		request.setAttribute("VipSeatTakenList", VipSeatTakenList);
-		
 		
 		//VipSeatTakenListCheck
 		int check=vipresdao.VipSeatTakenListCheck(m_id);
 		
 		vipresbean=vipresdao.getYourSeat(m_id);
+		
+		String selectedSeat=request.getParameter("seat");
+		
+		request.setAttribute("memberbean", memberbean);
+		request.setAttribute("vipresbean", vipresbean);
+		request.setAttribute("vipbean", vipbean);
+		request.setAttribute("VipSeatTakenList", VipSeatTakenList);
+		request.setAttribute("v_num", v_num);
+		request.setAttribute("check", check);
+		request.setAttribute("selectedSeat", selectedSeat);
 		
 		//이동 
 		ActionForward forward= new ActionForward();

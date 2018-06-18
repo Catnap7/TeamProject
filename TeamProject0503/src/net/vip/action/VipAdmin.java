@@ -6,6 +6,7 @@ import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.member.db.MemberBean;
 import net.vip.db.VipBean;
 import net.vip.db.VipDAO;
 import net.vip.db.VipResBean;
@@ -45,6 +46,7 @@ public class VipAdmin implements Action{
 		List<VipResBean> VipSeatTakenList = (List)vipresdao.getVipSeatTakenList();
 		
 		//vip멤버 리스트 가져오기
+		MemberBean memberbean = new MemberBean();
 		Vector vector=new Vector();
 		/*VipDAO vipdao=new VipDAO();*/
 
@@ -54,7 +56,9 @@ public class VipAdmin implements Action{
 		List seatList=(List)vector.get(1);
 		
 		
-		
+		request.setAttribute("memberbean", memberbean);
+		request.setAttribute("vipresbean", vipresbean);
+		request.setAttribute("vipbean", vipbean);
 		request.setAttribute("VipSeatTakenList", VipSeatTakenList);
 		request.setAttribute("vipMemberList", vipMemberList);
 		request.setAttribute("seatList", seatList);
@@ -66,10 +70,7 @@ public class VipAdmin implements Action{
 		*/
 		
 		//vip멤버 리스트 가져오기
-		
-		
-		
-		
+
 		//이동 
 		ActionForward forward= new ActionForward();
 		forward.setRedirect(false);

@@ -1,3 +1,4 @@
+<%@page import="net.member.db.MemberBean"%>
 <%@page import="net.vip.db.VipResBean"%>
 <%@page import="net.vip.db.VipResDAO"%>
 <%@page import="net.vip.db.VipBean"%>
@@ -34,14 +35,11 @@
 
 
 <%
-VipDAO vipdao = new VipDAO();
-VipBean vipbean=vipdao.getVipMovie(); 
+MemberBean memberbean=(MemberBean)request.getAttribute("memberbean");
+VipBean vipbean=(VipBean)request.getAttribute("vipbean");
+VipResBean vipresbean=(VipResBean)request.getAttribute("vipresbean");
 
-VipResDAO vipresdao = new VipResDAO();
-VipResBean vipresbean=new VipResBean();
-
-int v_num=vipbean.getV_num();
-String selectedSeat=request.getParameter("seat");
+String selectedSeat=(String)request.getAttribute("selectedSeat");
 
 %>
 

@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.member.db.MemberBean;
+import net.member.db.MemberDAO;
 import net.vip.db.VipBean;
 import net.vip.db.VipDAO;
 import net.vip.db.VipResBean;
@@ -16,6 +18,10 @@ public class VipResult implements Action{
 		
 		System.out.println("VipResult execute");
 		request.setCharacterEncoding("UTF8");
+		
+		
+		MemberDAO memberdao=new MemberDAO();
+		MemberBean memberbean=new MemberBean();
 		
 		VipDAO vipdao = new VipDAO();
 		VipBean vipbean=vipdao.getVipMovie(); 
@@ -45,8 +51,13 @@ public class VipResult implements Action{
 
 		//insertVipSeatTaken 
 		vipresdao.insertVipSeatTaken(v_num, vr_seat_num);
+		String selectedSeat=vipresbean.getVr_seat_num();
 		
-		
+		request.setAttribute("memberbean", memberbean);
+		request.setAttribute("vipresbean", vipresbean);
+		request.setAttribute("vipbean", vipbean);
+		request.setAttribute("vr_seat_num", vr_seat_num);
+		request.setAttribute("selectedSeat", selectedSeat);
 		
 		//이동
 		ActionForward forward=new ActionForward();
