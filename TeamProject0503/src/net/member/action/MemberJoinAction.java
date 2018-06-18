@@ -32,7 +32,7 @@ public  class MemberJoinAction implements Action{
 		int jumin2=Integer.parseInt(request.getParameter("m_num2"));
 		
 		memberbean.setM_id(request.getParameter("m_id"));
-		memberbean.setM_pass(request.getParameter("m_pass"));
+		//memberbean.setM_pass(request.getParameter("m_pass"));
 		memberbean.setM_name(request.getParameter("m_name"));
 		if(jumin2==3||jumin2==4) {
 		memberbean.setM_id_num1(Integer.parseInt("20"+request.getParameter("m_num1")));
@@ -43,9 +43,17 @@ public  class MemberJoinAction implements Action{
 		memberbean.setM_grade(0);
 		memberbean.setM_pay(0);
 		memberbean.setM_reg_date(new Date(System.currentTimeMillis()));
+		
+		//pass를 암호화 
+		String planText=request.getParameter("m_pass");
+		String salt = Sha256.getSalt();
+		String passText=Sha256.encrypt(planText, salt);
+		memberbean.setM_pass(passText);
+		memberbean.setM_salt(salt);
+		
 		MemberDAO memberdao = new MemberDAO();
 		memberdao.insertMember(memberbean);
-		
+	
 		String m_id = request.getParameter("m_id"); 
 		HttpSession session = request.getSession();
 		session.setAttribute("m_id", m_id);
