@@ -1,0 +1,163 @@
+@CHARSET "UTF-8";
+
+*{
+	padding: 0;
+	margin: 0;
+	/* font-family: 'Nanum Gothic', sans-serif; */}
+
+.clear {clear: both;}
+
+body{
+	height: auto;
+}
+
+article{
+	/* border:1px solid red;  */
+	padding:50px;	
+	height: auto;
+	width:1910px;
+	background-color: #72bcc4;
+}
+
+
+
+/* ################전체레이아웃################ */
+
+.all{
+	border: 1px solid #e8e8e8;
+	background-color:#f3f7f8;
+	border-radius:30px;
+	width: 1000px;
+	/* margin:50px auto;  */
+	position:relative;
+	top:100px; left:340px;
+	margin-bottom:200px;
+	box-shadow: 2px 2px #9f9f9f;
+	padding:40px 70px;
+}
+
+.logList{
+	border:1px solid #9f9f9f;
+	background-color:white;
+	border-radius:10px;
+	margin: 20px auto;
+	padding:20px;
+}
+
+
+
+
+/* ################ 로그 ################ */
+
+.secInfo {
+	font-size: 1.2em;
+	font-weight: bold;
+	position: relative;
+	top:10px; left: 25px;
+	/* float:left; */
+}
+
+.secInfo p{
+	font-family: sans-serif;
+	font-size: 1.2em;
+}
+
+#rv{
+	border: 1px solid #a8a8a8;
+    border-top: 10px solid #a8a8a8;
+    border-radius:0px 0px 10px 10px;
+    /* margin: 20px auto; */
+    width: 900px;
+    height: 340px; */
+    /* height: 100px; */
+    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 60px;
+    position: relative;
+    left: 20px;
+    box-shadow: 2px 2px #eee;
+}
+
+#rvProfile{
+	/* border: 1px solid red; */
+    /* padding-left: 10px; */
+    width: 200px;
+    text-align: center;
+    height: 200px;
+    display: inline-block;
+    line-height: 2.5em;
+}
+/* #rvProfile p:nth-of-type(1){
+	position: relative;
+    top: 60px;
+    left: 45px;
+}
+#rvProfile p:nth-of-type(2){    
+	margin-top: -50px;
+    border: 1px solid red;
+    position: relative;
+    left:-50px;
+    bottom: 25px;
+}
+#rvProfile p:nth-of-type(3){
+	position: relative;
+    top: 90px;
+    left: -140px;
+    width: 80px;
+} */
+#rvMv{
+	padding-left: 50px;
+    margin-top: 10px;
+    position: relative;
+    top: -140px;
+    left: 20px;
+}
+#rvMv p{display: inline-block;}
+#rvPos{
+	border: 1px solid #b4b4b4;
+    position: relative;
+    left: 160px;
+    bottom: 55px;
+    width: 180px;
+    height: 250px;
+    margin-right: 10px;}
+#rvStill{
+	border: 1px solid #b4b4b4;
+    position: relative;
+    left: 160px;
+    bottom: 55px;
+    width: 350px;
+    height: 250px;}    
+#rvMent{
+ /* border: 1px solid red; */
+    position: relative;
+    left: 0px;
+    top: -190px;
+    width: 900px;
+    text-align: center;
+    margin: 0px auto;
+    }
+#rvMent span{
+	font-weight: bold;
+	font-size: 1.2em;
+	color:#ff8800;
+}
+#rvMent a{
+	text-decoration: none;
+}
+#rvMent a:HOVER span{
+	color:#50a4aa;
+	text-decoration: underline;
+}    
+    
+#noFollow{
+	border: 1px solid #e8e8e8;
+    width: 800px;
+    height: 150px;
+    margin: 80px;
+    text-align: center;
+    line-height: 2.5em;
+    padding: 50px;
+    position: relative;
+    right: 50px;	
+}

@@ -1,0 +1,128 @@
+@CHARSET "UTF-8";
+
+/************** 서브메뉴바 **************/
+
+.menu{
+	border-bottom: 2px solid #50a4aa;
+	position: relative;
+	top:170px; left:100px;
+	width:240px;
+	text-align: right;
+	padding: 5px;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+
+#menu_bar {
+	/* border:1px solid red;  */
+	width: 250px;	
+	margin: 180px 150px 0 110px;
+	float: left;
+	font-size: 20px;
+	text-align: right;
+	padding-top: 40px;
+}
+
+#menu_bar ul {
+	list-style: none;
+}
+
+#menu_bar ul li a {
+	width: 180px;
+	text-decoration: none;
+	display: block;
+	padding: 15px;
+	background-color: #aad3d7;
+	border-radius: 40px;
+	color: #000;
+	font-weight:bold;
+	letter-spacing: 0.2px;
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+#menu_bar ul li a:HOVER {
+	background-color: #50a4aa;
+}
+/************** 서브메뉴바 **************/
+
+
+
+
+/**************폼 영역 **************/
+
+
+div#content {
+	/* border: 1px solid orange;  */
+	margin-left: 300px;
+	margin-top: 0px;
+	width:1500px;height: 800px;
+	position: relative;
+	bottom:500px; left:150px;
+}
+
+div#content h1 {
+	text-align: center;
+	display: inline-block;
+	position: relative;
+	left: 0;
+	top: -20px;
+	font-size: 1.7em;
+	letter-spacing: 2px;
+	text-transform: capitalize;
+	padding-bottom: 20px;
+}
+
+.db_list_insert {
+	/* border-collapse: collapse; */
+	border-top:1px dashed #808080;
+	position: relative;
+	top: 65px;
+	left: 40px;
+	height: 500px; width: 1100px;
+	padding:30px;
+	padding-left: 150px;
+}
+
+.db_list_insert td{
+	font-weight: bold;
+	font-size: 1.1em;
+	text-align: left;
+	padding-right: 20px;
+	height: 50px;
+}
+
+.db_list_insert td>input, .db_list_insert td textarea{
+	width:600px;
+	padding: 10px;
+	font-size: 1em;
+}
+
+.u_admin-notice-write {
+	/*  border:1px solid red;  */
+	margin:0 auto;
+	position: relative;
+	top:1100px;
+	left: 430px; 
+	width: 350px; height: 40px;
+}
+
+
+
+.wirtebtn {
+	border:1px solid #333;
+	border-radius:10px;
+	/* background-color: #aad3d7; */
+	/* border-radius: 30px; */
+	/* font-weight:bold; */
+	font-size:1.0em;
+	color: #000;
+	letter-spacing: 0.2px;
+	width: 80px; height: 30px;
+	padding: 3px;
+}
+
+.wirtebtn:HOVER {
+	 background-color: #aad3d7;
+}

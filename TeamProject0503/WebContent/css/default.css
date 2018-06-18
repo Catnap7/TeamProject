@@ -1,0 +1,434 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family:'Nanum Gothic', sans-serif;
+}
+body{
+	width: 100%;
+	height: auto;
+}
+
+.clear{clear:both;}
+
+/* article, footer { */
+/* 	border: 1px solid red; */
+/* 	height: 300px; */
+/* } */
+
+
+
+
+
+/*---header---*/
+.header{/*  border:1px solid blue;   */
+	height: 120px;
+	width:1900px;
+	margin: 0px;
+	/* margin-bottom:30px; */
+	padding: 0px;
+	/* padding-bottom:90px; */
+	box-sizing:boarder-box;
+	border-bottom-color:white;
+/* 	position:fixed;
+	top:0px; */
+	}
+
+.title_logo{
+	position:relative;
+	top:30px;
+	left:30px;
+	width: 350px;
+}	
+
+.rightInfo{
+	/* border:1px solid red; */
+	width:350px;
+	height: 60px;
+	position: relative;
+	top:-20px; right: -1540px;
+	line-height: 2em;
+	margin:0;
+	font-size: 16px !important;
+}
+
+.rightInfo div{
+	float: left;
+}
+
+/*이용권구매*/
+.pay{
+	/* background-color: #ffffff; */
+    color: #333;
+    padding: 16px;
+    border: none;
+    position: absolute;
+    right:0px; top:0px;
+    font-size: 1.2em;
+}
+
+.pay>a{
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 0.9em;
+}	
+
+.pay>a:LINK, .pay>a:VISITED{
+	text-decoration: none;
+	color:#333;
+}
+
+.pay a:HOVER{
+	text-decoration: none;
+	color:#ff8000;
+}
+
+
+/*유저정보*/
+.h_dropbtn1 {
+    background-color: #ffffff; 
+    color: #333;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+   	font-weight: bold; 
+    line-height: normal;
+}
+
+.h_myinfo {
+	/* border:1px solid red; */
+    position: absolute;
+    left:150px; top:5px; 
+    display: inline-block;
+}
+
+.h_myinfo a:LINK, .h_myinfo a:VISITED{
+	color:#333;
+	text-decoration: none;
+}
+
+#no_alarm {
+	/* border:1px solid red; */
+	position: absolute;
+	top:1px;
+	right: 105px;
+}
+#alarm{
+	position: absolute;
+	top:1px;
+	right: 105px;
+}
+.num{
+	text-align:center;
+	font-size:12px;
+	line-height:15px;
+	border-radius:30px;
+	text-decoration:none;
+	color:#fff;
+	font-weight:bold;
+	border:1px solid red;
+	position:absolute;
+	right:97px;
+	background-color: red;
+	width:15px;
+	height: 15px;
+}
+.h_myinfo button{
+	font-size: 1em;
+}
+.h_dropdown-content1 {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.h_dropdown-content1 a {
+    color: #333;
+    font-family:sans-serif;
+	text-align:center;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.h_dropdown-content1 a:hover {background-color: #ddd}
+
+.h_myinfo:hover .h_dropdown-content1 {
+    display: block;
+}
+
+.h_myinfo:hover .h_dropbtn1 {
+    color: #ff8000;
+}
+
+#h_follow{
+	/* border:1px solid #333; */
+	width: 130px; height: 20px;
+	font-weight: lighter;
+	font-size: 0.8em;
+	font-family: 'Nanum Gothic', sans-serif;
+	position: absolute;
+	top:0px; left:40px; 
+	line-height: 15px;	
+	text-align: center;
+}
+
+#h_follow div{
+	/* border:1px solid red; */
+	float:left;
+	margin:10px 10px;
+	font-weight: bold;
+}
+#h_follow div p:nth-of-type(1){
+	color: #50a4aa;
+	margin:0;
+}
+
+#h_follow div p:nth-of-type(2){
+	margin:0;
+}
+
+
+/*메인Navigation*/
+/* Navbar container */
+.h_navbar {
+	/* border:1px solid red; */
+  	overflow: hidden;
+  	background-color: #455a64;
+    margin-top: 10px; 
+    height: 50px;
+	width: 1900px;
+/*     position: relative;
+    top: 0;
+    left: 0; */
+}
+
+/* Links inside the navbar */
+.h_dropdown>button{	
+	/* background-color:#455a64; */
+	/* font-weight: bold; */
+	height: 50px;
+}
+.h_navbar>a{height:50px;}
+.h_navbar a {
+	/* border:1px solid red; */
+	float: left;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	/* font-weight:bold; */
+	text-transform: uppercase;
+}
+
+
+
+/* The h_dropdown container */
+.h_dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* h_dropdown button */
+.h_dropdown .h_dropbtn {
+  font-size: 16px; 
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: transparent;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+  text-align: center;
+  font-weight: lighter;
+}
+
+.h_dropbtn2{
+  font-size: 16px; 
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: #72bcc4;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+  text-align: center;
+  font-weight: lighter;
+}
+
+/* Add a red background color to navbar links on hover */
+.h_navbar a:hover, .h_dropdown:hover .h_dropbtn, .h_dropdown:hover .h_dropbtn2{
+  background-color: #ff8000;
+  color: #333;
+  text-decoration: none;
+  /* height: 50px; */
+}
+
+.h_dropbtn2 a:HOVER{
+  background-color: #ff8000;
+  color: #333;
+  text-decoration: none;
+}
+
+
+/* h_dropdown content (hidden by default) */
+.h_dropdown-content {
+  display: none; 
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1; 
+}
+
+/* Links inside the h_dropdown */
+.h_dropdown-content a {
+  color: #333;
+  font-family:sans-serif;
+  text-align:center;
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.vip{
+	height: 49px;
+}
+
+/* Add a grey background color to h_dropdown links on hover */
+.h_dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the h_dropdown menu on hover */
+.h_dropdown:hover .h_dropdown-content {
+  display: block;
+}
+
+
+.search-container {
+  float: right;
+}
+
+.h_navbar input[type=text] {
+  padding: 0 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  height: 32px;
+}
+
+.search-container button {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  width: 50px;
+  height: 32px;
+}
+
+.h_navbar .search-container button:hover {
+  background: #ccc;
+}
+
+
+/* 미디어 쿼리 적용 */
+/* @media screen and (max-width: 600px) {
+  .navbar .search-container {
+    float: none;
+  }
+  .navbar a, .navbar input[type=text], .navbar .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .navbar input[type=text] {
+    border: 1px solid #ccc;  
+  }
+} */
+
+
+/* article { */
+/* 	height: 900px; */
+/* } */
+
+
+
+/*---footer---*/
+footer {
+	background-color:#2d3940;
+	width: 1900px;
+    height: 400px;
+    /* position: relative; */
+    bottom: -280px;
+}
+
+div.f_logo {
+    width: 250px;
+    height: 50px;
+    position: relative;
+    top: 30px;
+    left: 30px;
+    margin-bottom: 30px;
+}
+
+div.use {
+	width: 240px;
+	height: 30px;
+/* 	margin: 10px 20px; */
+	margin: 20px 20px 0 30px;
+	padding: 5px 5px;
+	float: left;
+	color: white;
+}
+
+div.sns {
+	width: 260px;
+	float: right;
+	position: relative;
+	bottom: 80px;
+	right: 60px;
+	padding: 5px;
+}
+
+div.sns img {
+	border: 1px solid white;
+	border-radius: 30px;
+	margin-right: 20px;
+}
+
+div.sns img:HOVER{
+	border: 1px solid #ff8800;
+	opacity:0.8;
+}
+
+div.use a {
+	text-decoration: none;
+	color: white;
+	cursor: pointer;
+}
+div.use a:HOVER{
+	color:#ff8800;
+}
+
+div.explain {
+	margin: 0 20px 10px 30px;
+	padding: 5px 5px;
+	width: 560px;
+	color: white;
+}

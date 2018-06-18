@@ -1,0 +1,523 @@
+@CHARSET "UTF-8";
+
+*{
+	font-family: 'Nanum Gothic', sans-serif;
+}
+.clear {
+	clear: both;
+}
+
+
+/************** 서브메뉴바 **************/
+
+.menu{
+	border-bottom: 2px double #50a4aa;
+	position: relative;
+	top:170px; 
+	/* left:100px; */
+	width:310px;
+	text-align: right;
+	padding: 5px;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+#menu_bar {
+	width: 250px;	
+	margin: 185px 140px 0 110px;
+	float: left;
+	font-size: 20px;
+	text-align: right;
+	/* padding-top: 20px; */
+}
+
+#menu_bar ul {
+	list-style: none;
+}
+
+#menu_bar ul li a {
+	width: 180px;
+	text-decoration: none;
+	display: block;
+	padding: 15px;
+	/* background-color: #aad3d7; */
+	border-radius: 30px;
+	color: #000;
+	font-weight:bold;
+	/* letter-spacing: 5px;
+	margin-bottom: 50px;
+	text-align: center; */
+}
+
+#menu_bar ul li a:HOVER {
+	background-color: #50a4aa;
+	/* opacity: 0.5; */
+}
+
+
+/************** 본문내용 **************/
+
+.content{
+	height: 1100px;
+	width: 1500px;
+}
+div#content {
+	/* 	border: 1px solid orange; */
+	margin-left: 300px;
+	margin-top: 30px;
+	height:auto;
+	width:1500px;
+	padding-bottom: 300px;
+	/* position: relative; */
+	/* 	overflow: auto; */
+}
+
+.search_type select {
+	width: 100px;
+	height: 30px;
+}
+
+.search_type {
+/* 	border: 1px solid red; */
+	display: inline-block;
+	position: absolute;
+	top: 80px;
+	right: 450px;
+}
+
+.admin-search-container {
+/* 	border: 1px solid red; */
+	display: inline-block;
+	position: absolute;
+	top: 80px;
+	right: 140px;
+}
+
+.orderby {
+/* 	border: 1px solid blue; */
+	display: inline-block;
+	position: absolute;
+	top: 120px;
+	right: 140px;
+}
+
+.orderby a {
+	text-decoration: none;
+	color: #333;
+	font-weight: bold;
+}
+
+.orderby a:HOVER {
+	color: red;
+}
+
+.admin-search-container input {
+	width: 240px;
+	height: 30px;
+}
+
+.admin-search-container button {
+  float: right;
+  padding: 6px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  width: 50px;
+  height: 32px;
+}
+
+
+/************** admin main **************/
+div.content_position {
+/* 	border: 1px solid orange; */
+	width: 1000px;
+	position: absolute;
+	top: 280px;
+	left: 600px;
+}
+
+
+div.content_inner {
+	background-color: #455a64;
+	display: inline-block;
+	width: 350px;
+	height: 300px;
+	margin: 20px 30px;
+	text-align: center;
+	line-height: 300px;
+	border-radius: 20px;
+}
+
+div.content_inner{
+	text-decoration: none;
+	color: white;
+	font-size: 44px;
+	text-transform: capitalize;
+	font-weight: bold;
+}
+
+div.content_inner:HOVER, div.content_inner:HOVER a {
+	background-color: #ff8000;
+ 	color: #333;
+}
+
+
+/************** admin db list **************/
+
+.content_member{
+	width: 1900px;
+	height: 1100px;	
+}
+div#content_member {
+	border: 1px solid #c6c6c6;
+    width: 1200px;
+    /* margin-left: 300px; */
+    margin: 30px 0px 100px 0px;
+    height: 900px;
+    position: relative;
+    right: 10px;
+    top: 100px;
+    overflow: auto;
+}
+
+/* div#content h1, div#content_member h1 {
+	text-align: center;
+	display: inline-block;
+	position: relative;
+	left: 45px;
+	top: 90px;
+	font-size: 1.6em;
+	letter-spacing: 2px;
+	text-transform: capitalize;
+} */
+
+.adminTitle{
+	border:1px dashed #50a4aa;
+	background-color:#eee;
+	border-radius:5px;
+	text-align: center;
+	padding:5px;
+	display: inline-block;
+	height:50px;
+	position: relative;
+	left: 20px; top:87px;
+	padding:10px 20px;
+	box-sizing:border-box;
+	font-size: 1.3em;
+}
+
+.adminCont{
+	position: relative;
+	top: 120px;
+	right:500px;
+	width: 1100px;
+}
+
+.db_list {
+	border-collapse: collapse;
+	position: relative;
+	top: 120px;
+	left: 20px;
+	width: 1100px;
+}
+
+.adminCont{
+	border-collapse: collapse;
+	position: relative;
+	top: 120px;
+	left: 20px;
+	width: 1100px;
+}
+
+.db_list_insert {
+	/* border-collapse: collapse; */
+	border-top:1px dashed #808080;
+	position: relative;
+	top: 65px;
+	left: 40px;
+	height: 500px; width: 1100px;
+	padding:30px;
+	padding-left: 150px;
+}
+
+.db_list_insert td{
+	font-weight: bold;
+	font-size: 1.1em;
+	text-align: left;
+	padding-right: 20px;
+	height: 50px;
+}
+
+.db_list_insert td>input, .db_list_insert td textarea{
+	width:600px;
+	padding: 10px;
+	font-size: 1em;
+}
+.db_list th {
+	border: 1px solid #fff;
+	height: 50px;
+	background-color: #646464;
+	letter-spacing: 0.1em;
+	color: white;
+	font-size: 1.1em;
+	padding: 0px 5px 0px 5px;
+	text-align: center;
+}
+
+.db_list th.th1 {
+	width: 50px;
+}
+
+.db_list th.th2 {
+	width: 550px;
+}
+
+.db_list th.th3 {
+	width: 100px;
+}
+
+.db_list th.th4 {
+	width: 80px;
+}
+
+.db_list th.th5 {
+	width: 150px;
+}
+
+.db_list th.th6 {
+	width: 80px;
+}
+
+.db_list td{
+	font-size: 0.8em;
+}
+
+/* .db_list_mv {
+	border: 1px solid red;
+	border-collapse: collapse;
+	position: absolute;
+	top: 150px;
+	left: 300px;
+} */
+
+
+/* .db_list_mv th {
+	border: 1px solid #fff;
+	height: 40px;
+	background-color: #333;
+	letter-spacing: 0.3em;
+	color: white;
+	font-size: 20px;
+} */
+
+.db_list_mv td>input {
+	border: 1px solid #000;
+	height: 40px;
+	width:90%;
+	background-color: #fff;
+	letter-spacing: 0.3em;
+	color: black;
+	font-size: 20px;
+}
+
+.mv_btn {
+	width: 300px;
+    position: relative;
+    top: 180px;
+    left: 1130px;
+}
+
+.mv_btn input {
+	width: 80px;
+	height: 40px;
+	background-color: #50a4aa;
+	color:white;
+	border: 1px solid #999;
+	cursor: pointer;
+	margin-right: 20px;
+	border-radius: 10px;
+} 
+
+.db_list td {
+	border: 1px solid #333;
+	height: 50px;
+	text-align: center;
+	font-size: 18px;
+}
+
+.db_list td a {
+	text-decoration: none;
+	color: #224648;
+	font-weight: bold;
+}
+
+.db_list td a:HOVER{
+	color:#50a4aa;
+}
+
+.prev_next {
+	/* border:1px solid blue; */
+	text-align: center;
+	position: relative;
+	width:1200px;
+	bottom: -120px;
+	left: 200px;
+}
+
+.prev_next a {
+	/* border:1px solid red;
+	text-transform: capitalize;
+	margin: 0 10px;
+	font-size: 1.1em; */
+	text-decoration: none;
+	color: #000;
+} 
+
+.thisPage {
+	border:1px solid #c0c0c0;
+	border-radius:5px;
+	padding:5px;
+	margin: 0 2px;
+	font-size: 1.1em;
+	text-decoration: none;
+	color: #ff8000;
+	font-weight: bold;
+}
+
+.normalPage{
+	/* border:1px solid #c0c0c0;
+	border-radius:5px; */
+	/* padding: 2px; */
+	margin: 0 2px;
+	font-size: 1.1em;	
+	color: #000;
+}
+
+/* .prev_next a:HOVER{
+	text-decoration: underline;
+	color:#ff8000; 
+} */
+
+.thisPage:HOVER, .normalPage:HOVER{
+	text-decoration: underline;
+	color:#ff8000; 
+}
+
+
+
+
+/************** admin db review list **************/
+
+.rv_th1 {
+	width: 330px;
+}
+
+.rv_th2 {
+	width: 120px;
+}
+
+.rv_th3 {
+	width: 400px;
+}
+
+.rv_th4 {
+	width: 80px;
+}
+
+.rv_th5 {
+	width: 150px;
+}
+
+.rv_th6 {
+	width: 80px;
+}
+
+#ad_content{
+	padding:20px;
+}
+
+
+/************** admin db pay list **************/
+
+.pay_th1 {
+	width: 80px;
+}
+
+.pay_th2 {
+	width: 350px;
+}
+
+.pay_th3 {
+	width: 350px;
+}
+
+.pay_th4 {
+	width: 80px;
+}
+
+.pay_th5 {
+	width: 150px;
+}
+
+.pay_th6 {
+	width: 150px;
+}
+
+/************** admin notice write **************/
+
+.admin-notice-write {
+	/* border:1px solid red; */
+	position: relative;
+	top:130px;
+	left: 1230px;
+	width: 350px; height: 40px;
+}
+.c_admin-notice-write {
+	/*  border:1px solid red;  */
+	margin:0 auto;
+	position: relative;
+	top:500px;
+	left: 430px; 
+	width: 350px; height: 40px;
+}
+
+.u_admin-notice-write {
+	/*  border:1px solid red;  */
+	margin:0 auto;
+	position: relative;
+	top:1100px;
+	left: 430px; 
+	width: 350px; height: 40px;
+}
+
+
+
+.wirtebtn {
+	border:1px solid #50a4aa;
+	border-radius:10px;
+	/* background-color: #aad3d7; */
+	/* border-radius: 30px; */
+	/* font-weight:bold; */
+	font-size:1.0em;
+	color: #000;
+	letter-spacing: 0.2px;
+	width: 90px; height: 40px;
+	padding: 5px;
+	font-weight: bold;
+}
+
+.wirtebtn:HOVER {
+	 background-color: #aad3d7;
+}
+
+.admin_movie_insert {
+	position: relative;
+	left: 1480px;
+	bottom: -20px;
+	width: 200px;
+	height: 50px;
+	font-size: 18px;
+	letter-spacing: 1.2px;
+	cursor: pointer;
+}
