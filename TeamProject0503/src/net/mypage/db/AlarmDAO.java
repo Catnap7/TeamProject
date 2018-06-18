@@ -222,6 +222,7 @@ public class AlarmDAO {
 				ab.setA_movie_name(rs.getString("a_movie_name"));
 				ab.setA_check(rs.getInt("a_check"));
 				ab.setA_follower(rs.getString("a_follower"));
+				ab.setA_forAdmin(rs.getString("a_forAdmin"));
 				//fb.setF_date(rs.getTimestamp("f_date"));
 				alarmList.add(ab);
 				sql="select * from movie where mv_kor_title=?";
