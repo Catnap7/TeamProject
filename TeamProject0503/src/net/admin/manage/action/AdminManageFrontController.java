@@ -25,10 +25,13 @@ public class AdminManageFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/AdminManageList.am")){		      
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./admin/admin_manage_list.jsp");
+		}else if(command.equals("/AdminManageList.am")){
+			action = new AdminManageList();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else if(command.equals("/AdminMember_List_Search.am")) {     
 			forward = new ActionForward();
 			forward.setRedirect(false);
