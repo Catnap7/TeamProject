@@ -20,9 +20,11 @@
 
 <style>
 #image{
-  margin:0px auto;z-index:10;
+  margin:0px auto;z-index:10; 
+  position: relative;
+  top: -40px;
 }
-#n_id{position:absolute;left:941px;top:330px;z-index:20;}
+#n_id{position:absolute;left:941px;top:350px;z-index:20;}
 </style>
 </head>
 <!-- 헤더영역 -->
