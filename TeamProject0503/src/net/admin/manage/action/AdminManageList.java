@@ -11,7 +11,7 @@ public class AdminManageList implements Action {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("m_id");
 		System.out.println(id);
-		if(id == null && id != "admin"){
+		if(id == null || !id.equals("admin")){
 			ActionForward forward = new ActionForward();
 			forward.setPath("./intro.st");
 			forward.setRedirect(true);

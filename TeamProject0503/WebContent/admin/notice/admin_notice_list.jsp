@@ -29,7 +29,7 @@
 	<article>
 	<div id="content">
 		<h1 class="adminTitle">공지사항</h1>
-		<table class="db_list">
+		<table class="db_list db_list2">
 			<tr>
 				<th class="th1">No</th>
 				<th class="th2">제목</th>
@@ -56,7 +56,7 @@
 				}
 			%>
 		</table>
-		<div class="admin-notice-write">
+		<div class="admin-notice-write2">
 			<form action="./AdminNoticeWrite.an">
 				<button type="submit" class="wirtebtn">글쓰기</button>
 			</form>

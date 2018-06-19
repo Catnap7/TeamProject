@@ -17,7 +17,7 @@ public class AdminNoticeWriteAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session= request.getSession();
 		String id=(String)session.getAttribute("m_id");
-		if(id==null && id!="admin"){
+		if(id==null || !id.equals("admin")){
 			ActionForward forward= new ActionForward();
 			forward.setPath("./intro.st");
 			forward.setRedirect(true);
