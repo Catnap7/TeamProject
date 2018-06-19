@@ -2,6 +2,7 @@ package net.admin.manage.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.admin.manage.db.MovieBean;
 import net.admin.manage.db.MovieDAO;
@@ -11,6 +12,14 @@ public class AdminMovieInsert implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
+		HttpSession session= request.getSession();
+		String id=(String)session.getAttribute("m_id");
+		if(id==null && id!="admin"){
+			ActionForward forward= new ActionForward();
+			forward.setPath("./intro.st");
+			forward.setRedirect(true);
+			return forward;
+		}
 		MovieBean mob = new MovieBean();
 		mob.setMv_kor_title(request.getParameter("mv_kor_title"));
 		mob.setMv_eng_title(request.getParameter("mv_eng_title"));

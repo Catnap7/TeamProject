@@ -61,38 +61,6 @@
 				<button type="submit" class="wirtebtn">글쓰기</button>
 			</form>
 		</div>
-		<table class="db_list">
-			<tr>
-				<th class="th1">No</th>
-				<th class="th2">제목</th>
-				<th class="th5">작성일</th>
-			</tr>
-			<%
-				if(AdminNoticeList == null) {
-					%>
-			<tr>
-				<td colspan="5">공지사항 없습니다.</td>
-			</tr>
-			<%
-				}else {
-					for (int i = 0; i < AdminNoticeList.size(); i++) {
-						NoticeBean nb = (NoticeBean) AdminNoticeList.get(i);
-							%>
-			<tr>
-				<td><%=nb.getN_num() %></td>
-				<td><a href="./AdminNoticeContent.an?n_num=<%=nb.getN_num() %>"><%=nb.getN_subject() %></a></td>
-				<td><%=nb.getN_date() %></td>
-			</tr>
-			<%
-						}			
-					}				
-				%>
-		</table>
-		<div class="admin-notice-write">
-			<form action="./AdminNoticeWrite.an">
-				<button type="submit" class="wirtebtn">글쓰기</button>
-			</form>
-		</div>
 		<div class="prev_next">
 			<%
 				if (startPage > pageBlock) {

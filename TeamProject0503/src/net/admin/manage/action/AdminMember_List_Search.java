@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 import net.admin.manage.db.AdminMemberDAO;
@@ -42,7 +43,7 @@ public class AdminMember_List_Search extends HttpServlet {
 			case 1: StrGrade="정회원"; break;
 			case 0: StrGrade="준회원"; break;
 			}
-			result.append("[{\"value\" : \"<a href='FollowMyHome.fo?m_id="+userList.get(i).getM_id()+"'>" + userList.get(i).getM_id() + "</a>\"},");
+			result.append("[{\"value\" : \"<a href='./FollowMyHome.fo?m_id="+userList.get(i).getM_id()+"'>" + userList.get(i).getM_id() + "</a>\"},");
 			result.append("{\"value\" : \"" + userList.get(i).getM_name() + "\"},");
 			result.append("{\"value\" : \"" + StrGrade + "\"},");
 			result.append("{\"value\" : \"" + userList.get(i).getM_reg_date() + "\"},");
