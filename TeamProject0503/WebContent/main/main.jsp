@@ -12,10 +12,6 @@
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 <title>왓츄 : WATCHU</title>
 
-
-
-
-
 <!-- icon -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -23,6 +19,8 @@
 <script src="./js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="./js/jquery.ulslide.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- 팝업 창 -->
 <jsp:include page="../popup/popup.jsp"/>
 
 <!-- CSS -->
@@ -303,115 +301,105 @@ String id = (String)request.getAttribute("m_id");
 List<MovieBean> favoritelist = (List)request.getAttribute("favoritelist");
 int favoritecount = ((Integer)request.getAttribute("favoritecount")).intValue();
 String classname = null;
-/* if(favoritecount>=13){
-	classname = "main1";
-}else{
-	classname = "main2";
-} */
 
 List<MovieBean>mainMovieList=(List)request.getAttribute("mainMovieList");
 List<MovieBean>mostReviewsList=(List)request.getAttribute("mostReviewsList");
-/* List<FavoriteBean>favList=(List)request.getAttribute("favList"); */
+int allreviewcount=((Integer)request.getAttribute("allreviewcount")).intValue(); 
 
 List<MovieBean>Mostcount = (List)request.getAttribute("Mostcount");
 List<MovieBean>Bestrating = (List)request.getAttribute("Bestrating");
 List<MovieBean>Bestmovie = (List)request.getAttribute("Bestmovie");
 List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMovieList");
 
-int allreviewcount=((Integer)request.getAttribute("allreviewcount")).intValue(); 
-
 %>
 
 <!-- 크롬 기준 -->
-
 
 <!-- 헤더 영역 -->
 <jsp:include page="../inc/header.jsp"/>
 <!-- 헤더 영역 -->
 
 
-<!-- 아티클 -->
-<%-- <article class=<%=classname%>> --%>
 <article class="main">
-<div class="mainMovie">
-
-
-<p class="mainCoverTitle">왓츄 TODAY</p>
-
-	<!--################# 메인 영화 추천################## -->
-	<div class="mainCover">	
-		<%for(int i=0;i<mainMovieList.size();i++){ %>
-		<div class="mainPicBack">
-			<div class="mainPic">
-			<%	
-					MovieBean moviebean = mainMovieList.get(i);
-					String img_genre= "";
-						if(moviebean.getMv_genre().equals("animation")){
-							img_genre="animation";
-						}else if(moviebean.getMv_genre().equals("comedy")){
-							img_genre="comedy";
-						}else if(moviebean.getMv_genre().equals("indie")){
-							img_genre="indie";
-						}else if(moviebean.getMv_genre().equals("sf")){
-							img_genre="sf";
-						}else if(moviebean.getMv_genre().equals("action")){
-							img_genre="action";
-						}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
-							img_genre="thriller";
-						}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
-							img_genre="romance";
-						}
+	<div class="mainMovie">
+	
+	<p class="mainCoverTitle">왓츄 TODAY</p>
+	
+		<!--################# 메인 영화 추천################## -->
+		<div class="mainCover">	
+			<%for(int i=0;i<mainMovieList.size();i++){ %>
+			<div class="mainPicBack">
+				<div class="mainPic">
+				<%	
+						MovieBean moviebean = mainMovieList.get(i);
+						String img_genre= "";
+							if(moviebean.getMv_genre().equals("animation")){
+								img_genre="animation";
+							}else if(moviebean.getMv_genre().equals("comedy")){
+								img_genre="comedy";
+							}else if(moviebean.getMv_genre().equals("indie")){
+								img_genre="indie";
+							}else if(moviebean.getMv_genre().equals("sf")){
+								img_genre="sf";
+							}else if(moviebean.getMv_genre().equals("action")){
+								img_genre="action";
+							}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
+								img_genre="thriller";
+							}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
+								img_genre="romance";
+							}
+							
+						String genre= "";
+							if(moviebean.getMv_genre().equals("animation")){
+								genre="애니메이션";
+							}else if(moviebean.getMv_genre().equals("comedy")){
+								genre="코미디";
+							}else if(moviebean.getMv_genre().equals("indie")){
+								genre="독립영화";
+							}else if(moviebean.getMv_genre().equals("sf")){
+								genre="SF";
+							}else if(moviebean.getMv_genre().equals("action")){
+								genre="액션";
+							}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
+								genre="호러/스릴러";
+							}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
+								genre="로맨스/드라마";
+							}
+			
+					 	String age = "";
+							switch(moviebean.getMv_age()){
+								case 0  : age="전체이용가"; break;
+								case 12	: age="12세이용가"; break;
+								case 15	: age="15세이용가"; break;
+								case 19 : age="청소년관람불가"; break;
+							}
+					 
+						String moviename = moviebean.getMv_eng_title();
+						String imgname = moviename.replaceAll(" " , "");
+				 		imgname = imgname.replaceAll("\\p{Z}", "");%>
 						
-					String genre= "";
-						if(moviebean.getMv_genre().equals("animation")){
-							genre="애니메이션";
-						}else if(moviebean.getMv_genre().equals("comedy")){
-							genre="코미디";
-						}else if(moviebean.getMv_genre().equals("indie")){
-							genre="독립영화";
-						}else if(moviebean.getMv_genre().equals("sf")){
-							genre="SF";
-						}else if(moviebean.getMv_genre().equals("action")){
-							genre="액션";
-						}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
-							genre="호러/스릴러";
-						}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
-							genre="로맨스/드라마";
-						}
-		
-				 	String age = "";
-						switch(moviebean.getMv_age()){
-							case 0  : age="전체이용가"; break;
-							case 12	: age="12세이용가"; break;
-							case 15	: age="15세이용가"; break;
-							case 19 : age="청소년관람불가"; break;
-						}
-				 
-					String moviename = moviebean.getMv_eng_title();
-					String imgname = moviename.replaceAll(" " , "");
-			 		imgname = imgname.replaceAll("\\p{Z}", "");%>
-					
-					<div class="mainPos"><img id="mainPos" src="./images/<%=img_genre%>/<%=imgname%>_p.jpg">
-						 <p id="play" onclick="document.getElementById('id0<%=i+1%>').style.display='block'"><a href="#"><img src="./images/play.png"></a></p>
-						 
-						 <a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>">
-						 	<p><span id="mainPosTitle"><%=moviebean.getMv_kor_title()%></span><br><%=genre+" / "+age %></p></a>
-					</div>	
-					<!-- modal javascript -->
-					<div id="id0<%=i+1%>" class="w3-modal">
-					    <div class="w3-modal-content">
-					      <div class="w3-container">
-					        <span onclick="document.getElementById('id0<%=i+1%>').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-					        <iframe width="1000" height="700"src="<%=moviebean.getMv_video()%>" allowfullscreen frameborder="0" scrolling="no"></iframe>
-					      </div>
-					    </div>
-				   </div> <!-- modal -->							
-				</div>
-				</div>
-			<%}%><!--for문 -->
-		</div>	
-	<div class="clear"></div>	
-</div> 
+						<div class="mainPos"><img id="mainPos" src="./images/<%=img_genre%>/<%=imgname%>_p.jpg">
+							 <p id="play" onclick="document.getElementById('id0<%=i+1%>').style.display='block'"><a href="#"><img src="./images/play.png"></a></p>
+							 
+							 <a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>">
+							 	<p><span id="mainPosTitle"><%=moviebean.getMv_kor_title()%></span><br><%=genre+" / "+age %></p></a>
+						</div>	
+						<!-- modal javascript -->
+						<div id="id0<%=i+1%>" class="w3-modal">
+						    <div class="w3-modal-content">
+						      <div class="w3-container">
+						        <span onclick="document.getElementById('id0<%=i+1%>').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+						        <iframe width="1000" height="700"src="<%=moviebean.getMv_video()%>" allowfullscreen frameborder="0" scrolling="no"></iframe>
+						      </div>
+						    </div>
+					   </div> <!-- modal -->							
+					</div>
+					</div>
+				<%}%><!--for문 -->
+			</div>	
+		<div class="clear"></div>	
+	</div> <!-- mainmovie -->
+
 
 	<!--################# 리뷰 차트 ################## -->
 	<div class="chart">
@@ -461,6 +449,7 @@ int allreviewcount=((Integer)request.getAttribute("allreviewcount")).intValue();
 			<%=allreviewcount%></p>
 		</div>
 	</div>
+	
 	<!--################# 룰렛 링크################## -->
 	<div class="sheep">
 		<a href="./Roulette.ro">
@@ -472,13 +461,12 @@ int allreviewcount=((Integer)request.getAttribute("allreviewcount")).intValue();
 <div class="clear"></div>
 
 
-
 <!-- 이번달 인기영화-->
 <div class="containerWithBtn">	
   	<div class="container"> 
   		<h2><span><img src="./images/slate.png" width="30px" height="30px"></span><span id="title">이번 달 인기 영화</span></h2>
 		<div class="slider trending">
-			 <!--for문으로 반복 하시면 됩니다-->
+			
 		<%for(MovieBean moviebean  : Bestmovie){
 		  		
 		/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/
@@ -531,9 +519,8 @@ int allreviewcount=((Integer)request.getAttribute("allreviewcount")).intValue();
 </div><!-- containerWithBtn -->
 
 
-	
+<!-- 회원님이 별점을 높게 준 영화와 비슷한 영화 -->	
 <%if(Bestrating!=null){ %>	
-<!-- 회원님이 별점을 높게 준 영화와 비슷한 영화 -->
 <div class="containerWithBtn"> 	
   	<div class="container">  <!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  		
   		<h2>회원님이 별점을 높게 준 영화와 비슷한 영화</h2>
@@ -593,9 +580,9 @@ int allreviewcount=((Integer)request.getAttribute("allreviewcount")).intValue();
 	<%} %>
 </div><!-- containerWithBtn -->
 
-		
+
+<!-- 회원님이 많이 본 영화와 비슷한 영화 -->		
 <%if(Mostcount!=null){ %>		
-<!-- 회원님이 많이 본 영화와 비슷한 영화 -->
 <div class="containerWithBtn">
   	<div class="container">  <!-- img src를 DB에서 가져온 그림으로 대체해 주세요 -->  		
   		<h2>회원님이 좋아하는 영화가 될 것 같아요</h2>
@@ -656,9 +643,8 @@ int allreviewcount=((Integer)request.getAttribute("allreviewcount")).intValue();
 </div><!-- containerWithBtn -->	
 
 
-<%if(favoritecount>=13){%>
 <!-- 회원님이 보고싶은 영화 (즐겨찾기)-->
-
+<%if(favoritecount>=13){%>
 <div class="containerWithBtn">
   	<div class="container">  		
   		<h2>즐겨찾기에 담긴 영화</h2>
@@ -780,10 +766,6 @@ int allreviewcount=((Integer)request.getAttribute("allreviewcount")).intValue();
 
 	
 </article>
-<!-- 아티클 영역 끝 -->
-
-
-
 
 
 <div class="clear"></div>

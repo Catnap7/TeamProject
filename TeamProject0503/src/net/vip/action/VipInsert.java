@@ -38,13 +38,10 @@ public class VipInsert implements Action{
 		
 		VipDAO vipdao=new VipDAO();
 		vipdao.insertVip(vipbean);
-		
-		
+
 		//시사회 좌석 테이블 리셋
 		vipdao.resetVipSeat();
-		
-		
-		
+
 		ActionForward forward=new ActionForward();
 		forward.setRedirect(true);
 		forward.setPath("VipMovieList.vi");

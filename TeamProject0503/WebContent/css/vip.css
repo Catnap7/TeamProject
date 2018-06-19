@@ -56,7 +56,7 @@ body{
 .gradeInfo span{
 	font-size:1.2em;
 	font-weight: bold;
-	color: #50d4aa;
+	color: #ff8800;
 	/* font-family: 'Abril Fatface', cursive; */
 }
 
@@ -73,7 +73,7 @@ body{
 	 animation-duration: 3s;
 	 animation-iteration-count: infinite;
 	 opacity: 1;
-	 background-color: #50d4aa;
+	 background-color: #80ffff;
 }
 
 @keyframes animate {

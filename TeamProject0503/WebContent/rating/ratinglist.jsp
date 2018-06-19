@@ -37,7 +37,7 @@
 <div class="movie_wrap">
 	<div class="movie_star">
 		<p><img src="./images/analysis.png" width="80px" height="80px"></p>
-		<p>관람하신 영화의 별점을 매겨주시면 왓챠가 회원님의 취향을 분석해 드려요!</p>
+		<p>관람하신 영화의 별점을 매겨주시면 왓츄가 회원님의 취향을 분석해 드려요!</p>
 	</div>
 	<section class="movie_sec">
 

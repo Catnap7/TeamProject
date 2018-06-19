@@ -161,29 +161,11 @@ case 19 : age="청소년관람불가"; break;
 	
 	
 	function abc(c) {
-//		alert(c);
-//c는 체크해야 하는 아이디값
 		$(document).ready(function(){
 				
 			$("[id="+c+"]").attr( "checked", "checked" );
 		});
 	}
-	
-/* 	
-	$(document).ready(function(){
-		//string2.jsp에
-		//파라미터값 넘겨서data:{name:"홍길동", age:21}
-		//결과 받아서 body 태그 뒷부분에 추가
-		
-		$(".rating").addClass("pp");
-
-		$(".pp").checked = false;
-		
-	});
-	 */
-	
-	//
-	
 	
 	</script>
 <script type="text/javascript">
@@ -208,7 +190,6 @@ $(document).ready(function(){
 </script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		/* document.getElementById("#dup").innerHTML += "<input type='hidden' name='' id=''/>"; */
 
 	
 	$('#favorite').click(function(){
@@ -293,7 +274,7 @@ $(document).ready(function(){
 		<!--즐겨찾기  -->
 		  <fieldset class="like" id="starfield<%=mv_num %>" >
       	
-    			   <div id="dup"></div><!--  <input type="hidden" id ="dup_fa" value=""> -->
+    			   <div id="dup"></div>
     			   <%  if(favoritebean !=null){
     				      if(favoritebean.getF_id()!=null && favoritebean.getF_num()==mv_num){
 				    %><input type="button" id="favorite" name="fa_favorite" value="즐찾" style="display: none;"/><label id="fa" class = "fa_full" for="favorite" title="좋아요" style="color: red;"></label><%
@@ -308,32 +289,6 @@ $(document).ready(function(){
     			    <input type="hidden" id ="mv_num"value="<%=mv_num%>">
     			    
   	 </fieldset>
-	<%-- 	
-		<%
-		if(favoritebean !=null){
-		if(favoritebean.getF_id()!=null && favoritebean.getF_num()==mv_num)
-		{
-	%>		
-		<form action="" id="starform<%=mv_num %>">
-				<input type="hidden" name="f_num" value="<%=mv_num %>">
-				<fieldset class="like" id="starfield<%=mv_num %>" >
-				    <input type="checkbox" id="favorite" name="fa_favorite" checked="checked"/><label class = "full" for="favorite" title="좋아요"></label>
-				</fieldset>
-		</form>
-	<%		
-		}
-		}else{
-	%>
-		<form action="" id="starform<%=mv_num %>">
-			<input type="hidden" name="f_num" value="<%=mv_num %>">
-			<fieldset class="like" id="starfield<%=mv_num %>" >
-			    <input type="checkbox" id="favorite" name="fa_favorite" /><label class = "full" for="favorite" title="좋아요"></label>
-			</fieldset>
-		</form>
-	<%
-		}
-			%>
-			 --%>
 		 <%															
       if(memberBean.getM_pay()==0){
          %>
@@ -421,7 +376,6 @@ $(document).ready(function(){
 	<div class="coment">
 	<hr>
 	
-	<!--    <a id="recommend_sort">추천순</a> | <a id="date_sort">최신순</a> -->
 		<a id="rec"></a><a id="new"></a>
 		<div class="sort_wrap">
 		<a href="./CategoryMovie.ca?mv_num=<%=moviebean.getMv_num()%>&order=recommend#rec" class="sort_btn">추천순</a>
@@ -507,11 +461,9 @@ $(document).ready(function(){
 					%>
 					<tr>
  			           <td>
-<%--                     <a href="./RecommendAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>&r_id=<%=reviewbean.getR_id() %>">추천</a> |  --%>
 					
                     <a id="recommend<%=reviewbean.getR_num() %>"><img alt="추천" src="./images/recommend.PNG" style="width: 40px; height: 40px; border-radius: 30px;" title="추천"></a>
                     <a id="report<%=reviewbean.getR_num() %>"><img alt="신고" src="./images/report.PNG" style="width: 40px; height: 40px; border-radius: 30px;" title="신고"></a>
-<%--                     <a href="./ReportAction.ca?r_num=<%=reviewbean.getR_num() %>&mv_num=<%=moviebean.getMv_num() %>&id=<%=id %>">신고</a> --%>
                     
                     <input type="hidden" id="r_num<%=reviewbean.getR_num() %>" value="<%=reviewbean.getR_num() %>">
 					<input type="hidden" id="mv_num<%=reviewbean.getR_num() %>" value="<%=moviebean.getMv_num() %>">
@@ -526,11 +478,6 @@ $(document).ready(function(){
 								var mv_num = $('#mv_num<%=reviewbean.getR_num() %>').val();
 								var id = $('#id<%=reviewbean.getR_num() %>').val();
 								var r_id = $('#r_id<%=reviewbean.getR_num() %>').val();
-								
-<%-- 								alert($('#r_num<%=reviewbean.getR_num() %>').val()); --%>
-<%-- 								alert($('#mv_num<%=reviewbean.getR_num() %>').val()); --%>
-<%-- 								alert($('#id<%=reviewbean.getR_num() %>').val()); --%>
-<%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
 								
 									$.ajax({
 										type: "post",
@@ -557,10 +504,6 @@ $(document).ready(function(){
 								var id = $('#id<%=reviewbean.getR_num() %>').val();
 								var r_id = $('#r_id<%=reviewbean.getR_num() %>').val();
 								
-<%-- 								alert($('#r_num<%=reviewbean.getR_num() %>').val()); --%>
-<%-- 								alert($('#mv_num<%=reviewbean.getR_num() %>').val()); --%>
-<%-- 								alert($('#id<%=reviewbean.getR_num() %>').val()); --%>
-<%-- 								alert($('#r_id<%=reviewbean.getR_num() %>').val()); --%>
 								
 									$.ajax({
 										type: "post",

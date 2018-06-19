@@ -13,9 +13,7 @@ public class VipMovieContent implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("VipMovieContent execute()"); 
-		
-		
-		
+
 		int v_num = Integer.parseInt(request.getParameter("v_num"));
 		System.out.println("v_num : " +v_num);
 		VipDAO vipdao = new VipDAO();
