@@ -1,8 +1,5 @@
 package net.mypage.action;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Vector;
 
@@ -12,9 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import net.mypage.db.AlarmBean;
 import net.mypage.db.AlarmDAO;
-import net.mypage.db.CouponBean;
-import net.mypage.db.CouponDAO;
-
 
 public class Alarm implements Action{
 	ActionForward forward;
@@ -24,8 +18,7 @@ public class Alarm implements Action{
 				// pageBlock, startPage, endPage 저장				
 				System.out.println("Alarm execute()");
 				//한글처리
-				request.setCharacterEncoding("utf-8");				
-				AlarmBean ab = new AlarmBean();
+				request.setCharacterEncoding("utf-8");								
 				AlarmDAO adao = new AlarmDAO();
 				HttpSession session=request.getSession();		
 				String id = (String)session.getAttribute("m_id");
