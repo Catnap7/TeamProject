@@ -334,7 +334,6 @@ public class AlarmDAO {
 	 }//end list
 	
 	public void insertAlarm(AlarmBean ab){
-		System.out.println("insertAlarm");
 		Connection con=null;
 		String sql="";
 		PreparedStatement pstmt=null;

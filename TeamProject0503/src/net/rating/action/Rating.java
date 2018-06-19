@@ -13,7 +13,6 @@ public class Rating implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println("rating execute()");
 
 		request.setCharacterEncoding("utf-8");	
 		//내 id에서 평점남기지않은 영화 불러 오기 id넘기기

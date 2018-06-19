@@ -13,7 +13,6 @@ public class Roulette implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("Roulette execute()");
 		request.setCharacterEncoding("utf-8");	
 		
 		HttpSession session= request.getSession();

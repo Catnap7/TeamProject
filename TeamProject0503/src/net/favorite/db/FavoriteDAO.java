@@ -317,7 +317,6 @@ public class FavoriteDAO {
 			}
 //			무비리스트에 다 다른 주소가 저장되었는지 확인			
 //			for (int j = 0; j < 10; j++) {
-//				System.out.println(movieList.get(j));
 //			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

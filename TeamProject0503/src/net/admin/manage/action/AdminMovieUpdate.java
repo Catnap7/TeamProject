@@ -11,14 +11,10 @@ public class AdminMovieUpdate implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("AdminMovieUpdate execute()");
 		String mv_num = request.getParameter("mv_num");
 		AdminMovieDAO amdao = new AdminMovieDAO();
 		MovieBean movieBean = amdao.getMovieInfo(mv_num);
-		
 		request.setAttribute("movieBean", movieBean);
-
-		System.out.println(movieBean.getMv_actor());
 		ActionForward forward = new ActionForward();
 		forward.setPath("./admin/manage/admin_movie_update.jsp");
 		forward.setRedirect(false);

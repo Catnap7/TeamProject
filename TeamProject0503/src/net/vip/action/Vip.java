@@ -18,7 +18,6 @@ public class Vip implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("Vip execute");
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 

@@ -15,7 +15,6 @@ import net.roulette.db.rouletteDAO;
 public class RouletteWinner implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("RouletteWinner execute()");
 		request.setCharacterEncoding("utf-8");
 		
 		HttpSession session= request.getSession();

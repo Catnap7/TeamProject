@@ -1,33 +1,18 @@
 <%@page import="net.admin.manage.db.MovieBean"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-<title>와츄 : WATCHU</title>
-
-<!-- CSS -->
+<title>왓츄 : WATCHU</title>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
-
-<!--  border/writeForm.jsp -->
 </head>
-<%
-
-MovieBean movieBean = (MovieBean)request.getAttribute("movieBean");
-
-%>
+<% MovieBean movieBean = (MovieBean)request.getAttribute("movieBean"); %>
 <body>
-	<!-- 헤더영역 -->
 	<jsp:include page="../../inc/header.jsp" />
-	<!-- 헤더영역 -->
-
-	<!-- 어드민 서브메뉴 -->
 	<jsp:include page="../../inc/admin_sub.jsp" />
-	<!-- 어드민 서브메뉴 -->
-
 	<section class="content_member">
 	<div id="content">
 	<form action="./AdminMovieUpdate.am?mv_num=<%=movieBean.getMv_num() %>">
@@ -78,16 +63,13 @@ MovieBean movieBean = (MovieBean)request.getAttribute("movieBean");
 				</tr>
 			</table>
 			<div class="mv_btn">
-			<input type="button" value="수정하기"onclick="location.href('./AdminMovieUpdate.am?mv_num=<%=movieBean.getMv_num() %>')">
-			<input type="button" value="삭제하기" onclick="location.href('./AdminMovieDelete.am?mv_num=<%=movieBean.getMv_num() %>')">
+			<input type="button" value="수정하기"onclick="location.href='./AdminMovieUpdate.am?mv_num=<%=movieBean.getMv_num() %>'">
+			<input type="button" value="삭제하기" onclick="location.href='./AdminMovieDelete.am?mv_num=<%=movieBean.getMv_num() %>'">
 			<input type="button" value="돌아가기" onclick="history.back()">
 			</div>
 			</form>
 	</div>
 	</section>
-
-	<!-- 푸터 영역 -->
 	<jsp:include page="../../inc/footer.jsp" />
-	<!-- 푸터 영역 -->
 </body>
 </html>

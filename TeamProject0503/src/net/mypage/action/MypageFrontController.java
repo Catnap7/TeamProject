@@ -12,9 +12,7 @@ public class MypageFrontController extends HttpServlet{
 
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MypageFrontController doProcess()");
 		String requestURI=request.getRequestURI();
-		System.out.println("URI주소 : "+requestURI);
 		String context=request.getContextPath();
 		String command=requestURI.substring(context.length());
 		ActionForward forward=null;
@@ -138,12 +136,10 @@ public class MypageFrontController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MypageFrontController doGet()");	
 		doProcess(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MypageFrontController doPost()");
 		doProcess(request, response);
 		
 	}

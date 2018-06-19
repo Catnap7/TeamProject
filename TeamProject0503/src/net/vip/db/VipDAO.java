@@ -465,7 +465,6 @@ public class VipDAO {
 				
 				vector.add(vipMemberList);
 				vector.add(seatList);
-				System.out.println(vipMemberList.size());
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {

@@ -9,8 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
-<title>와츄 : WATCHU</title>
-
+<title>왓츄 : WATCHU</title>
 <!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <!-- <link href="./css/mypage.css" rel="stylesheet" type="text/css"> -->
@@ -25,6 +24,16 @@
 
 <!-- icon -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- script -->
+<script>
+	function ratinglist(c) {
+		//c는 영화 넘버로 설정된 id를 불러와, 영화마다 별점 셋팅을 해준다
+		$(document).ready(function(){
+			$("[id="+c+"]").attr( "checked", "checked" );
+		});
+	}
+</script>
 
 </head>
 <body>
@@ -52,23 +61,9 @@ if(count-(pageNum-1)*10<=5){
 <!-- 헤더영역 -->
 
 <article>
-<%-- <div class="<%=class_name%>"> --%>
 <div class="movie_wrap">
-	
-	
 	<section class="movie_sec">
-	
-		<script>
-	
-			function abc(c) {
-				//c는 영화 넘버로 설정된 id를 불러와, 영화마다 별점 셋팅을 해준다
-				$(document).ready(function(){
-					$("[id="+c+"]").attr( "checked", "checked" );
-				});
-			}
-	
-		</script>
-	
+		
 	<%
 	if(ratinglist!=null&& movielist!=null){
 		%>
@@ -86,7 +81,6 @@ if(count-(pageNum-1)*10<=5){
 		String moviename = moviebean.getMv_eng_title();
 		String imgname = moviename.replaceAll(" " , "");
 		imgname = imgname.replaceAll("\\p{Z}", "");
-//		int mv_num=moviebean.getMv_num();
 		int mv_num=ratingbean.getRa_p_num();
 		int ra_rating=ratingbean.getRa_rating();
 
@@ -107,18 +101,17 @@ if(count-(pageNum-1)*10<=5){
 		}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
 			img_genre="romance";
 		}
-
 	%>
 		<div class="movie_sec_inner" >
 			<a href="./CategoryMovie.ca?mv_num=<%=mv_num %>"><img src="./images/<%=img_genre%>/<%=imgname %>_p.jpg" width="250px" height="350px"></a><br>
 			<div class="star">
 				<form action="" id="starform<%=mv_num %>">
 				<input type="hidden" name="ra_p_num" value="<%=mv_num %>">
-				<!-- 별점 시작 -->
+				<!-- 별점셋팅용  script -->
 				<script type="text/javascript">
-					abc("star"+<%=ra_rating%>+<%=mv_num%>);
+					ratinglist("star"+<%=ra_rating%>+<%=mv_num%>);
 				</script>
-
+				<!-- 별점 시작 -->
 				<fieldset class="rating" id="starfield<%=mv_num %>" >
 				    <input type="radio" id="star5<%=mv_num %>" name="ra_rating" value="5" /><label class = "full" for="star5<%=mv_num %>" title="5 stars"></label>
 				    <input type="radio" id="star4<%=mv_num %>" name="ra_rating" value="4" /><label class = "full" for="star4<%=mv_num %>" title="4 stars"></label>
@@ -128,34 +121,11 @@ if(count-(pageNum-1)*10<=5){
 				</fieldset>
 				<!-- 별점 끝 -->
 				</form>
-				<!-- 영화정보 -->
-				<%-- <div><%=moviebean.getMv_kor_title() %>	</div> --%>
-				<%-- <div><%=moviebean.getMv_year() %>	</div> --%>
-				<%-- <div><%=age %>	</div> --%>
 			</div>
-			
 		</div>
-		
 		<%
 		}
 	%>
-	
-															
-		
-	<%-- <div class="prev_next">
-		<%
-		if(startPage>pageBlock){			
-			%><a href="./Myrating.my?pageNum=<%=startPage-pageBlock%>">prev</a><%
-		}
-		for(int i=startPage;i<=endPage;i++) {
-			%><a href="./Myrating.my?pageNum=<%=i%>"><span <%if(i==pageNum){%>style=color:red;<%} %>><%=i%></span></a><%
-		}
-		if(pageCount>endPage){
-			%><a href="./Myrating.my?pageNum=<%=startPage+pageBlock%>">next</a><%
-		}
-		%>
-	</div>  --%><!-- 페이지처리 슬라이드버튼으로 변경 -->
-	
 	</section>
 	
 		<!-- button -->
@@ -182,18 +152,3 @@ if(count-(pageNum-1)*10<=5){
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
