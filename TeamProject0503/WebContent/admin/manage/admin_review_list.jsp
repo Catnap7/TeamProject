@@ -49,7 +49,7 @@
 		<input type="text" onkeyup="searchFunction()" id="searchValue" placeholder="검색할 내용 입력해라.">
 		<button type="button" onclick="searchFunction();"><img src="./images/search.png" width="20px" height="20px"></button>
 		</div>
-		<table class="db_list">
+		<table class="db_list db_list2">
 			<thead>
 				<tr>
 					<th class="th5">NO</th>

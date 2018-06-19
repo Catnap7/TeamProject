@@ -14,8 +14,8 @@
 	<jsp:include page="../../inc/header.jsp" />
 	<jsp:include page="../../inc/admin_sub.jsp" />
 	<section class="content_member">
-	<div id="content">
-		<h1 class="adminTitle">영화 등록</h1>
+	<div id="content33">
+		<h1 class="adminTitle">영화 수정</h1>
 		<form action="./AdminMovieUpdateAction.am?mv_num=<%=movieBean.getMv_num() %>" method="post">
 			<table class="db_list db_list_mv">
 				<tr>

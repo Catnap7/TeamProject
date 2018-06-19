@@ -62,7 +62,7 @@
 				</button>
 
 			</div>
-			<table class="db_list">
+			<table class="db_list db_list2">
 				<thead>
 					<tr>
 						<th class="th1">NO</th>

@@ -62,8 +62,8 @@ article{
 
 
 .content{
-	height:600px;
-	width: 1500px;
+	height: 900px;
+    width: 1900px;
 }
 div#content {
 	/* 	border: 1px solid orange; */
@@ -78,6 +78,18 @@ div#content {
 	/* 	overflow: auto; */
 }
 
+#content33{
+	/* 	border: 1px solid orange; */
+	/* margin-left: 350px; */
+    /* margin-top: 30px; */
+	height:auto;
+	width:1500px;
+	padding-bottom: 300px;
+	position: relative; 
+	/* top:-350px;
+	left:100px; */
+	/* 	overflow: auto; */
+}
 .search_type select {
 	width: 100px;
 	height: 30px;
@@ -171,6 +183,7 @@ div.content_inner:HOVER, div.content_inner:HOVER a {
 
 /************** admin db list **************/
 
+
 .content_member{
 	width: 1100px;
     height: 1100px;
@@ -228,7 +241,14 @@ div#content_member {
 	position: relative;
 	top: 120px;
 	left: 20px;
-	width: 1100px;
+	/* width: 1100px; */
+}
+.db_list2 {
+	border-collapse: collapse;
+	position: relative;
+	top: 120px;
+	left: 20px;
+	 width: 1100px; 
 }
 
 .adminCont{
@@ -263,15 +283,15 @@ div#content_member {
 	padding: 10px;
 	font-size: 1em;
 }
-.db_list th {
+.db_list tr th {
 	border: 1px solid #fff;
-	height: 50px;
-	background-color: #646464;
-	letter-spacing: 0.1em;
-	color: white;
-	font-size: 1.1em;
-	padding: 0px 5px 0px 5px;
-	text-align: center;
+    height: 50px;
+    background-color: #646464;
+    letter-spacing: 0.1em;
+    color: white;
+    font-size: 1.1em;
+    padding: 0px 10px 0px 10px;
+    text-align: center;
 }
 
 .db_list th.th1 {
@@ -311,14 +331,15 @@ div#content_member {
 } */
 
 
-/* .db_list_mv th {
-	border: 1px solid #fff;
+ .db_list_mv th {
+	/* border: 1px solid #fff;
 	height: 40px;
 	background-color: #333;
 	letter-spacing: 0.3em;
 	color: white;
-	font-size: 20px;
-} */
+	font-size: 20px; */
+	width: 80px;
+} 
 
 .db_list_mv td>input {
 	border: 1px solid #000;
@@ -331,10 +352,10 @@ div#content_member {
 }
 
 .mv_btn {
-	width: 300px;
+	width: 320px;
     position: relative;
     top: 180px;
-    left: 1130px;
+    left: 900px;
 }
 
 .mv_btn input {
@@ -482,6 +503,13 @@ div#content_member {
 	left: 1230px;
 	width: 350px; height: 40px;
 }
+.admin-notice-write2{
+	/* border:1px solid red; */
+	position: relative;
+	top:700px;
+	left: 1230px;
+	width: 350px; height: 40px;
+}
 .c_admin-notice-write {
 	/*  border:1px solid red;  */
 	margin:0 auto;
@@ -515,7 +543,7 @@ div#content_member {
 	padding: 5px;
 	font-weight: bold;
 	position: relative;
-	top: 200px;
+	top: -200px;
     right: 200px;
 }
 
@@ -525,7 +553,7 @@ div#content_member {
 
 .admin_movie_insert {
 	position: relative;
-	left: 900px;
+	left: 990px;
 	bottom: -20px;
 	width: 200px;
 	height: 50px;
