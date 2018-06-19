@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Pay List & AJAX Search</title>
+<title>와츄 : WATCHU</title>
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">

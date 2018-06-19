@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-<title>I왓츄 : 공지사항 쓰기</title>
+<title>와츄 : WATCHU</title>
 
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="http://code.jquery.com/jquery-3.1.0.js"></script>

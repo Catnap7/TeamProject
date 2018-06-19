@@ -4,22 +4,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>왓츄 : 당신의 모든 영화, 세상의 모든 취향 </title>
-
-<!-- css -->
+<title>와츄 : WATCHU</title>
 <link href="./css/member.css" rel="stylesheet" type="text/css">
 
 <!-- jquery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="http://code.jquery.com/jquery-3.1.0.js"></script>
-<<<<<<< HEAD
 
 
 
-=======
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
->>>>>>> refs/remotes/origin/master
 <script type="text/javascript">
 
 $(function(){  

@@ -7,8 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
-<title>왓츄: 카테고리 검색</title>
-
+<title>와츄 : WATCHU</title>
   
 <!-- js -->
 <script src="../js/jquery-3.3.1.js"></script>

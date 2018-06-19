@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
-<title>왓츄 : 당신의 모든 영화, 세상의 모든 취향 </title>
+<title>와츄 : WATCHU</title>
 <style type="text/css">
 
 
