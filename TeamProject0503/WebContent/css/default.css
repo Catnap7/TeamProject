@@ -6,7 +6,7 @@
 	font-family:'Nanum Gothic', sans-serif;
 }
 body{
-	width: 100%;
+	width: 1900px;
 	height: auto;
 }
 
@@ -37,20 +37,24 @@ body{
 
 .title_logo{
 	position:relative;
-	top:30px;
-	left:30px;
+ 	top: 55px;
+    left: 40px;
 	width: 350px;
+	
 }	
 
 .rightInfo{
-	/* border:1px solid red; */
-	width:350px;
-	height: 60px;
-	position: relative;
-	top:-20px; right: -1540px;
-	line-height: 2em;
-	margin:0;
-	font-size: 16px !important;
+	border: 1px solid #ccc;
+	border-radius:10px;
+    height: 80px;
+    width: 200px;
+    position: relative;
+    top: -40px;
+    right: -1680px;
+    line-height: 2em;
+    margin: 0;
+    /* font-size: 16px !important; */
+    box-sizing: border-box;
 }
 
 .rightInfo div{
@@ -61,11 +65,17 @@ body{
 .pay{
 	/* background-color: #ffffff; */
     color: #333;
-    padding: 16px;
+    padding: 5px;
     border: none;
-    position: absolute;
-    right:0px; top:0px;
-    font-size: 1.2em;
+    position: relative;
+    top: -35px;
+    left: 1800px;
+    width: 90px;
+    height: 30px;
+    /* border: 1px solid red; */
+    /* top: 0px; */
+    display: inline-block;
+    font-size: 1em;
 }
 
 .pay>a{
@@ -89,23 +99,33 @@ body{
 .h_dropbtn1 {
     background-color: #ffffff; 
     color: #333;
-    padding: 16px;
-    font-size: 16px;
+    /* padding: 16px; */
+    /* font-size: 16px; */
     border: none;
    	font-weight: bold; 
     line-height: normal;
 }
 
 .h_myinfo {
-	/* border:1px solid red; */
-    position: absolute;
-    left:150px; top:5px; 
+	/* border: 1px solid red; */
+    /* position: absolute; */
+    /* left: 150px; */
+    /* top: 5px; */
     display: inline-block;
+    width: 200px;
+    text-align: center;
+    padding-top: 50px;
 }
 
 .h_myinfo a:LINK, .h_myinfo a:VISITED{
 	color:#333;
 	text-decoration: none;
+}
+
+.alarm{
+	position: absolute;
+	    top: 10px;
+    left: 140px;
 }
 
 #no_alarm {
@@ -140,6 +160,7 @@ body{
 .h_dropdown-content1 {
     display: none;
     position: absolute;
+    right:15px;
     background-color: #f1f1f1;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -199,12 +220,11 @@ body{
 	/* border:1px solid red; */
   	overflow: hidden;
   	background-color: #455a64;
-    margin-top: 10px; 
+    margin-top: -10px; 
     height: 50px;
 	width: 1900px;
-/*     position: relative;
-    top: 0;
-    left: 0; */
+/* 	position: relative;
+    top: -40px; */
 }
 
 /* Links inside the navbar */
