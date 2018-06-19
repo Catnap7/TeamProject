@@ -74,8 +74,7 @@ public class rouletteDAO {
 			chancelist.add(fif);
 			chancelist.add(hun);
 			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {			
 			e.printStackTrace();
 		}finally {
 			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}

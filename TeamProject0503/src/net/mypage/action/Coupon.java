@@ -14,8 +14,7 @@ public class Coupon implements Action{
 	ActionForward forward;
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {		
-		request.setCharacterEncoding("utf-8");				
-		CouponBean cb = new CouponBean();
+		request.setCharacterEncoding("utf-8");						
 		CouponDAO cdao = new CouponDAO();
 		HttpSession session=request.getSession();		
 		String id = (String)session.getAttribute("m_id");
