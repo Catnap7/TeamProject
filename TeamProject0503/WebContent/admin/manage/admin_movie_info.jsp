@@ -14,7 +14,7 @@
 	<jsp:include page="../../inc/header.jsp" />
 	<jsp:include page="../../inc/admin_sub.jsp" />
 	<section class="content_member">
-	<div id="content">
+	<div id="content33">
 	<form action="./AdminMovieUpdate.am?mv_num=<%=movieBean.getMv_num() %>">
 			<table class="db_list db_list_mv">
 				<tr>

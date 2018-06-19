@@ -61,7 +61,7 @@
 						<img src="./images/search.png" width="20px" height="20px">
 					</button>
 				</div>
-				<table class="db_list">
+				<table class="db_list db_list2">
 					<thead>
 						<tr>
 							<th class="th5">ID</th>
