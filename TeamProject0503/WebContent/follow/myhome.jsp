@@ -68,6 +68,7 @@ case "romance" : genre="로맨스"; break;
 case "horror" : genre="공포"; break;
 case "drama" : genre="드라마"; break;
 }
+}
 %>
 
 <!-- 헤더 영역 -->
@@ -492,7 +493,7 @@ case "drama" : genre="드라마"; break;
 				<%
 				}
 						}
-					}
+					
 				%>
 		</div>
 	<!-- </div> -->	

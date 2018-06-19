@@ -80,14 +80,15 @@ article{
 }
 
 .chat input {
-	background-color: #50d4aa;
+	background-color: #ff8800;
 	width: 180px;
 	height: 60px;
 	border-radius: 20px 20px 0 0;
 	font-size: 22px;
 	text-align: center;
 	line-height: 60px;
-	color: #333;
+	color: white;
+	font-weight: bold;
 }
 
 .chat input:HOVER {

@@ -230,7 +230,7 @@ div.star {
 	width: 100px;
 	font-size: 0.9em;
 }
-.movieInfoContent{
+.movie_steel{
 	border-top:1px solid #eee;
 	border-bottom:1px solid #eee;
 	width: 900px;
@@ -258,14 +258,20 @@ div.star {
 }
 
 .movie_steel div {
-   width: 1100px;
+   width: 700px;
    margin: 0 auto;
 /*    border: 1px solid purple; */
 }
 
+.frame{
+	/* border:1px solid red; */
+	width:700px;
+	height: 500px;
+	overflow: hidden;
+}
 .movie_steel img {
-    width: 800px;
-   height: 500px;
+    width: 700px;
+   height: auto;
 }
 
 .movie_steel img.prev, .movie_steel img.next {
