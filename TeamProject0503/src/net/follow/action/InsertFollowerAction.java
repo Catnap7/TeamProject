@@ -6,6 +6,7 @@ import java.util.GregorianCalendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.admin.manage.db.MovieBean;
 import net.admin.manage.db.MovieDAO;
@@ -20,7 +21,14 @@ public class InsertFollowerAction implements Action {
 		System.out.println("InsertFollowerAction execute()");
 		
 		request.setCharacterEncoding("utf-8");
-		
+		HttpSession session= request.getSession();
+		String id=(String)session.getAttribute("m_id");
+		if(id==null){
+			ActionForward forward= new ActionForward();
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		String m_id = request.getParameter("m_id");
 		String f_id = request.getParameter("f_id");
 		

@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.admin.manage.db.AdminSuspendDAO;
 import net.admin.manage.db.MovieDAO;
@@ -20,8 +21,15 @@ public class ReportAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("ReportAction execute()");		
 		request.setCharacterEncoding("utf-8");
+		HttpSession session= request.getSession();
+		String m_id=(String)session.getAttribute("m_id");
+		if(m_id==null){
+			ActionForward forward= new ActionForward();
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
 		ReviewBean reviewbean = new ReviewBean();
 		ReviewDAO reviewdao = new ReviewDAO();

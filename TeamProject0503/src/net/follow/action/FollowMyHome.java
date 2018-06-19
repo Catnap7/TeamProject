@@ -91,25 +91,18 @@ public class FollowMyHome implements Action{
 		MovieBean moviebean = new MovieBean();
 		MovieBean moviebean2 = new MovieBean();
 		moviebean=moviedao.getfavorite(id);
-		//moviebean2 =moviedao.getfavorite2(id);
 		
-//		Vector vector = new Vector();
 		vector=followdao.top5followreview(id);
 		List<ReviewBean> top5reviewlist=(List)vector.get(0);
 		List<MovieBean> top5movielist=(List)vector.get(1);
 		
 		List top5favoritelist = followdao.top5followfavorite(id);
 		
- /*		Vector vector2 = new Vector();
-		vector2 = followdao.top5followfavorite(m_id);
-		List<ReviewBean> top5favoritelist=(List)vector2.get(0);
-		List<MovieBean> top5movielist2=(List)vector2.get(1);*/
 		request.setAttribute("memberbean", memberbean);
 		request.setAttribute("followercount", followercount);
 		request.setAttribute("followingcount", followingcount);
 		request.setAttribute("reviewcount", reviewcount);
 		request.setAttribute("moviebean", moviebean);
-		//request.setAttribute("moviebean2", moviebean2);
 		request.setAttribute("top5reviewlist", top5reviewlist);
 		request.setAttribute("top5movielist", top5movielist);
 		request.setAttribute("top5favoritelist", top5favoritelist);

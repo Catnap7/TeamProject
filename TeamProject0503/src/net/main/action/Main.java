@@ -15,7 +15,6 @@ public class Main implements Action{
 	ActionForward forward;
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("Main execute");
 		HttpSession session=request.getSession();
 		
 		

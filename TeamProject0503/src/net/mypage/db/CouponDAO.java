@@ -179,7 +179,6 @@ public class CouponDAO {
 	 }//end list
 	
 	public void insertCoupon(CouponBean cb){
-		System.out.println("insertCoupon");
 		Connection con=null;
 		String sql="";
 		PreparedStatement pstmt=null;

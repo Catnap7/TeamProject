@@ -15,9 +15,7 @@ public class FavoriteFrontController extends HttpServlet{
 
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("FavoriteFrontController doProcess()");
 		String requestURI=request.getRequestURI();
-		System.out.println(requestURI);
 		String context=request.getContextPath();
 		String command=requestURI.substring(context.length());
 		ActionForward forward=null;
@@ -60,12 +58,10 @@ public class FavoriteFrontController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("FavoriteFrontController doGet()");	
 		doProcess(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("FavoriteFrontController doPost()");
 		doProcess(request, response);
 		
 	}

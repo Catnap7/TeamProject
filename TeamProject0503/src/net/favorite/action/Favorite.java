@@ -15,8 +15,6 @@ public class Favorite implements Action{
 	ActionForward forward;
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("Favorite execute()");
-		//한글처리
 		request.setCharacterEncoding("utf-8");								
 		FavoriteDAO fdao = new FavoriteDAO();		
 		HttpSession session=request.getSession();		
