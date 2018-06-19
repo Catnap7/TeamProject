@@ -25,10 +25,7 @@ public class VipResult implements Action{
 		
 		VipDAO vipdao = new VipDAO();
 		VipBean vipbean=vipdao.getVipMovie(); 
-		
-		
-		//VipReservation
-		
+
 		String v_num=String.valueOf(vipbean.getV_num());
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("m_id");
@@ -49,7 +46,6 @@ public class VipResult implements Action{
 		VipResDAO vipresdao= new VipResDAO();
 		vipresdao.insertVipRes(vipresbean);
 
-		//insertVipSeatTaken 
 		vipresdao.insertVipSeatTaken(v_num, vr_seat_num);
 		String selectedSeat=vipresbean.getVr_seat_num();
 		

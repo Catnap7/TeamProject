@@ -21,9 +21,7 @@ public class Vip implements Action{
 		System.out.println("Vip execute");
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
-		
-		
-		
+
 		//회원 정보 가져오기
 		MemberDAO memberdao=new MemberDAO();
 		MemberBean memberbean=new MemberBean();
@@ -39,10 +37,7 @@ public class Vip implements Action{
 		memberbean=memberdao.getMember(m_id);
 		int grade=memberbean.getM_grade();
 		String name=memberbean.getM_name();
-		
 
-		
-		
 		//vip 시네마 영화 정보 가져오기 
 		VipDAO vipdao=new VipDAO();
 		VipBean vipbean=new VipBean();
@@ -50,7 +45,6 @@ public class Vip implements Action{
 
 		int v_num=vipbean.getV_num();
 
-		
 		//예약 여부 가져오기
 		VipResBean vipresbean=new VipResBean();
 		VipResDAO vipresdao=new VipResDAO();
@@ -71,7 +65,6 @@ public class Vip implements Action{
 		request.setAttribute("check", check);
 		request.setAttribute("selectedSeat", selectedSeat);
 		
-		//이동 
 		ActionForward forward= new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("./vip/vip_reservation.jsp");

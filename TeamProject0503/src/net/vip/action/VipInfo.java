@@ -14,8 +14,7 @@ public class VipInfo implements Action{
 		
 		System.out.println("VipInfo execute");
 		request.setCharacterEncoding("utf-8");
-		
-		
+			
 		//회원 정보 가져오기
 		MemberDAO memberdao=new MemberDAO();
 		MemberBean memberbean=new MemberBean();
@@ -31,9 +30,7 @@ public class VipInfo implements Action{
 		
 		memberbean=memberdao.getMember(m_id);
 		request.setAttribute("memberbean", memberbean);
-		
-		
-		
+
 		//이동 
 		ActionForward forward= new ActionForward();
 		forward.setRedirect(false);

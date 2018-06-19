@@ -67,6 +67,7 @@ String selectedSeat=(String)request.getAttribute("selectedSeat");
 			<p>*주차공간이 혼잡하오니 대중교통을 이용바랍니다</p>
 		</div>
 		
+		<!-- 구글 맵 API -->
 		<div id="map"></div>
 		    <script>
 		      function initMap() {
@@ -84,14 +85,9 @@ String selectedSeat=(String)request.getAttribute("selectedSeat");
 		    <script async defer
 		    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxRlHe08HPY3WWMDA9MR5jutkGOj9OIHs&callback=initMap">
 		    </script>
-	</div>
+	</div><!-- way -->
 	
 </div>
-
-
-
-
-
 </article>
 
 
