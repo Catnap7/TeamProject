@@ -29,7 +29,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
 </head>
 <body>
@@ -40,7 +39,6 @@ int followercount=((Integer)request.getAttribute("followercount"));
 int followingcount= ((Integer)request.getAttribute("followingcount"));
 int reviewcount= ((Integer)request.getAttribute("reviewcount"));
 MovieBean favorite = (MovieBean)request.getAttribute("moviebean");
-//MovieBean favorite2=(MovieBean)request.getAttribute("moviebean2");
 List top5reviewlist = (List)request.getAttribute("top5reviewlist");
 List top5movielist = (List)request.getAttribute("top5movielist");
  List top5favoritelist = (List)request.getAttribute("top5favoritelist");
@@ -70,22 +68,6 @@ case "romance" : genre="로맨스"; break;
 case "horror" : genre="공포"; break;
 case "drama" : genre="드라마"; break;
 }
-}
-/* String genre2="";
-
-if(favorite2!=null){
-switch(favorite2.getMv_genre()){
-case "animation" : genre2="애니메이션"; break;
-case "comedy" : genre2="코미디"; break;
-case "indie" : genre2="독립영화"; break;
-case "sf" : genre2="sf"; break;
-case "action" : genre2="액션"; break;
-case "thriller" : genre2="스릴러"; break;
-case "romance" : genre2="로맨스"; break;
-case "horror" : genre2="공포"; break;
-case "drama" : genre2="드라마"; break;
-}
-} */
 
 %>
 
@@ -165,8 +147,6 @@ case "drama" : genre2="드라마"; break;
         		var m_id = $('#m_id').val();
 				var f_id = $('#f_id').val();
 				
-// 						alert($('#m_id').val());
-// 						alert($('#f_id').val());
 				
 				$.ajax({
 					type: "post",
@@ -177,7 +157,6 @@ case "drama" : genre2="드라마"; break;
 						"f_id": f_id,
 					},
 					success:function(data){
-// 						alert("팔로우 끊기");
 						location.reload();
 					}
 				});
@@ -189,9 +168,6 @@ case "drama" : genre2="드라마"; break;
         		var m_id = $('#m_id').val();
 				var f_id = $('#f_id').val();
 				
-// 						alert($('#m_id').val());
-// 						alert($('#f_id').val());
-				
 				$.ajax({
 					type: "post",
 					url: "./InsertFollowerAction.fo",
@@ -201,7 +177,6 @@ case "drama" : genre2="드라마"; break;
 						"f_id": f_id,
 					},
 					success:function(data){
-// 						alert("팔로잉 하기");
 						location.reload();
 					}
 				});
@@ -239,7 +214,6 @@ case "drama" : genre2="드라마"; break;
 			  <a href="./FollowMyHome.fo?m_id=<%=fbean.getFo_following() %>"><%=fbean.getFo_following() %></a><br>
 			  <span><%=mbean.getM_name() %></span>
 			  <%
-// 			  if(m_id.equals(id)) {
 				  
 			  if(m_id.equals(fbean.getFo_following())) {
 				
@@ -254,7 +228,6 @@ case "drama" : genre2="드라마"; break;
 					  <a id="f_following<%=mbean.getM_name() %>" class="follow_a" style="cursor: pointer;">팔로잉</a>
 					  <%
 				  }
-// 			  }
 			  %>
 
         	<input type="hidden" id="m_id<%=mbean.getM_name() %>" value="<%=m_id %>">
@@ -269,8 +242,6 @@ case "drama" : genre2="드라마"; break;
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
-<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
-<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
 							type: "post",
@@ -281,7 +252,6 @@ case "drama" : genre2="드라마"; break;
 								"f_id": f_id,
 							},
 							success:function(data){
-// 								alert("팔로우 끊기");
 								location.reload();
 							}
 						});
@@ -293,8 +263,6 @@ case "drama" : genre2="드라마"; break;
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
-<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
-<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
 							type: "post",
@@ -305,7 +273,6 @@ case "drama" : genre2="드라마"; break;
 								"f_id": f_id,
 							},
 							success:function(data){
-// 								alert("팔로잉 하기");
 								location.reload();
 							}
 						});
@@ -385,8 +352,6 @@ case "drama" : genre2="드라마"; break;
 		        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 						var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 						
-<%-- 						alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
-<%-- 						alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 						
 						$.ajax({
 							type: "post",
@@ -397,7 +362,6 @@ case "drama" : genre2="드라마"; break;
 								"f_id": f_id,
 							},
 							success:function(data){
-// 								alert("팔로우 끊기");
 								location.reload();
 							}
 						});
@@ -409,8 +373,6 @@ case "drama" : genre2="드라마"; break;
 			        		var m_id = $('#m_id<%=mbean.getM_name() %>').val();
 							var f_id = $('#f_id<%=mbean.getM_name() %>').val();
 							
-<%-- 							alert($('#m_id<%=mbean.getM_name() %>').val()); --%>
-<%-- 							alert($('#f_id<%=mbean.getM_name() %>').val()); --%>
 							
 							$.ajax({
 								type: "post",
@@ -421,7 +383,6 @@ case "drama" : genre2="드라마"; break;
 									"f_id": f_id,
 								},
 								success:function(data){
-// 									alert("팔로잉 하기");
 									location.reload();
 								}
 							});
@@ -456,15 +417,12 @@ case "drama" : genre2="드라마"; break;
 	</div>	
 	
 	<!-- ↓↓↓↓↓↓↓리뷰 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
-	<!-- <div class="rvList"> -->
 	
 			<%
 			 if(top5reviewlist.size()==0){
 				 %>
 				 <div id="rv"> 
-				<%-- <p> <%=moviebean.getMv_kor_title() %> / <%=reviewbean.getR_date() %>/ <%=reviewbean.getR_recommand() %>/ <%=reviewbean.getR_report() %></p> --%>
 					<div class="noReviewContents">
-						<!-- <img src="./images/noReview.png" width="140px" height="140px">  -->
 						<p><%="아직 리뷰가 없습니다"%></p>
 						<p><%="영화를 본 후 내 감상을 리뷰로 남겨주세요!"%></p>
 					
@@ -482,13 +440,11 @@ case "drama" : genre2="드라마"; break;
 				<p><span id="reviewTitle"><%=moviebean.getMv_kor_title()%></span>
 				<span id="reviewRecommand"><img src="./images/thumbsUp.png" width="20px" height="20px"><%=reviewbean.getR_recommand()%></span>
 				<span id="reviewDate"><%=yymmdd.substring(0,10)%></span>
-				<%-- / <%=reviewbean.getR_report()%> --%></p>
 				<p class="rvList"><%=reviewbean.getR_content().replaceAll("\r\n", "<br>")%></p>
 			</div> 
 			
 			<%}
 			}%>
-	<!-- </div> -->	
 </section>
 	
 
@@ -498,14 +454,11 @@ case "drama" : genre2="드라마"; break;
 		<a href="./FollowFavorite.fo?m_id=<%=getmember.getM_id()%>"><p>영화 더 보기 >></p></a><!-- reviewList.jsp로 가야함 -->	
 	</div>	
 	
-		<!-- ↓↓↓↓↓↓↓영화 리스트 5개. for문 으로 돌릴 수 있으면 for문 사용해도 무방↓↓↓↓↓↓↓↓↓↓↓-->	
-	<!-- <div class="mvList" id="rv"> -->
 		<div class="mvList"> 
 			<%
 				if(top5favoritelist.size()==0){
 					%>
 					<div class="noFavContents">
-						<!-- <img src="./images/noFavorite.png" width="140px" height="140px"> --> 
 						<p><%="좋아요 누른 영화가 없습니다"%></p>
 						<p><%="좋아하는 영화에 하트를 눌러주세요!"%></p>
 					</div>
@@ -537,14 +490,16 @@ case "drama" : genre2="드라마"; break;
 				</a> 
 				<p><%=moviebean.getMv_kor_title()%></p>
 			</div>
-		<%	}
-				}%>
+				<%
+				}
+						}
+					}
+				%>
 		</div>
 	<!-- </div> -->	
 </section>
 </div><!-- all -->
 
-<!-- <div class="up"><a href="#">▲<br>▲</a></div> -->
 
 
 </article>
