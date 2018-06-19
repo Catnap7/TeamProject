@@ -60,10 +60,10 @@
 		<div class="admin-search-container">
 		<select id="select">
 			<option value="mv_kor_title" selected="selected">한글제목</option>
-			<option value="mv_eng_title" selected="selected">영어제목</option>
-			<option value="mv_director" selected="selected">감독</option>
-			<option value="mv_year" selected="selected">개봉년도</option>
-			<option value="mv_genre" selected="selected">장르</option>
+			<option value="mv_eng_title">영어제목</option>
+			<option value="mv_director">감독</option>
+			<option value="mv_year">개봉년도</option>
+			<option value="mv_genre">장르</option>
 		</select>
 		<input type="text" onkeyup="searchFunction()" id="searchValue" placeholder="검색어">
 		<button type="button" onclick="searchFunction();"><img src="./images/search.png" width="20px" height="20px"></button>
@@ -84,7 +84,7 @@
 			</tbody>
 		</table>
 	</div>
-	<input type="button" onclick="location.href('./AdminMovieInsert.am')" value="영화입력하기" class="admin_movie_insert">
+	<input type="button" onclick="location.href='./AdminMovieInsert.am'" value="영화입력하기" class="admin_movie_insert">
 	</section>
 	
 	

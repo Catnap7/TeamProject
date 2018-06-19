@@ -35,15 +35,10 @@
 		searchFunction();
 	}
 </script>
-<!-- script -->
 </head>
 <body>
-	<!-- Header -->
 	<jsp:include page="../../inc/header.jsp" />
-	<!-- Header -->	
-	<!-- Sub -->
 	<jsp:include page="../../inc/admin_sub.jsp" />
-	<!-- Sub -->	
 	<section class="content_member">
 		<div id="content_member">
 			<h1 class="adminTitle">MEMBER LIST</h1>
@@ -72,8 +67,6 @@
 			</table>
 		</div>
 	</section>
-	<!-- Footer -->
 	<jsp:include page="../../inc/footer.jsp" />
-	<!-- Footer -->	
 </body>
 </html>

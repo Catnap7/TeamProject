@@ -79,7 +79,7 @@
        alert(event.data); 
      }
      function send() {
-    	 textarea.value += "\n" + "상대"+ "\n" + inputMessage.value + "\n\n";
+    	 textarea.value += "\n" + "나"+ "\n" + inputMessage.value + "\n\n";
          webSocket.send(inputMessage.value);
          document.getElementById("messageWindow").scrollTop = document.getElementById("messageWindow").scrollHeight;
      } 

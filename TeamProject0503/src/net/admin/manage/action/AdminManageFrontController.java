@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AdminManageFrontController extends HttpServlet{
 
-
-
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String requestURI=request.getRequestURI();
@@ -21,7 +19,6 @@ public class AdminManageFrontController extends HttpServlet{
 		String command=requestURI.substring(context.length());
 		ActionForward forward=null;
 		Action action=null;
-
 
 		//주소 비교
 		if(command.equals("/AdminMovieInsert.am")){
@@ -98,11 +95,6 @@ public class AdminManageFrontController extends HttpServlet{
 				e.printStackTrace();
 			}				
 		}
-
-
-
-
-
 
 		//이동(주소비교에서 이동방식, 이동할곳 정보를 찾아올것)
 		if(forward!=null){
