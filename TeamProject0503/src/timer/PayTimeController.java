@@ -28,7 +28,7 @@ public class PayTimeController extends HttpServlet {
 		  date.set(Calendar.SECOND, 0);
 		  date.set(Calendar.MILLISECOND, 0);
 		
-		Timer timer = new Timer("test");
+		Timer timer = new Timer();
 		timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 try {
