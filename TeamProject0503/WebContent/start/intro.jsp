@@ -108,6 +108,9 @@ body{
 		/* font-weight:bold; */
 		font-size: 1.4em;	
 	}
+	
+	.btn a:HOVER{
+		border:1px solid #eee;}
 
 
 

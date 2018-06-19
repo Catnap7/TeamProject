@@ -48,8 +48,6 @@ public class VipResDAO {
 		}
 	}//insertVipRes
 
-
-
 	//insertVipSeatTaken
 	public void insertVipSeatTaken(String v_num, String vr_seat_num){
 		Connection con = null;
@@ -59,7 +57,6 @@ public class VipResDAO {
 		try{	
 				con=getConnection();
 				
-			
 				sql="UPDATE vip_seat SET v_seatSelected=?, v_num=? WHERE v_seatNum=?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, "1");
@@ -67,9 +64,7 @@ public class VipResDAO {
 				pstmt.setString(3, vr_seat_num);
 				
 				pstmt.executeUpdate();
-				
-				
-			
+
 		}catch(Exception e) {
 			e.printStackTrace();	
 		}finally{
@@ -90,7 +85,6 @@ public class VipResDAO {
 			con=getConnection();
 			
 			sql="select*from vip_seat";
-			/*sql="select*from vip_seat where v_seatSelected=0";*/
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			
@@ -136,7 +130,6 @@ public class VipResDAO {
 			}else {
 				check=0;
 			}
-		
 		}
 
 		}catch(Exception e) {
@@ -149,8 +142,7 @@ public class VipResDAO {
 		}return check;
 	}//VipSeatTakenListCheck
 	
-	
-	
+
 	//getYourSeat
 		public VipResBean getYourSeat(String m_id){
 			VipResBean vipresbean=null;
@@ -189,34 +181,26 @@ public class VipResDAO {
 					String sql="";
 					PreparedStatement pstmt=null;
 					try {
-						//1 드라이버로더			//2 디비연결
 						con=getConnection();
-						//3
+						
 						sql="delete from vip_reservation where vr_id=? and vr_seat_num=?";
 						pstmt=con.prepareStatement(sql);
 						pstmt.setString(1, m_id);
 						pstmt.setString(2, vr_seat_num);
-						//4
 						pstmt.executeUpdate();
-						
-						
+
 						sql="update vip_seat set v_seatSelected=0, v_num=0 where v_seatNum=?";
 						pstmt=con.prepareStatement(sql);
 						pstmt.setString(1, vr_seat_num);
-						//4
 						pstmt.executeUpdate();
 						
 					} catch (Exception e) {
 						e.printStackTrace();
 					}finally{
-						//예외가 발생하든말든 마무리작업 => 기억장소 정리
 						if(pstmt!=null){
 							try{ 
 								pstmt.close();
-							}catch(SQLException ex)
-							{
-								
-							}
+							}catch(SQLException ex){}
 						}
 						if(con!=null)try{con.close();}catch(SQLException ex){};
 					}

@@ -17,10 +17,9 @@ import net.member.db.MemberBean;
 
 
 public class VipDAO {
-	//�뵒鍮꾩뿰寃� 硫붿꽌�뱶
 	private Connection getConnection() throws Exception {
 		Context init=new InitialContext();
-		//�옄�썝�쓽 �씠由� 遺덈윭�삤湲� �옄�썝 �쐞移� java:comp/env �옄�썝�씠由� jdbc/Mysql
+		
 		DataSource ds=(DataSource)init.lookup("java:comp/env/jdbc/Mysql");
 		Connection con=ds.getConnection();
 		
@@ -163,11 +162,8 @@ public class VipDAO {
 		}
 		return vipMovieList;
 	}//getVipMovieList
+
 	
-	
-	
-		
-		
 	//getVipMovie
 		public VipBean getVipMovie(){
 			Connection con=null;
@@ -246,7 +242,6 @@ public class VipDAO {
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
-					/*vipbean=new VipBean();*/
 					vipbean.setV_num(rs.getInt("v_num"));
 					vipbean.setV_kor_title(rs.getString("v_kor_title"));
 					vipbean.setV_eng_title(rs.getString("v_eng_title"));
@@ -334,13 +329,13 @@ public class VipDAO {
 			ResultSet rs=null;
 			String sql="";
 			try {
-				//1,2 �뵒鍮꾩뿰寃�
+				
 				con=getConnection();
-				//3 sql num�빐�떦�븯�뒗 �긽�뭹 �궘�젣
+
 				sql="delete from vip_cinema_prev where v_num = ?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, v_num);
-				//4 �떎�뻾
+				
 				pstmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -360,7 +355,6 @@ public class VipDAO {
 		
 			try{	
 					con=getConnection();
-					
 				
 					sql="UPDATE vip_seat SET v_seatSelected=?, v_num=?";
 					pstmt=con.prepareStatement(sql);

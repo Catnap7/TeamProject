@@ -17,11 +17,9 @@ public class VipMovieDelete implements Action {
 		VipDAO vipdao = new VipDAO();
 		VipBean vipbean = new VipBean();
 		
-		//int num=Integer.parseInt(request.getParameter("num"));
-		
 		vipdao.deleteVipMovie(Integer.parseInt(request.getParameter("v_num")));
 		
-		//이동
+		
 		ActionForward forward=new ActionForward();
 		forward.setRedirect(true);
 		forward.setPath("./VipMovieList.vi");

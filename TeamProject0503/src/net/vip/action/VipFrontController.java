@@ -114,19 +114,7 @@ public class VipFrontController extends HttpServlet{
 		            e.printStackTrace();
 		         }
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		//이동(주소비교에서 이동방식, 이동할곳 정보를 찾아올것)
 		if(forward!=null){
 			if(forward.isRedirect()){

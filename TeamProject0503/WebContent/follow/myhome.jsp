@@ -94,7 +94,7 @@ case "drama" : genre2="드라마"; break;
 <!-- 헤더 영역 -->
 
 
-<article>ㄱ
+<article>
 <div class="all">
 
 <section class="sec myInfo">

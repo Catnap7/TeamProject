@@ -37,13 +37,7 @@ public class Main implements Action{
 		List<MovieBean>mainMovieList=mdao.mainMovieList();
 		int allreviewcount=mdao.getAllReviewCount();
 		List<MovieBean>mostReviewsList=mdao.getMostReviewsList();
-		
-		/*Vector vector = new Vector();
-		vector = mdao.getMostReviewsList();
-		
-		List mostReviewsList=(List)vector.get(0);
-		List favList=(List)vector.get(1);*/
-		
+				
 		List<MovieBean>Mostcount = mdao.mostCountGenre(id);
 		List<MovieBean>Bestrating = mdao.mostAvgGenre(id);
 		List<MovieBean>Bestmovie = mdao.bestMovie();
@@ -55,17 +49,15 @@ public class Main implements Action{
 		int followingcount= followdao.Followingcount(id);
 		
 		
-		request.setAttribute("followercount", followercount);
-		request.setAttribute("followingcount", followingcount);
 		
 		request.setAttribute("id", id);
 		
 		request.setAttribute("mainMovieList", mainMovieList);
-		
 		request.setAttribute("mostReviewsList", mostReviewsList);
-		/*request.setAttribute("favList", favList);*/
-		
 		request.setAttribute("allreviewcount", allreviewcount);
+		
+		request.setAttribute("followercount", followercount);
+		request.setAttribute("followingcount", followingcount);
 		
 		request.setAttribute("favoritelist", favoritelist);
 		request.setAttribute("favoritecount", favoritecount);
