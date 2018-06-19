@@ -14,12 +14,10 @@ import javax.swing.JOptionPane;
 import net.admin.manage.db.AdminMemberDAO;
 import net.member.db.MemberBean;
 
-
 @WebServlet("/AdminMemberSearch")
 public class AdminMember_List_Search extends HttpServlet {
 	private static final long serialVersionUID = 1L;	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("AdminMember_List_Search execute()");
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		String searchValue = request.getParameter("searchValue");

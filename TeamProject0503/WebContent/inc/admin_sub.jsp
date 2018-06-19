@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 
-	<p class="menu">ADMIN MENU</p>
+	<p class="menu">ADMIN</p>
 		<nav id="menu_bar">
 			<ul>
 				<li><a href="./AdminManageList.am">DB관리</a></li>

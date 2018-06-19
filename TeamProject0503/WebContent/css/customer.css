@@ -4,18 +4,21 @@
 	margin: 0;
 	padding: 0;
 }
-
+article{
+	width: 1900px;
+}
 .clear {
 	clear: both;
 }
 
 .wrap {
 /* 	border: 1px solid red; */
-	position: relative;
+	/* position: relative; */
 }
 
 .container {
-	min-height: 450px;
+	min-height: 650px;
+    padding: 100px;
 }
 
 .subject {
