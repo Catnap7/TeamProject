@@ -23,7 +23,7 @@
 <link href="./css/followList.css" rel="stylesheet" type="text/css">
 
 <!-- 웹 폰트 : 나눔고딕 -->
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet"> -->
 
 <!-- 팔로우 리스트 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
@@ -82,7 +82,7 @@ case "drama" : genre="드라마"; break;
 <section class="sec myInfo">
 	<div id="profile">
 		<img class=photo2 src="./images/proflie_img/proflie<%=getmember.getM_pic()%>.png" width="200px" height="200px">
-		<div id="pfName"><p><%=getmember.getM_name()%></p><p><%=grade%></p></div> <!-- 이름, 등급 가져오기 -->
+		<div id="pfName"><p><%=getmember.getM_name()%> <span><%=grade%></span></p></div> <!-- 이름, 등급 가져오기 -->
 	<div class="clear"></div>
 	</div><!-- profile -->
 	<div id="info">
