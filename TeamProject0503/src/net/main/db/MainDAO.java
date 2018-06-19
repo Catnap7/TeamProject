@@ -436,7 +436,6 @@ public class MainDAO {
 			}
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}

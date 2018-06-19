@@ -13,7 +13,7 @@ article{
     border-radius: 30px;
     border-spacing: 0px;
     margin-bottom: 80px;
-    margin-top: 120px;
+    margin-top: 200px;
     position: relative;
     left: 600px;
 }
@@ -127,7 +127,7 @@ tr.bg_light th {
 /* pay */
 .select {/* border:1px solid red; */
 width:700px;
-margin: 130px auto;	
+margin: 180px auto;	
 height:150px;
 margin-bottom: 50px;
 }

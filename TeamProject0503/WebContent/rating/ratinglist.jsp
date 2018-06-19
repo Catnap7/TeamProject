@@ -40,53 +40,43 @@
 		<p>관람하신 영화의 별점을 매겨주시면 왓츄가 회원님의 취향을 분석해 드려요!</p>
 	</div>
 	<section class="movie_sec">
-
 <%
-//request.setAttribute("goodsList", goodsList);
 List movielist=(List)request.getAttribute("movielist");
-%>
 
-<%
-if(movielist.size()!=0)
-for(int i=0;i<movielist.size();i++){
-	
-	
-	
-	
-	MovieBean moviebean=(MovieBean)movielist.get(i);
-	int mv_num=moviebean.getMv_num();
-	
-	String imgname = moviebean.getMv_eng_title().replaceAll(" " , "");
-	imgname = imgname.replaceAll("\\p{Z}", "");
-	
-	/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/
-	String img_genre= "";
-	if(moviebean.getMv_genre().equals("animation")){
-		img_genre="animation";
-	}else if(moviebean.getMv_genre().equals("comedy")){
-		img_genre="comedy";
-	}else if(moviebean.getMv_genre().equals("indie")){
-		img_genre="indie";
-	}else if(moviebean.getMv_genre().equals("sf")){
-		img_genre="sf";
-	}else if(moviebean.getMv_genre().equals("action")){
-		img_genre="action";
-	}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
-		img_genre="thriller";
-	}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
-		img_genre="romance";
-	}
-	
-	String age = "";
-	switch(moviebean.getMv_age()){
-	case 0  : age="전체이용가"; break;
-	case 12	: age="12세이용가"; break;
-	case 15	: age="15세이용가"; break;
-	case 19 : age="청소년관람불가"; break;
-	}
-	
+if(movielist.size()!=0){
+	for(int i=0;i<movielist.size();i++){
+		MovieBean moviebean=(MovieBean)movielist.get(i);
+		int mv_num=moviebean.getMv_num();
+		
+		String imgname = moviebean.getMv_eng_title().replaceAll(" " , "");
+		imgname = imgname.replaceAll("\\p{Z}", "");
+		
+		/* 스릴러, 호러 나눠진 영화 장르 thriller로 합쳐서 저장*/
+		String img_genre= "";
+		if(moviebean.getMv_genre().equals("animation")){
+			img_genre="animation";
+		}else if(moviebean.getMv_genre().equals("comedy")){
+			img_genre="comedy";
+		}else if(moviebean.getMv_genre().equals("indie")){
+			img_genre="indie";
+		}else if(moviebean.getMv_genre().equals("sf")){
+			img_genre="sf";
+		}else if(moviebean.getMv_genre().equals("action")){
+			img_genre="action";
+		}else if(moviebean.getMv_genre().equals("horror") || moviebean.getMv_genre().equals("thriller")){
+			img_genre="thriller";
+		}else if(moviebean.getMv_genre().equals("romance") || moviebean.getMv_genre().equals("drama")){
+			img_genre="romance";
+		}
+		
+		String age = "";
+		switch(moviebean.getMv_age()){
+			case 0  : age="전체이용가"; break;
+			case 12	: age="12세이용가"; break;
+			case 15	: age="15세이용가"; break;
+			case 19 : age="청소년관람불가"; break;
+		}
 	%>
-
 		<div class="movie_sec_inner">
 			<img src="./images/<%=img_genre%>/<%=imgname %>_p.jpg" width="250px" height="350px"><br>
 			<div class="star">
@@ -102,13 +92,10 @@ for(int i=0;i<movielist.size();i++){
 				</fieldset>
 				<!-- 별점 끝 -->
 				</form>
-				<!-- 영화정보 -->
-				<%-- <div><%=moviebean.getMv_kor_title() %>	</div> --%>
-				<%-- <div><%=moviebean.getMv_year() %>	</div> --%>
-				<%-- <div><%=age %>	</div> --%>
 			</div>
 		</div>
 <%
+	}//end for
 }else{
 	%>
 	<div id="noMoreMovie"><p><i class="material-icons" style="font-size:48px;">warning</i></p><br>
@@ -133,4 +120,3 @@ for(int i=0;i<movielist.size();i++){
 
 </body>
 </html>
-
