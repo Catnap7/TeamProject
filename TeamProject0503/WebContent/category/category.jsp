@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
-<title>와츄 : WATCHU</title>
+<title>왓츄 : WATCHU</title>
   
 <!-- js -->
 <script src="../js/jquery-3.3.1.js"></script>
@@ -99,15 +99,12 @@ if(mv_genre_request.equals("animation")){
 							<span class="mv_title"><%=moviebean.getMv_kor_title()%></span><!-- 한글제목 --> 
 							<span class="mv_year"><%=moviebean.getMv_year()%></span><!-- 년도 -->
 							<span class="mv_grade"><%=age%></span><!-- 등급 -->
-							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span><!-- 러닝타임 / 뒤의 '분'은 지우지 말것 -->
+							<span class="mv_time"><%=moviebean.getMv_time()%><%="분"%></span>
 							</div>
 			</a>
 		<%
-		//System.out.println(moviebean.getMv_eng_title().replaceAll(" ","")+"_p");
 		} 
 		%>  
-		<!-- ↓↓↓↓↓디자인 예시를 위해 만든 코드. for문 결과를 확인하고 지워도 무방 ↓↓↓↓↓-->
-	 		<!-- ↑↑↑↑↑디자인 예시를 위해 만든 코드. for문 결과를 확인하고 지워도 무방↑↑↑↑↑-->
 	</div><!-- container -->
 </article>
 <!-- 아티클 영역 끝 --> 

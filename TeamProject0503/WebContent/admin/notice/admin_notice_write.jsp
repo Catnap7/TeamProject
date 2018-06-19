@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-<title>와츄 : WATCHU</title>
+<title>왓츄 : WATCHU</title>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="http://code.jquery.com/jquery-3.1.0.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
