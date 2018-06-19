@@ -121,64 +121,7 @@ public class AlarmDAO {
 					}
 		 return count;
 	 }//end count
-	
-	public List<AlarmBean> getAlarms(String id, int startRow, int pageSize){
-		 List<AlarmBean> alarmlist = new ArrayList<AlarmBean>();
-		 Connection con=null;
-		 String sql="";
-		 PreparedStatement pstmt=null;
-		 ResultSet rs=null;
-		 try{ //예외가 발생할 것 같은 명령, 	필수적으로 외부파일접근, 디비접근
-				con = getConnection();
-				sql="select * from alarm where a_id=? order by a_num desc limit ?,?";				 				 
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, id);
-				pstmt.setInt(2, startRow-1);
-				pstmt.setInt(3, pageSize);
-				rs = pstmt.executeQuery();
-				
-				while(rs.next()){					 
-					AlarmBean ab = new AlarmBean();
-					ab.setA_id(rs.getString("a_id"));
-					ab.setA_num(rs.getInt("a_num"));					
-					ab.setA_end_day(rs.getString("a_end_day"));
-					ab.setA_start_day(rs.getString("a_start_day"));
-					ab.setA_alarm_name(rs.getInt("a_alarm_name"));
-					ab.setA_movie_name(rs.getString("a_movie_name"));
-					ab.setA_check(rs.getInt("a_check"));
-					alarmlist.add(ab);
-					}
-				
-			} catch(Exception e) {
-					//예외 생기면 변수 e에 저장
-					//예외를 잡아서 처리 -> 메시지 출력
-					e.printStackTrace();
-					}finally{
-						//예외가 발생하든 말든 상관없이 마무리작업
-						//객체 기억장소 마무리
-						
-						if(rs!=null){
-							try{rs.close();
-							}catch(SQLException e){
-								e.printStackTrace();
-							 }
-							}//end if
-						if(pstmt!=null){
-							try{pstmt.close();						
-							}catch(SQLException e){
-								e.printStackTrace();
-							}
-						 }//end if
-							if(con!=null){
-								try{con.close();
-								}catch(SQLException e){
-									e.printStackTrace();
-								 }
-								}//end if
-					}
-		 return alarmlist;
-	 }//end list
-	
+		
 	public Vector getAlarmlist(String id,int startRow, int pageSize){
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -194,24 +137,13 @@ public class AlarmDAO {
 		List memberList=new ArrayList();
 		List userList=new ArrayList();
 		try {
-			//1,2 디비연결
 			con=getConnection();
-			//3 sql id에 해당하는 장바구니 정보 가져오기
 			sql="select * from alarm where a_id=? order by a_num desc limit ?,?";
-//			sql="select * from alarm a join member m on a.a_follower = m.m_id where a_id=? order by a_num desc limit ?,?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setInt(2, startRow-1);
 			pstmt.setInt(3, pageSize);
-			//4 rs 실행 저장
-			rs=pstmt.executeQuery();
-			//5 rs 데이터 있으면 장바구니 자바빈 객체 생성
-			//  rs => 자바빈 저장 =>basketList 배열한칸 저장
-			//  rs => b_g_num 
-			//  3 sql b_g_num 해당하는 상품정보가져오기
-			//  4 rs2  pstmt2 실행저장   
-			//  5 rs2데이터 있으면 상품 자바빈 객체 생성
-			//  rs2=>자바빈 저장 => goodsList한칸 저장
+			rs=pstmt.executeQuery();			
 			while(rs.next()){
 				AlarmBean ab=new AlarmBean();
 				ab.setA_id(rs.getString("a_id"));
@@ -223,7 +155,6 @@ public class AlarmDAO {
 				ab.setA_check(rs.getInt("a_check"));
 				ab.setA_follower(rs.getString("a_follower"));
 				ab.setA_forAdmin(rs.getString("a_forAdmin"));
-				//fb.setF_date(rs.getTimestamp("f_date"));
 				alarmList.add(ab);
 				sql="select * from movie where mv_kor_title=?";
 				pstmt2=con.prepareStatement(sql);
@@ -264,8 +195,6 @@ public class AlarmDAO {
 						}
 
 			}
-			// vector 첫번째 칸 basketList 저장
-			// vector 두번째 칸 goodsList 저장
 			vector.add(alarmList);
 			vector.add(movieList);
 			vector.add(memberList);
