@@ -125,11 +125,7 @@ public class AlarmDAO {
 	public Vector getAlarmlist(String id,int startRow, int pageSize){
 		Connection con=null;
 		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		PreparedStatement pstmt2=null;
-		ResultSet rs2=null;
-		PreparedStatement pstmt3=null;
-		ResultSet rs3=null;
+		ResultSet rs=null;		
 		String sql="";
 		Vector vector=new Vector();
 		List alarmList=new ArrayList();
@@ -157,22 +153,22 @@ public class AlarmDAO {
 				ab.setA_forAdmin(rs.getString("a_forAdmin"));
 				alarmList.add(ab);
 				sql="select * from movie where mv_kor_title=?";
-				pstmt2=con.prepareStatement(sql);
-				pstmt2.setString(1, ab.getA_movie_name());
-				rs2=pstmt2.executeQuery();
-				if(rs2.next()){
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, ab.getA_movie_name());
+				rs=pstmt.executeQuery();
+				if(rs.next()){
 					MovieBean mb=new MovieBean();
-					mb.setMv_num(rs2.getInt("mv_num"));					
+					mb.setMv_num(rs.getInt("mv_num"));					
 					movieList.add(mb);
 				}
 				sql="select * from member where m_id=?";
-				pstmt3=con.prepareStatement(sql);
-				pstmt3.setString(1, ab.getA_follower());
-				rs3=pstmt3.executeQuery();
-					if(rs3.next()) {
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, ab.getA_follower());
+				rs=pstmt.executeQuery();
+					if(rs.next()) {
 						MemberBean memb=new MemberBean();
-						memb.setM_name(rs3.getString("m_name"));
-						memb.setM_id(rs3.getString("m_id"));
+						memb.setM_name(rs.getString("m_name"));
+						memb.setM_id(rs.getString("m_id"));
 						memberList.add(memb);
 					}else {
 						MemberBean memb=new MemberBean();
@@ -180,17 +176,19 @@ public class AlarmDAO {
 						memberList.add(memb);
 					}
 				sql="select * from member where m_id=?";
-					pstmt3=con.prepareStatement(sql);
-					pstmt3.setString(1, ab.getA_forAdmin());
-					rs3=pstmt3.executeQuery();
-						if(rs3.next()) {
+					pstmt=con.prepareStatement(sql);
+					System.out.println(ab.getA_forAdmin());
+					pstmt.setString(1,ab.getA_forAdmin());
+					rs=pstmt.executeQuery();
+						if(rs.next()) {
 							MemberBean memb=new MemberBean();
-							memb.setM_name(rs3.getString("m_name"));
-							memb.setM_id(rs3.getString("m_id"));
+							memb.setM_name(rs.getString("m_name"));
+							memb.setM_id(rs.getString("m_id"));
 							userList.add(memb);
 						}else {
+							System.out.println("여기오면 안 되는데");
 							MemberBean memb=new MemberBean();
-							memb.setM_name("nono");
+							memb.setM_name("nono");							
 							userList.add(memb);
 						}
 
