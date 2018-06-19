@@ -1,9 +1,8 @@
 package net.admin.chat.action;
 
 public class ActionForward {
-	//이동방식 저장 //약속 true response, false forward
+
 	private boolean isRedirect;
-	//이동경로 저장
 	private String path;
 	
 	public boolean isRedirect() {
@@ -17,13 +16,6 @@ public class ActionForward {
 	}
 	public void setPath(String path) {
 		this.path = path;
-	}
-	
-	
-	
-	
-	
-	
-	
+	}	
 
 }

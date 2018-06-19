@@ -16,9 +16,7 @@ public class AdminNoticeWriteAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("AdminNoticeWrite execute()");
 		String realpath = request.getRealPath("./upload");
-		System.out.println("upload폴더의 물리적 경로:" + realpath);
 		int maxSize = 10 * 1024 * 1024;
 		MultipartRequest multi = new MultipartRequest(request, realpath, maxSize, "utf-8", new DefaultFileRenamePolicy());
 		NoticeBean nb = new NoticeBean();
