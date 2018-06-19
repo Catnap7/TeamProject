@@ -1,7 +1,6 @@
 package net.admin.manage.action;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,16 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class AdminManageFrontController extends HttpServlet{
-
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		String requestURI=request.getRequestURI();
 		String context=request.getContextPath();
 		String command=requestURI.substring(context.length());
 		ActionForward forward=null;
 		Action action=null;
-
-		//주소 비교
 		if(command.equals("/AdminMovieInsert.am")){
 			forward = new ActionForward();
 			forward.setRedirect(false);
@@ -94,7 +89,6 @@ public class AdminManageFrontController extends HttpServlet{
 			}				
 		}
 
-		//이동(주소비교에서 이동방식, 이동할곳 정보를 찾아올것)
 		if(forward!=null){
 			if(forward.isRedirect()){
 				response.sendRedirect(forward.getPath());
@@ -103,9 +97,7 @@ public class AdminManageFrontController extends HttpServlet{
 				dispatcher.forward(request, response);
 			}
 		}
-
 	}	
-
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
@@ -114,5 +106,4 @@ public class AdminManageFrontController extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}	
-
 }
