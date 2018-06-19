@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>와츄 : WATCHU</title>
+<title>왓츄 : WATCHU</title>
 
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 
