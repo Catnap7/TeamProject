@@ -33,10 +33,6 @@
 String id = (String)session.getAttribute("m_id");
 %>
 
-
-<!-- <section class="left">
-
-</section>  -->
 <section>
 <article>
 <h1>룰렛을 돌려서 쿠폰을 획득해보아요~</h1>
@@ -47,20 +43,8 @@ String id = (String)session.getAttribute("m_id");
 <br />
 <input type='button' value='시작' id='start_btn'></input>
 </div>
-<!-- <div id="result_id"></div>
-<div id="result_id2"></div>
-<div id="result_id3"></div>
-<div id="result_id4"></div>
-<div id="result_id5"></div>
-<div id="result_id6"></div>
-<div id="result_id7"></div>
-<div id="result_id8"></div> -->
 </article>
 </section>
-
-<!--  <section class="right">
-
-</section>  -->
 
 <div class="clear"></div>
 </body>
