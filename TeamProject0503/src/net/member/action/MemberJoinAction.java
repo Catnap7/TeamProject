@@ -27,14 +27,6 @@ public  class MemberJoinAction implements Action{
 		//한글처리
 		request.setCharacterEncoding("utf-8");
 		HttpSession session= request.getSession();
-		String id=(String)session.getAttribute("m_id");
-		if(id==null){
-			ActionForward forward= new ActionForward();
-			forward.setPath("./MemberLogin.me");
-			forward.setRedirect(true);
-			return forward;
-		}
-		
 		
 		MemberBean memberbean = new MemberBean();
 		
