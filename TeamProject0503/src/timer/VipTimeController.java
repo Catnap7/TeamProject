@@ -25,7 +25,7 @@ public class VipTimeController extends HttpServlet {
 		  date.set(Calendar.SECOND, 0);
 		  date.set(Calendar.MILLISECOND, 0);
 		  
-		Timer timer = new Timer("test");
+		Timer timer = new Timer();
 		timer.scheduleAtFixedRate(new TimerTask() {
            public void run() {
                try {
@@ -45,7 +45,7 @@ public class VipTimeController extends HttpServlet {
                    e.printStackTrace();
                }
            }
-       }, date.getTime(), 1000 * 60 * 60 * 24 * 7 * 4); // 4주에 한번
+       }, date.getTime(), 1000L * 60 * 60 * 24 * 7 * 4); // 4주에 한번
 		
     }//end init
 }
