@@ -111,9 +111,15 @@ List<VipResBean> seatList=(List)request.getAttribute("seatList");
 			<%for(int i=0;i<vipMemberList.size();i++){
 				memberbean =(MemberBean)vipMemberList.get(i);
 				vipresbean=(VipResBean)seatList.get(i);
+				
+			String seatnum=vipresbean.getVr_seat_num();
+			if(seatnum==null){
+				seatnum="vip회원이 시사회 예약하기 전입니다";
+			} 
 			%>
 			<tr>
-				<td><%=vipresbean.getVr_seat_num()%></td>
+				<%-- <td><%=vipresbean.getVr_seat_num()%></td> --%>
+				<td><%=seatnum%></td>
 				<td><%=memberbean.getM_id()%></td><td><%=memberbean.getM_name()%></td>
 				<td><%=memberbean.getM_grade()%></td><td><%=memberbean.getM_id_num1()%></td>
 				<td><%=memberbean.getM_reg_date()%></td>

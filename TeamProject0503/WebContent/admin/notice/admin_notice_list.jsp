@@ -61,7 +61,7 @@
 				<button type="submit" class="wirtebtn">글쓰기</button>
 			</form>
 		</div>
-		<table class="db_list">
+		<%-- <table class="db_list">
 			<tr>
 				<th class="th1">No</th>
 				<th class="th2">제목</th>
@@ -87,12 +87,12 @@
 						}			
 					}				
 				%>
-		</table>
+		</table> 
 		<div class="admin-notice-write">
 			<form action="./AdminNoticeWrite.an">
 				<button type="submit" class="wirtebtn">글쓰기</button>
 			</form>
-		</div>
+		</div>--%>
 		<div class="prev_next">
 			<%
 				if (startPage > pageBlock) {
