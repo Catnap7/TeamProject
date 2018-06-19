@@ -22,12 +22,6 @@ public class EmailCheckAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session= request.getSession();
 		String m_id = request.getParameter("m_id");
-		if(m_id==null){
-			ActionForward forward= new ActionForward();
-			forward.setPath("./MemberLogin.me");
-			forward.setRedirect(true);
-			return forward;
-		}
 		MemberDAO memberdao = new MemberDAO();
 
 		MemberBean memberbean = memberdao.getMember(m_id);

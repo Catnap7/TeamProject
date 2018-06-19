@@ -61,7 +61,10 @@
 				<button type="submit" class="wirtebtn">글쓰기</button>
 			</form>
 		</div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/master
 		<div class="prev_next">
 			<%
 				if (startPage > pageBlock) {
