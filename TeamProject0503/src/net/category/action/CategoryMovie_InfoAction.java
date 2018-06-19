@@ -27,13 +27,13 @@ public class CategoryMovie_InfoAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		HttpSession session= request.getSession();
 		String id=(String)session.getAttribute("m_id");
-		AdminSuspendDAO asdao = new AdminSuspendDAO();
 		if(id==null){
 			ActionForward forward= new ActionForward();
 			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
 			return forward;
 		}
+		AdminSuspendDAO asdao = new AdminSuspendDAO();
 		int mv_num = Integer.parseInt(request.getParameter("mv_num"));
 		int f_num=Integer.parseInt(request.getParameter("mv_num"));
 		FavoriteDAO favoriteDAO = new FavoriteDAO();

@@ -17,7 +17,6 @@ public class Mypage implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("Mypage execute()");
 		//한글처리
 		request.setCharacterEncoding("utf-8");
 		ActionForward forward=new ActionForward();
@@ -60,11 +59,9 @@ public class Mypage implements Action{
 		for(int i=0; i<f_followingList.size(); i++) {
 			FollowBean fbean = (FollowBean)f_followingList.get(i);
 			following_id = fbean.getFo_following();
-			System.out.println(following_id);
 			
 			followingCheckList.addAll(followdao.followingCheck(id, following_id));
 			request.setAttribute("followingCheckList", followingCheckList);
-			System.out.println(followingCheckList.get(i));
 
 		}
 		
@@ -72,11 +69,9 @@ public class Mypage implements Action{
 		for(int i=0; i<f_followerList.size(); i++) {
 			FollowBean fbean = (FollowBean)f_followerList.get(i);
 			f_id = fbean.getFo_id();
-			System.out.println(f_id);
 			
 			followCheckList.addAll(followdao.followCheck(id, f_id));
 			request.setAttribute("followCheckList", followCheckList);
-			System.out.println(followCheckList.get(i));
 
 		}
 		

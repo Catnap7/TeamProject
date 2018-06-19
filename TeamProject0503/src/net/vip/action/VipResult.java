@@ -16,9 +16,15 @@ public class VipResult implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("VipResult execute");
-		request.setCharacterEncoding("UTF8");
-		
+		request.setCharacterEncoding("utf-8");
+		HttpSession session= request.getSession();
+		String id=(String)session.getAttribute("m_id");
+		if(id==null){
+			ActionForward forward= new ActionForward();
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
 		MemberDAO memberdao=new MemberDAO();
 		MemberBean memberbean=new MemberBean();
@@ -27,14 +33,9 @@ public class VipResult implements Action{
 		VipBean vipbean=vipdao.getVipMovie(); 
 
 		String v_num=String.valueOf(vipbean.getV_num());
-		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("m_id");
 		
 		String vr_seat_num=request.getParameter("seat");
 		
-		System.out.println(v_num);
-		System.out.println(id);
-		System.out.println(vr_seat_num);
 		
 		
 		VipResBean vipresbean = new VipResBean();

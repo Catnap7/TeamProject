@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.admin.manage.db.MovieBean;
 import net.admin.manage.db.MovieDAO;
@@ -22,9 +23,15 @@ public class RecommendAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println("RecommendAction execute()");
-		
 		request.setCharacterEncoding("utf-8");
+		HttpSession session= request.getSession();
+		String m_id=(String)session.getAttribute("m_id");
+		if(m_id==null){
+			ActionForward forward= new ActionForward();
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
 		ReviewBean reviewbean = new ReviewBean();
 		ReviewDAO reviewdao = new ReviewDAO();
@@ -74,19 +81,11 @@ public class RecommendAction implements Action {
 			response.setContentType("text/html;	charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			
-//			out.println("<script>");
-//			out.println("alert('이미 추천을 준 리뷰 입니다')");
-//			out.println("history.back()");
-//			out.println("</script>");
 			out.println(check);
 			out.close();
 			return null;
 		}
 		
-//		ActionForward forward = new ActionForward();
-//		forward.setRedirect(true);
-//		forward.setPath("./CategoryMovie.ca?mv_num="+r_p_num);
-//		return forward;
 	}
 
 }

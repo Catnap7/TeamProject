@@ -20,19 +20,15 @@ public class TimeLine implements Action{
 		FollowDAO followdao = new FollowDAO();						
 		HttpSession session=request.getSession();		
 		String id = (String)session.getAttribute("m_id");
-		
+		if(id==null){
+			ActionForward forward= new ActionForward();
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
 		List timelinelist = followdao.timelinelist(id);
-		/*Vector vector = new Vector();
-		
-		vector = followdao.TimeLineReview(id);
-		List<FollowBean> timelinemovie = (List)vector.get(0);
-		List<MemberBean> timelinereview = (List)vector.get(1);
-		
-		*/
 		request.setAttribute("timelinelist", timelinelist);
-		/*request.setAttribute("timelinemovie", timelinemovie);
-		request.setAttribute("timelinereview", timelinereview);*/
 		forward=new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("./follow/timeline.jsp");						

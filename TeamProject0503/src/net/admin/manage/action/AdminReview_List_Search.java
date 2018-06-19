@@ -17,26 +17,21 @@ import net.member.db.MemberBean;
 @WebServlet("/AdminReviewSearch")
 public class AdminReview_List_Search extends HttpServlet {
 	private static final long serialVersionUID = 1L;	
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("AdminReview_List_Search execute()");
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		String searchValue = request.getParameter("searchValue");
 		String select = request.getParameter("select");		
 		response.getWriter().write(getJSON(searchValue, select));
 	}
-	
 	public String getJSON(String searchValue, String select) {	
 		if(searchValue == null) searchValue = "";
 		StringBuffer result = new StringBuffer("");
 		result.append("{\"result\":[");
 		AdminReviewDAO ardao = new AdminReviewDAO();
-//		List<ReviewBean> reviewList = ardao.getAdminReviewSearch(searchValue, select);
 		Vector vector = ardao.getAdminReviewSearch(searchValue, select);
 		List<ReviewBean> reviewList = (List)vector.get(0);
 		List<MemberBean> memberList = (List)vector.get(1);
-		
 		for(int i = 0; i < reviewList.size(); i++) {
 				result.append("[{\"value\" : \"" + reviewList.get(i).getR_num() + "\"},");
 				result.append("{\"value\" : \"" + reviewList.get(i).getR_id() + "\"},");
@@ -44,10 +39,8 @@ public class AdminReview_List_Search extends HttpServlet {
 				result.append("{\"value\" : \"" + reviewList.get(i).getR_recommand() + "\"},");
 				result.append("{\"value\" : \"" + reviewList.get(i).getR_report() + "\"},");
 				result.append("{\"value\" : \"" + reviewList.get(i).getR_date() + "\"}],");
-//				result.append("{\"value\" : \"" + reviewList.get(i).getR_content() + "\"}],");
 		}		
 		result.append("]}");
 		return result.toString();
 	}
-
 }

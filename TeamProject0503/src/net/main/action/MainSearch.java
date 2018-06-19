@@ -13,7 +13,6 @@ public class MainSearch implements Action{
 	ActionForward forward;
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("Mainsearch execute");
 		HttpSession session=request.getSession();		
 		String id = (String)session.getAttribute("m_id");
 		String search = request.getParameter("search");
@@ -23,7 +22,6 @@ public class MainSearch implements Action{
 			forward.setPath("./MemberLogin.me");
 			return forward;
 		}
-		System.out.println(search);
 		MainDAO maindao = new MainDAO();
 		List titlesearchList = maindao.titlesearch(search);
 		List directorsearchList = maindao.directorsearch(search);

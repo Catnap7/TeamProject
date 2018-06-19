@@ -27,7 +27,7 @@ public class MemberLoginAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
+		HttpSession session= request.getSession();
 		response.setContentType("text/html;	charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		MemberDAO mdao = new MemberDAO();

@@ -14,9 +14,6 @@ public class RatingAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("ratingAction execute()");
-		
-		//rating 테이블 insert or update
 		request.setCharacterEncoding("utf-8");	
 		
 		HttpSession session= request.getSession();

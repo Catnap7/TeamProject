@@ -15,7 +15,6 @@ public class RatingFrontController extends HttpServlet{
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String requestURI=request.getRequestURI();
-		System.out.println(requestURI);
 		String context=request.getContextPath();
 		String command=requestURI.substring(context.length());
 		ActionForward forward=null;
@@ -25,7 +24,6 @@ public class RatingFrontController extends HttpServlet{
 		//주소 비교
 		if(command.equals("/Rating.ra")){
 			action= new Rating();
-			System.out.println("rating");
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
@@ -34,7 +32,6 @@ public class RatingFrontController extends HttpServlet{
 			
 		}else if(command.equals("/RatingAction.ra")){
 			action= new RatingAction();
-			System.out.println("RatingAction");
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {

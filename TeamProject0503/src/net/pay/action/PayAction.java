@@ -27,7 +27,6 @@ public class PayAction implements Action{
 		}
 
 		PayDAO pdao= new PayDAO();
-		//m_pay들고와서, 이미 결제한 회원이면, 돌아가기
 		int m_pay=pdao.getMpay(id);
 		
 		if(m_pay==1){
@@ -64,12 +63,6 @@ public class PayAction implements Action{
 		out.println("</script>");
 		out.close();
 		return null;
-		
-		/*
-		ActionForward forward=new  ActionForward();
-		forward.setPath("./PayList.pa");
-		forward.setRedirect(true);
-		return forward;*/
 	}
 	
 

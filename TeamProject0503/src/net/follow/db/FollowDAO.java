@@ -232,8 +232,6 @@ public class FollowDAO {
 				String sql="";
 				int check = 0;
 				List<Integer> followingCheckList = new ArrayList<>();
-				System.out.println("내 아이디 "+m_id);
-				System.out.println("받아온 팔로워 아이디 "+following_id);
 				try {
 					con=getConnection();
 
@@ -271,8 +269,6 @@ public class FollowDAO {
 			String sql="";
 			int check = 0;
 			List<Integer> followCheckList = new ArrayList<>();
-			System.out.println("내 아이디 "+m_id);
-			System.out.println("받아온 팔로워 아이디 "+f_id);
 			try {
 				con=getConnection();
 

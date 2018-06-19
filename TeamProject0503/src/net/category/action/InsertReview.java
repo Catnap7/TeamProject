@@ -16,17 +16,19 @@ public class InsertReview implements Action {
 	ActionForward forward;
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		System.out.println("InsertReview execute()");
-		
 		request.setCharacterEncoding("utf-8");
-		
+		HttpSession session= request.getSession();
+		String r_id=(String)session.getAttribute("m_id");
+		if(r_id==null){
+			ActionForward forward= new ActionForward();
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		ReviewBean reviewbean = new ReviewBean();
 		ReviewDAO reviewdao = new ReviewDAO();
 		AdminSuspendDAO asdao = new AdminSuspendDAO();
 		
-		HttpSession session = request.getSession();
-		String r_id = (String)session.getAttribute("m_id");
 
 		asdao.AdminMemberSuspend(r_id);
 		
@@ -61,7 +63,6 @@ public class InsertReview implements Action {
 			reviewbean.setR_content(r_content);
 			reviewbean.setR_recommand(r_recommand);
 			reviewbean.setR_report(r_report);
-			//reviewbean.setR_date(new Timestamp(System.currentTimeMillis()));
 			reviewdao.insertReview(reviewbean);
 		}
 		

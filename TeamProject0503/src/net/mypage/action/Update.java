@@ -13,23 +13,20 @@ public class Update implements Action{
 	PrintWriter out;
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-				System.out.println("MemberUpdate execute()");
-				//한글처리
 				request.setCharacterEncoding("utf-8");
-				// 자바빈 MemberBean mb 객체생성
 				MemberBean mb = new MemberBean();
-				// 자바빈 멤버변수 <= 폼파라미터 가져와서 저장	
 				HttpSession session = request.getSession();
 				String id = (String)session.getAttribute("m_id");	
+				if(id==null){
+					ActionForward forward= new ActionForward();
+					forward.setPath("./MemberLogin.me");
+					forward.setRedirect(true);
+					return forward;
+				}				//한글처리
 				mb.setM_pass(request.getParameter("pass"));	
-				// MemberDAO mdao 객체생성
 				MemberDAO mdao = new MemberDAO();
-				// insertMember(mb) 메서드 호출()
 				int check=mdao.userCheck(id, mb.getM_pass());
 				
-				//이동 ActionForward 객체 생성    
-				// 방식,경로 저장
 				ActionForward forward=null;
 				switch(check){
 				case 1: 	

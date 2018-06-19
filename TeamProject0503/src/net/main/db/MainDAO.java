@@ -131,7 +131,6 @@ public class MainDAO {
 			if(rs.next()) {
 				allreviewcount = rs.getInt("allreviewcount");
 			}
-			System.out.println(allreviewcount);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -345,7 +344,6 @@ public class MainDAO {
 			pstmt.setString(1,"%"+search+"%");
 			pstmt.setString(2,"%"+search+"%");
 			rs=pstmt.executeQuery();
-			System.out.println(search);
 			while(rs.next()){
 				MovieBean moviebean= new MovieBean();
 				moviebean.setMv_num(rs.getInt("mv_num"));
@@ -384,7 +382,6 @@ public class MainDAO {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,"%"+search+"%");
 			rs=pstmt.executeQuery();
-			System.out.println(search);
 			while(rs.next()){
 				MovieBean moviebean= new MovieBean();
 				moviebean.setMv_num(rs.getInt("mv_num"));
@@ -425,7 +422,6 @@ public class MainDAO {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,"%"+search+"%");
 			rs=pstmt.executeQuery();
-			System.out.println(search);
 			while(rs.next()){
 				MovieBean moviebean= new MovieBean();
 				moviebean.setMv_num(rs.getInt("mv_num"));
