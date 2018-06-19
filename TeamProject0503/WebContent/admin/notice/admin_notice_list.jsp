@@ -61,7 +61,6 @@
 				<button type="submit" class="wirtebtn">글쓰기</button>
 			</form>
 		</div>
-
 		<div class="prev_next">
 			<%
 				if (startPage > pageBlock) {
