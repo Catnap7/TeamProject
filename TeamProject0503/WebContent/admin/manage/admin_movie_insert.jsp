@@ -12,6 +12,7 @@
 	<jsp:include page="../../inc/header.jsp" />
 	<jsp:include page="../../inc/admin_sub.jsp" />
 	<section class="content_member">
+	
 	<div id="content33">
 		<h1 class="adminTitle">영화 등록</h1>
 		<form action="./AdminMovieInsertAction.am" method="post">
