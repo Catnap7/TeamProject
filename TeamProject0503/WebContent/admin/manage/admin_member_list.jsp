@@ -5,9 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>와츄 : WATCHU</title>
+
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
+
 <!-- script -->
 <script type="text/javascript">
 	var request = new XMLHttpRequest();
@@ -41,6 +45,8 @@
 	<!-- Header -->
 	<jsp:include page="../../inc/header.jsp" />
 	<!-- Header -->	
+	
+<article>
 	<!-- Sub -->
 	<jsp:include page="../../inc/admin_sub.jsp" />
 	<!-- Sub -->	
@@ -72,6 +78,8 @@
 			</table>
 		</div>
 	</section>
+</article>
+	
 	<!-- Footer -->
 	<jsp:include page="../../inc/footer.jsp" />
 	<!-- Footer -->	
