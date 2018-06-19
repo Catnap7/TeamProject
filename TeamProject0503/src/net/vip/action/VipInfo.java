@@ -12,7 +12,6 @@ public class VipInfo implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("VipInfo execute");
 		request.setCharacterEncoding("utf-8");
 			
 		//회원 정보 가져오기

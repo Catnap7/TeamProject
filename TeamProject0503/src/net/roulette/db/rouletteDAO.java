@@ -23,7 +23,6 @@ public class rouletteDAO {
 	}
 	
 	public List<Double> getChances(String id){	
-		//System.out.println("테스트 중 : "+id);
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -87,7 +86,6 @@ public class rouletteDAO {
 	}//end getchances
 	
 	public void downRoulette(String id, String c_name){
-		System.out.println("down 테스트 중");
 		int count=0;
 		Connection con=null;
 		String sql =null;
@@ -122,7 +120,6 @@ public class rouletteDAO {
 	}//end down
 	
 	public void rouletteReset(){
-		System.out.println("rouletteReset 테스트 중");		
 		Connection con=null;
 		String sql =null;
 		PreparedStatement pstmt =null;

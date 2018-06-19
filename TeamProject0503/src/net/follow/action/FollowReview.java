@@ -18,17 +18,8 @@ public class FollowReview implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//
-		//FollowFavorite.fo?id=<%mv.getm_id%/>들고오기
-		//id값 챙겨왔다.
-
 		
-		/*String id= request.getParameter("m_id");
-		FollowDAO fdao= new FollowDAO();
-		List followfavoritelist=fdao.followreview(id);
-		*/
-		
-		
+		request.setCharacterEncoding("utf-8");
 		HttpSession session= request.getSession();
 		String m_id=(String)session.getAttribute("m_id");
 		if(m_id==null){
@@ -53,14 +44,10 @@ public class FollowReview implements Action{
 		MovieBean moviebean = new MovieBean();
 		moviebean=moviedao.getfavorite(f_id);
 		
- /*		Vector vector2 = new Vector();
-		vector2 = followdao.top5followfavorite(m_id);
-		List<ReviewBean> top5favoritelist=(List)vector2.get(0);
-		List<MovieBean> top5movielist2=(List)vector2.get(1);*/
 		
 		
 		
-		request.setCharacterEncoding("utf-8");
+	
 		
 		FollowDAO fdao= new FollowDAO();
 		

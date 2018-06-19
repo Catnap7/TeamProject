@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import net.member.db.MemberBean;
 import net.member.db.MemberDAO;
 import util.Gmail;
@@ -27,6 +26,16 @@ public  class MemberJoinAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//한글처리
 		request.setCharacterEncoding("utf-8");
+		HttpSession session= request.getSession();
+		String id=(String)session.getAttribute("m_id");
+		if(id==null){
+			ActionForward forward= new ActionForward();
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
+		
+		
 		MemberBean memberbean = new MemberBean();
 		
 		int jumin2=Integer.parseInt(request.getParameter("m_num2"));
@@ -55,7 +64,6 @@ public  class MemberJoinAction implements Action{
 		memberdao.insertMember(memberbean);
 	
 		String m_id = request.getParameter("m_id"); 
-		HttpSession session = request.getSession();
 		session.setAttribute("m_id", m_id);
 	
 	int Echeck = memberdao.EmailChecked(m_id);

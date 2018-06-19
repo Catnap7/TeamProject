@@ -8,13 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 public class AdminManageFrontController extends HttpServlet{
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String requestURI=request.getRequestURI();
-		System.out.println(requestURI);
 		String context=request.getContextPath();
 		String command=requestURI.substring(context.length());
 		ActionForward forward=null;
@@ -110,14 +108,11 @@ public class AdminManageFrontController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("adminMemberFrontController doGet()");	
 		doProcess(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("adminMemberFrontController doPost()");
 		doProcess(request, response);
-
 	}	
 
 }

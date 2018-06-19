@@ -318,7 +318,6 @@ public void  insertMember(MemberBean memberbean) {
 		String authNum=authNum(); // 
 		String content="임시비밀번호 ["+authNum+"]"; //
 		//임시비밀번호 확인용 호스팅 전에 삭제할것.
-		System.out.println(authNum);
 		try{
 			passUpdateMember(authNum,to1);
 		Properties props=new Properties();
@@ -464,7 +463,6 @@ public void  insertMember(MemberBean memberbean) {
 	}//end deleteMember
 	
 	public int checkChance(String id){
-		//System.out.println("테스트 중");
 		int check=0;
 		Connection con=null;
 		String sql =null;
@@ -530,7 +528,6 @@ public void  insertMember(MemberBean memberbean) {
 	}//end down
 	
 	public void m_rouletteReset(){
-		System.out.println("m_rouletteReset 테스트 중");		
 		Connection con=null;
 		String sql =null;
 		PreparedStatement pstmt =null;

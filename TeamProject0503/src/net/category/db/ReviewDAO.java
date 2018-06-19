@@ -326,7 +326,6 @@ public int getReviewCount(String m_id) {
 		Vector vector=new Vector();//////////////////////
 		List reviewList = new ArrayList();
 		List memberName = new ArrayList();//////////////
-		System.out.println("\t"+"ReviewDAO dateSortReview()");
 		try {
 			con=getConnection();
 			

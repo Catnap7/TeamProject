@@ -15,7 +15,6 @@ public class VipFrontController extends HttpServlet{
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String requestURI=request.getRequestURI();
-		System.out.println(requestURI);
 		String context=request.getContextPath();
 		String command=requestURI.substring(context.length());
 		ActionForward forward=null;
@@ -130,12 +129,10 @@ public class VipFrontController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberFrontController doGet()");	
 		doProcess(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberFrontController doPost()");
 		doProcess(request, response);
 		
 	}	

@@ -35,12 +35,10 @@ public class PayTimeController extends HttpServlet {
                  // 런할때 실행시킬메소드. 
     				
     				//정기결제하는 사람들이 만료다음날짜 00시00분에 결제되는 메소드
-    				System.out.println("자동결제 실행"+new Date()+" team0524");
     				PayDAO pdao= new PayDAO();
     				pdao.autoInsertPay();
 
     				// 00시에 기한만료 회원 m_pay등급조정
-    				System.out.println("m_pay등급조절"+new Date()+" team0524");
     				pdao.autoUpdateMpaytoZero();
     				
     				//룰렛횟수 리셋

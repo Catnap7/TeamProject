@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.member.db.MemberBean;
 import net.vip.db.VipBean;
@@ -16,10 +17,15 @@ public class VipAdmin implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		System.out.println("VipAdmin execute");
 		request.setCharacterEncoding("utf-8");
-		
+		HttpSession session= request.getSession();
+		String id=(String)session.getAttribute("m_id");
+		if(id==null){
+			ActionForward forward= new ActionForward();
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		//vip 시네마 영화 정보 가져오기 
 		VipDAO vipdao=new VipDAO();
 		VipBean vipbean=new VipBean();

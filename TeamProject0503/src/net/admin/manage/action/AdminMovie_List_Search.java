@@ -12,13 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import net.admin.manage.db.AdminMovieDAO;
 import net.admin.manage.db.MovieBean;
 
-
 @WebServlet("/AdminMovieSearch")
 public class AdminMovie_List_Search extends HttpServlet {
 	private static final long serialVersionUID = 1L;	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("AdminPay_List_Search execute()");
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		String searchValue = request.getParameter("searchValue");

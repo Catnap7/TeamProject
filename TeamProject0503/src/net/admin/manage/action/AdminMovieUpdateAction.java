@@ -11,7 +11,6 @@ public class AdminMovieUpdateAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		System.out.println("AdminMovieUpdateAction execute()");
 		String mv_num = request.getParameter("mv_num");
 		AdminMovieDAO amdao = new AdminMovieDAO();
 		MovieBean movieBean = new MovieBean();
@@ -28,7 +27,6 @@ public class AdminMovieUpdateAction implements Action {
 		movieBean.setMv_video(request.getParameter("mv_video"));
 		movieBean.setMv_year(Integer.parseInt(request.getParameter("mv_year")));		
 		amdao.movieUpdate(movieBean);
-		
 		ActionForward forward = new ActionForward();
 		forward.setPath("./AdminMovie_List_Search.am");
 		forward.setRedirect(false);

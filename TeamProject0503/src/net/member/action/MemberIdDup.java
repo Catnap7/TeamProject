@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.member.db.MemberDAO;
 
@@ -12,6 +13,14 @@ public class MemberIdDup implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
+		HttpSession session= request.getSession();
+		String m_id=(String)session.getAttribute("m_id");
+		if(m_id==null){
+			ActionForward forward= new ActionForward();
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		String id = request.getParameter("m_id");
 		MemberDAO memberdao = new MemberDAO();
 		response.setContentType("text/html;	charset=UTF-8");
@@ -20,11 +29,6 @@ public class MemberIdDup implements Action{
 		out.println(check);
 		out.close();
 
-		//포워드로 처리시 포워딩 됐는데 왜 한번더 시도 하냐고 오류메시지가뜸
-	/*	ActionFosetPath("./Main.me");
-		forward.setRedirect(false);rward forward = new ActionForward();
-		forward.
-		*/
 		return null;
 	}
 

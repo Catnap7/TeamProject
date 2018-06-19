@@ -16,8 +16,7 @@ import javax.websocket.server.ServerEndpoint;
  
  
 @ServerEndpoint("/AdminChatAction") 
-public class AdminChatAction{ 
- 
+public class AdminChatAction{  
  
    private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>()); 
 
