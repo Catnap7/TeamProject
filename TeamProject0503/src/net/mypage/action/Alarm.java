@@ -1,8 +1,5 @@
 package net.mypage.action;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Vector;
 
@@ -12,17 +9,13 @@ import javax.servlet.http.HttpSession;
 
 import net.mypage.db.AlarmBean;
 import net.mypage.db.AlarmDAO;
-import net.mypage.db.CouponBean;
-import net.mypage.db.CouponDAO;
-
 
 public class Alarm implements Action{
 	ActionForward forward;
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 				//한글처리
-				request.setCharacterEncoding("utf-8");				
-				AlarmBean ab = new AlarmBean();
+				request.setCharacterEncoding("utf-8");								
 				AlarmDAO adao = new AlarmDAO();
 				HttpSession session=request.getSession();		
 				String id = (String)session.getAttribute("m_id");
@@ -67,8 +60,10 @@ public class Alarm implements Action{
 					alarmlist = v.get(0);
 					List movielist = v.get(1);		
 					List memberList = v.get(2);
+					List userList = v.get(3);
 					request.setAttribute("movielist", movielist);
 					request.setAttribute("memberList", memberList);
+					request.setAttribute("userList", userList);
 				}
 				
 				

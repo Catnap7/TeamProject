@@ -6,22 +6,18 @@
     <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 	<link rel="icon" type="image/png" href="./images/watchu_logo22.png" sizes="192x192">
 <script src="./js/main.js"></script>
-<!-- <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script> -->
 <script>
 var a = 0
 function start(){		
-		if(a==0){
-		//alert("0");	
+		if(a==0){	
 		document.img1.src = "./images/alarm.png";	
 		a=1;
 		}else if(a==1){
-			//alert("1");
 			document.img1.src = "./images/alarm2.png";	
 			a=0;
 		}		
 }
-function alarm(){
-	//alert("됩니다");
+function alarm(){	
 	setInterval("start()", 500);
 }
 </script>

@@ -28,13 +28,6 @@ public class MemberLoginAction implements Action{
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session= request.getSession();
-		String id=(String)session.getAttribute("m_id");
-		if(id==null){
-			ActionForward forward= new ActionForward();
-			forward.setPath("./MemberLogin.me");
-			forward.setRedirect(true);
-			return forward;
-		}
 		response.setContentType("text/html;	charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		MemberDAO mdao = new MemberDAO();
