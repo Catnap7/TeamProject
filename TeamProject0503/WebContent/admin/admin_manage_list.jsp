@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>왓츄 : 관리자 페이지</title>
+<title>와츄 : WATCHU</title>
 
 <!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">

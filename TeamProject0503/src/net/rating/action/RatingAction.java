@@ -14,50 +14,36 @@ public class RatingAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
 		System.out.println("ratingAction execute()");
 		
-		//섭밋으로 넘겨진 파라미터값 받아오기. 
-		//rating 테이블 인서트 or update
-		
+		//rating 테이블 insert or update
 		request.setCharacterEncoding("utf-8");	
-		//레이팅 한 사람 받아옴
-		HttpSession session= request.getSession();
-		String ra_id=(String)session.getAttribute("m_id");
 		
-		if(ra_id==null){
+		HttpSession session= request.getSession();
+		String m_id=(String)session.getAttribute("m_id");
+		if(m_id==null){
 			ActionForward forward= new ActionForward();
 			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
 			return forward;
 		}
-
-//		세션값 없을때 쓴 아이디	(강제 아이디 설정)
-//		String ra_id="wahchu";
+		
 		int ra_p_num=Integer.parseInt(request.getParameter("ra_p_num"));
 		
-		
-		//bean파일에 저장
 		RatingBean ratingbean= new RatingBean();
-		ratingbean.setRa_id(ra_id);//레이팅 한 사람 받아옴
-		ratingbean.setRa_p_num(ra_p_num);//레이팅 준 영화번호 받아옴
-		ratingbean.setRa_rating(Integer.parseInt(request.getParameter("ra_rating")));//레이팅값 받아옴.
-		//ratingbean.setRa_date(new Timestamp(System.currentTimeMillis()));
+		ratingbean.setRa_id(m_id);
+		ratingbean.setRa_p_num(ra_p_num);
+		ratingbean.setRa_rating(Integer.parseInt(request.getParameter("ra_rating")));
 
-		//메소드 실행, insert, update
 		RatingDAO rdao= new RatingDAO();
-		//준 레이팅 확인하고(아이디, 영화)
-		int check=rdao.ratingCheck(ra_id, ra_p_num);
+		//평점 남긴 영화인지 확인 후 insert or update
+		int check=rdao.ratingCheck(m_id, ra_p_num);
 		if(check==1){
-			//새 레이팅이면 레이팅 넣고 
 			rdao.insertRating(ratingbean);
-			
 		}else if (check==-1){
-		//레이팅리스트에 있으면 수정하고. 
 			rdao.updateRating(ratingbean);
 		}
 
-		
 //		ajax
 		return null;
 		

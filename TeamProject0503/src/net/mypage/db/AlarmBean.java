@@ -11,7 +11,6 @@ public class AlarmBean {
 	String a_start_day;
 	int a_check;
 	String a_follower;
-	String a_forAdmin;
 	
 	
 	
@@ -62,12 +61,6 @@ public class AlarmBean {
 	}
 	public void setA_follower(String a_follower) {
 		this.a_follower = a_follower;
-	}
-	public String getA_forAdmin() {
-		return a_forAdmin;
-	}
-	public void setA_forAdmin(String a_forAdmin) {
-		this.a_forAdmin = a_forAdmin;
 	}
 	
 	

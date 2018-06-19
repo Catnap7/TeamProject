@@ -11,7 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
-<title>Vip 관리 페이지</title>
+<title>와츄 : WATCHU</title>
 
 <!-- CSS -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
@@ -21,18 +21,16 @@
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 </head>
 <body>
-<%
-VipDAO vipdao = new VipDAO();
-VipBean vipbean=vipdao.getVipMovie(); 
 
-VipResDAO vipresdao = new VipResDAO();
-VipResBean vipresbean=new VipResBean();
+<%
+
+MemberBean memberbean=(MemberBean)request.getAttribute("memberbean");
+VipBean vipbean=(VipBean)request.getAttribute("vipbean");
+VipResBean vipresbean=(VipResBean)request.getAttribute("vipresbean");
 
 List<VipResBean> VipSeatTakenList = (List)request.getAttribute("VipSeatTakenList");
-
 List vipMemberList = (List)request.getAttribute("vipMemberList");
 List<VipResBean> seatList=(List)request.getAttribute("seatList");
-
 
 %>
 <!-- 헤더 영역 -->
@@ -111,7 +109,7 @@ List<VipResBean> seatList=(List)request.getAttribute("seatList");
 			</tr>
 			
 			<%for(int i=0;i<vipMemberList.size();i++){
-				MemberBean memberbean =(MemberBean)vipMemberList.get(i);
+				memberbean =(MemberBean)vipMemberList.get(i);
 				vipresbean=(VipResBean)seatList.get(i);
 			%>
 			<tr>

@@ -21,8 +21,6 @@ public class MainFrontController extends HttpServlet{
 		ActionForward forward=null;
 		Action action=null;
 		
-		
-		//주소 비교
 		if(command.equals("/Main.ma")){
 			action = new Main();
 			try{
@@ -48,12 +46,8 @@ public class MainFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		
-			
-		
-		
-		
-		//이동(주소비교에서 이동방식, 이동할곳 정보를 찾아올것)
+
+
 		if(forward!=null){
 			if(forward.isRedirect()){
 				response.sendRedirect(forward.getPath());

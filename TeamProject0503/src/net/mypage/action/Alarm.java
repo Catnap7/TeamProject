@@ -80,10 +80,8 @@ public class Alarm implements Action{
 					alarmlist = v.get(0);
 					List movielist = v.get(1);		
 					List memberList = v.get(2);
-					List userList = v.get(3);
 					request.setAttribute("movielist", movielist);
 					request.setAttribute("memberList", memberList);
-					request.setAttribute("userList", userList);
 				}
 				
 				

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
-<title>왓츄: VIP</title>
+<title>와츄 : WATCHU</title>
 
 
 <!-- css -->
@@ -15,7 +15,7 @@
 
 <!-- JQuery -->
 <script src="../js/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>  
+  
 <!-- 웹 폰트 : 나눔고딕 / Do Hyeon/ Abril Fatface -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Do+Hyeon|Abril+Fatface" rel="stylesheet">
 

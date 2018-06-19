@@ -18,10 +18,7 @@ public class VipMovieList implements Action{
 		
 		VipDAO vipdao=new VipDAO();
 		VipBean vipbean = new VipBean();
-		
-		
-		
-		
+
 		int count = vipdao.getVipMovieCount();
 		int pageSize = 10;
 		String pageNum = request.getParameter("pageNum");
@@ -31,9 +28,6 @@ public class VipMovieList implements Action{
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage-1)*pageSize+1;
 		int endRow = currentPage*pageSize;
-		
-		/*List<VipBean> vipMovieList = (List)vipdao.getVipMovieList();
-		request.setAttribute("vipMovieList", vipMovieList);*/
 		
 		List<VipBean> vipMovieList = null;
 		

@@ -30,12 +30,8 @@ public class VipResBean {
 		this.v_num = v_num;
 	}
 	
-	
-	
-	
+
 	//VipSeatTaken
-	
-	
 	public String getV_seatSelected() {
 		return v_seatSelected;
 	}
