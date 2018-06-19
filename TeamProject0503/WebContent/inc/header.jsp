@@ -6,22 +6,18 @@
     <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 	<link rel="icon" type="image/png" href="./images/watchu_logo22.png" sizes="192x192">
 <script src="./js/main.js"></script>
-<!-- <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script> -->
 <script>
 var a = 0
 function start(){		
-		if(a==0){
-		//alert("0");	
+		if(a==0){	
 		document.img1.src = "./images/alarm.png";	
 		a=1;
 		}else if(a==1){
-			//alert("1");
 			document.img1.src = "./images/alarm2.png";	
 			a=0;
 		}		
 }
-function alarm(){
-	//alert("됩니다");
+function alarm(){	
 	setInterval("start()", 500);
 }
 </script>
@@ -46,7 +42,11 @@ int followingcount= followdao.Followingcount(id);
 	
 
 <div class="clear"></div>
-
+	
+	<div class="pay">
+		<a href="./PayList.pa">이용권구매</a>
+	</div><!--이용권구매 -->
+			
 	<div class="rightInfo">
 		<div id="h_follow">
 			<div id="h_following">
@@ -58,32 +58,7 @@ int followingcount= followdao.Followingcount(id);
 				<p>팔로워</p>
 			</div>		
 		</div><!-- 팔로우 정보 -->		
-		<%-- <%
-		if(id.equals("admin")){
-			String m_name="";
-			m_name=(String)session.getAttribute("m_name");
-			String alarm = (String)session.getAttribute("alarm_num");
-			String id_name = "no_alarm";
-			if(alarm==null){alarm="0";}
-			int alarm_num = Integer.parseInt(alarm);	
-			if(alarm_num>0){id_name="alarm";%>
-				<script>alarm();</script>	
-			<%}%>
-			<div class="h_myinfo">
-	  			<button class="h_dropbtn1"><%=m_name %></button>
-					  <div class="h_dropdown-content1">
-					    <a href="./Mypage.my">내정보보기</a>
-					    <a href="./AdminManageList.am">관리자모드</a>
-					    <a href="./Alarm.my">알림창</a>
-					   <!--  <a href="./Myrating.my">평점내역</a> -->
-					    <a href="./MemberLogout.me">로그아웃</a>
-					  </div>
-			</div><!-- 유저정보 -->
-			<div><a href="./Alarm.my"><img src="./images/alarm2.png" id=<%=id_name %> name="img1"><span class="num"><%=alarm_num%></span></a></div>
-			<!-- <div class="pay">
-				<a href="./PayList.pa">이용권구매</a>
-			</div> --><!--  이용권구매 -->
-		<%}else{ --%>	
+
 			<%String m_name="";
 			m_name=(String)session.getAttribute("m_name");
 			String alarm = (String)session.getAttribute("alarm_num");
@@ -94,6 +69,9 @@ int followingcount= followdao.Followingcount(id);
 				<script>alarm();</script>	
 			<%}%>
 			<div class="h_myinfo">
+				<div class="alarm">
+					<a href="./Alarm.my"><img src="./images/alarm2.png" id=<%=id_name %> name="img1"><span class="num"><%=alarm_num%></span></a>
+				</div>
 	  			<button class="h_dropbtn1"><%=m_name %></button>
 					  <div class="h_dropdown-content1">
 					    <a href="./Mypage.my">내정보보기</a>
@@ -106,10 +84,8 @@ int followingcount= followdao.Followingcount(id);
 					    <%}%>
 					  </div>
 			</div><!-- 유저정보 -->
-			<div><a href="./Alarm.my"><img src="./images/alarm2.png" id=<%=id_name %> name="img1"><span class="num"><%=alarm_num%></span></a></div>
-			<div class="pay">
-				<a href="./PayList.pa">이용권구매</a>
-			</div><!--이용권구매 -->
+			
+			
 		</div><!-- rightInfo -->		
 	<%-- <%} %>	 --%>
 			

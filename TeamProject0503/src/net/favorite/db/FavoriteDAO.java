@@ -111,38 +111,6 @@ public class FavoriteDAO {
 		}
 	}
 	
-	public List <FavoriteBean>getFavoritelist(String id){
-		List<FavoriteBean> favoritelist = new ArrayList<FavoriteBean>();
-		Connection con = null;
-		String sql = "";
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try{
-			con = getConnection();
-			sql="select * from favorite where f_id=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			while(rs.next()){			
-				FavoriteBean fb = new FavoriteBean();
-				fb.setF_id(rs.getString("f_id"));
-				fb.setF_num(rs.getInt("f_num"));
-							
-				favoritelist.add(fb);
-				}
-		 }catch(Exception e) {
-			//예외 생기면 변수 e에 저장
-			//예외를 잡아서 처리 -> 메시지 출력
-			e.printStackTrace();
-			}finally{
-				//예외가 발생하든 말든 상관없이 마무리작업
-				//객체 기억장소 마무리
-				if(rs!=null)try{rs.close();}catch(SQLException e){e.printStackTrace();}
-				if(pstmt!=null)try{pstmt.close();}catch(SQLException e){e.printStackTrace();}
-				if(con!=null)try{con.close();}catch(SQLException e){e.printStackTrace();}
-			}
-		return favoritelist;
-	}//end getFavoritelist
 	public FavoriteBean getfavorite(int f_num, String f_id){
 		 Connection con = null;
 	      String sql = "";
@@ -174,7 +142,7 @@ public class FavoriteDAO {
 		return favoriteBean;
 }
 	
-	//getBasketList(id)
+
 	public Vector getFavoriteList(String id){
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -194,13 +162,6 @@ public class FavoriteDAO {
 			pstmt.setString(1, id);
 			//4 rs 실행 저장
 			rs=pstmt.executeQuery();
-			//5 rs 데이터 있으면 장바구니 자바빈 객체 생성
-			//  rs => 자바빈 저장 =>basketList 배열한칸 저장
-			//  rs => b_g_num 
-			//  3 sql b_g_num 해당하는 상품정보가져오기
-			//  4 rs2  pstmt2 실행저장   
-			//  5 rs2데이터 있으면 상품 자바빈 객체 생성
-			//  rs2=>자바빈 저장 => goodsList한칸 저장
 			while(rs.next()){
 				FavoriteBean fb=new FavoriteBean();
 				fb.setF_id(rs.getString("f_id"));
@@ -317,7 +278,6 @@ public class FavoriteDAO {
 			}
 //			무비리스트에 다 다른 주소가 저장되었는지 확인			
 //			for (int j = 0; j < 10; j++) {
-//				System.out.println(movieList.get(j));
 //			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -5,10 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
-<title>왓츄 : 비밀번호찾기 </title>
+<title>왓츄 : WATCHU</title>
 <link href="./css/member.css" rel="stylesheet" type="text/css">
 <script src="../script/script.js">
-
 
 
 </script>

@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
-<title>왓츄 : 프로필 수정</title>
+<title>왓츄 : WATCHU</title>
 
 <!-- css -->
 <link href="./css/profile.css" rel="stylesheet" type="text/css">
@@ -15,11 +15,10 @@
 
 <script type="text/javascript">
 
-$(window).bind("beforeunload",function (){		
+$(window).on("beforeunload",function (){	
 	opener.location.reload();
 });
-
-function closeP(){
+function closeP(){	
 	window.close();
 	opener.location.reload();
 }

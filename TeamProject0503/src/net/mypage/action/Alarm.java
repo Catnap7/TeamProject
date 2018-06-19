@@ -1,8 +1,5 @@
 package net.mypage.action;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Vector;
 
@@ -12,20 +9,13 @@ import javax.servlet.http.HttpSession;
 
 import net.mypage.db.AlarmBean;
 import net.mypage.db.AlarmDAO;
-import net.mypage.db.CouponBean;
-import net.mypage.db.CouponDAO;
-
 
 public class Alarm implements Action{
 	ActionForward forward;
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// count, pageNum, boardList, pageCount
-				// pageBlock, startPage, endPage 저장				
-				System.out.println("Alarm execute()");
 				//한글처리
-				request.setCharacterEncoding("utf-8");				
-				AlarmBean ab = new AlarmBean();
+				request.setCharacterEncoding("utf-8");								
 				AlarmDAO adao = new AlarmDAO();
 				HttpSession session=request.getSession();		
 				String id = (String)session.getAttribute("m_id");
@@ -59,20 +49,10 @@ public class Alarm implements Action{
 				int startPage=0;
 				int endPage=0;
 				if(count!=0){
-					//게시판 전체 페이지수 구하기
-					//   전체 글개수count 50개 한 화면에 보여줄 글개수 pageSize 10개
-					// count 50 pageSize 10 => 전체 페이지수 50/10=>5+나머지 =>5+0
-					// count 58 pageSize 10 => 전체 페이지수 58/10+나머지1=>5+1=6
 					pageCount = count/pageSize;
 					pageCount= (count%pageSize)!=0?  pageCount+1:pageCount;
-					//int pageCount = count/pageSize+(count%pageSize==0? 0:1);		
-					//한 화면에 보여줄 페이지수 설정			
-					// 시작하는 페이지 번호 구하기
-					// 1~10 => 1		11~20 =>11		21~30=>21
 					startPage=((currentPage-1)/pageBlock)*pageBlock+1;		
-					// 끝나는 페이지 번호 구하기
 					endPage=startPage+pageBlock-1;
-					// 구한 끝페이지 보다 전체페이지 수가 작은 경우
 					if(pageCount<endPage){
 						endPage=pageCount;
 					}					

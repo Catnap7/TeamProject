@@ -8,13 +8,9 @@ import net.admin.manage.db.MovieDAO;
 
 
 public class AdminMovieInsert implements Action {
-
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		
 		request.setCharacterEncoding("utf-8");
-		
 		MovieBean mob = new MovieBean();
 		mob.setMv_kor_title(request.getParameter("mv_kor_title"));
 		mob.setMv_eng_title(request.getParameter("mv_eng_title"));
@@ -28,12 +24,11 @@ public class AdminMovieInsert implements Action {
 		mob.setMv_story(request.getParameter("mv_story"));
 		mob.setMv_video(request.getParameter("mv_video"));
 		MovieDAO mdao = new MovieDAO();
-		mdao.insertMovie(mob);
-		
-		  ActionForward forward = new ActionForward();
-	      forward.setPath("./AdminManageList.am");
-	      forward.setRedirect(false);
-	      return forward;
+		mdao.insertMovie(mob);		
+		ActionForward forward = new ActionForward();
+	    forward.setPath("./AdminManageList.am");
+	    forward.setRedirect(false);
+	    return forward;
 	}
 
 }

@@ -4,13 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Pay List & AJAX Search</title>
+<title>왓츄 : WATCHU</title>
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
-
-<!-- script -->
-
 <script type="text/javascript">
 	var request = new XMLHttpRequest();
 	function searchFunction() {
@@ -37,23 +34,10 @@
 		searchFunction();
 	}
 </script>
-
-<!-- script -->
-
 </head>
 <body>
-
-	<!-- JSP -->
-	<!-- JSP -->
-
-	<!-- Header -->
 	<jsp:include page="../../inc/header.jsp" />
-	<!-- Header -->
-	
-	<!-- Sub -->
 	<jsp:include page="../../inc/admin_sub.jsp" />
-	<!-- Sub -->
-	
 	<section class="content_member">
 	<div id="content_member">
 		<h1 class="adminTitle">PAY LIST</h1>
@@ -82,11 +66,6 @@
 		</table>
 	</div>
 	</section>
-	
-	
-	<!-- Footer -->
 	<jsp:include page="../../inc/footer.jsp" />
-	<!-- Footer -->
-	
 </body>
 </html>

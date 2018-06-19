@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
-<title>왓츄 : 탈퇴페이지</title>
+<title>왓츄 : WATCHU</title>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/mypage.css" rel="stylesheet" type="text/css">
 </head>
@@ -28,7 +28,7 @@ function finalcheck(){
 	<div class="mypage_profile2">
 		<h2 class="pw_check">비밀번호를 입력해 주세요</h2>
 		
-		<form action="./DeleteAction.my" method="get" name="fr" onsubmit="return finalcheck()">
+		<form action="./DeleteAction.my" method="post" name="fr" onsubmit="return finalcheck()">
 			<input type="password" value placeholder="비밀번호 입력" class="mypage_check" name="pass"><br>
 			<input type="submit" value="확인" class="check_text">
 		</form>

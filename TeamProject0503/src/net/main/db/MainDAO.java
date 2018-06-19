@@ -20,10 +20,10 @@ import net.member.db.MemberBean;
 import net.vip.db.VipResBean;
 
 public class MainDAO {
-	//�뵒鍮꾩뿰寃� 硫붿꽌�뱶
+	
 	private Connection getConnection() throws Exception {
 		Context init=new InitialContext();
-		//�옄�썝�쓽 �씠由� 遺덈윭�삤湲� �옄�썝 �쐞移� java:comp/env �옄�썝�씠由� jdbc/Mysql
+		
 		DataSource ds=(DataSource)init.lookup("java:comp/env/jdbc/Mysql");
 		Connection con=ds.getConnection();
 		
@@ -44,7 +44,6 @@ public class MainDAO {
 		try {
 			con=getConnection();
 
-			/*sql="select * from movie order by rand() limit 15";*/
 			sql="select * from movie order by rand() limit 3";
 			pstmt=con.prepareStatement(sql);			
 			rs=pstmt.executeQuery();
@@ -64,7 +63,6 @@ public class MainDAO {
 				
 				mainMovieList.add(moviebean);		
 				
-				System.out.println(mainMovieList.size());
 			}		
 			
 		} catch (Exception e) {
@@ -77,7 +75,7 @@ public class MainDAO {
 		return mainMovieList;
 	}
 	
-	
+	//좋아요 많은 영화 랭킹
 	public List getMostReviewsList(){
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -89,8 +87,6 @@ public class MainDAO {
 		
 		try {
 			con=getConnection();
-			/*sql = "select mv_num, mv_kor_title, mv_genre, mv_age, count(*) from watchu.favorite f join watchu.movie m on f.f_num=m.mv_num group by f_num order by count(*) asc limit 5";
-			sql="select m.mv_kor_title, m.mv_genre, m.mv_age, f.f_num, count(*) from watchu.favorite f join watchu.movie m on f.f_num=m.mv_num group by f.f_num order by count(*) desc limit 5";*/
 			sql="select mv_num, m.mv_kor_title, m.mv_genre, m.mv_age, count(*) from watchu.favorite f join watchu.movie m on f.f_num=m.mv_num group by f.f_num order by count(*) desc limit 5 ";
 			pstmt=con.prepareStatement(sql);			
 			rs=pstmt.executeQuery();
@@ -99,20 +95,12 @@ public class MainDAO {
  				MovieBean moviebean= new MovieBean();
 				
  				moviebean.setMv_num(rs.getInt("mv_num"));
- 				/*moviebean.setMv_eng_title(rs.getString("mv_eng_title"));*/
 				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
 				moviebean.setMv_genre(rs.getString("mv_genre"));
-				/*moviebean.setMv_year(rs.getInt("mv_year"));
-				moviebean.setMv_country(rs.getString("mv_country"));*/
 				moviebean.setMv_age(rs.getInt("mv_age"));
-				/*moviebean.setMv_time(rs.getInt("mv_time"));
-				moviebean.setMv_director(rs.getString("mv_director"));
-				moviebean.setMv_actor(rs.getString("mv_actor"));
-				moviebean.setMv_video(rs.getString("mv_video"));*/
 				
 				mostReviewsList.add(moviebean);		
-				
-				System.out.println("이거"+mostReviewsList.size());
+
 			}		
 			
 		} catch (Exception e) {
@@ -124,52 +112,6 @@ public class MainDAO {
 		}
 		return mostReviewsList;
 	}
-	
-	
-	/*public Vector getMostReviewsList() {
-		List<MovieBean> mostReviewsList = new ArrayList<MovieBean>();
-		List<FavoriteBean> favList=new ArrayList<FavoriteBean>();
-		Vector vector=new Vector();
-		
-		Connection con = null;
-		String sql = "";
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			con = getConnection();
-			sql="select m.mv_kor_title, m.mv_genre, m.mv_age, f.f_num, count(*) from watchu.favorite f join watchu.movie m on f.f_num=m.mv_num group by f.f_num order by count(*) desc limit 5";
-			pstmt = con.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-
-			while(rs.next()) {
-				MovieBean moviebean = new MovieBean();
-				FavoriteBean favbean=new FavoriteBean();
-
-				moviebean.setMv_num(rs.getInt("mv_num"));
-				moviebean.setMv_kor_title(rs.getString("mv_kor_title"));
-				moviebean.setMv_genre(rs.getString("mv_genre"));
-				moviebean.setMv_age(rs.getInt("mv_age"));
-
-				favbean.setF_num(rs.getInt("f_num"));
-				
-				mostReviewsList.add(moviebean);
-				favList.add(favbean);
-			}
-			
-			vector.add(mostReviewsList);
-			vector.add(favList);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if(rs != null)try{rs.close();}catch(SQLException ex){ex.printStackTrace();}
-			if(pstmt != null)try{pstmt.close();}catch(SQLException ex){ex.printStackTrace();}
-			if(con != null)try{con.close();}catch(SQLException ex){ex.printStackTrace();}				
-		}
-		return vector;
-	}//getMostReviewsList
-	*/
 	
 	//총 리뷰 수
 	public int getAllReviewCount() {
@@ -189,7 +131,6 @@ public class MainDAO {
 			if(rs.next()) {
 				allreviewcount = rs.getInt("allreviewcount");
 			}
-			System.out.println(allreviewcount);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -203,8 +144,7 @@ public class MainDAO {
 	
 
 	
-	//�궗�슜�옄媛� 媛��옣 留롮��닔�쓽 �룊媛�(蹂꾩젏)�쓣 �궓湲� �옣瑜�
-	//�닔�젙�빐�꽌 �벝寃�
+	//내가 가장 많은 평점 준 장르
 	public List mostCountGenre(String id){		
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -255,8 +195,7 @@ public class MainDAO {
 	
 	
 	
-	//�궗�슜�옄媛� 媛��옣 �넂�� �닔�쓽 �룊媛�(蹂꾩젏)�쓣 �궓湲� �옣瑜�
-	//�닔�젙�빐�꽌 �벝寃�
+	//내가 높은 평점 준 장르
 	public List mostAvgGenre(String id){
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -304,6 +243,7 @@ public class MainDAO {
 		return movieList;
 	}
 	
+	//인기영화
 	public List bestMovie(){
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -350,7 +290,7 @@ public class MainDAO {
 		return RandomList;
 	}
 	
-	// 愿�由ъ옄 Pick
+	// 관리자 Pick
 	public List adminSelectMovie(){
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -383,7 +323,7 @@ public class MainDAO {
 		}
 		return adminSelectMovieList;
 	}
-	// 愿�由ъ옄 PIck
+	//관리자 PIck
 	
 	//search
 	public List titlesearch(String search){
@@ -404,7 +344,6 @@ public class MainDAO {
 			pstmt.setString(1,"%"+search+"%");
 			pstmt.setString(2,"%"+search+"%");
 			rs=pstmt.executeQuery();
-			System.out.println(search);
 			while(rs.next()){
 				MovieBean moviebean= new MovieBean();
 				moviebean.setMv_num(rs.getInt("mv_num"));
@@ -443,7 +382,6 @@ public class MainDAO {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,"%"+search+"%");
 			rs=pstmt.executeQuery();
-			System.out.println(search);
 			while(rs.next()){
 				MovieBean moviebean= new MovieBean();
 				moviebean.setMv_num(rs.getInt("mv_num"));
@@ -484,7 +422,6 @@ public class MainDAO {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,"%"+search+"%");
 			rs=pstmt.executeQuery();
-			System.out.println(search);
 			while(rs.next()){
 				MovieBean moviebean= new MovieBean();
 				moviebean.setMv_num(rs.getInt("mv_num"));
@@ -499,7 +436,6 @@ public class MainDAO {
 			}
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}

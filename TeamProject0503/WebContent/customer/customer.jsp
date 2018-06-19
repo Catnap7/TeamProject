@@ -7,11 +7,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
-<title>Insert title here</title>
+<title>왓츄 : WATCHU</title>
+
+<!-- JQuery -->
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/customer.css" rel="stylesheet" type="text/css">
+
 <script type="text/javascript">
 function chat(){
 	window.open('./AdminChat.ac', 'chat', 'width=400 height=690');

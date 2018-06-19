@@ -19,13 +19,13 @@ public class EmailCheckAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("UTF-8");
-		
-		MemberDAO memberdao = new MemberDAO();
+		request.setCharacterEncoding("utf-8");
+		HttpSession session= request.getSession();
 		String m_id = request.getParameter("m_id");
+		MemberDAO memberdao = new MemberDAO();
+
 		MemberBean memberbean = memberdao.getMember(m_id);
 		ActionForward forward = new ActionForward();
-		HttpSession session = request.getSession();
 		
 		Calendar cal= new GregorianCalendar(Locale.KOREA);
 		cal.setTime(new Date());

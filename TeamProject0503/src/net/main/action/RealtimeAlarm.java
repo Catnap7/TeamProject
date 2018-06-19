@@ -10,9 +10,15 @@ public class RealtimeAlarm  implements Action{
 	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("RealtimeAlarm execute");
-		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("m_id");
+		request.setCharacterEncoding("utf-8");
+		HttpSession session= request.getSession();
+		String id=(String)session.getAttribute("m_id");
+		if(id==null){
+			ActionForward forward= new ActionForward();
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		AlarmDAO adao = new AlarmDAO();				  
 		int alarm_num=adao.getCount(id);
 		session.setAttribute("alarm_num", ""+alarm_num+"");		

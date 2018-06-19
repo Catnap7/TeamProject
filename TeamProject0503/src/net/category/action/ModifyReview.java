@@ -22,20 +22,8 @@ public class ModifyReview implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println("ModifyReview execute()");
 		
 		request.setCharacterEncoding("utf-8");
-		/*int mv_num = Integer.parseInt(request.getParameter("mv_num"));
-		Vector vector = new Vector();
-		MovieDAO moviedao = new MovieDAO();
-		List movietList =null;
-		List favoriteList =null;
-		
-		vector= moviedao.getMovie(mv_num);
-		movietList = (List)vector.get(0);
-		favoriteList = (List)vector.get(1);
-		request.setAttribute("movietList", movietList);
-		request.setAttribute("favoriteList", favoriteList);*/
 		HttpSession session= request.getSession();
 		String id=(String)session.getAttribute("m_id");
 		if(id==null){
@@ -68,9 +56,6 @@ public class ModifyReview implements Action {
 		
 		// 리뷰
 		ReviewDAO reviewdao = new ReviewDAO();
-//		List reviewList = reviewdao.getReview(mv_num);
-//				
-//		request.setAttribute("reviewList", reviewList);
 		
 		int count = reviewdao.getReviewCount(mv_num);
 		int r_num = Integer.parseInt(request.getParameter("r_num")); 

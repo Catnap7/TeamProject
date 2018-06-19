@@ -1,7 +1,5 @@
 package net.roulette.action;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,7 +11,6 @@ public class Roulette implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("Roulette execute()");
 		request.setCharacterEncoding("utf-8");	
 		
 		HttpSession session= request.getSession();

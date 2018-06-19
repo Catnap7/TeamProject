@@ -3,28 +3,31 @@
 /************** 서브메뉴바 **************/
 
 .menu{
-	border-bottom: 2px solid #50a4aa;
-	position: relative;
-	top:170px; 
-	left:-510px; 
-	width:340px;
-	text-align: right;
-	padding: 5px;
-	font-weight: bold;
-	font-size: 1.2em;
-	display: inline-block;
+	border-bottom: 2px double #ff8000;
+    position: relative;
+    top: 170px;
+    right: 690px;
+    width: 340px;
+    text-align: right;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: inline-block; 
 }
 
 
 #menu_bar {
-	/* border:1px solid red;  */
-	width: 250px;	
-	margin: 180px 120px 0 110px;
-	float: left;
-	font-size: 20px;
-	text-align: right;
-	padding-top: 50px;
-	padding-right: 30px;
+	    /* border: 1px solid red; */
+    width: 250px;
+    margin: 180px 120px 0 110px;
+    float: left;
+    font-size: 20px;
+    text-align: right;
+    padding-top: 50px;
+    /* padding-right: 30px; */
+    position: relative;
+    right: 200px;
+    /* top:30px; */
 }
 
 #menu_bar ul {
@@ -46,7 +49,7 @@
 }
 
 #menu_bar ul li a:HOVER {
-	background-color: #50a4aa;
+	background-color: #ff8800;
 }
 
 

@@ -1,27 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-<title>WATCHU DB INSERT</title>
-
-<!-- CSS -->
+<title>왓츄 : WATCHU</title>
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
-
-<!--  border/writeForm.jsp -->
 </head>
 <body>
-	<!-- 헤더영역 -->
 	<jsp:include page="../../inc/header.jsp" />
-	<!-- 헤더영역 -->
-
-	<!-- 어드민 서브메뉴 -->
 	<jsp:include page="../../inc/admin_sub.jsp" />
-	<!-- 어드민 서브메뉴 -->
-
 	<section class="content_member">
 	<div id="content">
 		<h1 class="adminTitle">영화 등록</h1>
@@ -79,9 +68,6 @@
 		</form>
 	</div>
 	</section>
-
-	<!-- 푸터 영역 -->
 	<jsp:include page="../../inc/footer.jsp" />
-	<!-- 푸터 영역 -->
 </body>
 </html>

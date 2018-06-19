@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.member.db.MemberDAO;
 
@@ -20,11 +21,6 @@ public class MemberIdDup implements Action{
 		out.println(check);
 		out.close();
 
-		//포워드로 처리시 포워딩 됐는데 왜 한번더 시도 하냐고 오류메시지가뜸
-	/*	ActionFosetPath("./Main.me");
-		forward.setRedirect(false);rward forward = new ActionForward();
-		forward.
-		*/
 		return null;
 	}
 

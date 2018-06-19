@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.vip.db.VipBean;
 import net.vip.db.VipDAO;
@@ -13,15 +14,19 @@ public class VipMovieList implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("VipMovieList execute");
-		request.setCharacterEncoding("UTF8");
+		request.setCharacterEncoding("utf-8");
+		HttpSession session= request.getSession();
+		String id=(String)session.getAttribute("m_id");
+		if(id==null){
+			ActionForward forward= new ActionForward();
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
 		VipDAO vipdao=new VipDAO();
 		VipBean vipbean = new VipBean();
-		
-		
-		
-		
+
 		int count = vipdao.getVipMovieCount();
 		int pageSize = 10;
 		String pageNum = request.getParameter("pageNum");
@@ -31,9 +36,6 @@ public class VipMovieList implements Action{
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage-1)*pageSize+1;
 		int endRow = currentPage*pageSize;
-		
-		/*List<VipBean> vipMovieList = (List)vipdao.getVipMovieList();
-		request.setAttribute("vipMovieList", vipMovieList);*/
 		
 		List<VipBean> vipMovieList = null;
 		

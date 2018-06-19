@@ -5,9 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
-<title>왓츄 : 회원정보수정</title>
+<title>왓츄 : WATCHU</title>
 
-<!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/mypage.css" rel="stylesheet" type="text/css">
 
@@ -139,7 +138,7 @@ String name = (String)request.getAttribute("name");
 	<div class="mypage_update">
 		<h2 class="pw_check">수정 할 정보 입력</h2>
 		
-		<form action="./UpdateAction.my" method="get" name="fr" onsubmit="return check()">
+		<form action="./UpdateAction.my" method="post" name="fr" onsubmit="return check()">
 			<input type="text" value placeholder="<%=id%>" class="update" readonly name="id" onkeypress="check2()"><br>
 			<input type="password" value placeholder="변경 할 비밀번호 입력" class="update" name="pass"><br>
 			<input type="password" value placeholder="변경 할 비밀번호 재입력" class="update" name="pass2"><br>

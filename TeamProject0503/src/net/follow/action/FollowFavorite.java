@@ -12,9 +12,6 @@ public class FollowFavorite implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//
-		//FollowFavorite.fo?id=<%mv.getm_id%/>들고오기
-		//id값 챙겨왔다.
 
 		request.setCharacterEncoding("utf-8");
 		

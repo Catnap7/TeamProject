@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.member.db.MemberBean;
+import net.member.db.MemberDAO;
 import net.vip.db.VipBean;
 import net.vip.db.VipDAO;
 import net.vip.db.VipResBean;
@@ -14,24 +16,26 @@ public class VipResult implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("VipResult execute");
-		request.setCharacterEncoding("UTF8");
+		request.setCharacterEncoding("utf-8");
+		HttpSession session= request.getSession();
+		String id=(String)session.getAttribute("m_id");
+		if(id==null){
+			ActionForward forward= new ActionForward();
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
+		
+		MemberDAO memberdao=new MemberDAO();
+		MemberBean memberbean=new MemberBean();
 		
 		VipDAO vipdao = new VipDAO();
 		VipBean vipbean=vipdao.getVipMovie(); 
-		
-		
-		//VipReservation
-		
+
 		String v_num=String.valueOf(vipbean.getV_num());
-		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("m_id");
 		
 		String vr_seat_num=request.getParameter("seat");
 		
-		System.out.println(v_num);
-		System.out.println(id);
-		System.out.println(vr_seat_num);
 		
 		
 		VipResBean vipresbean = new VipResBean();
@@ -43,10 +47,14 @@ public class VipResult implements Action{
 		VipResDAO vipresdao= new VipResDAO();
 		vipresdao.insertVipRes(vipresbean);
 
-		//insertVipSeatTaken 
 		vipresdao.insertVipSeatTaken(v_num, vr_seat_num);
+		String selectedSeat=vipresbean.getVr_seat_num();
 		
-		
+		request.setAttribute("memberbean", memberbean);
+		request.setAttribute("vipresbean", vipresbean);
+		request.setAttribute("vipbean", vipbean);
+		request.setAttribute("vr_seat_num", vr_seat_num);
+		request.setAttribute("selectedSeat", selectedSeat);
 		
 		//이동
 		ActionForward forward=new ActionForward();

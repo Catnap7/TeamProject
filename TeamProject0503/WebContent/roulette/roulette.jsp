@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
-<title> 왓츄 : 행운의 양</title>
+<title>왓츄 : WATCHU</title>
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
 <meta charset="utf-8">
 
@@ -20,9 +20,11 @@
 
 <style>
 #image{
-  margin:0px auto;z-index:10;
+  margin:0px auto;z-index:10; 
+  position: relative;
+  top: -40px;
 }
-#n_id{position:absolute;left:941px;top:330px;z-index:20;}
+#n_id{position:absolute;left:941px;top:350px;z-index:20;}
 </style>
 </head>
 <!-- 헤더영역 -->
@@ -33,10 +35,6 @@
 String id = (String)session.getAttribute("m_id");
 %>
 
-
-<!-- <section class="left">
-
-</section>  -->
 <section>
 <article>
 <h1>룰렛을 돌려서 쿠폰을 획득해보아요~</h1>
@@ -47,20 +45,8 @@ String id = (String)session.getAttribute("m_id");
 <br />
 <input type='button' value='시작' id='start_btn'></input>
 </div>
-<!-- <div id="result_id"></div>
-<div id="result_id2"></div>
-<div id="result_id3"></div>
-<div id="result_id4"></div>
-<div id="result_id5"></div>
-<div id="result_id6"></div>
-<div id="result_id7"></div>
-<div id="result_id8"></div> -->
 </article>
 </section>
-
-<!--  <section class="right">
-
-</section>  -->
 
 <div class="clear"></div>
 </body>

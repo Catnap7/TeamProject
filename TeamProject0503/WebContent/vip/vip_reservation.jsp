@@ -1,4 +1,5 @@
 
+<%@page import="com.mysql.jdbc.PreparedStatement.ParseInfo"%>
 <%@page import="net.admin.manage.db.MovieBean"%>
 <%@page import="net.vip.db.VipResBean"%>
 <%@page import="java.util.List"%>
@@ -14,8 +15,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="./images/watchu_logo22.ico" type="image/x-icon" >
-<title>왓츄 : VIP </title>
-
+<title>왓츄 : WATCHU</title>
 <!-- css -->
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/vip.css" rel="stylesheet" type="text/css">
@@ -42,21 +42,11 @@ if(id==null){
 
 
 MemberBean memberbean=(MemberBean)request.getAttribute("memberbean");
-String name=memberbean.getM_name();
-/* int grade=memberbean.getM_grade();
- */
+VipBean vipbean=(VipBean)request.getAttribute("vipbean");
+VipResBean vipresbean=(VipResBean)request.getAttribute("vipresbean");
 
-VipDAO vipdao = new VipDAO();
-VipBean vipbean=vipdao.getVipMovie(); 
-
-VipResDAO vipresdao = new VipResDAO();
-VipResBean vipresbean=new VipResBean();
-
-int v_num=vipbean.getV_num();
-
-
-int check=vipresdao.VipSeatTakenListCheck(id);
-vipresbean=vipresdao.getYourSeat(id);
+int v_num=((Integer)request.getAttribute("v_num")).intValue();
+int check=((Integer)request.getAttribute("check")).intValue();
 %>
 
 
@@ -66,7 +56,7 @@ vipresbean=vipresdao.getYourSeat(id);
  	<section class="pic_frame">
 		<div class="pic">
  			<img id="pic_src" src="./images/vip4_1.png">
- 			<div class="vip_name"><%=name%><span><%="님"%></span></div>
+ 			<div class="vip_name"><%=memberbean.getM_name()%><span><%="님"%></span></div>
  		</div>
 	</section> <!-- pic_frame -->
 	
