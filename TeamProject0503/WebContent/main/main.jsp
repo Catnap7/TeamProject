@@ -462,6 +462,7 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 
 
 <!-- 이번달 인기영화-->
+<%if(Bestmovie!=null){ %>
 <div class="containerWithBtn">	
   	<div class="container"> 
   		<h2><span><img src="./images/slate.png" width="30px" height="30px"></span><span id="title">이번 달 인기 영화</span></h2>
@@ -516,6 +517,7 @@ List<MovieBean>adminSelectMovieList = (List)request.getAttribute("adminSelectMov
 			<div class="prev1 button" data-btn="0"><img src="./images/arrow_left.png" width="60px" height="60px"></div>
 			<div class="next1 button" data-btn="1"><img src="./images/arrow_right.png" width="60px" height="60px"></div>
 		</div><!-- button -->
+		<%} %> 
 </div><!-- containerWithBtn -->
 
 

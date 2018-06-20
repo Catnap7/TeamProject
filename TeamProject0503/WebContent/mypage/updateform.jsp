@@ -91,6 +91,10 @@ function check(){
 		}
 	}
 }
+
+function resetdup(){
+	document.fr.dup_name_check.value=-1;
+}
 function check2(){
 	alert("아이디는 수정할 수 없습니다");
 	document.fr.pass.focus();
@@ -141,6 +145,7 @@ $(document).ready(function() {
 	}); 
 });
 }); 
+
 </script>
 <!-- 헤더영역 -->
 <jsp:include page="../inc/header.jsp"/>
@@ -156,7 +161,7 @@ $(document).ready(function() {
 			<input type="text" value placeholder="<%=id%>" class="update" readonly name="id" onkeypress="check2()"><br>
 			<input type="password" value placeholder="변경 할 비밀번호 입력" class="update" name="pass"><br>
 			<input type="password" value placeholder="변경 할 비밀번호 재입력" class="update" name="pass2"><br>
-			<input type="text" value="<%=name%>" class="update_name" name="m_name"  id="name">
+			<input type="text" value="<%=name%>" class="update_name" name="m_name"  id="name" onkeyup="resetdup()">
 			<input type="button" value="중복체크" id="name_dup" class="name_text">
          	<input type="hidden" value="-1" id="dup_name_check"> 
 			<input type="submit" value="확인" class="update_text">
