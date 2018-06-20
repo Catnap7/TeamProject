@@ -1,0 +1,55 @@
+순차적  -  jsp(화면,처리,디비)
+모델1   -  jsp(화면,처리) + java(디비)
+모델2(MVC)  - jsp(화면) + java(처리) + java(디비)
+                  - M(Model,디비) + V(View,화면) + C(Controller,처리)
+프레임워크:회사별 프레임워크, 스프링,전자정부표준프레임워크
+
+설치
+1. 기존 이클립스에서 스프링 설치 사용
+Help - eclipse marketplace -sts -install
+2. 스프링 다운 받아 사용
+http://spring.io/
+tools
+Download STS (3.9.4.RELEASE for Windows)
+
+개념
+1. 스프링 DI (Dependency Injection) : 의존관계주입
+A 클래스  =>  MemberBean파일   getId() 호출
+A클래스  MemberBean getId() 사용하고 싶다
+A클래스 MemberBean 파일 필요함
+A클래스 MemberBean 파일에 의존함
+=> A클래스 MemberBean 파일 객체생성 
+=> A클래스 MemberBean 의존관계 있음
+
+스프링파일 xml  객체 생성 
+=> A클래스가 xml에서  생성된 MemberBean객체생성 한것을 받아서 getId() 호출
+
+
+2. 스프링 AOP
+3. 디비연동
+4. 스프링 MVC(Mybatis연동)
+5. 회원가입,로그인,게시판,...
+
+가상주소 http://localhost:8080/myweb/
+=> 웹서버 => WAS
+=> request,response 객체 생성  request요청정보 저장
+=> web.xml 참조
+=> 가상주소 /    
+=> appServlet  => 찾아
+=> org.springframework.web.servlet.DispatcherServlet
+=> /WEB-INF/spring/root-context.xml 실행
+=> /WEB-INF/spring/appServlet/servlet-context.xml 실행
+
+=> <annotation-driven /> @자동인식
+=> com.itwillbs.myweb 자동스캔
+=> @Controller 인식
+=> @RequestMapping(value = "/", method = RequestMethod.GET) 인식
+=> home()메서드 동작 
+=> model 데이터 저장 =>  home.jsp 이동
+
+가상주소 http://localhost:8080/myweb/home2
+가상주소 "/home2"  => home2() 실행 => home2.jsp 이동
+ 
+가상주소 http://localhost:8080/myweb/Member.me
+MemberController 자바파일 
+가상주소 "/Member.me"  => member() 실행 => member.jsp 이동

@@ -1,0 +1,13 @@
+@Contorller
+com.itwillbs.myweb.MemberController.java
+
+@Service
+com.itwillbs.service.MemberService.java
+		     MemberServiceimple.java
+
+@Repository
+com.itwillbs.persistence.MemberDAO.java
+		     MemberServiceimple.java
+
+ÀÚ¹Ùºó
+com.itwillbs.domain.MemberBean.java
