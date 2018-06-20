@@ -29,7 +29,7 @@ public class PayCancel implements Action{
 		//정기결제가 아닐 경우, paylist로 돌아가기
 		PayDAO pdao= new PayDAO();
 		PayBean pb=pdao.getCurrentPay(id);
-		if(pb.getP_auto().equals("정기")){
+		if(!pb.getP_auto().equals("정기")){
 			ActionForward forward=new  ActionForward();
 			forward.setPath("./PayList.pa");
 			forward.setRedirect(true);
