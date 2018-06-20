@@ -18,7 +18,7 @@ public class VipTimeController extends HttpServlet {
 		 
 		  date.set(Calendar.YEAR, 2018);
 		  date.set(Calendar.MONTH, 6);
-		  date.set(Calendar.DATE, 20);
+		  date.set(Calendar.DATE, 21);
 		  date.set(Calendar.AM_PM, Calendar.AM);
 		  date.set(Calendar.HOUR, 0);
 		  date.set(Calendar.MINUTE, 0);
