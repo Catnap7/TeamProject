@@ -48,7 +48,7 @@ public class EmailCheckAction implements Action {
 		session.setAttribute("m_name", memberbean.getM_name());
 
 		forward.setRedirect(true);
-		forward.setPath("./Main.ma");
+		forward.setPath("./MemberLogin.me");
 		return forward;
 	}
 }
