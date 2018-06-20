@@ -56,7 +56,7 @@ function chat(){
 				<%
 				if(nb.getN_image() != null) {
 					%>
-					<input type="image" src="./upload/<%=nb.getN_image() %>"><br>
+					<input type="image" src="./upload/<%=nb.getN_image() %>" style="width: 1000px;"><br>
 					<%=nb.getN_content()%>
 					<%
 				}else {
