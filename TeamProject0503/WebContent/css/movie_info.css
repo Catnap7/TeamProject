@@ -230,9 +230,17 @@ div.star {
 	width: 100px;
 	font-size: 0.9em;
 }
-.movie_steel{
+.movieInfoContent{
 	border-top:1px solid #eee;
 	border-bottom:1px solid #eee;
+	width: 800px;
+    /* padding-left: 100px; */
+    margin: 0 auto;
+    padding: 20px;
+}
+.movie_steel{
+	/* border-top:1px solid #eee;
+	border-bottom:1px solid #eee; */
 	width: 900px;
 	margin: 0px auto;
 	padding:50px 30px;
@@ -270,7 +278,7 @@ div.star {
 	overflow: hidden;
 }
 .movie_steel img {
-    width: 700px;
+  width: 700px;
    height: auto;
 }
 
