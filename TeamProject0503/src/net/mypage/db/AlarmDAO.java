@@ -172,7 +172,7 @@ public class AlarmDAO {
 						memberList.add(memb);
 					}else {
 						MemberBean memb=new MemberBean();
-						memb.setM_name("nono");
+						memb.setM_name("존재하지 않는 아이디");
 						memberList.add(memb);
 					}
 				sql="select * from member where m_id=?";
@@ -185,10 +185,9 @@ public class AlarmDAO {
 							memb.setM_name(rs.getString("m_name"));
 							memb.setM_id(rs.getString("m_id"));
 							userList.add(memb);
-						}else {
-							System.out.println("여기오면 안 되는데");
+						}else{							
 							MemberBean memb=new MemberBean();
-							memb.setM_name("nono");							
+							memb.setM_name("존재하지 않는 아이디");							
 							userList.add(memb);
 						}
 
