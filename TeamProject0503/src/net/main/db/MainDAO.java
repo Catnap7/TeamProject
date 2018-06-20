@@ -250,7 +250,7 @@ public class MainDAO {
 		ResultSet rs=null;
 		String sql="";		
 		List movieList=new ArrayList<MovieBean>();
-		List RandomList = new ArrayList<MovieBean>();
+		List RandomList = null;
 		try {
 			con=getConnection();
 
@@ -269,15 +269,21 @@ public class MainDAO {
 				movieList.add(moviebean);				
 			}			
 			
+			sql="select count(*) as count from movie join rating on mv_num = ra_p_num group by mv_num order by avg(ra_rating) desc limit 15";
+			pstmt=con.prepareStatement(sql);			
+			rs=pstmt.executeQuery();
+			if(rs.next()){
 			Random r = new Random();
-			int size = 13;
-			for(int i=0;i<13;i++){
+			int size = 15;
+			if(rs.getInt("count")==15){
+			for(int i=0;i<15;i++){
 				int index = r.nextInt(size);
 				RandomList.add(i, movieList.get(index));
 				movieList.remove(index);
 				size--;
-			}
-			
+			 }
+			}//end if
+		  }//end if
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
