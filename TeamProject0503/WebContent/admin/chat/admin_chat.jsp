@@ -52,7 +52,7 @@
 </body>
 <script type="text/javascript">
          var textarea = document.getElementById("messageWindow"); 
-         var webSocket = new WebSocket('ws://192.168.2.12:8080/TeamProject0503/AdminChatAction'); 
+         var webSocket = new WebSocket('ws://localhost:8080/TeamProject0503/AdminChatAction'); 
          var inputMessage = document.getElementById('inputMessage'); 
      webSocket.onerror = function(event) {
        onError(event) 
