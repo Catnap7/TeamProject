@@ -317,7 +317,6 @@ public void  insertMember(MemberBean memberbean) {
 		String from="wkdwodn22@gmail.com"; 
 		String authNum=authNum(); // 
 		String content="임시비밀번호 ["+authNum+"]"; //
-		//임시비밀번호 확인용 호스팅 전에 삭제할것.
 		try{
 			passUpdateMember(authNum,to1);
 		Properties props=new Properties();
@@ -404,17 +403,25 @@ public void  insertMember(MemberBean memberbean) {
 		PreparedStatement pstmt=null;
 		try{con = getConnection();
 		
-		//생성한 난수를 암호화, salt 재설정
-		String salt = Sha256.getSalt();
-		String passText=Sha256.encrypt(mb.getM_pass(), salt);
-
-		sql="update member set m_name=?, m_pass=?, m_salt=? where m_id =?";
-		pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, mb.getM_name()); 
-		pstmt.setString(2, passText);
-		pstmt.setString(3, salt);				
-		pstmt.setString(4, mb.getM_id());
-		pstmt.executeUpdate();
+		if(mb.getM_pass().equals("")){
+			sql="update member set m_name=? where m_id =?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mb.getM_name()); 
+			pstmt.setString(2, mb.getM_id());
+			pstmt.executeUpdate();
+		}else{
+			//생성한 난수를 암호화, salt 재설정
+			String salt = Sha256.getSalt();
+			String passText=Sha256.encrypt(mb.getM_pass(), salt);
+			
+			sql="update member set m_name=?, m_pass=?, m_salt=? where m_id =?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mb.getM_name()); 
+			pstmt.setString(2, passText);
+			pstmt.setString(3, salt);				
+			pstmt.setString(4, mb.getM_id());
+			pstmt.executeUpdate();
+		}
 		
 		}catch(Exception e) {
 			//예외 생기면 변수 e에 저장
