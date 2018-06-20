@@ -16,6 +16,10 @@
 
 </head>
 <body>
+<%
+String id = (String)request.getAttribute("id");
+String name = (String)request.getAttribute("name");
+%>
 <script>
 function check(){
 	var check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;//이름에 한글만 입력하는 부분
@@ -25,53 +29,66 @@ function check(){
 	var space_check=/[\s]/g;
 	var a_check=/[~!@#$%^&*()_+|<>?:{}]/;
 	var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;//이메일 혹인
-	if (document.fr.pass.value=="") {
-		alert("비밀번호를 입력해주십시오");
-		document.fr.pass.focus();
-		return false;
-	}
-	if (document.fr.pass2.value=="") {
-		alert("비밀번호를 입력해주십시오");
-		document.fr.pass2.focus();
-		return false;
-	}
-	if(document.fr.pass.value!=document.fr.pass2.value){
-		alert("비밀번호를 동일하게  입력하세요");
-		return false;
-	}
-	if (document.fr.pass.value.length< 8 
-			||document.fr.pass.value.length>15) {//비밀번호 확인하는부분
-		alert("숫자 특수문자 대문자 조합 비밀번호를 8~15 자리로 입력하세요")
-		document.fr.pass.focus();
-		return false;
-	}
-	if(!e_check.test(document.fr.pass.value) 
-			&& !E_check.test(document.fr.pass.value)
-			&& !a_check.test(document.fr.pass.value) 
-			&& t_check.test(document.fr.pass.value)){
-		alert("숫자 특수문자 대문자 조합으로 입력하세요")
-		document.fr.pass.focus();
-		return false;
-	}
-	if(space_check.test(document.fr.pass.value)){
-		alert("비밀번호엔 공백은 들어 갈 수 없습니다.")
-		document.fr.pass.focus();
-		return false;
-	}
-	
-	if (fr.pass.value == fr.id.value) {
-		alert("아이디와 같은 비밀번호는 사용 하실 수 없습니다.");
-		document.fr.pass.focus()
-		return false;
-	}
-	
-	if (document.fr.dup_name_check.value==-1) {
-		alert("이름 중복체크하세요.")
-		return false;	
-	}
-	if (document.fr.dup_name_check.value==1) {
-		alert("중복된 이름은 사용하실 수 없습니다.")
-		return false;	
+
+	var orginName="<%=name%>";
+	if(document.fr.pass.value!=""||document.fr.pass2.value!=""||document.fr.m_name.value!=orginName){
+		if(document.fr.pass.value!=""||document.fr.pass2.value!=""){
+			if (document.fr.pass.value=="") {
+				alert("비밀번호를 입력해주십시오");
+				document.fr.pass.focus();
+				return false;
+			}
+			if (document.fr.pass2.value=="") {
+				alert("비밀번호를 입력해주십시오");
+				document.fr.pass2.focus();
+				return false;
+			}
+			if(document.fr.pass.value!=document.fr.pass2.value){
+				alert("비밀번호를 동일하게  입력하세요");
+				return false;
+			}
+			if (document.fr.pass.value.length< 8 
+					||document.fr.pass.value.length>15) {//비밀번호 확인하는부분
+				alert("숫자 특수문자 대문자 조합 비밀번호를 8~15 자리로 입력하세요")
+				document.fr.pass.focus();
+				return false;
+			}
+			if(!e_check.test(document.fr.pass.value) 
+					&& !E_check.test(document.fr.pass.value)
+					&& !a_check.test(document.fr.pass.value) 
+					&& t_check.test(document.fr.pass.value)){
+				alert("숫자 특수문자 대문자 조합으로 입력하세요")
+				document.fr.pass.focus();
+				return false;
+			}
+			if(space_check.test(document.fr.pass.value)){
+				alert("비밀번호엔 공백은 들어 갈 수 없습니다.")
+				document.fr.pass.focus();
+				return false;
+			}
+			
+			if (fr.pass.value == fr.id.value) {
+				alert("아이디와 같은 비밀번호는 사용 하실 수 없습니다.");
+				document.fr.pass.focus()
+				return false;
+			}
+		}
+		if (document.fr.m_name.value!=orginName) {
+			if (document.fr.dup_name_check.value==-1) {
+			alert("이름 중복체크하세요.")
+			return false;	
+			}
+		}
+		if (document.fr.dup_name_check.value==1) {
+			alert("중복된 이름은 사용하실 수 없습니다.")
+			return false;	
+		}
+	}else{
+		if (confirm("변경사항이 없습니다. 수정 완료하시겠습니까?")) {
+		   
+		} else {
+		    return false;
+		}
 	}
 }
 function check2(){
@@ -128,10 +145,7 @@ $(document).ready(function() {
 <!-- 헤더영역 -->
 <jsp:include page="../inc/header.jsp"/>
 <!-- 헤더영역 -->
-<%
-String id = (String)request.getAttribute("id");
-String name = (String)request.getAttribute("name");
-%>
+
 <article>
 
 <div class="mypage_">

@@ -413,12 +413,13 @@ $(document).ready(function(){
    </div>
    
    <!--스틸컷  -->
+  	<p class="movieInfoTitle">스틸컷</p>
    <div class="movie_steel" id="movie_steel">
-   	<p class="movieInfoTitle">스틸컷</p>
+   	
       <p class="movieInfoContent">
         <a href="#" class="prev" style="display: none;"><img alt="이전 이미지" src="./images/arrow_left.png" class="prev"></a>
       	<div class="frame">
-      	<img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")+"_s.jpg"%>" class="steelcut"><!-- 스틸컷 1번째 이미지 -->
+      		<p><img src="./images/<%=img_genre%>/<%=moviebean.getMv_eng_title().replaceAll(" ","")+"_s.jpg"%>" class="steelcut"></p><!-- 스틸컷  -->
       	</div>
       <a href="#" class="next"><img alt="다음 이미지" src="./images/arrow_right.png" class="next"></a>
      </p>
