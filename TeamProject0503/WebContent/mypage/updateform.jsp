@@ -53,20 +53,20 @@ function check(){
 				document.fr.pass.focus();
 				return false;
 			}
-			if(!document.fr.m_pass.value.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/))
+			if(!document.fr.pass.value.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/))
 		    {
 				  alert("숫자 특수문자 영문자  조합으로 비밀번호를 입력하세요");
-		    	document.fr.m_pass.focus();
+		    	document.fr.pass.focus();
 		        return false;
 		    }
-			if (!e_check.test(document.fr.m_pass.value)) {
+			if (!e_check.test(document.fr.pass.value)) {
 				  alert("숫자 특수문자 영문자  조합으로 비밀번호를 입력하세요");
-				document.fr.m_pass.focus()
+				document.fr.pass.focus()
 				return false;
 			}
-			if (!t_check.test(document.fr.m_pass.value)) {
+			if (!t_check.test(document.fr.pass.value)) {
 				  alert("숫자 특수문자 영문자  조합으로 비밀번호를 입력하세요");
-				document.fr.m_pass.focus()
+				document.fr.pass.focus()
 				return false;
 			}
 			if(space_check.test(document.fr.pass.value)){
