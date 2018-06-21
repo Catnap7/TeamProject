@@ -25,13 +25,13 @@ public class CookieLogin implements Action{
 		if(cookies!=null) {
 			for(int i=0; i<cookies.length; i++) {
 				if(cookies[i].getName().equals("m_id1")) {
-					 m_id1 = cookies[i].getValue();
+					 m_id1 = cookies[i].getValue();					 
 				}
 				if(cookies[i].getName().equals("m_id2")) {
-					 m_id2 = cookies[i].getValue();
+					 m_id2 = cookies[i].getValue();					
 				}
 				if(cookies[i].getName().equals("m_pass")){
-					m_pass=cookies[i].getValue();
+					m_pass=cookies[i].getValue();					
 				}
 			}
 		
