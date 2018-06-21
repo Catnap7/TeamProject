@@ -118,7 +118,7 @@ $(function(){
 	if(!e_check.test(document.fr.m_pass.value) 
 			&& !E_check.test(document.fr.m_pass.value)
 			&& !a_check.test(document.fr.m_pass.value) 
-			&& t_check.test(document.fr.m_pass.value)){
+			&& !t_check.test(document.fr.m_pass.value)){
 		alert("숫자 특수문자 대문자 조합으로 입력하세요")
 		document.fr.m_pass.focus();
 		return false;
