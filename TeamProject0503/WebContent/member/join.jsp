@@ -119,6 +119,7 @@ $(function(){
 	if(!document.fr.m_pass.value.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/))
     {
         alert("숫자 특수문자 영문자 조합 비밀번호를 8~15 자리로 입력하세요");
+    	document.fr.m_pass.focus();
         return false;
     }
 

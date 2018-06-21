@@ -53,14 +53,12 @@ function check(){
 				document.fr.pass.focus();
 				return false;
 			}
-			if(!e_check.test(document.fr.pass.value) 
-					&& !E_check.test(document.fr.pass.value)
-					&& !a_check.test(document.fr.pass.value) 
-					&& t_check.test(document.fr.pass.value)){
-				alert("숫자 특수문자 대문자 조합으로 입력하세요")
-				document.fr.pass.focus();
-				return false;
-			}
+			if(!document.fr.pass.value.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/))
+		    {
+		        alert("숫자 특수문자 영문자 조합 비밀번호를 8~15 자리로 입력하세요");
+		        document.fr.pass.focus();
+		        return false;
+		    }
 			if(space_check.test(document.fr.pass.value)){
 				alert("비밀번호엔 공백은 들어 갈 수 없습니다.")
 				document.fr.pass.focus();
