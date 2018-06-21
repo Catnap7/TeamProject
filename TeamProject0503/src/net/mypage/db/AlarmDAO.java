@@ -125,13 +125,14 @@ public class AlarmDAO {
 	public Vector getAlarmlist(String id,int startRow, int pageSize){
 		Connection con=null;
 		PreparedStatement pstmt=null;
-		ResultSet rs=null;		
+		ResultSet rs=null;	
+		ResultSet rs2=null;
 		String sql="";
 		Vector vector=new Vector();
 		List alarmList=new ArrayList();
 		List movieList=new ArrayList();
 		List memberList=new ArrayList();
-		List userList=new ArrayList();
+		List userList=new ArrayList();		
 		try {
 			con=getConnection();
 			sql="select * from alarm where a_id=? order by a_num desc limit ?,?";
@@ -140,7 +141,7 @@ public class AlarmDAO {
 			pstmt.setInt(2, startRow-1);
 			pstmt.setInt(3, pageSize);
 			rs=pstmt.executeQuery();			
-			while(rs.next()){
+			while(rs.next()){				
 				AlarmBean ab=new AlarmBean();
 				ab.setA_id(rs.getString("a_id"));
 				ab.setA_num(rs.getInt("a_num"));					
@@ -155,20 +156,20 @@ public class AlarmDAO {
 				sql="select * from movie where mv_kor_title=?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, ab.getA_movie_name());
-				rs=pstmt.executeQuery();
-				if(rs.next()){
+				rs2=pstmt.executeQuery();
+				if(rs2.next()){
 					MovieBean mb=new MovieBean();
-					mb.setMv_num(rs.getInt("mv_num"));					
+					mb.setMv_num(rs2.getInt("mv_num"));					
 					movieList.add(mb);
 				}
 				sql="select * from member where m_id=?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, ab.getA_follower());
-				rs=pstmt.executeQuery();
-					if(rs.next()) {
+				rs2=pstmt.executeQuery();
+					if(rs2.next()) {
 						MemberBean memb=new MemberBean();
-						memb.setM_name(rs.getString("m_name"));
-						memb.setM_id(rs.getString("m_id"));
+						memb.setM_name(rs2.getString("m_name"));
+						memb.setM_id(rs2.getString("m_id"));
 						memberList.add(memb);
 					}else {
 						MemberBean memb=new MemberBean();
@@ -176,14 +177,13 @@ public class AlarmDAO {
 						memberList.add(memb);
 					}
 				sql="select * from member where m_id=?";
-					pstmt=con.prepareStatement(sql);
-					System.out.println(ab.getA_forAdmin());
+					pstmt=con.prepareStatement(sql);					
 					pstmt.setString(1,ab.getA_forAdmin());
-					rs=pstmt.executeQuery();
-						if(rs.next()) {
+					rs2=pstmt.executeQuery();
+						if(rs2.next()) {
 							MemberBean memb=new MemberBean();
-							memb.setM_name(rs.getString("m_name"));
-							memb.setM_id(rs.getString("m_id"));
+							memb.setM_name(rs2.getString("m_name"));
+							memb.setM_id(rs2.getString("m_id"));
 							userList.add(memb);
 						}else{							
 							MemberBean memb=new MemberBean();
@@ -191,7 +191,7 @@ public class AlarmDAO {
 							userList.add(memb);
 						}
 
-			}
+			}//while
 			vector.add(alarmList);
 			vector.add(movieList);
 			vector.add(memberList);
@@ -199,6 +199,7 @@ public class AlarmDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
+			if(rs2!=null)try{rs2.close();}catch(SQLException ex){}
 			if(rs!=null)try{rs.close();}catch(SQLException ex){}
 			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
 			if(con!=null)try{con.close();}catch(SQLException ex){}

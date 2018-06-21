@@ -79,7 +79,7 @@ int followingcount= followdao.Followingcount(id);
 					    <a href="./Alarm.my">알림창</a>
 					    <a href="./Myrating.my">평점내역</a>
 					    <a href="./MemberLogout.me">로그아웃</a>
-					    <%if(id.equals("admin")){%>
+					    <%if(id.equals("admin@watchu.com")){%>
 					    <a href="./AdminManageList.am">관리자페이지</a>
 					    <%}%>
 					  </div>
