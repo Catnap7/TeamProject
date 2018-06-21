@@ -21,7 +21,7 @@ public class CookieLogin implements Action{
 		String m_id1 = null;
 		String m_id2 = null;
 		Cookie[] cookies = request.getCookies();
-		String id=(String)session.getAttribute("m_id");
+		//String id=(String)session.getAttribute("m_id");
 		if(cookies!=null) {
 			for(int i=0; i<cookies.length; i++) {
 				if(cookies[i].getName().equals("m_id1")) {
