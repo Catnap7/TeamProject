@@ -129,7 +129,7 @@ public class MemberLoginAction implements Action{
 			session.setAttribute("m_id",memberbean.getM_id());
 			session.setAttribute("m_name",memberbean.getM_name());
 			
-			if(request.getParameter("m_id").equals("admin")) {
+			if(request.getParameter("m_id").equals("admin@watchu.com")) {
 				ActionForward forward= new ActionForward();
 				forward.setPath("./AdminManageList.am");
 				forward.setRedirect(true);
