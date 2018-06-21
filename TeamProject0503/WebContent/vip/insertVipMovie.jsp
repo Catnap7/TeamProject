@@ -26,10 +26,10 @@
 
 <article class="I_content">
 		<div id="content">
-			<h1 class="adminTitle">Vip 영화 입력</h1>
+			<h1 class="adminTitle">VIP 영화 입력</h1>
 			<p>이번달 vip이벤트 영화 입력해 주십시오</p>
 
-			<form action="./VipInsert.vi" method="post" name="fr" enctype="multipart/form-data">
+			<form action="./VipInsert.vi" method="post" name="fr">
 				<table border="0" class="db_list_insert">
 					<tr>
 						<td>상영회 예정 날짜(YY.MM.DD)</td>
@@ -100,7 +100,7 @@
 						<td>예고편 소스</td>
 						<td><input type="text"  name="v_video"></td>
 					</tr>
-					<tr>
+					<!-- <tr>
 						<td>포스터</td>
 						<td><input type="file" name="poster" placeholder="영화제목_p.jpg"></td>
 					</tr>	
@@ -111,7 +111,7 @@
 					<tr>
 						<td>스틸컷2</td>
 						<td><input type="file" name="still2" placeholder="영화제목_s2.jpg"></td>
-					</tr>
+					</tr> -->
 					<tr>	
 					<div class="u_admin-notice-write">
 						<button type="button"  class="wirtebtn" onclick="history.back()">돌아가기</button>

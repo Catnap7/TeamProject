@@ -26,6 +26,10 @@ public class VipAdmin implements Action{
 			forward.setRedirect(true);
 			return forward;
 		}
+		
+		System.out.println("VipAdmin.java");
+		
+		
 		//vip 시네마 영화 정보 가져오기 
 		VipDAO vipdao=new VipDAO();
 		VipBean vipbean=new VipBean();

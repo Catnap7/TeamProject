@@ -7,14 +7,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>왓츄 : WATCHU</title>
+
 <link href="./css/default.css" rel="stylesheet" type="text/css">
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic"
-	rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
 </head>
 <body>
 	<%
 		request.setCharacterEncoding("utf-8");
+	
 		List<NoticeBean> AdminNoticeList = (List) request.getAttribute("AdminNoticeList");
 		int count = ((Integer) request.getAttribute("count")).intValue();
 		String pageNum = (String) request.getAttribute("pageNum");
@@ -22,10 +25,13 @@
 		int pageBlock = ((Integer) request.getAttribute("pageBlock")).intValue();
 		int startPage = ((Integer) request.getAttribute("startPage")).intValue();
 		int endPage = ((Integer) request.getAttribute("endPage")).intValue();
+		
 		String name = (String) session.getAttribute("m_name");
 	%>
+	
 	<jsp:include page="../../inc/header.jsp" />
 	<jsp:include page="../../inc/admin_sub.jsp" />
+	
 	<article>
 	<div id="content">
 		<h1 class="adminTitle">공지사항</h1>
