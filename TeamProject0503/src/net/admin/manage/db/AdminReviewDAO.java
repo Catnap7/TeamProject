@@ -55,6 +55,7 @@ public class AdminReviewDAO {
 				
 				MemberBean memberBean = new MemberBean();
 				memberBean.setM_name(rs.getString("m_name"));
+				memberBean.setM_id(rs.getString("m_id"));
 				lmb.add(memberBean);
 			}
 			vector.add(lrb);
