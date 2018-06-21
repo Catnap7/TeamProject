@@ -20,7 +20,6 @@ public class AdminChatAction{
    private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>()); 
    @OnMessage 
     public void onMessage(String message, Session session) throws IOException { 
-       System.out.println(message); 
        synchronized (clients) { 
           // Iterate over the connected sessions 
           // and broadcast the received message 
@@ -33,7 +32,6 @@ public class AdminChatAction{
     } 
     @OnOpen 
     public void onOpen(Session session) {
-       System.out.println(session); 
        clients.add(session); 
     } 
     @OnClose 
