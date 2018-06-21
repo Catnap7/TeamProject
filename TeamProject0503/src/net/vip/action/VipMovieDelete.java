@@ -28,8 +28,8 @@ public class VipMovieDelete implements Action {
 		
 		
 		ActionForward forward=new ActionForward();
-		forward.setRedirect(true);
 		forward.setPath("./VipMovieList.vi");
+		forward.setRedirect(true);
 		return forward;
 	}
 

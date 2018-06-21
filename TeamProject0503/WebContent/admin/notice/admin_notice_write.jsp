@@ -12,11 +12,6 @@
 <link href="./css/admin.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <script type="text/javascript">
-	function chk() {
-		alert("11");
-		alert($('#11').val());
-		alert($('#22').val());
-	}
 </script>
 </head>
 <body>

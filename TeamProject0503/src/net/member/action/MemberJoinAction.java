@@ -70,9 +70,10 @@ public  class MemberJoinAction implements Action{
       return null;
    }
 
-   String host = "http://localhost:8080/TeamProject0503/EmailCheckAction.me";
+   String host = "http://itwillbs6.cafe24.com/WATCHU/EmailCheckAction.me";
+   //String host = "http://localhost:8080/TeamProject0503/EmailCheckAction.me";
    String from = "wkdwodn22@gmail.com";
-   String fromname = "와츄";
+   String fromname = "왓츄";
    String to = m_id;
    String subject = " 이메일 확인 메일입니다.";
    String content = "다음 링크에 접속하여 이메일 확인을 진행하세요." +
@@ -115,7 +116,7 @@ public  class MemberJoinAction implements Action{
 
       ActionForward forward= new ActionForward();
       
-      forward.setRedirect(false);
+      forward.setRedirect(true);
       forward.setPath("./EmailSend.me");
       
       return forward;

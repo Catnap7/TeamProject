@@ -33,8 +33,8 @@ public class VipMovieModify implements Action{
 	
 		ActionForward forward=new ActionForward();
 					
-		forward.setRedirect(false);
 		forward.setPath("./vip/vip_movie_modify.jsp");
+		forward.setRedirect(false);
 	
 		return forward;
 	}

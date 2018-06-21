@@ -59,8 +59,8 @@ public class VipResult implements Action{
 		//이동
 		ActionForward forward=new ActionForward();
 							
-		forward.setRedirect(false);
 		forward.setPath("./vip/vip_reservation_result.jsp");		
+		forward.setRedirect(false);
 						
 		return forward;
 		
