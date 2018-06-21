@@ -30,11 +30,11 @@ $(document).ready(function(){
     $("#AutoLoginCheck").change(function(){ 
         if($("#AutoLoginCheck").is(":checked")){ 
         	var m_id = $("input[name='m_id']").val();
-            var m_pass = $("input[name='m_pass']").val();
+            var m_pass = $("input[name='m_pass']").val();           
 			var m_idSplit= m_id.split('@');
             setCookie("m_id1", m_idSplit[0], 1); 
             setCookie("m_id2", m_idSplit[1], 1); 
-            setCookie("m_pass", m_pass, 1); 
+            setCookie("m_pass", m_pass, 1);           
         }else{ 
             deleteCookie("m_id");
             deleteCookie("m_pass");
@@ -52,7 +52,7 @@ $(document).ready(function(){
 function setCookie(cookieName, value, exdays){
     var exdate = new Date();
     exdate.setDate(exdate.getDate() + exdays);
-     var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+     var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());    
     document.cookie = cookieName + "=" + cookieValue; 
 }
  
