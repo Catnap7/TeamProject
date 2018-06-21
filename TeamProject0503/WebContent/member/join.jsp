@@ -39,6 +39,8 @@ $(function(){
 	var yy     = jumin1.substr(0,2);        // 년도
     var mm     = jumin1.substr(2,2);        // 월
     var dd     = jumin1.substr(4,2);        // 일
+    var reg_pw = /^.*(?=.{8,17})(?=.*[0-9])(?=.*[a-zA-Z]).*$/; 
+
 	
  	 if (document.fr.m_name.value == "") {
 		alert("닉네임을 입력하지 않았습니다.");
@@ -114,15 +116,28 @@ $(function(){
 		alert("숫자 특수문자 영문자 조합 비밀번호를 8~15 자리로 입력하세요")
 		document.fr.m_pass.focus();
 		return false;
-	}
-	if(!e_check.test(document.fr.m_pass.value) 
+	}	
+	if(!reg_pw.test(document.fr.m_pass.value)) { 
+		                  alert("숫자 특수문자 대문자 조합으로 입력하세요."); 
+		                  document.fr.m_pass.focus(); 
+		                 return false; 
+    }
+	if(/(\w)\1\1/.test(document.fr.m_pass.value)) { 
+		                 alert('패스워드에 같은 문자를 3번 이상 사용하실 수 없습니다.');  
+		                 document.fr.m_pass.focus(); 
+		                  return false; 
+    } 
+
+
+
+	/* if(!e_check.test(document.fr.m_pass.value) 
 			&& !E_check.test(document.fr.m_pass.value)
 			&& !a_check.test(document.fr.m_pass.value) 
 			&& !t_check.test(document.fr.m_pass.value)){
 		alert("숫자 특수문자 대문자 조합으로 입력하세요")
 		document.fr.m_pass.focus();
 		return false;
-	}
+	} */
 	if(space_check.test(document.fr.m_pass.value)){
 		alert("비밀번호엔 공백은 들어 갈 수 없습니다.")
 		document.fr.m_pass.focus();
