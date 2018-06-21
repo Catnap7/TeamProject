@@ -25,6 +25,7 @@ public class MemberLoginAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
+		
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		response.setContentType("text/html;	charset=UTF-8");
@@ -42,10 +43,9 @@ public class MemberLoginAction implements Action{
 
 		AlarmDAO adao = new AlarmDAO();
 		CouponDAO cdao = new CouponDAO();
-		int m_grade = asdao.AdminMemberGrade(m_id);
-		
+		int m_grade = asdao.AdminMemberGrade(m_id);		
 		if(m_grade == 4) {	
-			String endday[] = asdao.AdminMemberEndDay(m_id).split("/");
+			String endday[] = asdao.AdminMemberEndDay(m_id).split("-");
 			 String e_day = endday[0]+endday[1]+endday[2];
 			int m_end_day = Integer.parseInt(e_day);
 			if(today>=m_end_day) {
@@ -58,10 +58,10 @@ public class MemberLoginAction implements Action{
 			out.close();
 		}	
 		
-		if(m_grade == 3) {	
-			String endday[] = asdao.AdminMemberEndDay(m_id).split("/");
+		if(m_grade==3) {				
+			String endday[] = asdao.AdminMemberEndDay(m_id).split("-");
 			 String e_day = endday[0]+endday[1]+endday[2];
-			int m_end_day = Integer.parseInt(e_day);
+			int m_end_day = Integer.parseInt(e_day);			
 			if(today>=m_end_day) {
 				asdao.AdminMemberGradeReturn(m_id);
 				out.println("<script>");
@@ -129,10 +129,10 @@ public class MemberLoginAction implements Action{
 			session.setAttribute("m_id",memberbean.getM_id());
 			session.setAttribute("m_name",memberbean.getM_name());
 			
-			if(request.getParameter("m_id").equals("admin")) {
+			if(request.getParameter("m_id").equals("admin@watchu.com")) {
 				ActionForward forward= new ActionForward();
-				forward.setRedirect(true);
 				forward.setPath("./AdminManageList.am");
+				forward.setRedirect(true);
 				return forward;	
 			}
 			ActionForward forward= new ActionForward();			

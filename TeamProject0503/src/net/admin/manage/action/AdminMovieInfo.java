@@ -13,7 +13,7 @@ public class AdminMovieInfo implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session= request.getSession();
 		String id=(String)session.getAttribute("m_id");
-		if(id==null || !id.equals("admin")){
+		if(id==null || !id.equals("admin@watchu.com")){
 			ActionForward forward= new ActionForward();
 			forward.setPath("./intro.st");
 			forward.setRedirect(true);
