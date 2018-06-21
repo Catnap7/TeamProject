@@ -51,6 +51,7 @@ public class VipMovieModifyAction implements Action {
 		//이동
 		ActionForward forward=new ActionForward();
 		
+		forward.setPath("./VipMovieList.vi");
 		forward.setRedirect(true);
 		forward.setPath("VipMovieList.vi");
 		return forward;

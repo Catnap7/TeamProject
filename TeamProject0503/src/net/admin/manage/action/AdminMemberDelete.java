@@ -21,8 +21,8 @@ public class AdminMemberDelete implements Action{
 		AdminMemberDAO amdao = new AdminMemberDAO();
 		amdao.AdminMemberDelete(m_id);		
 		ActionForward forward = new ActionForward();
-		forward.setPath("/AdminMember_List_Search.am");
-		forward.setRedirect(false);
+		forward.setPath("./AdminMember_List_Search.am");
+		forward.setRedirect(true);
 		return forward;
 	}
 }
