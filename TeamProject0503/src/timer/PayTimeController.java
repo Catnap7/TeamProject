@@ -20,8 +20,8 @@ public class PayTimeController extends HttpServlet {
 		 Calendar date = Calendar.getInstance();
 		 
 		  date.set(Calendar.YEAR, 2018);
-		  date.set(Calendar.MONTH, 6);
-		  date.set(Calendar.DATE, 21);
+		  date.set(Calendar.MONTH, 5);
+		  date.set(Calendar.DATE, 22);
 		  date.set(Calendar.AM_PM, Calendar.AM);
 		  date.set(Calendar.HOUR, 0);
 		  date.set(Calendar.MINUTE, 0);
