@@ -44,6 +44,8 @@ String grade=null;
 switch(memberbean.getM_grade()){
 case 1 : grade = "정회원"; break;
 case 2 : grade = "VIP회원"; break;
+case 3 : grade = "리뷰쓰기 정지당한 회원"; break;
+case 4 : grade = "로그인 정지당한 회원"; break;
 }
 %>
 <!-- 헤더영역 -->
