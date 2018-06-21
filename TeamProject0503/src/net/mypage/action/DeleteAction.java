@@ -35,7 +35,7 @@ public class DeleteAction implements Action{
 				session.invalidate();								
 				
 				forward=new ActionForward();
-				forward.setRedirect(false);
+				forward.setRedirect(true);
 				forward.setPath("./Main.ma");
 				break;
 		case 0:

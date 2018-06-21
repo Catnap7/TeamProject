@@ -22,7 +22,7 @@ public class AdminMemberDelete implements Action{
 		amdao.AdminMemberDelete(m_id);		
 		ActionForward forward = new ActionForward();
 		forward.setPath("./AdminMember_List_Search.am");
-		forward.setRedirect(false);
+		forward.setRedirect(true);
 		return forward;
 	}
 }

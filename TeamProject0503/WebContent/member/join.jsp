@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>와츄 : WATCHU</title>
+<title>왓츄 : WATCHU</title>
 <!-- css -->
 <link href="./css/member.css" rel="stylesheet" type="text/css">
 

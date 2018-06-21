@@ -62,7 +62,7 @@
 		border-radius:10px;
 		background-color: #eee;
 		position: relative;
-		top:0px;left:730px;
+		top:0px;/* left:730px; */
 		width: 300px;}
 	div.btn a{
 		text-decoration: none;
@@ -73,7 +73,7 @@
 		border:2px solid #ddd;}
 			
 	div.sns {
-		width: 260px;
+		width: 270px;
 	    float: right;
 	    position: relative;
 	    bottom: -100px;
