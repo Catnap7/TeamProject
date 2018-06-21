@@ -279,6 +279,9 @@ public class VipDAO {
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
 			String sql="";
+			
+			System.out.println("modifyVipMovie");
+			
 			try {
 				con=getConnection();
 				
@@ -312,6 +315,7 @@ public class VipDAO {
 				pstmt.setInt(18, vipbean.getV_num());
 				
 				pstmt.executeUpdate();
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally{
@@ -360,9 +364,10 @@ public class VipDAO {
 					pstmt=con.prepareStatement(sql);
 					pstmt.setString(1, "0");
 					pstmt.setString(2, "0");
-					
 					pstmt.executeUpdate();
 					
+					sql="delete from vip_reservation";
+					pstmt.executeUpdate();
 
 			}catch(Exception e) {
 				e.printStackTrace();	

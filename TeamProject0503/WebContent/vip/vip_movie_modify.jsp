@@ -90,7 +90,7 @@
 		</table>
 		
 		<div class="vip_movie_btn_modi">
-			<input type="submit" class="wirtebtn" value="상품수정">
+			<input type="submit" class="wirtebtn" value="수정">
 			<input type="reset"  class="wirtebtn" value="다시등록">
 		</div>
 </form>

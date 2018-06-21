@@ -43,6 +43,10 @@ public class VipInsert implements Action{
 		vipbean.setV_critic_1(request.getParameter("v_critic_1"));
 		vipbean.setV_critic_2_by(request.getParameter("v_critic_2_by"));
 		vipbean.setV_critic_2(request.getParameter("v_critic_2"));
+		vipbean.setPoster(request.getParameter("poster"));
+		vipbean.setStill1(request.getParameter("still1"));
+		vipbean.setStill2(request.getParameter("still2"));
+		
 		
 		VipDAO vipdao=new VipDAO();
 		vipdao.insertVip(vipbean);
@@ -51,6 +55,7 @@ public class VipInsert implements Action{
 		vipdao.resetVipSeat();
 
 		ActionForward forward=new ActionForward();
+		
 		forward.setRedirect(true);
 		forward.setPath("VipMovieList.vi");
 		return forward;

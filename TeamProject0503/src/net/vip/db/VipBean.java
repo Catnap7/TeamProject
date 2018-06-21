@@ -2,23 +2,27 @@ package net.vip.db;
 
 public class VipBean {
 	int v_num;
-	String v_kor_title;
-	String v_eng_title;
+	private String v_kor_title;
+	private String v_eng_title;
 	int v_year;
-	String v_country;
+	private String v_country;
 	int v_age;
-	String v_genre;
+	private String v_genre;
 	int v_time;
-	String v_director;
-	String v_actor;
-	String v_story;
-	String v_video;
-	String v_date;
-	String v_when;
-	String v_critic_1_by;
-	String v_critic_1;
-	String v_critic_2_by;
-	String v_critic_2;
+	private String v_director;
+	private String v_actor;
+	private String v_story;
+	private String v_video;
+	private String v_date;
+	private String v_when;
+	private String v_critic_1_by;
+	private String v_critic_1;
+	private String v_critic_2_by;
+	private String v_critic_2;
+	private String poster;
+	private String still1;
+	private String still2;
+	
 	int v_readcount;
 	
 	public int getV_num() {
@@ -129,6 +133,26 @@ public class VipBean {
 	}
 	public void setV_critic_2(String v_critic_2) {
 		this.v_critic_2 = v_critic_2;
+	}
+	
+	
+	public String getPoster() {
+		return poster;
+	}
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+	public String getStill1() {
+		return still1;
+	}
+	public void setStill1(String still1) {
+		this.still1 = still1;
+	}
+	public String getStill2() {
+		return still2;
+	}
+	public void setStill2(String still2) {
+		this.still2 = still2;
 	}
 	public int getV_readcount() {
 		return v_readcount;
