@@ -30,7 +30,7 @@ public class UpdateAction implements Action{
 		mdao.updateMember(mb);		
 		
 			forward=new ActionForward();
-			forward.setRedirect(false);
+			forward.setRedirect(true);
 			forward.setPath("./Mypage.my");																											
 									
 		return forward;		
