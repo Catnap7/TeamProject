@@ -60,7 +60,7 @@ public class MemberLoginAction implements Action{
 		
 		if(m_grade == 3) {	
 			String endday[] = asdao.AdminMemberEndDay(m_id).split("/");
-			 String e_day = endday[0]+endday[1]+endday[2];
+			String e_day = endday[0]+endday[1]+endday[2];
 			int m_end_day = Integer.parseInt(e_day);
 			if(today>=m_end_day) {
 				asdao.AdminMemberGradeReturn(m_id);
