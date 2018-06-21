@@ -72,6 +72,7 @@ public  class MemberJoinAction implements Action{
 
    String host = "http://itwillbs6.cafe24.com/WATCHU/EmailCheckAction.me";
    //String host = "http://localhost:8080/TeamProject0503/EmailCheckAction.me";
+  // String host = "http://192.168.2.5:8080/TeamProject0503/EmailCheckAction.me";
    String from = "wkdwodn22@gmail.com";
    String fromname = "왓츄";
    String to = m_id;
