@@ -74,7 +74,7 @@ section {
    /* padding: 10px; */
    cursor: pointer;
    position: absolute;
-   top: -10px;
+   top: 35px;
    left: 430px;
 }
 .fa_full{
@@ -97,11 +97,13 @@ section {
     top: 90px;
     left: 520px;
     width: 580px;
+    height:150px;
     padding: 0px 30px;
 }
 .content_table {
     /* border-bottom: 2px solid #333; */
     width: 580px;
+    height:150px;
     font-size: 1.4em;
     font-weight: bold;
     line-height: 1.6em;
@@ -135,7 +137,7 @@ section {
     padding: 10px;
     text-align: center;
     position: relative;
-    top: 30px;
+    top: 20px;
     left: 60px;
 }
 
@@ -173,7 +175,7 @@ label.play {
     text-decoration: none;
     cursor: pointer;
     position: relative;
-    top: 40px;
+    top: 10px;
     left: 60px;
     /* box-shadow:3px 3px #eee; */
 }
@@ -237,6 +239,7 @@ div.star {
     /* padding-left: 100px; */
     margin: 0 auto;
     padding: 20px;
+    padding-left: 30px;
 }
 .movie_steel{
 	/* border-top:1px solid #eee;
@@ -256,7 +259,7 @@ div.star {
 }
 
 .movie_preview iframe {
-   width: 800px;
+   width: 700px;
    height: 500px;
 }
 
@@ -328,11 +331,12 @@ div.star {
 }
 
 .coment form textarea {
-   font-size: 18px;
-   margin-bottom: 20px;
-   margin-right: 10px;
-   width: 800px;
-   padding: 10px;
+    font-size: 1em;
+    margin-bottom: 20px;
+    margin-left: 70px;
+    /* margin-right: 10px; */
+    width: 700px;
+    padding: 20px;
    
 }
 
@@ -369,13 +373,14 @@ div.star {
 
 .review_o {
 	border-bottom: 1px solid #999;
-    width: 800px;
+    width: 750px;
     /* height: 100px; */
     /* margin: 0 auto; */
     /* border-collapse: collapse; */
     font-size: 18px;
     line-height: 1.7em;
     margin-bottom: 50px;
+    margin-left: 50px;
     /* padding: 50px; */
 }
 
