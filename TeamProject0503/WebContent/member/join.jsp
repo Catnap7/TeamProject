@@ -112,16 +112,26 @@ $(function(){
 	}
 	if (document.fr.m_pass.value.length< 8 
 			||document.fr.m_pass.value.length>15) {//비밀번호 확인하는부분
-		alert("숫자 특수문자 영문자 조합 비밀번호를 8~15 자리로 입력하세요")
+		alert("비밀번호는 8자 이상 15자 이하로 입력하세요.")
 		document.fr.m_pass.focus();
 		return false;
 	}	
 	if(!document.fr.m_pass.value.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/))
     {
-        alert("숫자 특수문자 영문자 조합 비밀번호를 8~15 자리로 입력하세요");
+		  alert("숫자 특수문자 영문자  조합으로 비밀번호를 입력하세요");
     	document.fr.m_pass.focus();
         return false;
     }
+	if (!e_check.test(document.fr.m_pass.value)) {
+		  alert("숫자 특수문자 영문자  조합으로 비밀번호를 입력하세요");
+		document.fr.m_pass.focus()
+		return false;
+	}
+	if (!t_check.test(document.fr.m_pass.value)) {
+		  alert("숫자 특수문자 영문자  조합으로 비밀번호를 입력하세요");
+		document.fr.m_pass.focus()
+		return false;
+	}
 
 	if(space_check.test(document.fr.m_pass.value)){
 		alert("비밀번호엔 공백은 들어 갈 수 없습니다.")
@@ -134,8 +144,6 @@ $(function(){
 		document.fr.m_pass.focus()
 		return false;
 	}
-	
-	
 	 //주민번호1
 	   if (yy < "00" 
               || yy > "99" 
