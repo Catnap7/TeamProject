@@ -19,7 +19,9 @@ public class VipAdmin implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session= request.getSession();
+		
 		String id=(String)session.getAttribute("m_id");
+		
 		if(id==null){
 			ActionForward forward= new ActionForward();
 			forward.setPath("./MemberLogin.me");
@@ -56,8 +58,10 @@ public class VipAdmin implements Action{
 		request.setAttribute("VipSeatTakenList", VipSeatTakenList);
 		request.setAttribute("vipMemberList", vipMemberList);
 		request.setAttribute("seatList", seatList);
+
+		System.out.println("VipAdmin2.java");
 		
-		 
+		
 		ActionForward forward= new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("./vip/VipAdmin.jsp");

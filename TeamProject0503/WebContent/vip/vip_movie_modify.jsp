@@ -32,7 +32,7 @@
 	<form action="./VipMovieModifyAction.vi" method="post" name="fr">
 	<%-- <input type="hidden" name="v_num" value="<%=vipbean.getV_num()%>"> --%>
 		<input type="hidden" name="v_num" value="<%=vipbean.getV_num()%>">
-		<table class="movieContent">
+		<table class="movieContent" border="1">
 			<tr>
 				<td><%=vipbean.getV_num()%></td>
 				<td colspan="2"><input type="text" name="v_kor_title" value="<%=vipbean.getV_kor_title()%>"></td>
