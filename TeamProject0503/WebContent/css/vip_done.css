@@ -20,8 +20,10 @@ article{
 	background-color:#ececec;
 	box-shadow:6px 6px #797979;
 	width: 1500px;
-	margin: 50px auto;
+	margin: 150px auto;
 	padding: 30px;
+	position: relative;
+    left: 150px;
 }
 
 .title{

@@ -27,6 +27,7 @@ article.main2{
 .containerWithBtn{
 	border:1px solid white; 
 	position: relative;
+	margin-top: 50px;
 }
 .container{/* border:1px solid orange;  */
 	height:280px;
