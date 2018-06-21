@@ -26,16 +26,20 @@ public class CookieLogin implements Action{
 			for(int i=0; i<cookies.length; i++) {
 				if(cookies[i].getName().equals("m_id1")) {
 					 m_id1 = cookies[i].getValue();
+					 System.out.println("@앞 : "+m_id1);
 				}
 				if(cookies[i].getName().equals("m_id2")) {
 					 m_id2 = cookies[i].getValue();
+					 System.out.println("@앞 : "+m_id2);
 				}
 				if(cookies[i].getName().equals("m_pass")){
 					m_pass=cookies[i].getValue();
+					System.out.println("쿠키 비번 : "+m_pass);
 				}
 			}
 		
-		}if(m_pass!=null) {
+		}
+		if(m_id1!=null && m_id2!=null && m_pass!=null) {
 			m_id = m_id1+"@"+m_id2;
 			MemberDAO mdao = new MemberDAO();
 			MemberBean memberbean=new MemberBean();
@@ -45,14 +49,14 @@ public class CookieLogin implements Action{
 			session.setAttribute("m_id",m_id);
 			session.setAttribute("m_name",memberbean.getM_name());
 			forward= new ActionForward();			
-			forward.setRedirect(true);
 			forward.setPath("./Main.ma");
+			forward.setRedirect(true);
 			return forward;
 		
 		}else{                                            // 쿠키에서 이름 id를 찾지 못했을때
 			 forward= new ActionForward();			
-			forward.setRedirect(false);
 			forward.setPath("./start/start.jsp");
+			forward.setRedirect(false);
 			return forward;  
 		}
 }
