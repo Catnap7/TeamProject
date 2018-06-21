@@ -22,12 +22,6 @@ public class CookieLogin implements Action{
 		String m_id2 = null;
 		Cookie[] cookies = request.getCookies();
 		String id=(String)session.getAttribute("m_id");
-		if(id==null){
-			ActionForward forward= new ActionForward();
-			forward.setPath("./MemberLogin.me");
-			forward.setRedirect(true);
-			return forward;
-		}
 		if(cookies!=null) {
 			for(int i=0; i<cookies.length; i++) {
 				if(cookies[i].getName().equals("m_id1")) {

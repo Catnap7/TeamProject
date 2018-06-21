@@ -32,7 +32,7 @@ public class AdminNoticeUpdateAction implements Action {
 		ndao.NoticeUpdateInsert(noticebean, n_num);		
 		ActionForward forward = new ActionForward();
 		forward.setPath("./AdminNoticeList.an");
-		forward.setRedirect(false);
+		forward.setRedirect(true);
 		return forward;
 	}
 

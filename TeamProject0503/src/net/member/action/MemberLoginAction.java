@@ -132,8 +132,8 @@ public class MemberLoginAction implements Action{
 			
 			if(request.getParameter("m_id").equals("admin")) {
 				ActionForward forward= new ActionForward();
-				forward.setRedirect(true);
 				forward.setPath("./AdminManageList.am");
+				forward.setRedirect(true);
 				return forward;	
 			}
 			ActionForward forward= new ActionForward();			

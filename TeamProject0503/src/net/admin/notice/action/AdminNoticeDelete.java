@@ -23,7 +23,7 @@ public class AdminNoticeDelete implements Action {
 		ndao.NoticeDelete(n_num);
 		ActionForward forward = new ActionForward();
 		forward.setPath("./AdminNoticeList.an");
-		forward.setRedirect(false);
+		forward.setRedirect(true);
 		return forward;
 	}
 

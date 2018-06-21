@@ -33,8 +33,8 @@ public class VipResDelete implements Action{
 		
 		
 		ActionForward forward = new ActionForward();
-		forward.setRedirect(true);
 		forward.setPath("./Vip.vi");
+		forward.setRedirect(true);
 
 		
 		
