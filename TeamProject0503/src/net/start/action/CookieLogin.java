@@ -35,7 +35,8 @@ public class CookieLogin implements Action{
 				}
 			}
 		
-		}if(m_pass!=null) {
+		}
+		if(m_id1!=null && m_id2!=null && m_pass!=null) {
 			m_id = m_id1+"@"+m_id2;
 			MemberDAO mdao = new MemberDAO();
 			MemberBean memberbean=new MemberBean();
@@ -45,14 +46,14 @@ public class CookieLogin implements Action{
 			session.setAttribute("m_id",m_id);
 			session.setAttribute("m_name",memberbean.getM_name());
 			forward= new ActionForward();			
-			forward.setRedirect(true);
 			forward.setPath("./Main.ma");
+			forward.setRedirect(true);
 			return forward;
 		
 		}else{                                            // 쿠키에서 이름 id를 찾지 못했을때
 			 forward= new ActionForward();			
-			forward.setRedirect(false);
 			forward.setPath("./start/start.jsp");
+			forward.setRedirect(false);
 			return forward;  
 		}
 }
