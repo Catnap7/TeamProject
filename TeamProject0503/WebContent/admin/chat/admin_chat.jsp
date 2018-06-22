@@ -12,7 +12,6 @@
 </head>
 <%
 	String id = (String)session.getAttribute("m_id");
-	System.out.println(id);
 %>
 <body>
 	<div class="row">
