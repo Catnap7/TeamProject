@@ -2,6 +2,8 @@ package net.member.action;
 
 import java.security.MessageDigest;
 import java.security.SecureRandom;
+import java.util.Base64;
+import java.util.Base64.Encoder;
 
 import sun.misc.BASE64Encoder;
 
@@ -25,8 +27,13 @@ public class Sha256 {
                 input = md.digest(input);
             }
 
+            //java8버전까지 동작하는 encoder
             BASE64Encoder endecoder = new BASE64Encoder();
             encriptPassword = endecoder.encode(input);
+
+//			  java9버전에서 동작하지 않을때 쓰세요
+//            Encoder encoder = Base64.getMimeEncoder();
+//            encriptPassword = encoder.encodeToString(input);
         } catch(Exception e) {
             e.printStackTrace();
         }
