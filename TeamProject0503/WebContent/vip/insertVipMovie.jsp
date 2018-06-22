@@ -13,6 +13,27 @@
 <!-- 웹 폰트 : 나눔고딕 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 
+ <script type="text/javascript">
+
+function hi(){
+		/* alert("HI"); */
+		var genre=document.getElementById("frGenre").value;
+		/* sessionStorage.setItem("genre",genre);  */
+		setCookie("genre",genre,1);
+		<%-- alert(genre); 
+		alert(<%=request.getCookies()%>);  --%>
+	}
+	
+function setCookie(cookieName, value, exdays){
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+     var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());    
+    document.cookie = cookieName + "=" + cookieValue; 
+}	
+	
+
+</script> 
+
 </head>
 <body>
 
@@ -29,7 +50,7 @@
 			<h1 class="adminTitle">VIP 영화 입력</h1>
 			<p>이번달 vip이벤트 영화 입력해 주십시오</p>
 
-			<form action="./VipInsert.vi" method="post" name="fr">
+			<form action="./VipInsert.vi" method="post" name="fr" enctype="multipart/form-data" onsubmit="hi()">
 				<table border="0" class="db_list_insert">
 					<tr>
 						<td>상영회 예정 날짜(YY.MM.DD)</td>
@@ -61,8 +82,8 @@
 						<td><input type="text" name="v_age" placeholder="예)15"></td>
 					</tr>
 					<tr>
-						<td>장르</td>
-						<td><input type="text" name="v_genre" placeholder="예)멜로"></td>
+						<td>폴더이름</td>
+						<td><input type="text" name="v_genre" placeholder="vip" id="frGenre"></td>
 					</tr>
 					<tr>
 						<td>러닝타임(숫자만)</td>
@@ -100,7 +121,7 @@
 						<td>예고편 소스</td>
 						<td><input type="text"  name="v_video"></td>
 					</tr>
-					<!-- <tr>
+					<tr>
 						<td>포스터</td>
 						<td><input type="file" name="poster" placeholder="영화제목_p.jpg"></td>
 					</tr>	
@@ -111,7 +132,7 @@
 					<tr>
 						<td>스틸컷2</td>
 						<td><input type="file" name="still2" placeholder="영화제목_s2.jpg"></td>
-					</tr> -->
+					</tr> 
 					<tr>	
 					<div class="u_admin-notice-write">
 						<button type="button"  class="wirtebtn" onclick="history.back()">돌아가기</button>

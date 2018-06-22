@@ -488,7 +488,7 @@ $(document).ready(function(){
         if(moviebean.getMv_num()==reviewbean.getR_p_num()) {
         	String yymmdd =reviewbean.getR_date().toString();
            %>
-           <table class="review_o">
+           <table class="review_o"  id="rem_<%=reviewbean.getR_id() %>">
               <tr>
                 <td class="c_name">
                 <%=memberbean.getM_name() %>

@@ -81,7 +81,8 @@ int check=((Integer)request.getAttribute("check")).intValue();
 				%>
 				<%=age%>
 			</p>
-			<p><%=vipbean.getV_genre()%></p>
+			<%-- <p><%=vipbean.getV_genre()%></p> --%>
+			<p></p>
 			<p><%=vipbean.getV_actor().replaceAll(","," , ")%></p>
 			<p><%=vipbean.getV_story()%></p>
 		</div>

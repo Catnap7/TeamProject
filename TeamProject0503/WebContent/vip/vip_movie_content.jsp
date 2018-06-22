@@ -87,7 +87,16 @@
 		</tr>
 		<tr>
 			<td colspan="3" id="needsPadding"><iframe width="1040px" height="760px" src="<%=vipbean.getV_video()%>" allowfullscreen frameborder="0" scrolling="no"></iframe></td>
+		</tr>
+		<%-- <tr>
+			<td><img src="../upload/<%=vipbean.getPoster()%>" width="100" height="300"></td>
+		</tr>
+		<tr>
+			<td></td>
 		</tr>	
+		<tr>
+			<td></td>
+		</tr>		 --%>
 	</table>
 
 	<!-- 수정/삭제 버튼 -->
