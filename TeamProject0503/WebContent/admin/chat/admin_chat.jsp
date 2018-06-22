@@ -10,9 +10,7 @@
 <script type="text/javascript" src="../css/js/bootstrap.js"></script>
 <title>왓츄 : WATCHU</title>
 </head>
-<%
-	String id = (String)session.getAttribute("m_id");
-%>
+<% String id = (String)session.getAttribute("m_id"); %>
 <body>
 	<div class="row">
 		<div class="col-xs-12">
