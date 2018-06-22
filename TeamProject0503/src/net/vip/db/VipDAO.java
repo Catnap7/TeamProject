@@ -75,6 +75,9 @@ public class VipDAO {
 				pstmt.setString(17, vipbean.getV_critic_2_by());
 				pstmt.setString(18, vipbean.getV_critic_2());
 			
+				/*pstmt.setString(19, vipbean.getPoster());
+				pstmt.setString(20, vipbean.getStill1());
+				pstmt.setString(21, vipbean.getStill2());*/
 				
 				pstmt.executeUpdate();
 				
