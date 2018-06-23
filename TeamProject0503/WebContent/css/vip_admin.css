@@ -127,6 +127,25 @@
 
 
 /**좌석선택**/
+
+.reset{
+	position: relative;
+    left: 800px;
+    width: 400px;
+    text-align: right;
+}
+.reset a{
+	text-decoration: none;
+}
+.reset a:LINK,.reset a:VISITED{
+	color:white;
+	font-weight: bold;
+	background-color: red;
+}
+.reset a:HOVER{
+	text-decoration: underline;
+}
+
 #screen{
 	color:#ffffff;
 	background-color: #131313;
@@ -329,7 +348,7 @@ div#content p{
 	padding: 0px;
 }
 .movieContent input{
-	width: 100%; height: 100%;
+	width: 100%;/*  height: 100%; */
 	padding:5px;
 	border: none;
 }

@@ -10,6 +10,7 @@
 
 article{
 	height: auto;
+	width: 1900px;
 }
 
 /***예매완료****/
@@ -23,7 +24,7 @@ article{
 	margin: 150px auto;
 	padding: 30px;
 	position: relative;
-    left: 150px;
+    /* left: 150px; */
 }
 
 .title{

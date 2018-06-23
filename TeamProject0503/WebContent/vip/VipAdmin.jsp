@@ -24,6 +24,9 @@
 
 <%
 
+System.out.println("VipAdmin3.java");
+
+
 MemberBean memberbean=(MemberBean)request.getAttribute("memberbean");
 VipBean vipbean=(VipBean)request.getAttribute("vipbean");
 VipResBean vipresbean=(VipResBean)request.getAttribute("vipresbean");
@@ -71,6 +74,11 @@ List<VipResBean> seatList=(List)request.getAttribute("seatList");
 
 <h1 class="adminTitle">vip시사회 좌석 예매 현황 </h1>
 <section id="seat">			
+	<div class="reset">
+		<a href="./VipReset.vi">VIP 좌석 예매 리셋</a>
+		<p>현재 영화의 예약 현황이 모두 리셋됩니다</p>
+	</div>
+	
 	<div id="screen">SCREEN</div>
 			<table class="seatTable">	
 				<tr>
@@ -127,7 +135,6 @@ List<VipResBean> seatList=(List)request.getAttribute("seatList");
 			<%} %>
 		</table>
 </section>
-
 
 </article>
 

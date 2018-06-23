@@ -92,7 +92,10 @@ int check=((Integer)request.getAttribute("check")).intValue();
 		</div>
 	
 		<div class="frame">
-			<iframe width="1040px" height="760px" src="<%=vipbean.getV_video()%>" allowfullscreen frameborder="0" scrolling="no"></iframe>
+			<iframe width="1040px" height="760px" src="<%=vipbean.getV_video()%>" allowfullscreen frameborder="0" scrolling="no">
+				사용하고 계신 브라우저는 해당 내용을 보실 수 없습니다.
+	 			 최신 브라우저를 설치해 주세요. 
+			</iframe>
 		</div>
 		
 	<div class="movie_title"><p>이 달의 영화 PICK! REVIEWS</p></div>

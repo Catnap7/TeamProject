@@ -14,13 +14,17 @@ public class VipMovieModifyAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session= request.getSession();
+		
 		String id=(String)session.getAttribute("m_id");
+		
 		if(id==null){
 			ActionForward forward= new ActionForward();
 			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
 			return forward;
 		}
+		
+		
 		VipDAO vipdao = new VipDAO();
 		VipBean vipbean = new VipBean();
 		
@@ -44,15 +48,19 @@ public class VipMovieModifyAction implements Action {
 		vipbean.setV_critic_1(request.getParameter("v_critic_1"));
 		vipbean.setV_critic_2_by(request.getParameter("v_critic_2_by"));
 		vipbean.setV_critic_2(request.getParameter("v_critic_2"));
-			
+		
+		vipbean.setV_num(Integer.parseInt(request.getParameter("v_num")));
+		
 		vipdao.modifyVipMovie(vipbean);
 		
 		
 		//이동
 		ActionForward forward=new ActionForward();
 		
-		forward.setPath("./VipMovieList.vi");
 		forward.setRedirect(true);
+		forward.setPath("./VipMovieList.vi");
+		
+		
 		return forward;
 	}
 
