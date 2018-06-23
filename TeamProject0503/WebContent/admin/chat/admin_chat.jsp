@@ -12,7 +12,6 @@
 </head>
 <%
 	String id = (String)session.getAttribute("m_id");
-	System.out.println(id);
 %>
 <body>
 	<div class="row">
@@ -51,9 +50,9 @@
 	</div>
 </body>
 <script type="text/javascript">
-         var textarea = document.getElementById("messageWindow"); 
-//          var webSocket = new WebSocket('ws://itwillbs6.cafe24.com/WATCHU/AdminChatAction'); 
-            var webSocket = new WebSocket('ws://localhost:8080/TeamProject0503/AdminChatAction'); 
+         var textarea = document.getElementById("messageWindow");
+//          var webSocket = new WebSocket('ws://itwillbs6.cafe24.com/WATCHU/AdminChatAction');
+            var webSocket = new WebSocket('ws://localhost:8080/TeamProject0503/AdminChatAction');
         // var webSocket = new WebSocket('ws://192.168.2.5:8080/TeamProject0503/AdminChatAction'); 
          var inputMessage = document.getElementById('inputMessage'); 
      webSocket.onerror = function(event) {
