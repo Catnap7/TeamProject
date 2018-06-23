@@ -14,6 +14,7 @@ public class AdminNoticeWriteAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("걍걍");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session= request.getSession();
 		String id=(String)session.getAttribute("m_id");
