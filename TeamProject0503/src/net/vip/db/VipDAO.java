@@ -279,16 +279,18 @@ public class VipDAO {
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
 			String sql="";
+			
 			try {
 				con=getConnection();
 				
-				sql="update vip_cinema_prev set v_kor_title=?,v_eng_title=?,v_year=?,v_country=?,v_age=?,"
+				sql="UPDATE vip_cinema_prev SET v_kor_title=?,v_eng_title=?,v_year=?,v_country=?,v_age=?,"
 						+ "v_genre=?,v_time=?,v_director=?,v_actor=?,v_story=?,"
 						+ "v_video=?,v_date=?,v_when=?"
 						+ ",v_critic_1_by=?,v_critic_1=?"
 						+ ",v_critic_2_by=?,v_critic_2=? where v_num=?";
 				
 				pstmt=con.prepareStatement(sql);
+				
 				pstmt.setString(1, vipbean.getV_kor_title());
 				pstmt.setString(2, vipbean.getV_eng_title());
 				pstmt.setInt(3, vipbean.getV_year());
@@ -309,9 +311,11 @@ public class VipDAO {
 				pstmt.setString(15, vipbean.getV_critic_1());
 				pstmt.setString(16, vipbean.getV_critic_2_by());
 				pstmt.setString(17, vipbean.getV_critic_2());
+				
 				pstmt.setInt(18, vipbean.getV_num());
 				
 				pstmt.executeUpdate();
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally{
@@ -360,9 +364,10 @@ public class VipDAO {
 					pstmt=con.prepareStatement(sql);
 					pstmt.setString(1, "0");
 					pstmt.setString(2, "0");
-					
 					pstmt.executeUpdate();
 					
+					sql="delete from vip_reservation";
+					pstmt.executeUpdate();
 
 			}catch(Exception e) {
 				e.printStackTrace();	

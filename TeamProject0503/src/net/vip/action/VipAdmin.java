@@ -19,13 +19,19 @@ public class VipAdmin implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session= request.getSession();
+		
 		String id=(String)session.getAttribute("m_id");
+		
 		if(id==null){
 			ActionForward forward= new ActionForward();
 			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
 			return forward;
 		}
+		
+		System.out.println("VipAdmin.java");
+		
+		
 		//vip 시네마 영화 정보 가져오기 
 		VipDAO vipdao=new VipDAO();
 		VipBean vipbean=new VipBean();
@@ -52,8 +58,10 @@ public class VipAdmin implements Action{
 		request.setAttribute("VipSeatTakenList", VipSeatTakenList);
 		request.setAttribute("vipMemberList", vipMemberList);
 		request.setAttribute("seatList", seatList);
+
+		System.out.println("VipAdmin2.java");
 		
-		 
+		
 		ActionForward forward= new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("./vip/VipAdmin.jsp");
